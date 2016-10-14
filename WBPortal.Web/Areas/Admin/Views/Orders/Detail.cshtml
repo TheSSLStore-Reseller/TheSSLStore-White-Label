@@ -1,0 +1,581 @@
+﻿@using WBSSLStore.Domain;
+@using WBSSLStore.Web.Util;
+@model WBSSLStore.Domain.OrderDetail
+@{
+    WBSiteSettings setting = new WBSiteSettings(WBSSLStore.Web.Helpers.Caching.SiteCacher.CurrentSite);
+    ViewBag.Title = "Order Detail";
+}
+<script type="text/javascript" language="javascript">
+    function DownloadCertificate(ExternalID) {
+        window.open('/admin/orders/DownloadCertificate/' + ExternalID, 'Download', 'width=5,height=5')
+    }
+    function ResendApproval(ExternalID, ApproverEmail) {
+        $.post("/admin/orders/ReSendApprovalEmail/" + ExternalID + '?@(SettingConstants.QS_EMAIL)=' + ApproverEmail,
+                       function (data) {
+                           alert(data);
+                       });
+    }
+    function downloadauthfile()
+    {        
+        var flnm = "@(!string.IsNullOrEmpty(ViewBag.AuthFileName) ? Html.Raw(ViewBag.AuthFileName) : string.Empty)";
+        var flcon = "@(!string.IsNullOrEmpty(ViewBag.AuthFileContent) ? Html.Raw(ViewBag.AuthFileContent) : string.Empty)";
+        window.open('/admin/orders/Downloadauthfile?flnm=' + flnm+'&flcon='+flcon, 'Download', 'width=5,height=5')
+    }
+</script>
+<tr>
+    <td align="left" valign="top">
+        <table width="881" border="0" align="left" cellpadding="0" cellspacing="0">
+            <tr>
+                <td width="7" align="left" valign="top">
+                    <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/barleft.gif" alt="whitebrand" width="7" height="55">
+                </td>
+                <td width="866" align="left" valign="middle" class="hdbarbg">
+                    <table width="840" border="0" align="center" cellpadding="1" cellspacing="1">
+                        <tr>
+                            <td width="407" align="left" valign="middle" class="head1">
+                                @*Order Detail*@ @WBSSLStore.Resources.GeneralMessage.Message.Odetail_Header
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td width="9" align="right" valign="top">
+                    <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/barright.gif" alt="whitebrand" width="9" height="55">
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>
+<tr>
+    <td align="left" valign="top" class="contbg">
+        <table width="870" border="0" align="center" cellpadding="0" cellspacing="7">
+            <tr>
+                <td width="867" align="center" valign="top" class="bgclr">
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td align="left" valign="top">
+                                <table width="820" border="0" align="center" cellpadding="0" cellspacing="0">
+                                    <tr>
+                                        <td height="40" align="left" valign="middle">
+                                            <h1>
+                                                @*Certificate Details*@ @WBSSLStore.Resources.GeneralMessage.Message.Odetail_CertDetail_Header</h1>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" valign="top" bgcolor="#f2f2f2">
+                                            <table width="840" border="0" align="left" cellpadding="1" cellspacing="1">
+                                                <tr>
+                                                    <td width="273" height="32" align="right" valign="middle" class="bold">
+                                                        @*Product Name*@ @WBSSLStore.Resources.GeneralMessage.Message.Product_Caption :
+                                                    </td>
+                                                    <td width="16" height="32" align="left" valign="middle">&nbsp;
+                                                    </td>
+                                                    <td width="541" height="32" align="left" valign="middle" class="bold">
+                                                        @Html.DisplayFor(model => model.ProductName)
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td height="8" align="left" valign="top"></td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" valign="top">
+                                            <table width="840" border="0" align="left" cellpadding="1" cellspacing="1">
+                                                <tr>
+                                                    <td width="273" height="22" align="right" valign="middle">
+                                                        <span class="bold">@WBSSLStore.Resources.GeneralMessage.Message.Domain_Caption:</span>
+                                                    </td>
+                                                    <td width="16" height="22" align="left" valign="middle">&nbsp;
+                                                    </td>
+                                                    <td width="541" height="22" align="left" valign="middle" class="bold">
+                                                        @(!string.IsNullOrEmpty(Model.CertificateRequest.DomainName) ? Model.CertificateRequest.DomainName : (Model.StoreAPIInteraction != null ? Model.StoreAPIInteraction.GatewayAuthCode : "-"))
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td height="22" align="right" valign="middle">
+                                                        <span class="bold">@*TheSSLStoreOrderID*@ @WBSSLStore.Resources.GeneralMessage.Message.ExternalOrderID_Caption:</span>
+                                                    </td>
+                                                    <td height="22" align="left" valign="middle">&nbsp;
+                                                    </td>
+                                                    <td height="22" align="left" valign="middle" class="bold">
+                                                        @Html.DisplayFor(model => model.ExternalOrderID)
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td height="22" align="right" valign="middle">
+                                                        <span class="bold">Token Code:</span>
+                                                    </td>
+                                                    <td height="22" align="left" valign="middle">&nbsp;
+                                                    </td>
+                                                    <td height="22" align="left" valign="middle" class="bold">
+                                                        @ViewBag.TokenCode
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td height="22" align="right" valign="middle">
+                                                        <span class="bold">TokenID:</span>
+                                                    </td>
+                                                    <td height="22" align="left" valign="middle">&nbsp;
+                                                    </td>
+                                                    <td height="22" align="left" valign="middle" class="bold">
+                                                        @ViewBag.TokenID
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td height="22" align="right" valign="middle">
+                                                        <span class="bold">@*Order Type*@ @WBSSLStore.Resources.GeneralMessage.Message.isNewOrder_Caption:</span>
+                                                    </td>
+                                                    <td height="22" align="left" valign="middle">&nbsp;
+                                                    </td>
+                                                    <td height="22" align="left" valign="middle" class="bold">
+                                                        @(Model.CertificateRequest.isNewOrder ? "New" : "Renew")
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td height="22" align="right" valign="middle">
+                                                        <span class="bold">@*Validity*@ @WBSSLStore.Resources.GeneralMessage.Message.NumberOfMonths_Caption:</span>
+                                                    </td>
+                                                    <td height="22" align="left" valign="middle">&nbsp;
+                                                    </td>
+                                                    <td height="22" align="left" valign="middle" class="bold">
+                                                        @Html.DisplayFor(model => model.NumberOfMonths) Months
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td height="22" align="right" valign="middle">
+                                                        <span class="bold">@*Order Date*@ @WBSSLStore.Resources.GeneralMessage.Message.OrderDate_Caption:
+                                                        </span>
+                                                    </td>
+                                                    <td height="22" align="left" valign="middle">&nbsp;
+                                                    </td>
+                                                    <td height="22" align="left" valign="middle" class="bold">
+                                                        @Html.DisplayFor(model => model.Order.OrderDate)
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td height="22" align="right" valign="middle">
+                                                        <span class="bold">@*Start Date*@ @WBSSLStore.Resources.GeneralMessage.Message.StartDate_Caption:</span>
+                                                    </td>
+                                                    <td height="22" align="left" valign="middle">&nbsp;
+                                                    </td>
+                                                    <td height="22" align="left" valign="middle" class="bold">
+                                                        @((Model.ActivatedDate.HasValue && Model.ActivatedDate.Value > Convert.ToDateTime("1/1/1900")) ? Model.ActivatedDate.Value.ToShortDateString() : "-")
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td height="22" align="right" valign="middle">
+                                                        <span class="bold">@*Expires On*@ @WBSSLStore.Resources.GeneralMessage.Message.ExpireDate_Caption:
+                                                        </span>
+                                                    </td>
+                                                    <td height="22" align="left" valign="middle">&nbsp;
+                                                    </td>
+                                                    <td height="22" align="left" valign="middle" class="bold">
+                                                        @(Model.CertificateExpiresOn.HasValue && Model.CertificateExpiresOn.Value > Convert.ToDateTime("1/1/1900") ? Model.CertificateExpiresOn.Value.ToShortDateString() : "-")
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td height="22" align="right" valign="top">
+                                                        <span class="bold">@*Verification Email*@ @WBSSLStore.Resources.GeneralMessage.Message.ApproverEmail_Caption:
+                                                        </span>
+                                                    </td>
+                                                    <td height="22" align="left" valign="middle">&nbsp;
+                                                    </td>
+                                                    <td height="22" align="left" valign="middle" class="bold">
+                                                        
+                                                        @if (Model.CertificateRequest.CertificateApproverEmail != null)
+                                                        {
+                                                            foreach (string str in Model.CertificateRequest.CertificateApproverEmail.Split(','))
+                                                            {
+                                                                if (!string.IsNullOrEmpty(str))
+                                                                {
+                                                            @str @:<br />
+                                                                }
+
+                                                            }
+                                                        }
+                                                    </td>
+                                                </tr>
+                                                @if (Model.CertificateRequest.NumberOfServers > 0)
+                                                {
+                                                    <tr>
+                                                        <td height="22" align="right" valign="middle">
+                                                            <span class="bold">@WBSSLStore.Resources.GeneralMessage.Message.NumberOfServers_Caption:
+                                                            </span>
+                                                        </td>
+                                                        <td height="22" align="left" valign="middle">&nbsp;
+                                                        </td>
+                                                        <td height="22" align="left" valign="middle" class="bold">
+                                                            @Html.DisplayFor(model => model.CertificateRequest.NumberOfServers)
+                                                        </td>
+                                                    </tr>
+                                                }
+                                                <tr>
+                                                    <td height="22" align="right" valign="middle">
+                                                        <span class="bold">@*Order Status*@ @WBSSLStore.Resources.GeneralMessage.Message.OrderStatus_Caption:</span>
+                                                    </td>
+                                                    <td height="22" align="left" valign="middle">&nbsp;
+                                                    </td>
+                                                    <td height="22" align="left" valign="middle" class="bold">
+                                                        @(!string.IsNullOrEmpty(Model.ExternalOrderID) ? Model.OrderStatus.ToString() : "Incomplete")
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td height="22" align="right" valign="middle">
+                                                        <span class="bold">@*Order Status Reason*@ @WBSSLStore.Resources.GeneralMessage.Message.Order_Status_Reason:</span>
+                                                    </td>
+                                                    <td height="22" align="left" valign="middle">&nbsp;
+                                                    </td>
+                                                    <td height="22" align="left" valign="middle" class="bold">
+                                                        @ViewBag.OrderState
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td height="22" align="right" valign="middle">
+                                                        <span class="bold">@*Amount*@ @WBSSLStore.Resources.GeneralMessage.Message.Price_Caption:
+                                                        </span>
+                                                    </td>
+                                                    <td height="22" align="left" valign="middle">&nbsp;
+                                                    </td>
+                                                    <td height="22" align="left" valign="middle" class="bold">
+                                                        @(string.Format("{0:C}", Html.DisplayFor(model => model.Price)))
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td height="22" align="right" valign="middle">
+                                                        <span class="bold">@*Coupon Code Discount*@ @WBSSLStore.Resources.GeneralMessage.Message.PromoDiscount_Caption:</span>
+                                                    </td>
+                                                    <td height="22" align="left" valign="middle">&nbsp;
+                                                    </td>
+                                                    <td height="22" align="left" valign="middle" class="bold">
+                                                        @Html.DisplayFor(model => model.PromoDiscount)
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td height="22" align="right" valign="middle">
+                                                        <span class="bold">@*Invoice Number*@ @WBSSLStore.Resources.GeneralMessage.Message.InvoiceNo_Caption:</span>
+                                                    </td>
+                                                    <td height="22" align="left" valign="middle">&nbsp;
+                                                    </td>
+                                                    <td height="22" align="left" valign="middle" class="bold">
+                                                        @setting.InvoicePrefix@Html.DisplayFor(model => model.Order.ID)
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td height="22" align="right" valign="middle">
+                                                        <span class="bold">@*Special Instructions*@ @WBSSLStore.Resources.GeneralMessage.Message.SpecialInstructions_Caption:</span>
+                                                    </td>
+                                                    <td height="22" align="left" valign="middle">&nbsp;
+                                                    </td>
+                                                    <td height="22" align="left" valign="middle" class="bold">
+                                                        @Html.DisplayFor(model => model.CertificateRequest.SpecialInstructions)
+                                                    </td>
+                                                </tr>
+                                                @if (!string.IsNullOrEmpty(ViewBag.PollStatus) && !string.IsNullOrEmpty(ViewBag.PollDate))
+                                                { 
+                                                    <tr>
+                                                        <td height="30" align="right" valign="middle" class="commonfont bold">
+                                                            <h2><strong><u>@WBSSLStore.Resources.GeneralMessage.Message.AuthFileDetails_Caption:- </u></strong></h2>
+                                                        </td>
+                                                        <td align="right" valign="middle">&nbsp;
+                                                        </td>
+                                                        <td valign="middle" class="commonfont bold"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td height="30" align="right" valign="middle" class="commonfont bold">
+                                                            <strong>@WBSSLStore.Resources.GeneralMessage.Message.PollStatus_Caption:</strong>
+                                                        </td>
+                                                        <td align="right" valign="middle">&nbsp;
+                                                        </td>
+                                                        <td valign="middle" class="commonfont bold">@ViewBag.PollStatus</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td height="30" align="right" valign="middle" class="commonfont bold">
+                                                            <strong>@WBSSLStore.Resources.GeneralMessage.Message.PollDate_Caption:</strong>
+                                                        </td>
+                                                        <td align="right" valign="middle">&nbsp;
+                                                        </td>
+                                                        <td valign="middle" class="commonfont bold">@ViewBag.PollDate</td>
+                                                    </tr>
+                                                }
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td height="8" align="left" valign="top"></td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" valign="top" bgcolor="#f2f2f2">
+                                            <table width="100%" border="0" align="left" cellpadding="1" cellspacing="1">
+                                                <tr>
+                                                    <td width="2%" align="left" valign="middle" class="bold">&nbsp;
+                                                    </td>
+                                                    <td width="31%" height="32" align="left" valign="middle" class="bold">
+                                                        @*Payment Detail*@ @WBSSLStore.Resources.GeneralMessage.Message.Checkout_PayDetail_Caption
+                                                    </td>
+                                                    <td width="2%" height="32" align="left" valign="middle">&nbsp;
+                                                    </td>
+                                                    <td width="65%" height="32" align="left" valign="middle">&nbsp;
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td height="8" align="left" valign="top"></td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" valign="top">
+                                            <table width="840" border="0" align="left" cellpadding="1" cellspacing="1">
+                                                <tr>
+                                                    <td width="273" height="22" align="right" valign="middle" class="bold">
+                                                        @* Payment Type*@ @WBSSLStore.Resources.GeneralMessage.Message.PaymentType_Caption:
+                                                    </td>
+                                                    <td width="16" height="22" align="left" valign="middle">&nbsp;
+                                                    </td>
+                                                    <td width="541" height="22" align="left" valign="middle" class="bold">
+                                                        @(ViewBag.PaymentType ?? "-")
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td height="22" align="right" valign="middle" class="bold">
+                                                        @*Authorization Code*@ @WBSSLStore.Resources.GeneralMessage.Message.AuthorizationCode_Caption:
+                                                    </td>
+                                                    <td height="22" align="left" valign="middle">&nbsp;
+                                                    </td>
+                                                    <td height="22" align="left" valign="middle" class="bold">
+                                                        @(ViewBag.AuthCode ?? "-")
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td height="8" align="left" valign="top"></td>
+                                    </tr>
+                                    <tr>
+                                        <td height="30" align="left" valign="middle">
+                                            <h1>
+                                                @*Site Contacts*@ @WBSSLStore.Resources.GeneralMessage.Message.Odetail_SiteContacts_Header</h1>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" valign="top" bgcolor="#f2f2f2">
+                                            <table width="100%" border="0" align="left" cellpadding="1" cellspacing="1">
+                                                <tr>
+                                                    <td width="2%" align="left" valign="middle" class="bold">&nbsp;
+                                                    </td>
+                                                    <td width="31%" height="32" align="left" valign="middle" class="bold">
+                                                        @*SSL Admin Contact Details*@ @WBSSLStore.Resources.GeneralMessage.Message.Odetail_AContactdet_Header
+                                                    </td>
+                                                    <td width="2%" height="32" align="left" valign="middle">&nbsp;
+                                                    </td>
+                                                    <td width="65%" height="32" align="left" valign="middle">&nbsp;
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td height="8" align="left" valign="top"></td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" valign="top">
+                                            <table width="840" border="0" align="left" cellpadding="1" cellspacing="1">
+                                                <tr>
+                                                    <td width="273" height="22" align="right" valign="middle" class="bold">
+                                                        @*First Name*@ @WBSSLStore.Resources.GeneralMessage.Message.Fname_Caption:
+                                                    </td>
+                                                    <td width="16" height="22" align="left" valign="middle">&nbsp;
+                                                    </td>
+                                                    <td width="541" height="22" align="left" valign="middle" class="bold">
+                                                        @Html.DisplayFor(model => model.CertificateRequest.AdminContact.FirstName)<br />
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td height="22" align="right" valign="middle" class="bold">
+                                                        @*Last Name*@@WBSSLStore.Resources.GeneralMessage.Message.Lname_Caption:
+                                                    </td>
+                                                    <td height="22" align="left" valign="middle">&nbsp;
+                                                    </td>
+                                                    <td height="22" align="left" valign="middle" class="bold">
+                                                        @Html.DisplayFor(model => model.CertificateRequest.AdminContact.LastName)
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td height="22" align="right" valign="middle" class="bold">
+                                                        @*Email*@ @WBSSLStore.Resources.GeneralMessage.Message.Email_Caption:
+                                                    </td>
+                                                    <td height="22" align="left" valign="middle">&nbsp;
+                                                    </td>
+                                                    <td height="22" align="left" valign="middle" class="bold">
+                                                        @Html.DisplayFor(model => model.CertificateRequest.AdminContact.EmailAddress)
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td height="22" align="right" valign="middle" class="bold">
+                                                        @*Title*@ @WBSSLStore.Resources.GeneralMessage.Message.Title_Caption:
+                                                    </td>
+                                                    <td height="22" align="left" valign="middle">&nbsp;
+                                                    </td>
+                                                    <td height="22" align="left" valign="middle" class="bold">
+                                                        @Html.DisplayFor(model => model.CertificateRequest.AdminContact.Title)
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td height="22" align="right" valign="middle" class="bold">
+                                                        @*Phone*@ @WBSSLStore.Resources.GeneralMessage.Message.Phone_Caption:
+                                                    </td>
+                                                    <td height="22" align="left" valign="middle">&nbsp;
+                                                    </td>
+                                                    <td height="22" align="left" valign="middle" class="bold">
+                                                        @Html.DisplayFor(model => model.CertificateRequest.AdminContact.PhoneNumber)
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td height="8" align="left" valign="top"></td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" valign="top" bgcolor="#F2F2F2">
+                                            <table width="100%" border="0" align="left" cellpadding="1" cellspacing="1">
+                                                <tr>
+                                                    <td width="2%" align="left" valign="middle" class="bold">&nbsp;
+                                                    </td>
+                                                    <td width="31%" height="32" align="left" valign="middle" class="bold">
+                                                        @*SSL Technical Contact Details*@ @WBSSLStore.Resources.GeneralMessage.Message.Odetail_TContactdet_Header
+                                                    </td>
+                                                    <td width="2%" height="32" align="left" valign="middle">&nbsp;
+                                                    </td>
+                                                    <td width="65%" height="32" align="left" valign="middle">&nbsp;
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td height="8" align="left" valign="top"></td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" valign="top">
+                                            <table width="840" border="0" align="left" cellpadding="1" cellspacing="1">
+                                                <tr>
+                                                    <td width="273" height="22" align="right" valign="middle" class="bold">
+                                                        @*First Name*@ @WBSSLStore.Resources.GeneralMessage.Message.Fname_Caption:
+                                                    </td>
+                                                    <td width="16" height="22" align="left" valign="middle">&nbsp;
+                                                    </td>
+                                                    <td width="541" height="22" align="left" valign="middle" class="bold">
+                                                        @Html.DisplayFor(model => model.CertificateRequest.TechnicalContact.FirstName)<br>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td height="22" align="right" valign="middle" class="bold">
+                                                        @*Last Name*@ @WBSSLStore.Resources.GeneralMessage.Message.Lname_Caption:
+                                                    </td>
+                                                    <td height="22" align="left" valign="middle">&nbsp;
+                                                    </td>
+                                                    <td height="22" align="left" valign="middle" class="bold">
+                                                        @Html.DisplayFor(model => model.CertificateRequest.TechnicalContact.LastName)
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td height="22" align="right" valign="middle" class="bold">
+                                                        @*Email*@ @WBSSLStore.Resources.GeneralMessage.Message.Email_Caption:
+                                                    </td>
+                                                    <td height="22" align="left" valign="middle">&nbsp;
+                                                    </td>
+                                                    <td height="22" align="left" valign="middle" class="bold">
+                                                        @Html.DisplayFor(model => model.CertificateRequest.TechnicalContact.EmailAddress)
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td height="22" align="right" valign="middle" class="bold">
+                                                        @*Title*@ @WBSSLStore.Resources.GeneralMessage.Message.Title_Caption:
+                                                    </td>
+                                                    <td height="22" align="left" valign="middle">&nbsp;
+                                                    </td>
+                                                    <td height="22" align="left" valign="middle" class="bold">
+                                                        @Html.DisplayFor(model => model.CertificateRequest.TechnicalContact.Title)
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td height="22" align="right" valign="middle" class="bold">
+                                                        @*Phone*@ @WBSSLStore.Resources.GeneralMessage.Message.Phone_Caption:
+                                                    </td>
+                                                    <td height="22" align="left" valign="middle">&nbsp;
+                                                    </td>
+                                                    <td height="22" align="left" valign="middle" class="bold">
+                                                        @Html.DisplayFor(model => model.CertificateRequest.TechnicalContact.PhoneNumber)
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td height="8" align="left" valign="top"></td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" valign="top">
+                                            <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/grydivider.gif" alt="" width="840" height="6">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td height="8" align="left" valign="top"></td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" valign="top">
+                                            <table width="100%" border="0" align="left" cellpadding="1" cellspacing="1">
+                                                <tr>
+                                                    <td width="33%" align="right" valign="top">
+
+                                                        @if ((DateTimeWithZone.Now.Date - (Model.ActivatedDate.HasValue && Model.ActivatedDate.Value > Convert.ToDateTime("1/1/1900") ? Model.ActivatedDate.Value.Date : DateTimeWithZone.Now.Date)).Days <= Model.Product.RefundDays && Model.OrderStatus != OrderStatus.REFUNDED && Model.OrderStatus != OrderStatus.REJECTED && ViewBag.CancelationRequest != "Cancel")
+                                                        {
+                                                            <input name="button6" type="submit" class="bluebtnlite" id="button6" value="@WBSSLStore.Resources.GeneralMessage.Message.CancellationRefundRequest_btn" onclick="window.location.href='@Url.Action("cancellationrequest", "Support", new { area = "admin", id = Model.ID })    '" />
+                                                        }
+                                                    </td>
+                                                    <td width="25%" align="center" valign="top">
+                                                        @if (Model.OrderStatus == OrderStatus.ACTIVE && (Convert.ToString(ViewBag.CertificateStatus) != Convert.ToString(OrderStatus.PENDING)))
+                                                        {
+                                                            <input name="button2" type="button" class="bluebtnlite" id="button2" value="@WBSSLStore.Resources.GeneralMessage.Message.DownloadCertificate_btn" onclick="DownloadCertificate(@Model.ExternalOrderID)" />
+                                                        }
+                                                    </td>
+                                                    <td width="42%" align="left" valign="top">
+                                                        @if (Model.OrderStatus == OrderStatus.PENDING && !string.IsNullOrEmpty(@Model.ExternalOrderID) && !string.IsNullOrEmpty(Model.CertificateRequest.DomainName))
+                                                        {
+                                                            <input name="button3" type="button" class="bluebtnlite" id="button3" onclick="ResendApproval(@Model.ExternalOrderID,'@Model.CertificateRequest.CertificateApproverEmail    ')" value="@WBSSLStore.Resources.GeneralMessage.Message.ResendApprovalEmail_btn" />
+                                                        }
+                                                    </td>
+                                                    @if (!string.IsNullOrEmpty(ViewBag.AuthFileName) && !string.IsNullOrEmpty(ViewBag.AuthFileContent))
+                                                    {
+                                                        <td width="42%" align="left" valign="top">
+                                                            <input name="btnDownloadauthfile" type="button" class="bluebtnlite" id="btnDownloadauthfile" value="@WBSSLStore.Resources.GeneralMessage.Message.DownloadAuthFile_btnCaption" onclick="downloadauthfile()" />
+
+                                                        </td>
+                                                    }
+
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" valign="top">&nbsp;
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td height="8" align="left" valign="top"></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>
+@{
+    setting = null;
+}

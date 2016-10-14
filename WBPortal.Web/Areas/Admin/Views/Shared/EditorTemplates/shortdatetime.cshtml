@@ -1,0 +1,13 @@
+﻿@{
+    var objDate = DateTime.Now.ToShortDateString();
+    if (Model != null)
+    {
+        objDate = @Model.ToShortDateString();
+    }    
+}
+@Html.TextBoxFor(x => objDate, new { @class = "inputboxmini", @readonly = "readonly", @id = this.ViewData.TemplateInfo.HtmlFieldPrefix, @name = this.ViewData.TemplateInfo.HtmlFieldPrefix })
+<script type="text/javascript">
+    $(function () {    
+        $('#@this.ViewData.TemplateInfo.HtmlFieldPrefix').attr('name','@this.ViewData.TemplateInfo.HtmlFieldPrefix');
+    });
+</script>

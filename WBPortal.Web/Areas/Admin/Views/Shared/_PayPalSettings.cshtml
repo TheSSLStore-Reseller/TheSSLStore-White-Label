@@ -1,0 +1,231 @@
+﻿@model WBSSLStore.Domain.PaymentGateways
+@{
+    ViewBag.Title = "_PayPalSettings";
+}
+@System.Web.Optimization.Scripts.Render("/bundales/wb/validationjs")
+<script type="text/javascript" language="javascript">
+    $(document).ready(function () {
+        var opt = 1;
+        var LIURLValidate = false;
+        var TSTValidate = false;
+        var EMLValidate = false;
+
+            var LiveUrl = "@WBSSLStore.Resources.ErrorMessage.Message.LiveUrlRequired";
+            var TestUrl = "@WBSSLStore.Resources.ErrorMessage.Message.TestUrlRequired";
+            var validUrl = "@WBSSLStore.Resources.ErrorMessage.Message.ValidUrl";
+            var paypalid = "@WBSSLStore.Resources.ErrorMessage.Message.PaypalIdRequired";
+            var validpaypal = "@WBSSLStore.Resources.ErrorMessage.Message.ValidPaypalID";
+
+             if (parseInt(opt) == @((int)WBSSLStore.Domain.PGInstances.PayPalIPN)) {
+                
+                LIURLValidate = true;
+                TSTValidate = true;
+                EMLValidate = true;
+             }
+
+            $.validator.addMethod(
+                "EMLValidate",
+                function (value, element) {
+                    if ($('#chkPaypal').is(':checked') && EMLValidate && value == "") {
+                        return false;
+                    }
+                    else {
+                        return true;
+                    }
+                },
+                paypalid
+            );
+
+
+            $.validator.addMethod(
+                "LIURLValidate",
+                function (value, element) {
+                    if ($('#chkPaypal').is(':checked') && LIURLValidate && value == "") {
+                        return false;
+                    }
+                    else {
+                        return true;
+                    }
+                },
+                LiveUrl
+            );
+
+             $.validator.addMethod(
+                "TSTValidate",
+                function (value, element) {
+                    if ($('#chkPaypal').is(':checked') && TSTValidate && value == "") {
+                        return false;
+                    }
+                    else {
+                        return true;
+                    }
+                },
+                TestUrl
+            );
+
+
+        $("#frmPayPalSettings").validate({
+            rules: {
+                LoginID: {
+                    EMLValidate: true, email: true               
+                },
+                LiveURL: {
+                LIURLValidate:true,url:true
+                },
+                TestURL: {
+                    TSTValidate: true, url: true
+                }
+            },
+            messages: {
+                LoginID: {
+                required:paypalid,email:validpaypal
+                },
+                LiveURL:{
+                required:LiveUrl,url:validUrl
+                } ,
+                TestURL:{
+                required:TestUrl,url:validUrl
+                }                 
+            }
+        });
+        showhide1();
+    });
+</script>
+<script type="text/javascript" language="javascript">
+    function showhide1() {       
+        if ($('#chkPaypal').is(':checked')) {
+            $('#pptop1').fadeIn('slow');
+        } else {
+            $('#pptop1').fadeOut('slow');
+        }    
+    }
+</script>
+@using (Html.BeginForm("index", "paymentgateway", FormMethod.Post, new { @id = "frmPayPalSettings", @name = "frmPayPalSettings" }))
+{
+    <table width="50%" border="0" align="left" cellpadding="1" cellspacing="1">
+        <tr>
+            <td width="66%" height="22" align="right" valign="middle" class="bold">
+                @*Use PayPal*@ @WBSSLStore.Resources.GeneralMessage.Message.Use_PayPal:<span class="bold redfont">
+                    *</span>
+            </td>
+            <td width="6%" height="22" align="right" valign="middle" class="bold">
+            </td>
+            <td width="15%" align="left">
+                <label>
+                    <input type="checkbox" name="chkPaypal" onclick="showhide1();" id="chkPaypal" @(Model.ID > 0 ? "checked=\"checked\"" : string.Empty)   />
+                </label>
+            </td>
+            <td width="24%">
+                <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-help.gif"  title="PayPal lets you send money to anyone with email. PayPal is free for consumers and works seamlessly with your existing credit card and checking account." alt="PayPal lets you send money to anyone with email. PayPal is free for consumers and works seamlessly with your existing credit card and checking account." width="16" height="16">
+            </td>
+        </tr>
+        <tr>
+        <td colspan="4">
+        </td>
+        </tr>
+    </table>
+    <table width="91%" border="0" align="left" cellpadding="1" cellspacing="1" id="pptop1">
+       
+            <tr>
+                <td colspan="3">
+                   
+                </td>
+            </tr>
+        
+        <tr>
+            <td width="36%" height="22" align="right" valign="middle" class="bold">
+                
+            </td>
+            <td width="3%" height="22" align="left" valign="middle">
+                &nbsp;
+            </td>
+            <td width="61%" height="22" align="left" valign="middle" class="bold">
+                 @*------*@
+            </td>
+        </tr>
+        <tr>
+            <td height="22" align="right" valign="middle" class="bold">
+                @*PayPal ID*@ @WBSSLStore.Resources.GeneralMessage.Message.PaypalId_Caption:<span class="bold redfont"> *</span>
+            </td>
+            <td height="22" align="left" valign="middle">
+                &nbsp;
+            </td>
+            <td height="22" align="left" valign="middle" class="bold">
+                @Html.HiddenFor(model => model.InstancesID)
+                @Html.HiddenFor(model => model.ID)
+                @Html.HiddenFor(model => model.SiteID)
+                @Html.HiddenFor(model => model.AuditID)
+                @Html.HiddenFor(model => model.Name)
+                @Html.HiddenFor(model => model.AuditDetails.ByUserID)
+                @Html.HiddenFor(model => model.AuditDetails.DateCreated)
+                @Html.HiddenFor(model => model.AuditDetails.ID)
+                @Html.TextBoxFor(model => model.LoginID, new { @class = "inputbox" })
+            </td>
+        </tr>
+        <tr>
+            <td height="22" align="right" valign="middle" class="bold">
+                &nbsp;
+            </td>
+            <td height="22" align="left" valign="middle">
+                &nbsp;
+            </td>
+            <td height="22" align="left" valign="middle" class="font11">
+                @*Use Your PayPal Email Address!*@ @WBSSLStore.Resources.LongText.Message.UsePaypal
+            </td>
+        </tr>
+        <tr>
+            <td height="22" align="right" valign="middle" class="bold">
+                @*LiveUrl*@ @WBSSLStore.Resources.GeneralMessage.Message.Live_URL:<span class="bold redfont"> *</span>
+            </td>
+            <td height="22" align="left" valign="middle">
+                &nbsp;
+            </td>
+            <td height="22" align="left" valign="middle" class="bold">
+                @Html.TextBoxFor(model => model.LiveURL, new { @class = "inputbox" })
+            </td>
+        </tr>
+        <tr>
+            <td height="22" align="right" valign="middle" class="bold">
+                @*TestUrl*@ @WBSSLStore.Resources.GeneralMessage.Message.Test_URL:<span class="bold redfont"> *</span>
+            </td>
+            <td height="22" align="left" valign="middle">
+                &nbsp;
+            </td>
+            <td height="22" align="left" valign="middle" class="bold">
+                @Html.TextBoxFor(model => model.TestURL, new { @class = "inputbox", @value = "https://www.paypal.com/cgi-bin/webscr?" })
+            </td>
+        </tr>
+        <tr>
+            <td height="22" align="right" valign="middle" class="bold">
+                @*TestMode*@ @WBSSLStore.Resources.GeneralMessage.Message.Test_Mode:<span class="bold redfont"> *</span>
+            </td>
+            <td height="22" align="left" valign="middle">
+                &nbsp;
+            </td>
+            <td height="22" align="left" valign="middle" class="bold">
+                @Html.CheckBoxFor(model => model.IsTestMode)
+            </td>
+        </tr>
+        <tr>
+            <td height="22" align="right" valign="middle" class="bold">
+                &nbsp;
+            </td>
+            <td height="22" align="left" valign="middle">
+                &nbsp;
+            </td>
+            <td height="22" align="left" valign="middle">
+               @* <input name="button" type="submit" class="bluebtn" id="button" value="@WBSSLStore.Resources.GeneralMessage.Message.SavePaypalSetting_btn">*@
+            </td>
+        </tr>
+    </table>
+     <table width="91%" border="0" align="left" cellpadding="1" cellspacing="1">
+      <tr>
+      <td  width="48%" height="22" align="right" valign="middle" class="bold"></td>
+      <td width="3%" height="22" align="left" valign="middle">
+        <input name="button" type="submit" class="bluebtn" id="button" value="@WBSSLStore.Resources.GeneralMessage.Message.SavePaypalSetting_btn">
+      </td>
+      <td  width="61%" height="22" align="left" valign="middle" class="bold">
+      </td>
+      </tr>
+     </table>
+}

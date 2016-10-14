@@ -1,0 +1,23 @@
+/*---------- Column Right ----------- */
+.column3 .column3-3{width:18%; float:right;}
+.reqquote .formsection{padding:15px; text-align:center;}
+.reqquote .raw  input[type=text]{height:30px;}
+.reqquote .raw  input[type=submit]{margin-top:5px; width:127px;}
+
+
+.customer h3, .reqquote h3, .freetools h3{background:#d7d7d7; color:#4e5568; font-size:16px; font-weight:normal; padding:10px 15px 5px; text-align:left;}
+.freetools ul li{background:#FFF;}
+.freetools ul li + li{border-top:1px solid #d7d7d7;}
+.freetools ul li a{padding:6px 12px; display:block; font-size:13px; color:#666; line-height:18px;}
+.freetools ul li a .icon{margin-right:10px;}
+.freetools ul li + li{margin-top:0px;}
+
+.customer{text-align:center;}
+.customer span{display:block; margin:15px 0 15px 0;}
+.customer .greenbtn{margin:15px;}
+
+.guarantee{text-align:center; border:none;}
+.guarantee a{display:block;}
+.guarantee a img{ max-width:75%;}
+.guarantee a + a{margin-top:20px;}
+

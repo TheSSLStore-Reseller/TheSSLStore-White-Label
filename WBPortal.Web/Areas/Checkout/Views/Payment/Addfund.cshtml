@@ -1,0 +1,375 @@
+﻿@{
+    ViewBag.version = WBSSLStore.Web.Helpers.Caching.SiteCacher.ResourceVersion();
+    WBSSLStore.Web.Util.WBSiteSettings setting = new WBSSLStore.Web.Util.WBSiteSettings(WBSSLStore.Web.Helpers.Caching.SiteCacher.CurrentSite);
+    ViewBag.Title = "AddFund";
+    WBSSLStore.Domain.User objUser = null;
+    if (User != null && User.Identity.IsAuthenticated)
+    {
+        WBSSLStore.Web.Helpers.Authentication.SSLStoreUser loginuser = (WBSSLStore.Web.Helpers.Authentication.SSLStoreUser)Membership.GetUser();
+        if (loginuser != null && loginuser.Details != null)
+        {
+            objUser = loginuser.Details;
+        }
+        else if (!string.IsNullOrEmpty(User.Identity.Name))
+        {
+            loginuser = (WBSSLStore.Web.Helpers.Authentication.SSLStoreUser)Membership.GetUser(User.Identity.Name);
+            if (loginuser != null && loginuser.Details != null)
+            {
+                objUser = loginuser.Details;
+            }
+        }
+    }
+}
+@section sitecss{
+@System.Web.Optimization.Styles.Render("/bundales/addfundcss?v=" + ViewBag.version)
+}
+@section Jscripts{
+    @System.Web.Optimization.Scripts.Render("/bundales/wb/jquery.unobtrusive.validate-js?v=" + ViewBag.version)
+
+    @if (setting.CurrentCultureKey != "en-US")
+    {
+        @System.Web.Optimization.Scripts.Render("/bundales/jquery-glob-all?v=" + ViewBag.version);
+    }
+
+    @System.Web.Optimization.Scripts.Render("/bundales/jquery-glob?v=" + ViewBag.version);
+    @*@System.Web.Optimization.Scripts.Render("/bundales/jquery-ui-1.10.custom")*@
+    <script type="text/javascript" language="javascript">
+    $.preferCulture("@setting.CurrentLangCode");
+    var ISCC = '@(ViewBag.ISCC)';
+    var IsPayPal = '@(ViewBag.IsPayPal)';
+    var IsMoneybookers = '@(ViewBag.IsMoneybookers)';
+    var CCName = "@WBSSLStore.Resources.ErrorMessage.Message.CCNameRequired";
+    var Month = "@WBSSLStore.Resources.ErrorMessage.Message.SelectMonth";
+    var Year = "@WBSSLStore.Resources.ErrorMessage.Message.SelectYear";
+    var CVV = "@WBSSLStore.Resources.ErrorMessage.Message.CVVnumber";
+    var PaypalId = "@WBSSLStore.Resources.ErrorMessage.Message.PaypalID";
+    var validAmount = "@WBSSLStore.Resources.ErrorMessage.Message.ValidAmount";
+    var CCNumber = "@WBSSLStore.Resources.ErrorMessage.Message.ValidCCNumber";
+    var PaymentMethod = "@WBSSLStore.Resources.ErrorMessage.Message.PaymentMethod";
+    $(function () {
+        $("#frmaddfund").validate({
+            errorElement: "em",
+            rules: {
+                txtAmount: { required: true, range: [1, 99999999] },
+
+                txtCCNumber: {
+                    required: "#rbtCC:checked",
+                    minlength: 14,
+                    maxlength: 16,
+                    number: true
+                },
+                txtNameOnCard: { required: "#rbtCC:checked" },
+                drpMonth: { required: "#rbtCC:checked" },
+                drpYear: { required: "#rbtCC:checked" },
+                txtCCV: { required: "#rbtCC:checked", number: true, minlength: 3, maxlength: 4 }
+
+            },
+            messages: {
+                //                rbtPaymentMethod: "Please select payment method.",
+                //                drpCardType: { required: "Please select your card type." },
+                //                txtNameOnCard: { required: "Please enter your card holder name." },
+                //                drpMonth: { required: "Please select month." },
+                //                drpYear: { required: "Please select year." },
+                //                txtCCV: { required: "Please enter your CVV number min 3 or max 4." },
+                //                txtPaypalID: "Your PayPalID must be in the format of name@domain.com",
+                //                txtAmount: "Please enter valid amount.",
+                //                txtCCNumber: "Please enter a number with at least 14 and max 16 characters!"
+                rbtPaymentMethod: PaymentMethod,
+                txtNameOnCard: { required: CCName },
+                drpMonth: { required: Month },
+                drpYear: { required: Year },
+                txtCCV: { required: CVV },
+                txtPaypalID: PaypalId,
+                txtAmount: validAmount,
+                txtCCNumber: CCNumber
+            }
+        });
+
+        $(".btnplaceOrder").click(function () {
+
+            if (HidePlaceOrder()) {
+                $('#tblPlaceOrder').fadeOut('slow');
+                $('#tblConfirm').fadeIn('slow');
+            }
+        });
+
+        $("#btnback").click(function () {
+            if (HidePlaceOrder()) {
+                $('#tblPlaceOrder').fadeIn('slow');
+                $('#tblConfirm').fadeOut('slow');
+            }
+        });
+
+        function HidePlaceOrder(btn) {
+            if ($("#frmaddfund").valid()) {
+                $("#FundAmt").html($.format(parseFloat($("#txtAmount").val()), "c"));
+                if ($("#rbtCC").is(":checked")) {
+                    var cc = $('#txtCCNumber').val();
+                    if (cc.length > 4) {
+                        cc = "XXXXXXXXXXXX" + cc.substring(cc.length - 4, cc.length)
+                    }
+
+                    $('#tdpaymenttype').html("Credit Card");
+                    $('#NameOnCard').html($('#txtNameOnCard').val());
+                    $('#CCNumber').html(cc);
+                    $('#CCV').html($('#txtCCV').val());
+                    $('#tdccdate').html($("#drpMonth option:selected").text() + "/" + $("#drpYear option:selected").text());
+                    //$('#cardtype').html($("#drpCardType option:selected").text());
+                    $('#vdvCC').show();
+                    $('#vdvPaypal').hide();
+                    $('#vdvMoneybooekrs').hide();
+                }
+                else if ($("#rbtPaypal").is(":checked")) {
+                    $('#tdpaypalid').html("PayPal"); // ID: " + $('#txtPaypalID').val());
+                    $('#vdvCC').hide();
+                    $('#vdvPaypal').show();
+                    $('#vdvMoneybooekrs').hide();
+                }
+                else if ($("#rbtMoneybookers").is(":checked")) {
+                    if ($('#txtMoneybookers').val() != '') {
+                        $('#tdmoneybookersID').html("Moneybookers"); //: " + $('#txtMoneybookers').val());
+                        $('#vdvMoneybooekrs').show();
+                    }
+                    $('#vdvCC').hide();
+                    $('#vdvPaypal').hide();
+                }
+
+                window.scrollTo(0, 0);
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
+    });
+    function CheckValidation() {
+        var isValid = $('#frmaddfund').valid();
+        if (isValid)
+            document.getElementById('dvOrderLogin').style.display = 'block';
+        return isValid;
+    }
+
+    </script>
+
+}
+@Html.Partial("_banner", new Tuple<string, string>("", WBSSLStore.Resources.GeneralMessage.Message.AddFund_Caption))
+<div id="dvpayment" class="backgroundPopup" style="position: fixed; display: none; opacity: 0.7;">
+    <img src='/content/images/loadingnew.gif' style="margin-top: 25%;
+            margin-left: 50%;" />
+</div>
+@*@System.Web.Optimization.Scripts.Render("/bundales/checkoutjs?v=" + ViewBag.version)*@
+
+
+<div class="content">
+    <div class="wrapper">
+        <div class="column3">
+            <div class="column3-2">
+                <div class="cmnpagewrap">
+                    @using (Html.BeginForm("addfund", "payment", FormMethod.Post, new { @id = "frmaddfund", @onsubmit = "CheckValidation()" }))
+                    {
+
+                        <div class="">
+                            @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+                            {
+                                <div class="errormsg">
+                                    @Html.Raw(ViewBag.ErrorMessage)
+                                </div>
+                            }
+                            <input type="hidden" value="@objUser.SiteID" name="hndSiteID" id="hndSiteID" />
+                            <input type="hidden" value="@objUser.ID" name="hndUserID" id="hndUserID" />
+                            <div id="tblPlaceOrder">
+
+                                <div class="fomrraw">
+                                    <label>@WBSSLStore.Resources.GeneralMessage.Message.Price_Caption:</label>
+                                    <div class="formdata">
+                                        <input name="txtAmount" type="text" id="txtAmount" value="" size="30" class="txtfeild valid" />
+                                        <span class="formhint">@WBSSLStore.Resources.GeneralMessage.Message.Fund_MinAmt_Note</span>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="paymentmethod">
+
+
+                                    <h3>@WBSSLStore.Resources.GeneralMessage.Message.Checkout_SelectPayment_Header</h3>
+                                    <div class="paymentdtl">
+                                        <div class="radio">
+                                            @if (Convert.ToBoolean(ViewBag.ISCC))
+                                            {
+                                                <div class="radiobox">
+                                                    <label for="rbtCC">
+                                                        <input type="radio" name="rbtPaymentMethod" id="rbtCC" value="CC" checked="checked" onclick="$('#dvCC').fadeIn('slow');$('#dvPaypal').fadeOut('slow');$('#dvMoneybookers').fadeOut('slow');" />
+                                                        @WBSSLStore.Resources.GeneralMessage.Message.CreditCard_Caption
+                                                    </label>
+                                                </div>
+                                            }
+                                            @if (Convert.ToBoolean(ViewBag.IsPayPal))
+                                            {
+                                                <div class="radiobox">
+                                                    <label for="rbtPaypal">
+                                                        <input type="radio" name="rbtPaymentMethod" id="rbtPaypal" value="Paypal" onclick="$('#dvPaypal').fadeIn('slow');$('#dvCC').fadeOut('slow');$('#dvMoneybookers').fadeOut('slow');" />
+                                                        @WBSSLStore.Resources.GeneralMessage.Message.Paypal_Caption
+                                                    </label>
+                                                </div>
+                                            }
+
+                                            <div class="clear"></div>
+                                        </div>
+
+                                        @if (Convert.ToBoolean(ViewBag.ISCC))
+                                        {
+                                            <div class="paymentform" id="dvCC">
+                                                <h4>@WBSSLStore.Resources.GeneralMessage.Message.Checkout_CreditCInfo_Header</h4>
+                                                <div class="carddtl">
+                                                    <div class="paymentimg">
+                                                        <img alt="Credit Cards" src="/content/images/payment-option.png">
+                                                    </div>
+                                                    <div class="carddtl-rt">
+                                                        <div class="fomrraw">
+                                                            <label>@WBSSLStore.Resources.GeneralMessage.Message.CardName_Caption:<span>*</span></label>
+                                                            <div class="formdata">
+                                                                <input name="txtNameOnCard" type="text" id="txtNameOnCard" value="" size="30" class="txtinputsmal" />
+                                                            </div>
+                                                            <div class="clear"></div>
+                                                        </div>
+                                                        <div class="fomrraw">
+                                                            <label>@WBSSLStore.Resources.GeneralMessage.Message.CreditCard_Caption #:<span>*</span></label>
+                                                            <div class="formdata">
+                                                                <input name="txtCCNumber" type="text" id="txtCCNumber" value="" maxlength="16" size="30" class="txtinputsmal" />
+                                                                <span class="formhint">@WBSSLStore.Resources.GeneralMessage.Message.No_Dash_No_Space.</span>
+                                                            </div>
+                                                            <div class="clear"></div>
+                                                        </div>
+                                                        <div class="fomrraw">
+                                                            <label>@WBSSLStore.Resources.GeneralMessage.Message.Checkout_CardExpiry_Caption:<span>*</span></label>
+                                                            <div class="formdata">
+                                                                <div class="selectsml">
+                                                                    <select id="drpMonth" name="drpMonth">
+                                                                        <option value="">@WBSSLStore.Resources.GeneralMessage.Message.Months_Caption</option>
+                                                                        <option value="1">1</option>
+                                                                        <option value="2">2</option>
+                                                                        <option value="3">3</option>
+                                                                        <option value="4">4</option>
+                                                                        <option value="5">5</option>
+                                                                        <option value="6">6</option>
+                                                                        <option value="7">7</option>
+                                                                        <option value="8">8</option>
+                                                                        <option value="9">9</option>
+                                                                        <option value="10">10</option>
+                                                                        <option value="11">11</option>
+                                                                        <option value="12">12</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="selectsml">
+                                                                    @Html.DropDownList("drpYear", new SelectList(Enumerable.Range(DateTime.Now.Year, 10).Select(x => new SelectListItem { Text = x.ToString(), Value = x.ToString() }).ToList(), "Value", "Text"), @WBSSLStore.Resources.GeneralMessage.Message.Year_Caption, new { @class = " ", id = "drpYear" })
+                                                                </div>
+                                                            </div>
+                                                            <div class="clear"></div>
+                                                        </div>
+                                                        <div class="fomrraw">
+                                                            <label>@WBSSLStore.Resources.GeneralMessage.Message.Checkout_CCVCode_Caption:<span>*</span></label>
+                                                            <div class="formdata">
+                                                                <input name="txtCCV" type="password" id="txtCCV" value="" maxlength="4" size="4" class="cvv valid cvvinput" />
+                                                                <span class="formhint">It's the 3 or 4 digits on the back of your VISA/MC.</span>
+                                                            </div>
+                                                            <div class="clear"></div>
+                                                        </div>
+                                                        <div class="fomrraw btnraw">
+                                                            <label>&nbsp;</label>
+                                                            <button type="button" name="btnplaceOrder" id="btnplaceOrder" value="@WBSSLStore.Resources.GeneralMessage.Message.Submit_Btn" class="greenbtn btnplaceOrder">
+                                                                @WBSSLStore.Resources.GeneralMessage.Message.Submit_Btn
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                  
+                                                    <div class="clear"></div>
+                                                </div>
+                                            </div>
+                                        }
+                                        @if (Convert.ToBoolean(ViewBag.IsPayPal))
+                                        {
+                                            <div class="paymentform" id="dvPaypal" style="display: none;">
+                                                <h4>@WBSSLStore.Resources.GeneralMessage.Message.CheckOut_PaypalInfo_Header</h4>
+                                                <div class="carddtl">
+                                                    <div class="paypalinfo">
+                                                        <span><img alt="Pay Pal" src="/content/images/paypal-icon.png"></span>
+                                                        <p>@WBSSLStore.Resources.GeneralMessage.Message.payment_Paypal_msg</p>
+                                                        <div class="clear"></div>
+                                                    </div>
+                                                    <div class="fomrraw btnraw">
+
+                                                        <button type="button" name="btnplaceOrder" id="btnplaceOrder" value="@WBSSLStore.Resources.GeneralMessage.Message.Submit_Btn" class="greenbtn btnplaceOrder">
+                                                            @WBSSLStore.Resources.GeneralMessage.Message.Submit_Btn
+                                                        </button>
+                                                    </div>
+                                                    <div class="clear"></div>
+                                                </div>
+                                            </div>
+                                        }
+
+
+
+                                      
+                                        <div class="clear"></div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="tblConfirm" class="aboutcontext" style="display:none;">
+                            <h2>@WBSSLStore.Resources.GeneralMessage.Message.FundAmount</h2>
+                            <div class="fundamountdtl">
+                                <div class="amtbox">
+                                    <strong>@WBSSLStore.Resources.GeneralMessage.Message.Price_Caption:</strong>
+                                    <span id="FundAmt"></span>
+                                </div>
+
+
+                                <div class="amtbox" id="vdvPaypal">
+                                    <strong>@*Payment Method*@ @WBSSLStore.Resources.GeneralMessage.Message.CheckOut_PaypalInfo_Header:</strong>
+                                    <span id="tdpaypalid"></span>
+                                </div>
+
+                                <div id="vdvCC">
+                                    <div class="amtbox">
+                                        <strong>@*Payment Method*@ @WBSSLStore.Resources.GeneralMessage.Message.CardName_Caption:</strong>
+                                        <span id="NameOnCard"></span>
+                                    </div>
+                                    <div class="amtbox">
+                                        <strong>@WBSSLStore.Resources.GeneralMessage.Message.CreditCard_Caption:</strong>
+                                        <span id="CCNumber"></span>
+                                    </div>
+                                    <div class="amtbox">
+                                        <strong>@WBSSLStore.Resources.GeneralMessage.Message.Checkout_CardExpiry_Caption:</strong>
+                                        <span id="tdccdate"></span>
+                                    </div>
+
+                                    <div class="amtbox">
+                                        <strong>@WBSSLStore.Resources.GeneralMessage.Message.Checkout_CCVCode_Caption:</strong>
+                                        <span id="CCV"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="fomrraw btnraw">
+
+                                <button type="submit" name="button" id="button" value="@WBSSLStore.Resources.GeneralMessage.Message.Checkout_Confirm_btn" class="greenbtn">
+                                    @WBSSLStore.Resources.GeneralMessage.Message.Checkout_Confirm_btn
+                                </button>
+                                @*<a id="btnback" style="margin-left: 0px; cursor: pointer; text-decoration: underline;">
+                <span><strong>@WBSSLStore.Resources.GeneralMessage.Message.Checkout_Back_btn</strong></span>
+            </a>*@
+                            </div>
+                            <div class="clear"></div>
+
+                        </div>
+                    }
+                </div>
+               
+            </div>
+            @Html.Partial("_rightpanel", "")
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>

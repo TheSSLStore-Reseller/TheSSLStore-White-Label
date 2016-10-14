@@ -1,0 +1,521 @@
+﻿@model WBSSLStore.Gateways.RestAPIModels.Response.SSLConvertorResponse
+@{
+    ViewBag.Title = "SSL Converter";
+    ViewBag.version = WBSSLStore.Web.Helpers.Caching.SiteCacher.ResourceVersion();
+}
+@Html.Partial("_banner", new Tuple<string, string>("", "SSL Converter"))
+<div class="content">
+    <div class="wrapper">
+        <div class="column3">
+            <div class="mobtopcol">
+                <!--Center Panel Start-->
+                <div class="column3-2">
+                    <div class="cmnpagewrap">
+                        <h2>SSL Converter</h2>
+                        <h4>FREE SSL Format Converter</h4>
+                        <p>The SSL Converter tool allows you to convert the format of any SSL Certificate. Simply click the current format of your certificate, and then select the desired format and convert. Sometimes an SSL Certificate is issued in a format which may not be compatible with your server type, simply convert it into the compatible format.</p>
+                        <p>To enable encryption on the site, different servers require different formats of SSL certificates. SSL converter changes 6 format files in an easy and fast way. Choose the one which is required: PEM, DER, PKCS#7, P7B, PKCS#12 or PFX.</p>
+                        <p><strong>If your certificate was issued in the format not compatible with the server, convert it below:</strong></p>
+                        <ul class="commonuli">
+                            <li>Find current type,</li>
+                            <li>Check the new format,</li>
+                            <li>Select your certificate file,</li>
+                            <li>Click convert button.</li>
+                        </ul>
+                        @using( Html.BeginForm("sslconvertor", "freetools", FormMethod.Post, new { area = "", id = "convertform", enctype = "multipart/form-data" }))
+                        {
+                        @Html.AntiForgeryToken()
+                        <div class="convernow">
+                            <div class="convertnowbox">
+                                <label>Current type:</label>
+                                <p id="pgroup_name_0"><input type="radio" class="radmar" name="group_name" value="PEM" id="group_name_0"><span>PEM</span></p>
+                                <p id="pgroup_name_1"><input type="radio" class="radmar" name="group_name" value="DER" id="group_name_1"><span>DER</span></p>
+                                <p id="pgroup_name_2"><input type="radio" class="radmar" name="group_name" value="PFX" id="group_name_2"><span>PFX</span></p>
+                                <p id="pgroup_name_3"><input type="radio" class="radmar" name="group_name" value="P7B" id="group_name_3"><span>P7B</span></p>
+
+                                <p></p>
+                            </div>
+                            <div class="convertnowbox">
+                                <label>Change for:</label>
+
+                                <p id="pchn_group_name_0"><input type="radio" class="radmar" name="chn_group_name" disabled="disabled" value="PEM" id="chn_group_name_0"><span>PEM</span></p>
+                                <p id="pchn_group_name_1"><input type="radio" class="radmar" name="chn_group_name" disabled="disabled" value="DER" id="chn_group_name_1"><span>DER</span></p>
+                                <p id="pchn_group_name_2"><input type="radio" class="radmar" name="chn_group_name" disabled="disabled" value="PFX" id="chn_group_name_2"><span>PFX</span></p>
+                                <p id="pchn_group_name_3"><input type="radio" class="radmar" name="chn_group_name" disabled="disabled" value="P7B" id="chn_group_name_3"><span>P7B</span></p>
+
+                            </div>
+                            <div id="PEM_Form">
+                                <div class="convertnowbox">
+                                    <label><em>*</em>Certificate:</label>
+                                    <p><input type="file" class="inputsign" name="pemfile" id="pemfile"></p>
+                                </div>
+                            </div>
+
+                            <div id="DER_Form">
+                                <div class="convertnowbox">
+                                    <label><em>*</em>Certificate:</label>
+                                    <p><input type="file" class="inputsign" name="derfile" id="derfile"></p>
+                                </div>
+                            </div>
+
+                            <div id="PFX_Form">
+                                <div class="convertnowbox">
+                                    <label><em>*</em>Certificate:</label>
+                                    <p><input type="file" class="inputsign" name="pfxfile" id="pfxfile"></p>
+                                </div>
+                                <div class="convertnowbox">
+                                    <label><em>*</em>Private Key:</label>
+                                    <p><input type="file" class="inputsign" name="pfxkey" id="pfxkey"></p>
+                                </div>
+                                <div class="convertnowbox">
+                                    <label>Root CA (option)</label>
+                                    <p><input type="file" class="inputsign" name="chain1file" id="chain1file"></p>
+                                </div>
+                                <div class="convertnowbox">
+                                    <label>Intermediate(s) CA (option)</label>
+                                    <p><input type="file" class="inputsign" name="chain2file" id="chain2file"></p>
+                                </div>
+                                <div class="convertnowbox">
+                                    <label class="setkey"><em>*</em>Set key password:</label>
+                                    <p><input type="password" class="chkinput chkinputbxmini" name="pfxkeypass" id="pfxkeypass"></p>
+                                </div>
+                            </div>
+
+                            <div id="PEMPFX_Form">
+                                <div class="convertnowbox">
+                                    <label><em>*</em>Certificate:</label>
+                                    <p><input type="file" class="inputsign" name="pempfxfile" id="pempfxfile"></p>
+                                </div>
+                                <div class="convertnowbox">
+                                    <label class="setkey"><em>*</em>Set key password:</label>
+                                    <p><input type="password" class="chkinput chkinputbxmini" name="pemkeypass" id="pemkeypass"></p>
+                                </div>
+                            </div>
+                            <div id="PEMP7B_Form">
+                                <div class="convertnowbox">
+                                    <label><em>*</em>Certificate:</label>
+                                    <p><input type="file" class="inputsign" name="pemp7bfile" id="pemp7bfile"></p>
+                                </div>
+                                <div class="convertnowbox">
+                                    <label>Root CA (option)</label>
+                                    <p><input type="file" class="inputsign" name="pemp7bchain1file" id="pemp7bchain1file"></p>
+                                </div>
+                                <div class="convertnowbox">
+                                    <label>Intermediate(s) CA (option)</label>
+                                    <p><input type="file" class="inputsign" name="pemp7bchain2file" id="pemp7bchain2file"></p>
+                                </div>
+                            </div>
+                            <div id="P7BPEM_Form">
+                                <div class="convertnowbox">
+                                    <label><em>*</em>Certificate:</label>
+                                    <p><input type="file" class="inputsign" name="p7bpemfile" id="p7bpemfile"></p>
+                                </div>
+                            </div>
+                            <div id="P7BPFX_Form">
+                                <div class="convertnowbox">
+                                    <label><em>*</em>Certificate:</label>
+                                    <p><input type="file" class="inputsign" name="p7bpfxfile" id="p7bpfxfile"></p>
+                                </div>
+                                <div class="convertnowbox">
+                                    <label><em>*</em>Private Key:</label>
+                                    <p><input type="file" class="inputsign" name="p7bpfxkey" id="p7bpfxkey"></p>
+                                </div>
+                                <div class="convertnowbox">
+                                    <label>Root CA (option)</label>
+                                    <p><input type="file" class="inputsign" name="p7bpfxchain1file" id="p7bpfxchain1file"></p>
+                                </div>
+                                <div class="convertnowbox">
+                                    <label>Intermediate(s) CA (option)</label>
+                                    <p><input type="file" class="inputsign" name="p7bpfxchain2file" id="p7bpfxchain2file"></p>
+                                </div>
+                                <div class="convertnowbox">
+                                    <label class="setkey"><em>*</em>Set key password:</label>
+                                    <p><input type="password" class="chkinput chkinputbxmini" name="p7bpfxkeypass" id="p7bpfxkeypass"></p>
+                                </div>
+                            </div>
+                            <div class="convertnowbox bdrbtmnone">
+                                <label>&nbsp;</label>
+                                <p><input type="submit" class="greenbtn chrbtn" name="btnconvert" id="btnconvert" value="Convert"></p>
+                            </div>	
+                            <div class="clear"></div>
+                        </div>
+                        }
+
+                        @if (Model != null)
+                        {
+                            if (!Model.AuthResponse.isError)
+                            {
+                        <!--Show Result Start-->
+                                <div class="graybarbox">
+                                    <h4>Your Certificate</h4>
+                                    <div class="graybarboxdtl">
+                                        <p><strong>Please save this information in a safe place!</strong></p>
+                                        <pre>@Model.Certificate
+                      
+                        </pre>
+                                    </div>
+                                </div>
+                                <div class="graybarbox mrgbotnone">
+                                    <h4>Your Private Server Key</h4>
+                                    <div class="graybarboxdtl">
+                                        <p><strong>Save this as a .TXT file and keep it secure - your SSL certificate WILL NOT WORK without this.</strong></p>
+                                        <pre>@Model.PrivateKey
+                    </pre>
+                                    </div>
+                                </div>
+                        <!--Show Result End-->
+                            }
+                            else
+                            {   <div class='alert-error'>
+                                <p>@Model.AuthResponse.Message[0]</p>
+                            </div>
+                            }
+                        }
+
+                        <p> <strong>DER format: </strong>It is a binary form of PEM. It has extension .der or .cer. </p>
+                        <p> DER is typically used with Java platforms. Converter can change the type of certificate to this format &ndash; to change a private key, please use OpenSSL <a target="_blank" rel="nofollow, no index" href="http://openssl.org/docs/manmaster/apps/rsa.html">commands</a>. </p>
+                        <p> <strong>PKCS#7 or P7B format: </strong>Is usually stored in Base64 format and has extension <strong>.p7b</strong> or <strong>.p7c</strong>. Files in this format contain lines "-----BEGIN PKCS7-----" and "-----END PKCS7-----". This format is just for certificates, not for private key. </p>
+                        <p> PKCS#7 and P7B are installed on <strong>Microsoft Windows</strong> and <strong>Java Tomcat</strong> servers. </p>
+                        <p> <strong>PKCS#12 or PFX format: </strong> Is binary format storing the server certificate, intermediates certificates, and private key in one file. Usually has the extension <strong>.pfx</strong> or <strong>.p12.</strong> Typically are used on <strong>Windows</strong> machines. </p>
+                        <p> When converting PFX format to PEM, in one file will be included all certificates and private key. To separate it, you need to open this file in a simple text editor, copy every single part (with BEGIN and END lines) to different files and save it as certificate.cer, CACert.cer and privatekey.key. </p>
+                        <p> Click <a target="_blank" rel="nofollow, no index" href="http://openssl.org/docs/manmaster/apps/rsa.html">here</a> to convert formats with OpenSSL commands. </p>
+
+
+                    </div>
+                </div>
+
+                @Html.Partial("_rightpanel", "")
+
+            </div>
+           
+
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+@section Jscripts{
+@System.Web.Optimization.Scripts.Render("/bundales/wb/validationjs?v=" + ViewBag.version)
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#convertform").validate({
+                debug: false,
+                rules: {
+                    group_name: "required",
+                    chn_group_name: "required",
+                    derfile:
+                    {
+                        required:
+                        {
+                            depends: function (element) {
+                                var status = false;
+                                if (jQuery("#group_name_0").is(":checked") && jQuery("#chn_group_name_1").is(":checked")) {
+                                    var status = true;
+                                }
+                                return status;
+                            }
+                        }
+                    },
+                    pfxfile:
+                    {
+                        required:
+                        {
+                            depends: function (element) {
+                                var status = false;
+                                if (jQuery("#group_name_0").is(":checked") && jQuery("#chn_group_name_2").is(":checked")) {
+                                    var status = true;
+                                }
+                                return status;
+                            }
+                        }
+                    },
+                    pfxkey:
+                    {
+                        required:
+                        {
+                            depends: function (element) {
+                                var status = false;
+                                if (jQuery("#group_name_0").is(":checked") && jQuery("#chn_group_name_2").is(":checked")) {
+                                    var status = true;
+                                }
+                                return status;
+                            }
+                        }
+                    },
+                    pfxkeypass:
+                    {
+                        required:
+                        {
+                            depends: function (element) {
+                                var status = false;
+                                if (jQuery("#group_name_0").is(":checked") && jQuery("#chn_group_name_2").is(":checked")) {
+                                    var status = true;
+                                }
+                                return status;
+                            }
+                        }
+                    },
+                    pemfile:
+                    {
+                        required:
+                        {
+                            depends: function (element) {
+                                var status = false;
+                                if (jQuery("#group_name_1").is(":checked") && jQuery("#chn_group_name_0").is(":checked")) {
+                                    var status = true;
+                                }
+                                return status;
+                            }
+                        }
+                    },
+                    pempfxfile:
+                    {
+                        required:
+                        {
+                            depends: function (element) {
+                                var status = false;
+                                if (jQuery("#group_name_2").is(":checked") && jQuery("#chn_group_name_0").is(":checked")) {
+                                    var status = true;
+                                }
+                                return status;
+                            }
+                        }
+                    },
+                    pemp7bfile:
+                    {
+                        required:
+                        {
+                            depends: function (element) {
+                                var status = false;
+                                if (jQuery("#group_name_0").is(":checked") && jQuery("#chn_group_name_3").is(":checked")) {
+                                    var status = true;
+                                }
+                                return status;
+                            }
+                        }
+                    },
+                    p7bpemfile:
+                    {
+                        required:
+                        {
+                            depends: function (element) {
+                                var status = false;
+                                if (jQuery("#group_name_3").is(":checked") && jQuery("#chn_group_name_0").is(":checked")) {
+                                    var status = true;
+                                }
+                                return status;
+                            }
+                        }
+                    },
+                    p7bpfxfile:
+                    {
+                        required:
+                        {
+                            depends: function (element) {
+                                var status = false;
+                                if (jQuery("#group_name_3").is(":checked") && jQuery("#chn_group_name_2").is(":checked")) {
+                                    var status = true;
+                                }
+                                return status;
+                            }
+                        }
+                    },
+                    p7bpfxkey:
+                    {
+                        required:
+                        {
+                            depends: function (element) {
+                                var status = false;
+                                if (jQuery("#group_name_3").is(":checked") && jQuery("#chn_group_name_2").is(":checked")) {
+                                    var status = true;
+                                }
+                                return status;
+                            }
+                        }
+                    }
+                },
+                messages: {
+                    group_name: "Please select current format.",
+                    chn_group_name: "Please select change format.",
+                    derfile: "Please select certificate file.",
+                    pfxfile: "Please select certificate file.",
+                    pfxkey: "Please select private key file.",
+                    pfxkeypass: "Please enter key password.",
+                    pemfile: "Please select certificate file.",
+                    pempfxfile: "Please select certificate file.",
+                    pemkeypass: "Please enter key password.",
+                    pemp7bfile: "Please select certificate file.",
+                    p7bpemfile: "Please select certificate file.",
+                    p7bpfxfile: "Please select certificate file.",
+                    p7bpfxkey: "Please select private key file."
+
+                },
+
+            });
+        });
+        function changeOnClick() {
+            jQuery('p#convert_error').html('');
+            var current = jQuery('input[name="group_name"]:checked').val();
+            var changeTo = jQuery('input[name="chn_group_name"]:checked').val();
+            if (current == 'PEM' && changeTo == 'DER') {
+                $("#DER_Form").show("fast");
+                $("#PEM_Form").hide();
+                $("#PFX_Form").hide();
+                $("#PEMPFX_Form").hide();
+                $("#PEMP7B_Form").hide();
+                $("#P7BPEM_Form").hide();
+                $("#P7BPFX_Form").hide();
+            }
+            else if (current == 'PEM' && changeTo == 'PFX') {
+                $("#PFX_Form").show("fast");
+                $("#PEM_Form").hide();
+                $("#DER_Form").hide();
+                $("#PEMPFX_Form").hide();
+                $("#PEMP7B_Form").hide();
+                $("#P7BPEM_Form").hide();
+                $("#P7BPFX_Form").hide();
+            }
+            else if (current == 'PEM' && changeTo == 'P7B') {
+                $("#PEMP7B_Form").show("fast");
+                $("#PFX_Form").hide();
+                $("#PEM_Form").hide();
+                $("#DER_Form").hide();
+                $("#PEMPFX_Form").hide();
+                $("#P7BPEM_Form").hide();
+                $("#P7BPFX_Form").hide();
+            }
+            else if (current == 'DER' && changeTo == 'PEM') {
+                $("#PEM_Form").show("fast");
+                $("#DER_Form").hide();
+                $("#PFX_Form").hide();
+                $("#PEMPFX_Form").hide();
+                $("#PEMP7B_Form").hide();
+                $("#P7BPEM_Form").hide();
+                $("#P7BPFX_Form").hide();
+            }
+            else if (current == 'PFX' && changeTo == 'PEM') {
+                $("#PEMPFX_Form").show("fast");
+                $("#PEM_Form").hide();
+                $("#DER_Form").hide();
+                $("#PFX_Form").hide();
+                $("#PEMP7B_Form").hide();
+                $("#P7BPEM_Form").hide();
+                $("#P7BPFX_Form").hide();
+            }
+            else if (current == 'P7B' && changeTo == 'PEM') {
+                $("#P7BPEM_Form").show("fast");
+                $("#PEMPFX_Form").hide();
+                $("#PEM_Form").hide();
+                $("#DER_Form").hide();
+                $("#PFX_Form").hide();
+                $("#PEMP7B_Form").hide();
+                $("#P7BPFX_Form").hide();
+            }
+            else if (current == 'P7B' && changeTo == 'PFX') {
+                $("#P7BPFX_Form").show("fast");
+                $("#PEMPFX_Form").hide();
+                $("#PEM_Form").hide();
+                $("#DER_Form").hide();
+                $("#PFX_Form").hide();
+                $("#PEMP7B_Form").hide();
+                $("#P7BPEM_Form").hide();
+
+            }
+        }
+        $(document).ready(function () {
+
+            jQuery('input[name="group_name"]').click(function () {
+
+                jQuery('p#convert_error').html('');
+                var radio_value = $(this).val();
+                $("#PEM_Form").hide();
+                $("#DER_Form").hide();
+                $("#PFX_Form").hide();
+                $("#PEMPFX_Form").hide();
+                $("#PEMP7B_Form").hide();
+                $("#P7BPEM_Form").hide();
+                $("#P7BPFX_Form").hide();
+
+                jQuery('#chn_group_name_0').attr('checked', false);
+                jQuery('#chn_group_name_1').attr('checked', false);
+                jQuery('#chn_group_name_2').attr('checked', false);
+                jQuery('#chn_group_name_3').attr('checked', false);
+
+                if (radio_value == 'PEM') {
+                    jQuery('#chn_group_name_0').attr('disabled', true);
+                    jQuery('#chn_group_name_1').attr('disabled', false);
+                    jQuery('#chn_group_name_2').attr('disabled', false);
+                    jQuery('#chn_group_name_3').attr('disabled', false);
+
+                    jQuery('#pchn_group_name_0').hide();
+                    jQuery('#pchn_group_name_1').show();
+                    jQuery('#pchn_group_name_2').show();
+                    jQuery('#pchn_group_name_3').show();
+
+                    jQuery('#chn_group_name_1').click();
+                    changeOnClick();
+                }
+                else if (radio_value == 'DER') {
+                    jQuery('#chn_group_name_0').attr('disabled', false);
+                    jQuery('#chn_group_name_1').attr('disabled', true);
+                    jQuery('#chn_group_name_2').attr('disabled', true);
+                    jQuery('#chn_group_name_3').attr('disabled', true);
+
+                    jQuery('#pchn_group_name_0').show();
+                    jQuery('#pchn_group_name_1').hide();
+                    jQuery('#pchn_group_name_2').hide();
+                    jQuery('#pchn_group_name_3').hide();
+
+                    jQuery('#chn_group_name_0').click();
+                    changeOnClick();
+
+                }
+                else if (radio_value == 'PFX') {
+                    jQuery('#chn_group_name_0').attr('disabled', false);
+                    jQuery('#chn_group_name_1').attr('disabled', true);
+                    jQuery('#chn_group_name_2').attr('disabled', true);
+                    jQuery('#chn_group_name_3').attr('disabled', true);
+
+                    jQuery('#pchn_group_name_0').show();
+                    jQuery('#pchn_group_name_1').hide();
+                    jQuery('#pchn_group_name_2').hide();
+                    jQuery('#pchn_group_name_3').hide();
+
+                    jQuery('#chn_group_name_0').click();
+                    changeOnClick();
+
+                }
+                else if (radio_value == 'P7B') {
+                    jQuery('#chn_group_name_0').attr('disabled', false);
+                    jQuery('#chn_group_name_1').attr('disabled', true);
+                    jQuery('#chn_group_name_2').attr('disabled', false);
+                    jQuery('#chn_group_name_3').attr('disabled', true);
+
+                    jQuery('#pchn_group_name_0').show();
+                    jQuery('#pchn_group_name_1').hide();
+                    jQuery('#pchn_group_name_2').show();
+                    jQuery('#pchn_group_name_3').hide();
+
+                    jQuery('#chn_group_name_0').click();
+                    changeOnClick();
+
+                }
+            });
+
+            jQuery('input[name="chn_group_name"]').click(function () {
+                changeOnClick();
+            });
+
+            $("#PEM_Form").hide();
+            $("#DER_Form").hide();
+            $("#PFX_Form").hide();
+            $("#PEMPFX_Form").hide();
+            $("#PEMP7B_Form").hide();
+            $("#P7BPEM_Form").hide();
+            $("#P7BPFX_Form").hide();
+
+        });
+    </script>
+}
+
+
+

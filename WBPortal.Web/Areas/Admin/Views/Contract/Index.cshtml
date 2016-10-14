@@ -1,0 +1,159 @@
+﻿@model IEnumerable<WBSSLStore.Domain.Contract>
+@{
+    ViewBag.Title = "Index";
+}
+<script type="text/javascript">
+    var suc = "@WBSSLStore.Resources.ErrorMessage.Message.ContractSuccess"
+    var nsuc = "@WBSSLStore.Resources.ErrorMessage.Message.ContactNotSuccess"
+    var del = "@WBSSLStore.Resources.ErrorMessage.Message.Contractdeleted"
+    var ndel = "@WBSSLStore.Resources.ErrorMessage.Message.ContractNotdeleted"
+    var areyou = "@WBSSLStore.Resources.ErrorMessage.Message.ContractAreYouSure"
+    $(function () {
+        $(".UpdateStatus").click(function () {
+            var recordToUpdate = $(this).attr("data-id");
+            if (recordToUpdate && recordToUpdate != '') {
+                $.post("/admin/contract/changestatus/" + recordToUpdate,
+                       function (data) {
+                           if (data.toString().toLowerCase() == "true") {
+                               var imgsrc = $('#img-' + recordToUpdate).attr("src").toString();
+                               if (imgsrc.indexOf("deactive") > 0) {
+                                   $('#img-' + recordToUpdate).attr({ src: imgsrc.replace("deactive", "active") })
+                                   $('#img-' + recordToUpdate).attr({ title: "Active", alt: "Active" })
+                               }
+                               else {
+                                   $('#img-' + recordToUpdate).attr({ src: imgsrc.replace("active", "deactive") })
+                                   $('#img-' + recordToUpdate).attr({ title: "Deactivated", alt: "Deactivated" })
+                               }
+                               alert(suc);
+                           }
+                           else
+                               alert(nsuc);
+                       });
+            }
+        }
+        );
+
+        $(".Remove").click(function () {
+            if (confirm(areyou)) {
+                var recordToDelete = $(this).attr("data-id");
+                if (recordToDelete && recordToDelete != '') {
+                    $.post("/admin/contract/delete/" + recordToDelete,
+                       function (data) {
+                           if (data.toString().toLowerCase() == "true") {
+                               alert(del);
+                               $('#row-' + recordToDelete).fadeOut('slow');
+
+                           }
+                           else
+                               alert(ndel);
+                       });
+                }
+            }
+        });
+    });    
+</script>
+<tr>
+    <td align="left" valign="top">
+        <table width="881" border="0" align="left" cellpadding="0" cellspacing="0">
+            <tr>
+                <td width="7" align="left" valign="top">
+                    <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/barleft.gif" alt="whitebrand" width="7" height="55">
+                </td>
+                <td width="866" align="left" valign="middle" class="hdbarbg">
+                    <table width="840" border="0" align="center" cellpadding="1" cellspacing="1">
+                        <tr>
+                            <td width="407" align="left" valign="middle" class="head1">
+                                @*Manage Slab*@ @WBSSLStore.Resources.GeneralMessage.Message.ManageSlab_Caption
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td width="9" align="right" valign="top">
+                    <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/barright.gif" alt="whitebrand" width="9" height="55">
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>
+<tr>
+    <td align="left" valign="top" class="contbg">
+        <table width="870" border="0" align="center" cellpadding="0" cellspacing="7">
+            <tr>
+                <td width="867" align="center" valign="top" class="bgclr">
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td align="left" valign="top">
+                                <table width="841" border="0" align="center" cellpadding="0" cellspacing="0">
+                                    <tr>
+                                        <td align="left" valign="top">
+                                            &nbsp;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" valign="top" bgcolor="#d6d6d6">
+                                            <table width="841" border="0" align="left" cellpadding="5" cellspacing="1">
+                                                <tr>
+                                                    <td width="201" height="35" align="left" valign="middle" bgcolor="#eff8fd" class="bluefont">
+                                                        @*Slab Name*@ @WBSSLStore.Resources.GeneralMessage.Message.SlabName_Caption
+                                                    </td>
+                                                    <td width="57" height="35" align="center" valign="middle" bgcolor="#eff8fd" class="bluefont">
+                                                        @*Status*@ @WBSSLStore.Resources.GeneralMessage.Message.Status_Caption
+                                                    </td>
+                                                    <td width="56" height="35" align="center" valign="middle" bgcolor="#eff8fd" class="bluefont">
+                                                        @*Edit*@ @WBSSLStore.Resources.GeneralMessage.Message.Edit_Caption
+                                                    </td>
+                                                    <td width="58" align="center" valign="middle" bgcolor="#eff8fd" class="bluefont">
+                                                        @*Pricing*@ @WBSSLStore.Resources.GeneralMessage.Message.Pricing_Caption
+                                                    </td>
+                                                    <td width="58" align="center" valign="middle" bgcolor="#eff8fd" class="bluefont">
+                                                        @*Delete*@ @WBSSLStore.Resources.GeneralMessage.Message.Delete_Caption
+                                                    </td>
+                                                </tr>
+                                                @foreach (WBSSLStore.Domain.Contract con in Model)
+                                                {
+                                                    <tr id="row-@con.ID">
+                                                        <td align="left" valign="top" bgcolor="#FFFFFF">
+                                                            @Html.DisplayFor(modleitem => con.ContractName)
+                                                        </td>
+                                                        <td align="center" valign="top" bgcolor="#FFFFFF">
+                                                            <a href="javascript:;" class="UpdateStatus" data-id="@con.ID">
+                                                                <img id="img-@con.ID" src="@(con.RecordStatus == WBSSLStore.Domain.RecordStatus.ACTIVE ? WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath + "/icon-active.gif" : WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath + "/icon-deactive.gif")"  alt="status" width="14" height="14" />
+                                                            </a>
+                                                        </td>
+                                                        <td align="center" valign="top" bgcolor="#FFFFFF">
+                                                        <a href="@Url.Action("edit", "contract", new { id = con.ID })" title="Edit">
+                                                            <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-edit.gif" alt="edit" width="14" height="14">
+                                                            </a>
+                                                        </td>
+                                                        <td align="center" valign="top" bgcolor="#FFFFFF">
+                                                         <a href="@Url.Action("index", "contractpricing", new { id = con.ID })" title="Pricing">
+                                                           
+                                                                <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-pricing.png" alt="pricing" width="11" height="16"></a>
+                                                        </td>
+                                                        <td align="center" valign="top" bgcolor="#FFFFFF">
+                                                            <a href="javascript:;" class="Remove" data-id="@con.ID">
+                                                                <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-delete.gif" alt="delete" width="13" height="15">
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td height="8" align="left" valign="top">
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td height="8" align="left" valign="top">
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>

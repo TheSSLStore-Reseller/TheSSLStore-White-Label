@@ -1,0 +1,175 @@
+﻿@using WBSSLStore.Web.Util;
+@model WBSSLStore.Domain.Contract
+@{
+    WBSiteSettings setting = new WBSiteSettings(WBSSLStore.Web.Helpers.Caching.SiteCacher.CurrentSite);
+    ViewBag.Title = "Create";
+}
+@*<script src="@Url.Content("~/content/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/content/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>*@
+@*<script src="@Url.Content("~/content/Scripts/jQuery.glob.min.js")" type="text/javascript"></script>*@
+
+@System.Web.Optimization.Scripts.Render("/bundales/wb/validationjs?v=" + ViewBag.version)
+@System.Web.Optimization.Scripts.Render("/bundales/jquery-glob?v=" + ViewBag.version)
+
+@if (setting.CurrentLangCode != "en")
+{
+    @*<script src="@Url.Content("~/content/Scripts/jquery.glob.all.min.js")" type="text/javascript"></script>*@
+    @System.Web.Optimization.Scripts.Render("/bundales/jquery-glob-all?v=" + ViewBag.version)
+}
+<script type="text/javascript">
+    $.validator.methods.number = function (value, element) {
+        return !isNaN($.parseFloat(value));
+    }
+
+    $(function () {
+        $.preferCulture('@(setting.CurrentLangCode)');
+    });
+</script>
+@using (Html.BeginForm("", "", FormMethod.Post, new { @id = "frmSetting" }))
+{
+    @Html.ValidationSummary(true)
+    <tr>
+        <td align="left" valign="top">
+            <table width="881" border="0" align="left" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td width="7" align="left" valign="top">
+                        <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/barleft.gif" alt="whitebrand" width="7" height="55">
+                    </td>
+                    <td width="866" align="left" valign="middle" class="hdbarbg">
+                        <table width="840" border="0" align="center" cellpadding="1" cellspacing="1">
+                            <tr>
+                                <td width="407" align="left" valign="middle" class="head1">
+                                    @*Add/ Edit Slab*@ @WBSSLStore.Resources.GeneralMessage.Message.AddEditSlab_Caption
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td width="9" align="right" valign="top">
+                        <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/barright.gif" alt="whitebrand" width="9" height="55">
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td align="left" valign="top" class="contbg">
+            <table width="870" border="0" align="center" cellpadding="0" cellspacing="7">
+                <tr>
+                    <td width="867" align="center" valign="top" class="bgclr">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td align="left" valign="top">
+                                    <table width="820" border="0" align="center" cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <td height="30" align="left" valign="middle">
+                                                &nbsp;
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="left" valign="top">
+                                                @Html.HiddenFor(model => model.SiteID)
+                                                @Html.HiddenFor(model => model.ID)
+                                                @Html.HiddenFor(model => model.isForReseller)
+                                                <table width="80%" border="0" align="center" cellpadding="1" cellspacing="2">
+                                                    <tr>
+                                                        <td width="31%" align="right" valign="middle" class="bold">
+                                                            @Html.LabelFor(model => model.ContractName)
+                                                        </td>
+                                                        <td width="69%" align="left" valign="middle">
+                                                            <label>
+                                                                @Html.TextBoxFor(model => model.ContractName, new { @class = "inputbox" })
+                                                            </label>
+                                                            @Html.ValidationMessageFor(model => model.ContractName)
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="right" valign="middle" class="bold">
+                                                            @Html.LabelFor(model => model.ContractLevel):
+                                                        </td>
+                                                        <td align="left" valign="middle">
+                                                            <label>
+                                                                @Html.TextBoxFor(model => model.ContractLevel, new { @class = "inputboxmini alignright" })
+                                                            </label>
+                                                            @Html.ValidationMessageFor(model => model.ContractLevel)
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="right" valign="middle" class="bold">
+                                                            @Html.LabelFor(model => model.isAutoCalculation):
+                                                        </td>
+                                                        <td align="left" valign="middle">
+                                                            <label>
+                                                                @Html.CheckBoxFor(model => model.isAutoCalculation)
+                                                            </label>
+                                                            @Html.ValidationMessageFor(model => model.isAutoCalculation)
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td height="30" align="right" valign="middle" class="bold">
+                                                            @*Status*@ @WBSSLStore.Resources.GeneralMessage.Message.Status_Caption:
+                                                        </td>
+                                                        <td align="left" valign="middle">
+                                                            @Html.DropDownListFor(model => model.RecordStatusID, Enum.GetValues(typeof(WBSSLStore.Domain.RecordStatus)).Cast<WBSSLStore.Domain.RecordStatus>().Select(x => new SelectListItem { Text = ((int)x == 0 ? ((int)x == 0 ? WBSSLStore.Resources.GeneralMessage.Message.ddlStatus_InActive : WBSSLStore.Resources.GeneralMessage.Message.ddlStatus_Active) : ((int)x == 1 ? WBSSLStore.Resources.GeneralMessage.Message.ddlStatus_Active : WBSSLStore.Resources.GeneralMessage.Message.ddlStatus_Deleted)), Value = ((int)x).ToString() }), "------" + @WBSSLStore.Resources.GeneralMessage.Message.Select_Status_Caption + "------", new { @class = "listmenumid" })
+                                                            @Html.ValidationMessageFor(model => model.RecordStatusID)
+                                                        </td>
+                                                    </tr>
+                                                    @if (Model == null || Model.ID <= 0)
+                                                    {
+                                                        <tr>
+                                                            <td align="right" valign="middle" class="bold">
+                                                                @*Import All Products*@ @WBSSLStore.Resources.GeneralMessage.Message.ImportAllProducts_Caption:
+                                                            </td>
+                                                            <td align="left" valign="middle">
+                                                                <label>
+                                                                    <input type="checkbox" id="chkImportAll" name="chkImportAll" value="true" onclick="if(this.checked){document.getElementById('trMargin').style.display='table-row';}else{document.getElementById('trMargin').style.display='none';}" />
+                                                                </label>
+                                                            </td>
+                                                        </tr>
+                                                        <tr id="trMargin" style="display: none;">
+                                                            <td align="right" valign="middle" class="bold">
+                                                                @*Price Margin*@ @WBSSLStore.Resources.GeneralMessage.Message.PriceMargin_Caption:
+                                                            </td>
+                                                            <td align="left" valign="middle">
+                                                                <label>
+                                                                    <input type="text" id="txtPriceMargin" min="0" name="txtPriceMargin" value="0" class="inputboxmini" />
+                                                                </label>
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                    <tr>
+                                                        <td align="right" valign="middle" class="bold">
+                                                            &nbsp;
+                                                        </td>
+                                                        <td align="left" valign="top">
+                                                            <label>
+                                                                <input name="button" type="submit" class="bluebtn" id="button" value="@WBSSLStore.Resources.GeneralMessage.Message.Submit_Btn" />
+                                                            </label>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="right" valign="middle" class="bold">
+                                                            &nbsp;
+                                                        </td>
+                                                        <td align="left" valign="top">
+                                                            &nbsp;
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td height="8" align="left" valign="top"></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+}
+@{
+    setting = null;
+}

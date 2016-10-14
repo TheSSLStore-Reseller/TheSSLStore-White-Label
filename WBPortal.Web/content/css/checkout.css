@@ -1,0 +1,51 @@
+.column3 .column3-2a { width:70%; float:left; padding-right:20px; box-sizing:border-box;}
+.column3 .column3-2a .confirmodrtbl .bigcol{ width:435px;}
+.column3 .column3-3a{width:30%; float:right;}
+.column3 .column3-3a .guarantee{}
+.column3 .column3-3a .guarantee a{ display:inline-block; float:left; width:49%; padding-right:1%;}
+.column3 .column3-3a .guarantee a img{ max-width:80%; text-align:center;}
+.column3 .column3-3a .guarantee a + a{margin-top:0px;}
+
+.column3 .column3-3a .checkouts {}
+.column3 .column3-3a .checkouts h3{background:#d7d7d7; color:#4e5568; font-size:16px; font-weight:normal; padding:10px 15px 5px; text-align:left;}
+.column3 .column3-3a .checkouts .contactbox{background:#FFF; padding:10px 15px;}
+.column3 .column3-3a .checkouts .contactbox h4{ font-size:14px; line-height:18px; margin:0 0 5px 0;}
+
+.column3 .column3-3a .checkouts .summaryorder{background:#FFF; padding:10px 15px;}
+.column3 .column3-3a .checkouts .summaryorder h4{ font-size:14px; line-height:18px; margin:0 0 5px 0;}
+.column3 .column3-3a .checkouts .summaryorder .orderlist{ width:100%; border-bottom:solid 1px #d7d7d7; padding-bottom:5px; margin-bottom:5px;}
+.column3 .column3-3a .checkouts .summaryorder .orderlist .productdtl{float:left; font-weight:bold; color:#363e4c; width:70%;}
+.column3 .column3-3a .checkouts .summaryorder .orderlist .productdtl span{ display:block; color:#3792cb; font-weight:normal;}
+.column3 .column3-3a .checkouts .summaryorder .orderlist .productdtl strong{ display:block; font-weight:normal;} 
+.column3 .column3-3a .checkouts .summaryorder .orderlist .productdtl em{ display:block; font-weight:normal;}
+.column3 .column3-3a .checkouts .summaryorder .orderlist .productprice{ float:right; margin-top:0px; color:#363e4c; font-weight:bold; width:30%; text-align:right;}
+.column3 .column3-3a .checkouts .summaryorder .orderlist:last-child{border-bottom:none; margin-bottom:0px; padding-bottom:0px;}
+
+.column3 .column3-3a .checkouts .summaryorder .orderlist .prodiscount{ width:100%;}
+.column3 .column3-3a .checkouts .summaryorder .orderlist .prodiscount .disctxts{ color:#363e4c; float:left; text-align:left; width:70%;}
+.column3 .column3-3a .checkouts .summaryorder .orderlist .prodiscount .discprice{ color:#3c763d; float:left; text-align:right; width:30%; margin-top:0px;}
+
+.column3 .column3-3a .checkouts .ordertotal{width:100%; background:#f7f7f7; padding:10px; box-sizing:border-box; border-top:1px solid #d7d7d7;}
+
+.column3 .column3-3a .checkouts .ordertotal .totaleft{ width:40%; float:left; font-weight:bold; color:#4e5568;}
+.column3 .column3-3a .checkouts .ordertotal .totalright{ width:60%; float:left; text-align:right; margin-top:0px; font-weight:bold; color:#4e5568;}
+
+/*Alert*/
+.alercover{ width:100%;}
+.alert { padding:15px; margin-bottom: 20px; border: 1px solid transparent; border-radius:2px }
+
+.alert-success { color: #3c763d; background-color: #dff0d8; border-color: #d6e9c6 }
+.alert-success hr { border-top-color: #c9e2b3 }
+.alert-success .alert-link { color: #2b542c }
+
+.alert-info { color: #31708f; background-color: #d9edf7; border-color: #bce8f1 }
+.alert-info hr { border-top-color: #a6e1ec }
+.alert-info .alert-link { color: #245269 }
+
+.alert-warning { color: #8a6d3b; background-color: #fcf8e3; border-color: #faebcc }
+.alert-warning hr { border-top-color: #f7e1b5 }
+.alert-warning .alert-link { color: #66512c }
+
+.alert-danger { color: #a94442; background-color: #f2dede; border-color: #ebccd1 }
+.alert-danger hr { border-top-color: #e4b9c0 }
+.alert-danger .alert-link { color: #843534 }

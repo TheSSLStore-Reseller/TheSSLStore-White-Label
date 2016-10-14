@@ -1,0 +1,175 @@
+﻿@model WBSSLStore.Domain.User
+@{
+    ViewBag.Title = "Details";
+    ViewBag.version = WBSSLStore.Web.Helpers.Caching.SiteCacher.ResourceVersion();   
+}
+@*<script src="@Url.Content("~/content/Admin/js/common.min.js")" type="text/javascript"></script>*@
+@System.Web.Optimization.Scripts.Render("/bundales/admincommonjs?v=" + ViewBag.version)
+@*<script src="@Url.Content("~/content/scripts/jquery.validate.min.js")" language="javascript" type="text/javascript"></script>*@
+@System.Web.Optimization.Scripts.Render("/bundales/wb/jquery.validate?v=" + ViewBag.version)
+<script type="text/javascript" language="javascript">
+
+    $().ready(function () {
+        // validate the comment form when it is submitted
+
+
+        // validate signup form on keyup and submit
+        $("#frmSetting").validate({
+            rules: {
+
+                txtPassword: "required",
+                txtConfirmPassword: {
+                    required: true,
+                    equalTo: "#txtPassword"
+                }
+            },
+            messages: {
+                //txtPassword: "Please provide a password",
+                txtPassword: "@WBSSLStore.Resources.ErrorMessage.Message.PasswordRequired",
+                txtConfirmPassword: {
+                    //required: "Please provide a password",
+                    required: "@WBSSLStore.Resources.ErrorMessage.Message.PasswordRequired",
+                    //equalTo: "Please enter the same password as above"
+                    equalTo: "@WBSSLStore.Resources.ErrorMessage.Message.ComparPassword"
+                }
+
+            }
+        });
+
+
+        //code to hide topic selection, disable for demo
+
+        // newsletter topics are optional, hide at first
+
+    });
+
+    var objmsg = "@WBSSLStore.Resources.ErrorMessage.Message.ValidPassword_Caption";
+</script>
+@using (Html.BeginForm("preferences", "adminusers", FormMethod.Post, new { id = "frmSetting" }))
+{
+    <!-- InstanceBeginEditable name="Content" -->
+
+    <tr>
+        <td align="left" valign="top">
+            <table width="881" border="0" align="left" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td width="7" align="left" valign="top">
+                        <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/barleft.gif" alt="whitebrand" width="7" height="55">
+                    </td>
+                    <td width="866" align="left" valign="middle" class="hdbarbg">
+                        <table width="840" border="0" align="center" cellpadding="1" cellspacing="1">
+                            <tr>
+                                <td width="407" align="left" valign="middle" class="head1">
+                                    @if (Model != null && Model.ID > 0)
+                                    {
+                                        <span>@WBSSLStore.Resources.GeneralMessage.Message.ChngPwd_Header  @Html.DisplayFor(mode => mode.UserType)</span>
+                                    }
+
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td width="9" align="right" valign="top">
+                        <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/barright.gif" alt="whitebrand" width="9" height="55">
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+
+    <tr>
+        <td align="left" valign="top" class="contbg">
+            <table width="600" border="0" cellpadding="0" cellspacing="0" class="bottomdashedmargin">
+                @if (!string.IsNullOrEmpty(ViewBag.Message))
+                {
+                    <tr>
+                        <td colspan="3">
+                            @Html.Raw(ViewBag.Message)
+                        </td>
+                    </tr>
+                }
+                <tr>
+                    <td width="190" height="30" align="right" class="text">
+                        <strong>
+                            @*Email:*@ @WBSSLStore.Resources.GeneralMessage.Message.Email_Caption <span class="redfont">*</span>
+                        </strong>
+                    </td>
+                    <td width="10" align="right">
+                        &nbsp;
+                    </td>
+                    <td width="400">
+                        @Model.Email
+                    </td>
+                </tr>
+                @if (!(Model.ID.Equals(1) && Model.SiteID.Equals(1)))
+                {
+                    <tr>
+                        <td height="30" align="right" valign="top" class="text">
+                            <strong>
+                                @*>New Password:*@ @WBSSLStore.Resources.GeneralMessage.Message.ChngPwd_NewPwd_Caption<span class="redfont">*</span>
+                            </strong>
+                        </td>
+                        <td align="right">
+                            &nbsp;
+                        </td>
+                        <td>
+                            <input name="txtPassword" type="password" id="txtPassword" class="inputbox required" value=""
+                                   size="30" onblur="ValidatePassword(this,'btnSubmit','spMsg');" />
+                            <span id="spMsg" class="redfont"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td height="30" align="right" class="text">
+                            <strong>
+                                @*Confirm Password:*@ @WBSSLStore.Resources.GeneralMessage.Message.ConfirmPassword_Caption
+                                <span class="redfont">*</span>
+                            </strong>
+                        </td>
+                        <td align="right">
+                            &nbsp;
+                        </td>
+                        <td>
+                            <input name="txtConfirmPassword" type="password" id="txtConfirmPassword" value=""
+                                   size="30" class="inputbox" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="left">
+                            &nbsp;
+                        </td>
+                        <td align="right">
+                            &nbsp;
+                        </td>
+                        <td>
+                            &nbsp;
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right" valign="top" class="text">
+                            &nbsp;
+                        </td>
+                        <td align="right">
+                            &nbsp;
+                        </td>
+                        <td class="text">
+                            &nbsp;
+                        </td>
+                    </tr>
+                    <tr>
+                        <td height="30" align="right" class="text">
+                            &nbsp;
+                        </td>
+                        <td align="right">
+                            &nbsp;
+                        </td>
+                        <td class="text">
+                            <input type="submit" name="btnSubmit" id="btnSubmit" value="@WBSSLStore.Resources.GeneralMessage.Message.Submit_Btn" class="bluebtn" />
+                        </td>
+                    </tr>
+                }
+            </table>
+        </td>
+    </tr>
+    <!-- InstanceEndEditable -->
+
+}

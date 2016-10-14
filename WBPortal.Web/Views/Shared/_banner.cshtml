@@ -1,0 +1,18 @@
+﻿@model Tuple<string, string>
+
+
+    @if (!string.IsNullOrEmpty(Model.Item1))
+    {
+        <div class="banner">
+            <img alt="Banner" src="@(Url.Content("~/content/images/") + Model.Item1)" />
+        </div>
+    }
+    else if (!string.IsNullOrEmpty(Model.Item2))
+    {
+        <div class="banner innbanner">
+            <h1>
+                @Html.Raw(Model.Item2)
+            </h1>
+        </div>
+    }
+

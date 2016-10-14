@@ -1,0 +1,36 @@
+.popupfixbg{position:fixed; background:#000; opacity:0.5; height:100%; width:100%; left:0; top:0;}
+.popupwarp{border:1px solid #CCC; background:#FFF; position:absolute; top:10%; left:50%;  width:600px; margin:0 0 0 -300px; z-index:9999;}
+.popuptlt{background:#4e5568; padding:15px;}
+.popuptlt h2{float:left; font-size:20px; color:#FFF; margin-bottom: 0;}
+.popuptlt a{float:right;}
+
+.popupdtl{padding:15px;}
+.fomrraw label{float:left; font-weight:bold; margin-right:10px; line-height:30px;}
+.fomrraw + .fomrraw{margin-top:15px;}
+.fomrraw label span{color:#F00;}
+.fomrraw .formdata{float:left;}
+.fomrraw .formdata input[type=text], .fomrraw .formdata input[type=password]{border:1px solid #d7d7d7; box-sizing: border-box; height:28px; padding:5px; width: 100%;}
+.fomrraw .formdata select{border:1px solid #d7d7d7; box-sizing: border-box; height:28px; padding:3px; width: 100%; color:#666;}
+
+
+.paymentmethod{ margin-top:20px; background:#fff;}
+.paymentmethod h3{background:#3792cb; padding:10px; font-size:16px; color:#FFF;}
+.paymentdtl{padding:15px;}
+
+.paymentimg {position:absolute; left:38%;}
+.paymentform{ margin-top:20px;}
+.carddtl-rt {position:relative;}
+
+.carddtl .fomrraw .formdata{width:250px;}
+.carddtl .fomrraw label{width:110px; text-align:right;}
+
+.selectsml{width:48% !important; float:left}
+.selectsml + .selectsml{float:right;}
+
+.paypalinfo{margin-bottom:15px;}
+.paypalinfo p{margin-top:15px; }
+
+.fundamountdtl{border:1px solid #d9d9d9; border-bottom:none;}
+.fundamountdtl .amtbox{border-bottom:1px solid #d9d9d9;}
+.fundamountdtl .amtbox strong{display:table-cell; padding:10px; width:110px;}
+.fundamountdtl .amtbox span{display:table-cell; padding:10px; border-left:1px solid #d9d9d9;}

@@ -1,0 +1,150 @@
+﻿@using WBSSLStore.Domain;
+@model IEnumerable<WBSSLStore.Domain.PaymentGateways>
+@{
+    ViewBag.version = WBSSLStore.Web.Helpers.Caching.SiteCacher.ResourceVersion();
+    PaymentGateways paypal = Model.Where(x => x.InstancesID == (int)PGInstances.PayPalIPN).FirstOrDefault();
+    if (paypal == null)
+    {
+        paypal = new PaymentGateways() { InstancesID = (int)PGInstances.PayPalIPN, SiteID = ViewBag.SiteID, TestURL = "https://www.sandbox.paypal.com/cgi-bin/webscr?", LiveURL = "https://www.paypal.com/cgi-bin/webscr?" };
+    }
+    PaymentGateways moneybookers = Model.Where(x => x.InstancesID == (int)PGInstances.Moneybookers).FirstOrDefault();
+    if (moneybookers == null)
+    {
+        moneybookers = new PaymentGateways() { InstancesID = (int)PGInstances.Moneybookers, SiteID = ViewBag.SiteID, TestURL = "https://www.moneybookers.com/app/payment.pl", LiveURL = "https://www.moneybookers.com/app/payment.pl" };
+    }
+    PaymentGateways creditcard = Model.Where(x => x.InstancesID == (int)PGInstances.AuthorizeNet).FirstOrDefault();
+    if (creditcard == null)
+    {
+        creditcard = new PaymentGateways() { InstancesID = (int)PGInstances.AuthorizeNet, SiteID = ViewBag.SiteID, LiveURL = "https://secure.authorize.net/gateway/transact.dll", TestURL = "https://test.authorize.net/gateway/transact.dll" };
+    }
+    ViewBag.Title = "PaymentGateway";
+}
+
+@System.Web.Optimization.Scripts.Render("/bundales/wb/validationjs?v=" + ViewBag.version)
+@System.Web.Optimization.Scripts.Render("/bundales/homepagejs?v=" + ViewBag.version)
+<tr>
+    <td align="left" valign="top">
+        <table width="881" border="0" align="left" cellpadding="0" cellspacing="0">
+            <tr>
+                <td width="7" align="left" valign="top">
+                    <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/barleft.gif" alt="whitebrand" width="7" height="55">
+                </td>
+                <td width="866" align="left" valign="middle" class="hdbarbg">
+                    <table width="840" border="0" align="center" cellpadding="1" cellspacing="1">
+                        <tr>
+                            <td width="407" align="left" valign="middle" class="head1">
+                                @*Payment Gateway Details*@ @WBSSLStore.Resources.GeneralMessage.Message.PayGatewayDetails_Caption
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td width="9" align="right" valign="top">
+                    <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/barright.gif" alt="whitebrand" width="9" height="55">
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>
+<tr>
+    <td align="left" valign="top" class="contbg">
+        <table width="870" border="0" align="center" cellpadding="0" cellspacing="7">
+            <tr>
+                <td align="center" valign="top" class="bgclr">
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td align="left" valign="top">
+                                <table width="820" border="0" align="center" cellpadding="0" cellspacing="0">
+                                    <tr>
+                                        <td height="8" align="left" valign="top">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" valign="top" bgcolor="#f2f2f2">
+                                            <table width="840" border="0" align="left" cellpadding="1" cellspacing="1">
+                                                <tr>
+                                                    <td width="19" height="32" align="right" valign="middle">
+                                                        &nbsp;
+                                                    </td>
+                                                    <td width="251" align="left" valign="middle" class="bold">
+                                                        @*Select Payment Gateway*@ @WBSSLStore.Resources.GeneralMessage.Message.Select_PayGateway_Caption
+                                                    </td>
+                                                    <td width="15" height="32" align="left" valign="middle">
+                                                        &nbsp;
+                                                    </td>
+                                                    <td width="542" height="32" align="left" valign="middle">
+                                                        &nbsp;
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td height="60px" align="left" valign="middle">
+                                            @if (!string.IsNullOrEmpty(ViewBag.Message))
+                                            {
+                                                @Html.Raw(ViewBag.Message)
+                                            }
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" valign="top">
+                                            <table width="840" border="0" align="left" cellpadding="1" cellspacing="1">
+                                                <tr>
+                                                    <td height="22" align="left" valign="top">
+                                                        @Html.Partial("_PayPalSettings", paypal)
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td valign="top" bgcolor="#f2f2f2" align="left">
+                                            <table width="100%" cellspacing="1" cellpadding="1" border="0" align="left">
+                                                <tbody>
+                                                    <tr>
+                                                        <td width="2%" valign="middle" align="left" class="bold">
+                                                            &nbsp;
+                                                        </td>
+                                                        <td width="31%" valign="middle" height="32" align="left" class="bold">
+                                                            Payment Gateway Details:
+                                                        </td>
+                                                        <td width="2%" valign="middle" height="32" align="left">
+                                                            &nbsp;
+                                                        </td>
+                                                        <td width="65%" valign="middle" height="32" align="left" class="bold">
+                                                            @WBSSLStore.Resources.GeneralMessage.Message.Moneybookers_Caption
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" valign="top">
+                                            <table width="840" border="0" align="left" cellpadding="1" cellspacing="1">
+                                                <tr>
+                                                    <td height="22" align="left" valign="top">
+                                                        @Html.Partial("_Moneybookersettings", moneybookers)
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td height="8" align="left" valign="top">
+                                        </td>
+                                    </tr>
+                                    @Html.Partial("_OtherGateway", creditcard)
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td height="8" align="left" valign="top">
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>

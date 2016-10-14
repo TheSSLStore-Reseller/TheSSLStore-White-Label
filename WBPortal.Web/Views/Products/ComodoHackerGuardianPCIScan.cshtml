@@ -1,0 +1,113 @@
+﻿@model WBSSLStore.Service.ViewModels.StaticPageViewModel
+@{
+    ViewBag.Title = "SecureSiteProwithEV";  var productdetails = WBSSLStore.Web.Helpers.WBHelper.GetProductDetailRows();
+    string brand = Model != null && Model.Items != null && Model.Items.FirstOrDefault().Product != null && Model.Items.FirstOrDefault().Product.Brand != null ? Model.Items.FirstOrDefault().Product.Brand.BrandName : "";
+    string username = ViewBag.UserName;
+}
+@section headerTags{
+    @Html.Partial("_renderSEO", Model != null && Model.CMSPage != null ? Model.CMSPage : new WBSSLStore.Domain.CMSPage())
+}
+@Html.Partial("_banner", new Tuple<string, string>("", "SSL Brands"))
+<div class="content">
+  <div class="wrapper">
+    <div class="column3">
+      <div class="mobtopcol">
+        <div class="column3-2">
+          <div class="prodetailswrap marzerotop"> @Html.Partial("_ProdPricing", new Tuple<List<WBSSLStore.Domain.ProductPricing>, List<WBSSLStore.Domain.ProductDetail>>(Model.Items.ToList(), productdetails.ToList())) </div>
+          <div class="prodescrip marzerotop">
+            <div class="prodescriptxt">
+              <h2>Product Description</h2>
+              <p>With the Comodo HackerGuardian PCI Scan Control Center, conforming to the data security standards set by the Payment Card Industry (PCI) has never been more streamlined. These standards are mandatory requirements for anyone who accepts, processes, or stores credit card data. Comodo, one of the leading internet security companies in the world, created HackerGuardian PCI scanning, along with the SAQ wizard tools, to help make the path to PCI compliance as painless as possible. This PCI tool scans your externally-facing IPs and generates daily reports detailing any vulnerability found. It also supplies you with the information you need to fix any vulnerability issues. All the necessary documentation you need to send to your bank to validate quarterly PCI compliance is also included in this PCI scanning solution.</p>
+            </div>
+          </div>
+          <div id="cssmenu">
+            <ul class="accordion_example">
+              <li class="brand-symantec acc_active">
+                <div>
+                  <p>Assurance &amp; Authentication</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>The Comodo HackerGuardian PCI Scan Control Center is a business-validated product, which means the CA will perform a light vetting on your company to ensure you are who you say you are. However, this process usually takes only around 1-3 business days to complete and then you will be on the path to PCI compliance.</p>
+                  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Features &amp; Benefits</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <ul class="featurelist">
+                    <li>Free PCI Scan is valid for 90 days and allows merchants to achieve PCI scan compliancy free of charge.</li>
+                    <li>PCI Scan Compliancy Service on-demand security auditing service. Provides PCI Scan compliance reports and includes free Payment Credential CVC.</li>
+                    <li>Gain PCI scan compliant with vulnerability scanning by a PCI Approved Scanning Vendor</li>
+                    <li>Get 'Ready-to-submit' PCI Compliance reports to send to your merchant bank</li>
+                    <li>Detailed reports identify security holes exposed by HackerGuardian's 30,000+ tests and contain actionable fix recommendations</li>
+                    <li>PCI 'self assessment' questionnaire available via online wizard</li>
+                    <li>Secure web-based interface allows you to schedule up to ten PCI scans per quarter on up to five servers</li>
+                    <li class="bdrbtm">IP Address Packs can be added to your license to allow you to scan additional external and internal IP addresses</li>
+                  </ul>
+				  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Product Specifications</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <ul class="featurelist">
+                    <li>Painlessly perform PCI scanning</li>
+                    <li>Easily manage your scanning needs</li>
+                    <li>Detailed vulnerability reports</li>
+                    <li>PCI Compliance reports</li>
+                    <li>Custom Remediation plans</li>
+                    <li>Unlimited scans available</li>
+                    <li>Scalable from 1 &ndash; 10K IPs</li>
+                    <li>On-demand scheduling</li>
+                    <li>User configurable scanning tool</li>
+                  </ul>
+				  <div class="clear"></div>
+                </div>
+              </li>
+              
+              <li class="brand-symantec">
+                <div>
+                  <p>Warranty</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>Unfortunately, this product is not available with warranty protection.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        @Html.Partial("_rightpanel", username) </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+@section Jscripts{ 
+<script type="text/javascript">
+        $(document).ready(function () {
+            // Mobile Menu
+            $("#showmenu").click(function (e) {
+                e.preventDefault();
+                $("#menu").toggleClass("show");
+            });
+            $("#menu a").click(function (event) {
+                event.preventDefault();
+                if ($(this).next('ul').length) {
+                    $(this).next().toggle('fast');
+                    $(this).children('i:last-child').toggleClass('fa-caret-down fa-caret-left');
+                }
+            });
+            $(document).click(function (e) {
+                if (!$(e.target).is(".mobmemu, .mobmemu  *")) { $("#menu").toggleClass("hide"); $("#menu").removeClass("show"); }
+            });
+            $(".accordion_example").smk_Accordion();
+        });
+    </script> 
+} 

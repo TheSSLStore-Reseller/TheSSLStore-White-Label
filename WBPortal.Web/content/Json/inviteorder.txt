@@ -1,0 +1,19 @@
+﻿{
+	"AuthRequest":{
+		"PartnerCode":"[PARTNERCODE]",
+		"AuthToken":"[AUTHCODE]",
+		"ReplayToken":"[REPLAYTOKEN]",
+		"UserAgent":"[USERAGENT]"
+	},
+	"PreferVendorLink":[PREFERLINK],
+	"ProductCode":"[PRODCODE]",
+	"ExtraProductCode":"[EXTRAPRODCODE]",
+	"ServerCount":[SERVERCOUNT],
+	"RequestorEmail":"[REQUESTOREMAIL]",
+	"ExtraSAN":[EXTRASAN],
+	"CustomOrderID":"[CUSTORDID]",
+	"ValidityPeriod":[VALIDPERIOD],
+	"AddInstallationSupport":[ADDINSTALLATIONSUPPORT],
+	"EmailLanguageCode":"[LANGUAGE]",
+	"PreferSendOrderEmails" : false
+}

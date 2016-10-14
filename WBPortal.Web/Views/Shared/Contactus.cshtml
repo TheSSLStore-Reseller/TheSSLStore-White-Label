@@ -1,0 +1,137 @@
+﻿@using WBSSLStore.Domain;
+@using WBSSLStore.Data.Infrastructure;
+@{
+    string strThankyouPageURL = WBSSLStore.Web.Helpers.WBHelper.ThankyouPage(WBSSLStore.Web.Helpers.Caching.SiteCacher.CurrentSite);  
+
+}
+<script src="@Url.Content("~/content/scripts/jquery.validate.min.js")" language="javascript" type="text/javascript" ></script>
+<script type="text/javascript" language="javascript">
+    $(document).ready(function () {
+        $("#frmContactus").validate({
+            rules: {
+                txtCompany: "required",
+                txtEmail: "required",
+                txtPhone: "required",
+                txtComment: "required",
+                txtFullname: "required",
+                txtCompany: {
+                    required: true
+                },
+                txtEmail: {
+                    required: true,
+                    email: true
+                },
+                txtPhone: {
+                    required: true
+                },
+                txtComment: {
+                    required: true
+                },
+                txtFullname:
+                {
+                    required: true
+                }
+            },
+            messages: {
+                txtCompany: '  Enter Company.',
+                txtEmail: '  Enter Valid Email.',
+                txtPhone: '  Enter Valid Phone.',
+                txtComment: '  Enter Comment.',
+                txtFullname: '  Enter Full Name.'
+            }
+        });
+    });
+                     
+</script>
+<script src="@Url.Content("~/content/scripts/WB/custom.min.js")" type="text/javascript"></script>
+@using (Html.BeginForm("contactus", "staticpage", FormMethod.Post, new { @id = "frmContactus" }))
+{
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="bottomdashedmargin">
+        @if (Convert.ToBoolean(ViewBag.ShowMessage) && !string.IsNullOrEmpty(strThankyouPageURL))
+        {
+            <tr>
+                <td>
+                    <script type="text/javascript">
+                        window.location.href = '@strThankyouPageURL';
+                    </script>
+                </td>
+            </tr>
+        }
+        else if (Convert.ToBoolean(ViewBag.ShowMessage))
+        {
+            <tr>
+                <td class="normsg fontwo" colspan="3">
+                    @Html.Raw(WBSSLStore.Resources.GeneralMessage.Message.Contactus_Msg)
+                </td>
+            </tr>
+        }
+        <tr>
+            <td align="right" valign="middle" class="text" height="30">
+                <strong>@WBSSLStore.Resources.GeneralMessage.Message.CompanyName:<span class="redtext">*</span></strong>
+            </td>
+            <td align="right">
+                &nbsp;
+            </td>
+            <td align="left" valign="middle" class="text">
+                @Html.TextBox("txtCompany", "", new { @id = "txtCompany", @class = "in200px" })
+            </td>
+        </tr>
+        <tr>
+            <td align="right" valign="middle" class="text" height="30">
+                <strong>@WBSSLStore.Resources.GeneralMessage.Message.FullName_Caption:<span class="redtext">*</span></strong>
+            </td>
+            <td align="right">
+                &nbsp;
+            </td>
+            <td align="left" valign="middle" class="text">
+                @Html.TextBox("txtFullname", "", new { @id = "txtFullname", @class = "in200px" })
+            </td>
+        </tr>
+        <tr>
+            <td align="right" valign="middle" class="text" height="30">
+                <strong>@WBSSLStore.Resources.GeneralMessage.Message.Email_Caption:<span class="redtext">*</span></strong>
+            </td>
+            <td align="right">
+                &nbsp;
+            </td>
+            <td align="left" valign="middle" class="text">
+                @Html.TextBox("txtEmail", "", new { @id = "txtEmail", @class = "in200px" })
+            </td>
+        </tr>
+        <tr>
+            <td align="right" valign="middle" class="text" height="30">
+                <strong>@WBSSLStore.Resources.GeneralMessage.Message.Phone_Caption:<span class="redtext">*</span></strong>
+            </td>
+            <td align="right">
+                &nbsp;
+            </td>
+            <td align="left" valign="middle" class="text">
+                @Html.TextBox("txtPhone", "", new { @id = "txtPhone", @class = "in200px" })
+            </td>
+        </tr>
+        <tr>
+            <td align="right" valign="top" class="text" height="30">
+                <strong>@WBSSLStore.Resources.GeneralMessage.Message.Comment_Caption:<span class="redtext">*</span></strong>
+            </td>
+            <td align="right">
+                &nbsp;
+            </td>
+            <td align="left" valign="middle" class="text">
+                @*@Html.TextAreaFor(3, 40, new { @id = "txtComment" })*@
+                @Html.TextArea("txtComment", new { @rows = "3", @colums = "40", @class = "in200px" })
+            </td>
+        </tr>
+        <tr>
+            <td align="left" valign="middle" class="text" height="80">
+            </td>
+            <td align="right">
+                &nbsp;
+            </td>
+            <td align="left" valign="middle" class="text">
+                <label>
+                    <input name="btnSubmit" type="submit" class="button" id="btnSubmit" value="@WBSSLStore.Resources.GeneralMessage.Message.Submit_Btn" />
+                </label>
+            </td>
+        </tr>
+    </table>    
+}

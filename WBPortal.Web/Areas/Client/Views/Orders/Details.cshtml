@@ -1,0 +1,206 @@
+﻿@using WBSSLStore.Domain;
+@model OrderDetail
+@{
+    ViewBag.Title = "Details";
+    ViewBag.version = WBSSLStore.Web.Helpers.Caching.SiteCacher.ResourceVersion();
+    string username = ViewBag.UserName;
+}
+@section sitecss{
+}
+@section Jscripts{
+@System.Web.Optimization.Scripts.Render("/bundales/jquery-glob?v=" + ViewBag.version)
+    <script type="text/javascript" language="javascript">
+        $(function () {
+            $.preferCulture('@(WBSSLStore.Web.Helpers.WBHelper.CurrentLangCode)');
+        });
+        function DownloadCertificate(ExternalID) {
+            window.open('/client/orders/downloadcertificate/' + ExternalID, 'Download', 'width=5,height=5')
+        }
+        function ResendApproval(ExternalID, ApproverEmail) {
+            document.getElementById('dvSummaryLogin').style.display = 'block';
+            $.post("/client/orders/resendapprovalemail/" + ExternalID + '?@(SettingConstants.QS_EMAIL)=' + ApproverEmail,
+                           function (data) {
+                               document.getElementById('dvSummaryLogin').style.display = 'none';
+                               alert(data);
+                           });
+        }
+        function ReIssueCertificate(ExternalID) {
+            document.getElementById('dvSummaryLogin').style.display = 'block';
+            $.post("/client/orders/reissue/" + ExternalID,
+                           function (data) {
+                               document.getElementById('dvSummaryLogin').style.display = 'none';
+                               if (data.ErrorMessage == "") {
+                                   window.open(data.ReIssueUrl);
+                               }
+                               else {
+                                   alert(data.ErrorMessage);
+                               }
+                           });
+        }
+        function downloadauthfile() {
+
+            var flnm = "@(!string.IsNullOrEmpty(ViewBag.AuthFileName) ? Html.Raw(Url.Encode(ViewBag.AuthFileName)) : string.Empty)";
+            var flcon = "@(!string.IsNullOrEmpty(ViewBag.AuthFileContent) ? Html.Raw(Url.Encode(ViewBag.AuthFileContent)) : string.Empty)";
+            window.open('/client/orders/Downloadauthfile?flnm=' + flnm + '&flcon=' + flcon, 'Download', 'width=5,height=5')
+        }
+        function ScanVulnerabilityNow(ExternalID) {
+            document.getElementById('dvSummaryLogin').style.display = 'block';
+            $.post("/client/orders/scannow/" + ExternalID,
+                           function (data) {
+                               document.getElementById('dvSummaryLogin').style.display = 'none';
+                               alert(data);
+                           });
+        }
+</script>
+}
+@Html.Partial("_banner", new Tuple<string, string>("", WBSSLStore.Resources.GeneralMessage.Message.Odetail_Header))
+<div class="content">
+    <div class="wrapper">
+        <div class="column3">
+            <div class="column3-0">
+                <div class="controlpnldata">
+                    <h2>@WBSSLStore.Resources.GeneralMessage.Message.Odetail_CertDetail_Header</h2>
+                    <div class="graybarbox">
+                        <div class="odrboxspacing">
+                            <p>@Html.LabelFor(x => x.ProductName) : <span> <strong>@Html.DisplayFor(model => model.ProductName)</strong></span></p>
+                            <p>@Html.LabelFor(x => x.CertificateRequest.DomainName):<span class="wordbreak">@(!string.IsNullOrEmpty(Model.CertificateRequest.DomainName) ? Model.CertificateRequest.DomainName : (Model.OrderStatus != OrderStatus.REFUNDED ? Model.StoreAPIInteraction != null ? Model.StoreAPIInteraction.GatewayAuthCode: string.Empty : string.Empty))</span></p>
+                            <p>@Html.LabelFor(x => x.ExternalOrderID):<span>@Html.DisplayFor(model => model.ExternalOrderID)</span></p>
+                            <p><label>@WBSSLStore.Resources.GeneralMessage.Message.TokenCode_Caption:</label><span>@ViewBag.TokenCode</span></p>
+                            <p><label>@WBSSLStore.Resources.GeneralMessage.Message.TokenID_Caption:</label><span>@ViewBag.TokenID</span></p>
+                            <p>@Html.LabelFor(x => x.OrderStatus):<span>@Html.DisplayFor(model => model.OrderStatus)</span></p>
+                            <p><label>@WBSSLStore.Resources.GeneralMessage.Message.Order_Status_Reason:</label><span>@ViewBag.OrderState</span></p>
+                            <p>@Html.LabelFor(x => x.CertificateRequest.isNewOrder):<span>@(Model.CertificateRequest.isNewOrder ? "New" : "Renew")</span></p>
+                            <p>@Html.LabelFor(x => x.NumberOfMonths):<span>@Html.DisplayFor(model => model.NumberOfMonths) Month(s)</span></p>
+                            <p>@Html.LabelFor(x => x.Order.OrderDate):<span>@Model.Order.OrderDate.ToString("MMM dd, yyyy")</span></p>
+                            <p>@Html.LabelFor(x => x.ActivatedDate):<span>@(Model.OrderStatus == OrderStatus.ACTIVE ? Html.DisplayFor(model => model.ActivatedDate) : MvcHtmlString.Empty)</span></p>
+                            <p>@Html.LabelFor(x => x.CertificateExpiresOn):<span>@(Model.OrderStatus == OrderStatus.ACTIVE ? Html.DisplayFor(model => model.CertificateExpiresOn) : MvcHtmlString.Empty)</span></p>
+                            <p>
+                                @Html.LabelFor(x => x.CertificateRequest.CertificateApproverEmail):<span>
+                                    @if (Model.CertificateRequest.CertificateApproverEmail != null)
+                                    {
+                                        foreach (string str in Model.CertificateRequest.CertificateApproverEmail.Split(','))
+                                        {
+                                            if (!string.IsNullOrEmpty(str))
+                                            {
+                                @str @:<br />
+                                    }
+                                        }
+                                    }
+                                </span>
+                            </p>
+                            <p>@Html.LabelFor(x => x.CertificateRequest.NumberOfServers):<span>@Html.DisplayFor(model => model.CertificateRequest.NumberOfServers)</span></p>
+                            <p>@Html.LabelFor(x => x.Price):<span>@Model.Price.ToString("C")</span></p>
+                            <p>@Html.LabelFor(x => x.PromoDiscount):<span>@Model.PromoDiscount.ToString("C")</span></p>
+                            <p>@Html.LabelFor(x => x.InvoiceNumber):<span>@WBSSLStore.Web.Helpers.WBHelper.InvoicePrefix(WBSSLStore.Web.Helpers.Caching.SiteCacher.CurrentSite) @Html.DisplayFor(model => model.Order.ID)</span></p>
+                            <p>
+                                 @Html.LabelFor(x => x.CertificateRequest.AddDomainNames):<span> @Html.Raw(Model.CertificateRequest.AddDomainNames != null ? string.Join(",<br />", Model.CertificateRequest.AddDomainNames.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries).ToArray()) : string.Empty)</span>
+                            </p>
+                            <p><label>No. of Additional Domain:</label><span>@Model.CertificateRequest.AdditionalDomains </span></p>
+                            <p>@Html.LabelFor(x => x.CertificateRequest.SpecialInstructions):<span>@Html.DisplayFor(model => model.CertificateRequest.SpecialInstructions) </span></p>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+
+                    @if (!string.IsNullOrEmpty(ViewBag.PollStatus) && !string.IsNullOrEmpty(ViewBag.PollDate))
+                    {
+                        <h2>@WBSSLStore.Resources.GeneralMessage.Message.AuthFileDetails_Caption</h2>
+                        <div class="graybarbox">
+                            <div class="odrboxspacing">
+                                <p><label>@WBSSLStore.Resources.GeneralMessage.Message.PollStatus_Caption:</label><span> @ViewBag.PollStatus</span></p>
+                                <p><label>@WBSSLStore.Resources.GeneralMessage.Message.PollDate_Caption:</label><span> @ViewBag.PollDate</span></p>
+                            </div>
+                        </div>
+                    }
+
+                    <h3>@WBSSLStore.Resources.GeneralMessage.Message.Odetail_SiteContacts_Header</h3>
+                    <div class="graybarbox">
+                        <h4>@WBSSLStore.Resources.GeneralMessage.Message.Odetail_AContactdet_Header</h4>
+                        <div class="odrboxspacing">
+                            <p>@Html.LabelFor(x => x.CertificateRequest.AdminContact.FirstName):<span>@Html.DisplayFor(model => model.CertificateRequest.AdminContact.FirstName)</span></p>
+                            <p>@Html.LabelFor(x => x.CertificateRequest.AdminContact.LastName): <span>@Html.DisplayFor(model => model.CertificateRequest.AdminContact.LastName)</span></p>
+                            <p>@Html.LabelFor(x => x.CertificateRequest.AdminContact.EmailAddress):<span>@Html.DisplayFor(model => model.CertificateRequest.AdminContact.EmailAddress)</span></p>
+                            <p>@Html.LabelFor(x => x.CertificateRequest.AdminContact.PhoneNumber): <span>@Html.DisplayFor(model => model.CertificateRequest.AdminContact.PhoneNumber)</span></p>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+
+                    <div class="graybarbox">
+                        <h4>@WBSSLStore.Resources.GeneralMessage.Message.Odetail_TContactdet_Header</h4>
+                        <div class="odrboxspacing">
+                            <p>@Html.LabelFor(x => x.CertificateRequest.TechnicalContact.FirstName):<span>@Html.DisplayFor(model => model.CertificateRequest.TechnicalContact.FirstName)</span></p>
+                            <p>@Html.LabelFor(x => x.CertificateRequest.TechnicalContact.LastName): <span>@Html.DisplayFor(model => model.CertificateRequest.TechnicalContact.LastName)</span></p>
+                            <p>@Html.LabelFor(x => x.CertificateRequest.TechnicalContact.EmailAddress):<span>@Html.DisplayFor(model => model.CertificateRequest.TechnicalContact.EmailAddress)</span></p>
+                            <p>@Html.LabelFor(x => x.CertificateRequest.TechnicalContact.PhoneNumber): <span>@Html.DisplayFor(model => model.CertificateRequest.TechnicalContact.PhoneNumber)</span></p>
+
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+
+                    <div class="odrdtlbtns">
+
+                        @if ((DateTimeWithZone.Now.Date - Model.AuditDetails.DateCreated.Date).Days <= Model.Product.RefundDays && Model.OrderStatus != OrderStatus.REFUNDED && Model.OrderStatus != OrderStatus.REJECTED && ViewBag.CancelationRequest != "Cancel")
+                        {
+
+                            <input name="button6" type="submit" class="greenbtn" id="button6" value="@WBSSLStore.Resources.GeneralMessage.Message.CancellationRefundRequest_btn"
+                                   onclick="window.location.href='@Url.Action("cancellationRequest", "support", new { area = "client", id = Model.ID })    '" />
+                        }
+
+                        @if (Model.OrderStatus == OrderStatus.PENDING && !string.IsNullOrEmpty(Model.CertificateRequest.DomainName) && Model.Product.ProductType == ProductType.DV)
+                        {
+                            <input name="button3" type="button" class="greenbtn" id="button3" onclick="ResendApproval(@Model.ExternalOrderID,'@Model.CertificateRequest.CertificateApproverEmail    ')"
+                                   value="@WBSSLStore.Resources.GeneralMessage.Message.ResendApprovalEmail_btn" />
+                        }
+                        @if (Model.OrderStatus == OrderStatus.ACTIVE)
+                        {
+
+                            <input name="button2" type="button" class="greenbtn" id="button2" value="@WBSSLStore.Resources.GeneralMessage.Message.DownloadCertificate_btn" onclick="DownloadCertificate(@Model.ExternalOrderID);" />
+                        }
+                        @if (!Model.Product.InternalProductCode.Equals("malwarescan", StringComparison.OrdinalIgnoreCase))
+                        {
+                            if (Model.OrderStatus == OrderStatus.ACTIVE)
+                            {
+                                if (Model.Product.isSANEnabled && Request.Url.Scheme.Equals("https"))
+                                {
+                                    <a class="greenbtn" href="@("/checkout/reissue/payment/" + Model.ID)" target="_blank">
+                                        @WBSSLStore.Resources.GeneralMessage.Message.ReissueCertificate
+                                    </a>
+                                }                               
+                                else
+                                {
+                                    <a class="greenbtn" href="@("/client/orders/reissue/" + Model.ID)">
+                                        @WBSSLStore.Resources.GeneralMessage.Message.ReissueCertificate
+                                    </a>
+                                }
+                            }
+                        }
+                        @if (Model.OrderStatus == OrderStatus.ACTIVE && (Model.CertificateExpiresOn.Value - DateTimeWithZone.Now.Date).Days <= 30)
+                        {
+                            <input name="button" type="button" class="greenbtn" id="button" value="@WBSSLStore.Resources.GeneralMessage.Message.ReNewNow_btn" onclick="location.href='/shoppingcart/addtocart?ppid=@(ViewBag.ProductPricingID)    &qty=1'" />
+                        }
+                        @if (Model.OrderStatus == OrderStatus.ACTIVE && Model.Product.InternalProductCode.Equals("malwarescan", StringComparison.OrdinalIgnoreCase))
+                        {
+                            <input name="btnOnDemandScan" type="button" class="greenbtn" id="btnOnDemandScan" value="Scan Vulnerability Now" onclick="ScanVulnerabilityNow(@Model.ExternalOrderID)" />
+                        }
+                        @if (!string.IsNullOrEmpty(ViewBag.AuthFileName) && !string.IsNullOrEmpty(ViewBag.AuthFileContent))
+                        {
+                            <input name="btnDownloadauthfile" type="button" class="greenbtn" id="btnDownloadauthfile" value="@WBSSLStore.Resources.GeneralMessage.Message.DownloadAuthFile_btnCaption" onclick="downloadauthfile()" />
+                        }
+
+                        <div class="clear"></div>
+                    </div>
+
+                </div>
+            </div>
+            @Html.Partial("_rightpanel", username)
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+<div id="dvSummaryLogin" class="backgroundPopup" style="position: fixed; display: none; opacity: 0.7;">
+    <img src="~/Content/loadingnew.gif" style="margin-top: 25%; margin-left: 50%;" />
+</div>
+
+
+
+
+

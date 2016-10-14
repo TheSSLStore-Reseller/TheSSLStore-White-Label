@@ -1,0 +1,61 @@
+﻿@{
+    bool IsXml = ViewBag.ISXML ?? false;//!string.IsNullOrEmpty(Request.QueryString["format"]) ? Request.QueryString["format"].ToLower().Equals("xml") : false;
+
+
+    ViewBag.Title = "SiteMap";
+    System.Text.StringBuilder sb = new System.Text.StringBuilder();
+    string username = ViewBag.UserName;
+    if (IsXml)
+    {
+        sb.Append(WBSSLStore.Web.Helpers.WBHelper.GenerateSiteMapXML());
+        Response.ContentType = "application/xml";
+        Layout = null;
+    }
+    else
+    {
+        sb.Append(WBSSLStore.Web.Helpers.WBHelper.GenerateMenuString().Replace("class=\"menu\"", ""));
+        sb.Replace("class=\"noleftborder\"", "");
+        sb.Replace("class=\"norightborder\"", "");
+        sb.Replace("<ul id=\"nav\">", "<ul class=\"contentlist\" >");
+    }
+}
+
+@section sitecss{
+
+}
+@section Jscripts{
+}
+
+@Html.Partial("_banner", new Tuple<string, string>("", "Disclaimer"))
+<div class="content">
+    <div class="wrapper">
+        <div class="column3">
+            <div class="mobtopcol">
+                <div class="column3-2">
+                    <div class="aboutwrap marzerotop">
+                        <div class="aboutcontext">
+
+                            @if (!IsXml)
+                            {
+                                <h1>
+                                    Site Map
+                                </h1>
+                                @Html.Raw(sb.ToString())
+                            }
+                            else
+                            {
+                                HttpContext.Current.Response.Clear();
+                                HttpContext.Current.Response.Write(Html.Raw(sb.ToString()));
+                                HttpContext.Current.Response.End();
+                            }
+
+                        </div>
+                    </div>
+
+                </div>
+                @Html.Partial("_rightpanel", username)
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>

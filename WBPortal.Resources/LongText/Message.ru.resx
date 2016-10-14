@@ -1,0 +1,487 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Account_password" xml:space="preserve">
+    <value>Счет и пароль</value>
+  </data>
+  <data name="Account_to_checkout_faster" xml:space="preserve">
+    <value>Счет для  бастрого извлечения</value>
+  </data>
+  <data name="CheckCSRNote" xml:space="preserve">
+    <value>Используйте этот CSR (запрос на подпись сертификата) декодер для декодирования вашего запроса на подпись сертификата и
+убедитесь, что он содержит правильную информацию.Запрос на подпись сертификата является блоком закодированного текста,
+который содержит информацию о компании, которой SSL сертификат будет выдан и SSL открытого ключа.После создания CSR
+трудно проверить, какая информация содержится в нем, поскольку он закодирован. Поскольку центры сертификации используют
+информацию в CSR при создании сертификата, необходимо декодировать CSRs  чтобы убедиться, что информация является
+достоверной. Чтобы проверить CSR и просмотреть информацию в них, просто вставьте CSR в поле ниже и AJAX («фоновый» обмен
+данными браузера с веб-сервером) CSR декодер будет делать все остальное. Ваш CSR следует начинать с "BEGIN CERTIFICATE
+REQUEST" и заканчивать "ENDCERTIFICATE REQUEST"(запрос начала и конца сертификата)
+</value>
+  </data>
+  <data name="Checkout_Desc" xml:space="preserve">
+    <value>Данные вашего заказа будут отправлены на этот адрес эл.почты</value>
+  </data>
+  <data name="CheckOut_Note" xml:space="preserve">
+    <value>Пожалуйста, просмотрите и отправьте Ваш заказ, выбрав "Завершение заказа"</value>
+  </data>
+  <data name="CheckSSLNote" xml:space="preserve">
+    <value>Эта проверка SSL поможет вам диагностировать проблемы с установкой SSL сертификат.Вы можете проверить SSL сертификат на вашем веб-сервере, чтобы убедиться, что он правильно установлен, действителен, вызывет доверие и не дает никакой ошибки с любым из ваших пользователей. Чтобы использовать проверку SSL, просто введите имя хоста вашего сервера (должен быть открытым) в окне, расположенном ниже, и нажмите кнопку "Отправить"
+</value>
+  </data>
+  <data name="Comodo_Code_Signing_Certificates_Desc" xml:space="preserve">
+    <value>Кодовое подписание (Code Signing),посредством использования цифровых подписей, предоставляет возможность разработчикам
+программного обеспечения включать информацию о себе и также код со своим программным обеспечением. Ваши конечные
+пользователи, которые скачивают 32-битные или 64-разрядный цифровые подписи Portable Executable (. EXE,. OCX,. DLL или других)
+или. кабины файлов могут быть уверены, что этот код действительно от вас и не был изменён или испорчен с момента создания
+ и подписи.
+</value>
+  </data>
+  <data name="Comodo_Essential_SSL_Desc" xml:space="preserve">
+    <value>Выдаваемый в течение 10 минут, основной Сертификат SSL обеспечивает быстрые и экономически эффективное решение для
+для обеспечения безопасности операций клиентов. Что еще более важно, ваши клиенты уверены, что это безопасно вести бизнес
+вами, потому что конфиденциальная информация шифруется и остается частной.
+</value>
+  </data>
+  <data name="Comodo_Essential_SSL_Wildcard_Desc" xml:space="preserve">
+    <value>128-битные SSL-сертификаты предназначены для шифрования веб-сайтов с низким объемом онлайн-транзакций. Имея доверие
+более 99,3% существующих пользователей Интернета, Essential SSL представляет собой решение для новых веб-сайтов или сред,
+где доверие было установлено и организация проверки (для гарантии идентичности) не нужна.
+</value>
+  </data>
+  <data name="Comodo_EV_SSL_Desc" xml:space="preserve">
+    <value>Сертификаты EV SSL обеспечивают высокий уровень шифрования, защиты и доверия. Они сразу же убедят посетителей веб-сайта,
+ что это безопасно для проведения онлайн-транзакций, поворачивая зеленую адресную строку на новое поколение браузеров,
+таких как Internet Explorer 7 +, Firefox 3 + и Opera 9.5 +.
+</value>
+  </data>
+  <data name="Comodo_EV_SSL_EV_SGC_Desc" xml:space="preserve">
+    <value>Защита конфиденциальной информации клиентов, финансовых операций и передача конфиденциальных данных с идентичностью
+гарантируют сертфикаты Extended Validation (EV) SSL SGC. Эти сертификаты обеспечивая 128 - или 256-битное шифрование для
+более чем 99% посетителей веб-сайтов, предлагая самое сильное шифрование и гарантию идентичности доступны для каждого
+посетителя сайта - даже миллионов использующих старые версий ОС Windows и IE.
+</value>
+  </data>
+  <data name="Comodo_EV_SSL_Multi_Domain_Desc" xml:space="preserve">
+    <value>Мультидоменные сертификаты EV SSL (EV MDCs) позволяют обеспечить до 100 различных доменов или субдоменов с одним
+SSL-сертификатом.EV-технология добавляет дополнительный уровень доверия к онлайн-бизнесу,возвращая зелёную адресную
+строку браузера каждый раз, когда один из ваших клиентов входит в зону безопасности вашего сайта.
+</value>
+  </data>
+  <data name="Comodo_Instant_SSL_Desc" xml:space="preserve">
+    <value>Сертификаты InstantSSL позволят вам и вашим клиентам совершать сделки ,с уверенностью в том  что никто другой не сможет
+прочитать или изменить информацию, с которой вы путешествуете по Интернету. Это приводит к увеличению скорости
+обслуживания посетителей, снижению количества отказов веб-сайта и увеличению средней цены покупки.
+</value>
+  </data>
+  <data name="Comodo_Instant_SSL_Premium_Desc" xml:space="preserve">
+    <value>Сертификаты InstantSSL Premium  это профессиональное решение для обеспечения безопасности веб-сайтов электронной
+коммерции и предоставления убедительных визуальных гарантий того, что вашему веб-сайту можно доверять. InstantSSL 
+Premium сертификаты позволят вашим клиентам совершать  сделки с уверенностью. 
+</value>
+  </data>
+  <data name="Comodo_Instant_SSL_Pro_Desc" xml:space="preserve">
+    <value>Сертификат InstantSSL Pro позволяет вам и вашим клиентам совершать сделки ,с уверенностью в том  что никто другой не сможет
+прочитать или изменить информацию, с которой вы путешествуете по Интернету. Это приводит к увеличению скорости
+обслуживания посетителей, снижению количества отказов веб-сайта и увеличению средней цены покупки.
+</value>
+  </data>
+  <data name="Comodo_Multi_Domain_Desc" xml:space="preserve">
+    <value>Мультидоменные сертификаты (MDC)это ваше решени для обеспечения от двух до 100 доменов на одном сервере под одним
+SSL-сертификатом. Консолидация процесса управления SSL и управления SSL-шифрования для всех ваших доменов под одним
+SSL-сертификатом для нескольких доменов. Вы можете начать с реализации Comodo Multi-Domain SSL Certificate.
+</value>
+  </data>
+  <data name="Comodo_Positive_SSL_Desc" xml:space="preserve">
+    <value>Выдаваемый в течении 10 минут, положительный Сертификат SSL обеспечивает быстрое и экономически эффективное решение
+для обеспечения безопасности операций клиентов. Что еще более важно, ваши клиенты уверены, что безопасно вести бизнес с
+вами, потому что конфиденциальная информация шифруется и остается частной.
+</value>
+  </data>
+  <data name="Comodo_Positive_SSL_Wildcard_Desc" xml:space="preserve">
+    <value>128-битные SSL-сертификаты предназначены для шифрования веб-сайтов с низким объемом онлайн-транзакций. Имея доверие
+более 99,3% существующих пользователей Интернета, Positive SSL представляет собой решение для новых веб-сайтов или сред,
+где доверие было установлено и организация проверки (для гарантии идентичности) не нужна.Positive  SSL сертификаты имеют
+гарантию на $ 10,000.
+</value>
+  </data>
+  <data name="Comodo_Premium_SSL_Wildcard_Desc" xml:space="preserve">
+    <value>Шаблоны безопасности от Comodo SSL Премиум защитят неограниченное количество поддоменов на ваших сайтах,таких как
+www.yourdomain.com, secure.yourdomain.com и mail.yourdomain.com. Один сертификат Премиум SSL Wildcard экономит ваши 
+деньги и время, упрощая управление SSL-сертификатом.Используйте единый сертификат для обеспечения всех Ваших поддоменов.
+</value>
+  </data>
+  <data name="Comodo_SGC_Desc" xml:space="preserve">
+    <value>В сертификатах Comodo SGC SSL усовершенствована возможность шифрования устаревших браузеров с 40-битным шифрованием
+в полное 128 - или 256-битное шифрование.Это означает, что ваш сайт защищён и ему доверяет самое большое число
+пользователей интернета возможно, даже миллионы с использованием старых версий ОС Windows и Internet Explorer.
+</value>
+  </data>
+  <data name="Comodo_SGC_Wildcard_Desc" xml:space="preserve">
+    <value>Защита неограниченного количества поддоменов на вашем сайте с одного сертификта Comodo SGC Wildcard SSL (например, 
+www.yourdomain.com, secure.yourdomain.com, signup.yourdomain.com).Сертификат Comodo SGC Wildcard SSL является
+экономически эффективным и эффективным средством обеспечения всех поддоменов без необходимости управлять несколькими
+сертификатами.
+</value>
+  </data>
+  <data name="Comodo_Unified_Communication_UC_Desc" xml:space="preserve">
+    <value>Разработанный исключительно для инфраструктуры Microsoft Exchange и Office Communications, сертификаты от Comodo Unified 
+Communications позволяют единому сертификату обеспечить SSL связи для нескольких доменов и несколько имен узлов,
+ работающих на один адрес IP.
+</value>
+  </data>
+  <data name="Dashboard_Note" xml:space="preserve">
+    <value>Пожалуйста, настройте следующие пункты, прежде чем ваш сайт начнёт работу</value>
+  </data>
+  <data name="Dashboard_Notice1" xml:space="preserve">
+    <value>Настройка продуктов и ценообразование</value>
+  </data>
+  <data name="Dashboard_Notice2" xml:space="preserve">
+    <value>Настройте параметры оплаты</value>
+  </data>
+  <data name="Dashboard_Notice3" xml:space="preserve">
+    <value>Сконфигурируйте SMTP (простой протокол передачи почты) настройки, чтобы иметь возможность посылать письма от системы</value>
+  </data>
+  <data name="Enable_Test_Mode" xml:space="preserve">
+    <value>Включите тестовый режим</value>
+  </data>
+  <data name="GeoTrust_QuickSSL_Premium_Desc" xml:space="preserve">
+    <value>Сертификаты СертиGeoTrust QuickSSL Premium являются наиболее удобным и экономически эффективным решением для любого 
+бизнеса, где необходимо проводить безопасные онлайн-транзакции.Эти сертификаты позволяют 256-битное шифрование и
+вселяют уверенность и доверие в Ваших клиентов и деловых партнеров при предоставлении конфиденциальной информации
+через Интернет или мобильные устройства.
+</value>
+  </data>
+  <data name="GeoTrust_True_BusinessID_Desc" xml:space="preserve">
+    <value>GeoTrust® True BusinessID® сертификаты обеспечивают интернет-безопасность соединения end-to-end (от терминала клиента до
+сервера видимо) и идеально подходят для привлекающих внимание профилей, с высоким трафиком сайтов, которые могут стать 
+мишенью для фишинга. Правда BusinessID сертификат обеспечивает до 256-битное шифрование и уплотнение проверки личности
+в одной связке.
+</value>
+  </data>
+  <data name="GeoTrust_True_BusinessID_Multi_Domain_Desc" xml:space="preserve">
+    <value>С сертификатом True BusinessID Multi-Domain, вы можете добавлять, редактировать или удалять до 25 доменных имен в течение 
+всего срока действия сертификата. Вы можете добавлять, редактировать и удалять любые дополнительные доменные имена
+к альт-имени субъекта (SAN) поле во время процесса регистрации.
+</value>
+  </data>
+  <data name="GeoTrust_True_BusinessID_Wildcard_Desc" xml:space="preserve">
+    <value>Истинный Wildcard BusinessID является простым, доступным решением.Истинный Wildcard BusinessID является идеальным
+решением, как если вам нужно защитить большое количество полных доменов (Fully Qualified Domains), так и если часть доменов 
+или одни и те же базы доменных имен, находятся на одном физическом сервере и одни и те же имена доменов второго уровня.
+</value>
+  </data>
+  <data name="GeoTrust_True_BusinessID_with_EV_Desc" xml:space="preserve">
+    <value>EV SSL может помочь вам защитить ваш сайт от фишинг-атак и увеличить транзакции ваших клиентов.Истинный (True) BusinessID с
+EV поставляется с высоким уровнем идентификации и аутентификации, до 256-битного шифрования,и уплотнением GeoTrust True
+Site®.
+</value>
+  </data>
+  <data name="GeoTrust_True_Business_ID_With_EV_Multi_Domain_Desc" xml:space="preserve">
+    <value>Сделать заявление сильной безопасности с зеленой адресной строки. GeoTrust ® True BusinessID с EV (Extended Validation)
+Multi-Domain-наш защитный продукт бизнеса премиум-класса SSL, наглядно подтверждающий высокий уровень аутентификации
+среди доступных SSL-сертификатов.
+</value>
+  </data>
+  <data name="InvoiceThankMsg" xml:space="preserve">
+    <value>Мы благодарим Вас за Ваш бизнес</value>
+  </data>
+  <data name="Invoice_Note" xml:space="preserve">
+    <value>Все цены указаны в USD. Если у вас есть какие-либо вопросы на этот счет, свяжитесь с нами</value>
+  </data>
+  <data name="I_have_a" xml:space="preserve">
+    <value>У меня есть</value>
+  </data>
+  <data name="Login_Desc" xml:space="preserve">
+    <value>Войти в свою учетную запись, чтобы посмотреть в порядке резюме выписки по счету, отложенные ордера и другие вещи</value>
+  </data>
+  <data name="OrderDetClickNote" xml:space="preserve">
+    <value>Нажмите здесь для просмотра деталей заказа</value>
+  </data>
+  <data name="OrderDetClickNote2" xml:space="preserve">
+    <value>Нажмите здесь для просмотра деталей посредника</value>
+  </data>
+  <data name="OrderDetClickNote3" xml:space="preserve">
+    <value>Нажмите здесь для просмотра деталей клиента</value>
+  </data>
+  <data name="PaymentMethodNote" xml:space="preserve">
+    <value>Кредитные карты не наполнена (нет средств на карте)</value>
+  </data>
+  <data name="Pricing_Note" xml:space="preserve">
+    <value>Пожалуйста, добавьте наценку (в%), которая будет добавлена к существующей стоимости покупки. Это только один раз на
+продукт.
+</value>
+  </data>
+  <data name="RapidSSL_Desc" xml:space="preserve">
+    <value>RapidSSL является отраслевым стандартом 128/256 битовых сертификатов одного корня SSL. RapidSSL сертификаты браузеров,
+распознаются около 99% браузеров,включая IE 5.01 +, Netscape 4.7+ and Mozilla 1+ и множеством других браузеров.
+</value>
+  </data>
+  <data name="RapidSSL_Wildcard_Desc" xml:space="preserve">
+    <value>Cертификаты RapidSSL Wildcard позволя.т защитить неограниченное количество поддоменов на одно доменное имя с одним 
+сертификатом. RapidSSL Wildcard это низкая стоимость и простота в управлении.
+</value>
+  </data>
+  <data name="Reseller_Desc" xml:space="preserve">
+    <value>Пожалуйста, ознакомьтесь с информацией на этой странице, когда Вы закончите этот обзор</value>
+  </data>
+  <data name="Sign_in_to_your" xml:space="preserve">
+    <value>Войдите в свой</value>
+  </data>
+  <data name="Thawte_Code_Signing_Certificate_Desc" xml:space="preserve">
+    <value>С появлением онлайнового распространения, разработка и распространения функциональный код стала проще, чем когда-либо.
+Однако такая среда также подвергает код и программное обеспечение потенциальным опасностям, которые представляют собой
+мошенники и вредоносные коды. Не подвергайте ваших клиентов этим угрозам.С  сертификатом Thawte® Code Signing, вы можете
+защитить своих клиентов и обеспечить им безопасный, надежный код, который они заслуживают.
+</value>
+  </data>
+  <data name="Thawte_SGC_SuperCerts_Desc" xml:space="preserve">
+    <value>Thawte SGC SuperCert ® обеспечивает SGC SSL сертификаты с полной аутентификацией, и способен на 256-битное шифрование
+с минимальным уровнем шифрования 128-битной защиты для 99,9% пользователей даже со старими браузерами и опознованием
+ около 99% их.
+</value>
+  </data>
+  <data name="Thawte_SSL_123_Desc" xml:space="preserve">
+    <value>SSL123 является входным уровнем Thawte (название фирмы) сертификата, который обеспечивает проверку, что домен 
+зарегистрирован,и что Вы дали разрешение на покупку сертификата.
+</value>
+  </data>
+  <data name="Thawte_SSL_Web_Server_Desc" xml:space="preserve">
+    <value>Thawte® SSL Web Server Certificate являетются подлинными (полностью авторизированными) SSL-сертификатами, которые
+предлагают комплексные процедуры аутентификации с 256, 128, 56 или 40-битным шифрованием и распознаванием около 99%
+браузеров.
+</value>
+  </data>
+  <data name="Thawte_SSL_Web_Server_EV_Desc" xml:space="preserve">
+    <value>Сертификат компании Thawte's SSL Web Server с Extended Validation (EV) предлагается корпорациям и государственным
+учреждениям с высоким отраслевым стандартом для идентификации и аутентификации, а также с 256 -, 128 -, 56 - или 40-битным
+шифрованием.
+</value>
+  </data>
+  <data name="Thawte_SSL_Web_Server_Wildcard_Desc" xml:space="preserve">
+    <value>Thawte SSL Webserver Wildcard является простым, доступным решением.Истинный Wildcard BusinessID является идеальным
+решением, как если вам нужно защитить большое количество полных доменов (Fully Qualified Domains), так и если часть доменов 
+или одни и те же базы доменных имен, находятся на одном физическом сервере и одни и те же имена доменов второго уровня.
+</value>
+  </data>
+  <data name="TrustKeeper_PCI_DSS_Desc" xml:space="preserve">
+    <value>Trustwave PCI Product защищает передачу важных данных на веб-сайты, интранет, экстранет и использует минимум 40-битные и
+максимум 256-битное шифрование (самое высокое,какое каждый отдельный браузер позволяет).Он также включает Trustwave
+Secured Seal.
+</value>
+  </data>
+  <data name="TrustKeeper_Plus_EV_SSL_Desc" xml:space="preserve">
+    <value>Сертификаты EV SSL проверяются в высшей степени, чтобы обеспечить доверие потребителей к личности оператора веб-сайта.
+Если вы принимаете заказы в режиме онлайн, вам необходимо получить зеленую полоску с EV SSL. Клиенты будут получать
+зеленую полосу, как поразительный показатель доверия к веб-браузер, и вы увидите меньше оставленных тележек и больше
+конверсий.
+</value>
+  </data>
+  <data name="TrustKeeper_SSL_Plus_Desc" xml:space="preserve">
+    <value>Trustwave понимает давление торговцев чтобы доказать соответствие Payment Card Industry Data Security Standard (PCI DSS).
+TrustKeeper отвечает техническим требованиям удалённых платежей и соответствует разрешению замысла помощи торговцам 
+соответствовать стандартам безопасности всех компаний кредитных карт.(эмитенов карт видимо)
+</value>
+  </data>
+  <data name="Trustwave_Domain_Validated_SSL_Desc" xml:space="preserve">
+    <value>Проверочные сертификаты домена фирмы Trustwave лучше всего подходит для малого и среднего капитала (бизнеса)
+электронной коммерции, веб-сайтов. Проверенными сертификатами домен предлагаем для 99% настольных компьютеров 
+и серверов с совместимость браузера с до 256-битным шифрованием SSL и 204 - битным CSR шифрования.
+</value>
+  </data>
+  <data name="Trustwave_Enterprise_SSL_Desc" xml:space="preserve">
+    <value>Вы предприятие,которое ищет наивысшую гарантию?Сертификаты Trustwave  Enterprise SSL обеспечивают все, что вам
+необходимо для защиты одного домена и обеспечивают вам надежность и безопасность вашего сайта с нашей
+нивысшей опорной гарантийной частью на стандартном сертификате SSL.
+</value>
+  </data>
+  <data name="Trustwave_Premium_EV_SSL_Desc" xml:space="preserve">
+    <value>Сертификаты EV SSL проверяются в высшей степени,чтобы обеспечить доверие потребителей к личности оператора веб-сайта.
+Если вы принимаете заказы в режиме онлайн, вам необходимо получить зеленую полоску с EV SSL. Клиенты будут получать
+зеленую полосу, как поразительный показатель доверия к веб-браузеру, и вы увидите меньше оставленных тележек и больше
+конверсий.
+</value>
+  </data>
+  <data name="Trustwave_Premium_SSL_Desc" xml:space="preserve">
+    <value>Вам нужно защитить одно доменное имя сервера? Trustwave Premium SSL-сертификаты обеспечивают все, что вам необходимо
+для защиты одного домена и гарантируют вам, что ваш сайт является надежным и безопасным. Каждый сертификат Trustwave SSL
+включает динамическую защиту безопасности сайта, чтобы дать Вашим клиентам уверенность в вашей личности и чувствовать 
+себя в безопасности при ведении бизнеса с вами.
+</value>
+  </data>
+  <data name="Trustwave_Premium_Wildcard_SSL_Desc" xml:space="preserve">
+    <value>Вам нужно защитить несколько серверов имен поддоменов?Сертификаты Trustwave Premium Wildcard SSL обеспечивают быстрый и простой способ для защиты нескольких поддоменных имён и обеспечивают своим клиентам надежность и безопасность сайта. Вы можете использовать сертификат Trustwave Wildcard SSL для обеспечения безопасности таких доменах, как: www.mycompany.com, mail.mycompany.com, secure.mycompany.com и многих других! Каждый сертификат Trustwave SSL включает динамическое уплотнение безопасности сайта, чтобы дать Вашим клиентам уверенность в вас и чувствовать себя в безопасности при ведении бизнеса с вами.Сертификат Premium Trustwave Wildcard SSL имеет функцию 256-битного шифрования,и включает в себя гарантию идентификации  на $ 100,000 и, не задавая вопросов, политику возврата денег в течении 30 дней. Все наши сертификаты оснащены бесплатным переизданий в течение всего срока сертификата.
+Бесплатный перевыпуск For Life.
+Trustwave предлагает вам бесплатное переиздание SSL-сертификата по любой причине.Сбой вашего сервера, и вы потеряли свой закрытый ключ?Просто войдите в Trustwave SSL Control Center, и вы можете быстро перевыпустить сертификат, вернувшись в бизнес с минимальным временем простоя.
+Гарантия исполнение обязательств.
+Trustwave предлагает 30-дневную гарантию возврата денег. Если по каким-либо причинам вы не удовлетворены своим SSL-сертификатом, просто дайте нам знать, и мы вернем Вам стоимость покупки. Это просто, удовлетворение потребностей клиентов является нашей главной целью.</value>
+  </data>
+  <data name="Trustwave_Secure_Email_Digital_ID_Desc" xml:space="preserve">
+    <value>Trustwave Secure E-Mail Digital Ids позволит вам и вашей организации защитить ваши сообщения по электронной почте
+экономически эффективным образом. С помощью этого сертификата, вы можете гарантировать конфиденциальность сообщений
+электронной почты и вложений быстро и без особых усилий.
+</value>
+  </data>
+  <data name="UsePaypal" xml:space="preserve">
+    <value>Используйте свой адрес эл.почты PayPal</value>
+  </data>
+  <data name="UserProfile_Desc" xml:space="preserve">
+    <value>Пожалуйста, ознакомьтесь с информацией на этой странице, когда Вы закончите этот обзор</value>
+  </data>
+  <data name="VeriSign_Code_Signing_Certificate_Desc" xml:space="preserve">
+    <value>Для разработчиков программного обеспечения и издателей активного содержимого, подписание кода уменьшает сообщения об
+шибках и создает доверие.Сертификаты VeriSign ® Code Signing сертификаты для Microsoft ® Authenticode ® удостоверяют вашу
+личность и проверяют целостность кода.
+</value>
+  </data>
+  <data name="VeriSign_Secure_Site_Desc" xml:space="preserve">
+    <value>Сертификат сайта защищенного VeriSign SSL обеспечивает минимум 40-битное и максимум 256-битное шифрование и распознаются
+более чем 99% браузеров.Она также включает в себя гарантию на $ 100,000 и печати обеспеченные VeriSign
+</value>
+  </data>
+  <data name="VeriSign_Secure_Site_Pro_Desc" xml:space="preserve">
+    <value>Сертификат сайта защищённого VeriSign Pro SSL обеспечивает 128-битное шифрование. Secure Pro сайта включена по Server Gated
+Cryptography (SGC), чтобы обеспечить сильное шифрование посетителей сайта.
+</value>
+  </data>
+  <data name="VeriSign_Secure_Site_Pro_SGC_Desc" xml:space="preserve">
+    <value>Сертификат защиты сайта VeriSign Pro SLL обеспечивает 128-битное шифрование. Secure Pro сайта включена по Server Gated
+Cryptography (SGC), чтобы обеспечить надежное шифрование для посетителей сайта. Она также включает в себя гарантию на
+$ 250,000 и VeriSign Secured Seal.
+</value>
+  </data>
+  <data name="VeriSign_Secure_Site_Pro_with_EV_Desc" xml:space="preserve">
+    <value>Сертификат VeriSign Secure Site Pro with EV SSL обеспечивает минимум 128-бит до 256-битное шифрование и распознавание более чем
+чем 99% браузеров.
+</value>
+  </data>
+  <data name="VeriSign_Secure_Site_with_EV_Desc" xml:space="preserve">
+    <value>Сертификат VeriSign Secure Site с EV SSL обеспечивает минимум 40-битные и  максимум 256-битное шифрование и распознавание
+ более чем 99% браузеров. Он также включает в себя гарантию на $ 100,000 и VeriSign Secured Seal.
+</value>
+  </data>
+  <data name="VeriSign_Trust_Seal_Desc" xml:space="preserve">
+    <value>Доверие превращает посетителей в клиентов, развивает повторные сделоки и увеличивает продажи.VeriSign Trust™ Seal
+помогает привлечь доверие на ваш сайт с помощью аутентификации вашего бизнеса, защищая его от вредоносных программ и
+повышая его признание и доверие, показав бренд VeriSign.
+</value>
+  </data>
+  <data name="UseMoneybookers" xml:space="preserve">
+    <value>Use Your Moneybookers Email Address!</value>
+  </data>
+</root>

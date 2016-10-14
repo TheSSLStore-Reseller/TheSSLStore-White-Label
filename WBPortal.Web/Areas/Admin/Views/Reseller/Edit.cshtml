@@ -1,0 +1,450 @@
+﻿@using WBSSLStore.Domain
+@model CusUserUserOption
+@{
+    ViewBag.Title = "Edit";
+
+    bool StopReselleremail = Model.objUserOption.StopResellerEmail ?? false;
+    bool StopResellerCustEmail = Model.objUserOption.StopResellerCustomerEmail ?? false;
+    //ViewBag.StopResellerEmail = Model.objUserOption.StopResellerEmail ?? false;
+    //ViewBag.StopResellerCustomerEmail = Model.objUserOption.StopResellerCustomerEmail ?? false;
+    ViewBag.version = WBSSLStore.Web.Helpers.Caching.SiteCacher.ResourceVersion();  
+
+}
+@*<script src="@Url.Content("~/content/Admin/js/common.min.js")" language="javascript" type="text/javascript"></script>*@
+@System.Web.Optimization.Scripts.Render("/bundales/admincommonjs?v=" + ViewBag.version)
+<script type="text/javascript" language="javascript">
+    var objmsg = '@WBSSLStore.Resources.ErrorMessage.Message.ValidPassword_Caption';
+    var objEmailExist = '@WBSSLStore.Resources.GeneralMessage.Message.Email_Exist_Caption';
+</script>
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.objResContract.ID)
+    @Html.HiddenFor(model => model.objResContract.SiteID)
+    @Html.HiddenFor(model => model.objResContract.UserID)
+    @Html.HiddenFor(model => model.objResContract.Reseller.ID)
+    @Html.HiddenFor(model => model.objResContract.Reseller.Address.ID)
+    @Html.HiddenFor(model => model.objResContract.Reseller.UserTypeID)
+    @Html.HiddenFor(model => model.objResContract.Reseller.AuditID)
+    @Html.HiddenFor(model => model.objResContract.Reseller.AddressID)
+    @Html.HiddenFor(model => model.objResContract.Reseller.SiteID)
+    @Html.HiddenFor(model => model.objResContract.AuditDetails.ID)
+    @Html.HiddenFor(model => model.objResContract.AuditDetails.DateCreated)
+    @Html.HiddenFor(model => model.objResContract.Reseller.AuditDetails.ID)
+
+    @Html.HiddenFor(model => model.objUserOption.ID)
+    @Html.HiddenFor(model => model.objUserOption.UserID)
+    @Html.HiddenFor(model => model.objUserOption.SiteID)
+    
+    
+
+    @Html.ValidationSummary(true)
+    <tr>
+        <td align="left" valign="top">
+            <table width="881" border="0" align="left" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td width="7" align="left" valign="top">
+                        <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/barleft.gif" alt="whitebrand" width="7" height="55">
+                    </td>
+                    <td width="866" align="left" valign="middle" class="hdbarbg">
+                        <table width="840" border="0" align="center" cellpadding="1" cellspacing="1">
+                            <tr>
+                                <td width="407" align="left" valign="middle" class="head1">
+                                    @if (Model.objResContract != null && Model.objResContract.ID > 0)
+                                    {
+                                        <span>@*Edit*@ @WBSSLStore.Resources.GeneralMessage.Message.Edit_Caption @Html.DisplayFor(mode => mode.objResContract.Reseller.UserType)</span>
+                                    }
+                                    else
+                                    {
+                                        <span>@*Add Reseller*@ @WBSSLStore.Resources.GeneralMessage.Message.AddReseller_Caption</span>
+                                    }
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td width="9" align="right" valign="top">
+                        <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/barright.gif" alt="whitebrand" width="9" height="55">
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td align="left" valign="top" class="contbg">
+            <table width="870" border="0" align="center" cellpadding="0" cellspacing="7">
+                @if (!string.IsNullOrEmpty(@ViewBag.ErrMsg))
+                {
+                    <tr>
+                        <td class="errormsg">
+                            @WBSSLStore.Resources.GeneralMessage.Message.SmtpConfigureMSG_AdminMaster <a href="@Url.Action("smtpsettings", "sitesettings")">
+                                @WBSSLStore.Resources.GeneralMessage.Message.Click_Here
+                            </a> @WBSSLStore.Resources.GeneralMessage.Message.To_Configure
+                        </td>
+                    </tr>
+                }
+                <tr>
+                    <td width="867" align="center" valign="top" class="bgclr">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td align="left" valign="top">
+                                    <table width="820" border="0" align="center" cellpadding="0" cellspacing="0">
+                                        @if (ViewBag.IsUserExist != null && Convert.ToBoolean(ViewBag.IsUserExist))
+                                        {
+                                            <tr>
+                                                <td align="left" valign="middle">
+                                                    &nbsp;
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="left" valign="middle" class="errormsg">
+                                                    @WBSSLStore.Resources.GeneralMessage.Message.Email_Exist_Caption
+                                                </td>
+                                            </tr>
+                                        }
+
+                                        @if (Model.objResContract != null && Model.objResContract.ID > 0)
+                                        {
+                                            <tr>
+                                                <td height="30" align="left" valign="middle">
+                                                    <h1>
+                                                        @*Contract Name*@ @WBSSLStore.Resources.GeneralMessage.Message.Contract_Caption
+                                                        : @Html.DisplayFor(model => model.objResContract.Contract.ContractName)
+                                                    </h1>
+                                                </td>
+                                            </tr>
+                                        }
+                                        <tr>
+                                            <td align="left" valign="top">
+                                                <table width="80%" border="0" align="center" cellpadding="1" cellspacing="2">
+                                                    <tr>
+                                                        <td width="31%" align="right" valign="middle" class="bold">
+                                                            @Html.LabelFor(model => model.objResContract.Contract.ContractName): <span class="redfont">*</span>
+                                                        </td>
+                                                        <td width="69%" align="left" valign="middle">
+                                                            <label>
+                                                                @Html.DropDownListFor(model => model.objResContract.ContractID, new SelectList(ViewBag.Contract as System.Collections.IEnumerable, "ID", "ContractName"), "--------" + @WBSSLStore.Resources.GeneralMessage.Message.Select_Contract + "--------", new { @class = "listmenu", ID = "ddlContract" })
+                                                                @Html.ValidationMessageFor(model => model.objResContract.ContractID)
+                                                            </label>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td width="31%" align="right" valign="middle" class="bold">
+                                                            @Html.LabelFor(model => model.objResContract.Reseller.CompanyName): <span class="redfont">*</span>
+                                                        </td>
+                                                        <td width="69%" align="left" valign="middle">
+                                                            <label>
+                                                                @Html.TextBoxFor(model => model.objResContract.Reseller.CompanyName, new { @class = "inputbox", ID = "txtCompanyName" })
+                                                                @Html.ValidationMessageFor(model => model.objResContract.Reseller.CompanyName)
+                                                            </label>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="right" valign="middle" class="bold">
+                                                            @Html.LabelFor(model => model.objResContract.Reseller.FirstName):<span class="redfont"> *</span>
+                                                        </td>
+                                                        <td align="left" valign="middle">
+                                                            <label>
+                                                                @Html.TextBoxFor(model => model.objResContract.Reseller.FirstName, new { @class = "inputbox", ID = "txtFirstName" })
+                                                                @Html.ValidationMessageFor(model => model.objResContract.Reseller.FirstName)
+                                                            </label>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="right" valign="middle" class="bold">
+                                                            @Html.LabelFor(model => model.objResContract.Reseller.LastName): <span class="redfont">*</span>
+                                                        </td>
+                                                        <td align="left" valign="top">
+                                                            <label>
+                                                                @Html.TextBoxFor(model => model.objResContract.Reseller.LastName, new { @class = "inputbox", ID = "txtLastName" })
+                                                                @Html.ValidationMessageFor(model => model.objResContract.Reseller.LastName)
+                                                            </label>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="right" valign="middle" class="bold">
+                                                            @Html.LabelFor(model => model.objResContract.Reseller.Email):<span class="redfont"> *</span>
+                                                        </td>
+                                                        <td align="left" valign="top">
+                                                            @Html.TextBoxFor(model => model.objResContract.Reseller.Email, new { @class = "inputbox", ID = "txtEmail", @dataid = (Model == null ? 0 : Model.objResContract.UserID) })
+                                                            @Html.ValidationMessageFor(model => model.objResContract.Reseller.Email)
+                                                            <span id="pLoaderImg" class="redfont"></span>
+                                                        </td>
+                                                    </tr>
+                                                    @if (Model.objResContract == null || Model.objResContract.ID == 0)
+                                                    {
+                                                        <tr>
+                                                            <td align="right" valign="middle" class="bold">
+                                                                @Html.LabelFor(model => model.objResContract.Reseller.PasswordHash):<span class="redfont"> *</span>
+                                                            </td>
+                                                            <td align="left" valign="top">
+                                                                @Html.PasswordFor(model => model.objResContract.Reseller.PasswordHash, new { @class = "inputbox", ID = "txtPassword", @onblur = "ValidatePassword(this,'btnSubmit','spMsg');" })
+                                                                @Html.ValidationMessageFor(model => model.objResContract.Reseller.PasswordHash)
+                                                                <span id="spMsg" class="redfont"></span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td align="right" valign="middle" class="bold">
+                                                                @Html.LabelFor(model => model.objResContract.Reseller.ConfirmPassword):<span class="redfont"> *</span>
+                                                            </td>
+                                                            <td align="left" valign="top">
+                                                                @Html.PasswordFor(model => model.objResContract.Reseller.ConfirmPassword, new { @class = "inputbox", ID = "txtConfirmPassword" })
+                                                                @Html.ValidationMessageFor(model => model.objResContract.Reseller.ConfirmPassword)
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                    else
+                                                    {
+                                                        <tr>
+                                                            <td align="right" valign="middle" class="bold" colspan="2">
+                                                                @Html.HiddenFor(model => model.objResContract.Reseller.PasswordHash)
+                                                                @Html.HiddenFor(model => model.objResContract.Reseller.ConfirmPassword)
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                    <tr>
+                                                        <td align="right" valign="middle" class="bold">
+                                                            @Html.LabelFor(model => model.objResContract.Reseller.AlternativeEmail):
+                                                        </td>
+                                                        <td align="left" valign="top">
+                                                            <table width="100%" border="0" align="left" cellpadding="0" cellspacing="0">
+                                                                <tr>
+                                                                    <td width="68%" align="left" valign="middle">
+                                                                        @Html.TextBoxFor(model => model.objResContract.Reseller.AlternativeEmail, new { @class = "inputbox", ID = "txtAlternativeEmail" })
+                                                                    </td>
+                                                                    <td width="32%" align="left" valign="middle">
+                                                                        @WBSSLStore.Resources.GeneralMessage.Message.Optional_caption
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="right" valign="middle" class="bold">
+                                                            @Html.LabelFor(model => model.objResContract.Reseller.Address.Street):<span class="redfont"> *</span>
+                                                        </td>
+                                                        <td align="left" valign="top">
+                                                            @Html.TextBoxFor(model => model.objResContract.Reseller.Address.Street, new { @class = "inputbox", ID = "txtAddress1" })
+                                                            @Html.ValidationMessageFor(model => model.objResContract.Reseller.Address.Street)
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="right" valign="middle" class="bold">
+                                                            @Html.LabelFor(model => model.objResContract.Reseller.Address.Country.CountryName):<span class="redfont">
+                                                                *
+                                                            </span>
+                                                        </td>
+                                                        <td align="left" valign="top">
+                                                            @Html.DropDownListFor(model => model.objResContract.Reseller.Address.CountryID, new SelectList(ViewBag.Country as System.Collections.IEnumerable, "ID", "CountryName"), "--------" + @WBSSLStore.Resources.GeneralMessage.Message.Select_Country + "--------", new { @class = "listmenu", ID = "ddlCountry" })
+                                                            @Html.ValidationMessageFor(model => model.objResContract.Reseller.Address.CountryID)
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="right" valign="middle" class="bold">
+                                                            @Html.LabelFor(model => model.objResContract.Reseller.Address.State): <span class="redfont">*</span>
+                                                        </td>
+                                                        <td align="left" valign="top">
+                                                            @Html.EditorFor(model => model.objResContract.Reseller.Address.State)
+                                                            @Html.ValidationMessageFor(model => model.objResContract.Reseller.Address.State)
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="right" valign="middle" class="bold">
+                                                            @Html.LabelFor(model => model.objResContract.Reseller.Address.City):<span class="redfont"> *</span>
+                                                        </td>
+                                                        <td align="left" valign="top">
+                                                            @Html.TextBoxFor(model => model.objResContract.Reseller.Address.City, new { @class = "inputbox", ID = "txtCity" })
+                                                            @Html.ValidationMessageFor(model => model.objResContract.Reseller.Address.City)
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="right" valign="middle" class="bold">
+                                                            @Html.LabelFor(model => model.objResContract.Reseller.Address.Zip): <span class="redfont">*</span>
+                                                        </td>
+                                                        <td align="left" valign="top">
+                                                            @Html.TextBoxFor(model => model.objResContract.Reseller.Address.Zip, new { @class = "inputbox", ID = "txtZip", @maxlength = "30" })
+                                                            @Html.ValidationMessageFor(model => model.objResContract.Reseller.Address.Zip)
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="right" valign="middle" class="bold">
+                                                            @Html.LabelFor(model => model.objResContract.Reseller.Address.Phone):<span class="redfont"> *</span>
+                                                        </td>
+                                                        <td align="left" valign="top">
+                                                            @Html.TextBoxFor(model => model.objResContract.Reseller.Address.Phone, new { @class = "inputbox", ID = "txtPhone", @maxlength = "20" })
+                                                            @Html.ValidationMessageFor(model => model.objResContract.Reseller.Address.Phone)
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="right" valign="middle" class="bold">
+                                                            @Html.LabelFor(model => model.objResContract.Reseller.Address.Fax):
+                                                        </td>
+                                                        <td align="left" valign="top">
+                                                            @Html.TextBoxFor(model => model.objResContract.Reseller.Address.Fax, new { @class = "inputbox", ID = "txtFax", @maxlength = "30" })
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="right" valign="middle" class="bold">
+                                                            @Html.LabelFor(model => model.objResContract.Reseller.Address.Mobile):
+                                                        </td>
+                                                        <td align="left" valign="top">
+                                                            @Html.TextBoxFor(model => model.objResContract.Reseller.Address.Mobile, new { @class = "inputbox", ID = "txtMobile", @maxlength = "30" })
+                                                        </td>
+                                                    </tr>
+                                                    @if (Model.objResContract != null && Model.objResContract.ID > 0)
+                                                    {
+                                                        <tr>
+                                                            <td height="24" align="right" valign="middle" class="bold">
+                                                                @Html.LabelFor(model => model.objResContract.Reseller.AuditDetails.DateCreated):
+                                                            </td>
+                                                            <td align="left" valign="middle" class="bold">
+                                                                @Html.DisplayFor(model => model.objResContract.Reseller.AuditDetails.DateCreated)
+                                                                @Html.HiddenFor(model => model.objResContract.Reseller.AuditDetails.DateCreated)
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td height="24" align="right" valign="middle" class="bold">
+                                                                @WBSSLStore.Resources.GeneralMessage.Message.Reseller_TotalPur :
+                                                            </td>
+                                                            <td align="left" valign="middle" class="bold">
+                                                                @ViewBag.TotalPurchase
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td height="24" align="right" valign="middle" class="bold">
+                                                                @WBSSLStore.Resources.GeneralMessage.Message.Number_of_Certs :
+                                                            </td>
+                                                            <td align="left" valign="middle" class="bold">
+                                                                @ViewBag.TotalCertificates
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                    <tr>
+                                                        <td align="right" valign="middle" class="bold">
+                                                            @Html.LabelFor(model => model.objResContract.Reseller.RecordStatusID):
+                                                        </td>
+                                                        <td align="left" valign="top">
+                                                            @Html.DropDownListFor(model => model.objResContract.Reseller.RecordStatusID, Enum.GetValues(typeof(RecordStatus)).Cast<RecordStatus>().Select(x => new SelectListItem { Text = ((int)x == 0 ? WBSSLStore.Resources.GeneralMessage.Message.ddlStatus_InActive : WBSSLStore.Resources.GeneralMessage.Message.ddlStatus_Active), Value = ((int)x).ToString() }).Where(x => Convert.ToInt16(x.Value) != (int)RecordStatus.DELETED), new { @class = "listmenusmall" })
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="right" valign="middle" class="bold">
+                                                            @Html.LabelFor(model => model.objResContract.Reseller.HeardBy):
+                                                        </td>
+                                                        <td align="left" valign="top">
+                                                            @Html.TextBoxFor(model => model.objResContract.Reseller.HeardBy, new { @class = "inputbox", ID = "txtHeardBy" })
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="right" valign="middle" class="bold">
+                                                            Stop Renewal Reminder to Reseller :
+                                                        </td>
+                                                        <td align="left" valign="top">
+
+                                                            
+                                                            
+                                                            @Html.CheckBox("chkStopResellerEmail", StopReselleremail, new { @id = "chkStopResellerEmail" })
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="right" valign="middle" class="bold">
+                                                            Stop Renewal Reminder to Reseller's Customer :
+                                                        </td>
+                                                        <td align="left" valign="top">
+                                                            
+                                                            @Html.CheckBox("chkStopResellerCustomerEmail", StopResellerCustEmail, new { @id = "chkStopResellerCustomerEmail" })
+                                                            
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="right" valign="middle" class="bold">
+                                                            &nbsp;
+                                                        </td>
+                                                        <td align="left" valign="top">
+                                                            &nbsp;
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="left" valign="top">
+                                                <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/grydivider.gif" alt="" width="840" height="6">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="left" valign="top">
+                                                <table width="100%" border="0" align="left" cellpadding="0" cellspacing="0">
+                                                    <tr>
+                                                        <td height="8" align="left" valign="top"></td>
+                                                    </tr>
+                                                    @if (Model.objResContract != null && Model.objResContract.ID > 0)
+                                                    {
+                                                        <tr>
+                                                            <td align="left" valign="top">
+                                                                <table width="650" border="0" align="center" cellpadding="0" cellspacing="3">
+                                                                    <tr>
+                                                                        <td width="183" align="center" valign="middle">
+                                                                            <label>
+                                                                                <input name="button" type="button" class="bluebtnlite" id="button" value="@WBSSLStore.Resources.GeneralMessage.Message.Acc_summary_btn"
+                                                                                       onclick="location.href='@Url.Action("Statement", "account", new { id = Model.objResContract.Reseller.ID })'" />
+                                                                            </label>
+                                                                        </td>
+                                                                        <td width="163" align="center" valign="middle">
+                                                                            <label>
+                                                                                <input name="button3" type="button" class="bluebtnlite" id="button3" value="@WBSSLStore.Resources.GeneralMessage.Message.Manage_Order_btn"
+                                                                                       onclick="location.href='@Url.Action("index", "orders", new { id = Model.objResContract.Reseller.ID })'" />
+                                                                            </label>
+                                                                        </td>
+                                                                        <td width="131" align="center" valign="middle">
+                                                                            <input name="button6" type="button" class="bluebtnlite" id="button6" value="@WBSSLStore.Resources.GeneralMessage.Message.AddFund_btn"
+                                                                                   onclick="location.href='@Url.Action("addfund", "account", new { id = Model.objResContract.Reseller.ID })'" />
+                                                                        </td>
+                                                                        <td width="180" align="center" valign="middle">
+                                                                            @*<input name="button7" type="button" class="bluebtnlite" id="button7" value="Reminder Settings"
+                                                                                onclick="location.href='reminder-settings.htm'" />*@ &nbsp;
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                    <tr>
+                                                        <td align="left" valign="top">
+                                                            <table width="80%" border="0" align="center" cellpadding="1" cellspacing="2">
+                                                                <tr>
+                                                                    <td height="8" align="right" valign="middle" class="bold"></td>
+                                                                    <td height="8" align="left" valign="top"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td width="31%" align="right" valign="middle" class="bold">
+                                                                        &nbsp;
+                                                                    </td>
+                                                                    <td width="69%" align="left" valign="top">
+                                                                        <label>
+                                                                            <input name="btnSubmit" type="submit" class="bluebtn" id="btnSubmit" value="@WBSSLStore.Resources.GeneralMessage.Message.SAVE_btn" />
+                                                                        </label>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="left" valign="top">
+                                                &nbsp;
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td height="8" align="left" valign="top"></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+}

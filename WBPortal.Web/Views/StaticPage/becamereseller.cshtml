@@ -1,0 +1,45 @@
+﻿@model WBSSLStore.Service.ViewModels.StaticPageViewModel
+@{
+    ViewBag.version = WBSSLStore.Web.Helpers.Caching.SiteCacher.ResourceVersion();
+}
+@section headerTags{
+    @Html.Partial("_renderSEO", Model != null && Model.CMSPage != null ? Model.CMSPage : new WBSSLStore.Domain.CMSPage())
+}
+@section sitecss{
+
+}
+@section Jscripts{
+}
+
+@Html.Partial("_banner", new Tuple<string, string>("", "Become a Reseller"))
+<div class="content">
+    <div class="wrapper">
+        <div class="column3">
+            <div class="mobtopcol">
+                <div class="column3-2">
+                    <div class="cmnpagewrap">
+                        <h2>Reseller</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis interdum quis enim et iaculis. In ultrices ex quis risus ultrices, quis commodo sem congue. Nam malesuada bibendum dolor, in euismod neque venenatis id. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis malesuada ultrices venenatis. Etiam vulputate sodales velit, at finibus elit lobortis at. Duis ut purus eget risus dapibus pretium vitae in quam. Donec elementum cursus blandit.</p>
+                        <p>Curabitur aliquet quam a nisl pellentesque rhoncus. Sed lacus elit, tincidunt nec semper eget, vehicula ac neque. Nulla commodo nibh eget nisl luctus, in sollicitudin ligula maximus. Sed gravida sem neque.</p>
+                        <p>Sed faucibus congue elit, a imperdiet nisl. Phasellus eget sapien egestas, ornare erat laoreet, ullamcorper erat. Aliquam elementum dui eros, quis auctor ante facilisis sed. Nam scelerisque nec ex sit amet porta.</p>
+                        <p>Nam urna eros, volutpat condimentum nisl ac, accumsan hendrerit ex. Etiam ante magna, vehicula nec ante sit amet, interdum convallis magna. Vivamus ultrices, metus eu auctor gravida, velit nulla tempus augue, eu semper magna quam id nisi. Nulla ut efficitur nunc, laoreet sodales felis. Phasellus vel volutpat enim, et eleifend nisl. <a href="reseller-signup.html">Sign up now</a></p>
+                        <ul class="commonuli">
+                            <li>It is a long established fact that.</li>
+                            <li>Looking at its layout.</li>
+                            <li>Many desktop publishing packages.</li>
+                            <li>Lorem Ipsum as their default model text.</li>
+                            <li>Many web sites still in their infancy.</li>
+                            <li>Ipsum as their default model text.</li>
+                            <li>Distracted by the readable.</li>
+                            <li>Long established fact that a reader.</li>
+                        </ul>
+                        <div class="resellbtn"> <a class="greenbtn" href="@Url.RouteUrl("resellersignup_us")">Become a Reseller</a> </div>
+                    </div>
+                    
+                </div>
+                @Html.Partial("_rightpanel", (Model != null && !string.IsNullOrEmpty(Model.CurrentUserName) ? Model.CurrentUserName : ""))
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>

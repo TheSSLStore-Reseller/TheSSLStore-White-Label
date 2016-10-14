@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Roles>
+  <support>
+    <page>/admin/home</page>
+    <page>/admin/reseller</page>
+    <page>/admin/customer</page>
+    <page>/admin/support</page>
+    <page>/admin/orders</page>
+    <page>/admin/report</page>    
+    <page>/admin/adminusers/preferences</page>
+    <page>/admin/adminusers/myaccount</page>
+  </support>
+  <finance>
+    <page>/admin/home</page>
+    <page>/admin/orders</page>
+    <page>/admin/report</page>
+    <page>/admin/adminusers/preferences</page>
+    <page>/admin/adminusers/myaccount</page>
+  </finance>
+</Roles>

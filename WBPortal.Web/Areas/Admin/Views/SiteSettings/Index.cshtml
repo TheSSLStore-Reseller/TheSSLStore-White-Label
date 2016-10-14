@@ -1,0 +1,1592 @@
+﻿@using WBSSLStore.Web.Helpers.PopupForm
+@model List<WBSSLStore.Domain.SiteSettings>
+@{
+    ViewBag.Title = "Index";
+    WBSSLStore.Domain.SiteSettings s;
+    ViewBag.version = WBSSLStore.Web.Helpers.Caching.SiteCacher.ResourceVersion();
+
+    s = Model.Where(ss => ss.Key.ToLower() == WBSSLStore.Domain.SettingConstants.CURRENT_SITELOGO_KEY).FirstOrDefault();
+    ViewBag.Logo = s != null && s.Value != null ? Convert.ToString(s.Value) : string.Empty;
+
+    s = Model.Where(ss => ss.Key.ToLower() == WBSSLStore.Domain.SettingConstants.CURRENT_SITELIVECHATE_KEY).FirstOrDefault();
+    ViewBag.Livechate = s != null && s.Value != null ? Convert.ToString(s.Value) : string.Empty;
+
+    s = Model.Where(ss => ss.Key.ToLower() == WBSSLStore.Domain.SettingConstants.CURRENT_SITEFACEBOOK_KEY).FirstOrDefault();
+    ViewBag.Facebook = s != null && s.Value != null ? Convert.ToString(s.Value).ToLower() : string.Empty;
+
+    s = Model.Where(ss => ss.Key.ToLower() == WBSSLStore.Domain.SettingConstants.CURRENT_SITETWITTER_KEY).FirstOrDefault();
+    ViewBag.Twitter = s != null && s.Value != null ? Convert.ToString(s.Value).ToLower() : string.Empty;
+
+    s = Model.Where(ss => ss.Key.ToLower() == WBSSLStore.Domain.SettingConstants.CURRENT_NEEDBANNER_KEY).FirstOrDefault();
+    ViewBag.Banner = s != null && s.Value != null ? Convert.ToString(s.Value) : string.Empty;
+
+    s = Model.Where(ss => ss.Key.ToLower() == WBSSLStore.Domain.SettingConstants.CURRENT_BANNERFILE_KEY).FirstOrDefault();
+    ViewBag.BannerFile = s != null && s.Value != null ? Convert.ToString(s.Value) : string.Empty;
+
+    s = Model.Where(ss => ss.Key.ToLower() == WBSSLStore.Domain.SettingConstants.CURRENT_SITELANGUAGE_KEY).FirstOrDefault();
+    ViewBag.Language = s != null && s.Value != null ? Convert.ToString(s.Value).ToLower() : string.Empty;
+
+    s = Model.Where(ss => ss.Key.ToLower() == WBSSLStore.Domain.SettingConstants.CURRENT_SITECURRANCY_KEY).FirstOrDefault();
+    ViewBag.Currancy = s != null && s.Value != null ? Convert.ToString(s.Value).ToLower() : string.Empty;
+
+    s = Model.Where(ss => ss.Key.ToLower() == WBSSLStore.Domain.SettingConstants.CURRENT_SITETIMEZONE_KEY).FirstOrDefault();
+    ViewBag.Timezone = s != null && s.Value != null ? Convert.ToString(s.Value).ToLower() : string.Empty;
+
+    s = Model.Where(ss => ss.Key.ToLower() == WBSSLStore.Domain.SettingConstants.CURRENT_SITEPNONE_KEY).FirstOrDefault();
+    ViewBag.Phone = s != null && s.Value != null ? Convert.ToString(s.Value) : string.Empty;
+
+    s = Model.Where(ss => ss.Key.ToLower() == WBSSLStore.Domain.SettingConstants.CURRENT_SITEINVOICEPREFIX_KEY).FirstOrDefault();
+    ViewBag.Invoiceprefix = s != null && s.Value != null ? Convert.ToString(s.Value) : string.Empty;
+
+    s = Model.Where(ss => ss.Key.ToLower() == WBSSLStore.Domain.SettingConstants.CURRENT_SITEAPPROVERESELLER_KEY).FirstOrDefault();
+    ViewBag.Approvereseller = s != null && s.Value != null ? Convert.ToString(s.Value).ToLower() : string.Empty;
+
+    s = Model.Where(ss => ss.Key.ToLower() == WBSSLStore.Domain.SettingConstants.CURRENT_SITEADMIN_EMAIL_KEY).FirstOrDefault();
+    ViewBag.AdminEmail = s != null && s.Value != null ? Convert.ToString(s.Value).ToLower() : string.Empty;
+
+    s = Model.Where(ss => ss.Key.ToLower() == WBSSLStore.Domain.SettingConstants.CURRENT_SITESUPPORT_EMAI_KEY).FirstOrDefault();
+    ViewBag.SupportEmail = s != null && s.Value != null ? Convert.ToString(s.Value).ToLower() : string.Empty;
+
+    s = Model.Where(ss => ss.Key.ToLower() == WBSSLStore.Domain.SettingConstants.CURRENT_SITEBILLING_EMAIL_KEY).FirstOrDefault();
+    ViewBag.BillingEmail = s != null && s.Value != null ? Convert.ToString(s.Value).ToLower() : string.Empty;
+
+    s = Model.Where(ss => ss.Key.ToLower() == WBSSLStore.Domain.SettingConstants.CURRENT_ALLOWEDBRAND_KEY).FirstOrDefault();
+    ViewBag.AllowedBrand = s != null && s.Value != null ? Convert.ToString(s.Value).ToLower() : string.Empty;
+
+    s = Model.Where(ss => ss.Key.ToLower() == WBSSLStore.Domain.SettingConstants.CURRENT_SITEPAGESIZE_KEY).FirstOrDefault();
+    ViewBag.PageSize = s != null && s.Value != null ? Convert.ToString(s.Value).ToLower() : string.Empty;
+
+    s = Model.Where(ss => ss.Key.ToLower() == WBSSLStore.Domain.SettingConstants.CURRENT_PUNCHLINE_KEY).FirstOrDefault();
+    ViewBag.PunchLine = s != null && s.Value != null ? (s.Value != "NA" ? Convert.ToString(s.Value) : string.Empty) : "Welcome " + ViewBag.CompanyName;
+
+    s = Model.Where(ss => ss.Key.ToLower() == WBSSLStore.Domain.SettingConstants.CURRENT_SITEBLOG_URL).FirstOrDefault();
+    ViewBag.BlogUrl = s != null && s.Value != null ? Convert.ToString(s.Value).ToLower() : string.Empty;
+
+    s = Model.Where(ss => ss.Key.ToLower() == WBSSLStore.Domain.SettingConstants.CURRENT_VAT_APPLICABLE_KEY).FirstOrDefault();
+    ViewBag.VAT = s != null && s.Value != null ? Convert.ToString(s.Value).ToLower() : string.Empty;
+
+    s = Model.Where(ss => ss.Key.ToLower() == WBSSLStore.Domain.SettingConstants.CURRENT_IS_SITE_RUN_WITH_WWW).FirstOrDefault();
+    ViewBag.WWW = s != null && s.Value != null ? Convert.ToString(s.Value).ToLower() : string.Empty;
+
+    s = Model.Where(ss => ss.Key.ToLower() == WBSSLStore.Domain.SettingConstants.CURRENT_VAT_COUNTRY_KEY).FirstOrDefault();
+    ViewBag.VATCountry = s != null && s.Value != null ? Convert.ToString(s.Value).ToLower() : string.Empty;
+
+    s = Model.Where(ss => ss.Key.ToLower() == WBSSLStore.Domain.SettingConstants.CURRENT_VAT_NUMBER_KEY).FirstOrDefault();
+    ViewBag.VATNumber = s != null && s.Value != null ? Convert.ToString(s.Value).ToLower() : string.Empty;
+
+    s = Model.Where(ss => ss.Key.ToLower() == WBSSLStore.Domain.SettingConstants.CURRENT_SITEUNDERMAINTANACE).FirstOrDefault();
+    ViewBag.UnderMaintanance = s != null && s.Value != null ? Convert.ToString(s.Value).ToLower() : string.Empty;
+
+    s = Model.Where(ss => ss.Key.ToLower() == WBSSLStore.Domain.SettingConstants.CURRENT_USESSL_KEY).FirstOrDefault();
+    ViewBag.UseSSL = s != null && s.Value != null ? Convert.ToString(s.Value).ToLower() : string.Empty;
+
+    s = Model.Where(ss => ss.Key.ToLower() == WBSSLStore.Domain.SettingConstants.CURRENT_REFUND30DAYS_KEY).FirstOrDefault();
+    ViewBag.Refund30Days = s != null && s.Value != null ? Convert.ToString(s.Value).ToLower() : string.Empty;
+
+    s = Model.Where(ss => ss.Key.ToLower() == WBSSLStore.Domain.SettingConstants.CURRENT_SITEMYCART_KEY).FirstOrDefault();
+    ViewBag.MyCartLogo = s != null && s.Value != null ? Convert.ToString(s.Value).ToLower() : string.Empty;
+
+    s = Model.Where(ss => ss.Key.ToLower() == WBSSLStore.Domain.SettingConstants.CURRENT_TESTIMONIAL_APPLICABLE_KEY).FirstOrDefault();
+    ViewBag.IsTestimonials = s != null && s.Value != null ? Convert.ToString(s.Value).ToLower() : string.Empty;
+
+    s = Model.Where(ss => ss.Key.ToLower() == WBSSLStore.Domain.SettingConstants.CURRENT_SITEGOOGLEPLUS_KEY).FirstOrDefault();
+    ViewBag.Googleplus = s != null && s.Value != null ? Convert.ToString(s.Value).ToLower() : string.Empty;
+
+    s = Model.Where(ss => ss.Key.ToLower() == WBSSLStore.Domain.SettingConstants.CURRENT_SITE_SUBJECTFEIELD).FirstOrDefault();
+    ViewBag.SubjectFeild = s != null && s.Value != null ? Convert.ToString(s.Value) : string.Empty;
+
+    s = Model.Where(ss => ss.Key.ToLower() == WBSSLStore.Domain.SettingConstants.CURRENT_SITE_TOEMAIL).FirstOrDefault();
+    ViewBag.ToEmail = s != null && s.Value != null ? Convert.ToString(s.Value).ToLower() : string.Empty;
+
+    s = Model.Where(ss => ss.Key.ToLower() == WBSSLStore.Domain.SettingConstants.CURRENT_SITE_THANKYOUPAGE).FirstOrDefault();
+    ViewBag.Thankyoupage = s != null && s.Value != null ? Convert.ToString(s.Value).ToLower() : string.Empty;
+
+    s = Model.Where(ss => ss.Key.ToLower() == WBSSLStore.Domain.SettingConstants.CURRENT_SITE_SIGNATURE).FirstOrDefault();
+    ViewBag.SiteSignature = s != null && s.Value != null ? Convert.ToString(s.Value) : string.Empty;
+
+    s = Model.Where(ss => ss.Key.ToLower() == WBSSLStore.Domain.SettingConstants.CURRENT_SITE_PAYMENTNOTE).FirstOrDefault();
+    ViewBag.PaymentNote = s != null && s.Value != null ? Convert.ToString(s.Value) : @WBSSLStore.Resources.GeneralMessage.Message.Invoice_Note_Caption1;
+
+    s = Model.Where(ss => ss.Key.ToLower() == WBSSLStore.Domain.SettingConstants.CURRENT_SITECULTURE_KEY).FirstOrDefault();
+    ViewBag.SiteCultureKey = s != null && s.Value != null ? Convert.ToString(s.Value) : string.Empty;
+
+    s = Model.Where(ss => ss.Key.ToLower() == WBSSLStore.Domain.SettingConstants.CUSTOM_EMAILID_RESELLER_CUSTOMERS_RENEWALS_NOTIFICATION).FirstOrDefault();
+    ViewBag.CustomEmailResellerCustomerRenewalNotification = s != null && s.Value != null ? Convert.ToString(s.Value) : string.Empty;
+
+    s = Model.Where(ss => ss.Key.ToLower() == WBSSLStore.Domain.SettingConstants.CURRENT_SITE_SHOWBANNER_HOME_PAGE_ONLY).FirstOrDefault();
+    ViewBag.ShowbannerOnlyHomepage = s != null && s.Value != null ? Convert.ToString(s.Value) : string.Empty;
+}
+
+
+
+<link href="@Url.Content("~/content/uploadify.min.css")" type="text/css" rel="stylesheet" />
+@System.Web.Optimization.Scripts.Render("/bundales/wb/validationjs?v=" + ViewBag.version)
+@System.Web.Optimization.Scripts.Render("/bundales/wb/scripts?v=" + ViewBag.version)
+@System.Web.Optimization.Styles.Render("/bundales/jquery-ui-css?v=" + ViewBag.version)
+@System.Web.Optimization.Scripts.Render("/bundales/jquery-ui-1.8.11?v=" + ViewBag.version)
+<script type="text/javascript" src="@Url.Content("~/content/scripts/jquery.fileupload.js")" language="javascript"></script>
+<script type="text/javascript" src="@Url.Content("~/content/scripts/jquery.fileupload-ui.js")" language="javascript"></script>
+<script src="@Url.Content("~/Content/Admin/tiny_mce/jquery.tinymce.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Content/Admin/tiny_mce/tiny_mce.js")" type="text/javascript"></script>
+
+@Html.MakePopup("CropImage", new[] { "imgType" }, controller: "SiteSettings", area: "Admin", title: "Crop Image", height: 900, width: 900, modal: true, resizable: true, fullScreen: true)
+<script type="text/javascript">
+    //textarea.tinymce
+    $().ready(function () {
+        $('textarea.tinymce').tinymce({
+            // Location of TinyMCE script
+
+            // General options
+            theme: "advanced",
+            plugins: "autolink,lists,pagebreak,style,layer,table,save,iespell,inlinepopups,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template,advlist",
+
+            // Theme options
+            theme_advanced_buttons1: "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,fontselect,forecolor",
+            theme_advanced_buttons2: "backcolor,fontsizeselect,|,code",
+            theme_advanced_toolbar_location: "top",
+            theme_advanced_toolbar_align: "left",
+            theme_advanced_statusbar_location: "bottom",
+            theme_advanced_resizing: false,
+
+            // Example content CSS (should be your site CSS)
+
+            // Drop lists for link/image/media/template dialogs
+            template_external_list_url: "lists/template_list.js",
+            //external_link_list_url: "lists/link_list.js",
+            //external_image_list_url: "lists/image_list.js",
+            //media_external_list_url: "lists/media_list.js",
+
+            // Replace values for the template plugin
+            template_replace_values: {
+                username: "Some User",
+                staffid: "991234"
+            }
+        });
+
+
+    });
+
+
+
+
+
+</script>
+<script type="text/javascript" language="javascript">
+
+    var timez = "@WBSSLStore.Resources.ErrorMessage.Message.TimeZoneRequired"
+    var Prefix = "@WBSSLStore.Resources.ErrorMessage.Message.InvoicePrifxRequired"
+    var Vatcountry = "@WBSSLStore.Resources.ErrorMessage.Message.VatCountryRequired"
+    var VatNo = "@WBSSLStore.Resources.ErrorMessage.Message.VatNoRequired"
+    var AdminEmail = "@WBSSLStore.Resources.ErrorMessage.Message.AdminEmailRequired"
+    var SuppEmail = "@WBSSLStore.Resources.ErrorMessage.Message.SupportEmailRequired"
+    var BillEmail = "@WBSSLStore.Resources.ErrorMessage.Message.SupportEmailRequired"
+    var BlogUrl = "@WBSSLStore.Resources.ErrorMessage.Message.BlogUrlRequired"
+    var fb = "@WBSSLStore.Resources.ErrorMessage.Message.FbValidUrl"
+    var twitter = "@WBSSLStore.Resources.ErrorMessage.Message.TwitterValidURL"
+    var validvat = "@WBSSLStore.Resources.ErrorMessage.Message.ValidVatNo"
+    var VatPer = "@WBSSLStore.Resources.ErrorMessage.Message.VatPerRequired"
+    var page = "@WBSSLStore.Resources.ErrorMessage.Message.PageSizeRequired"
+    var Commonnm = "@WBSSLStore.Resources.ErrorMessage.Message.CommonNameRequired"
+    var currency = "@WBSSLStore.Resources.ErrorMessage.Message.Currency"
+    var Brand = "@WBSSLStore.Resources.ErrorMessage.Message.BrandSettingUpdate"
+    var deleSucss = "@WBSSLStore.Resources.GeneralMessage.Message.Delete_Sucessfully_Caption"
+    var Unabletodel = "@WBSSLStore.Resources.GeneralMessage.Message.Unable_toDelete_Caption"
+
+    function setDefaultlanguage() {
+
+        var lang = "@ViewBag.Language";
+        if (lang == '')
+            $("#rbtEnglish").attr('checked', 'checked');
+    }
+    // starting the script on page load
+    $(document).ready(function () {
+
+        //jQuery.noConflict();
+        isReloadOnClose = true;
+        if (document.getElementById("rbtNeedBannerYes").checked) {
+            document.getElementById("dvBanner").style.display = "table-cell";
+            //$('#dvBanner').show('slow');
+        }
+        else if (document.getElementById('rbtNeedBannerNo').checked) {
+            document.getElementById("dvBanner").style.display = "none";
+            //$('#dvBanner').hide('slow');
+        }
+
+        var flag = $("#txtCommonName").attr('title');
+        if (flag != '' && flag == 'true') {
+            $("#txtCommonName").attr('disabled', 'disabled');
+        }
+
+        ShowHideFun(document.getElementById('chkVAT').checked)
+        $("#frmSetting").validate({
+            rules: {
+                ddCurrancy: "required",
+                drpTimezone: "required",
+                txtCommonName: {
+                    required: true
+                },
+                drpVATCountry: {
+                    required: "#chkVAT:checked"
+                },
+                txtVATNumber: {
+                    required: "#chkVAT:checked",
+                    number: true
+                },
+                fupLogo: {
+                    accept: "gif|jpeg|png|jpg|bmp"
+                },
+                fupBanner: {
+                    accept: "gif|jpeg|png|jpg|bmp"
+                },
+                txtAdminEmail: {
+                    required: true,
+                    email: true
+                },
+                txtSupportEmail: {
+                    required: true,
+                    email: true
+                },
+                txtBillingEmail: {
+                    required: true,
+                    email: true
+                },
+                txtBlogUrl:
+                {
+                    url: true
+                },
+                txtFacebook:
+                {
+                    url: true
+                },
+                txtTwitter:
+                {
+                    url: true
+                },
+                txtVATNumber:
+                {
+                    number: true,
+                    required: "#chkVAT:checked"
+                },
+                txtPageSize:
+                {
+                    number: true
+                }
+            },
+            messages: {
+                ddCurrancy: currency,
+                drpTimezone: timez,
+                drpVATCountry: Vatcountry,
+                txtVATNumber: VatNo,
+                txtAdminEmail: AdminEmail,
+                txtSupportEmail: SuppEmail,
+                txtBillingEmail: BillEmail,
+                txtBlogUrl: BlogUrl,
+                txtFacebook: fb,
+                txtTwitter: twitter,
+                txtVATNumber: { number: validvat, require: VatPer },
+                txtPageSize: page,
+                txtCommonName: { required: Commonnm }
+            }
+
+
+        });
+
+
+
+        $('#frmSetting').fileUploadUI({
+
+            url: 'SiteSettings/SaveLogo',
+            method: 'POST',
+            uploadTable: function () { if (this.fileInput[0].id != 'fupBanner') { return $('#files'); } else { return $('#files1'); } },
+            downloadTable: function () { if (this.fileInput[0].id != 'fupBanner') { return $('#files'); } else { return $('#files1'); } },
+            beforeSend: function (event, files, index, xhr, handler, callBack) {
+
+                var regexp = /\.(png)|(jpeg)|(bmp)|(jpg)|(gif)$/i;
+                if (!regexp.test(files[index].name)) {
+                    handler.uploadRow.find('.file_upload_progress').html('<span class="redfont">ONLY IMAGES ALLOWED!</span>');
+                    setTimeout(function () {
+                        handler.removeNode(handler.uploadRow);
+                    }, 10000);
+                    return;
+                }
+                if (files[index].size > 1000000) {
+                    handler.uploadRow.find('.file_upload_progress').html('<span class="redfont">FILE TOO BIG!</span>');
+                    setTimeout(function () {
+                        handler.removeNode(handler.uploadRow);
+                    }, 10000);
+                    return;
+                }
+                callBack();
+            },
+            buildUploadRow: function (files, index) {
+                return $('<tr><td>' + files[index].name + '<\/td>' +
+                            '<td class="file_upload_progress"><div><\/div><\/td>' +
+                            '<td class="file_upload_cancel">' +
+                            '<button class="ui-state-default ui-corner-all" title="Cancel">' +
+                            '<span class="ui-icon ui-icon-cancel">Cancel<\/span>' +
+                            '<\/button><\/td><\/tr>');
+            },
+            buildDownloadRow: function (file) {
+
+                if (file.NeedToCrop) {
+                    document.getElementById('dvCropPopupLoader').style.display = 'block';
+                    if (file.Type == 'logo')
+                        callpcropimagesitesettingsadmin('logo');
+                    else
+                        callpcropimagesitesettingsadmin('banner');
+                }
+                else {
+                    window.location.href = window.location.href;
+                }
+                //return $('<tr><td>' + file.name + '<\/td><\/tr>');
+            },
+            fileInputFilter: function (index) {
+
+                if (this.id == 'fupCartButton') {
+                    return;
+                }
+                else {
+                    return true;
+                }
+            }
+        });
+
+        //Defalut language is English if none of any language is selected by client:
+        setDefaultlanguage();
+    });
+
+
+    function RefreshBrands() {
+        $.post("/admin/sitesettings/refreshbrand",
+                       function (data) {
+                           if (data.toString().toLowerCase().indexOf('error:') == -1) {
+                               $('#txtAllowedBrand').val('0,99,' + data);
+                               alert(Brand);
+                           }
+                           else
+                               alert(data);
+                       });
+    }
+
+    function ShowHideFun(status) {
+        if (status) {
+            document.getElementById('trcountry').style.display = 'table-row';
+            document.getElementById('trnumber').style.display = 'table-row';
+        }
+        else {
+            document.getElementById('trcountry').style.display = 'none';
+            document.getElementById('trnumber').style.display = 'none';
+        }
+    }
+
+    function DeleteLogo() {
+        $.post("/admin/sitesettings/deletelogo", function (data) {
+            if (data.toString() == 'true') {
+                alert('logo ' + deleSucss + '!');
+                window.location.reload();
+            }
+            else
+                alert(Unabletodel + 'logo !');
+        });
+    }
+    function DeleteCartLogo() {
+        $.post("/admin/sitesettings/deletecartlogo", function (data) {
+            if (data.toString() == 'true') {
+                alert('Cart logo ' + deleSucss + '!');
+                window.location.reload();
+            }
+            else
+                alert(Unabletodel + 'logo !');
+        });
+    }
+
+
+</script>
+<div id="dvCropPopupLoader" class="backgroundPopup" style="position: fixed; display: none; opacity: 0.7;">
+    <img src='@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/loadingnew.gif' style="margin-top: 25%;
+            margin-left: 50%;" />
+</div>
+<tr>
+    <td align="left" valign="top">
+        <table width="881" border="0" align="left" cellpadding="0" cellspacing="0">
+            <tr>
+                <td width="7" align="left" valign="top">
+                    <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/barleft.gif" alt="whitebrand" width="7" height="55">
+                </td>
+                <td width="866" align="left" valign="middle" class="hdbarbg">
+                    <table width="840" border="0" align="center" cellpadding="1" cellspacing="1">
+                        <tr>
+                            <td width="407" align="left" valign="middle" class="head1">
+                                @*General Setting*@ @WBSSLStore.Resources.GeneralMessage.Message.GeneralSetting_Header
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td width="9" align="right" valign="top">
+                    <img src="/content/Admin/images/barright.gif" alt="whitebrand" width="9" height="55">
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>
+<tr>
+    <td align="left" valign="top" class="contbg">
+        @using (Html.BeginForm("index", "sitesettings", FormMethod.Post, new { enctype = "multipart/form-data", id = "frmSetting" }))
+        {
+            <table width="870" border="0" align="center" cellpadding="0" cellspacing="7">
+                <tr>
+                    <td width="867" align="center" valign="top" class="bgclr">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td align="left" valign="top">
+                                    <table width="840" border="0" align="center" cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <td height="30" align="left" valign="middle">
+                                                <h1>
+                                                    @*General Settings*@ @WBSSLStore.Resources.GeneralMessage.Message.GeneralSetting_Header
+                                                </h1>
+                                            </td>
+                                        </tr>
+                                        @if (!string.IsNullOrEmpty(ViewBag.Message))
+                                        {
+                                            <tr>
+                                                <td>
+                                                    @Html.Raw(ViewBag.Message)
+                                                </td>
+                                            </tr>
+                                        }
+                                        @if (!string.IsNullOrEmpty(@ViewBag.ErrMsg))
+                                        {
+                                            <tr>
+                                                <td class="normsg fontwo">
+                                                    @Html.Raw(ViewBag.ErrMsg)
+                                                </td>
+                                            </tr>
+                                        }
+                                        <tr>
+                                            <td align="left" valign="top">
+                                                <table width="840" border="0" align="center" cellpadding="1" cellspacing="1" class="bdrline">
+                                                    <tr>
+                                                        <td align="left" valign="top" bgcolor="#f7f7f7">
+                                                            <table width="803" border="0" align="center" cellpadding="1" cellspacing="1">
+                                                                <tr>
+                                                                    <td width="820" align="left" valign="top">
+                                                                        <table width="100%" border="0" cellspacing="1" cellpadding="1">
+                                                                            <tr>
+                                                                                <td height="8" align="left" valign="top"></td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td align="left" valign="top">
+                                                                                    <table width="799" border="0" align="left" cellpadding="1" cellspacing="1">
+                                                                                        <tr>
+                                                                                            <td align="right" valign="middle" class="bold">
+                                                                                                @*Domain Name*@ @WBSSLStore.Resources.GeneralMessage.Message.DomainName_Caption
+                                                                                                :
+                                                                                            </td>
+                                                                                            <td align="left" valign="middle">
+                                                                                                <label>
+
+                                                                                                    <input name="txtCommonName" type="text" class="inputbox" id="txtCommonName" title='@((s != null && s.SiteID.Equals(1)) ? "true" : "false")' aria-disabled='@((s != null && s.SiteID.Equals(1)) ? "disabled" : "")' value="@ViewBag.CommonName" />
+                                                                                                </label>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td width="201" align="right" valign="middle" class="bold">
+                                                                                                @*Invoice Number Prefix*@ @WBSSLStore.Resources.GeneralMessage.Message.Invoice_Number_Prefix:
+                                                                                            </td>
+                                                                                            <td width="591" align="left" valign="middle">
+                                                                                                <label>
+                                                                                                    <input name="txtInvoicePrefix" type="text" class="inputbox" id="txtInvoicePrefix" value="@ViewBag.Invoiceprefix" />
+                                                                                                </label>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td align="right" valign="middle" class="bold">
+                                                                                                @*Need to Approve Reseller*@ @WBSSLStore.Resources.GeneralMessage.Message.Need_to_Approve_Reseller:
+                                                                                            </td>
+                                                                                            <td align="left" valign="middle">
+                                                                                                <label>
+                                                                                                    <input type="checkbox" value="true" name="chkNeedToApproveReseller" id="chkNeedToApproveReseller" @(!string.IsNullOrEmpty(ViewBag.Approvereseller) && Convert.ToBoolean(ViewBag.Approvereseller) ? "checked=\"checked\"" : "") />
+                                                                                                </label>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td align="right" valign="middle" class="bold">
+                                                                                                @*Pager Size*@ @WBSSLStore.Resources.GeneralMessage.Message.Pager_Size :
+                                                                                            </td>
+                                                                                            <td align="left" valign="middle">
+                                                                                                <label>
+                                                                                                    <input name="txtPageSize" type="text" min="1" class="inputboxminimum" id="txtPageSize" value="@ViewBag.PageSize" />
+                                                                                                </label>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td align="right" valign="middle" class="bold">
+                                                                                                @*Home Page Punch Line*@ @WBSSLStore.Resources.GeneralMessage.Message.Home_Page_Punch_Line:
+                                                                                            </td>
+                                                                                            <td align="left" valign="middle">
+                                                                                                <label>
+                                                                                                    <input name="txtPunchLine" type="text" class="inputbox" id="txtPunchLine" value="@ViewBag.PunchLine" />
+                                                                                                </label>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td align="right" valign="middle" class="bold">
+                                                                                                @*Under Maintanance*@ @WBSSLStore.Resources.GeneralMessage.Message.Under_Maintanance
+                                                                                                :
+                                                                                            </td>
+                                                                                            <td align="left" valign="middle">
+                                                                                                <label>
+                                                                                                    <input type="checkbox" value="true" name="chkUnderMaintanance" id="chkUnderMaintanance" @(!string.IsNullOrEmpty(ViewBag.UnderMaintanance) && Convert.ToBoolean(ViewBag.UnderMaintanance) ? "checked=\"checked\"" : "") />
+                                                                                                </label>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        @if (1 == 2)
+                                                                                        {
+                                                                                            <tr>
+                                                                                                <td align="right" valign="middle" class="bold">
+                                                                                                    @*Use SSL*@ @WBSSLStore.Resources.GeneralMessage.Message.Use_SSL :
+                                                                                                </td>
+                                                                                                <td align="left" valign="middle">
+                                                                                                    <label>
+                                                                                                        <input type="checkbox" value="true" name="chkUseSSL" id="chkUseSSL" @(!string.IsNullOrEmpty(ViewBag.UseSSL) && Convert.ToBoolean(ViewBag.UseSSL) ? "checked=\"checked\"" : "") />
+                                                                                                    </label>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        }
+                                                                                    </table>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td align="left" valign="top">
+                                                                                    <table width="799" border="0" align="left" cellpadding="1" cellspacing="1">
+                                                                                        <tr>
+                                                                                            <td width="201" align="right" valign="middle" class="bold">
+                                                                                                @* Is V.A.T. Applicable*@ @WBSSLStore.Resources.GeneralMessage.Message.Is_VAT_Applicable
+                                                                                                :
+                                                                                            </td>
+                                                                                            <td align="left" valign="middle">
+                                                                                                <label>
+                                                                                                    <input type="checkbox" onclick="ShowHideFun(this.checked)" value="true" name="chkVAT" id="chkVAT" @(!string.IsNullOrEmpty(ViewBag.VAT) && Convert.ToBoolean(ViewBag.VAT) ? "checked=\"checked\"" : "") />
+                                                                                                </label>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr id="trcountry">
+                                                                                            <td align="right" valign="middle" class="bold">
+                                                                                                @*Select Country*@ @WBSSLStore.Resources.GeneralMessage.Message.Select_Country:
+                                                                                            </td>
+                                                                                            <td align="left" valign="middle">
+                                                                                                @Html.DropDownList("drpVATCountry", new SelectList(ViewBag.Country as System.Collections.IEnumerable, "ID", "CountryName", ViewBag.VATCountry), "-------" + @WBSSLStore.Resources.GeneralMessage.Message.Select_Country + "--------", new { @class = "listmenu", ID = "drpVATCountry", name = "drpVATCountry" })
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr id="trnumber">
+                                                                                            <td align="right" valign="middle" class="bold">
+                                                                                                V.A.T. Rate (in %):
+                                                                                            </td>
+                                                                                            <td align="left" valign="middle">
+                                                                                                <input name="txtVATNumber" type="text" min="0" class="inputboxminimum" id="txtVATNumber" value="@ViewBag.VATNumber" size="5" />
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                    </table>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td align="left" valign="top">
+                                                                                    <table width="799" border="0" align="left" cellpadding="1" cellspacing="1">
+                                                                                        <tr>
+                                                                                            <td width="233" align="right" valign="middle" class="bold">
+                                                                                                @*Admin Email*@ @WBSSLStore.Resources.GeneralMessage.Message.Admin_Email:
+                                                                                            </td>
+                                                                                            <td width="659" align="left" valign="middle">
+                                                                                                <label>
+                                                                                                    <input name="txtAdminEmail" type="text" class="inputbox" id="txtAdminEmail" value="@ViewBag.AdminEmail" />
+                                                                                                </label>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td width="133" align="right" valign="middle" class="bold">
+                                                                                                @*Support Email*@ @WBSSLStore.Resources.GeneralMessage.Message.Support_Email:
+                                                                                            </td>
+                                                                                            <td width="659" align="left" valign="middle">
+                                                                                                <label>
+                                                                                                    <input name="txtSupportEmail" type="text" class="inputbox" id="txtSupportEmail" value="@ViewBag.SupportEmail" />
+                                                                                                </label>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td width="133" align="right" valign="middle" class="bold">
+                                                                                                @*Billing Email*@ @WBSSLStore.Resources.GeneralMessage.Message.Billing_Email:
+                                                                                            </td>
+                                                                                            <td width="659" align="left" valign="middle">
+                                                                                                <label>
+                                                                                                    <input name="txtBillingEmail" type="text" class="inputbox" id="txtBillingEmail" value="@ViewBag.BillingEmail" />
+                                                                                                </label>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td width="133" align="right" valign="middle" class="bold">
+                                                                                                @*Is Site Run with WWW*@ @WBSSLStore.Resources.GeneralMessage.Message.Is_Site_Run_with_WWW:
+                                                                                            </td>
+                                                                                            <td width="659" align="left" valign="middle">
+                                                                                                <label>
+                                                                                                    <input type="checkbox" value="true" name="chkWWW" id="chkWWW" @(!string.IsNullOrEmpty(ViewBag.WWW) && Convert.ToBoolean(ViewBag.WWW) ? "checked=\"checked\"" : "") />
+                                                                                                </label>
+                                                                                                <br />
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td width="133" align="right" valign="top" class="bold">
+                                                                                                @*Set Default Currancy*@ @WBSSLStore.Resources.GeneralMessage.Message.Set_Default_Currancy :
+
+                                                                                            </td>
+                                                                                            <td width="659" align="left" valign="top">
+                                                                                                <select name="ddCurrancy" id="ddCurrancy" class="listmenu">
+                                                                                                    <option value="">------@WBSSLStore.Resources.GeneralMessage.Message.Select_Currency_Caption------</option>
+                                                                                                    <option value="AUD" @(ViewBag.Currancy.ToUpper() == "AUD" ? "selected='selected'" : string.Empty)>Australian Dollar</option>
+                                                                                                    <option value="BRL" @(ViewBag.Currancy.ToUpper() == "BRL" ? "selected='selected'" : string.Empty)>Brazilian Real</option>
+                                                                                                    <option value="CAD" @(ViewBag.Currancy.ToUpper() == "CAD" ? "selected='selected'" : string.Empty)>Canadian Dollar</option>
+                                                                                                    <option value="CZK" @(ViewBag.Currancy.ToUpper() == "CZK" ? "selected='selected'" : string.Empty)>Czech Koruna</option>
+                                                                                                    <option value="DKK" @(ViewBag.Currancy.ToUpper() == "DKK" ? "selected='selected'" : string.Empty)>Danish Krone</option>
+                                                                                                    <option value="EUR" @(ViewBag.Currancy.ToUpper() == "EUR" ? "selected='selected'" : string.Empty)>Euro</option>
+                                                                                                    <option value="HKD" @(ViewBag.Currancy.ToUpper() == "HKD" ? "selected='selected'" : string.Empty)>Hong Kong Dollar</option>
+                                                                                                    <option value="HUF" @(ViewBag.Currancy.ToUpper() == "HUF" ? "selected='selected'" : string.Empty)>Hungarian Forint</option>
+                                                                                                    <option value="ILS" @(ViewBag.Currancy.ToUpper() == "ILS" ? "selected='selected'" : string.Empty)>Israeli New Sheqel</option>
+                                                                                                    <option value="JPY" @(ViewBag.Currancy.ToUpper() == "JPY" ? "selected='selected'" : string.Empty)>Japanese Yen</option>
+                                                                                                    <option value="MXN" @(ViewBag.Currancy.ToUpper() == "MXN" ? "selected='selected'" : string.Empty)>Mexican Peso</option>
+                                                                                                    <option value="NOK" @(ViewBag.Currancy.ToUpper() == "NOK" ? "selected='selected'" : string.Empty)>Norwegian Krone</option>
+                                                                                                    <option value="NZD" @(ViewBag.Currancy.ToUpper() == "NZD" ? "selected='selected'" : string.Empty)>New Zealand Dollar</option>
+                                                                                                    <option value="PHP" @(ViewBag.Currancy.ToUpper() == "PHP" ? "selected='selected'" : string.Empty)>Philippine Peso</option>
+                                                                                                    <option value="PLN" @(ViewBag.Currancy.ToUpper() == "PLN" ? "selected='selected'" : string.Empty)>Polish Zloty</option>
+                                                                                                    <option value="GBP" @(ViewBag.Currancy.ToUpper() == "GBP" ? "selected='selected'" : string.Empty)>Pound Sterling</option>
+                                                                                                    <option value="SGD" @(ViewBag.Currancy.ToUpper() == "SGD" ? "selected='selected'" : string.Empty)>Singapore Dollar</option>
+                                                                                                    <option value="SEK" @(ViewBag.Currancy.ToUpper() == "SEK" ? "selected='selected'" : string.Empty)>Swedish Krona</option>
+                                                                                                    <option value="CHF" @(ViewBag.Currancy.ToUpper() == "CHF" ? "selected='selected'" : string.Empty)>Swiss Franc</option>
+                                                                                                    <option value="TWD" @(ViewBag.Currancy.ToUpper() == "TWD" ? "selected='selected'" : string.Empty)>Taiwan New Dollar</option>
+                                                                                                    <option value="THB" @(ViewBag.Currancy.ToUpper() == "THB" ? "selected='selected'" : string.Empty)>Thai Baht</option>
+                                                                                                    <option value="USD" @(ViewBag.Currancy.ToUpper() == "USD" ? "selected='selected'" : string.Empty)>U.S. Dollar</option>
+
+                                                                                                </select>
+                                                                                                <br />
+                                                                                                <div style="font-weight: normal; font-size: small; font-style: italic; clear: both;">
+                                                                                                    (@WBSSLStore.Resources.GeneralMessage.Message.Admin_Caption_billingCurrencySmlNote)
+                                                                                                </div>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td width="133" align="right" valign="middle" class="bold">
+                                                                                                @*Set Default Currancy*@
+                                                                                                @WBSSLStore.Resources.GeneralMessage.Message.Admin_Caption_Default_CurrencySymbol :
+                                                                                            </td>
+                                                                                            <td width="659" align="left" valign="middle">
+                                                                                                <select name="ddCurCulture" id="ddCurCulture" class="listmenu">
+                                                                                                    <option value="">------@WBSSLStore.Resources.GeneralMessage.Message.Select_Currency_Caption------</option>
+                                                                                                    <option value="en-AU" @(ViewBag.SiteCultureKey.ToString() == "en-AU" ? "selected='selected'" : string.Empty)>Australian Dollar</option>
+                                                                                                    <option value="pt-BR" @(ViewBag.SiteCultureKey.ToString() == "pt-BR" ? "selected='selected'" : string.Empty)>Brazilian Real</option>
+                                                                                                    <option value="en-CA" @(ViewBag.SiteCultureKey.ToString() == "en-CA" ? "selected='selected'" : string.Empty)>Canadian Dollar</option>
+                                                                                                    <option value="cs-CZ" @(ViewBag.SiteCultureKey.ToString() == "cs-CZ" ? "selected='selected'" : string.Empty)>Czech Koruna</option>
+                                                                                                    <option value="da-DK" @(ViewBag.SiteCultureKey.ToString() == "da-DK" ? "selected='selected'" : string.Empty)>Danish Krone</option>
+
+                                                                                                    <option value="zh-HK" @(ViewBag.SiteCultureKey.ToString() == "zh-HK" ? "selected='selected'" : string.Empty)>Hong Kong Dollar</option>
+                                                                                                    <option value="hu-HU" @(ViewBag.SiteCultureKey.ToString() == "hu-HU" ? "selected='selected'" : string.Empty)>Hungarian Forint</option>
+                                                                                                    <option value="he-IL" @(ViewBag.SiteCultureKey.ToString() == "he-IL" ? "selected='selected'" : string.Empty)>Israel - Hebrew</option>
+                                                                                                    <option value="ja-JP" @(ViewBag.SiteCultureKey.ToString() == "ja-JP" ? "selected='selected'" : string.Empty)>Japanese Yen</option>
+                                                                                                    <option value="es-MX" @(ViewBag.SiteCultureKey.ToString() == "es-MX" ? "selected='selected'" : string.Empty)>Mexican Peso</option>
+                                                                                                    <option value="nb-NO" @(ViewBag.SiteCultureKey.ToString() == "nb-NO" ? "selected='selected'" : string.Empty)>Norwegian</option>
+                                                                                                    <option value="en-NZ" @(ViewBag.SiteCultureKey.ToString() == "en-NZ" ? "selected='selected'" : string.Empty)>New Zealand Dollar</option>
+                                                                                                    <option value="en-PH" @(ViewBag.SiteCultureKey.ToString() == "en-PH" ? "selected='selected'" : string.Empty)>Philippine Peso</option>
+                                                                                                    <option value="pl-PL" @(ViewBag.SiteCultureKey.ToString() == "pl-PL" ? "selected='selected'" : string.Empty)>Polish</option>
+                                                                                                    <option value="en-GB" @(ViewBag.SiteCultureKey.ToString() == "en-GB" ? "selected='selected'" : string.Empty)>Pound Sterling</option>
+                                                                                                    <option value="zh-SG" @(ViewBag.SiteCultureKey.ToString() == "zh-SG" ? "selected='selected'" : string.Empty)>Singapore Dollar</option>
+                                                                                                    <option value="sv-SE" @(ViewBag.SiteCultureKey.ToString() == "sv-SE" ? "selected='selected'" : string.Empty)>Swedish</option>
+
+                                                                                                    <option value="zh-TW" @(ViewBag.SiteCultureKey.ToString() == "zh-TW" ? "selected='selected'" : string.Empty)>Taiwan New Dollar</option>
+                                                                                                    <option value="th-TH" @(ViewBag.SiteCultureKey.ToString() == "th-TH" ? "selected='selected'" : string.Empty)>Thai Baht</option>
+                                                                                                    <option value="en-US" @(ViewBag.SiteCultureKey.ToString() == "en-US" ? "selected='selected'" : string.Empty)>U.S. Dollar</option>
+                                                                                                    <option value="de-DE" @(ViewBag.SiteCultureKey.ToString() == "de-DE" ? "selected='selected'" : string.Empty)>Euro</option>
+
+                                                                                                </select>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td width="133" align="right" valign="middle" class="bold">
+                                                                                                @*Show 30 Days Money Back Logo*@ @WBSSLStore.Resources.GeneralMessage.Message.Show30DaysMoneyBackLogo_Caption:
+                                                                                            </td>
+                                                                                            <td width="659" align="left" valign="middle">
+                                                                                                <label>
+                                                                                                    <input type="checkbox" value="true" name="chkRefund30Days" id="chkRefund30Days" @(!string.IsNullOrEmpty(ViewBag.Refund30Days) && Convert.ToBoolean(ViewBag.Refund30Days) ? "checked=\"checked\"" : "") />
+                                                                                                </label>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td width="133" align="right" valign="middle" class="bold">
+                                                                                                @*Upload Cart Button *@ @WBSSLStore.Resources.GeneralMessage.Message.UploadCartButton_Caption:
+                                                                                            </td>
+                                                                                            <td width="659" align="left" valign="middle">
+                                                                                                <div style="float: left; padding-top: 15px;">
+                                                                                                    <input id="fupCartButton" name="fupCartButton" type="file" />
+                                                                                                </div>
+                                                                                                @if (!string.IsNullOrEmpty(ViewBag.MyCartLogo))
+                                                                                                {
+
+                                                                                                    <div style="float: left; padding-left: 25px">
+                                                                                                        <img id="imgCart" src="/upload/@ViewBag.SiteID/@ViewBag.MyCartLogo?uid=@(Guid.NewGuid().ToString())" align="absmiddle" alt="MyCart" />
+                                                                                                        <a href="Javascript:;" class="commonlink" style="vertical-align: bottom;" onclick="DeleteCartLogo()">@WBSSLStore.Resources.GeneralMessage.Message.Remove_btn</a>
+                                                                                                    </div>
+
+                                                                                                }
+                                                                                                <div style="font-weight: normal; font-size: small; font-style: italic; clear: both;">
+                                                                                                    @*(Valid file types are *.gif, *.jpeg, *.png, *.jpg and *.bmp. Logo size is 100 X 70)*@
+                                                                                                    @WBSSLStore.Resources.GeneralMessage.Message.ValidImageFile_Caption
+                                                                                                </div>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td width="133" align="right" valign="middle" class="bold">
+                                                                                                @*Show Testimonials*@ @WBSSLStore.Resources.GeneralMessage.Message.ShowTestimonials_Caption:
+                                                                                            </td>
+                                                                                            <td width="659" align="left" valign="middle">
+                                                                                                <label>
+                                                                                                    <input type="checkbox" value="true" name="chkTestimonials" id="chkTestimonials" @(!string.IsNullOrEmpty(ViewBag.IsTestimonials) && Convert.ToBoolean(ViewBag.IsTestimonials) ? "checked=\"checked\"" : "") />
+                                                                                                </label>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td width="133" align="right" valign="middle" class="bold">
+                                                                                                @*ContactUS Subject Field*@ @WBSSLStore.Resources.GeneralMessage.Message.ContactUSSubjectField_Caption:
+                                                                                            </td>
+                                                                                            <td width="659" align="left" valign="middle">
+                                                                                                <label>
+                                                                                                    <input name="txtSubjectfield" type="text" class="inputbox" id="txtSubjectfield" value="@ViewBag.SubjectFeild" />
+                                                                                                </label>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td width="133" align="right" valign="middle" class="bold">
+                                                                                                @*ContactUS ToEmail*@ @WBSSLStore.Resources.GeneralMessage.Message.ContactUSToEmail_Caption:
+                                                                                            </td>
+                                                                                            <td width="659" align="left" valign="middle">
+                                                                                                <label>
+                                                                                                    <input name="txtToEmail" type="text" class="inputbox" id="txtToEmail" value="@ViewBag.ToEmail" />
+                                                                                                </label>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td width="133" align="right" valign="middle" class="bold">
+                                                                                                @*Thank-you page Url*@ @WBSSLStore.Resources.GeneralMessage.Message.Thankyoupageurl_Caption:
+                                                                                            </td>
+                                                                                            <td width="659" align="left" valign="middle">
+                                                                                                <label>
+                                                                                                    <input name="txtThankyou" type="text" class="inputbox" id="txtThankyou" value="@ViewBag.Thankyoupage" />
+                                                                                                </label>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td width="133" align="right" valign="top" class="bold">
+                                                                                                @*Thankyou Page Payment note*@ @WBSSLStore.Resources.GeneralMessage.Message.PaymentNote_Caption:
+                                                                                            </td>
+                                                                                            <td width="659" align="left" valign="middle">
+                                                                                                <label>
+                                                                                                    @*<input name="txtpaymentnote" type="text" class="inputbox" id="txtpaymentnote" value="@ViewBag.PaymentNote" />*@
+                                                                                                    <textarea name="txtpaymentnote" rows="3" class="inputbox" cols="5" width="300px"
+                                                                                                              id="txtpaymentnote">
+                                                                                                        @ViewBag.PaymentNote
+                                                                                                    </textarea>
+                                                                                                    <div style="font-weight: normal; font-size: x-small; font-style: italic; clear: both;">
+                                                                                                        @* (This is for credit card statement note.) *@
+                                                                                                        ( @WBSSLStore.Resources.GeneralMessage.Message.PaymentNote_Small_Caption )
+                                                                                                        <br />
+                                                                                                        <br />
+                                                                                                    </div>
+                                                                                                </label>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td width="133" align="right" valign="top" class="bold">
+                                                                                                @WBSSLStore.Resources.GeneralMessage.Message.InvoiceAddress_Caption:
+                                                                                            </td>
+                                                                                            <td width="659" align="left" valign="middle">
+                                                                                                <label>
+                                                                                                    <textarea name="txtInvoiceAddress" class="tinymce" rows="7" cols="5" width="300px"
+                                                                                                              id="txtInvoiceAddress">
+                                                                                                        @ViewBag.SiteSignature
+                                                                                                    </textarea>
+                                                                                                    @*@Html.TextAreaFor(x => ViewBag.SiteSignature , new { @class = "tinymce", @style = "width: 100%", @rows = "25" })*@
+                                                                                                </label>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td></td>
+                                                                                            <td>&nbsp;</td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td width="133" align="right" valign="top" class="bold">
+                                                                                                @WBSSLStore.Resources.GeneralMessage.Message.ResellersCustomerNotification_caption:
+                                                                                            </td>
+                                                                                            <td width="659" align="left" valign="middle">
+                                                                                                <label>
+                                                                                                    <input type="checkbox" value="true" name="chkCustomEmailResellersCustomersNotification" id="chkCustomEmailResellersCustomersNotification" @(!string.IsNullOrEmpty(ViewBag.CustomEmailResellerCustomerRenewalNotification) && Convert.ToBoolean(ViewBag.CustomEmailResellerCustomerRenewalNotification) ? "checked=\"checked\"" : "") />
+                                                                                                    <span style="font-weight: normal; font-size: small; font-style: italic; clear: both;">
+                                                                                                        (@WBSSLStore.Resources.GeneralMessage.Message.ResellersCustomerNotification_note)
+                                                                                                    </span>
+                                                                                                </label>
+
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                    </table>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align="left" valign="top">
+                                                                        &nbsp;
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="left" valign="top">
+                                                &nbsp;
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td width="840" height="30" align="left" valign="middle">
+                                                <h1>
+                                                    @WBSSLStore.Resources.GeneralMessage.Message.Header_Management
+                                                </h1>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="left" valign="top">
+                                                <table width="840" border="0" align="center" cellpadding="1" cellspacing="1" class="bdrline">
+                                                    <tr>
+                                                        <td align="left" valign="top" bgcolor="#f7f7f7">
+                                                            <table width="803" border="0" align="center" cellpadding="1" cellspacing="1">
+                                                                <tr>
+                                                                    <td width="820" align="left" valign="top">
+                                                                        <table width="100%" border="0" cellspacing="1" cellpadding="1">
+                                                                            <tr>
+                                                                                <td height="8" align="left" valign="top"></td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td align="left" valign="top" class="greenfont">
+                                                                                    @*Logo Management*@ @WBSSLStore.Resources.GeneralMessage.Message.Logo_Management
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td align="left" valign="top">
+                                                                                    <table width="799" border="0" align="left" cellpadding="1" cellspacing="1">
+                                                                                        <tr>
+                                                                                            <td width="133" align="right" valign="middle" class="bold">
+                                                                                                @*Upload Logo*@ @WBSSLStore.Resources.GeneralMessage.Message.Upload_Logo :
+                                                                                            </td>
+                                                                                            <td width="659" align="left" valign="middle">
+                                                                                                <div style="float: left; padding-top: 15px;">
+                                                                                                    <input id="fupLogo" name="fupLogo" type="file" />
+                                                                                                    <table id="files"></table>
+                                                                                                </div>
+                                                                                                @if (!string.IsNullOrEmpty(ViewBag.Logo))
+                                                                                                {
+                                                                                                    <div style="float: left; padding-left: 25px">
+                                                                                                        <img id="imgLogo" width="230" height="60" src="/upload/sitelogo/@ViewBag.Logo?uid=@(Guid.NewGuid().ToString())" align="absmiddle" alt="Logo" />
+                                                                                                        <a href="Javascript:;" class="commonlink" style="vertical-align: bottom;" onclick="DeleteLogo()">@WBSSLStore.Resources.GeneralMessage.Message.Remove_btn</a>
+                                                                                                    </div>
+                                                                                                }
+                                                                                                <div style="font-weight: normal; font-size: small; font-style: italic; clear: both;">
+                                                                                                    (Valid file types are *.gif, *.jpeg, *.png, *.jpg and *.bmp. Logo size is 400 X
+                                                                                                    90)
+                                                                                                </div>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                    </table>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align="left" valign="top">
+                                                                        <img src="/content/Admin/images/divider-gry.gif" alt="logo management" width="803"
+                                                                             height="8">
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align="left" valign="top">
+                                                                        <table width="100%" border="0" cellspacing="1" cellpadding="1">
+                                                                            <tr>
+                                                                                <td height="8" align="left" valign="top"></td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td align="left" valign="top" class="greenfont">
+                                                                                    @*Live CHat OpTion*@ @WBSSLStore.Resources.GeneralMessage.Message.Live_CHat_OpTion
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td align="left" valign="top">
+                                                                                    <table width="799" border="0" align="left" cellpadding="1" cellspacing="1">
+                                                                                        <tr>
+                                                                                            <td width="132" align="right" valign="middle" class="bold">
+                                                                                                @*Live Chat Script*@ @WBSSLStore.Resources.GeneralMessage.Message.Live_Chat_Script:
+                                                                                            </td>
+                                                                                            <td width="660" align="left" valign="middle">
+                                                                                                <label>
+                                                                                                    <textarea name="txtLiveChate" rows="4" cols="25" class="inputboxbigger" id="txtLiveChate">@ViewBag.Livechate</textarea>
+                                                                                                </label>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                    </table>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align="left" valign="top">
+                                                                        <img src="/content/Admin/images/divider-gry.gif" alt="Live Chat Option" width="803"
+                                                                             height="8">
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align="left" valign="top">
+                                                                        <table width="100%" border="0" cellspacing="1" cellpadding="1">
+                                                                            <tr>
+                                                                                <td height="8" align="left" valign="top"></td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td align="left" valign="top" class="greenfont">
+                                                                                    @*Social Networking*@ @WBSSLStore.Resources.GeneralMessage.Message.Social_Networking
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td align="left" valign="top">
+                                                                                    <table width="799" border="0" align="left" cellpadding="1" cellspacing="1">
+                                                                                        <tr>
+                                                                                            <td width="133" align="right" valign="middle" class="bold">
+                                                                                                @*Facebook*@ @WBSSLStore.Resources.GeneralMessage.Message.Facebook_Caption:
+                                                                                            </td>
+                                                                                            <td width="659" align="left" valign="middle">
+                                                                                                <label>
+                                                                                                    <input name="txtFacebook" type="text" class="inputbox" id="txtFacebook" value="@ViewBag.Facebook">
+                                                                                                </label>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td align="right" valign="middle" class="bold">
+                                                                                                @*Twitter*@ @WBSSLStore.Resources.GeneralMessage.Message.Twitter_Caption :
+                                                                                            </td>
+                                                                                            <td align="left" valign="middle">
+                                                                                                <input name="txtTwitter" type="text" class="inputbox" id="txtTwitter" value="@ViewBag.Twitter" />
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td align="right" valign="middle" class="bold">
+                                                                                                @WBSSLStore.Resources.GeneralMessage.Message.GooglePlus_Caption :
+                                                                                            </td>
+                                                                                            <td align="left" valign="middle">
+                                                                                                <input name="txtGoogleplus" type="text" class="inputbox" id="txtGoogleplus" value="@ViewBag.Googleplus" />
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                    </table>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align="left" valign="top">
+                                                                        <img src="/content/Admin/images/divider-gry.gif" alt="Social Networking" width="803"
+                                                                             height="8">
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align="left" valign="top">
+                                                                        <table width="100%" border="0" cellspacing="1" cellpadding="1">
+                                                                            <tr>
+                                                                                <td height="8" align="left" valign="top"></td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td align="left" valign="top" class="greenfont">
+                                                                                    @*Display Phone Number*@ @WBSSLStore.Resources.GeneralMessage.Message.Display_Phone_Number
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td align="left" valign="top">
+                                                                                    <table width="799" border="0" align="left" cellpadding="1" cellspacing="1">
+                                                                                        <tr>
+                                                                                            <td width="133" align="right" valign="middle" class="bold">
+                                                                                                @*Phone Number*@ @WBSSLStore.Resources.GeneralMessage.Message.Phone_Number:
+                                                                                            </td>
+                                                                                            <td width="659" align="left" valign="middle">
+                                                                                                <label>
+                                                                                                    <input name="txtPhone" type="text" class="inputbox" id="txtPhone" value="@ViewBag.Phone" />
+                                                                                                </label>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                    </table>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align="left" valign="top">
+                                                                        <table width="100%" border="0" cellspacing="1" cellpadding="1">
+                                                                            <tr>
+                                                                                <td height="8" align="left" valign="top"></td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td align="left" valign="top" class="greenfont">
+                                                                                    @*Blog Option*@ @WBSSLStore.Resources.GeneralMessage.Message.Blog_Option
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td align="left" valign="top">
+                                                                                    <table width="799" border="0" align="left" cellpadding="1" cellspacing="1">
+                                                                                        <tr>
+                                                                                            <td width="133" align="right" valign="middle" class="bold">
+                                                                                                @*Blog Url*@ @WBSSLStore.Resources.GeneralMessage.Message.blog_Url:
+                                                                                            </td>
+                                                                                            <td width="659" align="left" valign="middle">
+                                                                                                <label>
+                                                                                                    <input name="txtBlogUrl" type="text" class="inputbox" id="txtBlogUrl" value="@ViewBag.BlogUrl" />
+                                                                                                </label>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                    </table>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align="left" valign="top">
+                                                                        <table width="100%" border="0" cellspacing="1" cellpadding="1">
+                                                                            <tr>
+                                                                                <td height="8" align="left" valign="top"></td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td align="left" valign="top" class="greenfont">
+                                                                                    @*Brand Configuration*@ @WBSSLStore.Resources.GeneralMessage.Message.Brand_Configuration
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td align="left" valign="top">
+                                                                                    <table width="799" border="0" align="left" cellpadding="1" cellspacing="1">
+                                                                                        <tr>
+                                                                                            <td width="133" align="right" valign="middle" class="bold">
+                                                                                                @*Synchronize Your Product*@ @WBSSLStore.Resources.GeneralMessage.Message.Synchronize_Your_Product:
+                                                                                            </td>
+                                                                                            <td width="659" align="left" valign="middle">
+                                                                                                <label>
+                                                                                                    <input name="txtAllowedBrand" type="hidden" class="inputbox" id="txtAllowedBrand" value="@ViewBag.AllowedBrand" />
+                                                                                                </label>
+                                                                                                <a href="Javascript:;" onclick="RefreshBrands()">
+                                                                                                    <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/refresh.png" alt="Refresh" align="absmiddle" title="Refresh" />
+                                                                                                </a>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                    </table>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align="left" valign="top">
+                                                                        &nbsp;
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="left" valign="top">
+                                                &nbsp;
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td height="30" align="left" valign="middle">
+                                                <h1>
+                                                    @*Banner Selection*@ @WBSSLStore.Resources.GeneralMessage.Message.Banner_Selection
+                                                </h1>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="left" valign="top">
+                                                <table width="840" border="0" align="center" cellpadding="1" cellspacing="1" class="bdrline">
+                                                    <tr>
+                                                        <td align="left" valign="top" bgcolor="#f7f7f7">
+                                                            <table width="803" border="0" align="center" cellpadding="1" cellspacing="1">
+                                                                <tr>
+                                                                    <td width="820" align="left" valign="top">
+                                                                        <table width="100%" border="0" cellspacing="1" cellpadding="1">
+                                                                            <tr>
+                                                                                <td align="left" valign="top">
+                                                                                    <table width="799" border="0" align="left" cellpadding="1" cellspacing="1">
+                                                                                        <tr>
+                                                                                            <td width="133" align="right" valign="middle" class="bold">
+                                                                                                @*Show Banner*@ @WBSSLStore.Resources.GeneralMessage.Message.Show_Banner :
+                                                                                            </td>
+                                                                                            <td width="659" align="left" valign="middle">
+                                                                                                <table width="100%" border="0" align="left" cellpadding="1" cellspacing="1">
+                                                                                                    <tr>
+                                                                                                        <td width="1%" align="left" valign="middle" class="bold">
+                                                                                                            <label>
+                                                                                                                <input type="radio" name="rbtNeedBanner" onclick="$('#dvBanner').hide('slow');" id="rbtNeedBannerNo" value="False" @(string.IsNullOrEmpty(ViewBag.Banner) || ViewBag.Banner == "false" ? "checked='checked'" : string.Empty) />
+                                                                                                            </label>
+                                                                                                        </td>
+                                                                                                        <td width="3%" align="left" valign="middle" class="bold">
+                                                                                                            @*No*@ @WBSSLStore.Resources.GeneralMessage.Message.No_CAption
+                                                                                                        </td>
+                                                                                                        <td width="3%" align="left" valign="middle" class="bold">
+                                                                                                            <input type="radio" name="rbtNeedBanner" onclick="$('#dvBanner').show('slow');" id="rbtNeedBannerYes" value="True" @(!string.IsNullOrEmpty(ViewBag.Banner) && ViewBag.Banner == "true" ? "checked='checked'" : string.Empty) />
+                                                                                                        </td>
+                                                                                                        <td width="93%" align="left" valign="middle" class="bold">
+                                                                                                            @*Yes*@ @WBSSLStore.Resources.GeneralMessage.Message.Yes_CAption
+                                                                                                            <div style="float: right;">
+                                                                                                                <a href="@Url.Action("banner", "sitesettings")" class="commonlink" style="text-decoration:underline;">@WBSSLStore.Resources.GeneralMessage.Message.AdvanceBanner_Caption</a>
+                                                                                                            </div>
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                </table>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td align="right" valign="middle" class="bold">
+                                                                                                &nbsp;
+                                                                                            </td>
+                                                                                            <td align="left" valign="middle">
+                                                                                                <div id="dvBanner" @(!string.IsNullOrEmpty(ViewBag.Banner) && ViewBag.Banner == "yes" ? "style='display:none;'" : string.Empty)>
+                                                                                                    <table class="bdrwhite" width="99%" border="0" align="left" cellpadding="1" cellspacing="1">
+                                                                                                        <tr>
+                                                                                                            <td align="right" valign="middle" class="bold">
+                                                                                                                &nbsp;
+                                                                                                            </td>
+                                                                                                            <td align="left" valign="middle">
+                                                                                                                &nbsp;
+                                                                                                            </td>
+                                                                                                            <td align="left" valign="middle">
+                                                                                                                &nbsp;
+                                                                                                            </td>
+                                                                                                        </tr>
+                                                                                                        <tr>
+                                                                                                            <td width="7%" align="right" valign="middle" class="bold">
+                                                                                                                &nbsp;
+                                                                                                            </td>
+                                                                                                            <td width="43%" align="left" valign="middle">
+                                                                                                                <label>
+                                                                                                                    <input name="fupBanner" type="file" class="inputbox" id="fupBanner" /><br />
+                                                                                                                    <table id="files1"></table>
+                                                                                                                </label>
+                                                                                                            </td>
+                                                                                                            <td align="left" width="50%" valign="middle"></td>
+                                                                                                        </tr>
+                                                                                                        <tr>
+                                                                                                            <td align="left" colspan="3">
+                                                                                                                @if (!string.IsNullOrEmpty(ViewBag.BannerFile))
+                                                                                                                {
+                                                                                                                    <img id="imgBanner" src="/upload/@ViewBag.SiteID/@ViewBag.BannerFile?uid=@(Guid.NewGuid().ToString())" align="absmiddle" alt="gallery thumbnail" width="520px" height="@Convert.ToInt32(@System.Web.Configuration.WebConfigurationManager.AppSettings["BannerHeight"])" />
+                                                                                                                }
+                                                                                                            </td>
+                                                                                                        </tr>
+                                                                                                    </table>
+                                                                                                </div>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                    </table>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align="left" valign="top">
+                                                                        <table width="799" border="0" align="left" cellpadding="1" cellspacing="1">
+                                                                            <tr>
+                                                                                <td  align="right" valign="middle" class="bold">
+                                                                                    @WBSSLStore.Resources.GeneralMessage.Message.ShowBaner_on_HomePage_only_caption:
+                                                                                    
+                                                                                </td>
+                                                                                <td width="650" align="left" valign="middle">
+                                                                                    <input type="checkbox" value="true" name="chkShowbannerOnlyHomepage" id="chkShowbannerOnlyHomepage" @(!string.IsNullOrEmpty(ViewBag.ShowbannerOnlyHomepage) && Convert.ToBoolean(ViewBag.ShowbannerOnlyHomepage) ? "checked=\"checked\"" : "") />
+                                                                                    <span style="font-weight: normal; font-size: small; font-style: italic; clear: both;">
+                                                                                        (@WBSSLStore.Resources.GeneralMessage.Message.ShowBaner_on_HomePage_only_Note)
+                                                                                    </span>
+                                                                                </td>
+                                                                            </tr>
+
+                                                                        </table>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="left" valign="top">
+                                                &nbsp;
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td height="30" align="left" valign="middle">
+                                                <h1>
+                                                    @*Manage Language &amp; Time Zone*@ @WBSSLStore.Resources.GeneralMessage.Message.Manage_Language_Time_Zone
+                                                </h1>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="left" valign="top">
+                                                <table width="840" border="0" align="center" cellpadding="1" cellspacing="1" class="bdrline">
+                                                    <tr>
+                                                        <td align="left" valign="top" bgcolor="#f7f7f7">
+                                                            <table width="803" border="0" align="center" cellpadding="1" cellspacing="1">
+                                                                <tr>
+                                                                    <td width="820" align="left" valign="top">
+                                                                        <table width="100%" border="0" cellspacing="1" cellpadding="1">
+                                                                            <tr>
+                                                                                <td align="left" valign="top">
+                                                                                    <table width="100%" border="0" align="left" cellpadding="1" cellspacing="1">
+                                                                                        <tr>
+                                                                                            <td width="100%" align="right" valign="middle" colspan="8">
+                                                                                                &nbsp;
+                                                                                            </td>
+                                                                                            <!--<td width="10%" align="left" valign="middle">
+                                                                                                &nbsp;
+                                                                                            </td>
+                                                                                            <td width="10%" align="left" valign="middle">
+                                                                                                &nbsp;
+                                                                                            </td>
+                                                                                            <td width="9%" align="left" valign="middle">
+                                                                                                &nbsp;
+                                                                                            </td>
+                                                                                            <td width="21%" align="left" valign="middle">
+                                                                                                &nbsp;
+                                                                                            </td>
+                                                                                            <td width="12%" align="left" valign="middle">
+                                                                                                &nbsp;
+                                                                                            </td>
+                                                                                            <td width="12%" align="left" valign="middle">
+                                                                                                &nbsp;
+                                                                                            </td>
+                                                                                            <td width="16%" align="left" valign="middle">
+                                                                                                &nbsp;
+                                                                                            </td>-->
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td width="12%" align="right" valign="middle" class="bold">
+                                                                                                <table width="56%" border="0" align="center" cellpadding="1" cellspacing="1">
+                                                                                                    <tr>
+                                                                                                        <td align="center" valign="top">
+                                                                                                            <input type="radio" name="rbtLanguage" id="rbtEnglish" value="en" @((Convert.ToString(ViewBag.Language).ToLower() == "en" || string.IsNullOrEmpty(ViewBag.Language)) ? "checked='checked'" : string.Empty) />
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td align="center" valign="top">
+                                                                                                            <img src="/content/Admin/images/flag-emglish.png" alt="english" width="48" height="39">
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td align="center" valign="top">
+                                                                                                            English
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                </table>
+                                                                                            </td>
+                                                                                            <td width="12%" align="left" valign="middle" class="bold">
+                                                                                                <table width="56%" border="0" align="center" cellpadding="1" cellspacing="1">
+                                                                                                    <tr>
+                                                                                                        <td align="center" valign="top">
+                                                                                                            <input type="radio" name="rbtLanguage" id="rbtSpanish" value="es" @(Convert.ToString(ViewBag.Language).ToLower() == "es" ? "checked='checked'" : string.Empty) />
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td align="center" valign="top">
+                                                                                                            <img src="/content/Admin/images/Spain-Flag.png" alt="Spain" width="48" height="39">
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td align="center" valign="top" class="bold">
+                                                                                                            Spanish
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                </table>
+                                                                                            </td>
+                                                                                            <td width="12%" align="left" valign="middle" class="bold" style="display: none">
+                                                                                                <table width="56%" border="0" align="center" cellpadding="1" cellspacing="1">
+                                                                                                    <tr>
+                                                                                                        <td align="center" valign="top">
+                                                                                                            <input type="radio" name="rbtLanguage" id="rbtFrance" value="fr" @(Convert.ToString(ViewBag.Language).ToLower() == "fr" ? "checked='checked'" : string.Empty) />
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td align="center" valign="top">
+                                                                                                            <img src="/content/Admin/images/france-flag.png" alt="France" width="48" height="37">
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td align="center" valign="top" class="bold">
+                                                                                                            France
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                </table>
+                                                                                            </td>
+                                                                                            <td width="12%" align="left" valign="middle" class="bold" style="display: none">
+                                                                                                <table width="56%" border="0" align="center" cellpadding="1" cellspacing="1">
+                                                                                                    <tr>
+                                                                                                        <td align="center" valign="top">
+                                                                                                            <input type="radio" name="rbtLanguage" id="rbtBrazilian" value="br" @(Convert.ToString(ViewBag.Language).ToLower() == "br" ? "checked='checked'" : string.Empty) />
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td align="center" valign="top">
+                                                                                                            <img src="/content/Admin/images/Brazil-Flag.png" alt="Dutch" width="48" height="36">
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td align="center" valign="top" class="bold">
+                                                                                                            Brazilian
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                </table>
+                                                                                            </td>
+                                                                                            <td width="12%" align="left" valign="middle" class="bold" style="display: none">
+                                                                                                <table width="56%" border="0" align="center" cellpadding="1" cellspacing="1">
+                                                                                                    <tr>
+                                                                                                        <td align="center" valign="top">
+                                                                                                            <input type="radio" name="rbtLanguage" id="rbtGerman" value="de" @(Convert.ToString(ViewBag.Language).ToLower() == "de" ? "checked='checked'" : string.Empty) />
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td align="center" valign="top">
+                                                                                                            <img src="/content/Admin/images/Germany-Flag.png" alt="Dutch" width="48" height="36">
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td align="center" valign="top" class="bold">
+                                                                                                            German
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                </table>
+                                                                                            </td>
+                                                                                            <td width="12%" align="left" valign="middle" class="bold" style="display: none">
+                                                                                                <table width="56%" border="0" align="center" cellpadding="1" cellspacing="1">
+                                                                                                    <tr>
+                                                                                                        <td align="center" valign="top">
+                                                                                                            <input type="radio" name="rbtLanguage" id="rbtItalian" value="it" @(Convert.ToString(ViewBag.Language).ToLower() == "it" ? "checked='checked'" : string.Empty) />
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td align="center" valign="top">
+                                                                                                            <img src="/content/Admin/images/Italy-Flag.png" alt="Dutch" width="48" height="36">
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td align="center" valign="top" class="bold">
+                                                                                                            Italian
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                </table>
+                                                                                            </td>
+                                                                                            <td width="12%" align="left" valign="middle" class="bold">
+                                                                                                <table width="56%" border="0" align="center" cellpadding="1" cellspacing="1">
+                                                                                                    <tr>
+                                                                                                        <td align="center" valign="top">
+                                                                                                            <input type="radio" name="rbtLanguage" id="rbtHungarian" value="hu" @(Convert.ToString(ViewBag.Language).ToLower() == "hu" ? "checked='checked'" : string.Empty) />
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td align="center" valign="top">
+                                                                                                            <img src="/content/Admin/images/flag-hungarian.png" alt="Dutch" width="48" height="36">
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td align="center" valign="top" class="bold">
+                                                                                                            Hungarian
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                </table>
+                                                                                            </td>
+                                                                                            <td width="12%" align="left" valign="middle" class="bold">
+                                                                                                <table width="56%" border="0" align="center" cellpadding="1" cellspacing="1">
+                                                                                                    <tr>
+                                                                                                        <td align="center" valign="top">
+                                                                                                            <input type="radio" name="rbtLanguage" id="rbtRussian" value="ru" @(Convert.ToString(ViewBag.Language).ToLower() == "ru" ? "checked='checked'" : string.Empty) />
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td align="center" valign="top">
+                                                                                                            <img src="/content/Admin/images/flag-russian.png" alt="Russian" width="48" height="36">
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td align="center" valign="top" class="bold">
+                                                                                                            Russian
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                </table>
+                                                                                            </td>
+                                                                                            <td width="12%" align="left" valign="middle" class="bold" style="display: none">
+                                                                                                <table width="56%" border="0" align="center" cellpadding="1" cellspacing="1">
+                                                                                                    <tr>
+                                                                                                        <td align="center" valign="top">
+                                                                                                            <input type="radio" name="rbtLanguage" id="rbtCzech" value="cs" @(Convert.ToString(ViewBag.Language).ToLower() == "cs" ? "checked='checked'" : string.Empty) />
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td align="center" valign="top">
+                                                                                                            <img src="/content/Admin/images/flag-czech.png" alt="Russian" width="48" height="36">
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td align="center" valign="top" class="bold">
+                                                                                                            Czech
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                </table>
+                                                                                            </td>
+                                                                                            <td width="25" align="left" valign="middle" class="bold">
+                                                                                                &nbsp;
+                                                                                            </td>
+                                                                                            @*<td width="12%" align="left" valign="middle">
+                                                                                                    &nbsp;
+                                                                                                </td>*@ @*<td width="12%" align="left" valign="middle">
+                                                                                                    &nbsp;
+                                                                                                </td>
+                                                                                                <td width="16%" align="left" valign="middle">
+                                                                                                    &nbsp;
+                                                                                                </td>*@
+                                                                                            </tr>
+                                                                                            <tr>
+                                                                                                <td align="right" valign="middle" class="bold">
+                                                                                                    &nbsp;
+                                                                                                </td>
+                                                                                                <td align="left" valign="middle">
+                                                                                                    &nbsp;
+                                                                                                </td>
+                                                                                                <td align="left" valign="middle">
+                                                                                                    &nbsp;
+                                                                                                </td>
+                                                                                                <td align="left" valign="middle">
+                                                                                                    &nbsp;
+                                                                                                </td>
+                                                                                                <td align="left" valign="middle">
+                                                                                                    &nbsp;
+                                                                                                </td>
+                                                                                                <td align="left" valign="middle">
+                                                                                                    &nbsp;
+                                                                                                </td>
+                                                                                                <td align="left" valign="middle">
+                                                                                                    &nbsp;
+                                                                                                </td>
+                                                                                                <td align="left" valign="middle">
+                                                                                                    &nbsp;
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </table>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td align="left" valign="top">
+                                                                                        <table border="0" align="left" cellpadding="0" cellspacing="1">
+                                                                                            <tr>
+                                                                                                <td width="150" align="right" valign="middle" class="bold">
+                                                                                                    @*Select Timezone*@ @WBSSLStore.Resources.GeneralMessage.Message.Select_Timezone:
+                                                                                                </td>
+                                                                                                <td width="591" align="left" valign="middle">
+                                                                                                    <label>
+                                                                                                        <select name="drpTimezone" id="drpTimezone" class="listmenuSiteSettings">
+                                                                                                            <option value="">@WBSSLStore.Resources.GeneralMessage.Message.Select_Timezone</option>
+                                                                                                            <option value="-720" @(ViewBag.Timezone == "-720" ? "selected='selected'" : string.Empty)>(GMT-12:00) International Date Line West</option>
+                                                                                                            <option value="-660" @(ViewBag.Timezone == "-660" ? "selected='selected'" : string.Empty)>(GMT-11:00) Midway Island, Samoa</option>
+                                                                                                            <option value="-600" @(ViewBag.Timezone == "-600" ? "selected='selected'" : string.Empty)>(GMT-10:00) Hawaii</option>
+                                                                                                            <option value="-540" @(ViewBag.Timezone == "-540" ? "selected='selected'" : string.Empty)>(GMT-09:00) Alaska</option>
+                                                                                                            <option value="-480" @(ViewBag.Timezone == "-480" ? "selected='selected'" : string.Empty)>(GMT-08:00) Pacific Time(US &amp; Canada); Tijuana</option>
+                                                                                                            <option value="-420" @(ViewBag.Timezone == "-420" ? "selected='selected'" : string.Empty)>(GMT-07:00) Arizona</option>
+                                                                                                            <option value="-360" @(ViewBag.Timezone == "-360" ? "selected='selected'" : string.Empty)>(GMT-06:00) Central Time (Us &amp; Canada)</option>
+                                                                                                            <option value="-300" @(ViewBag.Timezone == "-300" ? "selected='selected'" : string.Empty)>(GMT-05:00) Eastern Time (US &amp; Canada)</option>
+                                                                                                            <option value="-240" @(ViewBag.Timezone == "-240" ? "selected='selected'" : string.Empty)>(GMT-04:00) Atlantic Time (Canada)</option>
+                                                                                                            <option value="-198" @(ViewBag.Timezone == "-198" ? "selected='selected'" : string.Empty)>(GMT-03:30) Newfoundland</option>
+                                                                                                            <option value="-180" @(ViewBag.Timezone == "-180" ? "selected='selected'" : string.Empty)>(GMT-03:00) Greenland</option>
+                                                                                                            <option value="-120" @(ViewBag.Timezone == "-120" ? "selected='selected'" : string.Empty)>(GMT-02:00) Mid-Atlantic</option>
+                                                                                                            <option value="-60" @(ViewBag.Timezone == "-60" ? "selected='selected'" : string.Empty)>(GMT-01:00) Azores</option>
+                                                                                                            <option value="0" @(ViewBag.Timezone == "0" ? "selected='selected'" : string.Empty)>(GMT) Greenwich Mean Time: Dublin, Edinburgh, Lisbon, London</option>
+                                                                                                            <option value="60" @(ViewBag.Timezone == "60" ? "selected='selected'" : string.Empty)>(GMT+01:00) Amsterdam, Berlin, Bern, Rome, Stockholm, Vienna</option>
+                                                                                                            <option value="120" @(ViewBag.Timezone == "120" ? "selected='selected'" : string.Empty)>(GMT+02:00) Athens, Beirut, Istanbul, Minsk</option>
+                                                                                                            <option value="180" @(ViewBag.Timezone == "180" ? "selected='selected'" : string.Empty)>(GMT+03:00) Baghdad</option>
+                                                                                                            <option value="240" @(ViewBag.Timezone == "240" ? "selected='selected'" : string.Empty)>(GMT+04:00) Abu Dhabi, Muscat</option>
+                                                                                                            <option value="258" @(ViewBag.Timezone == "258" ? "selected='selected'" : string.Empty)>(GMT+04:30) Kabul</option>
+                                                                                                            <option value="300" @(ViewBag.Timezone == "300" ? "selected='selected'" : string.Empty)>(GMT+05:00) Ekaterinburg</option>
+                                                                                                            <option value="318" @(ViewBag.Timezone == "318" ? "selected='selected'" : string.Empty)>(GMT+05:30) Chennai, Kolkata, Mumbai, New Delhi</option>
+                                                                                                            <option value="327" @(ViewBag.Timezone == "327" ? "selected='selected'" : string.Empty)>(GMT+05:45) Katmandu</option>
+                                                                                                            <option value="378" @(ViewBag.Timezone == "378" ? "selected='selected'" : string.Empty)>(GMT+06:30) Rangoon</option>
+                                                                                                            <option value="420" @(ViewBag.Timezone == "420" ? "selected='selected'" : string.Empty)>(GMT+07:00) Bangkok, Hanoi, Jakarta</option>
+                                                                                                            <option value="480" @(ViewBag.Timezone == "480" ? "selected='selected'" : string.Empty)>(GMT+08:00) Beijing, Chongging, Hong Kong, Urumgi</option>
+                                                                                                            <option value="540" @(ViewBag.Timezone == "540" ? "selected='selected'" : string.Empty)>(GMT+09:00) Osaka, Sapporo, Tokyo</option>
+                                                                                                            <option value="558" @(ViewBag.Timezone == "558" ? "selected='selected'" : string.Empty)>(GMT+09:30) Adelaide</option>
+                                                                                                            <option value="600" @(ViewBag.Timezone == "600" ? "selected='selected'" : string.Empty)>(GMT+10:00) Brisbane</option>
+                                                                                                            <option value="660" @(ViewBag.Timezone == "660" ? "selected='selected'" : string.Empty)>(GMT+11:00) Magadan, Soloman Is., New Caledonia</option>
+                                                                                                            <option value="720" @(ViewBag.Timezone == "720" ? "selected='selected'" : string.Empty)>(GMT+12:00) Auckland, Wellington</option>
+                                                                                                            <option value="780" @(ViewBag.Timezone == "780" ? "selected='selected'" : string.Empty)>(GMT+13:00) Nuku'alofa</option>
+                                                                                                        </select>
+                                                                                                    </label>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </table>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </table>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="left" valign="top">
+                                                    &nbsp;
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="left" valign="top">
+                                                    <table width="80%" border="0" align="center" cellpadding="1" cellspacing="2">
+                                                        <tr>
+                                                            <td height="8" align="left" valign="top"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="69%" align="center" valign="top">
+                                                                <label>
+                                                                    <input name="btnSubmit" type="submit" class="bluebtn" id="btnSubmit" value="@WBSSLStore.Resources.GeneralMessage.Message.Submit_Btn" />
+                                                                </label>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td height="8" align="left" valign="top"></td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td height="8" align="left" valign="top"></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+        }
+    </td>
+</tr>

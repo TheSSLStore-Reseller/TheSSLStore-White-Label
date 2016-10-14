@@ -1,0 +1,130 @@
+﻿@model WBSSLStore.Service.ViewModels.StaticPageViewModel
+@{
+    ViewBag.Title = "SecureSiteProwithEV";  var productdetails = WBSSLStore.Web.Helpers.WBHelper.GetProductDetailRows();
+    string brand = Model != null && Model.Items != null && Model.Items.FirstOrDefault().Product != null && Model.Items.FirstOrDefault().Product.Brand != null ? Model.Items.FirstOrDefault().Product.Brand.BrandName : "";
+    string username = ViewBag.UserName;
+}
+@section headerTags{
+    @Html.Partial("_renderSEO", Model != null && Model.CMSPage != null ? Model.CMSPage : new WBSSLStore.Domain.CMSPage())
+}
+@Html.Partial("_banner", new Tuple<string, string>("", "SSL Brands"))
+<div class="content">
+  <div class="wrapper">
+    <div class="column3">
+      <div class="mobtopcol">
+        <div class="column3-2">
+          <div class="prodetailswrap marzerotop"> @Html.Partial("_ProdPricing", new Tuple<List<WBSSLStore.Domain.ProductPricing>, List<WBSSLStore.Domain.ProductDetail>>(Model.Items.ToList(), productdetails.ToList())) </div>
+          <div class="prodescrip marzerotop">
+            <div class="prodescriptxt">
+              <h2>Product Description</h2>
+              <p>For the ultimate in online code security and consumer trust, look no further than the code signing certificate's from the world's #1 brand – Symantec. Symantec code signing certificates act as a form of digital shrink wrap for any code or content you're looking to distribute over the web. These certificates help ensure that your code is safe from modification, re-hosting, and impersonation by malevolent third parties. Since Symantec Code Signing certificates immediately let users know that your code has been verified by the worldwide leader, they will associate your company with trust – the most important component of any business. This is your opportunity to align your company with the most recognized name in web security.</p>
+            </div>
+            
+          </div>
+          <div id="cssmenu">
+            <ul class="accordion_example">
+              <li class="brand-symantec acc_active">
+                <div>
+                  <p>Assurance &amp; Authentication</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>Symantec Code Signing certificates help assure your customers about the identity and the authenticity of your software. It verifies the code publisher's identity with a comprehensive authentication procedure and safeguards the contents from any kind of tampering by an unauthorized third party. Obtaining this certificate for your company typically takes between 1–2 business days, but will allow you to reap the benefits of your customers' trust, since they will be able to instantly verify that your code has been investigated and approved by the leading global name in website security.</p>
+                  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Security &amp; Encryption</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>With a Symantec Code Signing certificate, you can secure your content from getting tampered with and from unapproved distribution. These certificates help ensure your users about your authenticity, since the validity of your code has been established and protected with this "digital shrink wrap."</p>
+                </div>
+              </li>
+              
+              <li class="brand-symantec">
+                <div>
+                  <p>Features &amp; Benefits</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <ul class="featurelist">
+                    <li>Symantec Code Signing is a fully Business Validated Signing Certificate</li>
+                    <li>Digital signature for Microsoft Authenticode, VBA and Office, Sun Java, Adobe AIR and Macromedia Shockwave</li>
+                    <li>Robust and time-tested authentication process to verify the publisher identity</li>
+                    <li>Proof that code has not changed or been tampered with since signing</li>
+                    <li>Unlimited signing with a valid Code Signing certificate</li>
+                    <li>Include $125,000 Warranty</li>
+                    <li>Allow you to sign kernel-mode software and device drivers</li>
+                  </ul>
+				  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Product Specifications</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <ul class="featurelist">
+                    <li>Show customers that your code and content are safe to download</li>
+                    <li>Inspire user confidence and protect your brand and business reputation</li>
+                    <li>Eliminate disruptive security alerts and reduce support inquiries</li>
+                    <li>Meet requirements for more platforms than any other code signing provider</li>
+                    <li>Increase adoption of downloadable software and online saless</li>
+                    <li>Lower total cost of ownership with time-stamping.</li>
+                  </ul>
+				  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Site Seal</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>Symantec Code Signing certificates do not come with a Site Seal because it is not designed to be advertised publically on your website.</p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Warranty</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>The Symantec Code Signing certificate provides warranty protection up to $125,000 against any unauthorized use, disclosure, safety compromise, unauthorized revocation, loss of use and possibly an incorrect issuance. This is the highest warranty on the market available with a code signing certificate.</p>
+
+<p>Additionally, the reissuance insurance and free installation checker are just two more reasons to go with a Symantec's Code Signing Certificate. These extraordinary features go above and beyond the competition.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        @Html.Partial("_rightpanel", username) </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+@section Jscripts{ 
+<script type="text/javascript">
+        $(document).ready(function () {
+            // Mobile Menu
+            $("#showmenu").click(function (e) {
+                e.preventDefault();
+                $("#menu").toggleClass("show");
+            });
+            $("#menu a").click(function (event) {
+                event.preventDefault();
+                if ($(this).next('ul').length) {
+                    $(this).next().toggle('fast');
+                    $(this).children('i:last-child').toggleClass('fa-caret-down fa-caret-left');
+                }
+            });
+            $(document).click(function (e) {
+                if (!$(e.target).is(".mobmemu, .mobmemu  *")) { $("#menu").toggleClass("hide"); $("#menu").removeClass("show"); }
+            });
+            $(".accordion_example").smk_Accordion();
+        });
+    </script> 
+} 

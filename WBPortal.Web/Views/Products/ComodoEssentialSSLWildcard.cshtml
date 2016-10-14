@@ -1,0 +1,139 @@
+﻿@model WBSSLStore.Service.ViewModels.StaticPageViewModel
+@{
+    ViewBag.Title = "SecureSiteProwithEV";  var productdetails = WBSSLStore.Web.Helpers.WBHelper.GetProductDetailRows();
+    string brand = Model != null && Model.Items != null && Model.Items.FirstOrDefault().Product != null && Model.Items.FirstOrDefault().Product.Brand != null ? Model.Items.FirstOrDefault().Product.Brand.BrandName : "";
+    string username = ViewBag.UserName;
+}
+@section headerTags{
+    @Html.Partial("_renderSEO", Model != null && Model.CMSPage != null ? Model.CMSPage : new WBSSLStore.Domain.CMSPage())
+}
+@Html.Partial("_banner", new Tuple<string, string>("", "SSL Brands"))
+<div class="content">
+  <div class="wrapper">
+    <div class="column3">
+      <div class="mobtopcol">
+        <div class="column3-2">
+          <div class="prodetailswrap marzerotop"> @Html.Partial("_ProdPricing", new Tuple<List<WBSSLStore.Domain.ProductPricing>, List<WBSSLStore.Domain.ProductDetail>>(Model.Items.ToList(), productdetails.ToList())) </div>
+          <div class="prodescrip marzerotop">
+            <div class="prodescriptxt">
+              <h2>Product Description</h2>
+              <p>One of the most cost-effective SSL solutions, the Comodo Essential SSL Wildcard certificate can secure one main domain and unlimited amount of subdomains. This makes managing your SSL certificates as simple as possible. Even more convenient, since this is a Domain Validated (DV) certificate, it can be <strong>issued to a domain in mere minutes</strong>. The Comodo Essential SSL Wildcard certificate is a <strong>perfect entry-level wildcard</strong> solution for very light ecommerce sites and new domains looking to establish trust with "https" and the Comodo Secure logo.</p>
+            </div>
+          </div>
+          <div id="cssmenu">
+            <ul class="accordion_example">
+              <li class="brand-symantec acc_active">
+                <div>
+                  <p>Assurance &amp; Authentication</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>Since this is a standard, Domain Validated (DV) wildcard certificate, the Comodo Essential SSL Wildcard can be issued almost immediately, once ownership of the domain is verified. This certificate also includes a static "Comodo Secure" site seal, to prove to customers that your website is <strong>trustworthy</strong>.</p>
+                  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Security &amp; Encryption</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                 <p>Since this is a standard, Domain Validated (DV) wildcard certificate, the Comodo Essential SSL Wildcard can be issued almost immediately, once ownership of the domain is verified. This certificate also includes a static "Comodo Secure" site seal, to prove to customers that your website is <strong>trustworthy</strong>.</p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>SAN &amp; multi-domain support</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>Since this is a wildcard certificate, it will protect one main domain and <strong>an unlimited number of subdomains</strong>. For example, you can use the Comodo Essential SSL Wildcard to protect www.domain.com and mail.domain.com, payment.domain.com, xyz.domain.com, etc.</p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Features &amp; Benefits</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <ul class="featurelist">
+                        <li>Secure multiple subdomains with one certificate</li>
+                        <li>Domain validated certificate</li>
+                        <li>2048 bit Industry Standard SSL Certificate</li>
+                        <li>Trusted by all popular browsers</li>
+                        <li>99.3% browser compatibility</li>
+                        <li>128/256 bit encryption</li>
+                        <li>Unlimited Re-Issuance Policy</li>
+                        <li>$10,000 Warranty</li>
+                        <li>FREE site seal, FREE PCI scanning, FREE daily website scanning</li>
+                      </ul>
+					  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Product Specifications</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <ul class="featurelist">
+                        <li>Multiple subdomains on a Single Domain Name</li>
+                        <li>Free Unlimited Server Licenses</li>
+                        <li>Issued Immediately</li>
+                        <li>Domain Validation</li>
+                        <li>2048 bit signatures and Up to 256-bit</li>
+                        <li>99.3% Browser Compatibile</li>
+                        <li>Includes COMODO Static Site Seal</li>
+                        <li>Unlimited Reissuance</li>
+                      </ul>
+					  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Site Seal</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p> The Comodo Essential SSL Wildcard will display the popular Comodo Site Seal on your domain and subdomains, making it immediately visible to your online customers. This popular icon is gaining more and more recognition on the web, and customers are continuing to learn to associate the "Comodo Secure" logo with trust and reputability. However, since this is a basic DV cert, this Site Seal is static and doesn't display any additional company information.</p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Warranty</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>This basic Comodo Wildcard certificate comes back by a standard $10,000 warranty. In the extremely unlikely event that an end-user experiences a breach in their SSL, they will be compensated for up to $10,000 by the Certificate Authority (CA).</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        @Html.Partial("_rightpanel", username) </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+@section Jscripts{ 
+<script type="text/javascript">
+        $(document).ready(function () {
+            // Mobile Menu
+            $("#showmenu").click(function (e) {
+                e.preventDefault();
+                $("#menu").toggleClass("show");
+            });
+            $("#menu a").click(function (event) {
+                event.preventDefault();
+                if ($(this).next('ul').length) {
+                    $(this).next().toggle('fast');
+                    $(this).children('i:last-child').toggleClass('fa-caret-down fa-caret-left');
+                }
+            });
+            $(document).click(function (e) {
+                if (!$(e.target).is(".mobmemu, .mobmemu  *")) { $("#menu").toggleClass("hide"); $("#menu").removeClass("show"); }
+            });
+            $(".accordion_example").smk_Accordion();
+        });
+    </script> 
+} 

@@ -1,0 +1,119 @@
+﻿@using WBSSLStore.Domain;
+@using WBSSLStore.Web.Helpers.PopupForm
+@model WBSSLStore.Service.ViewModels.StaticPageViewModel
+@{
+    ViewBag.version = WBSSLStore.Web.Helpers.Caching.SiteCacher.ResourceVersion();
+    var productdetails = WBSSLStore.Web.Helpers.WBHelper.GetProductDetailRows();
+}
+@section headerTags{
+    @Html.Partial("_renderSEO", Model != null && Model.CMSPage != null ? Model.CMSPage : new WBSSLStore.Domain.CMSPage())
+}
+@section sitecss{
+    @System.Web.Optimization.Styles.Render("/bundales/tabcss?v=" + ViewBag.version)
+    @*@System.Web.Optimization.Styles.Render("/bundales/jquery-ui-css?v=" + ViewBag.version)*@
+}
+@section Jscripts{
+    @System.Web.Optimization.Scripts.Render("/bundales/wb/scripts?v=" + ViewBag.version)
+    <script type="text/javascript">
+        $(function () {
+            $(".accordion_example").smk_Accordion();
+        });
+    </script>
+}
+@Html.Partial("_banner", new Tuple<string, string>("", "SSL Brands"))
+<div class="content">
+    <div class="wrapper">
+        <div class="column3">
+            <div class="mobtopcol">
+                <div class="column3-2">
+                    <div id="cssmenu">
+                        <ul class="accordion_example">
+                            <li class="brand-symantec acc_active">
+                                <div>
+                                    <p>Symantec&trade; - The Most Trusted Mark</p>
+                                    <span><img alt="Symantec Logo" src="/content/images/brand-symantec-logo.png" /></span>
+                                    <div class="clear"></div>
+                                </div>
+                                <div>
+                                    <div>
+                                        
+                                        <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>                                        
+                                        @Html.Partial("_ProductByBrand",new Tuple<List<ProductPricing>, List<ProductDetail>>(Model.Items.Where(x => x.Product.BrandID.Equals((int)ProductBrands.Symantec)).ToList(), productdetails.ToList()))
+                                        <div class="brandbtnwrp"><a class="symantecbtn" href="@Url.RouteUrl("symantecBrand_us")">View SSL Range</a></div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="brand-thawte">
+                                <div>
+                                    <p>Thawte</p>
+                                    <span><img alt="Thawte Logo" src="/content/images/brand-thawte-logo.png"></span>
+                                    <div class="clear"></div>
+                                </div>
+                                <div>
+                                    <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>                                    
+                                    @Html.Partial("_ProductByBrand",new Tuple<List<ProductPricing>, List<ProductDetail>>(Model.Items.Where(x => x.Product.BrandID.Equals((int)ProductBrands.Thawte)).ToList(), productdetails.ToList()))
+                                    <div class="brandbtnwrp"><a class="thawtebtn" href="@Url.RouteUrl("thawteBrand_us")">View SSL Range</a></div>
+                                </div>
+                            </li>
+                            <li class="brand-geotrust">
+                                <div>
+                                    <p>GeoTrust<sup>&reg;</sup> - Online Identity &amp; Trust Services</p>
+                                    <span><img alt="Thawte Logo" src="/content/images/brand-geotrust-logo.png"></span>
+                                    <div class="clear"></div>
+                                </div>
+                                <div>
+                                    <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>                                    
+                                    @Html.Partial("_ProductByBrand",new Tuple<List<ProductPricing>, List<ProductDetail>>(Model.Items.Where(x => x.Product.BrandID.Equals((int)ProductBrands.GeoTrust)).ToList(), productdetails.ToList()))
+                                    <div class="brandbtnwrp"><a class="geobtn" href="@Url.RouteUrl("GeoTrustBrand_us")">View SSL Range</a></div>
+                                </div>
+                            </li>
+                            <li class="brand-rapid">
+                                <div>
+                                    <p>RapidSSL<sup>&reg;</sup> - Cheap 256 Bit SSL Certificates</p>
+                                    <span><img alt="RapidSSL Logo" src="/content/images/brand-rapidssl-logo.png"></span>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="accordiandtl">
+                                    <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>                                    
+                                    @Html.Partial("_ProductByBrand",new Tuple<List<ProductPricing>, List<ProductDetail>>(Model.Items.Where(x => x.Product.BrandID.Equals((int)ProductBrands.RapidSSL)).ToList(), productdetails.ToList()))
+                                    <div class="brandbtnwrp"><a class="rapidbtn" href="@Url.RouteUrl("RapidSSLBrand_us")">View SSL Range</a></div>
+                                </div>
+                            </li>
+                            <li class="brand-comodo">
+                                <div>
+                                    <p>COMODO SSL Certificate</p>
+                                    <span><img alt="Comodo Logo" src="/content/images/brand-comodo-logo.png"></span>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="accordiandtl">
+                                    <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+                                    
+                                    @Html.Partial("_ProductByBrand",new Tuple<List<ProductPricing>, List<ProductDetail>>(Model.Items.Where(x => x.Product.BrandID.Equals((int)ProductBrands.Comodo)).ToList(), productdetails.ToList()))
+                                    <div class="brandbtnwrp"><a class="comodbtn" href="@Url.RouteUrl("ComodoBrand_us")">View SSL Range</a></div>
+                                </div>
+                            </li>
+                            <li class="brand-certum">
+                                <div>
+                                    <p>Certum SSL Certificate</p>
+                                    <span><img alt="Certum Logo" src="/content/images/brand-certum-logo.png"></span>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="accordiandtl">
+                                    <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>                                    
+                                    @Html.Partial("_ProductByBrand",new Tuple<List<ProductPricing>, List<ProductDetail>>(Model.Items.Where(x => x.Product.BrandID.Equals((int)ProductBrands.Certum)).ToList(), productdetails.ToList()))
+                                    <div class="brandbtnwrp"><a class="comodbtn" href="@Url.RouteUrl("CertumBrand_us")">View SSL Range</a></div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                @Html.Partial("_rightpanel", (Model != null && !string.IsNullOrEmpty(Model.CurrentUserName) ? Model.CurrentUserName : ""))
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+
+@section PopupScript{
+    @Html.MakePopupForm("Edit", new[] { "id", "ppid" }, controller: "ShoppingCart", title: @WBSSLStore.Resources.GeneralMessage.Message.Add_To_Cart_Caption, successFunction: "EditSuccess", height: 450, width: 700, refreshOnSuccess: false, okText: @WBSSLStore.Resources.GeneralMessage.Message.SAVE_btn)
+}

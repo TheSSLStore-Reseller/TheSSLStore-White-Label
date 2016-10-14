@@ -1,0 +1,49 @@
+﻿@model WBSSLStore.Service.ViewModels.ProductPricingModel    
+<table width="100%" align="left" cellpadding="0" cellspacing="1">
+    <tr>
+        <td width="51" height="30" align="center" valign="middle" bgcolor="#FFFFFF" class="bluefont">
+            @*Months*@ @WBSSLStore.Resources.GeneralMessage.Message.Months_Caption
+        </td>
+        <td width="72" height="30" align="center" valign="middle" bgcolor="#FFFFFF" class="bluefont">
+            @*Retail-Price*@ @WBSSLStore.Resources.GeneralMessage.Message.RetailPrice_Caption
+        </td>
+        <td width="86" height="30" align="center" valign="middle" bgcolor="#FFFFFF" class="bluefont">
+            @*Sale-Price*@ @WBSSLStore.Resources.GeneralMessage.Message.SalePrice_Caption
+        </td>
+        <td width="118" height="30" align="center" valign="middle" bgcolor="#FFFFFF" class="bluefont">
+            @*Additional Domain*@ @WBSSLStore.Resources.GeneralMessage.Message.AdditionalDomains_Caption
+        </td>
+        <td width="44" height="30" align="center" valign="middle" bgcolor="#FFFFFF" class="bluefont">
+            @*Edit*@ @WBSSLStore.Resources.GeneralMessage.Message.Edit_Caption
+        </td>
+        <td width="54" height="30" align="center" valign="middle" bgcolor="#FFFFFF" class="bluefont">
+            @*Delete*@ @WBSSLStore.Resources.GeneralMessage.Message.Delete_Caption
+        </td>
+    </tr>
+    @foreach (WBSSLStore.Domain.ProductPricing pp in Model.productpricing)
+    {
+        
+        <tr>
+            @Html.HiddenFor(modelitem => pp.ID, new { @id = "hndID-" + +pp.NumberOfMonths });
+            @Html.HiddenFor(modelitem => pp.isRecommended, new { @id = "hndRecommended-" + +pp.NumberOfMonths });
+            @Html.HiddenFor(modelitem => pp.RecordStatusID, new { @id = "hndRecordStatus-" + +pp.NumberOfMonths });
+            @Html.HiddenFor(modelitem => pp.ResellerContractID, new { @id = "hndResellerContract-" + +pp.NumberOfMonths });
+            <td width="51" height="24" align="center" valign="middle" bgcolor="#FFFFFF">
+                @Html.TextBoxFor(modelitem => pp.NumberOfMonths, new { @class = "inputboxminimum", @id = "txtmonth-" + pp.NumberOfMonths })
+                @Html.ValidationMessageFor(modelitem => pp.NumberOfMonths)
+            </td>
+            <td width="72" height="24" align="center" valign="middle" bgcolor="#FFFFFF">
+                @Html.TextBoxFor(modelitem => pp.RetailPrice, new { @class = "inputboxminimum", @id = "txtRetailPrice-" + pp.NumberOfMonths })
+                @Html.ValidationMessageFor(modelitem => pp.RetailPrice)
+            </td>
+            <td width="86" height="24" align="center" valign="middle" bgcolor="#FFFFFF">
+                @Html.TextBoxFor(modelitem => pp.SalesPrice, new { @class = "inputboxminimum", @id = "txtSalesPrice-" + pp.NumberOfMonths })
+                @Html.ValidationMessageFor(modelitem => pp.SalesPrice)
+            </td>
+            <td width="64" height="24" align="center" valign="middle" bgcolor="#FFFFFF">
+                @Html.TextBoxFor(modelitem => pp.AdditionalSanPrice, new { @class = "inputboxminimum", @id = "txtSanPrice-" + pp.NumberOfMonths })
+                @Html.ValidationMessageFor(modelitem => pp.AdditionalSanPrice)
+            </td>
+        </tr>
+    }
+</table>

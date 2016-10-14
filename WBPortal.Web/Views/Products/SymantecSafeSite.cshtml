@@ -1,0 +1,130 @@
+﻿@model WBSSLStore.Service.ViewModels.StaticPageViewModel
+@{
+    ViewBag.Title = "SecureSiteProwithEV";  var productdetails = WBSSLStore.Web.Helpers.WBHelper.GetProductDetailRows();
+    string brand = Model != null && Model.Items != null && Model.Items.FirstOrDefault().Product != null && Model.Items.FirstOrDefault().Product.Brand != null ? Model.Items.FirstOrDefault().Product.Brand.BrandName : "";
+    string username = ViewBag.UserName;
+}
+@section headerTags{
+    @Html.Partial("_renderSEO", Model != null && Model.CMSPage != null ? Model.CMSPage : new WBSSLStore.Domain.CMSPage())
+}
+@Html.Partial("_banner", new Tuple<string, string>("", "SSL Brands"))
+<div class="content">
+  <div class="wrapper">
+    <div class="column3">
+      <div class="mobtopcol">
+        <div class="column3-2">
+          <div class="prodetailswrap marzerotop"> @Html.Partial("_ProdPricing", new Tuple<List<WBSSLStore.Domain.ProductPricing>, List<WBSSLStore.Domain.ProductDetail>>(Model.Items.ToList(), productdetails.ToList())) </div>
+          <div class="prodescrip marzerotop">
+            <div class="prodescriptxt">
+              <h2>Product Description</h2>
+              <p>The Symantec Safe Site allows your business to display the most trusted site seal in the world on your website. The Norton Secure Seal is displayed all over the web more than a half a billion times a day across 170 countries. Online shoppers know that this seal is synonymous with reputable and that your company has been vetted by an industry leader in web security. Since this is not an SSL certificate, no encryption is provided, but it is an excellent security product for websites without a need for SSL but looking for a boost in trust. This product also comes with daily malware scanning and Symantec's Seal-in-Search technology, which display the popular Norton symbol next to your URL in search engines.</p>
+            </div>
+
+          </div>
+          <div id="cssmenu">
+            <ul class="accordion_example">
+              <li class="brand-symantec acc_active">
+                <div>
+                  <p>Assurance &amp; Authentication</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>For the Symantec Safe Site to be issued, your company must complete a light vetting process that typically takes between 3-5 business days. Once the validation process is completed, the seal will be issued and you will be able to proudly display the trusted Norton and Symantec name on your site for all of your web visitors to see.</p>
+                  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Security &amp; Encryption</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>Since this is not an SSL certificate, it does not perform any encryption between a browser and server. However, it is still considered a security product, since it performs <strong>daily malware scanning</strong> and your company must be vetted before it is issued.</p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>SAN &amp; multi-domain support</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>The Symantec Safe Site is only designed to cover one domain. </p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Features &amp; Benefits</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <ul class="featurelist">
+                    <li>Symantec Safe Site is a fully Business Validated site seal</li>
+                    <li>Norton Secured Seal, the most recognized trust mark on the Internet</li>
+                    <li>Authentication of your organization and website</li>
+                    <li>Symantec Seal-in-Search</li>
+                    <li class="bdrbtm">Daily website malware scanning</li>
+                  </ul>
+				  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Product Specifications</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <ul class="featurelist">
+                    <li>Turn visitors into loyal customers by displaying the mark that more online consumers recognize and trust. The Norton Secured Seal is displayed over half a billion times per day on websites in 170 countries.</li>
+                    <li>Give your customers the confidence to click. You can generate confidence by displaying a Norton Secured Seal on websites and in search engine results.</li>
+                  </ul>
+				  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Site Seal</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>What more is there to say? There isn't a more trusted site seal on the market &ndash; and the Symantec Safe Site will instantly vault your company website into the stratosphere with the <strong>major corporations</strong> around the world. After seeing this seal, your customers will have all the confidence they need to do business with you and feel that their information is in capable hands.</p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Warranty</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>Unfortunately, the Symantec Safe Site is not available with a warranty.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        @Html.Partial("_rightpanel", username) </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+@section Jscripts{ 
+<script type="text/javascript">
+        $(document).ready(function () {
+            // Mobile Menu
+            $("#showmenu").click(function (e) {
+                e.preventDefault();
+                $("#menu").toggleClass("show");
+            });
+            $("#menu a").click(function (event) {
+                event.preventDefault();
+                if ($(this).next('ul').length) {
+                    $(this).next().toggle('fast');
+                    $(this).children('i:last-child').toggleClass('fa-caret-down fa-caret-left');
+                }
+            });
+            $(document).click(function (e) {
+                if (!$(e.target).is(".mobmemu, .mobmemu  *")) { $("#menu").toggleClass("hide"); $("#menu").removeClass("show"); }
+            });
+            $(".accordion_example").smk_Accordion();
+        });
+    </script> 
+} 

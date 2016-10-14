@@ -1,0 +1,132 @@
+﻿@model WBSSLStore.Service.ViewModels.StaticPageViewModel
+@{
+    ViewBag.Title = "SecureSiteProwithEV";  var productdetails = WBSSLStore.Web.Helpers.WBHelper.GetProductDetailRows();
+    string brand = Model != null && Model.Items != null && Model.Items.FirstOrDefault().Product != null && Model.Items.FirstOrDefault().Product.Brand != null ? Model.Items.FirstOrDefault().Product.Brand.BrandName : "";
+    string username = ViewBag.UserName;
+}
+@section headerTags{
+    @Html.Partial("_renderSEO", Model != null && Model.CMSPage != null ? Model.CMSPage : new WBSSLStore.Domain.CMSPage())
+}
+@Html.Partial("_banner", new Tuple<string, string>("", "SSL Brands"))
+<div class="content">
+  <div class="wrapper">
+    <div class="column3">
+      <div class="mobtopcol">
+        <div class="column3-2">
+          <div class="prodetailswrap marzerotop"> @*@Html.Partial("_ProdPricing", new Tuple<List<WBSSLStore.Domain.ProductPricing>, List<WBSSLStore.Domain.ProductDetail>>(Model.Items.ToList(), productdetails.ToList()))*@ </div>
+          <div class="prodescrip marzerotop">
+            <div class="prodescriptxt">
+              <h2>Product Description</h2>
+              <p>With the Certum Trusted SSL certificate, your website will be able to assure customers that your business is safe to do business with. This certificate will allow your website to display some of the most trusted visual indicators on the web, like "https", the padlock icon in the URL bar, and the dynamic Certum Site Seal. Since this certificate provides top-of-the-line encryption and builds trust into websites, it is an ideal option for financial institutions, ecommerce sites, and any other company that is interested in boosting their online reputation and sales.</p>
+            </div>
+          </div>
+          <div id="cssmenu">
+            <ul class="accordion_example">
+              <li class="brand-symantec acc_active">
+                <div>
+                  <p>Assurance &amp; Authentication</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>Because this is an Organization Validated (OV) certificate, it requires that a company complete a light vetting process before being issued. This process usually takes between 2-3 business days and is just in place simply to make sure your company is who it says it is. This will then be displayed on your site, as your customers will be able to see that your business has been vetted by a reputable third party security company.</p>
+                  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Security &amp; Encryption</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>The excellent 256-bit level encryption and 2048/4096 bit root provides an outstanding level of protection for any business concerned with beefing up the security &amp; encryption of their website. Additionally, this certificate is issued with <strong>unlimited server licenses.</strong></p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>SAN &amp; Multi-Domain Support</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>Unfortunately, the Certum Trusted SSL is only for one domain, and does not offer multi-domain capacity.</p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Features &amp; Benefits</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <ul class="featurelist">
+                        <li>Validation: OV</li>
+                        <li>$250,000 Warranty</li>
+                        <li>Secures a single domain name</li>
+                        <li>99.00% browser recognition</li>
+                        <li>128-256 bit encryption strength</li>
+                        <li>2048/4096-bit root</li>
+                        <li class="bdrbtm">Fast Verification</li>
+                      </ul>
+					  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Product Specifications</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <ul class="featurelist">
+                        <li>Free CERTUM Site Seal &ndash; visibly display your credibility</li>
+                        <li>Secures unlimited no. of servers with only 1 SSL certificate</li>
+                        <li>Certificate contains a domain name and an organization name</li>
+                      </ul>
+					  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Site Seal</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>This certificate comes with the "Secured by Certum" Site Seal. This internationally recognized seal will help instantly increase the trust in your website. Plus, because this is an Organization Validated (OV) certificate, the site seal is <strong>dynamic</strong>, meaning a customer can click on it to view more verified information about your business.</p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Warranty</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>The Certum Trusted SSL certificate comes backed by a <strong>$250,000 warranty</strong>, one of the most generous available for an Organization Validated (OV) certificate. This warranty ensures that, in the unlikely event your site is breached due to a flaw in the SSL and a customer incurs losses because of this, you will be compensated by Certum for up to $250,000 in damages.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        @Html.Partial("_rightpanel", username) </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+@section Jscripts{ 
+<script type="text/javascript">
+        $(document).ready(function () {
+            // Mobile Menu
+            $("#showmenu").click(function (e) {
+                e.preventDefault();
+                $("#menu").toggleClass("show");
+            });
+            $("#menu a").click(function (event) {
+                event.preventDefault();
+                if ($(this).next('ul').length) {
+                    $(this).next().toggle('fast');
+                    $(this).children('i:last-child').toggleClass('fa-caret-down fa-caret-left');
+                }
+            });
+            $(document).click(function (e) {
+                if (!$(e.target).is(".mobmemu, .mobmemu  *")) { $("#menu").toggleClass("hide"); $("#menu").removeClass("show"); }
+            });
+            $(".accordion_example").smk_Accordion();
+        });
+    </script> 
+} 

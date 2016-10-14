@@ -1,0 +1,30 @@
+﻿@{
+    //Layout = "~/Areas/Checkout/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "ReIssue";
+   
+}
+<table width="100%" border="0" align="center" cellpadding="1" cellspacing="1">
+    <tr>
+        <td width="29" align="left" valign="top">
+        </td>
+        <td width="482" align="left" valign="top">
+        </td>
+        <td width="29" align="left" valign="top">
+        </td>
+    </tr>
+    <tr>
+        <td align="left" valign="top">
+            &nbsp;
+        </td>
+        <td align="left" valign="top" class="text">
+            @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+            { 
+                <div class="errormsg">
+                    @Html.Raw(ViewBag.ErrorMessage)
+                </div>
+            }
+        </td>
+        <td align="left" valign="top">
+        </td>
+    </tr>
+</table>

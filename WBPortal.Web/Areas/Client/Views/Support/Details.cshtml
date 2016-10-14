@@ -1,0 +1,126 @@
+﻿@using WBSSLStore.Data.Infrastructure
+@using WBSSLStore.Domain;
+@model SupportRequest
+@{
+    ViewBag.Title = WBSSLStore.Resources.GeneralMessage.Message.Client_Support_Header;
+    string username = ViewBag.Username;
+    ViewBag.version = WBSSLStore.Web.Helpers.Caching.SiteCacher.ResourceVersion();
+}
+@section sitecss{
+}
+@section Jscripts{
+    <script type="text/javascript">
+        $(function () {
+
+            $("#frmstatment").submit(function () {
+                if ($('#txtcomment').val() == '')
+                    return false;
+            });
+
+            var objReason = "@Html.Raw(Model.Reason)";
+            $($('#ddlReason').attr('options')).each(function () {
+                if (this.value == objReason) {
+                    $(this).attr('selected', 'selected');
+                    $('#txtcomment').val(objReason);
+                    $('#txtcomment').focus();
+                }
+            });
+
+            $('#ddlReason').change(function () {
+
+                $('#txtcomment').val($(this).val());
+                $('#txtcomment').focus();
+            })
+
+            $('#txtcomment').blur(function () {
+                var txcoment = $('#txtcomment').val().replace(new RegExp("\\n", 'g'), '').replace(new RegExp("\\r", 'g'), '');
+                if (txcoment.length <= 0) {
+                    $('#txtcomment').val($('#ddlReason').val());
+                }
+                else { }
+            })
+
+        });
+    </script>
+}
+@Html.Partial("_banner", new Tuple<string, string>("", WBSSLStore.Resources.GeneralMessage.Message.Client_Support_Header))
+<div class="content">
+    <div class="wrapper">
+        <div class="column3">
+            <div class="column3-0">
+                <div class="controlpnldata">
+                    <div class="cancelrequest">
+                        @using (Html.BeginForm("details", "support", FormMethod.Post, new { @id = "frmstatment" }))
+                        {
+                            @Html.ValidationSummary(true)
+                            @Html.AntiForgeryToken()
+                            <h2>@WBSSLStore.Resources.GeneralMessage.Message.Support_Request_Information_Header</h2>
+                            <div class="listform">
+                                <div class="raw">
+                                    <label>@WBSSLStore.Resources.GeneralMessage.Message.IncidentID_Caption:</label>@Html.HiddenFor(model => model.ID)
+                                    <span>  SSL-@Model.ID</span>
+                                </div>
+                                <div class="raw">
+                                    <label>@WBSSLStore.Resources.GeneralMessage.Message.Status_Caption:	</label>
+                                    <span>
+                                        <strong>@(Model.isOpen ? @WBSSLStore.Resources.GeneralMessage.Message.dd_Open : @WBSSLStore.Resources.GeneralMessage.Message.dd_Resolved)</strong>                                        
+                                    </span>
+                                   
+                                </div>
+                                <div class="raw">
+                                    <label>@WBSSLStore.Resources.GeneralMessage.Message.Comment_Caption:	</label>
+                                    <div class="request-info">
+                                        @Html.Raw(Convert.ToString(ViewBag.Comment))
+                                    </div>
+                                </div>
+                                <div class="raw">
+                                    <label>@WBSSLStore.Resources.GeneralMessage.Message.Credit_Refund_Caption:</label>
+                                    @Html.DropDownListFor(model => model.RefundStatusID, Enum.GetValues(typeof(RefundStatus)).Cast<RefundStatus>().Where(x => x != RefundStatus.NOACTION).Select(x => new SelectListItem { Text = x.GetEnumDescription(), Value = ((int)x).ToString() }), new { @class = "list304px" })
+                                </div>
+
+                                <div class="raw">
+                                    <label>@WBSSLStore.Resources.GeneralMessage.Message.Reason_Caption:</label>
+                                    <select id="ddlReason" name="ddlReason" class="list304px required" title="Please select proper reason.">                                        
+                                        <option value="@WBSSLStore.Resources.GeneralMessage.Message.Cancel_ddlreason_op1"> @WBSSLStore.Resources.GeneralMessage.Message.Cancel_ddlreason_op1</option>
+                                        <option value="@WBSSLStore.Resources.GeneralMessage.Message.Cancel_ddlreason_op2"> @WBSSLStore.Resources.GeneralMessage.Message.Cancel_ddlreason_op2</option>
+                                        <option value="@WBSSLStore.Resources.GeneralMessage.Message.Cancel_ddlreason_op3"> @WBSSLStore.Resources.GeneralMessage.Message.Cancel_ddlreason_op3</option>
+                                        <option value="@WBSSLStore.Resources.GeneralMessage.Message.Cancel_ddlreason_op4"> @WBSSLStore.Resources.GeneralMessage.Message.Cancel_ddlreason_op4</option>
+                                    </select>
+                                </div>
+                                <div class="raw">
+                                    <label> @WBSSLStore.Resources.GeneralMessage.Message.Comment_Caption:</label>
+                                    @Html.TextAreaFor(model => model.Comment, 5, 45, new { @ID = "txtcomment", @class="textarea"})
+                                </div>
+                                <div class="raw">
+                                    <label class="mobhide">@WBSSLStore.Resources.GeneralMessage.Message.Select_Status_Caption</label>
+                                    <span>
+                                        @{
+                            List<SelectListItem> lstStatus = new List<SelectListItem>();
+                            lstStatus.Add(new SelectListItem() { Text = @WBSSLStore.Resources.GeneralMessage.Message.dd_Open, Value = "true" });
+                            lstStatus.Add(new SelectListItem() { Text = @WBSSLStore.Resources.GeneralMessage.Message.dd_Resolved, Value = "false" });
+
+                                        }
+                                        @Html.DropDownListFor(model => model.isOpen, lstStatus, new { @class = "select" })
+                                    </span>
+                                </div>
+                                @if (Model.isOpen)
+                                {
+                                    <div class="raw btnsec">
+                                        <label>&nbsp;</label>
+                                        <input name="btnsubmit" type="submit" class="greenbtn" id="btnsubmit" value="@WBSSLStore.Resources.GeneralMessage.Message.Submit_Btn" />
+                                    </div>
+                                }
+                                <div class="clear"></div>
+                            </div>
+
+                        }
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            @Html.Partial("_rightpanel", username)
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+

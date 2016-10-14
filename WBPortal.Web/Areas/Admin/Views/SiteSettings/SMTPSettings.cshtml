@@ -1,0 +1,191 @@
+﻿@model WBSSLStore.Domain.SiteSMTP
+@{
+    ViewBag.Title = "SMTPSettings";
+}
+<script src="@Url.Content("~/content/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/content/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+<script type="text/javascript" language="javascript">
+    function ShowHideCredential(status) {
+        if (status) {
+            document.getElementById('trUsername').style.display = '';
+            document.getElementById('trPassword').style.display = '';
+        }
+        else {
+            document.getElementById('trUsername').style.display = 'none';
+            document.getElementById('trPassword').style.display = 'none';
+            document.getElementById('SMTPUser').value = '';
+            document.getElementById('SMTPPassword').value = '';
+        }
+    }
+    function SendTestEmail(obj) {
+        obj.value = 'Please Wait......';
+        obj.disabled = true;
+        $.post("/admin/sitesettings/sendEmail",
+                       function (data) {
+                           alert(data);
+                           document.getElementById('btnSendemail').value = "Send Test Email";
+                           document.getElementById('btnSendemail').disabled = false;
+                       });
+    }
+    $(document).ready(function () {
+        ShowHideCredential(document.getElementById('chkRequireCredentials').checked);
+    });
+</script>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <tr>
+        <td align="left" valign="top">
+            <table width="881" border="0" align="left" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td width="7" align="left" valign="top">
+                        <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/barleft.gif" alt="whitebrand" width="7" height="55" />
+                    </td>
+                    <td width="866" align="left" valign="middle" class="hdbarbg">
+                        <table width="840" border="0" align="center" cellpadding="1" cellspacing="1">
+                            <tr>
+                                <td width="407" align="left" valign="middle" class="head1">
+                                    @*SMTP Settings*@ @WBSSLStore.Resources.GeneralMessage.Message.SMTP_Settings
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td width="9" align="right" valign="top">
+                        <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/barright.gif" alt="whitebrand" width="9" height="55" />
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td align="left" valign="top" class="contbg">
+            <table width="870" border="0" align="center" cellpadding="0" cellspacing="7">
+                <tr>
+                    <td width="867" align="center" valign="top" class="bgclr">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td align="left" valign="top">
+                                    <table width="820" border="0" align="center" cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <td height="25" align="left" valign="middle">
+                                                @if (!string.IsNullOrEmpty(ViewBag.Message))
+                                                { 
+                                                    @Html.Raw(ViewBag.Message)
+                                                }
+                                                <p>
+                                                    &nbsp;
+                                                    @Html.HiddenFor(model => model.ID)
+                                                    @Html.HiddenFor(model => model.SiteID)
+                                                    @Html.HiddenFor(model => model.TimeOut)
+                                                    @if (Model != null && Model.ID > 0)
+                                                    {
+                                                        @Html.HiddenFor(model => model.AuditID)
+                                                        @Html.HiddenFor(model => model.AuditDetails.ByUserID)
+                                                        @Html.HiddenFor(model => model.AuditDetails.DateCreated)
+                                                        @Html.HiddenFor(model => model.AuditDetails.ID)
+                                                    }
+                                                </p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="left" valign="top">
+                                                <table width="90%" border="0" align="center" cellpadding="1" cellspacing="2">
+                                                    <tr>
+                                                        <td width="31%" align="right" valign="middle" class="bold">
+                                                            @Html.LabelFor(model => model.SMTPHost): <span class="redfont">*</span>
+                                                        </td>
+                                                        <td width="69%" align="left" valign="middle">
+                                                            <label>
+                                                                @Html.TextBoxFor(model => model.SMTPHost, new { @class = "inputbox" })
+                                                                @Html.ValidationMessageFor(model => model.SMTPHost)
+                                                            </label>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="right" valign="middle" class="bold">
+                                                            @Html.LabelFor(model => model.SMTPPort):<span class="redfont"> *</span>
+                                                        </td>
+                                                        <td align="left" valign="middle">
+                                                            <label>
+                                                                @Html.TextBoxFor(model => model.SMTPPort, new { @class = "inputbox" })
+                                                                @Html.ValidationMessageFor(model => model.SMTPPort)
+                                                            </label>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="right" valign="middle" class="bold">
+                                                            @Html.LabelFor(model => model.UseSSL):
+                                                        </td>
+                                                        <td align="left" valign="middle">
+                                                            @Html.CheckBoxFor(model => model.UseSSL)
+                                                            @Html.ValidationMessageFor(model => model.UseSSL)
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="right" valign="middle" class="bold">
+                                                            @*Require Credentials*@ @WBSSLStore.Resources.GeneralMessage.Message.Require_Credentials:
+                                                        </td>
+                                                        <td align="left" valign="middle">
+                                                            @Html.CheckBox("chkRequireCredentials", (!string.IsNullOrEmpty(Model.SMTPUser) && !string.IsNullOrEmpty(Model.SMTPPassword)), new { @id = "chkRequireCredentials", @name = "chkRequireCredentials", @onclick = "ShowHideCredential(this.checked)" })
+                                                        </td>
+                                                    </tr>
+                                                    <tr id="trUsername">
+                                                        <td align="right" valign="middle" class="bold">
+                                                            @Html.LabelFor(model => model.SMTPUser):
+                                                        </td>
+                                                        <td align="left" valign="top">
+                                                            @Html.TextBoxFor(model => model.SMTPUser, new { @class = "inputbox" })
+                                                            @Html.ValidationMessageFor(model => model.SMTPUser)
+                                                        </td>
+                                                    </tr>
+                                                    <tr id="trPassword">
+                                                        <td align="right" valign="middle" class="bold">
+                                                            @Html.LabelFor(model => model.SMTPPassword):
+                                                        </td>
+                                                        <td align="left" valign="top">
+                                                            @Html.PasswordFor(model => model.SMTPPassword, new { @class = "inputbox" })
+                                                            @Html.ValidationMessageFor(model => model.SMTPPassword)
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td height="8" align="right" valign="middle" class="bold">
+                                                        </td>
+                                                        <td height="8" align="left" valign="top">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="right" valign="middle" class="bold">
+                                                            &nbsp;
+                                                        </td>
+                                                        <td align="left" valign="top">
+                                                            <span class="bold">
+                                                                <input name="button" type="submit" class="bluebtn" id="button" value="@WBSSLStore.Resources.GeneralMessage.Message.Submit_Btn" />
+                                                                @if (Model != null && Model.ID > 0)
+                                                                {
+                                                                <input name="button" type="button" onclick="SendTestEmail(this);" class="bluebtn" id="btnSendemail" value="Send Test Email" />
+                                                                }
+                                                            </span>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="left" valign="top">
+                                                &nbsp;
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td height="8" align="left" valign="top">
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+}

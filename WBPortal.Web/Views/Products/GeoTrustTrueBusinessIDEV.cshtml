@@ -1,0 +1,140 @@
+﻿@model WBSSLStore.Service.ViewModels.StaticPageViewModel
+@{
+    ViewBag.Title = "SecureSiteProwithEV";  var productdetails = WBSSLStore.Web.Helpers.WBHelper.GetProductDetailRows();
+    string brand = Model != null && Model.Items != null && Model.Items.FirstOrDefault().Product != null && Model.Items.FirstOrDefault().Product.Brand != null ? Model.Items.FirstOrDefault().Product.Brand.BrandName : "";
+    string username = ViewBag.UserName;
+}
+@section headerTags{
+    @Html.Partial("_renderSEO", Model != null && Model.CMSPage != null ? Model.CMSPage : new WBSSLStore.Domain.CMSPage())
+}
+@Html.Partial("_banner", new Tuple<string, string>("", "SSL Brands"))
+<div class="content">
+  <div class="wrapper">
+    <div class="column3">
+      <div class="mobtopcol">
+        <div class="column3-2">
+          <div class="prodetailswrap marzerotop"> @Html.Partial("_ProdPricing", new Tuple<List<WBSSLStore.Domain.ProductPricing>, List<WBSSLStore.Domain.ProductDetail>>(Model.Items.ToList(), productdetails.ToList())) </div>
+          <div class="prodescrip marzerotop">
+            <div class="prodescriptxt">
+              <h2>Product Description</h2>
+              <p>The <strong>GeoTrust True BusinessID with EV SSL</strong> certificate is an excellent option for customers who want to harness the power of the most trusted symbol on the internet &ndash; the green address bar &ndash; but are working with a limited budget. That's because this certificate is one of the most <strong>affordable EV certificates</strong> in the industry. However, you can be assured that you aren't compromising the security of your customers by investing in a lower-cost EV, as GeoTrust is one of the most respected and recognized names in the industry and this certificate boasts high-end 256-bit encryption. The GeoTrust TBID w/ EV is the perfect solution for small to medium sized businesses and ecommerce sites that want to maximize consumer trust in their website(s).</p>
+            </div>
+          </div>
+          <div id="cssmenu">
+            <ul class="accordion_example">
+              <li class="brand-symantec acc_active">
+                <div>
+                  <p>Assurance &amp; Authentication</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>Since this is an EV certificate, GeoTrust will conduct a thorough vetting of your company before issuing the True BusinessID w/ EV. This process can typically take between 1-10 business days, depending on your response times. However, once the process is completed, the certificate will be issued and the green address bar will display around your URL. Your customers will know that you are who you say you are &ndash; as you let a trusted third party like GeoTrust conduct an authentication process. There is no greater indicator of trust on the internet then the <strong>green address bar</strong>, and the validation process is well worth the time.</p>
+                  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Security &amp; Encryption</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>This EV certificate offers top-end 256-bit encryption and is signed with a 2048-bit root, an industry staple. Also, the GeoTrust True BusinessID w/ EV includes unlimited server licenses at no additional cost, along with protecting both www and non-www domain names.</p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>SAN &amp; multi-domain support</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>The GeoTrust True BusinessID w/ EV will only protect one domain name.</p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Features &amp; Benefits</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <ul class="featurelist">
+                    <li>High 256-bit encryption 2048 bit root Certificate</li>
+                    <li>Fully Owned Roots (not chained) &ndash; Chained.</li>
+                    <li>Assures customers of the web site's true identity by displaying the GREEN Address bar and the organization and GeoTrust names in high-security browsers.</li>
+                    <li>Provides highest level of web site identity verification to help foil phishing.</li>
+                    <li>Increases customer confidence to maximize online sales potential.</li>
+                    <li>Includes a True Site Seal identity verification - embedded organization name/date/time stamp</li>
+                    <li>GeoTrust EV SSL Carry the warrnty for $1,500,000</li>
+                  </ul>
+				  <div class="clear"></div>
+                  <p class="notesml"> ** Applicable to a server that supports SNI (Server Name Indication) </p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Product Specifications</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <ul class="featurelist">
+                    <li>Single Domain Name (FQDN)</li>
+                    <li>Issued In 10 working days</li>
+                    <li>Extensive Business and Domain Validation</li>
+                    <li>Domain Name Shown On Certificate Only</li>
+                    <li>Green Address Bar Shown On all the browsers</li>
+                    <li>Encryption Strength Up to 256-bit</li>
+                    <li>99% Browser Compatibility</li>
+                    <li>Site Seal Included</li>
+                    <li>Unlimited &ndash; Install on any number of servers</li>
+                    <li>FREE self-service reissues during validity period</li>
+                  </ul>
+                </div>
+				<div class="clear"></div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Site Seal</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>The GeoTrust&reg; True Site identity assurance Smart Seal has the organization name, date, and a time stamp embedded. This site seal goes above and beyond just standard company information in an effort to display more specific details to your customer. This makes for a more <strong>credible seal</strong> and, most importantly, a more credible site. The GeoTrust Site Seal is rapidly becoming one of the most recognized trust indicators on the web.</p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Warranty</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>This certificate comes backed by a $1,500,000 Warranty. There is no need for you or your customers to worry about improper validation or issuance to a fraudulent site by GeoTrust, as the end user would be compensated up to $1,500,000 for losses or damages. </p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        @Html.Partial("_rightpanel", username) </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+@section Jscripts{ 
+<script type="text/javascript">
+        $(document).ready(function () {
+            // Mobile Menu
+            $("#showmenu").click(function (e) {
+                e.preventDefault();
+                $("#menu").toggleClass("show");
+            });
+            $("#menu a").click(function (event) {
+                event.preventDefault();
+                if ($(this).next('ul').length) {
+                    $(this).next().toggle('fast');
+                    $(this).children('i:last-child').toggleClass('fa-caret-down fa-caret-left');
+                }
+            });
+            $(document).click(function (e) {
+                if (!$(e.target).is(".mobmemu, .mobmemu  *")) { $("#menu").toggleClass("hide"); $("#menu").removeClass("show"); }
+            });
+            $(".accordion_example").smk_Accordion();
+        });
+    </script> 
+} 

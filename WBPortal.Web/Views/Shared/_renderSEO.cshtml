@@ -1,0 +1,6 @@
+﻿@model WBSSLStore.Domain.CMSPage
+
+<title>@(Model != null ? Model.Title : "SSL Certificate Provider") </title>
+<meta name="DESCRIPTION" content="@(Model != null ? Model.Description : "SSL certificates from the branded SSL certificate brands on your trusted SSL certificate provider")" />
+<meta name="KEYWORDS" content="@(Model != null ? Model.Keywords : "")" />
+@Html.Raw(Model != null ? Model.HeaderSection : "")

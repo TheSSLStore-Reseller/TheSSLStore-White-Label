@@ -1,0 +1,310 @@
+﻿@using WBSSLStore.Data.Infrastructure
+@using WBSSLStore.Domain
+@using WBSSLStore.Web.Util
+@model SupportDetail
+@{
+    WBSiteSettings setting = new WBSiteSettings(WBSSLStore.Web.Helpers.Caching.SiteCacher.CurrentSite);
+    ViewBag.Title = "Order Details";
+}
+<script src="@Url.Content("~/content/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/content/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+<script type="text/javascript">
+    function setOrderAmount(objThis, objAmount) {
+        if ($("#" + objThis.id + " option:selected").val() == "0") {
+            $('#trRefundAmount').hide('slow');
+        }
+        else {
+            $('#txtAmount').val(objAmount);
+            $('#trRefundAmount').show('slow');
+        }
+    }
+    $(function () {
+        var objStatus = '@(ViewBag.Status != null ? ViewBag.Status : "true")'.toString().toLowerCase();
+        $("#ddlStatus option[value=" + objStatus + "]").attr('selected', 'selected');
+
+        if ('@(ViewBag.Message != null)'.toString().toLowerCase() == "true")
+            alert('@ViewBag.Message');
+    });
+</script>
+<tr>
+    <td align="left" valign="top">
+        <table width="881" border="0" align="left" cellpadding="0" cellspacing="0">
+            <tr>
+                <td width="7" align="left" valign="top">
+                    <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/barleft.gif" alt="whitebrand" width="7" height="55" />
+                </td>
+                <td width="866" align="left" valign="middle" class="hdbarbg">
+                    <table width="840" border="0" align="center" cellpadding="1" cellspacing="1">
+                        <tr>
+                            <td width="407" align="left" valign="middle" class="head1">
+                                @*Order Detail*@ @WBSSLStore.Resources.GeneralMessage.Message.Odetail_Header
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td width="9" align="right" valign="top">
+                    <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/barright.gif" alt="whitebrand" width="9" height="55" />
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>
+@using (Html.BeginForm("detail", "support", FormMethod.Post))
+{
+    @Html.ValidationSummary(true)
+    if (Model != null && Model.ID > 0)
+    {
+    @Html.HiddenFor(model => model.SupportRequestID)
+    @Html.HiddenFor(model => model.SupportRequest.OrderDetailID)    
+    <tr>
+        <td align="left" valign="top" class="contbg">
+            <table width="870" border="0" align="center" cellpadding="0" cellspacing="7">
+                <tr>
+                    <td width="867" align="center" valign="top" class="bgclr">
+                        <table width="840" border="0" align="center" cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td width="854" height="30" align="left" valign="middle">
+                                    <h1>
+                                        @*Order Information*@ @WBSSLStore.Resources.GeneralMessage.Message.OrderInformation_Caption</h1>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="left" valign="top">
+                                    <table width="100%" border="0" align="left" cellpadding="1" cellspacing="2">
+                                        <tr>
+                                            <td height="25" align="right" valign="middle" class="bold">
+                                                TheSSLStore Status:
+                                            </td>
+                                            <td valign="middle">
+                                                &nbsp;
+                                            </td>
+                                            <td height="25" valign="middle" class="bold">
+                                                @(Convert.ToBoolean(ViewBag.TheSSLStoreStatus) ? "Approved" : "Pending")
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td height="25" align="right" valign="middle" class="bold">
+                                                @*Incident ID*@ @WBSSLStore.Resources.GeneralMessage.Message.IncidentID_Caption:
+                                            </td>
+                                            <td valign="middle">
+                                                &nbsp;
+                                            </td>
+                                            <td height="25" valign="middle" class="bold">
+                                                SSL-@Html.DisplayFor(model => model.SupportRequestID)
+                                            </td>
+                                        </tr>
+                                        @if(Model.SupportRequest != null && Model.SupportRequest.OrderDetail != null)
+                                        {
+                                        <tr>
+                                            <td height="25" align="right" valign="middle" class="bold">
+                                                @*InvoiceID*@ @WBSSLStore.Resources.GeneralMessage.Message.InvoiceNo_Caption :
+                                            </td>
+                                            <td valign="middle">
+                                                &nbsp;
+                                            </td>
+                                            <td height="25" valign="middle">
+                                                <span class="bold">@(setting.InvoicePrefix + Html.DisplayFor(model => model.SupportRequest.OrderDetail.OrderID))</span>
+                                                <a href="@Url.Action("detail", "orders", new { id = Model.SupportRequest.OrderDetail.ID })" class="bluelink" target="_blank">
+                                                    @*Click here to see Order Detail*@ @WBSSLStore.Resources.LongText.Message.OrderDetClickNote</a>
+                                            </td>
+                                        </tr>
+                                        }
+                                        <tr>
+                                            <td height="25" align="right" valign="middle" class="bold">
+                                                @*Order ID*@ @WBSSLStore.Resources.GeneralMessage.Message.OrderId_Caption:
+                                            </td>
+                                            <td valign="middle">
+                                                &nbsp;
+                                            </td>
+                                            <td height="25" valign="middle" class="bold">
+                                                @Html.DisplayFor(model => model.SupportRequest.OrderDetail.ExternalOrderID)
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td height="25" align="right" valign="middle" class="bold">
+                                                @*Customer Name*@ @WBSSLStore.Resources.GeneralMessage.Message.CustomerName_Caption:
+                                            </td>
+                                            <td valign="middle">
+                                                &nbsp;
+                                            </td>
+                                            <td height="25" valign="middle">
+                                                @(Html.DisplayFor(model => model.SupportRequest.User.FirstName) + " " + Html.DisplayFor(model => model.SupportRequest.User.LastName))
+                                                @if (Model.SupportRequest.User.UserType == UserType.RESELLER)
+                                                {
+                                                    <a href="@Url.Action("edit", "reseller", new { id = Model.SupportRequest.UserID })" class="bluelink" target="_blank">
+                                                        @*Click here to see Reseller Detail.*@ @WBSSLStore.Resources.LongText.Message.OrderDetClickNote2</a>
+                                                }
+                                                else
+                                                { 
+                                                    <a href="@Url.Action("edit", "customer", new { id = Model.SupportRequest.UserID })" class="bluelink" target="_blank">
+                                                        @*Click here to see Customer Detail.*@ @WBSSLStore.Resources.LongText.Message.OrderDetClickNote3</a>
+                                                }
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td width="22%" height="25" align="right" valign="middle" class="bold">
+                                                @*Product Name*@ @WBSSLStore.Resources.GeneralMessage.Message.Product_Caption :
+                                            </td>
+                                            <td width="2%" valign="middle">
+                                                &nbsp;
+                                            </td>
+                                            <td width="76%" height="25" valign="middle" class="bold">
+                                                @Html.DisplayFor(model => model.SupportRequest.OrderDetail.ProductName)
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td height="25" align="right" valign="middle" class="bold">
+                                                @*Total Amount*@ @WBSSLStore.Resources.GeneralMessage.Message.Total_Caption &nbsp;
+                                                @WBSSLStore.Resources.GeneralMessage.Message.Price_Caption:
+                                            </td>
+                                            <td valign="middle">
+                                                &nbsp;
+                                            </td>
+                                            <td height="25" valign="middle">
+                                                <span class="redfont" id="ctl00">@(string.Format("{0:C}", Html.DisplayFor(model => model.SupportRequest.OrderDetail.Price)))</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td height="25" align="right" valign="middle" class="bold">
+                                                @*Special Instructions*@ @WBSSLStore.Resources.GeneralMessage.Message.SpecialInstructions_Caption:
+                                            </td>
+                                            <td align="left" valign="middle">
+                                                &nbsp;
+                                            </td>
+                                            <td height="25" align="left" valign="middle">
+                                                &nbsp;
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="left" valign="top">
+                                    &nbsp;
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="left" valign="top">
+                                    <div class="divannouce">
+                                        @Html.Raw(Convert.ToString(ViewBag.Comment))
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="left" valign="top">
+                                    &nbsp;
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="left" valign="top">
+                                    <table width="100%" border="0" align="left" cellpadding="1" cellspacing="2">
+                                        <tr>
+                                            <td width="22%" height="25" align="right" valign="middle" class="bold">
+                                                @*Action*@ @WBSSLStore.Resources.GeneralMessage.Message.action_Caption:
+                                            </td>
+                                            <td width="2%" valign="middle">
+                                                &nbsp;
+                                            </td>
+                                            <td width="76%" height="25" valign="middle">
+                                                @Html.DropDownListFor(model => model.SupportRequest.RefundStatusID, Enum.GetValues(typeof(WBSSLStore.Domain.RefundStatus)).Cast<WBSSLStore.Domain.RefundStatus>().Select(x => new SelectListItem { Text = x.GetEnumDescription(), Value = ((int)x).ToString() }), new { @class = "listmenu", @onchange = "setOrderAmount(this," + (Model.SupportRequest.OrderDetail != null ? Model.SupportRequest.OrderDetail.Price : 0) + ");" })
+                                            </td>
+                                        </tr>
+                                        @if(Model.SupportRequest.isOpen)
+                                        {
+                                        <tr id="trRefundAmount">
+                                            <td height="25" align="right" valign="middle" class="bold">
+                                                @Html.LabelFor(model => model.SupportRequest.RefundAmount)
+                                            </td>
+                                            <td valign="middle">
+                                                &nbsp;
+                                            </td>
+                                            <td height="25" valign="middle">
+                                                @Html.TextBoxFor(model => model.SupportRequest.RefundAmount, new { @class = "inputboxmini", @id = "txtAmount" })
+                                            </td>
+                                        </tr>
+                                        }
+                                        <tr>
+                                            <td height="25" align="right" valign="middle" class="bold">
+                                                @*Comment*@ @WBSSLStore.Resources.GeneralMessage.Message.Comment_Caption: <span class="redfont">
+                                                    *</span>
+                                            </td>
+                                            <td valign="middle">
+                                                &nbsp;
+                                            </td>
+                                            <td height="25" valign="middle">
+                                                @Html.TextAreaFor(model => model.Comments, 5, 45, new { @class = "inputboxbig" })
+                                                @Html.ValidationMessageFor(model => model.Comments)
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="right" valign="middle" class="bold">
+                                                @*Status*@ @WBSSLStore.Resources.GeneralMessage.Message.Status_Caption:
+                                            </td>
+                                            <td align="left" valign="top">
+                                                &nbsp;
+                                            </td>
+                                            <td align="left" valign="top">
+                                                <select name="ddlStatus" id="ddlStatus" class="listmenusmall" @(Model.SupportRequest.isOpen ? "" : "disabled='disabled'")>
+                                                    <option value="true" selected="selected">@*Open*@ @WBSSLStore.Resources.GeneralMessage.Message.dd_Open</option>
+                                                    <option value="false">@*Resolved*@ @WBSSLStore.Resources.GeneralMessage.Message.dd_Resolved</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="right" valign="middle" class="bold">
+                                                @*Staff Note*@ @WBSSLStore.Resources.GeneralMessage.Message.StaffNote_Caption: <span
+                                                    class="redfont">*</span>
+                                            </td>
+                                            <td align="left" valign="top">
+                                                &nbsp;
+                                            </td>
+                                            <td align="left" valign="top">
+                                                <table width="100%" border="0" align="left" cellpadding="1" cellspacing="1">
+                                                    <tr>
+                                                        <td width="33%" align="left" valign="top">
+                                                            @Html.TextAreaFor(model => model.StaffNote, 7, 25, new { @class = "inputbox200px", id = "txtStaffNotes" })
+                                                            @Html.ValidationMessageFor(model => model.StaffNote)
+                                                        </td>
+                                                        <td width="67%" align="left" valign="top">
+                                                            @* <div class="divannoucesmall">
+                                                               @Html.Raw(Convert.ToString(ViewBag.StaffNotes))
+                                                            </div>*@
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="right" valign="middle" class="bold">
+                                                &nbsp;
+                                            </td>
+                                            <td align="left" valign="top">
+                                                &nbsp;
+                                            </td>
+                                            <td align="left" valign="top">
+                                                <input name="btnSubmit" type="submit" class="bluebtnone" id="btnSubmit" value="@WBSSLStore.Resources.GeneralMessage.Message.Submit_Btn" @(Model.SupportRequest.isOpen ? "" : "disabled='disabled'") />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td height="8" align="left" valign="top">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="left" valign="top">
+                                    &nbsp;
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    }
+}
+@{
+    setting = null;
+}

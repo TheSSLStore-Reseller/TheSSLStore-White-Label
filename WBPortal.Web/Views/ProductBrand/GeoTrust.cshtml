@@ -1,0 +1,41 @@
+﻿@using WBSSLStore.Domain;
+@using WBSSLStore.Web.Helpers.PopupForm
+@model WBSSLStore.Service.ViewModels.StaticPageViewModel
+@{
+    ViewBag.Title = "GeoTrust";
+    ViewBag.version = WBSSLStore.Web.Helpers.Caching.SiteCacher.ResourceVersion();
+    var productdetails = WBSSLStore.Web.Helpers.WBHelper.GetProductDetailRows();
+}
+@section headerTags{
+    @Html.Partial("_renderSEO", Model != null && Model.CMSPage != null ? Model.CMSPage : new WBSSLStore.Domain.CMSPage())
+}
+@section sitecss{
+    @System.Web.Optimization.Styles.Render("/bundales/tabcss?v=" + ViewBag.version)
+}
+@section Jscripts{
+    @System.Web.Optimization.Scripts.Render("/bundales/wb/scripts?v=" + ViewBag.version)
+}
+@Html.Partial("_banner", new Tuple<string, string>("", "GeoTrust"))
+<div class="content">
+    <div class="wrapper">
+        <div class="column3">
+            <div class="mobtopcol">
+                <div class="column3-2">
+                    <div class="cmnpagewrap brand">
+                        <h2>GeoTrust <span class="brandimg"><img src="/content/images/brand-geotrust-logo.png" width="138" height="39" alt="Symantec" /></span></h2>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                        <p class="mrgbotnone">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+
+                    </div>
+                    @Html.Partial("_ProductByBrand", new Tuple<List<ProductPricing>, List<ProductDetail>>(Model.Items.Where(x => x.Product.BrandID.Equals((int)ProductBrands.GeoTrust)).ToList(), productdetails.ToList()))
+                </div>
+                @Html.Partial("_rightpanel", (Model != null && !string.IsNullOrEmpty(Model.CurrentUserName) ? Model.CurrentUserName : ""))
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+
+@section PopupScript{
+    @Html.MakePopupForm("Edit", new[] { "id", "ppid" }, controller: "ShoppingCart", title: @WBSSLStore.Resources.GeneralMessage.Message.Add_To_Cart_Caption, successFunction: "EditSuccess", height: 450, width: 700, refreshOnSuccess: false, okText: @WBSSLStore.Resources.GeneralMessage.Message.SAVE_btn)
+}

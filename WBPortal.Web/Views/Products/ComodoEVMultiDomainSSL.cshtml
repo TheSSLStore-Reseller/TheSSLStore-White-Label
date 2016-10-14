@@ -1,0 +1,140 @@
+﻿@model WBSSLStore.Service.ViewModels.StaticPageViewModel
+@{
+    ViewBag.Title = "SecureSiteProwithEV";  var productdetails = WBSSLStore.Web.Helpers.WBHelper.GetProductDetailRows();
+    string brand = Model != null && Model.Items != null && Model.Items.FirstOrDefault().Product != null && Model.Items.FirstOrDefault().Product.Brand != null ? Model.Items.FirstOrDefault().Product.Brand.BrandName : "";
+    string username = ViewBag.UserName;
+}
+@section headerTags{
+    @Html.Partial("_renderSEO", Model != null && Model.CMSPage != null ? Model.CMSPage : new WBSSLStore.Domain.CMSPage())
+}
+@Html.Partial("_banner", new Tuple<string, string>("", "SSL Brands"))
+<div class="content">
+  <div class="wrapper">
+    <div class="column3">
+      <div class="mobtopcol">
+        <div class="column3-2">
+          <div class="prodetailswrap marzerotop"> @Html.Partial("_ProdPricing", new Tuple<List<WBSSLStore.Domain.ProductPricing>, List<WBSSLStore.Domain.ProductDetail>>(Model.Items.ToList(), productdetails.ToList())) </div>
+          <div class="prodescrip marzerotop">
+            <div class="prodescriptxt">
+              <h2>Product Description</h2>
+              <p>Websites protected by the Comodo EV Multi-Domain SSL certificate benefit from top-level security and the highest layer of online trust. That's because this certificate offers the strongest layer of encryption along with the web's most recognized trust indicators, the most prominent of which is the green address bar. Only Extended Validation (EV) certificate provide the green address bar, which customers have learned to associate with the most trusted companies in the world like Paypal, Amazon, Twitter and more. Best of all, since this is a multi-domain certificate, you can harness the power of the green address bar across all of your domains with just one certificate. This web security product is perfect for highly visited ecommerce sites and any other business that wants customers to instantly identify them as a trustworthy company.</p>
+            </div>
+          </div>
+          <div id="cssmenu">
+            <ul class="accordion_example">
+              <li class="brand-symantec acc_active">
+                <div>
+                  <p>Assurance &amp; Authentication</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>EV stands for Extended Validation, which means that your company will have to complete a thorough vetting process before having the certificate issued, which typically takes between 5-7 business days. The reason for this validation is so that Comodo can be certain that you are who you say you are, which they can then prominently display to your online customers.</p>
+                  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Security &amp; Encryption</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>The Comodo EV Multi-Domain SSL offers the highest strength 2048-bit signatures along with full 256-bit encryption. This certificate also comes with a year of <strong>free PCI scanning</strong> and <strong>website vulnerability scanning</strong>. With the Comodo EV Multi-Domain certificate, you will truly be getting one of the web's premier security products.</p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>SAN &amp; multi-domain support</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>This EV multi-domain certificate comes with a <strong>total of 3 domains</strong>. This means that would will get to display the green address bar on all of those domains with just one SSL certificate. You can also purchase additional domains, <strong>up to 99</strong> &ndash; making this one of the most efficient EV certificates in the industry.</p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Features &amp; Benefits</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <ul class="featurelist">
+                    <li>128-bit minimum to 256-bit encryption</li>
+                    <li>Full business authentication</li>
+                    <li>$1,750,000 warranty</li>
+                    <li>COMODO Secured Seal</li>
+                    <li>99.9% Browser Recognition Rate</li>
+                    <li>Supports Mobile Devices</li>
+                    <li class="bdrbtm">Unlimited Reissuance</li>
+                  </ul>
+				  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Product Specifications</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <ul class="featurelist">
+                    <li>Secures multiple domains (Up to 100) under one certificate</li>
+                    <li>Extended Validation</li>
+                    <li>Green Address Bar</li>
+                    <li>Up to 256-bit, Automatic step-up (SGC) Encryption</li>
+                    <li>99% Browser Compatibile</li>
+                    <li>Unlimited Server - Additional server licenses may be purchased</li>
+                    <li>Issued within 1 week</li>
+                    <li>Unlimited Reissuance</li>
+                    <li>Includes Site Seal</li>
+                    <li>Simple and convenient - one certificate to manage for all your domains</li>
+                    <li>Huge savings over the cost of individual EV SSL certificates</li>
+                  </ul>
+				  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Site Seal</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>The Comodo EV Multi-Domain SSL will display the popular Comodo Site Seal, making it immediately visible to your online customers. Also, this unique indicator will allow you to gain more and more recognition on the web, and customers are continuing to learn to associate the "Comodo Secure" logo with trust and reputability. Since this is an EV cert, this will be a dynamic site seal and display additional company information.</p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Warranty</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>The Comodo EV Multi-Domain certificate is available with a <strong>$1,750,000 warranty</strong>, one of the highest in the industry. A high warranty on an SSL certificate gives you the ultimate assurance. Basically, the extremely unlikely event that your site is breached due to a flaw in the SSL, and a customer of yours incurs a loss because of this, you will be compensated by Comodo for the damages up to $1,750,000.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        @Html.Partial("_rightpanel", username) </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+@section Jscripts{ 
+<script type="text/javascript">
+        $(document).ready(function () {
+            // Mobile Menu
+            $("#showmenu").click(function (e) {
+                e.preventDefault();
+                $("#menu").toggleClass("show");
+            });
+            $("#menu a").click(function (event) {
+                event.preventDefault();
+                if ($(this).next('ul').length) {
+                    $(this).next().toggle('fast');
+                    $(this).children('i:last-child').toggleClass('fa-caret-down fa-caret-left');
+                }
+            });
+            $(document).click(function (e) {
+                if (!$(e.target).is(".mobmemu, .mobmemu  *")) { $("#menu").toggleClass("hide"); $("#menu").removeClass("show"); }
+            });
+            $(".accordion_example").smk_Accordion();
+        });
+    </script> 
+} 

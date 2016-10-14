@@ -1,0 +1,126 @@
+﻿@using WBSSLStore.Web.Util;
+@using WBSSLStore.Web.Helpers.PagedList;
+@model  IPagedList<WBSSLStore.Domain.OrderDetail>
+@{
+    ViewBag.version = WBSSLStore.Web.Helpers.Caching.SiteCacher.ResourceVersion();
+    WBSiteSettings setting = new WBSiteSettings(WBSSLStore.Web.Helpers.Caching.SiteCacher.CurrentSite);
+    ViewBag.Title = "List Orders";
+    string CurrentLangCode = @setting.CurrentCultureKey;
+    string username = ViewBag.UserName;
+}
+@section sitecss{
+    @System.Web.Optimization.Styles.Render("/bundales/jquery-ui-css?v=" + ViewBag.version)
+}
+@section Jscripts{
+
+    @System.Web.Optimization.Scripts.Render("/bundales/wb/scripts?v=" + ViewBag.version)
+
+   @if (CurrentLangCode != "en-US")
+   {
+        @System.Web.Optimization.Scripts.Render("/bundales/jquery-datepickerjs?v=" + ViewBag.version)
+    }
+
+    @System.Web.Optimization.Scripts.Render("/bundales/jquery-glob?v=" + ViewBag.version)
+    @System.Web.Optimization.Scripts.Render("/bundales/jquery-glob-all?v=" + ViewBag.version)
+    <script type="text/javascript">
+        $(function () {
+            $.preferCulture('@(CurrentLangCode)');
+        });
+    </script>
+    <script type="text/javascript" language="javascript">
+        $(function () {
+            var dates = $("#txtFromDate, #txtToDate").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                numberOfMonths: 1,
+                showOn: "both",
+                buttonImage: "/content/images/calendar.png",
+                buttonImageOnly: true,
+                onSelect: function (selectedDate) {
+                    var option = this.id == "txtFromDate" ? "minDate" : "maxDate",
+                        instance = $(this).data("datepicker"),
+                        date = $.datepicker.parseDate(
+                            instance.settings.dateFormat ||
+                            $.datepicker._defaults.dateFormat,
+                            selectedDate, instance.settings);
+                    dates.not(this).datepicker("option", option, date);
+
+
+                }
+            });
+        });
+    </script>
+    @{
+        setting = null;
+    }
+}
+
+@Html.Partial("_banner", new Tuple<string, string>("", WBSSLStore.Resources.GeneralMessage.Message.ListOrder_Header))
+<div class="content">
+    <div class="wrapper">
+        <div class="column3">
+            <div class="column3-0">
+                <div class="controlpnldata">
+                    @using (Html.BeginForm("list", "orders", FormMethod.Post))
+                    {
+                        <h2>@WBSSLStore.Resources.GeneralMessage.Message.ListOrder_Search_Caption</h2>
+                        <div class="searchsection">
+                            <div class="srchstatus">
+                                <label>@WBSSLStore.Resources.GeneralMessage.Message.OrderStatus_Caption:</label>
+                                <select id="lstStatus" onchange="1" name="lstStatus" class='select'>
+                                    <option value="-1" @(ViewBag.Status == "-1" ? "selected=\"selected\"" : string.Empty)>
+                                        @WBSSLStore.Resources.GeneralMessage.Message.ddlStatus_All
+                                    </option>
+                                    <option value="0" @(ViewBag.Status == "0" ? "selected=\"selected\"" : string.Empty)>
+                                        @WBSSLStore.Resources.GeneralMessage.Message.ddlStatus_Pending
+                                    </option>
+                                    <option value="1" @(ViewBag.Status == "1" ? "selected=\"selected\"" : string.Empty)>
+                                        @WBSSLStore.Resources.GeneralMessage.Message.ddlStatus_Active
+                                    </option>
+                                    <option value="2" @(ViewBag.Status == "2" ? "selected=\"selected\"" : string.Empty)>
+                                        @WBSSLStore.Resources.GeneralMessage.Message.ddl_Cancel
+                                    </option>
+                                    <option value="3" @(ViewBag.Status == "3" ? "selected=\"selected\"" : string.Empty)>
+                                        @WBSSLStore.Resources.GeneralMessage.Message.ddlStatus_Expired
+                                    </option>
+                                    <option value="4" @(ViewBag.Status == "4" ? "selected=\"selected\"" : string.Empty)>
+                                        @WBSSLStore.Resources.GeneralMessage.Message.ddlStatus_Expire 30
+                                    </option>
+                                    <option value="5" @(ViewBag.Status == "5" ? "selected=\"selected\"" : string.Empty)>
+                                        @WBSSLStore.Resources.GeneralMessage.Message.ddlStatus_Expire 60
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="daterangesec">
+                                <label>@WBSSLStore.Resources.GeneralMessage.Message.DateRange_Caption:</label>
+                                <div class="daterange">
+                                    <input name="txtFromDate" type="text" size="10" readonly="readonly" class="in90px" id="txtFromDate" value="@(ViewBag.FormDate != null ? Convert.ToDateTime(ViewBag.FormDate).ToString("MM/dd/yyyy") : Convert.ToDateTime(DateTimeWithZone.Now.AddYears(-1)).ToString("MM/dd/yyyy"))" />
+                                    @*<img alt="Calender" src="/content/images/calendar.png">*@
+                                </div>
+                                <div class="daterange">
+                                    <input name="txtToDate" type="text" size="10" readonly="readonly" class="in90px" id="txtToDate" value="@(ViewBag.ToDate != null ? Convert.ToDateTime(ViewBag.ToDate).ToString("MM/dd/yyyy") : Convert.ToDateTime(DateTimeWithZone.Now).ToString("MM/dd/yyyy"))" />
+                                    @*<img alt="Calender" src="/content/images/calendar.png">*@
+                                </div>
+                                <input type="submit" value="@WBSSLStore.Resources.GeneralMessage.Message.Submit_Btn" class="smlbtn" id="btnSearch" name="btnSearch" />
+                            </div>
+                            <div class="advancesrchlink">
+                                <a href="@Url.Action("searchorders", "orders")" name="btnAdvanceSearch" id="btnAdvanceSearch">@WBSSLStore.Resources.GeneralMessage.Message.AdvancedSearch_btn</a>
+                                <input type="submit" value="" class="exportcsvbtn" id="btnExport" name="btnExport" />
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div>
+                            @Html.Partial("_orderslist", Tuple.Create<IPagedList<WBSSLStore.Domain.OrderDetail>, string>(Model, setting != null && !string.IsNullOrEmpty(setting.InvoicePrefix) ? setting.InvoicePrefix : "SSL-"))
+                        </div>
+                    }
+                </div>
+            </div>
+            @Html.Partial("_rightpanel", username)
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+
+
+
+

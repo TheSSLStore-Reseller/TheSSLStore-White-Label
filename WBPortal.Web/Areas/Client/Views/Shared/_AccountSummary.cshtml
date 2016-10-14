@@ -1,0 +1,28 @@
+﻿@using WBSSLStore.Web.Helpers.PopupForm
+@model WBSSLStore.Service.ViewModels.AccountSummary
+
+<div id="dvSummaryLogin" class="backgroundPopup" style="position: fixed; display: none;
+    opacity: 0.7;">
+    <img src='~/content/loadingnew.gif' style="margin-top: 25%;
+            margin-left: 50%;" />
+</div>
+<div class="acsummarytbl">
+    <div class="acsumraw">
+        <p><span>@WBSSLStore.Resources.GeneralMessage.Message.TotalTransaction_Caption:</span> <strong><a href="@Url.Action("statement", "account")">@string.Format("{0:C}", Model.TotalTransaction)</a></strong></p>
+        <p><span>@WBSSLStore.Resources.GeneralMessage.Message.AccountBalance_Caption:</span> <strong><a href="@Url.Action("statement", "account")">@string.Format("{0:C}", Model.Balance)</a></strong></p>
+    </div>
+    <div class="acsumraw">
+        <p><span>@WBSSLStore.Resources.GeneralMessage.Message.IncompleteOrder_Caption:</span> <strong>@Model.TotalInCompleteOrders</strong></p>
+        <p><span>@WBSSLStore.Resources.GeneralMessage.Message.TotalOrders_Caption:</span> <strong><a href="@Url.Action("list", "orders")">@Model.TotalOrders</a></strong></p>
+    </div>
+    <div class="acsumraw">
+        <p><span>@WBSSLStore.Resources.GeneralMessage.Message.ActiveSupports_Caption:</span> <strong><a href="@Url.Action("index", "support")">@Model.TotalSupportIncident</a></strong></p>
+        <p>
+            <span>@WBSSLStore.Resources.GeneralMessage.Message.AddFund_btn:</span> <strong>
+                <input type="button" class="greenbtn" value="@WBSSLStore.Resources.GeneralMessage.Message.AddFund_btn" id="btnaddfund" onclick="window.location.href='@(Url.Action("addfund", "payment", new { area="checkout" }))';" />
+            </strong>
+
+        </p>
+    </div>
+    <div class="clear"></div>
+</div>

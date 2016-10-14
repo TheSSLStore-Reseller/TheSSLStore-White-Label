@@ -1,0 +1,202 @@
+﻿@using WBSSLStore.Web.Helpers.PagedList;
+@model IPagedList<WBSSLStore.Domain.Testimonials>
+@{
+    ViewBag.Title = "Index";
+}
+<link href="/content/controls.css" rel="Stylesheet" type="text/css" />
+<script src="@Url.Content("~/content/Admin/js/testimonial.min.js")" language="javascript" type="text/javascript" ></script>
+<script type="text/javascript" language="javascript">
+    //var objReselleractmail = '@WBSSLStore.Resources.GeneralMessage.Message.ResellerAcvivation_Mail_Caption';
+</script>
+<tr>
+    <td align="left" valign="top">
+        <table width="881" border="0" align="left" cellpadding="0" cellspacing="0">
+            <tr>
+                <td width="7" align="left" valign="top">
+                    <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/barleft.gif" alt="whitebrand" width="7" height="55">
+                </td>
+                <td width="866" align="left" valign="middle" class="hdbarbg">
+                    <table width="840" border="0" align="center" cellpadding="1" cellspacing="1">
+                        <tr>
+                            <td width="407" align="left" valign="middle" class="head1">
+                                @*Manage Customer*@ @WBSSLStore.Resources.GeneralMessage.Message.Manage_Testimonial_Caption
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td width="9" align="right" valign="top">
+                    <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/barright.gif" alt="whitebrand" width="9" height="55">
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>
+<tr>
+    <td align="left" valign="top" class="contbg">
+        <table width="870" border="0" align="center" cellpadding="0" cellspacing="7">
+            <tr>
+                <td width="867" align="center" valign="top" class="bgclr">
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        @using (Html.BeginForm("index", "testimonial", FormMethod.Post))
+                        {
+                            <tr>
+                                <td align="left" valign="top">
+                                    <table width="99%" border="0" align="center" cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <td colspan="5">
+                                                &nbsp;
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td width="11%" align="right" valign="middle" class="bold">
+                                                @*@WBSSLStore.Resources.GeneralMessage.Message.TestimonialName_Caption*@
+                                            </td>
+                                            <td width="20%" align="left" valign="middle">
+                                                @* <input name="txtName" type="text" class="inputbox200px" id="txtName" size="100" value="@ViewBag.Name" />*@
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="5">
+                                                &nbsp;
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td width="25%" align="left" valign="middle">
+                                            </td>
+                                            <td width="25%" align="right" class="bluefont" valign="middle" colspan="4">
+                                                @*<input name="btnSearch" type="button" class="bluebtn" id="btnAddTestimonial" onclick="window.location.href='@Url.Action("create","testimonials")'" value="@WBSSLStore.Resources.GeneralMessage.Message.Add_Testimonial_Caption" />*@
+                                                <a href="@Url.Action("create", "testimonials")" class="btn width170"><span>@WBSSLStore.Resources.GeneralMessage.Message.Add_Testimonial_Caption</span></a>
+                                                &nbsp;
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="left" valign="top">
+                                    &nbsp;
+                                </td>
+                            </tr>
+                        }
+                        @if (Model != null && Model.Count() > 0)
+                        {
+                            <tr>
+                                <td align="left" valign="top">
+                                    <table width="841" border="0" align="center" cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <td height="8" align="left" valign="top">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="left" valign="top" bgcolor="#d6d6d6">
+                                                <table width="100%" border="0" align="left" cellpadding="3" cellspacing="1">
+                                                    <tr>
+                                                        <td width="28%" height="34" align="left" valign="middle" style="padding-left: 20px"
+                                                            bgcolor="#eff8fd" class="bluefont">
+                                                            @*Customer Name*@ @WBSSLStore.Resources.GeneralMessage.Message.Title_Caption
+                                                        </td>
+                                                        <td width="10%" height="34" align="center" valign="middle" bgcolor="#eff8fd" class="bluefont">
+                                                            Show on Page
+                                                        </td>
+                                                        <td width="7%" height="34" align="center" valign="middle" bgcolor="#eff8fd" class="bluefont">
+                                                            @*Status*@ @WBSSLStore.Resources.GeneralMessage.Message.Status_Caption
+                                                        </td>
+                                                        <td width="7%" height="34" align="center" valign="middle" bgcolor="#eff8fd" class="bluefont">
+                                                            @*Edit*@ @WBSSLStore.Resources.GeneralMessage.Message.Edit_Caption
+                                                        </td>
+                                                        <td width="7%" height="34" align="center" valign="middle" bgcolor="#eff8fd" class="bluefont">
+                                                            @*Delete*@ @WBSSLStore.Resources.GeneralMessage.Message.Delete_Caption
+                                                        </td>
+                                                    </tr>
+                                                    @foreach (var item in Model)
+                                                    {
+                                                        <tr id="row-@item.ID">
+                                                            <td align="left" valign="middle" bgcolor="#FFFFFF" style="padding-left: 20px">
+                                                                @Html.DisplayFor(modelItem => item.Signature)
+                                                            </td>
+                                                            <td align="center" valign="middle" bgcolor="#FFFFFF">
+                                                                <label>
+                                                                    <input type="checkbox" name="IchkTestimonials" data-id="@item.ID" id="IchkTestimonials-@item.ID"  @(item.RecordStatus == WBSSLStore.Domain.TestimonialStatus.SHOWINPAGE ? "checked=\"checked\"" : "") />
+                                                                </label>
+                                                                
+
+                                                            </td>
+                                                            <td align="center" valign="middle" bgcolor="#FFFFFF">
+                                                                <a href="javascript:;" class="UpdateStatus" data-id="@item.ID">
+                                                                    @if (item.RecordStatus == WBSSLStore.Domain.TestimonialStatus.ACTIVE || item.RecordStatus == WBSSLStore.Domain.TestimonialStatus.SHOWINPAGE)
+                                                                    {
+                                                                        <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-active.gif" id="img-@item.ID" alt="status" />
+                                                                    }
+                                                                    @if (item.RecordStatus == WBSSLStore.Domain.TestimonialStatus.INACTIVE)
+                                                                    {
+                                                                        <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-deactive.gif" id="img-@item.ID" alt="status" />
+                                                                    }
+                                                                </a>
+                                                            </td>
+                                                            <td align="center" valign="middle" bgcolor="#FFFFFF">
+                                                                <a href="@Url.Action("edit", new { id = item.ID })" title="Edit">
+                                                                    <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-edit.gif" alt="edit" />
+                                                                </a>
+                                                            </td>
+                                                            <td align="center" valign="middle" bgcolor="#FFFFFF">
+                                                                <a href="javascript:;" class="Remove" data-id="@item.ID">
+                                                                    <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-delete.gif" alt="delete" />
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="left" valign="top" bgcolor="#FFFFFF">
+                                                &nbsp;
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>                            
+                        }
+                        else
+                        { 
+                            <tr>
+                                <td height="8" valign="top" class="errormsg">
+                                    @*No record found.*@ @WBSSLStore.Resources.GeneralMessage.Message.NoRecord
+                                </td>
+                            </tr>
+                        }
+                        <tr>
+                            <td height="8" valign="top">
+                                &nbsp;
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>
+@if (Model != null && Model.Count() > 0)
+{
+    <tr>
+        <td align="center" valign="top" bgcolor="#d6d6d6" class="contbg">
+            <table width="855" border="0" align="center" cellpadding="0" cellspacing="7" class="bgclr">
+                <tr>
+                    <td width="840" align="center" valign="top" bgcolor="#FFFFFF">
+                        <table width="825" border="0" align="center" cellpadding="1" cellspacing="1">
+                            <tr>
+                                <td>@Html.PagedListPager(Model, page => Url.Action(Model.ActionName, Model.ControllerName, new { page = page + 1 }))
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+}
+@*<script type="text/javascript">
+    $(function () {
+        f();
+    });
+</script>*@

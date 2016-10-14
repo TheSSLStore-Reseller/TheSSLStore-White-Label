@@ -1,0 +1,159 @@
+﻿@using WBSSLStore.Web.Helpers.Caching;
+@using WBSSLStore.Web.Helpers;
+@model WBSSLStore.Domain.Uservalidate
+@{
+    ViewBag.Title = "checkout";
+    ViewBag.version = WBSSLStore.Web.Helpers.Caching.SiteCacher.ResourceVersion();
+    string action = string.Empty;
+
+    action = "/authentication/user/checkout";
+
+    string Error = ViewBag.Error;
+    int SiteID = ViewBag.SiteID;
+    string username = ViewBag.Username;
+}
+@section sitecss{
+
+}
+@section Jscripts{
+
+@System.Web.Optimization.Scripts.Render("/bundales/wb/jquery.unobtrusive.validate-js?v=" + ViewBag.version)
+    <script type="text/javascript" language="javascript">
+        var ImgPath = '/content/images';
+        function ShowHideLogon(status) {
+            if (status) {
+                document.getElementById('co_login_cont').style.display = '';
+            }
+            else {
+                document.getElementById('co_login_cont').style.display = 'none';
+            }
+        }
+        var email = "@WBSSLStore.Resources.ErrorMessage.Message.EmailRequired";
+        var pwd = "@WBSSLStore.Resources.ErrorMessage.Message.PasswordRequired";
+        var emailexists = "@WBSSLStore.Resources.ErrorMessage.Message.EmailExists";
+        $(function () {
+            $("#frmcheckout").validate({
+                errorElement: "em",
+                success: function (label) {
+                    label.text("").addClass("success");
+                },
+                rules: {
+                    co_login_emailid: { required: true, email: true },
+                    co_login_passwd: { required: "#co_has_account:checked" }
+                },
+                messages: {
+                    co_login_emailid: { required: email },
+                    co_login_passwd: { required: pwd }
+                }
+            });
+
+            //Check Email Exsitance
+            $("#co_login_emailid").blur(function () {
+                $.post("/home/checkemailexist/?email=" + escape($('#co_login_emailid').val()),
+                    function (data) {
+                        if (data.toString().toLowerCase() == "true") {
+                            $('#pLoaderImg').html(emailexists);
+                            $("#co_has_account").attr("checked", "checked");
+                            ShowHideLogon(true);
+                        }
+                        else {
+                            $('#pLoaderImg').html('');
+                            $("#co_has_account").removeAttr("checked");
+                            $('#co_login_passwd').val('');
+                            ShowHideLogon(false);
+
+                        }
+                    }
+                );
+
+            });
+        });
+    </script>
+}
+@Html.Partial("_banner", new Tuple<string, string>("", "CHECK OUT"))
+<div class="content">
+    <div class="wrapper">
+        <div class="column3">
+            <div class="mobtopcol">
+                <div class="column3-2">
+                    <div class="aboutwrap">
+                        <div class="cartwarp">
+
+                            <div class="billdtl">
+
+                                @using (Html.BeginForm("checkout", "user", FormMethod.Post, new { area = "authentication", @id = "frmcheckout" }))
+                                {
+                                    Html.EnableClientValidation(true);
+                                    @Html.AntiForgeryToken()
+
+
+                                    @Html.Hidden("SiteID", @SiteID)
+                                    if (!string.IsNullOrEmpty(Error))
+                                    {
+                                        <div class="alert-danger">@Error</div>
+                                    }
+                                    <div class="csrgener chkcmnbx">
+                                        <ul>
+                                            <li>
+                                                <label class="lineht30"><strong> @WBSSLStore.Resources.GeneralMessage.Message.Checkout_YourEmailAddress </strong></label>
+                                                <div class="formdata">
+                                                    @Html.TextBoxFor(x => x.Email, new { id = "co_login_emailid", @class = "genetxtbox" })
+                                                    <span class="formhint"><em>(eg. name@gmail.com)</em> @WBSSLStore.Resources.LongText.Message.Checkout_Desc.</span><br />
+                                                    @Html.ValidationMessageFor(x => x.Email)
+                                                    <span id="pLoaderImg" class="redtxt"></span>
+                                                </div>
+                                            </li>
+
+                                            <li>
+                                                <label class="lineht30">
+                                                    @Html.CheckBoxFor(x => x.isRegisteredUser, new { id = "co_has_account", onclick = "ShowHideLogon(this.checked)" })
+
+                                                    <input id="co_has_sid" name="co_has_sid" type="hidden" value="@ViewBag.ShoppingCartID" />
+                                                </label>
+                                                <div class="chkout">
+                                                    <strong>
+                                                        @WBSSLStore.Resources.LongText.Message.I_have_a @SiteCacher.CurrentSite.Alias @WBSSLStore.Resources.LongText.Message.Account_password
+                                                    </strong>
+
+                                                    @WBSSLStore.Resources.LongText.Message.Sign_in_to_your @SiteCacher.CurrentSite.Alias Account to checkout faster
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <ul id="co_login_cont" style="display: none;">
+                                            <li>
+                                                <label class="lineht30 tabhide">&nbsp;</label>
+                                                <div class="formdata">
+                                                    <span class="lineht30"><strong>@WBSSLStore.Resources.GeneralMessage.Message.Checkout_YourAccountPwd:</strong></span>
+
+                                                    @Html.PasswordFor(x => x.Password, new { id = "co_login_passwd", @class = "genetxtbox" })
+                                                    <br />
+                                                    <span class="formhint">
+                                                        @WBSSLStore.Resources.GeneralMessage.Message.Checkout_ForgotPwd <a href="/forgotpassword"> @WBSSLStore.Resources.GeneralMessage.Message.ClickHere_Caption</a>
+                                                    </span>
+                                                </div>
+
+                                            </li>
+
+                                        </ul>
+                                        <ul>
+                                            <li>
+                                                <label class="tabhide">&nbsp;</label>
+                                                <div class="formdata">
+                                                    <input class="greenbtn" type="submit" value="@WBSSLStore.Resources.GeneralMessage.Message.Continue_btn" id="btncheckout" />
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <div class="clear"></div>
+                                    </div>
+
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @Html.Partial("_rightpanel", username)
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>

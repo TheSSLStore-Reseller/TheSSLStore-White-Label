@@ -1,0 +1,164 @@
+@charset "utf-8";
+/* CSS Document */
+
+body{background:url(../images/body-bg-rpt.jpg) repeat; font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#7b7b7b; margin:0 auto;}
+
+h1{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; text-transform:uppercase; font-weight:normal; color:#606060; font-size:24px; margin:0px; padding:0px;}
+h2{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-weight:normal; color:#6d6d6d; font-size:18px; margin:5px 0px; padding:0px;}
+
+
+.floatrit{float:right;}
+.floatlft{float:left;}
+.clear{clear:both;}
+
+
+.height25{height:25px;}
+
+.wid130{width:130px!important;}
+.wid60{width:75px !important;}
+.wid190{width:190px !important;}
+.marlft50{margin-left:50px !important;}
+.martopnone{margin-top:0px !important}
+.martop25{margin-top:25px !important}
+.marlft75{margin-left:75px}
+
+.diplaynone{display:none;}
+
+
+.pad10{padding:10px;}
+
+.bdr{border:#ececec solid 1px; width:537px; margin:10px;}
+.bdrnone{border:none !important;}
+
+.commontxt{font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#494949; margin:20px; line-height:22px;}
+
+#wrapper{margin:0 auto; width:980px; padding:0px;}
+
+.header{background:#FFF; border-bottom:#bebdbe solid 1px; border-left:#bebdbe solid 1px; border-right:#bebdbe solid 1px; padding:15px 10px; height:80px;}
+
+.sheild{float:right; margin:10px;}
+
+.nav{background:url(../images/nav-bg-rpt.png) repeat-x; line-height:52px; border:#bebdbe solid 1px; font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; text-transform:uppercase; font-weight:normal; color:#606060; font-size:24px; padding-left:10px; border-top:none;}
+
+#contenter{margin:0;}
+.billingbox{ border:#cbcbcb solid 1px; width:559px; float:left; background:#FFF; margin:25px 21px 25px 0;}
+.billingbg{background:url(../images/billing-bg-rpt.jpg) repeat-x; line-height:50px; border-bottom:#cbcbcb solid 1px; font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; text-transform:uppercase; font-weight:normal; color:#606060; font-size:24px; padding-left:10px;}
+.step1formtext{font-family:Arial, Helvetica, sans-serif; text-align:left; color:#7b7b7b;}
+.requiredtxt{color:#ed1f24;}
+.txtfeild{width:250px; height:25px; border: #cbcbcb 1px solid; line-height:30px; color:#7b7b7b;}
+.biginput{width:400px!important;}
+.creditcard{background:#ececec; font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; color:#7b7b7b; font-size:20px; text-transform:uppercase; width:auto; float:left; line-height:30px; padding:5px 10px; margin:20px 0;}
+.allcards{float:right; margin:20px 10px;}
+.geosheild{float:right; margin:10px 10px 15px 0;}
+.card { position:absolute; margin:17px 0 0 90px;}
+
+
+.darkgreybtn{background:url(../images/darkgrey-btn.png) repeat-x; border-radius:5px; font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size:18px; color:#fff; line-height:28px; padding:5px 10px; width:auto; text-transform:uppercase; text-align:center; margin:20px 0 30px 10px; border:none;}
+.btnbox{margin:20px 10px;}
+
+.actbtn{background:url(../images/act-btn-bg.png) repeat-x; border-radius:3px; font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size:16px; color:#fff; line-height:28px; padding:2px 10px; width:auto; text-transform:uppercase; text-align:center; margin-right:20px; float:left;}
+.actbtn a{text-decoration:none; color:#fff;}
+.actbtn a hover{text-decoration:none; color:#fff;}
+
+
+.deactbtn{background:url(../images/deact-btn-bg.png) repeat-x; border-radius:3px; font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size:16px; color:#fff; line-height:28px; padding:2px 10px; width:auto; text-transform:uppercase; text-align:center; margin-right:20px; float:left;}
+.deactbtn a{text-decoration:none; color:#fff;}
+.deactbtn a hover{text-decoration:none; color:#fff;}
+
+
+.paypal{float:left; padding:0 20px 0 0; width:80px}
+
+.paypaltxt {font-size:16px; }
+
+#rightpnl{width:398px; float:right; margin-top:25px;}
+.righttitle{ line-height:50px; font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; text-transform:uppercase; font-weight:normal; color:#fff; font-size:26px; padding-left:10px; background:#606060;}
+.rightbox{ border:#cbcbcb solid 1px; background:#f3f3f3; border-top:none; padding:10px;}
+
+.rightboxtxt{font-family:Arial, Helvetica, sans-serif; color:#6d6d6d; font-size:14px; font-weight:normal; line-height:22px; float:left; width:275px;}
+.pricetxt{color:#d2623e}
+.txtitalic{font-family:Arial, Helvetica, sans-serif; color:#6d6d6d; font-size:12px; font-weight:normal; font-style:italic;}
+.icon{float:left; margin-left:10px;}
+.deleteico{margin-left:20px !important; margin-top:5px;}
+
+.rightboxcnt{border-bottom:#6d6d6d dotted 1px; width:100%; padding:10px 0; float:left;}
+
+.total{background:url(../images/totalbg.png) repeat-x; border: #cecece 1px solid; border-top:none !important; line-height:64px; font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size:30px; color:#4d4f4b; padding:0 10px; text-transform:uppercase; font-weight:bold;} 
+.promocode{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; color:#606060; font-size:16px; text-align:right; margin-top:10px;  text-transform:uppercase;}
+
+.footer{background:url(../images/footer-bg.png) repeat-x; bborder: #cecece 1px solid; font-family:Arial, Helvetica, sans-serif; font-size:12px; text-align:center; line-height:54px;}
+
+/*Table*/
+.tabletitle{background:#606060; color:#FFF; padding:2px 10px; line-height:35px;}
+.colum1{width:390px; float:left;}
+.colum2{width:120px; float:left;}
+.colum3{width:150px; float:left;}
+.colum4{width:150px; float:left;}
+.colum5{width:150px; float:left;}
+
+.tableraw1{background:#fff; border-bottom:#CCC solid 1px; padding:5px 10px; line-height:18px;}
+
+.tableraw2{background:#f3f4f5; border-bottom:#CCC solid 1px; padding:5px 10px; line-height:18px;}
+.tableraw3{background:#fff; border-bottom:#CCC solid 1px; padding:5px 10px; line-height:18px;}
+
+.totalbox{float:right; padding:10px; border:#F00 1px solid; width:339px; background:#f3f4f5; border:#CCC solid 1px; border-right:none; margin:10px 0px 10px 200px;}
+.totaltxt{text-align:right; width:200px; float:left; font-weight:bold; line-height:20px;}
+.totaltxtraw2{text-align:right; width:130px; float:left; font-weight:normal; line-height:20px;}
+
+.editorder{width:150px; float:left; font-size:20px; font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;}
+.editorder a{color:#7b7b7b; text-decoration:underline !important;}
+.editorder a hover{color:#7b7b7b; text-decoration:underline !important;}
+
+#billingbox{ border:#cbcbcb solid 1px; width:982px; float:left; background:#FFF; margin:25px 21px 25px 0;}
+.billingleft{width:460px; background: url(../images/1343979350_invoice.png) no-repeat 400px 20px #f3f4f5; padding:15px; float:left; border:#CCC solid 1px; border-left:none; line-height:18px;}
+.billingright{width:461px; background:url(../images/1343979345_information.png) no-repeat 400px 20px #eaeaea; padding:15px; float:left; border:#CCC solid 1px; border-right:none; border-left:none;line-height:18px;}
+.tdpaypayllogo
+{
+    background-image: url('../images/checkout-paypal.png');    
+    background-position: left 3px;
+    background-repeat: no-repeat;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    height:55px;
+    padding-left:100px;
+    vertical-align: text-bottom;
+    }
+    
+.tdMoneybokerlogo
+{
+    background-image: url('../images/checkout-moneybookers.png');    
+    background-position: left 3px;
+    background-repeat: no-repeat;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    height:65px;
+    padding-left:100px;
+    vertical-align: text-bottom;
+    }                             
+ .in200px{width:250px; height:25px; border: #cbcbcb 1px solid; line-height:30px; color:#7b7b7b;}
+.buttonnew
+{
+    background: url(../images/darkgrey-btn.png) repeat-x;
+    border-radius: 5px;
+    font-family: "Trebuchet MS" , Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    color: #fff;
+    line-height: 28px;
+    padding: 5px 10px;
+    width: auto;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 20px 0 30px 10px;
+    border: none;
+    cursor: pointer;
+}
+
+
+em.error {
+  background:url("../images/unchecked.gif") no-repeat 0px 0px;
+ padding-left: 16px;
+   font-style:italic;color: black;
+}
+em.success {
+  background:url("../images/checked.gif") no-repeat 0px 0px;
+  padding-left: 16px;
+}

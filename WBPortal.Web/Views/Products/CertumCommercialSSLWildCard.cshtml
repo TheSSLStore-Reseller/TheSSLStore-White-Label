@@ -1,0 +1,133 @@
+﻿@model WBSSLStore.Service.ViewModels.StaticPageViewModel
+@{
+    ViewBag.Title = "SecureSiteProwithEV";  var productdetails = WBSSLStore.Web.Helpers.WBHelper.GetProductDetailRows();
+    string brand = Model != null && Model.Items != null && Model.Items.FirstOrDefault().Product != null && Model.Items.FirstOrDefault().Product.Brand != null ? Model.Items.FirstOrDefault().Product.Brand.BrandName : "";
+    string username = ViewBag.UserName;
+}
+@section headerTags{
+    @Html.Partial("_renderSEO", Model != null && Model.CMSPage != null ? Model.CMSPage : new WBSSLStore.Domain.CMSPage())
+}
+@Html.Partial("_banner", new Tuple<string, string>("", "SSL Brands"))
+<div class="content">
+  <div class="wrapper">
+    <div class="column3">
+      <div class="mobtopcol">
+        <div class="column3-2">
+          <div class="prodetailswrap marzerotop"> @*@Html.Partial("_ProdPricing", new Tuple<List<WBSSLStore.Domain.ProductPricing>, List<WBSSLStore.Domain.ProductDetail>>(Model.Items.ToList(), productdetails.ToList()))*@ </div>
+          <div class="prodescrip marzerotop">
+            <div class="prodescriptxt">
+              <h2>Product Description</h2>
+              <p>The Certum Commercial SSL Wildcard certificate is a fast and effective way to secure your main domain and all of the accompanying subdomains. That's right, with just a single SSL certificate, you can secure www.domain.com along with xyz.domain.com, hello.domain.com, etc. And, because this is a domain validated (DV) certificate, it can usually be issued in just a matter of minutes. So, you can boost the trust in your site with https, the padlock icon, and the Secured by Certum Site Seal quickly. This wildcard certificate is ideal for startup websites and light ecommerce sites.</p>
+            </div>
+          </div>
+          <div id="cssmenu">
+            <ul class="accordion_example">
+              <li class="brand-symantec acc_active">
+                <div>
+                  <p>Assurance &amp; Authentication</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>This wildcard certificate is domain validated (DV), which means the Certificate Authority, Certum, only has to ensure that you own the domain you wish to encrypt. This process can be completed in as little as <strong>a few minutes</strong> &ndash; so you can get the encryption you need quickly.</p>
+                  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Security &amp; Encryption</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>The Certum Commercial SSL wildcard can be issued with either 128-bit or 256-bit encryption. This certificate is also signed with the industry standard 2048-bit root. So, you can rest assured that your customers' information will be safe with this top-of-the-line security product.</p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>SAN &amp; Multi-Domain Support</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>As a wildcard option, this certificate is able to secure one main domain (www.domain.com) and all of the accompanying subdomains (mail.domain.com, register.domain.com, certum.domain.com, etc.). The ability to secure one domain and an unlimited amount of subdomains makes this one of the most efficient certificates on the market.</p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Features &amp; Benefits</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <ul class="featurelist">
+                        <li>Validation: DV</li>
+                        <li>$10,000 Warranty</li>
+                        <li>Secures all subdomains of 1 domain name [*.exampledomain.com]</li>
+                        <li>99.00% browser recognition</li>
+                        <li>128-256 bit encryption strength</li>
+                        <li>2048/4096-bit root</li>
+                        <li class="bdrbtm">Fast Verification</li>
+                      </ul>
+					  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Product Specifications</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <ul class="featurelist">
+                        <li>Universal major browser compatibility</li>
+                        <li>Free CERTUM Site Seal - a sign of your credibility</li>
+                        <li>Secures unlimited no. of servers with only 1 SSL certificate</li>
+                        <li>Certificate contains a domain name</li>
+                      </ul>
+					  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Site Seal</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>Since this certificate is just Domain Validated (DV), it comes with a static <strong>"Secured by Certum"</strong> Site Seal. A static site seal is not clickable and does not display and validated information about your business. However, you will be able to show your customers that your website has been vetted by a reputable third party security company, Certum.</p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Warranty</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>The Certum Commercial SSL Wildcard cert comes with a warranty of <strong>$10,000</strong>. With this warranty in place, you will be compensated for any damages incurred by a customer for up to $10,000 if the issue was due to a flaw in the SSL certificate.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        @Html.Partial("_rightpanel", username) </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+@section Jscripts{ 
+<script type="text/javascript">
+        $(document).ready(function () {
+            // Mobile Menu
+            $("#showmenu").click(function (e) {
+                e.preventDefault();
+                $("#menu").toggleClass("show");
+            });
+            $("#menu a").click(function (event) {
+                event.preventDefault();
+                if ($(this).next('ul').length) {
+                    $(this).next().toggle('fast');
+                    $(this).children('i:last-child').toggleClass('fa-caret-down fa-caret-left');
+                }
+            });
+            $(document).click(function (e) {
+                if (!$(e.target).is(".mobmemu, .mobmemu  *")) { $("#menu").toggleClass("hide"); $("#menu").removeClass("show"); }
+            });
+            $(".accordion_example").smk_Accordion();
+        });
+    </script> 
+} 

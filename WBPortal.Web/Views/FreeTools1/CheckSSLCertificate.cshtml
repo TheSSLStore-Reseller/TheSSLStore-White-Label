@@ -1,0 +1,105 @@
+﻿@model WBSSLStore.Gateways.RestAPIModels.Response.SSLCheckerResponse
+@{
+    ViewBag.Title = "CheckSSLCertificate";
+}
+
+@Html.Partial("_banner", new Tuple<string, string>("", "SSL TOOLS"))
+<div class="content">
+    <div class="wrapper">
+        <div class="column3">
+            <div class="mobtopcol">
+                <div class="column3-2">
+                    <div class="cmnpagewrap">
+
+                        <h2>@WBSSLStore.Resources.GeneralMessage.Message.chkSSL_Header</h2>
+                        <h4>Review your SSL Certificate's Installation</h4>
+                        <p>Check if your SSL Certificate is installed properly and trusted by browsers.</p>
+                        <p>
+                            @WBSSLStore.Resources.LongText.Message.CheckSSLNote
+                        </p>
+
+                        <div class="chrbox">
+                            @using (Html.BeginForm())
+                            {
+                                <div class="chrboxone">
+                                    <span>Server Hostname:</span><br>
+                                    (e.g. www.google.com)
+                                </div>
+                                <div class="chrboxtwo">
+                                    <input type="text" value="" class="chkinput" id="txtDomain" name="txtDomain">
+                                </div>
+                                <div class="chrboxthree">
+                                    <input type="submit" class="greenbtn chrbtn" value="Check" id="Check" name="Check">
+                                </div>
+                                <div class="clear"></div>
+
+                            }
+                        </div>
+
+
+                        @if (Model != null)
+                        {
+                            if (!Model.AuthResponse.isError)
+                            {
+                                <div class="toolcover">
+                                    <ul class="commonuli">
+                                        <li><strong>@Model.ServerCertInfo.CommonName resolves to @Model.ServerIP</strong></li>
+                                        <li><strong>Server Type: @Model.ServerType</strong></li>
+                                        <li><strong>The certificate was issued by @Model.ServerCertInfo.Issuer.</strong></li>
+                                        <li><strong>The certificate will expire in @Model.ServerCertInfo.RemainingDays days.</strong></li>
+                                    </ul>
+                                </div>
+                                <div class="chkserver csresult">
+                                    <ul>
+                                        <li><strong>Common name:</strong>@Model.ServerCertInfo.CommonName</li>
+                                        <li><strong>SANs:</strong> @Model.ServerCertInfo.SANs</li>
+                                        <li><strong>Organization: </strong>@Model.ServerCertInfo.OrganizationName</li>
+                                        <li><strong>Valid </strong>from @Model.ServerCertInfo.CertificateStartDate to @Model.ServerCertInfo.CertificateEndDate</li>
+                                        <li><strong>Signature Algorithm: </strong>@Model.ServerCertInfo.SignatureAlgorithm</li>
+                                        <li><strong>Issuer: </strong>@Model.ServerCertInfo.Issuer</li>
+                                    </ul>
+									 <p><img src="images/ico-server.png" width="" height="" alt=""/></p>
+                  <div class="clear"></div>
+                                </div>
+                                foreach (WBSSLStore.Gateways.RestAPIModels.Response.ChainCertInfo chain in Model.ChainCertInfo)
+                                {
+                                    <div class="chkimg"><img alt="" src="/content/images/img-ssltool-arrow.png"></div>
+                                    <div class="chkserver csresult">
+                                        <ul>
+                                            <li><strong>Common name: </strong>@chain.CommonName</li>
+                                            <li><strong>Organization: </strong>@chain.OrganizationName</li>
+                                            <li><strong>Location: </strong>&nbsp;&nbsp;@chain.Location</li>
+                                            <li><strong>Valid </strong>from @chain.CertificateStartDate to @chain.CertificateEndDate</li>
+                                            <li><strong>Signature Algorithm: </strong>@chain.SignatureAlgorithm</li>
+                                            <li><strong>Issuer: </strong>@chain.Issuer</li>
+                                        </ul>
+										<p><img src="images/ico-chain.png" width="" height="" alt=""/></p>
+                  <div class="clear"></div>
+                                    </div>
+                                }
+
+                            }
+                            else
+                            {
+
+                                <div class='errormsg'>
+                                    <p>@Model.AuthResponse.Message[0]</p>
+                                </div>
+                            }
+                        }
+
+
+                    </div>
+                </div>
+                @Html.Partial("_rightpanel", "")
+            </div>
+
+         
+        </div>
+
+        <div class="clear"></div>
+    </div>
+</div>
+
+
+

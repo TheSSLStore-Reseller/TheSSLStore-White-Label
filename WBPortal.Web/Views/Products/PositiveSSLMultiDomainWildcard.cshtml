@@ -1,0 +1,138 @@
+﻿@model WBSSLStore.Service.ViewModels.StaticPageViewModel
+@{
+    ViewBag.Title = "SecureSiteProwithEV";  var productdetails = WBSSLStore.Web.Helpers.WBHelper.GetProductDetailRows();
+    string brand = Model != null && Model.Items != null && Model.Items.FirstOrDefault().Product != null && Model.Items.FirstOrDefault().Product.Brand != null ? Model.Items.FirstOrDefault().Product.Brand.BrandName : "";
+    string username = ViewBag.UserName;
+}
+@section headerTags{
+    @Html.Partial("_renderSEO", Model != null && Model.CMSPage != null ? Model.CMSPage : new WBSSLStore.Domain.CMSPage())
+}
+@Html.Partial("_banner", new Tuple<string, string>("", "SSL Brands"))
+<div class="content">
+  <div class="wrapper">
+    <div class="column3">
+      <div class="mobtopcol">
+        <div class="column3-2">
+          <div class="prodetailswrap marzerotop"> @Html.Partial("_ProdPricing", new Tuple<List<WBSSLStore.Domain.ProductPricing>, List<WBSSLStore.Domain.ProductDetail>>(Model.Items.ToList(), productdetails.ToList())) </div>
+          <div class="prodescrip marzerotop">
+            <div class="prodescriptxt">
+              <h2>Product Description</h2>
+              <p>Save yourself the time of managing numerous SSL certificates in attempt to secure your website's multiple domains and sub-domains with Comodo's new Positive Multiple Domain Wildcard SSL certificate. While the Wildcard lets you secure an unlimited number of sub-domains, the SAN element in the certificate lets you protect multiple host names with a single certificate. Absolutely economical and reliable, this unique certificate is an ideal solution for securing e-commerce websites, payment pages, mail servers, intranets/ extranets, web applications etc. It's Domain Validated (DV) and offers 99.9% browser and mobile phone compatibility.</p>
+            </div>
+          </div>
+          <div id="cssmenu">
+            <ul class="accordion_example">
+              <li class="brand-symantec acc_active">
+                <div>
+                  <p>Assurance &amp; Authentication</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>The <strong>Positive Multiple Domain Wildcard SSL</strong> provides a moderate level of assurance to its customers by displaying visual cues like an https hyperlink and closed padlock symbol. Issued almost immediately upon ownership validation, this certificate also comes with the Positive SSL Seal that instantly lets your customers know about the authenticity of your website.</p>
+                  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Security &amp; Encryption</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>This SAN-enabled wildcard is a strong 2048 bit industry standard SSL certificate. They are the ideal solution for securing e-commerce websites, mail-servers, intranets/ extranets, payment pages, etc.</p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>SAN &amp; multi-domain support</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>These are SAN supported Multiple-Domain SSL certificates which offer combined features and benefits of both SAN and multiple domain certificates. They are capable of protecting multiple sub-domains under multiple domains. This means, a single certificate can secure www.domain.com, sub.domain.com, mail.root.net, example.root.net, etc…, in a cost-effective manner.</p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Features &amp; Benefits</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <ul class="featurelist">
+                    <li>SAN option enabled</li>
+                    <li>Save time and money by securing unlimited sub-domains with single certificate </li>
+                    <li>Unlimited Re-Issuance Policy</li>
+                    <li>Domain Validation</li>
+                    <li>Licensed for unlimited sub-domains on an unlimited number of physical servers</li>
+                    <li>Trusted by 99.9% major browsers and mobile devices</li>
+                    <li>2048 bit digital signatures and encryption strength up to 256-bit &ndash; Highest level of SSL security</li>
+                    <li>3 Domain names already included in package</li>
+                  </ul>
+				  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Product Specifications</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <ul class="featurelist">
+                    <li>Secures all domains on your shared hosting environment with one certificate</li>
+                    <li>Issued within minutes</li>
+                    <li>Free Re-Issuance</li>
+                    <li>99.9% browser and mobile device recognition</li>
+                    <li>Free Unlimited Server Licensing</li>
+                    <li>Installation Checker</li>
+                    <li>100 additional domains can be added</li>
+                    <li>Can be installed on different IPs</li>
+                  </ul>
+				  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Site Seal</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>The Positive SSL's <strong>renowned site seal</strong> can be displayed on your website upon using this certificate. It's a static image that can be placed on your website for customers to feel safe and confident while using your online services.</p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Warranty</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>The Comodo Positive Multiple Domain Wildcard SSL certificate comes with a standard $10,000 warranty. In the unlikely event of a data breach and any customers incurring a subsequent loss, you will be compensated by up to $10,000 by the Certificate Authority (CA), Comodo.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        @Html.Partial("_rightpanel", username) </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+@section Jscripts{ 
+<script type="text/javascript">
+        $(document).ready(function () {
+            // Mobile Menu
+            $("#showmenu").click(function (e) {
+                e.preventDefault();
+                $("#menu").toggleClass("show");
+            });
+            $("#menu a").click(function (event) {
+                event.preventDefault();
+                if ($(this).next('ul').length) {
+                    $(this).next().toggle('fast');
+                    $(this).children('i:last-child').toggleClass('fa-caret-down fa-caret-left');
+                }
+            });
+            $(document).click(function (e) {
+                if (!$(e.target).is(".mobmemu, .mobmemu  *")) { $("#menu").toggleClass("hide"); $("#menu").removeClass("show"); }
+            });
+            $(".accordion_example").smk_Accordion();
+        });
+    </script> 
+} 

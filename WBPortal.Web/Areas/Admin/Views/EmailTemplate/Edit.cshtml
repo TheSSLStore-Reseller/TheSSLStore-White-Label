@@ -1,0 +1,266 @@
+﻿@model WBSSLStore.Domain.EmailTemplates
+@{
+    ViewBag.Title = "Edit";
+    ViewBag.version = WBSSLStore.Web.Helpers.Caching.SiteCacher.ResourceVersion();   
+}
+
+@*<script src="@Url.Content("~/content/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/content/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>*@
+
+@System.Web.Optimization.Scripts.Render("/bundales/wb/validationjs?v=" + ViewBag.version)
+<script src="@Url.Content("~/Content/Admin/tiny_mce/jquery.tinymce.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Content/Admin/tiny_mce/tiny_mce.js")" type="text/javascript"></script>
+<script type="text/javascript">
+    var MailCustomNames = '@Html.Raw(ViewBag.MailMergeNames.Replace(Environment.NewLine, string.Empty))';
+    var MailCustomValues = '@Html.Raw(ViewBag.MailMergeValues.Replace(Environment.NewLine,string.Empty))';
+    $().ready(function () {
+        $('textarea.tinymce').tinymce({
+            // Location of TinyMCE script
+
+            // General options
+            theme: "advanced",
+            plugins: "autolink,lists,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template,advlist,-MailMerge",
+
+            // Theme options
+            theme_advanced_buttons1: "save,newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,styleselect,formatselect,fontselect,fontsizeselect,MailMergeListBox",
+            theme_advanced_buttons2: "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview,|,forecolor,backcolor",
+            theme_advanced_buttons3: "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,print,|,ltr,rtl,|,fullscreen",
+            theme_advanced_buttons4: "insertlayer,moveforward,movebackward,absolute,|,styleprops,|,cite,abbr,acronym,del,ins,attribs,|,visualchars,nonbreaking,template,pagebreak",
+            theme_advanced_toolbar_location: "top",
+            theme_advanced_toolbar_align: "left",
+            theme_advanced_statusbar_location: "bottom",
+            theme_advanced_resizing: true,
+
+            // Example content CSS (should be your site CSS)
+            content_css: "@WBSSLStore.Web.Helpers.WBHelper.CurrentColourCSS",
+
+            // Drop lists for link/image/media/template dialogs
+            template_external_list_url: "lists/template_list.js",
+            external_link_list_url: "lists/link_list.js",
+            external_image_list_url: "lists/image_list.js",
+            media_external_list_url: "lists/media_list.js",
+
+            // Replace values for the template plugin
+            template_replace_values: {
+                username: "Some User",
+                staffid: "991234"
+            }
+        });
+
+
+    });
+
+    function RegisterMailMergePlugin() {
+
+        CustomNames = MailCustomNames.split(';');
+        CustomValues = MailCustomValues.split(';');
+
+        tinymce.PluginManager.add('MailMerge', tinymce.plugins.MailMergePlugin);
+    }
+    (function () {
+
+        // Add Plugin
+        tinymce.create('tinymce.plugins.MailMergePlugin', {
+            createControl: function (n, cm) {
+                switch (n) {
+                    case 'MailMergeListBox':
+                        // Register plugin with a short name
+                        if (CustomNames.length == CustomValues.length) {
+                       
+                            var mlb = cm.createListBox('MailMergeListBox', {
+                                title: 'Mail Merge', cssclass: 'mailmergecls',
+                                onselect: function (v) {
+                                    tinyMCE.activeEditor.execCommand('mceInsertContent', false, v);
+                                }
+                            });
+
+                            for (var i = 0; i < CustomNames.length; i++) {
+                                // Add some values to the list box
+                                if (CustomNames[i].length > 0 && CustomValues[i].length > 0)
+                                    mlb.add(CustomNames[i], CustomValues[i]);
+                            }
+                            // Return the new listbox instance
+                            return mlb;
+                        }
+                }
+
+                return null;
+            }
+        });
+        RegisterMailMergePlugin();
+    })();
+</script>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <tr>
+        <td align="left" valign="top">
+            <table width="881" border="0" align="left" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td width="7" align="left" valign="top">
+                        <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/barleft.gif" alt="whitebrand" width="7" height="55">
+                    </td>
+                    <td width="866" align="left" valign="middle" class="hdbarbg">
+                        <table width="840" border="0" align="center" cellpadding="1" cellspacing="1">
+                            <tr>
+                                <td width="407" align="left" valign="middle" class="head1">
+                                    @*Edit Email Template*@ @WBSSLStore.Resources.GeneralMessage.Message.Edit_Email_Template
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td width="9" align="right" valign="top">
+                        <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/barright.gif" alt="whitebrand" width="9" height="55">
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td align="left" valign="top" class="contbg">
+            <table width="870" border="0" align="center" cellpadding="0" cellspacing="7">
+                <tr>
+                    <td width="867" align="center" valign="top" class="bgclr">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td align="left" valign="top">
+                                    <table width="841" border="0" align="center" cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <td align="left" valign="middle">
+                                                &nbsp;
+                                                @Html.HiddenFor(model => model.EmailTypeId)
+                                                @Html.HiddenFor(model => model.ID)
+                                                @Html.HiddenFor(model => model.isActive)
+                                                @Html.HiddenFor(model => model.LangID)
+                                                @Html.HiddenFor(model => model.SiteID)
+                                                @Html.HiddenFor(model=>model.MailMerge)
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="left" valign="middle">
+                                                <table width="840" border="0" align="left" cellpadding="1" cellspacing="1">
+                                                    <tr>
+                                                        <td width="249" align="right">
+                                                            <strong>@Html.LabelFor(model => model.EmailSubject)
+                                                                :</strong><strong class="redfont">*</strong>
+                                                        </td>
+                                                        <td width="15" height="22" align="left" valign="middle">
+                                                            &nbsp;
+                                                        </td>
+                                                        <td width="566" height="22" align="left" valign="middle">
+                                                            @Html.TextBoxFor(model => model.EmailSubject, new { @class = "inputbox200px" })
+                                                            @Html.ValidationMessageFor(model => model.EmailSubject)
+                                                        </td>
+                                                    </tr>
+                                                    
+                                                    <tr style='display:@(!Convert.ToBoolean(ViewBag.CustomRenewalEmailNoti) ? "" : "none")'>
+                                                        <td width="249" align="right">
+                                                            <strong>@Html.LabelFor(model => model.From)
+                                                                :</strong><strong class="redfont">*</strong>
+                                                        </td>
+                                                        <td width="15" height="22" align="left" valign="middle">
+                                                            &nbsp;
+                                                        </td>
+                                                        <td width="566" height="22" align="left" valign="middle">
+                                                            @Html.TextBoxFor(model => model.From, new { @class = "inputbox200px" })
+                                                            @Html.ValidationMessageFor(model => model.From)
+                                                        </td>
+                                                    </tr>
+                                                    
+                                                    <tr>
+                                                        <td width="249" align="right">
+                                                            <strong>@Html.LabelFor(model => model.CC)
+                                                                :</strong>
+                                                        </td>
+                                                        <td width="15" height="22" align="left" valign="middle">
+                                                            &nbsp;
+                                                        </td>
+                                                        <td width="566" height="22" align="left" valign="middle">
+                                                            @Html.TextBoxFor(model => model.CC, new { @class = "inputbox200px" })
+                                                            @Html.ValidationMessageFor(model => model.CC)
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td width="249" align="right">
+                                                            <strong>@Html.LabelFor(model => model.BCC)
+                                                                :</strong>
+                                                        </td>
+                                                        <td width="15" height="22" align="left" valign="middle">
+                                                            &nbsp;
+                                                        </td>
+                                                        <td width="566" height="22" align="left" valign="middle">
+                                                            @Html.TextBoxFor(model => model.BCC, new { @class = "inputbox200px" })
+                                                            @Html.ValidationMessageFor(model => model.BCC)
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td width="249" align="right">
+                                                            <strong>@Html.LabelFor(model => model.ReplyTo)
+                                                                :</strong><strong class="redfont">*</strong>
+                                                        </td>
+                                                        <td width="15" height="22" align="left" valign="middle">
+                                                            &nbsp;
+                                                        </td>
+                                                        <td width="566" height="22" align="left" valign="middle">
+                                                            @Html.TextBoxFor(model => model.ReplyTo, new { @class = "inputbox200px" })
+                                                            @Html.ValidationMessageFor(model => model.ReplyTo)
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="left" valign="middle">
+                                                &nbsp;
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td height="30" align="left" valign="middle">
+                                                <strong>
+                                                    @Html.LabelFor(model => model.EmailContent)</strong>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="left" valign="middle">
+                                                @Html.TextAreaFor(model => model.EmailContent, new { @class = "tinymce", @style = "width: 100%", @rows = "25" })
+                                                @Html.ValidationMessageFor(model => model.EmailContent)
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="left" valign="middle">
+                                                &nbsp;
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="left" valign="middle">
+                                                <table width="51%" border="0" align="center" cellpadding="1" cellspacing="1">
+                                                    <tr>
+                                                        <td align="center" valign="middle">
+                                                            @*<input type="image" src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/btn-save-changes.gif" alt="save changes" width="114" height="27" />*@
+                                                            <input type="submit" class="btnGreen"  value="@WBSSLStore.Resources.GeneralMessage.Message.Save_Changes_Caption" width="114" height="27" />
+
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="left" valign="middle">
+                                                &nbsp;
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td height="8" align="left" valign="top">
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+}
+

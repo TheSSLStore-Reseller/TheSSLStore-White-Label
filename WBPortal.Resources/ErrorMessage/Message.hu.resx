@@ -1,0 +1,492 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AdminEmailRequired" xml:space="preserve">
+    <value>Kérem érvényes admin emailt adjon meg.</value>
+  </data>
+  <data name="AliasRequired" xml:space="preserve">
+    <value>Kérem adjon meg álnevet.</value>
+  </data>
+  <data name="AmountRequired" xml:space="preserve">
+    <value>Kérem adjon meg költségkeretet.</value>
+  </data>
+  <data name="APIPartnerCodeRequired" xml:space="preserve">
+    <value>Kérem adjon meg api partner kódot.</value>
+  </data>
+  <data name="APIPasswordRequired" xml:space="preserve">
+    <value>Kérem adjon meg api jelszót.</value>
+  </data>
+  <data name="APIUsernameRequired" xml:space="preserve">
+    <value>Kérem adjon meg api felhasználó nevet.</value>
+  </data>
+  <data name="ApproverEmailRequired" xml:space="preserve">
+    <value>Kérem adja meg az elfogadó személy email címét.</value>
+  </data>
+  <data name="AskToDeletePromocode" xml:space="preserve">
+    <value>Biztos, hogy törölni akarja ezt a promóciós kódot?</value>
+  </data>
+  <data name="Autherr" xml:space="preserve">
+    <value>Az azonosítási eljárás folyamán hiba történt. Kérem próbálja meg újból.</value>
+  </data>
+  <data name="BillingEmailRequired" xml:space="preserve">
+    <value>Kérem érvényes számlázási emailt adjon meg.</value>
+  </data>
+  <data name="BlogUrlRequired" xml:space="preserve">
+    <value>Kérem érvényes blog URL-t adjon meg.</value>
+  </data>
+  <data name="BrandNameRequired" xml:space="preserve">
+    <value>Kérem válassza ki a brand-ot.</value>
+  </data>
+  <data name="BrandSettingUpdate" xml:space="preserve">
+    <value>A brand sikeresen frissült, kérem mentse a beállításokat.</value>
+  </data>
+  <data name="CampaignNameRequired" xml:space="preserve">
+    <value>Kérem adja meg a kampány nevét.</value>
+  </data>
+  <data name="CancelCommentRequired" xml:space="preserve">
+    <value>Kérem adjon meg hozzászólást.</value>
+  </data>
+  <data name="CancelReasonRequired" xml:space="preserve">
+    <value>Kérem adjon meg indokot.</value>
+  </data>
+  <data name="CardTypeRequired" xml:space="preserve">
+    <value>Kérem adja meg a kártya típusát.</value>
+  </data>
+  <data name="CCNameRequired" xml:space="preserve">
+    <value>Kérem adja meg a kártyabirtokos nevét.</value>
+  </data>
+  <data name="CityRequired" xml:space="preserve">
+    <value>Kérem adja meg a várost.</value>
+  </data>
+  <data name="CommentsRequired" xml:space="preserve">
+    <value>Kérem adjon meg üzeneteket.</value>
+  </data>
+  <data name="CommonNameRequired" xml:space="preserve">
+    <value>Kérem adja meg az általános nevet (CN).</value>
+  </data>
+  <data name="CompanyNameRequired" xml:space="preserve">
+    <value>Kérem adja meg a társaság nevét.</value>
+  </data>
+  <data name="ComparPassword" xml:space="preserve">
+    <value>A jelszó és a jelszó megismétlése nem egyezik.</value>
+  </data>
+  <data name="ContactNotSuccess" xml:space="preserve">
+    <value>A szerződés státusza nem frissíthető.</value>
+  </data>
+  <data name="ContractAreYouSure" xml:space="preserve">
+    <value>Biztos, hogy törölni akarja ezt a szerződést?</value>
+  </data>
+  <data name="Contractdeleted" xml:space="preserve">
+    <value>A szerződés sikeresen törölve.</value>
+  </data>
+  <data name="ContractIDRequired" xml:space="preserve">
+    <value>Kérem válassza ki a szerződés nevét.</value>
+  </data>
+  <data name="ContractNameRequired" xml:space="preserve">
+    <value>Kérem adja meg a szerződés nevét.</value>
+  </data>
+  <data name="ContractNotdeleted" xml:space="preserve">
+    <value>Nem törölhető a szerződés.</value>
+  </data>
+  <data name="ContractSuccess" xml:space="preserve">
+    <value>A szerződés státusza sikeresen frissítve.</value>
+  </data>
+  <data name="CountryNameRequired" xml:space="preserve">
+    <value>Kérem adja meg az ország nevét.</value>
+  </data>
+  <data name="CSRRequired" xml:space="preserve">
+    <value>Kérem adja meg a CSR-t.</value>
+  </data>
+  <data name="CSRToolErrmsg" xml:space="preserve">
+    <value>domain név nem oldható fel IP címmé. Kérem bizonyosodjon meg a DNS beállítások megfelelőségéről.</value>
+  </data>
+  <data name="Currency" xml:space="preserve">
+    <value>Kérem válassza ki a pénznemet.</value>
+  </data>
+  <data name="CVVnumber" xml:space="preserve">
+    <value>Kérem minimum 3, maximum 4 számjegyből álló CCV-t adjon meg.</value>
+  </data>
+  <data name="DateCreatedRequired" xml:space="preserve">
+    <value>Kérem adja meg a létrehozási dátumot.</value>
+  </data>
+  <data name="DiscountRequired" xml:space="preserve">
+    <value>Kérem adja meg a diszkontot.</value>
+  </data>
+  <data name="DomainNameRequired" xml:space="preserve">
+    <value>Kérem adjon meg domain nevet.</value>
+  </data>
+  <data name="EmailExists" xml:space="preserve">
+    <value>Az email már létezik</value>
+  </data>
+  <data name="EmailFromRequired" xml:space="preserve">
+    <value>Kérem adja meg a feladó email címet.</value>
+  </data>
+  <data name="EmailRequired" xml:space="preserve">
+    <value>Kérem adjon meg email címet.</value>
+  </data>
+  <data name="EmailTORequired" xml:space="preserve">
+    <value>Kérem adja meg az email címzettjét.</value>
+  </data>
+  <data name="FbValidUrl" xml:space="preserve">
+    <value>Kérem érvényes Facebook URL-t adjon meg.</value>
+  </data>
+  <data name="FirstNameRequired" xml:space="preserve">
+    <value>Kérem adja meg a keresztnevét.</value>
+  </data>
+  <data name="Fromdate" xml:space="preserve">
+    <value>Kérem adja meg a kezdő dátumot.</value>
+  </data>
+  <data name="gatewayNameRequired" xml:space="preserve">
+    <value>Kérem adja meg az átjáró nevét</value>
+  </data>
+  <data name="InvalidURL" xml:space="preserve">
+    <value>Nem érvényes kép url.</value>
+  </data>
+  <data name="InVisibility" xml:space="preserve">
+    <value>Nem megváltoztatható a láthatóság.</value>
+  </data>
+  <data name="InvoicePrifxRequired" xml:space="preserve">
+    <value>Kérem adja meg a számlaszám előtagját.</value>
+  </data>
+  <data name="keyfilepathRequired" xml:space="preserve">
+    <value>Kérem adja meg a keyfilepath-t</value>
+  </data>
+  <data name="KeywordsRequired" xml:space="preserve">
+    <value>Kérem adja meg a kulcsszavakat</value>
+  </data>
+  <data name="LangCodeRequired" xml:space="preserve">
+    <value>Kérem adja meg a nyelv kódját.</value>
+  </data>
+  <data name="LangNameRequired" xml:space="preserve">
+    <value>Kérem adja meg a nyelv nevét.</value>
+  </data>
+  <data name="LastNameRequired" xml:space="preserve">
+    <value>Kérem adja meg a családnevét.</value>
+  </data>
+  <data name="LiveUrlRequired" xml:space="preserve">
+    <value>Kérem adja meg az éles URL-t.</value>
+  </data>
+  <data name="LoginIdRequired" xml:space="preserve">
+    <value>Kérem adja meg a LoginID-t.</value>
+  </data>
+  <data name="MerIDRequired" xml:space="preserve">
+    <value>Kérem adja meg a MerchantID-t.</value>
+  </data>
+  <data name="NoGatewaySelected" xml:space="preserve">
+    <value>Nincs kiválasztva fizetési átjáró.</value>
+  </data>
+  <data name="NoPricingAdded" xml:space="preserve">
+    <value>Kérem legalább egy év árát adja meg.</value>
+  </data>
+  <data name="NumberOfMonthsRequired" xml:space="preserve">
+    <value>Kérem adja meg a hónapok számát.</value>
+  </data>
+  <data name="PageNameRequired" xml:space="preserve">
+    <value>Kérjük, adja oldal neve.</value>
+  </data>
+  <data name="PageSizeRequired" xml:space="preserve">
+    <value>Kérem érvényes lapméretet adjon meg.</value>
+  </data>
+  <data name="PartnerIDRequired" xml:space="preserve">
+    <value>Kérem adja meg a PartnerID-t.</value>
+  </data>
+  <data name="PasswordRequired" xml:space="preserve">
+    <value>Kérem adja meg a jelszavát.</value>
+  </data>
+  <data name="PaymentGatewayNameRequired" xml:space="preserve">
+    <value>Kérem adja meg a fizetési átjáró nevét.</value>
+  </data>
+  <data name="PaymentMethod" xml:space="preserve">
+    <value>Kérem jelöljön meg egy fizetési módot.</value>
+  </data>
+  <data name="PaypalID" xml:space="preserve">
+    <value>A PayPalID formátuma mindenképp név@domain.hu kinézetű.</value>
+  </data>
+  <data name="PaypalIdRequired" xml:space="preserve">
+    <value>Kérem adja meg a paypalid-t.</value>
+  </data>
+  <data name="PhoneRequired" xml:space="preserve">
+    <value>Kérem adjon meg egy telefonszámot.</value>
+  </data>
+  <data name="ProductAskDelete" xml:space="preserve">
+    <value>Biztos, hogy törölni akarja ezt a terméket?</value>
+  </data>
+  <data name="ProductCodeRequired" xml:space="preserve">
+    <value>Kérem adjon meg egy termékkódot.</value>
+  </data>
+  <data name="ProductDeleteSuccess" xml:space="preserve">
+    <value>A termék sikeresen törölve.</value>
+  </data>
+  <data name="ProductDeleteUnSuccess" xml:space="preserve">
+    <value>A termék nem törölhető.</value>
+  </data>
+  <data name="ProductDescriptionRequired" xml:space="preserve">
+    <value>Kérem adja meg a termék leírását.</value>
+  </data>
+  <data name="ProductIDRequired" xml:space="preserve">
+    <value>Kérem válassza ki a terméket.</value>
+  </data>
+  <data name="ProductNameRequired" xml:space="preserve">
+    <value>Kérem adja meg a termék nevét.</value>
+  </data>
+  <data name="ProductUpdateSuccess" xml:space="preserve">
+    <value>A termék státusza sikeresen frissítve.</value>
+  </data>
+  <data name="ProductUpdateUnSuccess" xml:space="preserve">
+    <value>A termék státusza nem frissíthető.</value>
+  </data>
+  <data name="ProfitMarginRequired" xml:space="preserve">
+    <value>Kérem érvényes árrést adjon meg.</value>
+  </data>
+  <data name="PromoAppliedSuccess" xml:space="preserve">
+    <value>A promóciós kód elfogadva.</value>
+  </data>
+  <data name="PromocodeAlreadyExist" xml:space="preserve">
+    <value>A promóciós kód már létezik.</value>
+  </data>
+  <data name="PromoCodeRequired" xml:space="preserve">
+    <value>Kérem adjon meg promóciós kódot.</value>
+  </data>
+  <data name="PromoDelSuccess" xml:space="preserve">
+    <value>A promóciós kód törlése sikerült.</value>
+  </data>
+  <data name="PromoDelUnSuccess" xml:space="preserve">
+    <value>A promóciós kód nem törölhető.</value>
+  </data>
+  <data name="ReceiptDetRequired" xml:space="preserve">
+    <value>Kérem adja meg a nyugta részleteit.</value>
+  </data>
+  <data name="RetailPriceRequired" xml:space="preserve">
+    <value>Kérem adja meg a kiskereskedelmi árat.</value>
+  </data>
+  <data name="SalesPriceRequired" xml:space="preserve">
+    <value>Kérem adja meg az eladási árat.</value>
+  </data>
+  <data name="SelectMonth" xml:space="preserve">
+    <value>Kérem válassza ki a hónapot.</value>
+  </data>
+  <data name="SelectYear" xml:space="preserve">
+    <value>Kérem válassza ki az évet.</value>
+  </data>
+  <data name="SlugRequired" xml:space="preserve">
+    <value>Kérjük, adja oldal URL</value>
+  </data>
+  <data name="SMTPHostRequired" xml:space="preserve">
+    <value>Kérem válassza ki az smtp gépet.</value>
+  </data>
+  <data name="SMTPPortRequired" xml:space="preserve">
+    <value>Kérem válassza ki az smtp portot.</value>
+  </data>
+  <data name="StaffNoteRequired" xml:space="preserve">
+    <value>Kérem adja meg a vezetőségi megjegyzést.</value>
+  </data>
+  <data name="StateRequired" xml:space="preserve">
+    <value>Kérem adja meg az államot.</value>
+  </data>
+  <data name="StreetRequired" xml:space="preserve">
+    <value>Kérem adja meg az utcát.</value>
+  </data>
+  <data name="SubjectRequired" xml:space="preserve">
+    <value>Kérem adja meg a tárgyat.</value>
+  </data>
+  <data name="SupportEmailRequired" xml:space="preserve">
+    <value>Kérem érvényes támogatói emailé címet adjon meg.</value>
+  </data>
+  <data name="TestUrlRequired" xml:space="preserve">
+    <value>Kérem adja meg a teszt URL-t.</value>
+  </data>
+  <data name="TimeZoneRequired" xml:space="preserve">
+    <value>Kérem adja meg az időzónát.</value>
+  </data>
+  <data name="TitleRequired" xml:space="preserve">
+    <value>Kérem adja meg a címet.</value>
+  </data>
+  <data name="Todate" xml:space="preserve">
+    <value>Kérem adja meg a befejező dátumot.</value>
+  </data>
+  <data name="TranKeyRequired" xml:space="preserve">
+    <value>Kérem adja meg a tranzakciós kulcsot.</value>
+  </data>
+  <data name="TwitterValidURL" xml:space="preserve">
+    <value>Kérem érvényes Twitter URL-t adjon meg.</value>
+  </data>
+  <data name="UnmandPassWrong" xml:space="preserve">
+    <value>A megadott felhasználónév és jelszó páros nem felismerhető. Kérem próbálja meg ismét.</value>
+  </data>
+  <data name="UserExist" xml:space="preserve">
+    <value>A felhasználó már létezik a rendszerben. Kérem adjon meg egy másik email címet.</value>
+  </data>
+  <data name="ValidAmount" xml:space="preserve">
+    <value>Kérem érvényes költségkeretet adjon meg.</value>
+  </data>
+  <data name="ValidCaption" xml:space="preserve">
+    <value>Adj meg érvényes oldalon nevét.</value>
+  </data>
+  <data name="ValidCCNumber" xml:space="preserve">
+    <value>Kérem legalább 14 maximum 16 számjegyből álló számot adjon meg!</value>
+  </data>
+  <data name="ValidContractLevel" xml:space="preserve">
+    <value>A szerződési szintnek számnak kell lennie.</value>
+  </data>
+  <data name="ValidEmail" xml:space="preserve">
+    <value>Kérem érvényes emailt adjon meg.</value>
+  </data>
+  <data name="ValidPaypalID" xml:space="preserve">
+    <value>Kérem érvényes paypalID-t adjon meg.</value>
+  </data>
+  <data name="ValidPromocode" xml:space="preserve">
+    <value>Nem érvényes promóciós kód.</value>
+  </data>
+  <data name="ValidUrl" xml:space="preserve">
+    <value>Kérem adjon  meg egy érvényes URL-t.</value>
+  </data>
+  <data name="ValidUsernameandPass" xml:space="preserve">
+    <value>Kérem érvényes felhasználónevet és jelszót adjon meg.</value>
+  </data>
+  <data name="ValidVatNo" xml:space="preserve">
+    <value>Kérem érvényes ÁFA kulcsot adjon meg.</value>
+  </data>
+  <data name="VatCountryRequired" xml:space="preserve">
+    <value>Kérem válassza ki az adózó országát.</value>
+  </data>
+  <data name="VatNoRequired" xml:space="preserve">
+    <value>Kérem adja meg az adószámát.</value>
+  </data>
+  <data name="VatPerRequired" xml:space="preserve">
+    <value>Kérem adja meg a kiválasztott államban érvényes ÁFA mértékét.</value>
+  </data>
+  <data name="Visibility" xml:space="preserve">
+    <value>A láthatóság megváltoztatása sikeres.</value>
+  </data>
+  <data name="WebServerNameRequired" xml:space="preserve">
+    <value>Kérem adja meg a webszerver nevét.</value>
+  </data>
+  <data name="ZipRequired" xml:space="preserve">
+    <value>Kérem adja meg a zip fájlt.</value>
+  </data>
+  <data name="ValidPassword_Caption" xml:space="preserve">
+    <value>Jelszó kell tartalmaznia alfanumerikus érték minimum 8 karakter.</value>
+  </data>
+  <data name="MoneybookersIDRequired" xml:space="preserve">
+    <value>Please enter moneybookersid</value>
+  </data>
+  <data name="ValidMoneybookersID" xml:space="preserve">
+    <value>Please enter valid moneybookersid</value>
+  </data>
+</root>

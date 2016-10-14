@@ -1,0 +1,32 @@
+﻿@model Tuple<List<WBSSLStore.Domain.OrderDetail>, string>
+<h3>@WBSSLStore.Resources.GeneralMessage.Message.List_Of_Incomplere_Order_Header</h3>
+@if (Model != null && Model.Item1 != null && Model.Item1.Count > 0)
+{
+    <div class="odrtabelgrid">
+        <div class="odrtblraw odrheadraw">
+            <p class="wd100">@WBSSLStore.Resources.GeneralMessage.Message.OrderDate_Caption</p>
+            <p class="wd65per">@WBSSLStore.Resources.GeneralMessage.Message.Product_Caption</p>
+            <p class="wd150">@WBSSLStore.Resources.GeneralMessage.Message.InvoiceNo_Caption.</p>
+            <p class="wd100 txtcenter viewodr">@WBSSLStore.Resources.GeneralMessage.Message.View_Caption</p>
+        </div>
+        @foreach (WBSSLStore.Domain.OrderDetail o in Model.Item1)
+        {
+            <div class="odrtblraw">
+                <p class="wd100"><span class="tabshow">@WBSSLStore.Resources.GeneralMessage.Message.OrderDate_Caption</span>@o.Order.OrderDate.ToShortDateString()</p>
+                <p class="wd65per"><span class="tabshow">@WBSSLStore.Resources.GeneralMessage.Message.Product_Caption</span>@o.ProductName<strong>@o.NumberOfMonths @WBSSLStore.Resources.GeneralMessage.Message.Months_Caption</strong></p>
+                <p class="wd150">
+                    <span class="tabshow">@WBSSLStore.Resources.GeneralMessage.Message.InvoiceNo_Caption.</span>
+                    <a class="invoiceno" href="@Url.Action("invoice", "orders", new { id = o.OrderID })">@(!string.IsNullOrEmpty(Model.Item2) ? Model.Item2 : "SSL-" + o.OrderID)</a>
+                    <a class="generatecertbtn" href="@Url.Action("generatenow", new { id = o.ID })" target="_blank">Generate Cert</a>
+                </p>
+                <p class="wd100 txtcenter viewodr"><a href="@Url.Action("details", "Orders", new { id = o.ID })"><img alt=" view" src="@Url.Content("~/content/images/icon-view.png")"></a></p>
+            </div>
+        }
+    </div>
+}
+else
+{
+<div>
+    No records found.
+</div>
+}

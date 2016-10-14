@@ -1,0 +1,257 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<helpItems schema="maml">
+
+  <!-- Migrate command-->
+  <command:command
+    xmlns:maml="http://schemas.microsoft.com/maml/2004/10"
+    xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10"
+    xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+
+    <command:details>
+      <command:name>
+        Update-Database
+      </command:name>
+      <maml:description>
+        <maml:para>
+          Updates the database to match the current model.
+        </maml:para>
+      </maml:description>
+      <command:verb>Update</command:verb>
+      <command:noun>Database</command:noun>
+    </command:details>
+
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Update-Database</maml:name>
+        <command:parameter required="false" position="named">
+          <maml:Name>Script</maml:Name>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>Renames</maml:name>
+          <command:parameterValue required="true">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>ProjectName</maml:name>
+          <command:parameterValue required="true">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>DbContextType</maml:name>
+          <command:parameterValue required="true">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>ConnectionString</maml:name>
+          <command:parameterValue required="true">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>MigrationsDirectory</maml:name>
+          <command:parameterValue required="true">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>Force</maml:name>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+
+    <maml:description>
+      <maml:para>Updates a database to the current model by applying pending changes.</maml:para>
+    </maml:description>
+
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Update-Database</maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+    </maml:relatedLinks>
+
+    <command:parameters>
+      <command:parameter required="false" position="named">
+        <maml:Name>Script</maml:Name>
+        <maml:description>
+          <maml:para>Generate a SQL script rather than executing the pending changes directly.</maml:para>
+        </maml:description>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>Renames</maml:name>
+        <maml:description>
+          <maml:para>Specifies types or properties that have been renamed using a comma separate list. e.g. Customer=>Person,Person.Name=>Person.FullName</maml:para>
+        </maml:description>
+        <command:parameterValue required="true">
+          string
+        </command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>ProjectName</maml:name>
+        <maml:description>
+          <maml:para>Specifies the project that contains or references the context to be used. If the connection string for the context is defined in a config file this project should contain that config file. If ommitted, the default project selected in package manager console is used.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true">
+          string
+        </command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>DbContextType</maml:name>
+        <maml:description>
+          <maml:para>Specifies the context representing the model to be migrated. If omitted, migrations will attempt to locate a single context type in the target project.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true">
+          string
+        </command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>ConnectionString</maml:name>
+        <maml:description>
+          <maml:para>Specifies the connection string of the database to be migrated. If omitted, the default connection string of the target context will be used.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true">
+          string
+        </command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>MigrationsDirectory</maml:name>
+        <maml:description>
+          <maml:para>Specifies the directory containing custom migration scripts. If omitted, the Migrations sub-directory in the target project will be used.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true">
+          string
+        </command:parameterValue>
+        <dev:defaultValue>Migrations</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>Force</maml:name>
+        <maml:description>
+          <maml:para>Specifies that any potential data loss should be ignored.</maml:para>
+        </maml:description>
+      </command:parameter>
+    </command:parameters>
+
+  </command:command>
+
+  <!-- Add-CustomScript command-->
+  <command:command
+    xmlns:maml="http://schemas.microsoft.com/maml/2004/10"
+    xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10"
+    xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+
+    <command:details>
+      <command:name>
+        Add-CustomScript
+      </command:name>
+      <maml:description>
+        <maml:para>
+          Adds a custom migration script.
+        </maml:para>
+      </maml:description>
+      <command:verb>Add</command:verb>
+      <command:noun>CustomScript</command:noun>
+    </command:details>
+
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Add-CustomScript</maml:name>
+        <command:parameter required="true" position="0">
+          <maml:name>Name</maml:name>
+          <command:parameterValue required="true">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>Renames</maml:name>
+          <command:parameterValue required="true">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>ProjectName</maml:name>
+          <command:parameterValue required="true">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>DbContextType</maml:name>
+          <command:parameterValue required="true">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>ConnectionString</maml:name>
+          <command:parameterValue required="true">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>MigrationsDirectory</maml:name>
+          <command:parameterValue required="true">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>Force</maml:name>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+
+    <maml:description>
+      <maml:para>Scaffolds a new custom script and adds it to the migrations directory.</maml:para>
+    </maml:description>
+
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Add-CustomScript</maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+    </maml:relatedLinks>
+
+    <command:parameters>
+      <command:parameter required="true" position="0">
+        <maml:name>Name</maml:name>
+        <maml:description>
+          <maml:para>Specifies the name of the custom script.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>Renames</maml:name>
+        <maml:description>
+          <maml:para>Specifies types or properties that have been renamed using a comma separate list. e.g. Customer=>Person,Person.Name=>Person.FullName</maml:para>
+        </maml:description>
+        <command:parameterValue required="true">
+          string
+        </command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>ProjectName</maml:name>
+        <maml:description>
+          <maml:para>Specifies the project that contains or references the context to be used. If the connection string for the context is defined in a config file this project should contain that config file. If ommitted, the default project selected in package manager console is used.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true">
+          string
+        </command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>DbContextType</maml:name>
+        <maml:description>
+          <maml:para>Specifies the context representing the model to be migrated. If omitted, migrations will attempt to locate a single context type in the target project.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true">
+          string
+        </command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>ConnectionString</maml:name>
+        <maml:description>
+          <maml:para>Specifies the connection string of the database to be migrated. If omitted, the default connection string of the target context will be used.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true">
+          string
+        </command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>MigrationsDirectory</maml:name>
+        <maml:description>
+          <maml:para>Specifies the directory containing custom migration scripts. If omitted, the Migrations sub-directory in the target project will be used.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true">
+          string
+        </command:parameterValue>
+        <dev:defaultValue>Migrations</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>Force</maml:name>
+        <maml:description>
+          <maml:para>Specifies that any potential data loss should be ignored.</maml:para>
+        </maml:description>
+      </command:parameter>
+    </command:parameters>
+
+  </command:command>
+
+</helpItems>

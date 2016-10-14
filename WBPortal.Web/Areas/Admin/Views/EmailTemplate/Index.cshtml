@@ -1,0 +1,484 @@
+﻿@model IEnumerable<WBSSLStore.Domain.EmailTemplates>
+@{
+    ViewBag.Title = "Index";
+}
+<tr>
+    <td align="left" valign="top">
+        <table width="881" border="0" align="left" cellpadding="0" cellspacing="0">
+            <tr>
+                <td width="7" align="left" valign="top">
+                    <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/barleft.gif" alt="whitebrand" width="7" height="55">
+                </td>
+                <td width="866" align="left" valign="middle" class="hdbarbg">
+                    <table width="840" border="0" align="center" cellpadding="1" cellspacing="1">
+                        <tr>
+                            <td width="407" align="left" valign="middle" class="head1">
+                                @*Email Templates*@ @WBSSLStore.Resources.GeneralMessage.Message.Email_Templates
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td width="9" align="right" valign="top">
+                    <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/barright.gif" alt="whitebrand" width="9" height="55">
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>
+<tr>
+    <td align="left" valign="top" class="contbg">
+        <table width="870" border="0" align="center" cellpadding="0" cellspacing="7">
+            <tr>
+                <td width="867" align="center" valign="top" class="bgclr">
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td align="left" valign="top">
+                                <table width="840" border="0" align="center" cellpadding="0" cellspacing="0">
+                                    <tr>
+                                        <td height="30" align="left" valign="middle">
+                                            <h2>
+                                                @*Customer Email Notification*@ @WBSSLStore.Resources.GeneralMessage.Message.Customer_Email_Notification</h2>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" valign="middle" bgcolor="#d6d6d6">
+                                            <table width="840" border="0" align="left" cellpadding="3" cellspacing="1">
+                                                <tr>
+                                                    <td width="645" height="30" align="left" valign="middle" bgcolor="#EFF8FD" class="bold">
+                                                        @*Templates*@ @WBSSLStore.Resources.GeneralMessage.Message.Templates_Caption        
+                                                    </td>
+                                                    <td width="175" height="30" align="center" valign="middle" bgcolor="#FFFFFF" class="bold">
+                                                        @*Template*@ @WBSSLStore.Resources.GeneralMessage.Message.Template_Caption
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="left" valign="middle" bgcolor="#eff8fd" class="bluefont">
+                                                        @*Welcome Email*@  @WBSSLStore.Resources.GeneralMessage.Message.Welcome_Email
+                                                    </td> 
+                                                    <td align="center" valign="middle" bgcolor="#FFFFFF">
+                                                        <a href="@Url.Action("edit", new { emailtypeid = (int)WBSSLStore.Domain.EmailType.CUSTOMER_WELCOME_EMAIL })">
+                                                            <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-email-template.png" alt="email template" width="26" height="24">
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="left" valign="middle" bgcolor="#eff8fd" class="bluefont">
+                                                        @*Change Password Email*@ @WBSSLStore.Resources.GeneralMessage.Message.Change_Password_Email
+                                                    </td>
+                                                    <td align="center" valign="middle" bgcolor="#FFFFFF">
+                                                        <a href="@Url.Action("edit", new { emailtypeid = (int)WBSSLStore.Domain.EmailType.CUSTOMER_CHANGE_PASSWORD })">
+                                                            <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-email-template.png" alt="email template" width="26" height="24">
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="left" valign="middle" bgcolor="#eff8fd" class="bluefont">
+                                                        @*New Order Notification*@ @WBSSLStore.Resources.GeneralMessage.Message.New_Order_Notification
+                                                    </td>
+                                                    <td align="center" valign="middle" bgcolor="#FFFFFF">
+                                                        <a href="@Url.Action("edit", new { emailtypeid = (int)WBSSLStore.Domain.EmailType.CUSTOMER_NEW_ORDER })">
+                                                            <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-email-template.png" alt="email template" width="26" height="24">
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="left" valign="middle" bgcolor="#eff8fd" class="bluefont">
+                                                        @*Refund Notification*@ @WBSSLStore.Resources.GeneralMessage.Message.Refund_Notification
+                                                    </td>
+                                                    <td align="center" valign="middle" bgcolor="#FFFFFF">
+                                                        <a href="@Url.Action("edit", new { emailtypeid = (int)WBSSLStore.Domain.EmailType.CUSTOMER_REFUND_NOTIFICATION })">
+                                                            <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-email-template.png" alt="email template" width="26" height="24">
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="left" valign="middle" bgcolor="#eff8fd" class="bluefont">
+                                                        @*Support Incident Notification*@ @WBSSLStore.Resources.GeneralMessage.Message.Support_Incident_Notification
+                                                    </td>
+                                                    <td align="center" valign="middle" bgcolor="#FFFFFF">
+                                                        <a href="@Url.Action("edit", new { emailtypeid = (int)WBSSLStore.Domain.EmailType.CUSTOMER_SUPPORT_NOTIFICATION })">
+                                                            <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-email-template.png" alt="email template" width="26" height="24">
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="left" valign="middle" bgcolor="#eff8fd" class="bluefont">
+                                                        @*Renewal Notification Before 30 Days*@ @WBSSLStore.Resources.GeneralMessage.Message.Renewal_Notification_Before_30_Days
+                                                    </td>
+                                                    <td align="center" valign="middle" bgcolor="#FFFFFF">
+                                                        <a href="@Url.Action("edit", new { emailtypeid = (int)WBSSLStore.Domain.EmailType.CUSTOMER_RENEWAL_30 })">
+                                                            <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-email-template.png" alt="email template" width="26" height="24">
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="left" valign="middle" bgcolor="#eff8fd" class="bluefont">
+                                                        @*Renewal Notification Before 15 Days*@ @WBSSLStore.Resources.GeneralMessage.Message.Renewal_Notification_Before_15_Days
+                                                    </td>
+                                                    <td align="center" valign="middle" bgcolor="#FFFFFF">
+                                                        <a href="@Url.Action("edit", new { emailtypeid = (int)WBSSLStore.Domain.EmailType.CUSTOMER_RENEWAL_15 })">
+                                                            <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-email-template.png" alt="email template" width="26" height="24">
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="left" valign="middle" bgcolor="#eff8fd" class="bluefont">
+                                                        @*Renewal Notification Before 7 Days*@ @WBSSLStore.Resources.GeneralMessage.Message.Renewal_Notification_Before_7_Days
+                                                    </td>
+                                                    <td align="center" valign="middle" bgcolor="#FFFFFF">
+                                                        <a href="@Url.Action("edit", new { emailtypeid = (int)WBSSLStore.Domain.EmailType.CUSTOMER_RENEWAL_7 })">
+                                                            <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-email-template.png" alt="email template" width="26" height="24">
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="left" valign="middle" bgcolor="#eff8fd" class="bluefont">
+                                                        @*Renewal Notification Before 3 Days*@ @WBSSLStore.Resources.GeneralMessage.Message.Renewal_Notification_Before_3_Days
+                                                    </td>
+                                                    <td align="center" valign="middle" bgcolor="#FFFFFF">
+                                                        <a href="@Url.Action("edit", new { emailtypeid = (int)WBSSLStore.Domain.EmailType.CUSTOMER_RENEWAL_3 })">
+                                                            <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-email-template.png" alt="email template" width="26" height="24">
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" valign="middle">
+                                            &nbsp;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td height="30" align="left" valign="middle">
+                                            <h2>
+                                                @*Reseller Email Notification*@ @WBSSLStore.Resources.GeneralMessage.Message.Reseller_Email_Notification</h2>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" valign="middle" bgcolor="#d6d6d6">
+                                            <table width="840" border="0" align="left" cellpadding="3" cellspacing="1">
+                                                <tr>
+                                                    <td width="645" height="30" align="left" valign="middle" bgcolor="#FFFFFF" class="bold">
+                                                        @*Templates*@ @WBSSLStore.Resources.GeneralMessage.Message.Templates_Caption
+                                                    </td>
+                                                    <td width="175" height="30" align="center" valign="middle" bgcolor="#EFF8FD" class="bold">
+                                                        @*Template*@ @WBSSLStore.Resources.GeneralMessage.Message.Template_Caption
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="left" valign="middle" bgcolor="#FFFFFF" class="bluefont">
+                                                        @*Welcome Email*@ @WBSSLStore.Resources.GeneralMessage.Message.Welcome_Email
+                                                    </td>
+                                                    <td align="center" valign="middle" bgcolor="#EFF8FD">
+                                                        <a href="@Url.Action("edit", new { emailtypeid = (int)WBSSLStore.Domain.EmailType.RESELLER_WELCOME_EMAIL })">
+                                                            <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-email-template.png" alt="email template" width="26" height="24">
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="left" valign="middle" bgcolor="#FFFFFF" class="bluefont">
+                                                        @*Account Activation Email*@ @WBSSLStore.Resources.GeneralMessage.Message.Account_Activation_Email
+                                                    </td>
+                                                    <td align="center" valign="middle" bgcolor="#EFF8FD">
+                                                        <a href="@Url.Action("edit", new { emailtypeid = (int)WBSSLStore.Domain.EmailType.RESELLER_ACCOUNT_ACTIVATION_EMAIL })">
+                                                            <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-email-template.png" alt="email template" width="26" height="24">
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="left" valign="middle" bgcolor="#FFFFFF" class="bluefont">
+                                                        @*Change Password Email*@ @WBSSLStore.Resources.GeneralMessage.Message.Change_Password_Email
+                                                    </td>
+                                                    <td align="center" valign="middle" bgcolor="#EFF8FD">
+                                                        <a href="@Url.Action("edit", new { emailtypeid = (int)WBSSLStore.Domain.EmailType.RESELLER_CHANGE_PASSWORD_EMAIL })">
+                                                            <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-email-template.png" alt="email template" width="26" height="24">
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="left" valign="middle" bgcolor="#FFFFFF" class="bluefont">
+                                                        @*New Order Notification*@ @WBSSLStore.Resources.GeneralMessage.Message.New_Order_Notification
+                                                    </td>
+                                                    <td align="center" valign="middle" bgcolor="#EFF8FD">
+                                                        <a href="@Url.Action("edit", new { emailtypeid = (int)WBSSLStore.Domain.EmailType.RESELLER_NEW_ORDER_EMAIL })">
+                                                            <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-email-template.png" alt="email template" width="26" height="24">
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                @*<tr>
+                                                    <td align="left" valign="middle" bgcolor="#FFFFFF" class="bluefont">
+                                                        Order Cancellation Notification
+                                                    </td>
+                                                    <td align="center" valign="middle" bgcolor="#EFF8FD">
+                                                        <a href="@Url.Action("edit", new { emailtypeid = (int)WBSSLStore.Domain.EmailType.RESELLER_ORDER_CANCELLATION })">
+                                                            <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-email-template.png" alt="email template" width="26" height="24">
+                                                        </a>
+                                                    </td>
+                                                </tr>*@
+                                                <tr>
+                                                    <td align="left" valign="middle" bgcolor="#FFFFFF" class="bluefont">
+                                                        @*Refund Notification*@ @WBSSLStore.Resources.GeneralMessage.Message.Refund_Notification
+                                                    </td>
+                                                    <td align="center" valign="middle" bgcolor="#EFF8FD">
+                                                        <a href="@Url.Action("edit", new { emailtypeid = (int)WBSSLStore.Domain.EmailType.RESELLER_REFUND_NOTIFICATION })">
+                                                            <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-email-template.png" alt="email template" width="26" height="24">
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="left" valign="middle" bgcolor="#FFFFFF" class="bluefont">
+                                                        @*Support Incident Notification*@ @WBSSLStore.Resources.GeneralMessage.Message.Support_Incident_Notification
+                                                    </td>
+                                                    <td align="center" valign="middle" bgcolor="#EFF8FD">
+                                                        <a href="@Url.Action("edit", new { emailtypeid = (int)WBSSLStore.Domain.EmailType.RESELLER_SUPPORT_NOTIFICATION })">
+                                                            <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-email-template.png" alt="email template" width="26" height="24">
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                @*<tr>
+                                                    <td align="left" valign="middle" bgcolor="#FFFFFF" class="bluefont">
+                                                        Contract Purchase Notification
+                                                    </td>
+                                                    <td align="center" valign="middle" bgcolor="#EFF8FD">
+                                                        <a href="@Url.Action("edit", new { emailtypeid = (int)WBSSLStore.Domain.EmailType.RESELLER_SLAB_CHANGED_NOTIFICATION })">
+                                                            <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-email-template.png" alt="email template" width="26" height="24">
+                                                        </a>
+                                                    </td>
+                                                </tr>*@
+                                                <tr>
+                                                    <td align="left" valign="middle" bgcolor="#FFFFFF" class="bluefont">
+                                                        @*Renewal Notification for Reseller's Customer Before 30 Days*@ @WBSSLStore.Resources.GeneralMessage.Message.Renewal_Noti_ResellerC_Before_30_Days
+                                                    </td>
+                                                    <td align="center" valign="middle" bgcolor="#EFF8FD">
+                                                        <a href="@Url.Action("edit", new { emailtypeid = (int)WBSSLStore.Domain.EmailType.RESELLER_CUSTOMER_RENEWAL_30 })">
+                                                            <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-email-template.png" alt="email template" width="26" height="24">
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="left" valign="middle" bgcolor="#FFFFFF" class="bluefont">
+                                                        @*Renewal Notification for Reseller's Customer Before 15 Days*@  @WBSSLStore.Resources.GeneralMessage.Message.Renewal_Noti_ResellerC_Before_15_Days
+                                                    </td>
+                                                    <td align="center" valign="middle" bgcolor="#EFF8FD">
+                                                        <a href="@Url.Action("edit", new { emailtypeid = (int)WBSSLStore.Domain.EmailType.RESELLER_CUSTOMER_RENEWAL_15 })">
+                                                            <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-email-template.png" alt="email template" width="26" height="24">
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="left" valign="middle" bgcolor="#FFFFFF" class="bluefont">
+                                                        @*Renewal Notification for Reseller's Customer Before 7 Days*@ @WBSSLStore.Resources.GeneralMessage.Message.Renewal_Noti_ResellerC_Before_7_Days
+                                                    </td>
+                                                    <td align="center" valign="middle" bgcolor="#EFF8FD">
+                                                        <a href="@Url.Action("edit", new { emailtypeid = (int)WBSSLStore.Domain.EmailType.RESELLER_CUSTOMER_RENEWAL_7 })">
+                                                            <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-email-template.png" alt="email template" width="26" height="24">
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="left" valign="middle" bgcolor="#FFFFFF" class="bluefont">
+                                                        @*Renewal Notification for Reseller's Customer Before 3 Days*@ @WBSSLStore.Resources.GeneralMessage.Message.Renewal_Noti_ResellerC_Before_3_Days
+                                                    </td>
+                                                    <td align="center" valign="middle" bgcolor="#EFF8FD">
+                                                        <a href="@Url.Action("edit", new { emailtypeid = (int)WBSSLStore.Domain.EmailType.RESELLER_CUSTOMER_RENEWAL_3 })">
+                                                            <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-email-template.png" alt="email template" width="26" height="24">
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="left" valign="middle" bgcolor="#FFFFFF" class="bluefont">
+                                                        @*Renewal Notification for Reseller Before 30 Days*@ @WBSSLStore.Resources.GeneralMessage.Message.Renewal_Noti_Reseller_Before_30_Days
+                                                    </td>
+                                                    <td align="center" valign="middle" bgcolor="#EFF8FD">
+                                                        <a href="@Url.Action("edit", new { emailtypeid = (int)WBSSLStore.Domain.EmailType.RESELLER_RENEWAL_30 })">
+                                                            <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-email-template.png" alt="email template" width="26" height="24">
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="left" valign="middle" bgcolor="#FFFFFF" class="bluefont">
+                                                        @*Renewal Notification for Reseller Before 15 Days*@ @WBSSLStore.Resources.GeneralMessage.Message.Renewal_Noti_Reseller_Before_15_Days
+                                                    </td>
+                                                    <td align="center" valign="middle" bgcolor="#EFF8FD">
+                                                        <a href="@Url.Action("edit", new { emailtypeid = (int)WBSSLStore.Domain.EmailType.RESELLER_RENEWAL_15 })">
+                                                            <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-email-template.png" alt="email template" width="26" height="24">
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="left" valign="middle" bgcolor="#FFFFFF" class="bluefont">
+                                                        @*Renewal Notification for Reseller Before 7 Days*@ @WBSSLStore.Resources.GeneralMessage.Message.Renewal_Noti_Reseller_Before_7_Days
+                                                    </td>
+                                                    <td align="center" valign="middle" bgcolor="#EFF8FD">
+                                                        <a href="@Url.Action("edit", new { emailtypeid = (int)WBSSLStore.Domain.EmailType.RESELLER_RENEWAL_7 })">
+                                                            <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-email-template.png" alt="email template" width="26" height="24">
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="left" valign="middle" bgcolor="#FFFFFF" class="bluefont">
+                                                        @*Renewal Notification for Reseller Before 3 Days*@ @WBSSLStore.Resources.GeneralMessage.Message.Renewal_Noti_Reseller_Before_3_Days
+                                                    </td>
+                                                    <td align="center" valign="middle" bgcolor="#EFF8FD">
+                                                        <a href="@Url.Action("edit", new { emailtypeid = (int)WBSSLStore.Domain.EmailType.RESELLER_RENEWAL_3 })">
+                                                            <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-email-template.png" alt="email template" width="26" height="24">
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" valign="middle">
+                                            &nbsp;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td height="30" align="left" valign="middle">
+                                            <h2>
+                                                @*Admin Email Notification*@ @WBSSLStore.Resources.GeneralMessage.Message.Admin_Email_Notification</h2>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" valign="middle" bgcolor="#d6d6d6">
+                                            <table width="840" border="0" align="left" cellpadding="3" cellspacing="1">
+                                                <tr>
+                                                    <td width="645" height="30" align="left" valign="middle" bgcolor="#EFF8FD" class="bold">
+                                                        @*Templates*@ @WBSSLStore.Resources.GeneralMessage.Message.Templates_Caption
+                                                    </td>
+                                                    <td width="175" height="30" align="center" valign="middle" bgcolor="#FFFFFF" class="bold">
+                                                        @*Template*@ @WBSSLStore.Resources.GeneralMessage.Message.Template_Caption
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="left" valign="middle" bgcolor="#eff8fd" class="bluefont">
+                                                        @*Email on New Customer Signup*@ @WBSSLStore.Resources.GeneralMessage.Message.Email_on_New_Customer_Signup`
+                                                    </td>
+                                                    <td align="center" valign="middle" bgcolor="#FFFFFF">
+                                                        <a href="@Url.Action("edit", new { emailtypeid = (int)WBSSLStore.Domain.EmailType.ADMIN_NEW_CUSTOMER })">
+                                                            <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-email-template.png" alt="email template" width="26" height="24">
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="left" valign="middle" bgcolor="#eff8fd" class="bluefont">
+                                                        @*Email on New Reseller Signup*@ @WBSSLStore.Resources.GeneralMessage.Message.Email_on_New_Reseller_Signup
+                                                    </td>
+                                                    <td align="center" valign="middle" bgcolor="#FFFFFF">
+                                                        <a href="@Url.Action("edit", new { emailtypeid = (int)WBSSLStore.Domain.EmailType.ADMIN_NEW_RESELLER })">
+                                                            <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-email-template.png" alt="email template" width="26" height="24">
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                @*<tr>
+                                                    <td align="left" valign="middle" bgcolor="#eff8fd" class="bluefont">
+                                                        Change Password Email
+                                                    </td>
+                                                    <td align="center" valign="middle" bgcolor="#FFFFFF">
+                                                        <a href="@Url.Action("edit", new { emailtypeid = (int)WBSSLStore.Domain.EmailType.ADMIN_CHANGE_PASSWORD })">
+                                                            <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-email-template.png" alt="email template" width="26" height="24">
+                                                        </a>
+                                                    </td>
+                                                </tr>*@
+                                                <tr>
+                                                    <td align="left" valign="middle" bgcolor="#eff8fd" class="bluefont">
+                                                        @*New Order Notification*@ @WBSSLStore.Resources.GeneralMessage.Message.New_Order_Notification
+                                                    </td>
+                                                    <td align="center" valign="middle" bgcolor="#FFFFFF">
+                                                        <a href="@Url.Action("edit", new { emailtypeid = (int)WBSSLStore.Domain.EmailType.ADMIN_NEW_ORDER })">
+                                                            <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-email-template.png" alt="email template" width="26" height="24">
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                               @* <tr>
+                                                    <td align="left" valign="middle" bgcolor="#eff8fd" class="bluefont">
+                                                        Order Cancellation Notification
+                                                    </td>
+                                                    <td align="center" valign="middle" bgcolor="#FFFFFF">
+                                                        <a href="@Url.Action("edit", new { emailtypeid = (int)WBSSLStore.Domain.EmailType.ADMIN_ORDER_CANCELLATION })">
+                                                            <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-email-template.png" alt="email template" width="26" height="24">
+                                                        </a>
+                                                    </td>
+                                                </tr>*@
+                                                <tr>
+                                                    <td align="left" valign="middle" bgcolor="#eff8fd" class="bluefont">
+                                                        @*Support Incident Update*@ @WBSSLStore.Resources.GeneralMessage.Message.Support_Incident_Update
+                                                    </td>
+                                                    <td align="center" valign="middle" bgcolor="#FFFFFF">
+                                                        <a href="@Url.Action("edit", new { emailtypeid = (int)WBSSLStore.Domain.EmailType.ADMIN_REFUND_NOTIFICATION })">
+                                                            <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-email-template.png" alt="email template" width="26" height="24">
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="left" valign="middle" bgcolor="#eff8fd" class="bluefont">
+                                                        @*Support Incident Notification*@  @WBSSLStore.Resources.GeneralMessage.Message.Support_Incident_Notification
+                                                    </td>
+                                                    <td align="center" valign="middle" bgcolor="#FFFFFF">
+                                                        <a href="@Url.Action("edit", new { emailtypeid = (int)WBSSLStore.Domain.EmailType.ADMIN_SUPPORT_NOTIFICATION })">
+                                                            <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-email-template.png" alt="email template" width="26" height="24">
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="left" valign="middle" bgcolor="#eff8fd" class="bluefont">
+                                                        @*Forgot Password*@ @WBSSLStore.Resources.GeneralMessage.Message.ForgotPwd_Caption
+                                                    </td>
+                                                    <td align="center" valign="middle" bgcolor="#FFFFFF">
+                                                        <a href="@Url.Action("edit", new { emailtypeid = (int)WBSSLStore.Domain.EmailType.ALL_FORGOTPASSWORD })">
+                                                            <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-email-template.png" alt="email template" width="26" height="24">
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="left" valign="middle" bgcolor="#eff8fd" class="bluefont">
+                                                        @*Add Fund Notification*@ @WBSSLStore.Resources.GeneralMessage.Message.Add_Fund_Notification
+                                                    </td>
+                                                    <td align="center" valign="middle" bgcolor="#FFFFFF">
+                                                        <a href="@Url.Action("edit", new { emailtypeid = (int)WBSSLStore.Domain.EmailType.ADMIN_ADD_FUND_NOTIFICATION })">
+                                                            <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-email-template.png" alt="email template" width="26" height="24">
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="left" valign="middle" bgcolor="#eff8fd" class="bluefont">
+                                                        @*Fraud Order Notification*@ @WBSSLStore.Resources.GeneralMessage.Message.Fraud_Order_Notification
+                                                    </td>
+                                                    <td align="center" valign="middle" bgcolor="#FFFFFF">
+                                                        <a href="@Url.Action("edit", new { emailtypeid = (int)WBSSLStore.Domain.EmailType.SUPPORT_FRAUDORDER_NOTIFICATION })">
+                                                            <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-email-template.png" alt="email template" width="26" height="24">
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                 <tr>
+                                                    <td align="left" valign="middle" bgcolor="#eff8fd" class="bluefont">
+                                                      @WBSSLStore.Resources.GeneralMessage.Message.Admin_new_use_signup@*@WBSSLStore.Resources.GeneralMessage.Message.Fraud_Order_Notification*@
+                                                    </td>
+                                                    <td align="center" valign="middle" bgcolor="#FFFFFF">
+                                                        <a href="@Url.Action("edit", new { emailtypeid = (int)WBSSLStore.Domain.EmailType.ADMIN_NEWUSER_WELCOME_EMAIL })">
+                                                            <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-email-template.png" alt="email template" width="26" height="24">
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" valign="middle">
+                                            &nbsp;
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td height="8" align="left" valign="top">
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>

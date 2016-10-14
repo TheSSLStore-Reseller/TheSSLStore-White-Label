@@ -1,0 +1,365 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Account_password" xml:space="preserve">
+    <value>Fiók &amp; Jelszó</value>
+  </data>
+  <data name="Account_to_checkout_faster" xml:space="preserve">
+    <value>Felhasználó a gyorsabb fizetéshez</value>
+  </data>
+  <data name="All_prices_in" xml:space="preserve">
+    <value>Minden ár</value>
+  </data>
+  <data name="Any_Questions" xml:space="preserve">
+    <value>Ha bármilyen kérdése van ezen a számlán, írjon nekünk</value>
+  </data>
+  <data name="CheckCSRNote" xml:space="preserve">
+    <value>Használja ezt a CSR dekódert a Tanúsítvány Aláírási Kérelemének (Certificate Signing Request) az ellenőrzéséhez, illetve a tartalmazott információ megtekintéséhez. Egy Tanúsítvány Aláírási Kérelem blokkja adja át kódolt formában azt az információt a társaságról, melyet a kibocsájtott SSL tanúsítvány publikus kulcsa hordozni fog. Egy CSR elkészítése után a megadott adatok kódolva kerülnek tárolásra, így az átadott információt szabad szemmel nagyon nehéz azonosítani. Mivel a hitelesítés szolgáltatók az adatokat CSR formátumban kérik, szükséges ezzel az eszközzel dekódolnia és ellenőriznie, hogy az átadott információk a valóságnak megfelelőek. Az ellenőrzéshez, illetve a hordozott információk megtekintéséhez egyszerűen illessze be a CSR tartalmát az itt található szöveges mezőbe, és az AJAX CSR dekóder mindent elvégez Ön helyett. A CSR minden esetben "-----BEGIN CERTIFICATE REQUEST----- " sorral kezdődik és "-----ENDCERTIFICATE REQUEST----- " sorral fejeződik be.</value>
+  </data>
+  <data name="Checkout_Desc" xml:space="preserve">
+    <value>A megrendelésről minden részletet az itt megadott email címre fogunk elküldeni.</value>
+  </data>
+  <data name="CheckOut_Note" xml:space="preserve">
+    <value>Kérem nézze át és küldje el a rendelését a „Rendelés teljes” kiválasztásával.</value>
+  </data>
+  <data name="CheckSSLNote" xml:space="preserve">
+    <value>Ez az SSL ellenőrző segíteni fog felfedezni a problémákat a telepített SSL tanúsítvánnyal kapcsolatban.
+    Valamint visszajelzést ad arról is, hogy a webszerverre telepített az SSL tanúsítvány
+    megfelelően működik, érvényes, elfogadott, megbízható és a felhasználói nem fognak semmilyen problémát tapasztalni. Az SSL ellenőrző
+    Használatához adja meg a webszerver gépnevét (nyilvánosnak kell lennie) az alábbi mezőbe és kattintson az Elküld gombra</value>
+  </data>
+  <data name="Comodo_Code_Signing_Certificates_Desc" xml:space="preserve">
+    <value>A kód aláírás olyan, mint egy digitális aláírás, mellyel a fejlesztők saját magukról és a programjukról információt biztosítanak a szoftvercsomagjukban. A végfelhasználói, amikor letöltik az elkészített 23 vagy 64 bites futtatható fájlokat (.exe, .ocx, .dll vagy hasonlók) vagy a tömörített állományokat (.cab), meg tudnak bizonyosodni arról, hogy az állomány kitől származik, illetve, hogy sértetlen-e, mert a digitális aláírás hordozza az ehhez szükséges adatokat.</value>
+  </data>
+  <data name="Comodo_Essential_SSL_Desc" xml:space="preserve">
+    <value>Az Essential SSL tanúsítvány 10 percen belüli kibocsájtása biztosítja a gyors és költséghatékony megoldást az ügyfeleivel való tranzakciókhoz. Ennél is fontosabb, hogy az ügyfelei biztosítva vannak, hogy az üzlet során megadott érzékeny információk titkosítva, azaz biztonságban vannak.</value>
+  </data>
+  <data name="Comodo_Essential_SSL_Wildcard_Desc" xml:space="preserve">
+    <value>A 128 bites SSL tanúsítványokat olyan weboldalak titkosítására tervezték, melyeken alacsony értékű tranzakciók folynak. Az internet felhasználók 99,3%-a elfogadja. Az Essential SSL a megoldás azon új weboldalak vagy környezetek számára, ahol a bizalom már megvan és a személy ellenőrzése (az identitás azonosítása) nem szükséges.</value>
+  </data>
+  <data name="Comodo_EV_SSL_Desc" xml:space="preserve">
+    <value>A bővített hitelesítésű (EV) SSL tanúsítvány jelenti a legmagasabb szintű titkosítást, biztonságot és bizalmat. Azonnali visszajelzést biztosít a zöld címsor megjelenésével minden, az oldalt böngésző látogató számára, akik a modern böngészők egyikét használják (például: Internet Explorer 7+, Firefox 3+ vagy Opera 9.5+).</value>
+  </data>
+  <data name="Comodo_EV_SSL_EV_SGC_Desc" xml:space="preserve">
+    <value>A különösen érzékeny ügyfél információk, pénzügyi tranzakciók, bizalmas vagy személyes adatok biztosítására alkalmas a bővített hitelesítésű (EV SGC) SSL tanúsítvány. Ez a tanúsítvány 128 vagy 256 bites titkosítást biztosít és az internetes látogatók több mint 99%-a felismeri, és használja ezt az erős titkosítást, illetve a hiteles személyazonosság vizuálisan látható minden látogató számára - még a több millió régebbi Windows és IE felhasználó számára is.</value>
+  </data>
+  <data name="Comodo_EV_SSL_Multi_Domain_Desc" xml:space="preserve">
+    <value>A több domaines tanúsítvány bővített hitelesítéssel (multi-domain certificates with extended validation / EV MDC) a megoldás, ha egy szervert szükséges biztonságossá tenni kettőtől 100 domainig egy tanúsítvány segítségével. A bővített hitelesítés (EV) tachnológiája további bizalomra ad okot az ügyfelei részéről. Amikor a weboldalára érnek a vásárlói, akkor a zöld címsorból látni fogják, hogy biztonságos webterületen tartózkodnak.</value>
+  </data>
+  <data name="Comodo_EV_SSL_Multi_Domain_Desc1" xml:space="preserve">
+    <value>A több domaines kiterjesztett hitelesítésű (EV MDC) tanúsítvány akár 100 különböző domainra vagy aldomainra teszi hitelessé a weboldalát. Az EV technológia egy további bizalmi réteget biztosít az online üzletmenetében, mert a zöld címsor minden látogató minden látogatásakor megjelenik a böngészőben, így jelezve az ügyfelei felé, hogy a weboldal biztonságos.</value>
+  </data>
+  <data name="Comodo_Instant_SSL_Desc" xml:space="preserve">
+    <value>Az InstantSSL tanúsítványok biztosítják Önt és ügyfeleit arról, hogy az interneten keresztül folyó tranzakcióik mások által nem olvashatóak, illetve nem módosíthatóak. Ez megnöveli az elért konverziós arányt, csökkenti a visszafordulási arányt, és nő az átlagos megrendelési érték.</value>
+  </data>
+  <data name="Comodo_Instant_SSL_Premium_Desc" xml:space="preserve">
+    <value>Az InstantSSL Premium tanúsítvány professzionális megoldás az ecommerce weboldalak biztonságossá tételéhez és egyértelmű vizuális visszajelzés arról, hogy a weboldal megbízható. Az InstantSSL Premium tanúsítvány lehetővé teszi, hogy vásárlók biztosak legyenek abban, hogy a teljes vásárlás biztos keretek között zajlik.</value>
+  </data>
+  <data name="Comodo_Instant_SSL_Pro_Desc" xml:space="preserve">
+    <value>Az InstantSSL Pro tanúsítványok biztosítják Önt és ügyfeleit arról, hogy az interneten keresztül folyó tranzakcióik mások által nem olvashatóak, illetve nem módosíthatóak. Ez megnöveli az elért konverziós arányt, csökkenti a visszafordulási arányt, és nő az átlagos megrendelési érték.</value>
+  </data>
+  <data name="Comodo_Multi_Domain_Desc" xml:space="preserve">
+    <value>A több domaines tanúsítvány (multi-domain certificates / MDC) a megoldás, ha egy szervert szükséges biztonságossá tenni kettőtől 100 domainig egy tanúsítvány segítségével. Egységesíti az SSL kezelés menetét és biztosítja a titkosítást az összes domainra.</value>
+  </data>
+  <data name="Comodo_Positive_SSL_Desc" xml:space="preserve">
+    <value>A Positive SSL tanúsítvány 10 percen belüli kibocsájtása biztosítja a gyors és költséghatékony megoldást az ügyfeleivel való tranzakciókhoz. Ennél is fontosabb, hogy az ügyfelei biztosítva vannak, hogy az üzlet során megadott érzékeny információk titkosítva, azaz biztonságban vannak.</value>
+  </data>
+  <data name="Comodo_Positive_SSL_Wildcard_Desc" xml:space="preserve">
+    <value>A 128 bites SSL tanúsítványokat olyan weboldalak titkosítására tervezték, melyeken alacsony értékű tranzakciók folynak. Az internet felhasználók 99,3%-a elfogadja. Az Essential SSL a megoldás azon új weboldalak vagy környezetek számára, ahol a bizalom már megvan és a személy ellenőrzése (az identitás azonosítása) nem szükséges. A Positive SSL tanúsítvány 10,000$ ügyleti biztosítással rendelkezik.</value>
+  </data>
+  <data name="Comodo_Premium_SSL_Wildcard_Desc" xml:space="preserve">
+    <value>A Comodo Premium SSL Wildcards tanúsítvány a weboldalának korlátlen aldomainjét biztonságossá tudja tenni. Így egy tanúsítvánnyal biztonságossá tudja tenni a www.weboldal.hu titkos.weboldal.hu, mail.weboldal.hu... stb domainjeit, ezzel pénzt spórol meg, illetve időt az egyszerűbb SSL tanúsítvány kezeléssel. Használjon egy tanúsítványt az összes aldomain biztonságossá tételéhez.</value>
+  </data>
+  <data name="Comodo_SGC_Desc" xml:space="preserve">
+    <value>A Comodo SGC SSL tanúsítvány felfrissíti a régebbi böngészők titkosítási képességeit 40 bitről a teljes 128 vagy 256 bites titkosításra. Ez azt jelenti, hogy még az a több millió régebbi Windows verziót és IE verziót használó ügyfél is, akik még nem frissítették a rendszerüket az aktuális verzióra, megbízhatónak fogja találni a weboldalát, és ez által biztonságban fogja magát érezni.</value>
+  </data>
+  <data name="Comodo_SGC_Wildcard_Desc" xml:space="preserve">
+    <value>Egy Comodo SGC Wildcard SSL tanúsítvány biztonságossá tudja tenni az egyik domainjének korlátlan számú aldomain-ját (pl.: www.weboldal.hu, mail.weboldal.hu, login.weboldal.hu...). A Comodo SGC Wildcard SSL költséghatékony és egyszerű megoldás az aldomainek biztonságossá tételéhez hiszen egy tanúsítványt kell csak kezelni számtalan egyedi tanúsítvány helyett.</value>
+  </data>
+  <data name="Comodo_Unified_Communication_UC_Desc" xml:space="preserve">
+    <value>Kifejezetten a Microsoft Exchange és az Office Communications infrastruktúrája számára a Comodo kiadta az Unified Communications tanúsítványt, amely egy tanúsítványban egyesít több domaint és több gépnevet, így a kiszolgáló hitelesen lehet egy IUP címen több kommunikásiós szerver felé, és az adatok titkosítását biztosítani tudja.</value>
+  </data>
+  <data name="Dashboard_Note" xml:space="preserve">
+    <value>Kérem állítsa be a következő elemeket, mielőtt az élesíti őket.</value>
+  </data>
+  <data name="Dashboard_Notice1" xml:space="preserve">
+    <value>Termékek és árak beállítása.</value>
+  </data>
+  <data name="Dashboard_Notice2" xml:space="preserve">
+    <value>Fizetés információk beállítása.</value>
+  </data>
+  <data name="Dashboard_Notice3" xml:space="preserve">
+    <value>állítsa be az SMTP szolgáltatást, hogy a rendszer tudjon leveleket küldeni.</value>
+  </data>
+  <data name="Enable_Test_Mode" xml:space="preserve">
+    <value>Tesztüzem engedélyezve</value>
+  </data>
+  <data name="GeoTrust_QuickSSL_Premium_Desc" xml:space="preserve">
+    <value>A GeoTrust QuickSSL Premium tanúsítvány a legkényelmesebb és legköltséghatékonyabb megoldás bármely vállalkozás számára, mely biztonságos online tranzakciókat szeretne lefolytatni. Ez a tanúsítvánnyal akár 256 bites titkosítást, és az ügyfelei bizalmát érheti el, mikor érzékeny információt továbbít a weben vagy a mobil eszközökön keresztül.</value>
+  </data>
+  <data name="GeoTrust_True_BusinessID_Desc" xml:space="preserve">
+    <value>Ha az Internetes biztonságot teljes körűen lefedő megoldást keres, akkor a GeoTrust True BusinessID a megfelelő válasz. A szerver és böngésző oldalon is használható SSL tanúsítvány és a True Site® pecsét komplett megoldást nyújt az adatok védelmére és az átverés megelőzésére.</value>
+  </data>
+  <data name="GeoTrust_True_BusinessID_Multi_Domain_Desc" xml:space="preserve">
+    <value>Egy True BusinessID több domaines tanúsítvánnyal egyszerre akár 25 domaint is biztonságossá tehet, és ezeket a domain-eket szabadon változtathatja, bővítheti vagy csökkentheti a tanúsítvány teljes életideje alatt. Bármilyen alternatív domain nevet (SAN) tartalmazhat a lista.</value>
+  </data>
+  <data name="GeoTrust_True_BusinessID_Wildcard_Desc" xml:space="preserve">
+    <value>A True BusinessID Wildcard tanúsítvány egy egyszerű és megfizethető megoldás. A True BusinessID Wildcard ideális megoldás, ha biztonságossá kell tenni több teljes hosszúságú domain nevet (FQDN), ha a domain nevek fődomain alá tartoznak, ugyanaz a másodszintű domain nevük és ugyanazon a fizikai szerveren vannak.</value>
+  </data>
+  <data name="GeoTrust_True_BusinessID_with_EV_Desc" xml:space="preserve">
+    <value>Az EV SSL segít elkerülni az oldallal való visszaélést és megnövelni a vásárlói tranzakciókat. A True BusinessID EV biztosítja a legmagasabb szintű identitás tanúsítást, akár 256 bites titkosítást, és egy GeoTrust True Site pecsétet tartalmaz.</value>
+  </data>
+  <data name="GeoTrust_True_Business_ID_With_EV_Multi_Domain_Desc" xml:space="preserve">
+    <value>Szerezzen egy erős biztonsági nyilatkozatot a zöld címsorral. A GeoTrust® True BusinessID tanúsítvány bővített hitelesítéssel (Extended Validation / EV) a prémium üzleti oszályú SSL biztonsági termékünk, a tanúsítványok körében elérhető legmagasabb szintű hitelesítést jelző vizuális megerősítéssel.</value>
+  </data>
+  <data name="InvoiceThankMsg" xml:space="preserve">
+    <value>Köszönöm a vásárlását.</value>
+  </data>
+  <data name="Invoice_Note" xml:space="preserve">
+    <value>Minden ár USD-ben van. Amennyiben bármi kérdése van a számlával kapcsolatban, kérem lépjen kapcsolatba velem:</value>
+  </data>
+  <data name="I_have_a" xml:space="preserve">
+    <value>Van egy</value>
+  </data>
+  <data name="Login_Desc" xml:space="preserve">
+    <value>Login to your account to view order summary, account statement, pending orders and other stuff</value>
+  </data>
+  <data name="OrderDetClickNote" xml:space="preserve">
+    <value>Kattintson ide a megrendelés részleteiért</value>
+  </data>
+  <data name="OrderDetClickNote2" xml:space="preserve">
+    <value>Kattintson ide a továbbértékesítés részleteiért</value>
+  </data>
+  <data name="OrderDetClickNote3" xml:space="preserve">
+    <value>Kattintson ide a vásárló részleteiért</value>
+  </data>
+  <data name="PaymentMethodNote" xml:space="preserve">
+    <value>(a bankkártya nem lesz terhelve)</value>
+  </data>
+  <data name="Pricing_Note" xml:space="preserve">
+    <value>Kérem adja meg (%-ban) a hasznot, mellyel minden terméket meg kell terhelni. Ez termékenként 1-szer lesz alkalmazva.</value>
+  </data>
+  <data name="RapidSSL_Desc" xml:space="preserve">
+    <value>A RapidSSL egy ipari standard 128/256 bites egyszerű (nem láncolt) gyökértanúsítvánnyal rendelkezik. A RapidSSL tanúsítványait a böngészők 99%-a elfogadja, beleértve az IE 5.01+, a Netscape 4.7+ és Mozilla 1+ böngészőket és számtalan más böngészőt.</value>
+  </data>
+  <data name="RapidSSL_Desc1" xml:space="preserve">
+    <value>A RapidSSL egy ipari standard 128/256 bites egyszerű (nem láncolt) gyökértanúsítvánnyal rendelkezik. A RapidSSL tanúsítványait a böngészők 99%-a elfogadja, beleértve az IE 5.01+, a Netscape 4.7+ és Mozilla 1+ böngészőket és számtalan más böngészőt.</value>
+  </data>
+  <data name="RapidSSL_Wildcard_Desc" xml:space="preserve">
+    <value>A RapidSSL Wildcard tanúsítvány egy domain név alatt korlátlan számú aldomaint tesz biztonságossá egy egyszerű tanúsítvánnyal. A RapidSSL Wildcard tanúsítvány olcsó, és a kezelése egyszerű.</value>
+  </data>
+  <data name="Reseller_Desc" xml:space="preserve">
+    <value>Kérem nézzen át minden információt még egyszer. Amennyiben minden rendben található,
+        Kérem küldje el a megrendelését feldolgozásra</value>
+  </data>
+  <data name="Sign_in_to_your" xml:space="preserve">
+    <value>Bejelentkezés a</value>
+  </data>
+  <data name="Thanks_biz_msg" xml:space="preserve">
+    <value>Köszönjük, hogy a te dolgod.</value>
+  </data>
+  <data name="Thawte_Code_Signing_Certificate_Desc" xml:space="preserve">
+    <value>Manapság az online korszakban a terjesztés és fejlesztés sokkal könnyebb, mint valaha. Azonban az ilyen környezetnek vannak potenciálisan veszélyes helyek, valamint hamis és rosszindulatú kódokat terjesztő személyek. Ne tegye ki a vásárlóit ennek a veszélynek! A Thawte® Code Signing tanúsítvány segítségével biztosítani tudja a vásárlóinak a biztonságos és védett kódot, amit megérdemelnek.</value>
+  </data>
+  <data name="Thawte_SGC_SuperCerts_Desc" xml:space="preserve">
+    <value>A Thawte® SGC SuperCert az SGC SSL tanúsítványokhoz hűen teljes azonosítást biztosít. Az elérhető titkosítási szint legalább 128 bit, legfeljebb 256 bit. Az internetes böngésző 99.9%-a felismeri a tanúsítványt. Még a régebbi böngészők között is 99% az arány.</value>
+  </data>
+  <data name="Thawte_SSL_123_Desc" xml:space="preserve">
+    <value>Az SSL123 a Thawte belépő szintű tanúsítványa, mely hitelesen igazolja hogy a domaint beregisztrálták, és hogy Ön jogosult a tanúsítvány vásárlására.</value>
+  </data>
+  <data name="Thawte_SSL_Web_Server_Desc" xml:space="preserve">
+    <value>A Thawte® SSL Web Server tanúsítvány egy teljes körű átvilágítással hitelesített SSL tanúsítvány, mely 256, 128, 56 és 40 bites titkosítást biztosít és a böngészők kb. 99%-a felismeri.</value>
+  </data>
+  <data name="Thawte_SSL_Web_Server_EV_Desc" xml:space="preserve">
+    <value>A Thawte SSL Web Server bővített hitelesítésű (EV) tanúsítványa kínálja a vállalatok és kormányzati szervek számára a legmagasabb iparág szerinti hitelesítési lehetőséget, valamint 256, 128, 56 vagy 40 bites titkosítást.</value>
+  </data>
+  <data name="Thawte_SSL_Web_Server_Wildcard_Desc" xml:space="preserve">
+    <value>A Thawte SSL Webserver Wildcard tanúsítvány egy egyszerű és megfizethető megoldás, ha biztonságossá kell tenni több teljes hosszúságú domain nevet (FQDN), ha a domain nevek fődomain alá tartoznak, ugyanaz a másodszintű domain nevük és ugyanazon a fizikai szerveren vannak.</value>
+  </data>
+  <data name="TrustKeeper_PCI_DSS_Desc" xml:space="preserve">
+    <value>Trustwave PCI Product protect the transfer of sensitive data on Web sites, intranets, and extranets using a minimum of 40-bit and up to 256-bit encryption (the highest that each individual browser will allow). It also includes the Trustwave Secured Seal.</value>
+  </data>
+  <data name="TrustKeeper_Plus_EV_SSL_Desc" xml:space="preserve">
+    <value>A bővített hitelesítésű (EV) tanúsítványok érvényesítik a bizalmat a weboldal üzemeltetője felé. Ha online megrendelésekre van lehetőség az oldalán, akkor szüksége van az EV SSL zöld címsorára. Amikor az ügyfelek észreveszik a zöld címsort, mint feltűnő bizalmi mutatót a webböngészőben, észre fogja venni, hogy megnő a konverzió, és csökken az elhagyott bevásárlókosár.</value>
+  </data>
+  <data name="TrustKeeper_SSL_Plus_Desc" xml:space="preserve">
+    <value>Trustwave understands the pressure merchants are under to prove compliance with Payment Card Industry Data Security Standard (PCI DSS). TrustKeeper is a certified remote assessment and compliance solution designed to help merchants meet the security standards of all credit card companies.</value>
+  </data>
+  <data name="Trustwave_Domain_Validated_SSL_Desc" xml:space="preserve">
+    <value>A Trustwave domain érvényesítésű tanúsítványa a legalkalmasabb a kis- és középvállalkozás ok e-kereskedeli weboldalai számára. Ezt a domain érvényesítésű tanúsítványt az asztali és a szerver oldali böngészők 99%-a ismeri és kompatibilis vele. Alkalmas akár 256 bites titkosításra, és 204 bites CSR titkosításra.</value>
+  </data>
+  <data name="Trustwave_Enterprise_SSL_Desc" xml:space="preserve">
+    <value>A vállalata a legnagyobb garanciát keresi? A Trustwave Enterprise SSL tanúsítvány mindent biztosít, ami egy domain védelméhez szükséges, és biztosítja az ügyfeleit, hogy a weboldal megbízható és biztonságos, illetve kiemelkedő Garancia (Relying Party Warranty) vonatkozik rá.</value>
+  </data>
+  <data name="Trustwave_Premium_EV_SSL_Desc" xml:space="preserve">
+    <value>A bővített hitelesítésű (EV) tanúsítvány növelik a legnagyobb mértékben a vásárlókban a bizalmat a weboldal üzemeltetője felé. Amikor az ügyfelek észreveszik a zöld címsort, mint feltűnő bizalmi mutatót a webböngészőben, észre fogja venni, hogy megnő a konverzió, és csökken az elhagyott bevásárlókosár.</value>
+  </data>
+  <data name="Trustwave_Premium_SSL_Desc" xml:space="preserve">
+    <value>Biztonságossá kell tennie egy kiszolgáló domain nevét? A Trustwave Premium SSL tanúsítvány komplett védelmet biztosít egy domainnek, és az ügyfelek meggyőződhetnek arról, hogy a weboldal megbízható és biztonságos. Mindegyik Trustwave SSL tanúsítvány tartalmaz egy dinamikus „biztonságos oldal” pecsétet, hogy az ügyfelek megbizonyosodhassanak az oldal eredetéről, és a teljes üzletmenet alatt biztonságban érezzék magukat.</value>
+  </data>
+  <data name="Trustwave_Premium_Wildcard_SSL_Desc" xml:space="preserve">
+    <value>A Trustwave Wildcard SSL tanúsítvány gyors és egyszerű módja annak, hogy megvédje több aldomainját, és biztosítsa az ügyfeleit, hogy a weboldal megbízható és biztonságos. Biztonságossá tehet minden egy domain alá tartozó oldalt: www.tarsasag.hu, mail.tarsasag.hu, secure.tarsasag.hu... Mindegyik Trustwave SSL tanúsítvány tartalmaz egy dinamikus „biztonságos oldal” pecsétet, hogy az ügyfelek megbizonyosodhassanak az oldal eredetéről, és a teljes üzletmenet alatt biztonságban érezzék magukat.</value>
+  </data>
+  <data name="Trustwave_Secure_Email_Digital_ID_Desc" xml:space="preserve">
+    <value>A Trustwave Secure E-Mail Digital ID az Ön és az Ön cége biztonságos és költséghatékony kommunikációs megoldása. Ezzel a tanúsítvánnyal könnyen és gyorsan biztosítja az email üzenet és a csatolmányok biztonságos és rejtett átvitelét.</value>
+  </data>
+  <data name="UsePaypal" xml:space="preserve">
+    <value>A PayPal email címét adja meg!</value>
+  </data>
+  <data name="UserProfile_Desc" xml:space="preserve">
+    <value>Kérem nézzen át minden információt még egyszer. Amennyiben minden rendben található,
+        Kérem küldje el a megrendelését feldolgozásra</value>
+  </data>
+  <data name="VeriSign_Code_Signing_Certificate_Desc" xml:space="preserve">
+    <value>A fejlesztők és a szoftverkiadók az aktív tartalom és programkód aláírásával csökkenthetik a telepítéskor a hibaüzenetet, és a bizalmat építhetik. A VeriSign® Code Signing Certificates for Microsoft® Authenticode® segítségével azonosíthatják magukat és ellenőrizhetik a kód sértetlenségét.</value>
+  </data>
+  <data name="VeriSign_Secure_Site_Desc" xml:space="preserve">
+    <value>Egy VeriSign Secure Site SSL tanúsítvány minimum 40 bit, maximum 256 bites titkosítást biztosít, és a böngészők több mint 99%-a felismeri. A tanúsítvány 100 000 $ biztosítást és a VeriSign Secured Seal használatát tartalmazza.</value>
+  </data>
+  <data name="VeriSign_Secure_Site_Pro_Desc" xml:space="preserve">
+    <value>Egy VeriSign Secure Site SSL tanúsítvány 128 bites titkosítást biztosít. A tanúsítványhoz engedélyezve van a Server Gated Cryptography (SGC) technológia biztosítandó az oldalt látogatók számára a az erős titkosítás.</value>
+  </data>
+  <data name="VeriSign_Secure_Site_Pro_SGC_Desc" xml:space="preserve">
+    <value>A VeriSign Secure Site Pro SSL tanúsítvány 128 bites titkosítással rendelkezik. A Secure Site Pro számára engedélyezve van a Server Gated Cryptography (SGC) elősegítendő az erős titkosítást az oldal látogatóinak. A tanúsítvány 250,000$ ügyleti garanciát és a VeriSign Secured Seal pecsétet.</value>
+  </data>
+  <data name="VeriSign_Secure_Site_Pro_with_EV_Desc" xml:space="preserve">
+    <value>Egy VeriSign Secure Site Pro bővített hitelesítésű (EV) tanúsítvány legalább 128 bites legfeljebb 256 bites titkosítást biztosít és a böngészők több mint a 99%-a felismeri.</value>
+  </data>
+  <data name="VeriSign_Secure_Site_with_EV_Desc" xml:space="preserve">
+    <value>Egy VeriSign Secure Site Pro bővített hitelesítésű (EV) tanúsítvány legalább 40 bites legfeljebb 256 bites titkosítást biztosít és a böngészők több mint a 99%-a felismeri. Valamint tartalmaz 100,000$ ügyleti garanciát és a VeriSign Secured Seal pecsétet.</value>
+  </data>
+  <data name="VeriSign_Trust_Seal_Desc" xml:space="preserve">
+    <value>A bizalom teszi a látogatót vásárlóvá, majd visszatérő vásárlóvá és növeli az eladásokat. A VeriSign Trust™ Seal segít a weboldala iránti bizalom elérésében az üzlet hitelesítésével, a rosszindulatú programok elleni védelemmel, a VeriSign márka felismerhetőségével, és az ez iránti bizalommal.</value>
+  </data>
+  <data name="Banner_Note" xml:space="preserve">
+    <value>To change banner image just select any banner image and click on "Insert/edit Image" icon and upload your own new banner(s). Please use 960px X 150px(width X height)</value>
+  </data>
+  <data name="Partner_Pricing_Caption_1" xml:space="preserve">
+    <value>Partnerünk program alapja a hűség, mint egy törzsutas program. a  Minél többet eladni (vagy vásárolnak), annál többet takaríthat. És ez valamennyi halmozott. Adunk hozzá az összes  A vásárlások, és amint eléred a következő szintet automatikusan kap  A további kedvezmények kapcsolódó magasabb szintű réteg. Soha nem jár le, és továbbra is add on, amit ne értékesítés.</value>
+  </data>
+  <data name="Partner_Pricing_Caption_2" xml:space="preserve">
+    <value>Mi még jobb is, akkor kapsz hozzáférést a magasabb szintek azonnal! egyszerűen     sem mutatja nekünk a bevétel SSL vásárlások az elmúlt 2 évben, illetve befizetni     fiókjába. Akárhogy is, mi megadja neked a kapcsolódó szinten.</value>
+  </data>
+  <data name="UseMoneybookers" xml:space="preserve">
+    <value>Use Your Moneybookers Email Address!</value>
+  </data>
+  <data name="GeoTrust_QuickSSL_Premium_multiDomain_Desc" xml:space="preserve">
+    <value>Biztonságos 4 További domainek Single GeoTrust QuickSSL Premium tanúsítvány SAN GeoTrust, egyike a világ legmegbízhatóbb SSL márka nyilvánít SAN / Multi-Domain megoldás gyors kiállítása folyamat nagyon olcsó. A népszerű most kínál GeoTrust QuickSSL Premium tanúsítványt SAN engedélyezve van.</value>
+  </data>
+</root>

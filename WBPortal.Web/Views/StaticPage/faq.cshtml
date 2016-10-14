@@ -1,0 +1,160 @@
+﻿@model WBSSLStore.Service.ViewModels.StaticPageViewModel
+@{
+    ViewBag.version = WBSSLStore.Web.Helpers.Caching.SiteCacher.ResourceVersion();
+}
+@section headerTags{
+    @Html.Partial("_renderSEO", Model != null && Model.CMSPage != null ? Model.CMSPage : new WBSSLStore.Domain.CMSPage())
+}
+@section sitecss{
+
+}
+@section Jscripts{
+    @System.Web.Optimization.Scripts.Render("/bundales/wb/scripts?v=" + ViewBag.version)
+    <script type="text/javascript">
+    $(function () {
+        $(".accordion_example").smk_Accordion();
+    });
+    </script>
+
+}
+
+@Html.Partial("_banner", new Tuple<string, string>("", "FAQs"))
+<div class="content">
+    <div class="wrapper">
+        <div class="column3">
+            <div class="mobtopcol">
+                <div class="column3-2">
+                    <h3>Frequently Asked Questions</h3>
+                    <div id="cssmenu">
+                        <ul class="accordion_example resource">
+                            <li class="accordian-green">
+                                <div>
+                                    <p>Why are we cheaper?</p>
+                                    <div class="clear"></div>
+                                </div>
+                                <div>
+                                    <p>We are a very important Symantec &amp; Comodo Platinum Partner and we purchase SSL certificates in extremely large quantities from them. We sign extensive contracts and make long-term commitments because we have created the vehicle to sell &amp; manage a lot of their products; therefore we are able to buy their products at bulk rates. But not only are we able to deliver the exact same products at discounted prices, we are what is called a Value-Added Reseller (VAR), which means we are able to also provide more value to a customer such as; superior customer service &amp; technical support that the bigger companies are not necessarily set-up to do for high volumes of SSL.</p>
+                                </div>
+                            </li>
+                            <li class="accordian-green">
+                                <div>
+                                    <p>What do I need to purchase an SSL certificate?</p>
+                                    <div class="clear"></div>
+                                </div>
+                                <div>
+                                    <p>You will need your CSR and certain required documents depending on the certificate you purchase. You can get your CSR from your hosting provider or your system administrator. Once, you purchase the certificate and process your order. You will then need to send your necessary documents to the respective company. For Domain Validated Certificates you will receive an Approver or DCV email to prove you are the domain owner. For OV &amp; EV certificates, you will need to provide the documentation requested.</p>
+                                </div>
+                            </li>
+                            <li class="accordian-green">
+                                <div>
+                                    <p>How does your purchase process work?</p>
+                                    <div class="clear"></div>
+                                </div>
+                                <div>
+                                    <p>Our easy purchase process works like this:</p>
+                                    <ol>
+                                        <li>Select your SSL certificate</li>
+                                        <li>Add item to cart</li>
+                                        <li>Make your payment</li>
+                                        <li>Click on 'Generate Certificate Now'</li>
+                                        <li>Process your CSR</li>
+                                        <li>Validation process is done</li>
+                                        <li>You receive the certificate via email</li>
+                                        <li>Install the certificate in your web server</li>
+                                    </ol>
+                                    <p>If you have any questions, just ask an SSL Expert via our LIVE CHAT support.</p>
+                                </div>
+                            </li>
+                            <li class="accordian-green">
+                                <div>
+                                    <p>How do I renew my certificate?</p>
+                                    <div class="clear"></div>
+                                </div>
+                                <div>
+                                    <p>A renewal is just like buying a new SSL certificate. All you have to do is login to your account and purchase a new certificate or click renew on your expiring certificate. Please be aware that you will have to process new CSR for this renewal…it is done this way for security reasons.</p>
+                                </div>
+                            </li>
+                            <li class="accordian-green">
+                                <div>
+                                    <p>I don't see my Domain Approver Email?</p>
+                                    <div class="clear"></div>
+                                </div>
+                                <div>
+                                    <p>All you have to do login to our website and go to your order details. At the bottom of the page, there is a 'Resend Approval Email' button that you can click to resend OR you can come on LIVE CHAT and/or submit a support ticket request.</p>
+                                </div>
+                            </li>
+                            <li class="accordian-green">
+                                <div>
+                                    <p>What's the difference between DV, OV &amp; EV SSL certificates?</p>
+                                    <div class="clear"></div>
+                                </div>
+                                <div>
+                                    <strong>Domain Validation (DV)</strong>
+                                    <p>DV or a Domain Validated Certificate is a certificate that only requires you to verify that you are the owner of your domain. This occurs by receiving an email that is sent to the WHOIS information or email addresses belonging to that domain to verify that you own the rights to use the domain. This happens immediately for fast issuance, but sometimes lacks trust because almost anyone can get a DV certificate issued. Here are our DV certs:</p>
+                                    <strong>Organizational Validation (OV)</strong>
+                                    <p>For Organization Validated (OV) Certificates, the issuing Certificate Authority (CA) validates your organization information to make sure you are an actual organization. They verify the Organization Name, Physical Address, and Phone Number. This data must match with the WHOIS information and also a public Government Information website or an approved Third-Party Website before being issued. OV certificates add more trust to a consumer because they are assured that they are doing business with a real corporate entity. Here are our OV certs:</p>
+                                    <strong>Extended Validation (EV)</strong>
+                                    <p>EV or Extended Validation Certificates (also known as "Green Bar" Certificates) are recognized and known as the most highly trusted type of SSL certificate. During the EV verification process, the issuing vendor or CA totally verifies that you are a legitimate business and in good standing above and beyond an OV verification process. Once this process is successfully completed and your EV SSL is issued, all of the browser indicators will be activated on your site to let your customers know that you can be trusted. The most important indicator that becomes active is the "Green Bar" in a user's web browser. Research shows that people are aware of the green bar and view it as being trustworthy. EV certificates are the only certificates where potential ROI exists…because more trust means more confidence; which could mean they are more likely to buy from you. You can learn more about EV certs here:</p>
+                                </div>
+                            </li>
+                            <li class="accordian-green">
+                                <div>
+                                    <p class="resline">What documents are required for Extended Validation (EV) certificates?</p>
+                                    <div class="clear"></div>
+                                </div>
+                                <div>
+                                    <p>In some cases where your company cannot be validated in "government authority" resources, you may be required to provide a Government Issued Business Credential, aka "Proof of Right" (POR); which is a doc that gives a company the right to do business in that name. Examples of acceptable documents include, but are not limited to:</p>
+                                    <ul>
+                                        <li>Articles of Incorporation/Certificate of Formation</li>
+                                        <li>Business/Vendor/Reseller/Merchant License</li>
+                                        <li>Charter Documents/Partnership Papers</li>
+                                        <li>Registration of Trade or Assumed Name/Doing Business As/Fictitious Name Statement</li>
+                                        <li>Registro Mercantil</li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <h3 class="resh3">White Papers</h3>
+                    <div id="cssmenub">
+                        <ul class="accordion_example resource">
+                            <li class="accordian-green">
+                                <div>
+                                    <p>White Paper-1</p>
+                                    <div class="clear"></div>
+                                </div>
+                                <div>
+                                    <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old</p>
+                                    <div class="resbtnwrp"><a class="symantecbtn" href="#">Download White Paper</a></div>
+                                </div>
+                            </li>
+                            <li class="accordian-green">
+                                <div>
+                                    <p>White Paper-2</p>
+                                    <div class="clear"></div>
+                                </div>
+                                <div>
+                                    <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old</p>
+                                    <div class="resbtnwrp"><a class="symantecbtn" href="#">Download White Paper</a></div>
+                                </div>
+                            </li>
+                            <li class="accordian-green">
+                                <div>
+                                    <p>White Paper-3</p>
+                                    <div class="clear"></div>
+                                </div>
+                                <div>
+                                    <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old</p>
+                                    <div class="resbtnwrp"><a class="symantecbtn" href="#">Download White Paper</a></div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+                @Html.Partial("_rightpanel", (Model != null && !string.IsNullOrEmpty(Model.CurrentUserName) ? Model.CurrentUserName : ""))
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>

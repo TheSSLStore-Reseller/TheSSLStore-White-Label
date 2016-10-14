@@ -1,0 +1,113 @@
+﻿@model WBSSLStore.Service.ViewModels.StaticPageViewModel
+@{
+    ViewBag.version = WBSSLStore.Web.Helpers.Caching.SiteCacher.ResourceVersion();
+    WBSSLStore.Web.Util.WBSiteSettings setting = new WBSSLStore.Web.Util.WBSiteSettings(WBSSLStore.Web.Helpers.Caching.SiteCacher.CurrentSite);
+}
+@section headerTags{
+    @Html.Partial("_renderSEO", Model != null && Model.CMSPage != null ? Model.CMSPage : new WBSSLStore.Domain.CMSPage())
+}
+@section sitecss{
+
+}
+@section Jscripts{
+
+@System.Web.Optimization.Scripts.Render("/bundales/wb/jquery.unobtrusive.validate-js?v=" + ViewBag.version)
+
+<script type="text/javascript">
+        function consuccess(data) {
+            var txt = "";
+            if (data != null && data.issuccess == "true") {
+                txt = "<div class='alert-success'>Your request has been submited successfully.</div>"
+                $("#msgtxt").html(txt)
+                $(".cuscls").each(function () {
+                    $(this).val('');
+                });
+            } else {
+                txt = "<div class='alert-danger'>Oops! your request has not been submitted. Please contact support.</div>"
+                $("#msgtxt").html(txt)
+            }
+        }
+</script>
+
+
+}
+
+@Html.Partial("_banner", new Tuple<string, string>("", "About Us"))
+<div class="content">
+    <div class="wrapper">
+        <div class="column3">
+            <div class="mobtopcol">
+                <div class="column3-2">
+                    <div class="contactwrap">
+                        <div class="contbox">
+                            <div class="contboxdtl">
+                                <p class="title">New Business Development:</p>
+                                <p class="name">NAME <span>Web Security Specialist / New Business Development</span> </p>
+                                <span>Cell: (+1) 12345678</span> <span>Landline +1 123-456-7890</span> <span>Email: <a href="mailto:@(!string.IsNullOrEmpty(setting.SiteSupportEmail) ? setting.SiteSupportEmail : "")">@(!string.IsNullOrEmpty(setting.SiteSupportEmail) ? setting.SiteSupportEmail : "")</a></span>
+                            </div>
+                        </div>
+                        <div class="contbox">
+                            <div class="contboxdtl">
+                                <p class="title">Account Manager:</p>
+                                <p class="name">John Deos <span>SSL Web Security Specialist / Partner Account Manager</span> </p>
+                                <span>Cell: +1 12345678 </span> <span>Landline: +1 123-456-7890</span> <span>Email: <a href="email@yoursite.com">email@yoursite.com</a></span>
+                            </div>
+                        </div>
+                        <div class="contbox">
+                            <div class="contboxdtl">
+                                <div class="contboxwhite">
+                                    <p class="title">Support:</p>
+                                    <p>Email: <a href="mailto:@(!string.IsNullOrEmpty(setting.SiteSupportEmail) ? setting.SiteSupportEmail : "")">@(!string.IsNullOrEmpty(setting.SiteSupportEmail) ? setting.SiteSupportEmail : "")</a></p>
+                                </div>
+                                <div class="contboxwhite">
+                                    <p class="title">Billing:</p>
+                                    <p>Email: <a href="mailto:@(!string.IsNullOrEmpty(setting.SiteBillingEmail) ? setting.SiteBillingEmail : "")">@(!string.IsNullOrEmpty(setting.SiteBillingEmail) ? setting.SiteBillingEmail : "")</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                   
+                    <div class="contactformbox">
+                        <div id="msgtxt">
+                        </div>
+                        <h2>Please complete the form below and we will get back to you</h2>
+                        @using (Ajax.BeginForm("contactuspost", "staticpage", new AjaxOptions { HttpMethod = "POST", OnSuccess = "consuccess", OnFailure = "" }, new { area = "", id = "frmContacus" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="contactform">
+                                <ul>
+                                    <li>
+
+                                        @Html.TextBox("txtCompany", "", new { id = "txtCompany", placeholder = "Company Name:", @class = "cuscls" })
+                                    </li>
+                                    <li>
+                                        @Html.TextBox("txtFullname", "", new { id = "txtFullname", placeholder = "Full Name:", @class = "cuscls" })
+                                    </li>
+                                    <li>
+                                        @Html.TextBox("txtPhone", "", new { id = "txtPhone", placeholder = "Phone:", @class = "cuscls" })
+                                    </li>
+                                    <li>
+                                        @Html.TextBox("txtEmail", "", new { id = "txtEmail", placeholder = "Email:", @class = "cuscls" })
+                                    </li>
+                                    <li>
+                                        @Html.TextArea("txtComment", "", new { id = "txtComment", rows = "4", placeholder = "Message*", @class = "cuscls" })
+
+                                    </li>
+                                    <div class="clear"></div>
+                                    <p class="contbutton">
+                                        <input type="submit" id="submit" class="orangebtn" value="Submit">
+                                    </p>
+                                </ul>
+                            </div>
+                        }
+                    </div>
+                </div>
+                @Html.Partial("_rightpanel", (Model != null && !string.IsNullOrEmpty(Model.CurrentUserName) ? Model.CurrentUserName : ""))
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+@{ setting = null;
+}

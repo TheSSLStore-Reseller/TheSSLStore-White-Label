@@ -1,0 +1,271 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    @if (IsSectionDefined("headerTags"))
+    {
+        @RenderSection("headerTags", required: false)
+    }
+    else
+    {
+        <title>@ViewBag.Title</title>
+
+    }
+    @{
+        ViewBag.version = WBSSLStore.Web.Helpers.Caching.SiteCacher.ResourceVersion();
+        WBSSLStore.Domain.Site site = WBSSLStore.Web.Helpers.Caching.SiteCacher.CurrentSite;
+        System.Web.Security.Membership.ApplicationName = site.ID.ToString();
+
+        if (System.Web.HttpContext.Current.User.Identity.IsAuthenticated)
+        {
+            WBSSLStore.Web.Helpers.Authentication.SSLStoreUser user = ((WBSSLStore.Web.Helpers.Authentication.SSLStoreUser)System.Web.Security.Membership.GetUser());
+            if (user != null && user.Details != null)
+            {
+                ViewBag.FullName = user.Details.FirstName + " " + user.Details.LastName;
+            }
+            else if (!string.IsNullOrEmpty(System.Web.HttpContext.Current.User.Identity.Name))
+            {
+                user = ((WBSSLStore.Web.Helpers.Authentication.SSLStoreUser)System.Web.Security.Membership.GetUser(System.Web.HttpContext.Current.User.Identity.Name));
+                if (user != null && user.Details != null)
+                {
+                    ViewBag.FullName = user.Details.FirstName + " " + user.Details.LastName;
+                }
+            }
+        }
+        else
+        {
+            ViewBag.FullName = string.Empty;
+        }
+
+        string CurrentLangCode = WBSSLStore.Web.Helpers.WBHelper.CurrentLangCode;
+    }
+    
+    @System.Web.Optimization.Styles.Render("~/bundales/adminmastercss?v=" + ViewBag.version)
+    
+
+    @if (Request.RawUrl.ToString().ToLower().Contains("/admin/sitesettings"))
+    {
+
+        @System.Web.Optimization.Scripts.Render("/bundales/jquery-1.5.1?v=" + ViewBag.version)
+    }
+    else
+    {
+        @System.Web.Optimization.Scripts.Render("/bundales/jquery.11.3.js?v=" + ViewBag.version)
+    }
+    <noscript>
+        <meta http-equiv='refresh' content='0; URL=/JavascriptDisabled' />
+    </noscript>
+</head>
+<body>
+    <table width="881" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+            <td height="40" align="left" valign="top">
+                &nbsp;
+            </td>
+        </tr>
+        <tr>
+            <td align="left" valign="top">
+                <table width="870" border="0" align="left" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td align="left" valign="top">
+                            <a href="/admin/home" class="logo">
+                                <img src="/upload/sitelogo/logo.png" alt="" width="230" height="60" />
+                            </a>
+                        </td>
+                        <td align="right" valign="bottom" class="bold">
+                            @*Welcome*@ @WBSSLStore.Resources.GeneralMessage.Message.Welcome_Caption @ViewBag.FullName<br />
+                            <br />@WBSSLStore.Resources.GeneralMessage.Message.CurrentCulture_Caption&nbsp;:&nbsp;@if (@CurrentLangCode == "en")
+                            {
+                                <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/Icongb.png" alt="English" title="English" align="absmiddle" />
+                            }
+                            else if (@CurrentLangCode == "fr")
+                            {
+                                <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/Iconfrance.png" alt="French" title="French" align="absmiddle" />
+                            }
+                            else if (@CurrentLangCode == "it")
+                            {
+                                <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/IconItaly-Flag.png" alt="Italian" title="Italian" align="absmiddle" />
+                            }
+                            else if (@CurrentLangCode == "de")
+                            {
+                                <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/IconGermany-Flag.png" alt="German" title="German" align="absmiddle" />
+                            }
+                            else if (@CurrentLangCode == "pt-br")
+                            {
+                                <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/IconBrazil-Flag.png" alt="Brazilian" title="Brazilian" align="absmiddle" />
+                            }
+                            else if (@CurrentLangCode == "es")
+                            {
+                                <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/IconSpain-Flag.png" alt="Spanish" title="Spanish" align="absmiddle" />
+                            }
+                            else if (@CurrentLangCode == "hu")
+                            {
+                                <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/hungarian16.png " alt="Hungarian" title="Hungarian" align="absmiddle" />
+                            }
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td height="15" align="left" valign="top"></td>
+        </tr>
+        <tr>
+            <td height="15" align="left" valign="top">
+                <table width="881" border="0" align="left" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td width="66" align="left" valign="top">
+                            <a href="/admin/home">
+                                <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/navihd.png" alt="home" width="66" height="45" align="absmiddle">
+                            </a>
+                        </td>
+                        <td width="750" align="left" valign="middle" class="navibg">
+                            <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td height="40" align="left" valign="middle">
+                                        <div class="menu">
+                                            <ul>
+                                                <li>
+                                                    <a href="@Url.Action("index", "reseller")">
+                                                        @WBSSLStore.Resources.GeneralMessage.Message.Admin_menu_Reseller
+                                                </a>
+                                                <ul>
+                                                    <li><a href="@Url.Action("index", "reseller")">@WBSSLStore.Resources.GeneralMessage.Message.Admin_sbm_ManageReseller</a></li>
+                                                    <li><a href="@Url.Action("create", "reseller")">@WBSSLStore.Resources.GeneralMessage.Message.Admin_sbm_AddReseller</a></li>
+                                                    <li><a href="@Url.Action("index", "support", new { utype = "reseller" })">@WBSSLStore.Resources.GeneralMessage.Message.Admin_sbm_SupportRequest</a></li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a href="@Url.Action("index", "customer")">
+                                                    @WBSSLStore.Resources.GeneralMessage.Message.Admin_menu_Customers
+                                            </a>
+                                            <ul>
+                                                <li><a href="@Url.Action("index", "customer")">@WBSSLStore.Resources.GeneralMessage.Message.Admin_sbm_ManageCustomer</a></li>
+                                                <li><a href="@Url.Action("create", "customer")">@WBSSLStore.Resources.GeneralMessage.Message.Admin_sbm_AddCustomer</a></li>
+                                                <li><a href="@Url.Action("index", "support", new { utype = "customer" })">@WBSSLStore.Resources.GeneralMessage.Message.Admin_sbm_SupportRequest</a></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("index", "product")">
+                                                @WBSSLStore.Resources.GeneralMessage.Message.Admin_menu_Products
+                                        </a>
+                                        <ul>
+                                            <li><a href="@Url.Action("index", "product")">@WBSSLStore.Resources.GeneralMessage.Message.Admin_sbm_ManageProducts</a></li>
+                                            <li><a href="@Url.Action("add", "product")">@WBSSLStore.Resources.GeneralMessage.Message.Admin_sbm_AddProducts</a></li>
+                                            <li><a href="@Url.Action("index", "contract")">@WBSSLStore.Resources.GeneralMessage.Message.Admin_sbm_ManageContracts</a></li>
+                                            <li><a href="@Url.Action("create", "contract")">@WBSSLStore.Resources.GeneralMessage.Message.Admin_sbm_AddContracts</a></li>
+                                            <li><a href="@Url.Action("pricing", "product")">@WBSSLStore.Resources.GeneralMessage.Message.Admin_sbm_ViewYourPricing</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("index", "promocode")">@WBSSLStore.Resources.GeneralMessage.Message.Admin_menu_PromoCodes</a>
+                                        <ul>
+                                            <li><a href="@Url.Action("create", "promocode")">@WBSSLStore.Resources.GeneralMessage.Message.Admin_sbm_GeneratePromocode</a></li>
+                                            <li><a href="@Url.Action("index", "promocode")">@WBSSLStore.Resources.GeneralMessage.Message.Admin_sbm_ManagePromocode</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="#">@WBSSLStore.Resources.GeneralMessage.Message.Admin_menu_StoreConfiguration</a>
+                                        <ul>
+                                            <li><a href="@Url.Action("index", "emailtemplate")">@WBSSLStore.Resources.GeneralMessage.Message.Admin_sbm_EmailTemplate</a></li>
+                                            <li><a href="@Url.Action("index", "sitesettings")">@WBSSLStore.Resources.GeneralMessage.Message.Admin_sbm_GeneralSetting</a></li>
+                                            <li><a href="@Url.Action("index", "paymentgateway")">@WBSSLStore.Resources.GeneralMessage.Message.Admin_sbm_PaymentSetting</a></li>
+                                            <li><a href="@Url.Action("index", "content")">@WBSSLStore.Resources.GeneralMessage.Message.Admin_sbm_EditStoreContent</a></li>
+
+                                            <li><a href="@Url.Action("smtpsettings", "sitesettings")">@WBSSLStore.Resources.GeneralMessage.Message.Admin_sbm_SMTPSetting</a></li>
+                                            <li><a href="@Url.Action("robots", "sitesettings")">@WBSSLStore.Resources.GeneralMessage.Message.Admin_sbm_AddRobotsFile</a></li>
+                                            <li><a href="@Url.Action("googleanalytics", "sitesettings")">@WBSSLStore.Resources.GeneralMessage.Message.Admin_sbm_AddGoogleAnalyics</a></li>
+                                            @*<li><a href="@Url.Action("banner", "sitesettings")">@WBSSLStore.Resources.GeneralMessage.Message.Admin_sbm_AddBanner</a></li>*@
+                                            <li><a href="@Url.Action("index", "testimonials")">Manage Testimonials</a></li>
+                                        </ul>
+                                    </li>
+                                    <li style="border-right: none;">
+                                        <a href="#">@WBSSLStore.Resources.GeneralMessage.Message.Admin_menu_Reports</a>
+                                        <ul>
+                                            <li>
+                                                <a href="@Url.Action("datewise", "report")">
+                                                    @WBSSLStore.Resources.GeneralMessage.Message.Admin_sbm_DatewiseReport
+                                            </a>
+                                        </li>
+                                        <li><a href="@Url.Action("productwise", "report")">@WBSSLStore.Resources.GeneralMessage.Message.Admin_sbm_ProductwiseReport</a></li>
+                                        <li><a href="@Url.Action("customerwise", "report")">@WBSSLStore.Resources.GeneralMessage.Message.Admin_sbm_CustomerwiseReport</a></li>
+                                        <li><a href="@Url.Action("transactionwise", "report")">@WBSSLStore.Resources.GeneralMessage.Message.Admin_sbm_TransactionwiseReport</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </td>
+        <td width="65" align="right" valign="top">
+            <a href="/Logout">
+                <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/navilogout.png" alt="logout" width="65" height="45" align="absmiddle">
+            </a>
+        </td>
+    </tr>
+</table>
+</td>
+</tr>
+@if (!@WBSSLStore.Web.Util.WBSiteSettings.IsSMTPConfigure)
+{
+    <tr>
+        <td height="15" align="left" valign="top">
+            &nbsp;
+        </td>
+    </tr>
+    <tr>
+        <td height="15" align="left" valign="top" class="normsg fontwo-2" style="border-radius: 5px 5px 5px 5px;">
+            @WBSSLStore.Resources.GeneralMessage.Message.SmtpConfigureMSG_AdminMaster <a href="@Url.Action("smtpsettings", "sitesettings")">
+                @WBSSLStore.Resources.GeneralMessage.Message.Click_Here
+            </a> @WBSSLStore.Resources.GeneralMessage.Message.To_Configure
+        </td>
+    </tr>
+}
+<tr>
+    <td height="15" align="left" valign="top"></td>
+</tr>
+@RenderBody()
+<tr>
+    <td align="left" valign="top">
+        <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/btmsprt.gif" alt="whitebrand" width="881" height="8" align="top">
+    </td>
+</tr>
+<tr>
+    <td align="left" valign="top">
+        &nbsp;
+    </td>
+</tr>
+<tr>
+    <td align="left" valign="top">
+        <table width="881" border="0" align="left" cellpadding="0" cellspacing="0">
+            <tr>
+                <td width="7" align="left" valign="top">
+                    <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/fleft.gif" alt="whitebrand" width="9" height="45">
+                </td>
+                <td width="866" align="center" valign="middle" class="ftrbg">
+                    <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td width="50%" align="left" valign="middle">
+                                &nbsp;
+                            </td>
+                            <td width="50%" align="right" valign="middle" class="bold">
+                                @WBSSLStore.Resources.GeneralMessage.Message.All_Rights_Reserved_by @site.Alias
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td width="9" align="right" valign="top">
+                    <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/fright.gif" alt="whitebrand" width="10" height="45">
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>
+<tr>
+    <td align="left" valign="top">
+        &nbsp;
+    </td>
+</tr>
+</table>
+</body>
+</html>

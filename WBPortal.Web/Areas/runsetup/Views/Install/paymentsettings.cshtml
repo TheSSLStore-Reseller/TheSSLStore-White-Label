@@ -1,0 +1,163 @@
+﻿@using WhiteBrandShrink.Models;
+@model WhiteBrandShrink.Models.Paymentviewmodel
+@{
+    ViewBag.Title = "Payment Settings configuration";
+    Layout = "~/Areas/runsetup/Views/Shared/_Layout.cshtml";
+}
+@section scripts{
+    @Scripts.Render("~/bundales/unobtrusive-ajaxjs")
+@Scripts.Render("~/bundales/validate-unobtrusive")
+
+    
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('#installation-form').submit(function () {
+                if ($('#installation-form').valid()) {
+                    window.setTimeout(function () {
+                        //$(".throbber.show()");
+                    }, 1000);
+
+                    $('input[type=submit]', this).attr('disabled', 'disabled');
+                }
+            });
+
+
+            $("#chkReqCredential").change(function () {
+                if ($(this).is(":checked")) {
+                    $("#dvSMTPcredential").show('slow');
+                } else
+                    $("#dvSMTPcredential").hide('slow');
+
+            });
+            $("#chkReqCredential").change();
+        });
+
+        function StartProcess(data) {
+            ShowLoader();
+        }
+        function onSuccess(data) {
+            HideLoader();
+            if (data != null && data != '' && data.isSuccess.toString() == 'false' && data.msg.toString() != '') {
+                $("#geneMsg").html('');
+                $("#geneMsg").addClass('errormsg');
+                $("#geneMsg").html(data.msg);
+            }
+            else if (data != null && data != '' && data.isSuccess.toString().toLowerCase() == 'true' && data.url.toString() != '') {
+                window.location.href = data.url.toString();
+            }
+
+            $('#installation-form input[type=submit]').removeAttr('disabled');
+        }
+        function OnFail(data) {
+            $("#geneMsg").addClass('errormsg');
+            $("#geneMsg").html((data != null && data != '' && data.status == 500) ? data.statusText : 'General system error. Please try again');
+            HideLoader();
+            $('#installation-form input[type=submit]').removeAttr('disabled');
+        }
+
+        function ShowLoader() {
+            $("#dvLoader").addClass('loader');
+            $("#dvLoader").show();
+        }
+        function HideLoader() {
+            $("#dvLoader").removeClass('loader');
+            $("#dvLoader").hide();
+        }
+    </script>
+}
+
+@Html.Partial("_wizardsteps", 1)
+<div>
+    @using (Ajax.BeginForm("paymentsave", "install", "", new AjaxOptions { OnBegin = "StartProcess", OnSuccess = "onSuccess", OnFailure = "OnFail" }, new { id = "installation-form" }))
+    {
+        @Html.AntiForgeryToken()
+        Html.EnableClientValidation();
+        <div id="dvLoader" class="" style="display:none;">
+            <span class="throbber-header">
+                Installing Site's settings...
+            </span>
+        </div>
+        <div id="geneMsg">
+            @if (Model != null && !string.IsNullOrEmpty(Model.Errormessage))
+            {
+                @Html.Raw(Model.Errormessage);
+            }
+        </div>
+        <div class="formbox">
+            <h2>Payment Gateway Details</h2>
+            <div class="formdtl">
+                <div class="fullraw padnone paypal">
+                    <h3>PayPal Settings</h3>
+                    <div class="formraw">
+                        <label>Paypal ID<span>*</span></label>
+                        @Html.TextBoxFor(x => x.paymentmodel.PaypalID)
+                        @Html.ValidationMessageFor(x => x.paymentmodel.PaypalID)
+                        <p class="formhint">Use Your PayPal Email Address! </p>
+                    </div>
+                </div>
+                <div class="fullraw padnone dotnet">
+                    <h3>Authorize.net Settings</h3>
+                    <div class="formraw">
+                        <label>API Login ID<span>*</span></label>
+                        @Html.TextBoxFor(x => x.paymentmodel.AuthorizeNetloginID)
+                        @Html.ValidationMessageFor(x => x.paymentmodel.AuthorizeNetloginID)
+                    </div>
+                    <div class="formraw">
+                        <label>Transaction Key/Signature<span>*</span></label>
+                        @Html.TextBoxFor(x => x.paymentmodel.AuthorizeNetTranKey)
+                        @Html.ValidationMessageFor(x => x.paymentmodel.AuthorizeNetTranKey)
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="formraw checkraw">
+                    @Html.CheckBoxFor(x => x.paymentmodel.EnableTestMode)
+                    <label for="twitt">Enable Test Mode (Credit cards will not be charged)</label>
+                </div>
+
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="formbox">
+            <h2>SMTP Setup</h2>
+            <div class="formdtl">
+                <div class="formraw">
+                    <label>SMTP Host<span>*</span></label>
+                    @Html.TextBoxFor(x => x.SMTPmodel.SMTPHOST)
+                    @Html.ValidationMessageFor(x => x.SMTPmodel.SMTPHOST)
+                </div>
+                <div class="formraw">
+                    <label>SMTP Port<span>*</span></label>
+                    @Html.TextBoxFor(x => x.SMTPmodel.SMTPPORT)
+                    @Html.ValidationMessageFor(x => x.SMTPmodel.SMTPPORT)
+                </div>
+                <div id="dvSMTPcredential">
+                    <div class="formraw">
+                        <label>SMTP Username<span>*</span></label>
+                        @Html.TextBoxFor(x => x.SMTPmodel.SMTPUser)
+                        @Html.ValidationMessageFor(x => x.SMTPmodel.SMTPUser)
+                    </div>
+                    <div class="formraw">
+                        <label>SMTP Password<span>*</span></label>
+                        @Html.PasswordFor(x => x.SMTPmodel.SMTPPassword)
+                        @Html.ValidationMessageFor(x => x.SMTPmodel.SMTPPassword)
+                    </div>
+                </div>
+                <div class="formraw checkraw">
+                    @Html.CheckBoxFor(x => x.SMTPmodel.UserSSL)
+                    <label for="usessl">Use SSL</label>
+                </div>
+                <div class="formraw checkraw">
+
+                    @Html.CheckBoxFor(x => x.SMTPmodel.RequireCredintial, new { id = "chkReqCredential" })
+                    <label for="credentials">Require Credentials</label>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+
+        <div class="fullrawbtn">
+            <a href="wizard-step3.html"><input type="submit" id="next" name="next" value="Next"></a>
+        </div>
+    }
+</div>

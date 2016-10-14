@@ -1,0 +1,13 @@
+﻿{
+	"AuthRequest":{
+		"PartnerCode":"[PARTNERCODE]",
+		"AuthToken":"[AUTHCODE]",
+		"ReplayToken":"[REPLAYTOKEN]",
+		"UserAgent":"[USERAGENT]"
+	},
+	"CustomOrderID":"",
+	"TheSSLStoreOrderID":"[SSLSTOREOID]",
+	"ResendEmailType":"[REEMAILTYPE]",
+	"RefundReason":"[REFUNDREASON]",
+	"RefundRequestID":"[REFUNDREQUESTID]"
+}

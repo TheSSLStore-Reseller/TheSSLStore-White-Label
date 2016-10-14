@@ -1,0 +1,58 @@
+﻿@model WBSSLStore.Service.ViewModels.StaticPageViewModel
+@{
+    ViewBag.version = WBSSLStore.Web.Helpers.Caching.SiteCacher.ResourceVersion();
+}
+@section headerTags{
+    @Html.Partial("_renderSEO", Model != null && Model.CMSPage != null ? Model.CMSPage : new WBSSLStore.Domain.CMSPage())
+}
+@section sitecss{
+
+}
+@section Jscripts{
+}
+
+@Html.Partial("_banner", new Tuple<string, string>("", "Support"))
+<div class="content">
+    <div class="wrapper">
+        <div class="column3">
+            <div class="mobtopcol">
+                <div class="column3-2">
+                    <div class="cmnpagewrap">
+                        <div class="cancelrequest">
+                            <h3>Need a help? We offer 24 X 7 Technical Support via Email or Live Chat. </h3>
+                            <div class="supportdir">
+                                <ul>
+                                    <li><a href="#">Click for Live Chat Now</a></li>
+                                    <li><a href="#">Submit a Support Ticket</a></li>
+                                    <li><a href="#">Knoweldgebase</a></li>
+                                    <li><a href="#">SSL Glossary</a></li>
+                                    <li><a href="@Url.RouteUrl("support_us")">Refund Policy</a></li>
+                                </ul>
+                            </div>
+                            <h3>Technical Resource</h3>
+                            <div class="supportdir">
+                                <ul>
+                                    <li><a href="#">Instructions on generating your CSR</a></li>
+                                    <li><a href="#">Instructions on installing SSL Certificate</a></li>
+                                    <li><a href="#">Installing your SSL Sites Seals</a></li>
+                                </ul>
+                            </div>
+                            <h3>Technical Knowledgebase Articles</h3>
+                            <div class="supportdir">
+                                <ul>
+                                    <li><a href="#">RapidSSL Knowledgebase</a></li>
+                                    <li><a href="#">GeoTrust Knowledgebase</a></li>
+                                    <li><a href="#">Thwate Knowledgebase</a></li>
+                                    <li><a href="#">VeriSign Knowledgebase</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                @Html.Partial("_rightpanel", (Model != null && !string.IsNullOrEmpty(Model.CurrentUserName) ? Model.CurrentUserName : ""))
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>

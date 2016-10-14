@@ -1,0 +1,89 @@
+﻿@model WBSSLStore.Gateways.RestAPIModels.Response.CSRDecodeResponse
+@{
+
+    ViewBag.Title = "Check CSR";
+}
+
+@Html.Partial("_banner", new Tuple<string, string>("", "Check CSR"))
+<div class="content">
+    <div class="wrapper">
+        <div class="column3">
+            <div class="mobtopcol">
+                <div class="column3-2">
+                    <div class="cmnpagewrap">
+                        <div class="checkcsr">
+                            <h2>@WBSSLStore.Resources.GeneralMessage.Message.CheckCSR_Header</h2>
+                            <h4>Decode your Certificate Signing Request (CSR)</h4>
+                            <p>This tool allows you to check CSRs and view the information contained in them. Simply enter your CSR and the CSR Decoder will do the rest.</p>
+                            <p>
+                                @WBSSLStore.Resources.LongText.Message.CheckCSRNote
+                            </p>
+                            <p><img src="/content/images/csr.png" /></p>
+
+                            @using (Html.BeginForm("CheckCSR", "freetools", FormMethod.Post, new { area = "", id = "frmchkcsr" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                <p>
+                                    <textarea class="textarea" id="txtCSR" name="txtCSR"></textarea><br />
+                                </p>
+                                <p class="mrgbotnone">
+                                    <input type="submit" id="btnSubmit" name="btnSubmit" value="@WBSSLStore.Resources.GeneralMessage.Message.Submit_Btn" class="greenbtn" />
+                                </p>
+                            }
+                            @if (Model != null)
+                            {
+                                if (!Model.AuthResponse.isError)
+                                {
+                                    <p></p>
+                                    <div class="graybarbox mrgbotnone">
+                                        <h4>CSR Information:</h4>
+                                        <div class="graybarboxdtl csresult">
+                                            <ul>
+                                                <li><strong>@WBSSLStore.Resources.GeneralMessage.Message.Domain_Caption:</strong> <span class="grntxt">@Model.CommonName</span></li>
+                                                <li><strong>@WBSSLStore.Resources.GeneralMessage.Message.Email_Caption:</strong> <span class="grntxt">@Model.Email</span></li>
+                                                <li><strong>@WBSSLStore.Resources.GeneralMessage.Message.Organisation_Caption:</strong> <span class="grntxt">@Model.OrganizationName</span></li>
+                                                <li><strong>@WBSSLStore.Resources.GeneralMessage.Message.OrganisationUnit_Caption:</strong> <span class="grntxt">@Model.OrganizationUnit</span></li>
+                                                <li><strong>@WBSSLStore.Resources.GeneralMessage.Message.Locality_Caption:</strong> <span class="grntxt">@Model.Locality</span></li>
+                                                <li><strong>@WBSSLStore.Resources.GeneralMessage.Message.State_Caption:</strong> <span class="grntxt">@Model.State</span></li>
+                                                <li><strong>@WBSSLStore.Resources.GeneralMessage.Message.Country_Caption:</strong> <span class="grntxt breaktxt">@Model.Country</span></li>
+                                                <li><strong>KeySize:</strong> <span class="grntxt">@Model.KeySize</span></li>
+
+                                            </ul>
+                                            <div class="clear"></div>
+                                        </div>
+                                    </div>
+                                }
+                                else
+                                {
+
+                                    <div class='alert-error'>
+                                        <p>@Model.AuthResponse.Message[0]</p>
+                                    </div>
+                                }
+                            }
+
+
+                        </div>
+                    </div>
+                </div>
+
+                @Html.Partial("_rightpanel", "")
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+
+@section Jscripts{
+    <script type="text/javascript">
+        $(function () {
+            $("#frmchkcsr").submit(function (event) {
+                var $csrval = $("#txtCSR") .val();
+                if ($csrval == '') {
+                    alert('Please insert CSR!')
+                    return false;
+                }
+            });
+        });
+    </script>
+}

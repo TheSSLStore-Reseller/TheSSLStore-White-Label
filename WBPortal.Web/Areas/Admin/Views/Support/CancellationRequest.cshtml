@@ -1,0 +1,151 @@
+﻿@using WBSSLStore.Domain;
+@using WBSSLStore.Data.Infrastructure;
+@model OrderDetail
+@{
+    ViewBag.Title = "Cancellation/Refund Request";
+}
+<script src="@Url.Content("~/content/scripts/jquery.validate.min.js")" language="javascript" type="text/javascript" ></script>
+<script type="text/javascript" language="javascript">
+    $(function () {
+        $("#frmcancellation").validate({
+            errorElement: "em",
+            success: function (label) {
+                label.text("").addClass("success");
+            }
+        })
+
+        $('#ddlReason').change(function () {
+            $('#txtcomment').val($(this).val());
+            $('#txtcomment').focus();
+        })
+    });
+</script>
+<tr>
+    <td align="left" valign="top">
+        <table width="881" border="0" align="left" cellpadding="0" cellspacing="0">
+            <tr>
+                <td width="7" align="left" valign="top">
+                    <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/barleft.gif" alt="whitebrand" width="7" height="55">
+                </td>
+                <td width="866" align="left" valign="middle" class="hdbarbg">
+                    <table width="840" border="0" align="center" cellpadding="1" cellspacing="1">
+                        <tr>
+                            <td width="407" align="left" valign="middle" class="head1">
+                                @*Cancellation/Refund Request*@ @WBSSLStore.Resources.GeneralMessage.Message.Cancelation_Header
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td width="9" align="right" valign="top">
+                    <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/barright.gif" alt="whitebrand" width="9" height="55">
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>
+<tr>
+    <td align="left" valign="top" class="contbg">
+        @using (Html.BeginForm("cancellationrequest", "support", FormMethod.Post, new { id = "frmcancellation" }))
+        {
+            @Html.ValidationSummary(true)
+            <table width="870" border="0" align="center" cellpadding="0" cellspacing="7">
+                <tr>
+                    <td width="867" align="center" valign="top" class="bgclr">
+                        @Html.HiddenFor(model => model.Order.UserID)
+                        @Html.HiddenFor(model => model.Order.User.UserTypeID)
+                        @Html.HiddenFor(model => model.OrderID)
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td height="25" align="left" valign="top">
+                                    &nbsp;
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="left" valign="top">
+                                    <table width="100%" border="0" align="left" cellpadding="1" cellspacing="2">
+                                        <tr>
+                                            <td width="16%" height="30" align="right" valign="middle" class="bold">
+                                                @*Invoice ID*@ @WBSSLStore.Resources.GeneralMessage.Message.InvoiceNo_Caption:<br>
+                                            </td>
+                                            <td width="84%" align="left" valign="middle">
+                                                <label class="bold">
+                                                    @(WBSSLStore.Web.Helpers.WBHelper.InvoicePrefix(WBSSLStore.Web.Helpers.Caching.SiteCacher.CurrentSite) + Html.DisplayFor(model => model.OrderID))</label>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td height="30" align="right" valign="middle" class="bold">
+                                                @*Product*@ @WBSSLStore.Resources.GeneralMessage.Message.Product_Caption:
+                                            </td>
+                                            <td align="left" valign="middle">
+                                                <label class="bold">
+                                                    @Html.DisplayFor(model => model.ProductName)</label>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td height="30" align="right" valign="middle" class="bold">
+                                                @*Subject*@ @WBSSLStore.Resources.GeneralMessage.Message.Subject_Caption:
+                                            </td>
+                                            <td align="left" valign="middle">
+                                                @*Cancellation/Refund Request*@ @WBSSLStore.Resources.GeneralMessage.Message.Cancelation_Header
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td height="30" align="right" valign="middle" class="bold">
+                                                @*Credit/Refund*@ @WBSSLStore.Resources.GeneralMessage.Message.Credit_Refund_Caption:
+                                            </td>
+                                            <td align="left" valign="middle">
+                                                @Html.DropDownList("ddlRefundStatus", Enum.GetValues(typeof(WBSSLStore.Domain.RefundStatus)).Cast<WBSSLStore.Domain.RefundStatus>().Where(x => x != RefundStatus.NOACTION).Select(x => new SelectListItem { Text = x.GetEnumDescription(), Value = ((int)x).ToString() }), new { @class = "listmenu" })
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td height="30" align="right" valign="middle" class="bold">
+                                                @*Reason*@ @WBSSLStore.Resources.GeneralMessage.Message.Reason_Caption: <span class="redfont">*</span>
+                                            </td>
+                                            <td align="left" valign="middle">
+                                                <label>
+                                                    <select id="ddlReason" name="ddlReason" class="listmenu required" title="Please select proper reason.">
+                                                        <option value="">------@WBSSLStore.Resources.GeneralMessage.Message.Select_Caption------</option>
+                                                        <option value="Ordered by Mistake">@*Ordered by Mistake*@ @WBSSLStore.Resources.GeneralMessage.Message.Cancel_ddlreason_op1</option>
+                                                        <option value="My Hosting company doesn't allow third party SSL">@*My Hosting company
+                                                            doesn't allow third party SSL*@@WBSSLStore.Resources.GeneralMessage.Message.Cancel_ddlreason_op2</option>
+                                                        <option value="I don't have proper documents">@*I don't have proper documents*@@WBSSLStore.Resources.GeneralMessage.Message.Cancel_ddlreason_op3</option>
+                                                        <option value="Can not have approval email">@*Can not have approval email*@ @WBSSLStore.Resources.GeneralMessage.Message.Cancel_ddlreason_op4</option>
+                                                    </select>
+                                                </label>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="right" valign="middle" class="bold">
+                                                @*Description*@ @WBSSLStore.Resources.GeneralMessage.Message.Description_Caption: <span class="redfont">*</span>
+                                            </td>
+                                            <td align="left" valign="top">
+                                                <textarea name="txtcomment" id="txtcomment" cols="60" rows="5" class="required" title="Please enter comment."></textarea>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="right" valign="middle" class="bold">
+                                                &nbsp;
+                                            </td>
+                                            <td align="left" valign="top">
+                                                <input name="btnSubmit" type="submit" class="bluebtn" id="btnSubmit" value="@WBSSLStore.Resources.GeneralMessage.Message.Submit_Btn" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="left" valign="top">
+                                    &nbsp;
+                                </td>
+                            </tr>
+                            <tr>
+                                <td height="8" align="left" valign="top">
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        }
+    </td>
+</tr>

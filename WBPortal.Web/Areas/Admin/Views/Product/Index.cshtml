@@ -1,0 +1,168 @@
+﻿@model IEnumerable<WBSSLStore.Domain.Product> 
+@{
+    ViewBag.Title = "Index";
+    
+}
+<script type="text/javascript">
+    var updatesuccess = "@WBSSLStore.Resources.ErrorMessage.Message.ProductUpdateSuccess"
+    var updateunsuccess = "@WBSSLStore.Resources.ErrorMessage.Message.ProductUpdateUnSuccess"
+    var ProductAskDelete = "@WBSSLStore.Resources.ErrorMessage.Message.ProductAskDelete"
+    var updateDsuccess = "@WBSSLStore.Resources.ErrorMessage.Message.ProductDeleteSuccess"
+    var updateDunsuccess = "@WBSSLStore.Resources.ErrorMessage.Message.ProductDeleteUnSuccess"
+    $(function () {
+        $(".UpdateStatus").click(function () {
+            var recordToUpdate = $(this).attr("data-id");
+            if (recordToUpdate && recordToUpdate != '') {
+                $.post("/admin/product/changestatus/" + recordToUpdate,
+                       function (data) {
+                           if (data.toString().toLowerCase() == "true") {
+
+                               var imgsrc = $('#img-' + recordToUpdate).attr("src").toString();
+                               if (imgsrc.indexOf("deactive") > 0) {
+                                   $('#img-' + recordToUpdate).attr({ src: imgsrc.replace("deactive", "active") })
+                                   $('#img-' + recordToUpdate).attr({ title: "Active", alt: "Active" })
+                               }
+                               else {
+                                   $('#img-' + recordToUpdate).attr({ src: imgsrc.replace("active", "deactive") })
+                                   $('#img-' + recordToUpdate).attr({ title: "Deactivated", alt: "Deactivated" })
+                               }
+                               alert(updatesuccess);
+                           }
+                           else
+                               alert(updateunsuccess);
+                       });
+            }
+        }
+        );
+
+        $(".Remove").click(function () {
+            if (confirm(ProductAskDelete)) {
+                var recordToDelete = $(this).attr("data-id");
+                if (recordToDelete && recordToDelete != '') {
+                    $.post("/admin/product/delete/" + recordToDelete,
+                       function (data) {
+                           if (data.toString().toLowerCase() == "true") {
+                               alert(updateDsuccess);
+                               $('#row-' + recordToDelete).fadeOut('slow');
+
+                           }
+                           else
+                               alert(updateDunsuccess);
+                       });
+                }
+            }
+        });
+    });    
+</script>
+<tr>
+    <td align="left" valign="top">
+        <table width="881" border="0" align="left" cellpadding="0" cellspacing="0">
+            <tr>
+                <td width="7" align="left" valign="top">
+                    <img src="/content/Admin/images/barleft.gif" alt="whitebrand" width="7" height="55">
+                </td>
+                <td width="866" align="left" valign="middle" class="hdbarbg">
+                    <table width="840" border="0" align="center" cellpadding="1" cellspacing="1">
+                        <tr>
+                            <td width="407" align="left" valign="middle" class="head1">
+                                @*Manage Products*@ @WBSSLStore.Resources.GeneralMessage.Message.Manage_Products_Caption
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td width="9" align="right" valign="top">
+                    <img src="/content/Admin/images/barright.gif" alt="whitebrand" width="9" height="55">
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>
+<tr>
+    <td align="left" valign="top" class="contbg">
+        <table width="870" border="0" align="center" cellpadding="0" cellspacing="7">
+            <tr>
+                <td width="867" align="center" valign="top" class="bgclr">
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td height="8" align="left" valign="top">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="left" valign="top">
+                                <table width="841" border="0" align="center" cellpadding="0" cellspacing="0">
+                                    <tr>
+                                        <td align="left" valign="top" bgcolor="#d6d6d6">
+                                            <table width="841" border="0" align="left" cellpadding="5" cellspacing="1">
+                                                <tr>
+                                                    <td width="351" height="35" align="left" valign="middle" bgcolor="#eff8fd" class="bluefont">
+                                                        @*Product Name*@ @WBSSLStore.Resources.GeneralMessage.Message.Product_Caption
+                                                    </td>
+                                                    <td width="184" height="35" align="left" valign="middle" bgcolor="#eff8fd" class="bluefont">
+                                                        @*Product Code*@ @WBSSLStore.Resources.GeneralMessage.Message.ProductCode_Caption
+                                                    </td>
+                                                    <td width="69" height="35" align="center" valign="middle" bgcolor="#eff8fd" class="bluefont">
+                                                        @*Status*@ @WBSSLStore.Resources.GeneralMessage.Message.Status_Caption
+                                                    </td>
+                                                    <td width="72" align="center" valign="middle" bgcolor="#eff8fd" class="bluefont">
+                                                        @*Edit*@ @WBSSLStore.Resources.GeneralMessage.Message.Edit_Caption
+                                                    </td>
+                                                    <td width="78" align="center" valign="middle" bgcolor="#eff8fd" class="bluefont">
+                                                        @*Delete*@ @WBSSLStore.Resources.GeneralMessage.Message.Delete_Caption
+                                                    </td>
+                                                </tr>
+                                                @foreach (var item in Model)
+                                                {
+                                                    <tr id="row-@item.ID">
+                                                        <td align="left" valign="top" bgcolor="#FFFFFF">
+                                                            @Html.DisplayFor(modelItem => item.ProductName)
+                                                        </td>
+                                                        <td align="left" valign="top" bgcolor="#FFFFFF">
+                                                            @Html.DisplayFor(modelItem => item.InternalProductCode)
+                                                        </td>
+                                                        <td align="center" valign="top" bgcolor="#FFFFFF">
+                                                            <a href="javascript:;" class="UpdateStatus" data-id="@item.ID">
+                                                                @if (item.RecordStatus == WBSSLStore.Domain.RecordStatus.ACTIVE)
+                                                                {
+                                                                    <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-active.gif" id="img-@item.ID" alt="status" />
+                                                                }
+                                                                @if (item.RecordStatus == WBSSLStore.Domain.RecordStatus.INACTIVE)
+                                                                {
+                                                                    <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-deactive.gif" id="img-@item.ID" alt="status" />
+                                                                }
+                                                            </a>
+                                                        </td>
+                                                        <td align="center" valign="top" bgcolor="#FFFFFF">
+                                                            @if (!item.InternalProductCode.Equals("freessl", StringComparison.OrdinalIgnoreCase))
+                                                            {
+                                                                <a href="@Url.Action("edit", "product", new { id = item.ID })" title="Edit">
+                                                                    <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-edit.gif" alt="edit" />
+                                                                </a>
+                                                            }
+                                                        </td>
+                                                        <td align="center" valign="top" bgcolor="#FFFFFF">
+                                                            <a href="javascript:;" class="Remove" data-id="@item.ID">
+                                                                <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-delete.gif" alt="delete" />
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td height="8" align="left" valign="top">
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td height="8" align="left" valign="top">
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>

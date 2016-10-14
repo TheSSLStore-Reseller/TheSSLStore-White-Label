@@ -1,0 +1,10 @@
+﻿{
+	"AuthRequest":{
+		"PartnerCode":"[PARTNERCODE]",
+		"AuthToken":"[AUTHCODE]",
+		"ReplayToken":"[REPLAYTOKEN]",
+		"UserAgent":"[USERAGENT]"
+	},
+	"ProductCode":"[PRODUCTCODE]",
+	"CSR":"[CSRCONTENT]"
+}

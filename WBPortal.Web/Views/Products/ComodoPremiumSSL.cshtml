@@ -1,0 +1,143 @@
+﻿@model WBSSLStore.Service.ViewModels.StaticPageViewModel
+@{
+    ViewBag.Title = "SecureSiteProwithEV";  var productdetails = WBSSLStore.Web.Helpers.WBHelper.GetProductDetailRows();
+    string brand = Model != null && Model.Items != null && Model.Items.FirstOrDefault().Product != null && Model.Items.FirstOrDefault().Product.Brand != null ? Model.Items.FirstOrDefault().Product.Brand.BrandName : "";
+    string username = ViewBag.UserName;
+}
+@section headerTags{
+    @Html.Partial("_renderSEO", Model != null && Model.CMSPage != null ? Model.CMSPage : new WBSSLStore.Domain.CMSPage())
+}
+@Html.Partial("_banner", new Tuple<string, string>("", "SSL Brands"))
+<div class="content">
+  <div class="wrapper">
+    <div class="column3">
+      <div class="mobtopcol">
+        <div class="column3-2">
+          <div class="prodetailswrap marzerotop"> @Html.Partial("_ProdPricing", new Tuple<List<WBSSLStore.Domain.ProductPricing>, List<WBSSLStore.Domain.ProductDetail>>(Model.Items.ToList(), productdetails.ToList())) </div>
+          <div class="prodescrip marzerotop">
+            <div class="prodescriptxt">
+              <h2>Product Description</h2>
+              <p>The Comodo InstantSSL Premium is an Organization Validated (OV) certificates that offers tremendous value to company websites. This certificate features an unbelievable combination of encryption and trust; so, not only will your website be safe to do business with, your customers will know that your website is safe to do business with. That's because the Comodo Premium SSL will activate https and the padlock icon in your URL bar, along with including the reputable Comodo Site Seal on your site – which users can click to see real-time company information. Best of all, this is all protected by a $250,000 warranty. No matter what type of website you operate, this certificate is sure to provide a boost to your business.</p>
+            </div>
+          </div>
+          <div id="cssmenu">
+            <ul class="accordion_example">
+              <li class="brand-symantec acc_active">
+                <div>
+                  <p>Assurance &amp; Authentication</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>As an Organization Validated (OV) certificate, the Comodo InstantSSL Premium requires that a company complete a light vetting process before issuance. However, this process only takes between 3-5 days typically. This certificate also includes <strong>unlimited server licenses</strong> after issuance.</p>
+                  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Security &amp; Encryption</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>As a premier OV certificate, the Comodo InstantSSL Premium can be signed with the industry standard 2048-bit root while offering full 256-bit encryption. Plus, this certificate comes with a year of <strong>FREE PCI scanning</strong> and <strong>daily website vulnerability scanning</strong>.</p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>SAN &amp; multi-domain support</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>This certificate is only designed to secure one domain.</p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Features &amp; Benefits</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <ul class="featurelist">
+                    <li>Full business validated certificate</li>
+                    <li>Most trusted 2048-bit SSL Certificate</li>
+                    <li>Unlimited server licenses</li>
+                    <li>99.3% Browser coverage</li>
+                    <li>Unlimited Re-Issuance Policy</li>
+                    <li>FREE Corner-of-Trust trustmark</li>
+                    <li>128/256 bit encryption</li>
+                    <li>Free upgrade to EV SSL**</li>
+                    <li>1 year free PCI scanning service, 1 year free daily website vulnerability scanning</li>
+                    <li class="bdrbtm">$250,000 Relying Party Warranty</li>
+                  </ul>
+				  <div class="clear"></div>
+                  <p class="notesml">** = EV upgrades are for the first year of your certificate term and are limited to one upgrade per-domain.</p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Product Specifications</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <ul class="featurelist">
+                    <li>Single Domain Name (FQDN) domain.com and www.domain.com</li>
+                    <li>Issued In Within 1 week</li>
+                    <li>Validation of both domain name and company details</li>
+                    <li>Domain Name and Business Name Shown On Certificate</li>
+                    <li>Highest strength 2048-bit signatures with 256 bit encryption</li>
+                    <li>99% Browser Compatibile</li>
+                    <li>Free Unlimited Server Licenses</li>
+                    <li>Dynamic - TrustLogo delivers real-time verification of business identity</li>
+                    <li>Waurranty $250,000</li>
+                    <li>Unlimited Reissuance</li>
+                  </ul>
+				  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Site Seal</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>This certificate comes with the Comodo Secure Site Seal – which instantly assures your online visitors that your company has been verified by a reputable third-party security company. Also, since this is an OV certificate, the Site Seal will contain real-time identity assurance about your company, further boosting the trust visitors have in your site.</p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Warranty</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>The Comodo Premium SSL certificate comes with an outstanding warranty of <strong>$250,000</strong>, one of the highest in the industry for an Organization Validated (OV) certificate. This warranty ensures that, in the unlikely event your site is breached due to a faulty SSL and one of your customer's incurs damages because of this, Comodo will compensate you for up to $250,000 in damage. With a Comodo Premium SSL certificate, your investment will be well protected. </p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        @Html.Partial("_rightpanel", username) </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+@section Jscripts{ 
+<script type="text/javascript">
+        $(document).ready(function () {
+            // Mobile Menu
+            $("#showmenu").click(function (e) {
+                e.preventDefault();
+                $("#menu").toggleClass("show");
+            });
+            $("#menu a").click(function (event) {
+                event.preventDefault();
+                if ($(this).next('ul').length) {
+                    $(this).next().toggle('fast');
+                    $(this).children('i:last-child').toggleClass('fa-caret-down fa-caret-left');
+                }
+            });
+            $(document).click(function (e) {
+                if (!$(e.target).is(".mobmemu, .mobmemu  *")) { $("#menu").toggleClass("hide"); $("#menu").removeClass("show"); }
+            });
+            $(".accordion_example").smk_Accordion();
+        });
+    </script> 
+} 

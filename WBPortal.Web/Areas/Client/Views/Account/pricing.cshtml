@@ -1,0 +1,60 @@
+﻿@model IEnumerable<WBSSLStore.Domain.ProductPricing>
+@{
+    ViewBag.Title = "pricing";
+}
+
+@Html.Partial("_banner", new Tuple<string, string>("", WBSSLStore.Resources.GeneralMessage.Message.Partner_Pricing_Caption))
+<div class="content">
+    <div class="wrapper">
+        <div class="column3">
+            <div class="column3-0">
+                <div class="controlpnldata">
+                    <h2>@WBSSLStore.Resources.GeneralMessage.Message.Order_Type_Caption</h2>
+                    <p class="cmnpara"><strong>Partner Loyalty Program</strong></p>
+                    <p class="cmnpara">@WBSSLStore.Resources.LongText.Message.Partner_Pricing_Caption_1</p>
+                    <p class="cmnpara">@WBSSLStore.Resources.LongText.Message.Partner_Pricing_Caption_2</p>
+                    <div class="odrtabelgrid ptrpricingtbl">
+                        <div class="odrtblraw odrheadraw">
+                            <p class="bigcol">
+                                @WBSSLStore.Resources.GeneralMessage.Message.Product_Caption
+                            </p>
+                            <p class="wd100 txtcenter">
+                                # @WBSSLStore.Resources.GeneralMessage.Message.Months_Caption
+                            </p>
+                            <p class="wd100 txtcenter">
+                                @WBSSLStore.Resources.GeneralMessage.Message.SalePrice_Caption
+                            </p>
+                            <p class="wd100 txtcenter">
+                                San  @WBSSLStore.Resources.GeneralMessage.Message.Price_Caption
+                            </p>
+                            <p class="wd100 txtcenter">
+                                @WBSSLStore.Resources.GeneralMessage.Message.Contract_Caption
+                            </p>
+                            <p class="wd100 txtcenter">
+                                isRecommended
+                            </p>
+                        </div>
+                        @foreach (var item in Model)
+                        {
+
+                            <div class="odrtblraw odrcontentraw">
+                                <p class="bigcol"><span class="tabshow">@WBSSLStore.Resources.GeneralMessage.Message.Product_Caption</span>@item.Product.ProductName</p>
+                                <p class="wd100"><span class="tabshow">@WBSSLStore.Resources.GeneralMessage.Message.Months_Caption</span>@item.NumberOfMonths</p>
+                                <p class="wd100"><span class="tabshow">@WBSSLStore.Resources.GeneralMessage.Message.SalePrice_Caption</span>@(string.Format("{0:C}", item.SalesPrice))</p>
+                                <p class="wd100"><span class="tabshow">SAN @WBSSLStore.Resources.GeneralMessage.Message.Price_Caption</span>@(string.Format("{0:C}", item.AdditionalSanPrice))</p>
+                                <p class="wd100"><span class="tabshow">@WBSSLStore.Resources.GeneralMessage.Message.Contract_Caption</span>@item.Contract.ContractName</p>
+                                <p class="wd100"><span class="tabshow">isRecommended</span>@(item.isRecommended ? "Yes" : "No")</p>
+
+                            </div>
+                        }
+
+                    </div>
+                </div>
+            </div>
+            @Html.Partial("_rightpanel", "")
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+
+

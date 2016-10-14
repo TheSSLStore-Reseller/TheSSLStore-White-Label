@@ -1,0 +1,153 @@
+﻿@model WBSSLStore.Domain.User
+@{
+    ViewBag.version = WBSSLStore.Web.Helpers.Caching.SiteCacher.ResourceVersion();
+    ViewBag.Title = WBSSLStore.Resources.GeneralMessage.Message.UserProfile_Header;
+}
+
+@section sitecss{
+    @System.Web.Optimization.Styles.Render("/bundales/jquery-ui-css?v=" + ViewBag.version)
+}
+@section Jscripts{
+    @System.Web.Optimization.Scripts.Render("/bundales/wb/jquery.unobtrusive.validate-js?v=" + ViewBag.version)
+@System.Web.Optimization.Scripts.Render("/bundales/jquery-ui-1.10.custom?v=" + ViewBag.version)
+<script type="text/javascript">
+    $(function () {
+        if ($.find(".autoComplete").length > 0) {
+            $(".autoComplete").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: "/Home/AutoCompleteResult",
+                        data: { searchText: request.term },
+                        dataType: "json",
+                        success: function (data) {
+                            response(data);
+                        }
+                    });
+                },
+                minLength: 2
+            });
+        }
+    });
+</script>
+}
+@Html.Partial("_banner", new Tuple<string, string>("", WBSSLStore.Resources.GeneralMessage.Message.UserProfile_Header))
+<div class="content">
+    <div class="wrapper">
+        <div class="column3">
+            <div class="column3-0">
+                <div class="controlpnldata">
+                    <div class="personalinfo">
+                        <p>
+                            @WBSSLStore.Resources.LongText.Message.UserProfile_Desc
+                        </p>
+                        @using (Html.BeginForm("edit", "account", FormMethod.Post, new { id="frmpersonalinfo"}))
+                        {
+                            
+                            @Html.ValidationSummary(true)
+                            if (!string.IsNullOrEmpty(ViewBag.Message))
+                            {
+                                <p class="redtxt">
+                                    @Html.Raw(ViewBag.Message)
+                                </p>
+                            }
+                            
+                            @Html.AntiForgeryToken()
+                            <div class="formsection">
+                                <div class="raw">
+                                   @Html.LabelFor(model => model.CompanyName):<em>*</em>
+                                    @Html.TextBoxFor(model => model.CompanyName, new { @size = "30", @class = "in200px" })
+                                    @Html.ValidationMessageFor(model => model.CompanyName)
+                                </div>
+                                <div class="raw">
+                                    @Html.LabelFor(model => model.Email):<em>*</em>
+                                    @Html.TextBoxFor(model => model.Email, new { @size = "30", @class = "in200px" })
+                                    @Html.ValidationMessageFor(model => model.Email)
+                                </div>
+                                <div class="raw">
+                                    @Html.LabelFor(model => model.FirstName):<em>*</em>
+                                    @Html.TextBoxFor(model => model.FirstName, new { @size = "30", @class = "in200px" })
+                                    @Html.ValidationMessageFor(model => model.FirstName)
+                                </div>
+                                <div class="raw">
+                                    @Html.LabelFor(model => model.LastName):<em>*</em>
+                                    @Html.TextBoxFor(model => model.LastName, new { @size = "30", @class = "in200px" })
+                                    @Html.ValidationMessageFor(model => model.LastName)
+                                </div>
+                                <div class="raw">
+                                    @Html.LabelFor(model => model.AlternativeEmail):<em>*</em>
+                                    @Html.TextBoxFor(model => model.AlternativeEmail, new { @size = "30", @class = "in200px" })
+                                    @Html.ValidationMessageFor(model => model.AlternativeEmail)
+                                </div>
+                                <div class="raw">
+                                    @Html.LabelFor(model => model.Address.Street):<em>*</em>
+                                    @Html.TextBoxFor(model => model.Address.Street, new { @size = "30", @class = "in200px" })
+                                    @Html.ValidationMessageFor(model => model.Address.Street)
+                                </div>
+                                <div class="raw">
+                                    @Html.LabelFor(model => model.Address.Country.CountryName):<em>*</em>
+                                    @Html.DropDownListFor(model => model.Address.CountryID, new SelectList(ViewBag.Country as System.Collections.IEnumerable, "ID", "CountryName"), "--------select country--------", new { @class = "" })
+                                    @Html.ValidationMessageFor(model => model.Address.CountryID)
+                                </div>
+                                <div class="raw">
+                                    @Html.LabelFor(model => model.Address.State):<em>*</em>
+                                    @Html.EditorFor(model => model.Address.State, new { @class = "autoComplete" })
+                                    @Html.ValidationMessageFor(model => model.Address.State)
+                                </div>
+                                <div class="raw">
+                                    @Html.LabelFor(model => model.Address.City):<em>*</em>
+                                    @Html.TextBoxFor(model => model.Address.City, new { @size = "30", @class = "in150px" })
+                                    @Html.ValidationMessageFor(model => model.Address.City)
+                                </div>
+                                <div class="raw">
+                                    @Html.LabelFor(model => model.Address.Zip):<em>*</em>
+                                    @Html.TextBoxFor(model => model.Address.Zip, new { @size = "30", @class = "in150px", @maxlength = "30" })
+                                    @Html.ValidationMessageFor(model => model.Address.Zip)
+                                </div>
+
+
+                                <div class="raw">
+                                    @Html.LabelFor(model => model.Address.Phone):<em>*</em>
+                                    @Html.TextBoxFor(model => model.Address.Phone, new { @size = "30", @class = "in200px", @maxlength = "20" })
+                                    @Html.ValidationMessageFor(model => model.Address.Phone)
+                                </div>
+                                <div class="raw">
+                                    @Html.LabelFor(model => model.Address.Fax):
+                                    @Html.TextBoxFor(model => model.Address.Fax, new { @size = "30", @class = "in200px", @maxlength = "30" })
+                                </div>
+                                <div class="raw">
+                                    @Html.LabelFor(model => model.Address.Mobile):
+                                    @Html.TextBoxFor(model => model.Address.Mobile, new { @size = "30", @class = "in200px", @maxlength = "30" })
+                                </div>
+                                @Html.HiddenFor(model => model.ID)
+                                @Html.HiddenFor(model => model.RecordStatusID)
+                                @Html.HiddenFor(model => model.SiteID)
+                                @Html.HiddenFor(model => model.Address.ID)
+                                @Html.HiddenFor(model => model.UserTypeID)
+                                @Html.HiddenFor(model => model.AuditID)
+                                @Html.HiddenFor(model => model.AddressID)
+                                @Html.HiddenFor(model => model.AuditDetails.ID)
+                                @Html.HiddenFor(model => model.AuditDetails.DateCreated)
+                                @Html.HiddenFor(model => model.HeardBy)
+                                @Html.HiddenFor(model => model.Address.CompanyName)
+                                @Html.HiddenFor(model => model.PasswordHash)
+                                @Html.HiddenFor(model => model.ConfirmPassword)
+                                <div class="raw srchbtnsec">
+                                    <input type="submit" id="btnSubmit" name="btnSubmit" class="greenbtn" value="@WBSSLStore.Resources.GeneralMessage.Message.Submit_Btn" />                                    
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+
+                        }
+                    </div>
+
+                </div>
+            </div>
+            @Html.Partial("_rightpanel", Model.FirstName +" " +Model.LastName)
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+
+
+
+

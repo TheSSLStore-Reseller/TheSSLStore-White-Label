@@ -1,0 +1,139 @@
+﻿@model WBSSLStore.Service.ViewModels.StaticPageViewModel
+@{
+    ViewBag.Title = "SecureSiteProwithEV";  var productdetails = WBSSLStore.Web.Helpers.WBHelper.GetProductDetailRows();
+    string brand = Model != null && Model.Items != null && Model.Items.FirstOrDefault().Product != null && Model.Items.FirstOrDefault().Product.Brand != null ? Model.Items.FirstOrDefault().Product.Brand.BrandName : "";
+    string username = ViewBag.UserName;
+}
+@section headerTags{
+    @Html.Partial("_renderSEO", Model != null && Model.CMSPage != null ? Model.CMSPage : new WBSSLStore.Domain.CMSPage())
+}
+@Html.Partial("_banner", new Tuple<string, string>("", "SSL Brands"))
+<div class="content">
+  <div class="wrapper">
+    <div class="column3">
+      <div class="mobtopcol">
+        <div class="column3-2">
+          <div class="prodetailswrap marzerotop"> @Html.Partial("_ProdPricing", new Tuple<List<WBSSLStore.Domain.ProductPricing>, List<WBSSLStore.Domain.ProductDetail>>(Model.Items.ToList(), productdetails.ToList())) </div>
+          <div class="prodescrip marzerotop">
+            <div class="prodescriptxt">
+              <h2>Product Description</h2>
+              <p>If you're searching for a secure and easy way to increase the trust that customers have in your website, look no further than the Comodo Instant SSL Pro. This certificate will enable many trust indicators on your website, along with providing strong 256-bit encryption. Also, this certificate is backed by $100,000 warranty, so you can rest assured that your investment is protected. We would recommend this top-of-the-line Organization Validated (OV) certificate for larger ecommerce websites and other companies looking to <strong>increase conversion rates</strong> on their site.</p>
+            </div>
+          </div>
+          <div id="cssmenu">
+            <ul class="accordion_example">
+              <li class="brand-symantec acc_active">
+                <div>
+                  <p>Assurance &amp; Authentication</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>Customers who wish to acquire the Comodo Instant SSL Pro must complete a light validation process before the certificate is issued. That's because this is an Organization Validated (OV) certificate. This process usually takes between 3-5 business days. However, once the validation is complete, your site will reap the benefits of the padlock icon in the URL bar, "https" in front of the address, and the dynamic Comodo Secure Site Seal.</p>
+                  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Security &amp; Encryption</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>Your site will be protected by the industry standard 2048-bit root along with full 256-bit encryption, once the Comodo Instant SSL Pro is issued. Additionally, this certificate comes with a year of <strong>FREE PCI scanning</strong> and <strong>daily website vulnerability scanning</strong>, making it one of the most comprehensive security solutions that we have available.</p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>SAN &amp; multi-domain support</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>The Comodo Instant SSL Pro certificate is only available for one domain.</p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Features &amp; Benefits</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <ul class="featurelist">
+                    <li>Full business validated certificate</li>
+                    <li>2048 bit industry standard SSL Certificate</li>
+                    <li>Trusted by all popular browsers</li>
+                    <li>99.3% browser coverage</li>
+                    <li>$100,000 Warranty</li>
+                    <li>FREE Corner of Trust worth $119.00</li>
+                    <li>Unlimited Re-issuance Policy</li>
+                    <li>128/256 bit encryption</li>
+                    <li>Significant savings vs. shorter-term certificates</li>
+                    <li>Reduced risk of a trust-eroding expired certificate on your site</li>
+                    <li>One less thing to do or worry about next year</li>
+                    <li>1 year free PCI scanning service, 1 year free daily website vulnerability scanning</li>
+                  </ul>
+				  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Product Specifications</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <ul class="featurelist">
+                    <li>128/256 bit Encryption</li>
+                    <li>99.3% Browser Compatibile</li>
+                    <li>Free Unlimited Server Licenses</li>
+                    <li>Includes Site Seal</li>
+                    <li>Free Unlimited Server Licenses</li>
+                  </ul>
+				  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Site Seal</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>Since this is an Organization Validated (OV) certificate, it comes with a dynamic site seal. A <strong>dynamic site seal</strong> means that a customer can click on it and see real-time validated information about your company. So, not only will your site get the value of the Comodo Secure Seal displayed on it, your customers will be able to verify that you are who you say you are, and will then feel comfortable conducting purchases on your site.</p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Warranty</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>The Comodo Instant SSL Pro comes with a solid warranty of <strong>$100,000</strong>. A warranty on this SSL certificate means that, in the unlikely event that a customer of yours incurs a loss due to a fault in your site's SSL certificate, Comodo will compensate you for up to $100,000 for those damages.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        @Html.Partial("_rightpanel", username) </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+@section Jscripts{ 
+<script type="text/javascript">
+        $(document).ready(function () {
+            // Mobile Menu
+            $("#showmenu").click(function (e) {
+                e.preventDefault();
+                $("#menu").toggleClass("show");
+            });
+            $("#menu a").click(function (event) {
+                event.preventDefault();
+                if ($(this).next('ul').length) {
+                    $(this).next().toggle('fast');
+                    $(this).children('i:last-child').toggleClass('fa-caret-down fa-caret-left');
+                }
+            });
+            $(document).click(function (e) {
+                if (!$(e.target).is(".mobmemu, .mobmemu  *")) { $("#menu").toggleClass("hide"); $("#menu").removeClass("show"); }
+            });
+            $(".accordion_example").smk_Accordion();
+        });
+    </script> 
+} 

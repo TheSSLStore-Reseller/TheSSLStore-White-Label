@@ -1,0 +1,135 @@
+﻿@model WBSSLStore.Service.ViewModels.StaticPageViewModel
+@{
+    ViewBag.Title = "SecureSiteProwithEV"; var productdetails = WBSSLStore.Web.Helpers.WBHelper.GetProductDetailRows();
+    string brand = Model != null && Model.Items != null && Model.Items.FirstOrDefault().Product != null && Model.Items.FirstOrDefault().Product.Brand != null ? Model.Items.FirstOrDefault().Product.Brand.BrandName : "";
+    string username = ViewBag.UserName;
+}
+@section headerTags{
+    @Html.Partial("_renderSEO", Model != null && Model.CMSPage != null ? Model.CMSPage : new WBSSLStore.Domain.CMSPage())
+}
+@Html.Partial("_banner", new Tuple<string, string>("", "SSL Brands"))
+<div class="content">
+    <div class="wrapper">
+        <div class="column3">
+            <div class="mobtopcol">
+                <div class="column3-2">
+                    <div class="prodetailswrap marzerotop">
+                        @*@Html.Partial("_ProdPricing", new Tuple<List<WBSSLStore.Domain.ProductPricing>, List<WBSSLStore.Domain.ProductDetail>>(Model.Items.ToList(), productdetails.ToList()))*@
+                        @Html.Partial("_ProdPricing", new Tuple<List<WBSSLStore.Domain.ProductPricing>, List<WBSSLStore.Domain.ProductDetail>>(Model.Items.ToList(), productdetails.ToList()))
+                    </div>
+                    <div class="prodescrip marzerotop">
+                        <div class="prodescriptxt">
+                            <h2>Product Description</h2>
+                            <p>For the ultimate in website security and trust, look no further than Thawte SSL Web Server with EV certificates. These certificates come with the <strong>green address bar</strong>, the singular most trusted visual indicator on the internet. By using the green address bar, your website will instantly be associated with some of the most trusted sites in the world, like Amazon, Bank of America, and Twitter, since they are all equipped with EV certs as well. Additionally, you will get the benefit of the Thawte Site Seal displayed on your site, along with "https" and the padlock icon by your URL. This combination of visual trust symbols will help provide a true ROI on this certificate, as it will encourage visitors who are unfamiliar with your company otherwise, to make purchases on your site. These certificates are highly recommended for larger corporations, traffic-heavy ecommerce sites, and all other sites striving to reach these impressive levels.</p>
+                        </div>
+
+                    </div>
+                    <div id="cssmenu">
+                        <ul class="accordion_example">
+                            <li class="brand-symantec acc_active">
+                                <div>
+                                    <p>Assurance &amp; Authentication</p>
+                                    <div class="clear"></div>
+                                </div>
+                                <div>
+                                    <p> Since these are Extended Validation (EV) certificates, Thawte SSL Web Server with EV certs require that a company complete a thorough vetting process before issuance. Typically, these certificates can be issued to a domain in 5-10 business days, depending largely on the response time of the customer.</p>
+
+                                    <div class="clear"></div>
+                                </div>
+                            </li>
+                            <li class="brand-symantec">
+                                <div>
+                                    <p>Security &amp; Encryption</p>
+                                    <div class="clear"></div>
+                                </div>
+                                <div>
+                                    <p>SSL encryption is done with a secret binary code, which secures all private information sent when the customer's browser and your website's web server communicate with one other. Thawte SSL Web Sever with EV certificates carry 256-bit encryption, the <strong>highest in the industry</strong>, for the latest operating systems &amp; web browsers. They also use 40- or 56-bit in older web browsers.</p>
+
+
+                                </div>
+                            </li>
+                            <li class="brand-symantec">
+                                <div>
+                                    <p>SAN &amp; multi-domain support</p>
+                                    <div class="clear"></div>
+                                </div>
+                                <div>
+                                    <p>Just one Thawte SSL Web Server with EV can support <strong>up to 25 total domains</strong>. So, these certificates are excellent options for businesses that want to equip multiple domains with the valued green address bar. Plus, managing and provisioning multiple domains on just one certificate is much easier and more economical than having multiple certificates across multiple domains.</p>
+
+
+                                </div>
+                            </li>
+                            <li class="brand-symantec">
+                                <div>
+                                    <p>Features &amp; Benefits</p>
+                                    <div class="clear"></div>
+                                </div>
+                                <div>
+                                    <ul class="featurelist">
+                                        <li>Thawte EV SSL is fully Organization Validated Certificate.</li>
+                                        <li>Support up to 256 bit encryption</li>
+                                        <li>As Certificate is extended validation so your website secure with "Green Address Bar"</li>
+                                        <li>As an official Platinum Partner of Thawte, you can leverage our buying power and get a much lower price than buying direct from Thawte.</li>
+                                        <li>Thawte EV SSL carry warranty of $1.5 Million</li>
+                                        <li>Highly qualified technical &amp; sales experts to help you on live support.</li>
+                                        <li>We offer FREE reissue insurance at no cost, yep...zero, zilch, nada.</li>
+                                        <li>FREE Windows XP EV upgrade tool (a $300 value) is embedded within the Thawte site seal and comes with the purchase of any Thawte EV Certificate.</li>
+                                        <li>FREE Installation Guidelines</li>
+                                        <li>Issued in less than 1-10 Days</li>
+                                        <li>Fee Reissue Means you can reissue your certificate without any extra cost</li>
+                                    </ul>
+									<div class="clear"></div>
+                                </div>
+                            </li>
+
+                            <li class="brand-symantec">
+                                <div>
+                                    <p>Site Seal</p>
+                                    <div class="clear"></div>
+                                </div>
+                                <div>
+                                    <p>This premium Extended Validation (EV) certificate comes with a <strong>dynamic site seal</strong>, which means that your web visitors will be able to click on it to get updated information about your business, which further establishes your credibility as a company. And, since the Thawte Site Seal has already established an enormous amount of credibility in the online community, your customers will know that you've been validated by an industry leader. This site seal, combined with the green address bar, will help make your site as trustworthy as possible.</p>
+
+                                </div>
+                            </li>
+                            <li class="brand-symantec">
+                                <div>
+                                    <p>Warranty</p>
+                                    <div class="clear"></div>
+                                </div>
+                                <div>
+                                    <p>Thawte SSL Web Server with EV certificates come with an outstanding warranty of $1,500,000. This warranty ensures that if your site experiences a breach, an extremely unlikely event, then you would be compensated by up to $1,500,000 for any damages that your customer(s) incur because of this. These warranties are designed to give both you and your customers added assurance that your website is safe to do business with.</p>
+
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                @Html.Partial("_rightpanel", username)
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+@section Jscripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Mobile Menu
+            $("#showmenu").click(function (e) {
+                e.preventDefault();
+                $("#menu").toggleClass("show");
+            });
+            $("#menu a").click(function (event) {
+                event.preventDefault();
+                if ($(this).next('ul').length) {
+                    $(this).next().toggle('fast');
+                    $(this).children('i:last-child').toggleClass('fa-caret-down fa-caret-left');
+                }
+            });
+            $(document).click(function (e) {
+                if (!$(e.target).is(".mobmemu, .mobmemu  *")) { $("#menu").toggleClass("hide"); $("#menu").removeClass("show"); }
+            });
+            $(".accordion_example").smk_Accordion();
+        });
+    </script>
+} 

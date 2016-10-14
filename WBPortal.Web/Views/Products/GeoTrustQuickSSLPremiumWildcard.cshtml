@@ -1,0 +1,138 @@
+﻿@model WBSSLStore.Service.ViewModels.StaticPageViewModel
+@{
+    ViewBag.Title = "SecureSiteProwithEV";  var productdetails = WBSSLStore.Web.Helpers.WBHelper.GetProductDetailRows();
+    string brand = Model != null && Model.Items != null && Model.Items.FirstOrDefault().Product != null && Model.Items.FirstOrDefault().Product.Brand != null ? Model.Items.FirstOrDefault().Product.Brand.BrandName : "";
+    string username = ViewBag.UserName;
+}
+@section headerTags{
+    @Html.Partial("_renderSEO", Model != null && Model.CMSPage != null ? Model.CMSPage : new WBSSLStore.Domain.CMSPage())
+}
+@Html.Partial("_banner", new Tuple<string, string>("", "SSL Brands"))
+<div class="content">
+  <div class="wrapper">
+    <div class="column3">
+      <div class="mobtopcol">
+        <div class="column3-2">
+          <div class="prodetailswrap marzerotop"> @Html.Partial("_ProdPricing", new Tuple<List<WBSSLStore.Domain.ProductPricing>, List<WBSSLStore.Domain.ProductDetail>>(Model.Items.ToList(), productdetails.ToList())) </div>
+          <div class="prodescrip marzerotop">
+            <div class="prodescriptxt">
+              <h2>Product Description</h2>
+              <p>GeoTrust QuickSSL Premium Wildcard offers a <strong>quick &amp; cost-efficient solution</strong> for businesses to quickly secure their single main domain (i.e. www.yourdomain.com) AND <strong>unlimited sub-domains</strong> (i.e. mail.yourdomain.com, ftp.yourdomain.com) with one simple DV SSL/TLS certificate. With a nice automatic authentication and issuance process, you can have this cert in 10 minutes or less. With GeoTrust being one of the most trusted names in the online encryption industry, your customers can gain some assurance knowing that your site is protected by known &amp; recognized security brand in just minutes. This is an ideal option for an SMB that has <strong>any number of sub-domains</strong> that need security as well and/or someone future-proofing their site for sub-domains that may come in the near future.</p>
+            </div>
+          </div>
+          <div id="cssmenu">
+            <ul class="accordion_example">
+              <li class="brand-symantec acc_active">
+                <div>
+                  <p>Assurance &amp; Authentication</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>You'll be able to give some assurance to site visitors that your site is protected with a True Site Seal, HTTPS activation within the URL and a visible green padlock icon, all of which are visual indicators that aide in establishing your website as a trustworthy place to safely conduct business. This domain validated wildcard SSL/TLS certificate can apply a solid <strong>layer of security</strong> and some trust across an array of hostnames or sub-domains. It takes <strong>approximately 10 minutes</strong> to complete the authentication process &ndash; you just have to verify that you own the domain &ndash; and then you'll have an issued and ready-to-go cert.</p>
+                  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Security &amp; Encryption</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>The GeoTrust QuickSSL Premium Wildcard SSL certificate offers <strong>high 256-bit encryption capabilities</strong> and is signed with a 2048-bit root.</p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>SAN &amp; multi-domain support</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p class="thetxtbox">This GeoTrust&reg; Wildcard TLS certificate can protect multiple domains, HOWEVER, those multiple domains must be sub-domains that all use the same exact base domains. For example, by using *.site.yourdomain.com in the common name field, you can protect test1.site.yourdomain.com, test2.site.domain.com, etc. with this one certificate. If you need other domain names protected that don't meet the criterion above, we have a <a href="https://www.thesslstore.com/geotrust/true-businessid-multi-domain.aspx">GeoTrust True BusinessID with Multi Domain (SAN/UCC)</a> solution available that might just be your answer.</p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Features &amp; Benefits</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <ul class="featurelist">
+                    <li>Provide quick security for unlimited sub-domains</li>
+                    <li>Offers entry-level Domain Validation authentication</li>
+                    <li>Offers up to 256-bit encryption</li>
+                    <li>Unlimited Server Licenses at no extra cost</li>
+                    <li>Secures www &amp; non-www domains</li>
+                    <li>Browser recognition up to 99.9%</li>
+                    <li>Present in 99%+ of mobile devices and smart phones</li>
+                    <li>FREE 24/7 Technical Support</li>
+                    <li>$500,000 Warranty</li>
+                    <li>30 Day Money Back Guarantee!</li>
+                  </ul>
+				  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Product Specifications</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <ul class="featurelist">
+                    <li>Secure Unlimited Sub-Domains with a Single Certificate</li>
+                    <li>Domain Name Displayed on Certificate Only</li>
+                    <li>Up to 256-bit Encryption</li>
+                    <li>Browser Compatibility up to 99%</li>
+                    <li>Includes a GeoTrust True Site Seal</li>
+                    <li>FREE self-service Reissues</li>
+                  </ul>
+				  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Site Seal</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>The <strong>GeoTrust QuickSSL Premium Wildcard SSL certificate</strong> comes with a True Site Seal that a user can click to see your verified domain name associated with the certificate. This certificate will  ONLY display the domain as *.yourdomain.com because that is all that will be authenticated during the validation process. If you would like to have a more telling seal where your verified Organization Name is displayed, then you may want to consider a Business or Organization Validation (OV) wildcard solution such as our GeoTrust TrueBusiness ID Wildcard which comes with a more prominent  GeoTrust Secured Seal that embeds the organization name, date, and has a time stamp.</p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Warranty</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>This certificate comes backed by a <strong>$500,000  Warranty</strong>. This means you and your customers are protected from improper validation or issuance to a fraudulent site by this Certificate Authority (CA), because the end user would be compensated up to $500,000 in loss or damages. Higher warranties are available for both OV and EV options.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        @Html.Partial("_rightpanel", username) </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+@section Jscripts{ 
+<script type="text/javascript">
+        $(document).ready(function () {
+            // Mobile Menu
+            $("#showmenu").click(function (e) {
+                e.preventDefault();
+                $("#menu").toggleClass("show");
+            });
+            $("#menu a").click(function (event) {
+                event.preventDefault();
+                if ($(this).next('ul').length) {
+                    $(this).next().toggle('fast');
+                    $(this).children('i:last-child').toggleClass('fa-caret-down fa-caret-left');
+                }
+            });
+            $(document).click(function (e) {
+                if (!$(e.target).is(".mobmemu, .mobmemu  *")) { $("#menu").toggleClass("hide"); $("#menu").removeClass("show"); }
+            });
+            $(".accordion_example").smk_Accordion();
+        });
+    </script> 
+} 

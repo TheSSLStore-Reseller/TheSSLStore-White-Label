@@ -1,0 +1,1446 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Accepted_Cards" xml:space="preserve">
+    <value>Распространённые платы</value>
+  </data>
+  <data name="AccountBalance_Caption" xml:space="preserve">
+    <value>Баланс счёт</value>
+  </data>
+  <data name="Account_Activation_Email" xml:space="preserve">
+    <value>Е-мейл активации счёта</value>
+  </data>
+  <data name="AccSummary_Header" xml:space="preserve">
+    <value>Сводка счёта</value>
+  </data>
+  <data name="AccSum_AddFund_Caption" xml:space="preserve">
+    <value>Добавить денежные средства</value>
+  </data>
+  <data name="action_Caption" xml:space="preserve">
+    <value>Действие,акция</value>
+  </data>
+  <data name="ActivatedDate_Caption" xml:space="preserve">
+    <value>Дата активации</value>
+  </data>
+  <data name="ActiveContracts_Caption" xml:space="preserve">
+    <value>Активные контракты</value>
+  </data>
+  <data name="ActiveResellers_Caption" xml:space="preserve">
+    <value>Активные посредники</value>
+  </data>
+  <data name="ActiveSupports_Caption" xml:space="preserve">
+    <value>Активные поддержки</value>
+  </data>
+  <data name="ActiveUsers_Caption" xml:space="preserve">
+    <value>Активные пользователи</value>
+  </data>
+  <data name="AddCustomer_Caption" xml:space="preserve">
+    <value>Добавить клиента</value>
+  </data>
+  <data name="AddDomainNames_Caption" xml:space="preserve">
+    <value>Добавить имя домена</value>
+  </data>
+  <data name="AddEditSlab_Caption" xml:space="preserve">
+    <value>Добавить/редактировать заготовку</value>
+  </data>
+  <data name="AddFund_btn" xml:space="preserve">
+    <value>Добавить денежные средства</value>
+  </data>
+  <data name="AdditionalDomains_Caption" xml:space="preserve">
+    <value>Дополнительный домен</value>
+  </data>
+  <data name="AddReseller_Caption" xml:space="preserve">
+    <value>Добавить посредника</value>
+  </data>
+  <data name="Add_Fund_Notification" xml:space="preserve">
+    <value>Добавить уведомление (о добавлении) денежных средств</value>
+  </data>
+  <data name="Admin_Email" xml:space="preserve">
+    <value>Е-мейл администратора</value>
+  </data>
+  <data name="Admin_Email_Notification" xml:space="preserve">
+    <value>Сообщение на е-мейл администратора</value>
+  </data>
+  <data name="AdvancedSearch_btn" xml:space="preserve">
+    <value>Продвинутый поиск</value>
+  </data>
+  <data name="AlternativeEmail_Caption" xml:space="preserve">
+    <value>Альтернативный Е-мейл</value>
+  </data>
+  <data name="API_Login_ID" xml:space="preserve">
+    <value>Регистрация идентификатора API</value>
+  </data>
+  <data name="Apply_to_Caption" xml:space="preserve">
+    <value>Применить к/в...</value>
+  </data>
+  <data name="ApproverEmail_Caption" xml:space="preserve">
+    <value>Проверка е-мейла</value>
+  </data>
+  <data name="AuthorizationCode_Caption" xml:space="preserve">
+    <value>Код проверки</value>
+  </data>
+  <data name="Banner_Selection" xml:space="preserve">
+    <value>Выбор баннера</value>
+  </data>
+  <data name="BCC_Caption" xml:space="preserve">
+    <value>Скрытая копия письма</value>
+  </data>
+  <data name="BillingAddress_Caption" xml:space="preserve">
+    <value>Адрес для платежа</value>
+  </data>
+  <data name="Billing_Email" xml:space="preserve">
+    <value>Е-мейл для платежа</value>
+  </data>
+  <data name="Bill_To" xml:space="preserve">
+    <value>Выставить счёт</value>
+  </data>
+  <data name="Blog_Option" xml:space="preserve">
+    <value>Варианты блога</value>
+  </data>
+  <data name="blog_Url" xml:space="preserve">
+    <value>Эл.адрес блога</value>
+  </data>
+  <data name="Brand_Caption" xml:space="preserve">
+    <value>Марка/бренд</value>
+  </data>
+  <data name="Brand_Configuration" xml:space="preserve">
+    <value>Конфигурация бренда</value>
+  </data>
+  <data name="Business_Design" xml:space="preserve">
+    <value>Бизнес-план</value>
+  </data>
+  <data name="CampaignName_Caption" xml:space="preserve">
+    <value>Название компании</value>
+  </data>
+  <data name="CanbeReissued_Caption" xml:space="preserve">
+    <value>Может быть переиздано</value>
+  </data>
+  <data name="Cancelation_Header" xml:space="preserve">
+    <value>Отмена/Запрос о возмещении</value>
+  </data>
+  <data name="CancellationRefundRequest_btn" xml:space="preserve">
+    <value>Отмена/Запрос о возмещении</value>
+  </data>
+  <data name="Cancel_ddlreason_op1" xml:space="preserve">
+    <value>Упорядоченные по ошибке</value>
+  </data>
+  <data name="Cancel_ddlreason_op2" xml:space="preserve">
+    <value>Моя хостинг-компания не даёт третим лицам SSL</value>
+  </data>
+  <data name="Cancel_ddlreason_op3" xml:space="preserve">
+    <value>У меня нет ссответствующих документов</value>
+  </data>
+  <data name="Cancel_ddlreason_op4" xml:space="preserve">
+    <value>Не удаётся получить разрешение по эл.почте</value>
+  </data>
+  <data name="CardName_Caption" xml:space="preserve">
+    <value>Название карты</value>
+  </data>
+  <data name="CardType_Caption" xml:space="preserve">
+    <value>Тип карты</value>
+  </data>
+  <data name="Cart_Promocode_Caption" xml:space="preserve">
+    <value>ВВЕДИТЕ ПРОМОКОД</value>
+  </data>
+  <data name="CCName" xml:space="preserve">
+    <value>Имя владельца карты</value>
+  </data>
+  <data name="CCSaved" xml:space="preserve">
+    <value>Настройки кредитной карты успешно сохранены</value>
+  </data>
+  <data name="CC_Caption" xml:space="preserve">
+    <value>Копия письма</value>
+  </data>
+  <data name="CertificateExpiresOn_Caption" xml:space="preserve">
+    <value>Сертификат истекает</value>
+  </data>
+  <data name="Change_Password_Email" xml:space="preserve">
+    <value>Изменение пароля эл.почты</value>
+  </data>
+  <data name="CheckCSR_Header" xml:space="preserve">
+    <value>Введите запрос на подпись сертификата</value>
+  </data>
+  <data name="Checkout_AdditionalDomains_caption" xml:space="preserve">
+    <value>Дополнительные домены</value>
+  </data>
+  <data name="Checkout_AvailCredit_Caption" xml:space="preserve">
+    <value>Доступный кредит</value>
+  </data>
+  <data name="Checkout_Back_btn" xml:space="preserve">
+    <value>Отводить назад</value>
+  </data>
+  <data name="Checkout_BillInfo_Caption" xml:space="preserve">
+    <value>Платёжная информация</value>
+  </data>
+  <data name="Checkout_CardExpiry_Caption" xml:space="preserve">
+    <value>Дата истечения срока</value>
+  </data>
+  <data name="Checkout_CCVCode_Caption" xml:space="preserve">
+    <value>Код CVV (трёхзначный или четырёхзначный код проверки подлинности карты платёжной системы Visa)</value>
+  </data>
+  <data name="Checkout_Confirm_btn" xml:space="preserve">
+    <value>Подтверждение</value>
+  </data>
+  <data name="Checkout_ConOrder_Caption" xml:space="preserve">
+    <value>Подтвердить заказ</value>
+  </data>
+  <data name="Checkout_CreditAmt_Caption" xml:space="preserve">
+    <value>Сумма кредита</value>
+  </data>
+  <data name="Checkout_CreditCard_Caption" xml:space="preserve">
+    <value>№ кредитной карты (без пробелов и тире)</value>
+  </data>
+  <data name="Checkout_CreditCInfo_Header" xml:space="preserve">
+    <value>Информация о кредитной карте</value>
+  </data>
+  <data name="Checkout_Domain_Caption" xml:space="preserve">
+    <value>Домен</value>
+  </data>
+  <data name="Checkout_ForgotPwd" xml:space="preserve">
+    <value>Забылли пароль?</value>
+  </data>
+  <data name="Checkout_OrderAmt_Caption" xml:space="preserve">
+    <value>Сумма заказа</value>
+  </data>
+  <data name="Checkout_PayableAmt_Caption" xml:space="preserve">
+    <value>Сумма оплаты</value>
+  </data>
+  <data name="Checkout_PayDetail_Caption" xml:space="preserve">
+    <value>Реквизиты платежа</value>
+  </data>
+  <data name="Checkout_PaymentInfo_Caption" xml:space="preserve">
+    <value>Информация о платеже</value>
+  </data>
+  <data name="CheckOut_PaypalInfo_Header" xml:space="preserve">
+    <value>PayPal информация</value>
+  </data>
+  <data name="Checkout_PlaceOrder_Caption" xml:space="preserve">
+    <value>Разместить заказ</value>
+  </data>
+  <data name="Checkout_SelectPayment_Header" xml:space="preserve">
+    <value>Выберите режим оплаты</value>
+  </data>
+  <data name="Checkout_StreetAdd_Caption" xml:space="preserve">
+    <value>Адрес (продолжение)</value>
+  </data>
+  <data name="Checkout_YourAccountPwd" xml:space="preserve">
+    <value>Ваш пароль</value>
+  </data>
+  <data name="Checkout_YourEmailAddress" xml:space="preserve">
+    <value>Ваша эл.почта</value>
+  </data>
+  <data name="chkSSL_Header" xml:space="preserve">
+    <value>Введите имя вашего домена</value>
+  </data>
+  <data name="ChngPwd_Header" xml:space="preserve">
+    <value>Изменение пароля</value>
+  </data>
+  <data name="ChngPwd_NewPwd_Caption" xml:space="preserve">
+    <value>Новый пароль</value>
+  </data>
+  <data name="City_Caption" xml:space="preserve">
+    <value>Город</value>
+  </data>
+  <data name="Clean_Style_Design" xml:space="preserve">
+    <value>Очистка стиля дизайна</value>
+  </data>
+  <data name="ClickHere_Caption" xml:space="preserve">
+    <value>Нажмите здесь</value>
+  </data>
+  <data name="Click_Here" xml:space="preserve">
+    <value>Нажмите здесь</value>
+  </data>
+  <data name="Clients_Caption" xml:space="preserve">
+    <value>Клиенты</value>
+  </data>
+  <data name="CodeName_Caption" xml:space="preserve">
+    <value>Название кода</value>
+  </data>
+  <data name="Comment_Caption" xml:space="preserve">
+    <value>Комметарий</value>
+  </data>
+  <data name="CompanyName" xml:space="preserve">
+    <value>Название компании</value>
+  </data>
+  <data name="Company_Caption" xml:space="preserve">
+    <value>Название компании</value>
+  </data>
+  <data name="Confirm_Password_Caption" xml:space="preserve">
+    <value>Подтверждение пароля</value>
+  </data>
+  <data name="Content_Caption" xml:space="preserve">
+    <value>Содержание</value>
+  </data>
+  <data name="Content_Header" xml:space="preserve">
+    <value>Изменить содержимое (магазина, запасённого)</value>
+  </data>
+  <data name="Continue_btn" xml:space="preserve">
+    <value>Продолжать</value>
+  </data>
+  <data name="ContractLevel_Caption" xml:space="preserve">
+    <value>Название уровня</value>
+  </data>
+  <data name="Contract_Caption" xml:space="preserve">
+    <value>Название контракта</value>
+  </data>
+  <data name="Country_Caption" xml:space="preserve">
+    <value>Страна</value>
+  </data>
+  <data name="CreditCardNo_Caption" xml:space="preserve">
+    <value>Номер кредитной карты</value>
+  </data>
+  <data name="CreditCard_Caption" xml:space="preserve">
+    <value>Кредитная карта</value>
+  </data>
+  <data name="Credit_Refund_Caption" xml:space="preserve">
+    <value>Кредит/Возврат</value>
+  </data>
+  <data name="CropImage_Caption" xml:space="preserve">
+    <value>Обрезать изображение</value>
+  </data>
+  <data name="CropSave_btn" xml:space="preserve">
+    <value>Обрезать и сохранить</value>
+  </data>
+  <data name="CSR_Caption" xml:space="preserve">
+    <value>Запрос на подпись сертификата</value>
+  </data>
+  <data name="CurrentCulture_Caption" xml:space="preserve">
+    <value>Текущие знаки искусственных сооружений</value>
+  </data>
+  <data name="CurrentLanguage_Caption" xml:space="preserve">
+    <value>Текущий язык</value>
+  </data>
+  <data name="CustomerName_Caption" xml:space="preserve">
+    <value>Имя (название) клиента</value>
+  </data>
+  <data name="CustomerSince_Caption" xml:space="preserve">
+    <value>Клиент с тех пор как</value>
+  </data>
+  <data name="CustomerType_Caption" xml:space="preserve">
+    <value>Тип клиента</value>
+  </data>
+  <data name="CustomerwiseReport_Header" xml:space="preserve">
+    <value>Отчёт по клиентам</value>
+  </data>
+  <data name="Customer_Email_Notification" xml:space="preserve">
+    <value>Уведомление клиента (по) электронной почты</value>
+  </data>
+  <data name="Dashboard_Caption" xml:space="preserve">
+    <value>Приборная панель</value>
+  </data>
+  <data name="DateRange_Caption" xml:space="preserve">
+    <value>Диапазон дат</value>
+  </data>
+  <data name="DatewiseReport_Header" xml:space="preserve">
+    <value>Отчёт по датам</value>
+  </data>
+  <data name="date_Caption" xml:space="preserve">
+    <value>Дата</value>
+  </data>
+  <data name="Date_Created_Caption" xml:space="preserve">
+    <value>Дата создания</value>
+  </data>
+  <data name="Date_Modified_Caption" xml:space="preserve">
+    <value>Дата изменения</value>
+  </data>
+  <data name="ddlStatus_Active" xml:space="preserve">
+    <value>Активный</value>
+  </data>
+  <data name="ddlStatus_All" xml:space="preserve">
+    <value>Всё</value>
+  </data>
+  <data name="ddlStatus_Expired" xml:space="preserve">
+    <value>Истекший</value>
+  </data>
+  <data name="dd_Closed" xml:space="preserve">
+    <value>Закрыто</value>
+  </data>
+  <data name="dd_NoSale" xml:space="preserve">
+    <value>Не продаётся</value>
+  </data>
+  <data name="dd_Open" xml:space="preserve">
+    <value>Открыто</value>
+  </data>
+  <data name="dd_Resolved" xml:space="preserve">
+    <value>Урегулированный</value>
+  </data>
+  <data name="Delete_Caption" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="Description_Caption" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="Detail_Caption" xml:space="preserve">
+    <value>Подробность/деталь</value>
+  </data>
+  <data name="Display_Phone_Number" xml:space="preserve">
+    <value>Отобразить номер телефона</value>
+  </data>
+  <data name="DomainName_Caption" xml:space="preserve">
+    <value>Имя домена</value>
+  </data>
+  <data name="Domain_Caption" xml:space="preserve">
+    <value>URL (определитель местонахождения ресурса)</value>
+  </data>
+  <data name="DownloadCertificate_btn" xml:space="preserve">
+    <value>Скачать сертификат</value>
+  </data>
+  <data name="EditMeta_Caption" xml:space="preserve">
+    <value>Редактирование метатегов</value>
+  </data>
+  <data name="Edit_Caption" xml:space="preserve">
+    <value>Редактировать</value>
+  </data>
+  <data name="Edit_Contract_Price_of" xml:space="preserve">
+    <value>Редактировать цену контракта</value>
+  </data>
+  <data name="Edit_Email_Template" xml:space="preserve">
+    <value>Изменить е-мейл шаблона</value>
+  </data>
+  <data name="EmailContent_Caption" xml:space="preserve">
+    <value>Содержание е-мейла</value>
+  </data>
+  <data name="EmailExists" xml:space="preserve">
+    <value>Е-мейл уже существует</value>
+  </data>
+  <data name="EmailSubject_Caption" xml:space="preserve">
+    <value>Тема эл.письма</value>
+  </data>
+  <data name="Email_Caption" xml:space="preserve">
+    <value>Е-мейл</value>
+  </data>
+  <data name="Email_on_New_Customer_Signup" xml:space="preserve">
+    <value>Е-мейл при регистрации нового клиента</value>
+  </data>
+  <data name="Email_on_New_Reseller_Signup" xml:space="preserve">
+    <value>Е-мейл при регистрации нового торговца</value>
+  </data>
+  <data name="Email_Templates" xml:space="preserve">
+    <value>Шаблоны е-мейла</value>
+  </data>
+  <data name="EndDate_Caption" xml:space="preserve">
+    <value>Дата окончания</value>
+  </data>
+  <data name="EnterPromoCode_Caption" xml:space="preserve">
+    <value>Ввод промокода</value>
+  </data>
+  <data name="Enter_btn" xml:space="preserve">
+    <value>Ввод</value>
+  </data>
+  <data name="ErrorCCSave" xml:space="preserve">
+    <value>Ошибка при сохранении настройки кредитных карт</value>
+  </data>
+  <data name="ErrorMsg" xml:space="preserve">
+    <value>Ошибка при сохранении параметров</value>
+  </data>
+  <data name="ErrorPaypalSave" xml:space="preserve">
+    <value>Ошибка при сохранении параметров PayPal</value>
+  </data>
+  <data name="ExpireDate_Caption" xml:space="preserve">
+    <value>Истекает</value>
+  </data>
+  <data name="ExportToCSV_btn" xml:space="preserve">
+    <value>Экспорт в разделённое запятой значение</value>
+  </data>
+  <data name="ExternalOrderID_Caption" xml:space="preserve">
+    <value>SSL идентификация заказа магазина</value>
+  </data>
+  <data name="Facebook_Caption" xml:space="preserve">
+    <value>Facebook (фотоальбом)</value>
+  </data>
+  <data name="Fax_Caption" xml:space="preserve">
+    <value>Факс</value>
+  </data>
+  <data name="Fname_Caption" xml:space="preserve">
+    <value>Первое имя</value>
+  </data>
+  <data name="FooterSection_Caption" xml:space="preserve">
+    <value>Раздел нижнего колонтитула</value>
+  </data>
+  <data name="ForgotPwd_Caption" xml:space="preserve">
+    <value>Забыл пароль</value>
+  </data>
+  <data name="Format_Caption" xml:space="preserve">
+    <value>Формат</value>
+  </data>
+  <data name="Fraud_Order_Notification" xml:space="preserve">
+    <value>Уведомление о мошенническом заказе</value>
+  </data>
+  <data name="From_Caption" xml:space="preserve">
+    <value>Из/от</value>
+  </data>
+  <data name="FullName_Caption" xml:space="preserve">
+    <value>Полное имя</value>
+  </data>
+  <data name="FundAmount" xml:space="preserve">
+    <value>Сумма фонда</value>
+  </data>
+  <data name="Fund_EnterAmt_Caption" xml:space="preserve">
+    <value>Введите сумму</value>
+  </data>
+  <data name="Fund_MinAmt_Note" xml:space="preserve">
+    <value>Минимальная сумма 1 $</value>
+  </data>
+  <data name="Gateway_Name" xml:space="preserve">
+    <value>Имя шлюза</value>
+  </data>
+  <data name="GeneralSettings_SuccessMsg" xml:space="preserve">
+    <value>Настройки  успешно сохранены</value>
+  </data>
+  <data name="GeneralSetting_Header" xml:space="preserve">
+    <value>Главные настройки</value>
+  </data>
+  <data name="GoogleAnalytic" xml:space="preserve">
+    <value>Значение GoogleAnalytic (подсчёт посещений сайтов вроде)</value>
+  </data>
+  <data name="GoogleAnalytics_File_Settings" xml:space="preserve">
+    <value>Настройки файла GoogleAnalytic (подсчёт посещений сайтов вроде)</value>
+  </data>
+  <data name="Handle_Caption" xml:space="preserve">
+    <value>Ручка</value>
+  </data>
+  <data name="HeaderSection_Caption" xml:space="preserve">
+    <value>Заголовок секции</value>
+  </data>
+  <data name="Header_Management" xml:space="preserve">
+    <value>Заголовок управления</value>
+  </data>
+  <data name="HeardBy_Caption" xml:space="preserve">
+    <value>Услышаны</value>
+  </data>
+  <data name="Home_Page_Punch_Line" xml:space="preserve">
+    <value>Изюминка главной (домашней) страницы</value>
+  </data>
+  <data name="ImportAllProducts_btn" xml:space="preserve">
+    <value>Импорт всех продуктов</value>
+  </data>
+  <data name="ImportAllProducts_Caption" xml:space="preserve">
+    <value>Импорт всех продуктов</value>
+  </data>
+  <data name="InactiveResellers_Caption" xml:space="preserve">
+    <value>Неактивный посредник</value>
+  </data>
+  <data name="IncidentID_Caption" xml:space="preserve">
+    <value>Инцидент идентификации</value>
+  </data>
+  <data name="IncompleteOrder_Caption" xml:space="preserve">
+    <value>Неполные заказы</value>
+  </data>
+  <data name="insert_btn" xml:space="preserve">
+    <value>Вставить</value>
+  </data>
+  <data name="InternalProductCode_Caption" xml:space="preserve">
+    <value>Внутренний код продукта</value>
+  </data>
+  <data name="InvoiceDate_Caption" xml:space="preserve">
+    <value>Дата счёта</value>
+  </data>
+  <data name="InvoiceNo_Caption" xml:space="preserve">
+    <value>Номер счёта</value>
+  </data>
+  <data name="Invoice_Discount_Caption" xml:space="preserve">
+    <value>Скидка</value>
+  </data>
+  <data name="Invoice_Header" xml:space="preserve">
+    <value>Счёт</value>
+  </data>
+  <data name="Invoice_Number_Prefix" xml:space="preserve">
+    <value>Префикс номера счёта</value>
+  </data>
+  <data name="IP_Caption" xml:space="preserve">
+    <value>IP</value>
+  </data>
+  <data name="isActive_Caption" xml:space="preserve">
+    <value>Активен</value>
+  </data>
+  <data name="isAutoCalculation_Caption" xml:space="preserve">
+    <value>Автоматический расчет</value>
+  </data>
+  <data name="isCompetitiveUpgradeAllowed_Caption" xml:space="preserve">
+    <value>Допускаются конкурентные обновления</value>
+  </data>
+  <data name="IsCompetitiveUpgrade_Caption" xml:space="preserve">
+    <value>Конкурентные обновления</value>
+  </data>
+  <data name="isForReseller_Caption" xml:space="preserve">
+    <value>Для посредника</value>
+  </data>
+  <data name="isNewOrder_Caption" xml:space="preserve">
+    <value>Тип заказа</value>
+  </data>
+  <data name="isNoOfServerFree_Caption" xml:space="preserve">
+    <value>Нет бесплатных серверов</value>
+  </data>
+  <data name="ISOName_Caption" xml:space="preserve">
+    <value>Название ISO</value>
+  </data>
+  <data name="isSANEnabled_Caption" xml:space="preserve">
+    <value>Сеть устройств хранения данных включена</value>
+  </data>
+  <data name="Issuance_Caption" xml:space="preserve">
+    <value>Название эмитента</value>
+  </data>
+  <data name="isWildcard_Caption" xml:space="preserve">
+    <value>Неуправляемая карта</value>
+  </data>
+  <data name="Is_Site_Run_with_WWW" xml:space="preserve">
+    <value>Запускется ли сайт с WWW</value>
+  </data>
+  <data name="Is_VAT_Applicable" xml:space="preserve">
+    <value>Применимо ли НДС</value>
+  </data>
+  <data name="KeyAlgorithm_Caption" xml:space="preserve">
+    <value>Основные Алгоритмы</value>
+  </data>
+  <data name="KeyFile_Path" xml:space="preserve">
+    <value>Основные пути файла</value>
+  </data>
+  <data name="Keywords_Caption" xml:space="preserve">
+    <value>Ключевые слова</value>
+  </data>
+  <data name="LanguageCode_Caption" xml:space="preserve">
+    <value>Код языка</value>
+  </data>
+  <data name="LanguageName_Caption" xml:space="preserve">
+    <value>Название языка</value>
+  </data>
+  <data name="LastReplier_Caption" xml:space="preserve">
+    <value>Последний отклонённый</value>
+  </data>
+  <data name="ListOrder_Header" xml:space="preserve">
+    <value>Список заказов</value>
+  </data>
+  <data name="ListOrder_Search_Caption" xml:space="preserve">
+    <value>Поиск</value>
+  </data>
+  <data name="Live_CHat_OpTion" xml:space="preserve">
+    <value>Вариаты онлайн-чата</value>
+  </data>
+  <data name="Live_Chat_Script" xml:space="preserve">
+    <value>Сценарии онлайн-чата</value>
+  </data>
+  <data name="Live_URL" xml:space="preserve">
+    <value>Живой определитель местонахождения ресурса</value>
+  </data>
+  <data name="Lname_Caption" xml:space="preserve">
+    <value>Последнее имя</value>
+  </data>
+  <data name="Locality_Caption" xml:space="preserve">
+    <value>Местонахождение</value>
+  </data>
+  <data name="Login_BTN" xml:space="preserve">
+    <value>Логин</value>
+  </data>
+  <data name="Login_Header" xml:space="preserve">
+    <value>Логин</value>
+  </data>
+  <data name="Logo_Management" xml:space="preserve">
+    <value>Логотип управления</value>
+  </data>
+  <data name="ManageCustomer_Caption" xml:space="preserve">
+    <value>Управление клиентами</value>
+  </data>
+  <data name="ManagePromocodes_Header" xml:space="preserve">
+    <value>Управление промокодами</value>
+  </data>
+  <data name="ManageSlab_Caption" xml:space="preserve">
+    <value>Управление шаблоном</value>
+  </data>
+  <data name="Manage_Contract_Products" xml:space="preserve">
+    <value>Управление договором продуктов</value>
+  </data>
+  <data name="Manage_Language_Time_Zone" xml:space="preserve">
+    <value>Управление языком и часовыми поясами</value>
+  </data>
+  <data name="Manage_Products_Caption" xml:space="preserve">
+    <value>Управление продуктами</value>
+  </data>
+  <data name="MaxOrders_Caption" xml:space="preserve">
+    <value>Максимальный заказ</value>
+  </data>
+  <data name="Merchant_ID" xml:space="preserve">
+    <value>Идентификация оптовика</value>
+  </data>
+  <data name="Mobile_Caption" xml:space="preserve">
+    <value>Мобильный</value>
+  </data>
+  <data name="Months_Caption" xml:space="preserve">
+    <value>Месяца</value>
+  </data>
+  <data name="Need_to_Approve_Reseller" xml:space="preserve">
+    <value>Необходимо утвердить посредников</value>
+  </data>
+  <data name="New_Order_Notification" xml:space="preserve">
+    <value>Уведомление о новом заказе</value>
+  </data>
+  <data name="NoOfSan_Caption" xml:space="preserve">
+    <value>№ сеть устройств хранения данных</value>
+  </data>
+  <data name="NoRecord" xml:space="preserve">
+    <value>№ найденой записи</value>
+  </data>
+  <data name="Notes_Caption" xml:space="preserve">
+    <value>ПРИМЕЧАНИЯ</value>
+  </data>
+  <data name="No_CAption" xml:space="preserve">
+    <value>Нет</value>
+  </data>
+  <data name="No_Dash_No_Space" xml:space="preserve">
+    <value>Нет пробелов,нет тире</value>
+  </data>
+  <data name="Numbercerts" xml:space="preserve">
+    <value>Количество выданных сертификатов</value>
+  </data>
+  <data name="NumberOfMonths_Caption" xml:space="preserve">
+    <value>Действительность</value>
+  </data>
+  <data name="NumberOfServers_Caption" xml:space="preserve">
+    <value>Лицензированные серверы</value>
+  </data>
+  <data name="Odetail_AContactdet_Header" xml:space="preserve">
+    <value>Детали контакта  администратора SSL (протокол безопасных соединений)</value>
+  </data>
+  <data name="Odetail_CertDetail_Header" xml:space="preserve">
+    <value>Детали сертификата</value>
+  </data>
+  <data name="Odetail_Header" xml:space="preserve">
+    <value>Детали заказа</value>
+  </data>
+  <data name="Odetail_SiteContacts_Header" xml:space="preserve">
+    <value>Контакты сайта</value>
+  </data>
+  <data name="Odetail_TContactdet_Header" xml:space="preserve">
+    <value>Технические детали контакта SSL (протокол безопасных соединений)</value>
+  </data>
+  <data name="OrderDate_Caption" xml:space="preserve">
+    <value>Идентификация заказа</value>
+  </data>
+  <data name="OrderInformation_Caption" xml:space="preserve">
+    <value>Информация о заказе</value>
+  </data>
+  <data name="OrderNumber_Caption" xml:space="preserve">
+    <value>Номер заказа</value>
+  </data>
+  <data name="OrderStatusSuccess" xml:space="preserve">
+    <value>Статус заказа обновлён успешно</value>
+  </data>
+  <data name="OrderStatus_Caption" xml:space="preserve">
+    <value>Статус заказа</value>
+  </data>
+  <data name="OrderSummary_Caption" xml:space="preserve">
+    <value>Итог заказа</value>
+  </data>
+  <data name="Order_Placed_for" xml:space="preserve">
+    <value>Заказ размещён для…</value>
+  </data>
+  <data name="Order_Status_Reason" xml:space="preserve">
+    <value>Статус причины заказа</value>
+  </data>
+  <data name="Order_Type_Caption" xml:space="preserve">
+    <value>Дата заказа</value>
+  </data>
+  <data name="OrganisationUnit_Caption" xml:space="preserve">
+    <value>Организация группы</value>
+  </data>
+  <data name="Organisation_Caption" xml:space="preserve">
+    <value>Организация</value>
+  </data>
+  <data name="PageNameCatopm" xml:space="preserve">
+    <value>Название страницы</value>
+  </data>
+  <data name="Pager_Size" xml:space="preserve">
+    <value>Размер страницы</value>
+  </data>
+  <data name="Paid_via" xml:space="preserve">
+    <value>Платные через</value>
+  </data>
+  <data name="Partner_ID" xml:space="preserve">
+    <value>Идентификатор партнёра</value>
+  </data>
+  <data name="Partner_Pricing_Caption" xml:space="preserve">
+    <value>Цены партнёра</value>
+  </data>
+  <data name="Password_Caption" xml:space="preserve">
+    <value>Пароль</value>
+  </data>
+  <data name="Payable_Amt_Caption" xml:space="preserve">
+    <value>Код авторизации оплаты</value>
+  </data>
+  <data name="PayAuthorizationCode_Caption" xml:space="preserve">
+    <value>Детали шлюза оплаты</value>
+  </data>
+  <data name="PaymentType_Caption" xml:space="preserve">
+    <value>Тип оплаты</value>
+  </data>
+  <data name="PaypalId_Caption" xml:space="preserve">
+    <value>Идентификация PayPal</value>
+  </data>
+  <data name="PaypalSaved" xml:space="preserve">
+    <value>Настройки Paypal сохранены успешно</value>
+  </data>
+  <data name="Paypal_Caption" xml:space="preserve">
+    <value>PayPal</value>
+  </data>
+  <data name="Phone_Caption" xml:space="preserve">
+    <value>Телефон</value>
+  </data>
+  <data name="Phone_Number" xml:space="preserve">
+    <value>Номер телефона</value>
+  </data>
+  <data name="PriceMargin_Caption" xml:space="preserve">
+    <value>Предел цены</value>
+  </data>
+  <data name="Price_Caption" xml:space="preserve">
+    <value>Сумма</value>
+  </data>
+  <data name="Pricing_Caption" xml:space="preserve">
+    <value>Ценообразование</value>
+  </data>
+  <data name="Print_Caption" xml:space="preserve">
+    <value>Печать</value>
+  </data>
+  <data name="ProductCode_Caption" xml:space="preserve">
+    <value>Код продукта</value>
+  </data>
+  <data name="ProductTypeID_Caption" xml:space="preserve">
+    <value>Идентификатор типа продукта</value>
+  </data>
+  <data name="ProductwiseReport_Header" xml:space="preserve">
+    <value>Отчёт по продуктам</value>
+  </data>
+  <data name="Product_Caption" xml:space="preserve">
+    <value>Название продукта</value>
+  </data>
+  <data name="Profit_Margin_Caption" xml:space="preserve">
+    <value>Размер прибыли</value>
+  </data>
+  <data name="Promocode_Header" xml:space="preserve">
+    <value>Генерировать код купона</value>
+  </data>
+  <data name="PromoDiscount_Caption" xml:space="preserve">
+    <value>Код скидки купона</value>
+  </data>
+  <data name="Pwdchanged" xml:space="preserve">
+    <value>Изменение пароля успешно</value>
+  </data>
+  <data name="Reason_Caption" xml:space="preserve">
+    <value>Причина</value>
+  </data>
+  <data name="ReceiptDetail_Caption" xml:space="preserve">
+    <value>Получение подробностей</value>
+  </data>
+  <data name="Recommended_Caption" xml:space="preserve">
+    <value>Рекомендованный</value>
+  </data>
+  <data name="RecordStatus_Caption" xml:space="preserve">
+    <value>Статус записи</value>
+  </data>
+  <data name="RefundDays_Caption" xml:space="preserve">
+    <value>Дни возврата</value>
+  </data>
+  <data name="RefundRequest_Caption" xml:space="preserve">
+    <value>Запрос возврата</value>
+  </data>
+  <data name="Refund_Notification" xml:space="preserve">
+    <value>Возврат уведомления</value>
+  </data>
+  <data name="ReissueCertificate_btn" xml:space="preserve">
+    <value>Перевыпуск сертификата</value>
+  </data>
+  <data name="Remark_Caption" xml:space="preserve">
+    <value>Замечание</value>
+  </data>
+  <data name="RenewalAlerts_Caption" xml:space="preserve">
+    <value>Обновление предупреждения</value>
+  </data>
+  <data name="Renewal_Notification_Before_15_Days" xml:space="preserve">
+    <value>Обновление уведомления за 15 дней</value>
+  </data>
+  <data name="Renewal_Notification_Before_30_Days" xml:space="preserve">
+    <value>Обновление уведомления за 30 дней</value>
+  </data>
+  <data name="Renewal_Notification_Before_3_Days" xml:space="preserve">
+    <value>Обновление уведомления за 3 дней</value>
+  </data>
+  <data name="Renewal_Notification_Before_7_Days" xml:space="preserve">
+    <value>Обновление уведомления за 7 дней</value>
+  </data>
+  <data name="Renewal_Noti_ResellerC_Before_15_Days" xml:space="preserve">
+    <value>Обновление уведомления для клиентов посредника за 15 дней</value>
+  </data>
+  <data name="Renewal_Noti_ResellerC_Before_30_Days" xml:space="preserve">
+    <value>Обновление уведомления для клиентов посредника за 30 дней</value>
+  </data>
+  <data name="Renewal_Noti_ResellerC_Before_3_Days" xml:space="preserve">
+    <value>Обновление уведомления для клиентов посредника за 3 дней</value>
+  </data>
+  <data name="Renewal_Noti_ResellerC_Before_7_Days" xml:space="preserve">
+    <value>Обновление уведомления для клиентов посредника за 7 дней</value>
+  </data>
+  <data name="Renewal_Noti_Reseller_Before_15_Days" xml:space="preserve">
+    <value>Обновление уведомления для клиентов посредника за 15 дней</value>
+  </data>
+  <data name="Renewal_Noti_Reseller_Before_30_Days" xml:space="preserve">
+    <value>Обновление уведомления для клиентов посредника за 30 дней</value>
+  </data>
+  <data name="Renewal_Noti_Reseller_Before_3_Days" xml:space="preserve">
+    <value>Обновление уведомления для клиентов посредника за 3 дней</value>
+  </data>
+  <data name="Renewal_Noti_Reseller_Before_7_Days" xml:space="preserve">
+    <value>Обновление уведомления для клиентов посредника за 7 дней</value>
+  </data>
+  <data name="ReNewNow_btn" xml:space="preserve">
+    <value>Обновление теперь</value>
+  </data>
+  <data name="ReplyTO_Caption" xml:space="preserve">
+    <value>Отвечать на</value>
+  </data>
+  <data name="RequestPassword_btn" xml:space="preserve">
+    <value>Запрос пароля</value>
+  </data>
+  <data name="Require_Credentials" xml:space="preserve">
+    <value>Запрос полномочий</value>
+  </data>
+  <data name="ResellerName_Caption" xml:space="preserve">
+    <value>Название посредника</value>
+  </data>
+  <data name="ResellerPrg_Header" xml:space="preserve">
+    <value>Программа посредника</value>
+  </data>
+  <data name="Reseller_Caption" xml:space="preserve">
+    <value>Посредник</value>
+  </data>
+  <data name="Reseller_Email_Notification" xml:space="preserve">
+    <value>Уведомление посредника по е-мейлу</value>
+  </data>
+  <data name="Reseller_RegDate" xml:space="preserve">
+    <value>Дата регистрации</value>
+  </data>
+  <data name="Reseller_Since" xml:space="preserve">
+    <value>Посредник с</value>
+  </data>
+  <data name="Reseller_Slab_Contract" xml:space="preserve">
+    <value>Механизм управления памятью/контракт</value>
+  </data>
+  <data name="Reseller_Title" xml:space="preserve">
+    <value>Управление посредниками</value>
+  </data>
+  <data name="Reseller_TotalPur" xml:space="preserve">
+    <value>Все покупки</value>
+  </data>
+  <data name="ResendApprovalEmail_btn" xml:space="preserve">
+    <value>Повторно отправить утверждение эл.почты</value>
+  </data>
+  <data name="RetailPrice_Caption" xml:space="preserve">
+    <value>Цена прдавца</value>
+  </data>
+  <data name="Robots_File_Settings" xml:space="preserve">
+    <value>Настройки файла роботов</value>
+  </data>
+  <data name="SalePrice_Caption" xml:space="preserve">
+    <value>Цена продажи</value>
+  </data>
+  <data name="SanMax_Caption" xml:space="preserve">
+    <value>SanMax</value>
+  </data>
+  <data name="SanMin_Caption" xml:space="preserve">
+    <value>SanMin</value>
+  </data>
+  <data name="SavedSuccessfully" xml:space="preserve">
+    <value>Прфиль успешно сохранён</value>
+  </data>
+  <data name="SavePaypalSetting_btn" xml:space="preserve">
+    <value>Сохранены настройки PayPal</value>
+  </data>
+  <data name="SaveSetting_btn" xml:space="preserve">
+    <value>Настройки сохранены</value>
+  </data>
+  <data name="SAVE_btn" xml:space="preserve">
+    <value>СОХРАНИТЬ</value>
+  </data>
+  <data name="SearchOrder_Header" xml:space="preserve">
+    <value>Поиск заказа</value>
+  </data>
+  <data name="Search_btn" xml:space="preserve">
+    <value>Поиск</value>
+  </data>
+  <data name="SelectProduct_Caption" xml:space="preserve">
+    <value>Выбрать продукт</value>
+  </data>
+  <data name="SelectTheme_btn" xml:space="preserve">
+    <value>Выбрать тему</value>
+  </data>
+  <data name="Select_Country" xml:space="preserve">
+    <value>Поиск страны</value>
+  </data>
+  <data name="Select_PayGateway_Caption" xml:space="preserve">
+    <value>Поиск платёжного шлюза</value>
+  </data>
+  <data name="Select_Payment_Type" xml:space="preserve">
+    <value>Поиск платёжного типа</value>
+  </data>
+  <data name="Select_Theme" xml:space="preserve">
+    <value>Выбрать тему</value>
+  </data>
+  <data name="Select_Timezone" xml:space="preserve">
+    <value>Выбрать часовой пояс</value>
+  </data>
+  <data name="SerialNumber_caption" xml:space="preserve">
+    <value>Серийный номер</value>
+  </data>
+  <data name="Servers_Caption" xml:space="preserve">
+    <value>Серверы</value>
+  </data>
+  <data name="Set_Default_Currancy" xml:space="preserve">
+    <value>Установка платежных валют</value>
+  </data>
+  <data name="Shoppingcart_ SANPrice" xml:space="preserve">
+    <value>Дополнительная цена SAN</value>
+  </data>
+  <data name="ShoppingCart_Header" xml:space="preserve">
+    <value>Ваша корзина для вируальных покупок</value>
+  </data>
+  <data name="Shoppingcart_Price" xml:space="preserve">
+    <value>Цена (корзины для вируальных покупок)</value>
+  </data>
+  <data name="ShoppingCart_Sno" xml:space="preserve">
+    <value>Номер (корзины для вируальных покупок)</value>
+  </data>
+  <data name="ShowInSite_Caption" xml:space="preserve">
+    <value>Показать в сайте (местонахождение)</value>
+  </data>
+  <data name="Show_Banner" xml:space="preserve">
+    <value>Показать баннер</value>
+  </data>
+  <data name="Show_Status" xml:space="preserve">
+    <value>Показать статус</value>
+  </data>
+  <data name="SlabName_Caption" xml:space="preserve">
+    <value>Название механизма управления памятью</value>
+  </data>
+  <data name="SMTPHost_Caption" xml:space="preserve">
+    <value>Хост SMTP (простой протокол передачи почты)</value>
+  </data>
+  <data name="SMTPPassword_Caption" xml:space="preserve">
+    <value>Пароль SMTP (простой протокол передачи почты)</value>
+  </data>
+  <data name="SMTPPort_Caption" xml:space="preserve">
+    <value>Порт SMTP (простой протокол передачи почты)</value>
+  </data>
+  <data name="SMTPUser_Caption" xml:space="preserve">
+    <value>Пользователь SMTP (простой протокол передачи почты)</value>
+  </data>
+  <data name="SMTP_Settings" xml:space="preserve">
+    <value>Насторойки SMTP (простой протокол передачи почты)</value>
+  </data>
+  <data name="Social_Networking" xml:space="preserve">
+    <value>Социальные сети</value>
+  </data>
+  <data name="SpecialInstructions_Caption" xml:space="preserve">
+    <value>Особые инструкции</value>
+  </data>
+  <data name="StaffNote_Caption" xml:space="preserve">
+    <value>Обратите внимание персонала</value>
+  </data>
+  <data name="StartDate_Caption" xml:space="preserve">
+    <value>Дата начала</value>
+  </data>
+  <data name="Statement_Credit_Caption" xml:space="preserve">
+    <value>Кредит</value>
+  </data>
+  <data name="Statement_Header" xml:space="preserve">
+    <value>Выписка по счету</value>
+  </data>
+  <data name="Statement_Payment_Amount" xml:space="preserve">
+    <value>Сума оплаты</value>
+  </data>
+  <data name="Statement_Type_Caption" xml:space="preserve">
+    <value>Тип</value>
+  </data>
+  <data name="State_Caption" xml:space="preserve">
+    <value>Сосотояние</value>
+  </data>
+  <data name="Static_Caption" xml:space="preserve">
+    <value>Статус</value>
+  </data>
+  <data name="StoreConfiguration_Caption" xml:space="preserve">
+    <value>Конфигурация магазина</value>
+  </data>
+  <data name="Street_Caption" xml:space="preserve">
+    <value>Улица</value>
+  </data>
+  <data name="Subject_Caption" xml:space="preserve">
+    <value>Тема/предмет/субъект/человек/повод/причина</value>
+  </data>
+  <data name="Submit_Btn" xml:space="preserve">
+    <value>Представлять</value>
+  </data>
+  <data name="Support_Email" xml:space="preserve">
+    <value>Эл.адрес службы поддержки</value>
+  </data>
+  <data name="Support_Incident_Notification" xml:space="preserve">
+    <value>Уведомление в службу поддержки</value>
+  </data>
+  <data name="Support_Incident_Update" xml:space="preserve">
+    <value>Обновление в службу поддержки</value>
+  </data>
+  <data name="Synchronize_Your_Product" xml:space="preserve">
+    <value>Синхронизация вашего продукта</value>
+  </data>
+  <data name="Tax_Caption" xml:space="preserve">
+    <value>Налог</value>
+  </data>
+  <data name="Templates_Caption" xml:space="preserve">
+    <value>Шаблоны</value>
+  </data>
+  <data name="Template_Caption" xml:space="preserve">
+    <value>Шаблон</value>
+  </data>
+  <data name="Test_Mode" xml:space="preserve">
+    <value>Тестовый режим</value>
+  </data>
+  <data name="Test_URL" xml:space="preserve">
+    <value>Тест URL (определитель местонахождения ресурса)</value>
+  </data>
+  <data name="Title_Caption" xml:space="preserve">
+    <value>Название</value>
+  </data>
+  <data name="TotalOrders_Caption" xml:space="preserve">
+    <value>Итоговый заказ</value>
+  </data>
+  <data name="TotalPrice_Caption" xml:space="preserve">
+    <value>Итоговая цена</value>
+  </data>
+  <data name="TotalTransaction_Caption" xml:space="preserve">
+    <value>Итог сделки</value>
+  </data>
+  <data name="Total_Caption" xml:space="preserve">
+    <value>Итог</value>
+  </data>
+  <data name="Total_Sale" xml:space="preserve">
+    <value>Итоговая продажа</value>
+  </data>
+  <data name="TO_Caption" xml:space="preserve">
+    <value>В/к/для</value>
+  </data>
+  <data name="To_Configure" xml:space="preserve">
+    <value>Для настройки</value>
+  </data>
+  <data name="TransactionDate_Caption" xml:space="preserve">
+    <value>Дата транзакции</value>
+  </data>
+  <data name="TransactionDetail_Caption" xml:space="preserve">
+    <value>Детал транзакции</value>
+  </data>
+  <data name="TransactionType_Caption" xml:space="preserve">
+    <value>Тип транзакции</value>
+  </data>
+  <data name="TransactionwiseReport_Header" xml:space="preserve">
+    <value>Отчёт по транзакциям</value>
+  </data>
+  <data name="Transaction_Key" xml:space="preserve">
+    <value>Ключ транзакции / Подпись</value>
+  </data>
+  <data name="Twitter_Caption" xml:space="preserve">
+    <value>Твиттер</value>
+  </data>
+  <data name="Under_Maintanance" xml:space="preserve">
+    <value>Под обслуживанием</value>
+  </data>
+  <data name="Upload_Logo" xml:space="preserve">
+    <value>Загрузить логотип</value>
+  </data>
+  <data name="Username_Caption" xml:space="preserve">
+    <value>Имя пользователя</value>
+  </data>
+  <data name="UserProfile_Header" xml:space="preserve">
+    <value>Личная информация</value>
+  </data>
+  <data name="UseSSL_Caption" xml:space="preserve">
+    <value>Использовать SSL</value>
+  </data>
+  <data name="Use_Auth" xml:space="preserve">
+    <value>Использовать Authorized.net</value>
+  </data>
+  <data name="Use_PayPal" xml:space="preserve">
+    <value>Использовать PayPal</value>
+  </data>
+  <data name="Use_SSL" xml:space="preserve">
+    <value>Использовать SSL</value>
+  </data>
+  <data name="Value_Caption" xml:space="preserve">
+    <value>Значение</value>
+  </data>
+  <data name="VAT" xml:space="preserve">
+    <value>НДС#</value>
+  </data>
+  <data name="WebServerID_Caption" xml:space="preserve">
+    <value>Идетифокатор сервера</value>
+  </data>
+  <data name="Welcome_Caption" xml:space="preserve">
+    <value>Добро пожаловать</value>
+  </data>
+  <data name="Welcome_Email" xml:space="preserve">
+    <value>Е-мейл для входа</value>
+  </data>
+  <data name="Year_Caption" xml:space="preserve">
+    <value>Год</value>
+  </data>
+  <data name="Year_Caption1" xml:space="preserve">
+    <value>1 год</value>
+  </data>
+  <data name="Year_Caption2" xml:space="preserve">
+    <value>2 года</value>
+  </data>
+  <data name="Year_Caption3" xml:space="preserve">
+    <value>3 года</value>
+  </data>
+  <data name="Year_Caption4" xml:space="preserve">
+    <value>4 года</value>
+  </data>
+  <data name="Year_Caption5" xml:space="preserve">
+    <value>5 лет</value>
+  </data>
+  <data name="Yes_CAption" xml:space="preserve">
+    <value>Да</value>
+  </data>
+  <data name="Zip_Caption" xml:space="preserve">
+    <value>Почтовый</value>
+  </data>
+  <data name="CheckOut_MoneybookersInfo_Header" xml:space="preserve">
+    <value>Monerbookers Information</value>
+  </data>
+  <data name="MoneybookersId_Caption" xml:space="preserve">
+    <value>MoneybookersID</value>
+  </data>
+  <data name="MoneybookersID_Title_Caption" xml:space="preserve">
+    <value>Your MoneybookersID must be in the format of name@domain.com</value>
+  </data>
+  <data name="Moneybookers_Caption" xml:space="preserve">
+    <value>Moneybookers</value>
+  </data>
+  <data name="CheckOut_MoneybookersInfo_Header1" xml:space="preserve">
+    <value>Monerbookers Information</value>
+  </data>
+  <data name="ErrorMBSave" xml:space="preserve">
+    <value>Error while saving moneybookers settings.</value>
+  </data>
+  <data name="MoneybookerSaved" xml:space="preserve">
+    <value>Moneybookers settings saved successfully.</value>
+  </data>
+  <data name="SaveMoneybookersSetting_btn" xml:space="preserve">
+    <value>Save Moneybookers Setting</value>
+  </data>
+  <data name="Use_Moneybookers" xml:space="preserve">
+    <value>Use Moneybookers</value>
+  </data>
+  <data name="InvoiceAddress_Caption" xml:space="preserve">
+    <value>Адрес счета</value>
+  </data>
+  <data name="PaymentNote_Caption" xml:space="preserve">
+    <value>Оплата записку</value>
+  </data>
+  <data name="PaymentNote_Small_Caption" xml:space="preserve">
+    <value>Это для кредитных нот заявление карты.</value>
+  </data>
+  <data name="CustomerLogin_Caption" xml:space="preserve">
+    <value>Login_ru</value>
+  </data>
+  <data name="SelectExtraDomains_Caption" xml:space="preserve">
+    <value>Select Extra SAN</value>
+  </data>
+  <data name="TotalAdditionalDomains_Caption" xml:space="preserve">
+    <value>Total Additional SAN</value>
+  </data>
+  <data name="UsedDomains_Caption" xml:space="preserve">
+    <value>Used SAN</value>
+  </data>
+  <data name="Admin_Caption_billingCurrencySmlNote" xml:space="preserve">
+    <value>Эта валюта установки только для PayPal вариант</value>
+  </data>
+  <data name="Admin_Caption_Default_CurrencySymbol" xml:space="preserve">
+    <value>Указан сайта по умолчанию Символа Валюты</value>
+  </data>
+  <data name="EV_Caption" xml:space="preserve">
+    <value>Extended</value>
+  </data>
+  <data name="Admin_RefundUnsuccessful" xml:space="preserve">
+    <value>Refund amount should be less than order price</value>
+  </data>
+  <data name="DownloadAuthFile_btnCaption" xml:space="preserve">
+    <value>Скачать Auth File</value>
+  </data>
+  <data name="AuthFileDetails_Caption" xml:space="preserve">
+    <value>Подробности Авт файла</value>
+  </data>
+  <data name="PollDate_Caption" xml:space="preserve">
+    <value>Последний Опрос Дата</value>
+  </data>
+  <data name="PollStatus_Caption" xml:space="preserve">
+    <value>Опрос Статус</value>
+  </data>
+  <data name="TokenCode_Caption" xml:space="preserve">
+    <value>Token код</value>
+  </data>
+  <data name="TokenID_Caption" xml:space="preserve">
+    <value>Tokenid</value>
+  </data>
+  <data name="ResellersCustomerNotification_caption" xml:space="preserve">
+    <value>Пользовательские E-mail адрес</value>
+  </data>
+  <data name="ResellersCustomerNotification_note" xml:space="preserve">
+    <value>Настроить из электронной почты для клиента посредника в уведомления Обновление электронной почте.</value>
+  </data>
+  <data name="ShowBaner_on_HomePage_only_caption" xml:space="preserve">
+    <value>Показать только Главная</value>
+  </data>
+  <data name="ShowBaner_on_HomePage_only_Note" xml:space="preserve">
+    <value>Показать баннер только главная страница не подробно, если проверить страницы</value>
+  </data>
+  <data name="payment_Paypal_msg" xml:space="preserve">
+    <value>Вы будете перенаправлены на PayPal в следующем шаге, где вы также будете иметь возможность оплатить с помощью кредитной / дебетовой карты.</value>
+  </data>
+  <data name="CheckOut_Header_Caption" xml:space="preserve">
+    <value>Безопасное извлечение</value>
+  </data>
+  <data name="AddFund_Caption" xml:space="preserve">
+    <value>Безопасный фонд Добавить</value>
+  </data>
+  <data name="AMSSL_Caption" xml:space="preserve">
+    <value>Антивредоносная</value>
+  </data>
+  <data name="CSSSL_Caption" xml:space="preserve">
+    <value>Подпись кода</value>
+  </data>
+  <data name="DVSSL_Caption" xml:space="preserve">
+    <value>Домен Validated SSL</value>
+  </data>
+  <data name="EVSSL_Caption" xml:space="preserve">
+    <value>Extended Validation SSL</value>
+  </data>
+  <data name="OVSSL_Caption" xml:space="preserve">
+    <value>Организация Validated SSL</value>
+  </data>
+  <data name="UCSANSSL_Caption" xml:space="preserve">
+    <value>UCC SAN SSL</value>
+  </data>
+  <data name="WCSSL_Caption" xml:space="preserve">
+    <value>Wildcard SSL</value>
+  </data>
+</root>

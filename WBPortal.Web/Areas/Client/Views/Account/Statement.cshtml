@@ -1,0 +1,133 @@
+﻿@model WBSSLStore.Web.Helpers.PagedList.IPagedList<WBSSLStore.Service.ViewModels.AccountStatement>
+@{
+    ViewBag.version = WBSSLStore.Web.Helpers.Caching.SiteCacher.ResourceVersion();
+    WBSSLStore.Web.Util.WBSiteSettings setting = new WBSSLStore.Web.Util.WBSiteSettings(WBSSLStore.Web.Helpers.Caching.SiteCacher.CurrentSite);
+    ViewBag.Title = "Account Statement";
+    string CurrentLangCode = setting.CurrentCultureKey;
+    
+    string username = ViewBag.UserName;
+}
+@section sitecss{
+    @System.Web.Optimization.Styles.Render("/bundales/jquery-ui-css?v=" + ViewBag.version)
+}
+@section Jscripts{
+    @System.Web.Optimization.Scripts.Render("/bundales/wb/scripts?v=" + ViewBag.version)
+    @if (CurrentLangCode != "en-US")
+    {
+        @System.Web.Optimization.Scripts.Render("/bundales/jquery-datepickerjs?v=" + ViewBag.version)
+    }
+    @System.Web.Optimization.Scripts.Render("/bundales/jquery-glob?v=" + ViewBag.version)
+    @System.Web.Optimization.Scripts.Render("/bundales/jquery-glob-all?v=" + ViewBag.version)
+    <script type="text/javascript" language="javascript">
+
+        var frmdate = "@WBSSLStore.Resources.ErrorMessage.Message.Fromdate";
+        var todate = "@WBSSLStore.Resources.ErrorMessage.Message.Todate";
+
+        $(function () {
+            var dates = $("#txtFromDate, #txtToDate").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                numberOfMonths: 1,
+                showOn: "both",
+                buttonImage: "/content/images/calendar.png",
+                buttonImageOnly: true,
+                onSelect: function (selectedDate) {
+                    var option = this.id == "txtFromDate" ? "minDate" : "maxDate",
+                        instance = $(this).data("datepicker"),
+                        date = $.datepicker.parseDate(
+                            instance.settings.dateFormat ||
+                            $.datepicker._defaults.dateFormat,
+                            selectedDate, instance.settings);
+                    dates.not(this).datepicker("option", option, date, $.datepicker.regional["@(CurrentLangCode)"]);
+
+
+                }
+            });
+        });
+    </script>
+    @{
+        setting = null;
+    }
+}
+
+@Html.Partial("_banner", new Tuple<string, string>("", WBSSLStore.Resources.GeneralMessage.Message.Statement_Header))
+<div class="content">
+    <div class="wrapper">
+        <div class="column3">
+            <div class="column3-0">
+                <div class="controlpnldata">
+                    @using (Html.BeginForm("statement", "account", FormMethod.Post, new { @id = "frmstatment" }))
+                    {
+                        <p class="availablebal">@WBSSLStore.Resources.GeneralMessage.Message.AccountBalance_Caption: <span class="orngtxt">@(string.Format("{0:C}", Convert.ToDecimal(ViewBag.AccountBalance)))</span></p>
+
+                        <div class="searchsection">
+                            <label>@WBSSLStore.Resources.GeneralMessage.Message.DateRange_Caption:</label>
+                            <div class="daterange">
+                                <input name="txtFromDate" type="text" size="10" readonly="readonly" class="in90px" id="txtFromDate" value="@(ViewBag.FromDate != null ? ViewBag.FormDate : DateTimeWithZone.Now.AddYears(-1).ToShortDateString())" />
+                            </div>
+                            <div class="daterange">
+                                <input name="txtToDate" type="text" size="10" readonly="readonly" class="in90px" id="txtToDate" value="@(ViewBag.ToDate != null ? ViewBag.ToDate : DateTimeWithZone.Now.ToShortDateString())" />
+                            </div>
+
+                            <input type="submit" id="btnSubmit" name="btnSubmit" value="@WBSSLStore.Resources.GeneralMessage.Message.Search_btn" class="smlbtn" />
+                            <input type="submit" id="btnExport" name="btnExport" value="@WBSSLStore.Resources.GeneralMessage.Message.ExportToCSV_btn" class="exportcsvbtnsml" />
+                            <div class="clear"></div>
+                        </div>
+                    }
+                    <h3>Account Statement</h3>
+                    @if (Model != null && Model.Count() > 0)
+                    {
+                        <div class="odrtabelgrid">
+
+
+                            <div class="odrtblraw odrheadraw acstate">
+                                <p class="wd100">@WBSSLStore.Resources.GeneralMessage.Message.OrderDate_Caption</p>
+                                <p class="bigcol">@WBSSLStore.Resources.GeneralMessage.Message.TransactionDetail_Caption</p>
+                                <p class="wd100">@WBSSLStore.Resources.GeneralMessage.Message.Statement_Type_Caption</p>
+                                <p class="wd150">@WBSSLStore.Resources.GeneralMessage.Message.Statement_Payment_Amount</p>
+                                <p class="wd100">@WBSSLStore.Resources.GeneralMessage.Message.Statement_Credit_Caption</p>
+                                <p class="wd150">@WBSSLStore.Resources.GeneralMessage.Message.Price_Caption</p>
+                            </div>
+
+                            @foreach (var item in Model)
+                            {
+                                <div class="odrtblraw acstate">
+                                    <p class="wd100"><span class="tabshow">@WBSSLStore.Resources.GeneralMessage.Message.OrderDate_Caption</span>@item.TransactionDate.ToShortDateString()</p>
+                                    <p class="bigcol"><span class="tabshow">@WBSSLStore.Resources.GeneralMessage.Message.TransactionDetail_Caption</span>@Html.Raw(item.TransactionDetail.ToString())</p>
+                                    <p class="wd100"><span class="tabshow">@WBSSLStore.Resources.GeneralMessage.Message.Statement_Type_Caption</span>@item.TransactionMode.ToString()</p>
+                                    <p class="wd150"><span class="tabshow">@WBSSLStore.Resources.GeneralMessage.Message.Statement_Payment_Amount</span>@(item.PaymentMode != null ? item.PaymentMode.ToString() + ":- " + item.PaymentAmount.ToString("C") : "-")</p>
+                                    <p class="wd100"><span class="tabshow">@WBSSLStore.Resources.GeneralMessage.Message.Statement_Credit_Caption</span>@(item.CreditAmount != null && item.CreditAmount > 0 ? item.CreditAmount.ToString("C") : "-")</p>
+
+                                    <p class="wd150">
+                                        <span class="tabshow">@WBSSLStore.Resources.GeneralMessage.Message.Price_Caption</span>
+                                        @if (item.TransactionMode == WBSSLStore.Domain.TransactionMode.ORDER || item.TransactionMode == WBSSLStore.Domain.TransactionMode.REISSUE)
+                                        {
+                                            <span class="redtext">@((item.CreditAmount + item.PaymentAmount).ToString("C"))</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="greentext">@((item.CreditAmount + item.PaymentAmount).ToString("C"))</span>
+                                        }
+                                    </p>
+                                </div>
+                            }
+
+                        </div>
+                        <div>
+                            @Html.Partial("_Pager", Model)
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="errormsg">
+                            @WBSSLStore.Resources.GeneralMessage.Message.NoRecord
+                        </div>
+                    }
+                </div>
+            </div>
+            @Html.Partial("_rightpanel", username)
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+

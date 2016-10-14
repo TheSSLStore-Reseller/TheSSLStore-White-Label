@@ -1,0 +1,11 @@
+﻿@using WBSSLStore.Web.Helpers.PagedList;
+@model dynamic
+@{
+    var data = Model as IPagedList;   
+}
+@if (data != null)
+{
+    @*@Html.PagedListPager(data, page => Url.Action(data.ActionName, data.ControllerName, new { page = page + 1 }), PagedListRenderOptions.PageNumbersOnly)*@
+    @Html.PagedListPager(data, page => Url.Action(data.ActionName, data.ControllerName, new { page = page + 1}))
+    
+}

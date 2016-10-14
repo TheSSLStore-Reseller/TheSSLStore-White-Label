@@ -1,0 +1,136 @@
+﻿@model WBSSLStore.Service.ViewModels.StaticPageViewModel
+@{
+    ViewBag.Title = "SecureSiteProwithEV";  var productdetails = WBSSLStore.Web.Helpers.WBHelper.GetProductDetailRows();
+    string brand = Model != null && Model.Items != null && Model.Items.FirstOrDefault().Product != null && Model.Items.FirstOrDefault().Product.Brand != null ? Model.Items.FirstOrDefault().Product.Brand.BrandName : "";
+    string username = ViewBag.UserName;
+}
+@section headerTags{
+    @Html.Partial("_renderSEO", Model != null && Model.CMSPage != null ? Model.CMSPage : new WBSSLStore.Domain.CMSPage())
+}
+@Html.Partial("_banner", new Tuple<string, string>("", "SSL Brands"))
+<div class="content">
+  <div class="wrapper">
+    <div class="column3">
+      <div class="mobtopcol">
+        <div class="column3-2">
+          <div class="prodetailswrap marzerotop"> @Html.Partial("_ProdPricing", new Tuple<List<WBSSLStore.Domain.ProductPricing>, List<WBSSLStore.Domain.ProductDetail>>(Model.Items.ToList(), productdetails.ToList())) </div>
+          <div class="prodescrip marzerotop">
+            <div class="prodescriptxt">
+              <h2>Product Description</h2>
+              <p>The Comodo Domain Validated (DV) UCC is one of the quickest ways to secure multiple domains with just a single SSL certificate. As a <strong>Unified Communications certificate</strong>, this product has been designed exclusively for Microsoft Exchange 2010 as well as Office Communications Server 2007. Additionally, because this is a domain validated (DV) certificate, it can be issued to a domain in just a matter of minutes. There is simply no quicker option for when you want to secure your Microsoft Exchange or Office Communications servers.</p>
+            </div>
+          </div>
+          <div id="cssmenu">
+            <ul class="accordion_example">
+              <li class="brand-symantec acc_active">
+                <div>
+                  <p>Assurance &amp; Authentication</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>The validation process for this certificate is very quick, usually taking only a matter of minutes, since it is a domain validated (DV) certificate. All that Comodo has to do is verify that you own the domain you wish to cover. Additionally, the Comodo DV UCC comes with unlimited server licenses and a FREE re-issuance policy during the life of the certificate.</p>
+                  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Security &amp; Encryption</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>We bundle this certificate with two additional domains, making for a total of 3 domains. However, you can add <strong>up to 99 additional domains</strong> on the Comodo Domain Validated UCC, making it one of the most efficient multi-domain certificates on the market.</p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>SAN &amp; Multi-Domain Support</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>We bundle this certificate with two additional domains, making for a total of 3 domains. However, you can add <strong>up to 99 additional domains</strong> on the Comodo Domain Validated UCC, making it one of the most efficient multi-domain certificates on the market.</p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Features &amp; Benefits</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <ul class="featurelist">
+                    <li>Domain Validated UCC SSL</li>
+                    <li>High encryption strength up to 256 bit</li>
+                    <li>Trusted by over 99.3% of all major Browsers</li>
+                    <li>Subject Alternative Name (SAN) control</li>
+                    <li>Supported by Office Communications Server (OCS) 2007</li>
+                    <li>Unlimited server licenses</li>
+                    <li>Unlimited Re-Issuance Policy</li>
+                  </ul>
+				  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Product Specifications</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <ul class="featurelist">
+                    <li>Multiple domains, supports MS Exchange 2010 and Office Communications Server 2007</li>
+                    <li>Issued in less than 10 minutes</li>
+                    <li>Full Domain Validated UCC SSL Certificate</li>
+                    <li>Encryption up to 256-bit</li>
+                    <li>99.3% Browser Compatibility</li>
+                    <li>Free Unlimited Server Licenses</li>
+                    <li>Unlimited Reissuance</li>
+                  </ul>
+				  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Site Seal</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>The Comodo Domain Validated UCC comes with the Comodo Secure Site Seal. Since this is a domain validated (DV) certificate, the site deal is not clickable, meaning it will not display any additional information about your company. However, it will display the trusted Comodo logo, which will instantly assure your visitors that your site has been vetted by a reputable third party security company.</p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Warranty</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p> The Comodo Domain Validated UCC SSL certificate is backed by a standard $50,000 warranty. So, In the unlikely event that your site is breached and a customer of yours incurs losses because of this breach, you will be compensated for up to $50,000 by the Certification Authority (CA), Comodo.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        @Html.Partial("_rightpanel", username) </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+@section Jscripts{ 
+<script type="text/javascript">
+        $(document).ready(function () {
+            // Mobile Menu
+            $("#showmenu").click(function (e) {
+                e.preventDefault();
+                $("#menu").toggleClass("show");
+            });
+            $("#menu a").click(function (event) {
+                event.preventDefault();
+                if ($(this).next('ul').length) {
+                    $(this).next().toggle('fast');
+                    $(this).children('i:last-child').toggleClass('fa-caret-down fa-caret-left');
+                }
+            });
+            $(document).click(function (e) {
+                if (!$(e.target).is(".mobmemu, .mobmemu  *")) { $("#menu").toggleClass("hide"); $("#menu").removeClass("show"); }
+            });
+            $(".accordion_example").smk_Accordion();
+        });
+    </script> 
+} 

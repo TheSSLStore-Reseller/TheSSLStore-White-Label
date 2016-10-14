@@ -1,0 +1,102 @@
+﻿@using WBSSLStore.Web.Util;
+@model List<WBSSLStore.Domain.OrderDetail>
+
+@{
+    WBSiteSettings setting = new WBSiteSettings(WBSSLStore.Web.Helpers.Caching.SiteCacher.CurrentSite);
+
+    int OrderID = Convert.ToInt32(Request.QueryString["id"]);
+    if (OrderID == 0)
+    {
+        OrderID = Model.First().OrderID;
+    }
+    string Username = Convert.ToString(ViewBag.UserName);
+    WBSSLStore.Domain.CMSPage page = WBSSLStore.Web.Helpers.WBHelper.GetMetaData(setting.SiteID);
+}
+
+@section GoogleAnalytics{
+    @Html.Raw(page != null ? page.HeaderSection : string.Empty)
+}
+
+@section sitecss{
+
+}
+@section Jscripts{
+
+}
+@Html.Partial("_banner", new Tuple<string, string>("", WBSSLStore.Resources.GeneralMessage.Message.Thank_you_Caption))
+<div class="content">
+    <div class="wrapper">
+        <div class="column3">
+            <div class="column3-0">
+                <div class="controlpnldata">
+                    <h2>
+                        @WBSSLStore.Resources.GeneralMessage.Message.Your_Order_Detail       
+                    </h2>
+                    <p><strong>@WBSSLStore.Resources.GeneralMessage.Message.Thank_you_Place_Order_Caption @(string.IsNullOrEmpty(@setting.CurrentSite.Alias) ? setting.CurrentSite.CName : setting.CurrentSite.Alias)</strong></p>
+                    <div class="halfrawdata">
+                        <p>
+                            <label>Your Invoice # :</label><span>
+                                <a href="@Url.Action("invoice", "orders", new { id = OrderID })">
+                                    @(!string.IsNullOrEmpty(setting.InvoicePrefix) ? setting.InvoicePrefix : "SSL-"  + OrderID)
+                                </a>
+                            </span>
+                        </p>                  
+                        <p>
+                            <label class="mobhide">&nbsp;</label><span>
+                                <a class="generatecertbtn" href="@Url.Action("generatenow", new { id = Model.First().ID })" target="_blank">Generate Cert Now</a>
+                            </span>
+                        </p>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="plznote">
+                        <p>
+                            <strong>
+                                @if (!string.IsNullOrEmpty(@setting.PaymentNote))
+                                {
+                                    @Html.Raw(@setting.PaymentNote)
+                                }
+                                else
+                                {
+                                    @WBSSLStore.Resources.GeneralMessage.Message.Invoice_Note_Caption1
+                                }
+                            </strong>
+                        </p>
+                        <p>
+                            @WBSSLStore.Resources.GeneralMessage.Message.Invoice_Note_Email_Receive_Caption1
+                            @ViewBag.ClientEmail. @WBSSLStore.Resources.GeneralMessage.Message.Invoice_Note_Email_Receive_Caption2
+                        </p>
+                    </div>
+
+                    <h3>List of Incompleted Orders</h3>
+                    <div class="odrtabelgrid">
+                        <div class="odrtblraw odrheadraw">
+                            <p class="wd100">@WBSSLStore.Resources.GeneralMessage.Message.OrderDate_Caption</p>
+                            <p class="wd65per">@WBSSLStore.Resources.GeneralMessage.Message.Product_Caption</p>
+                            <p class="wd150">@WBSSLStore.Resources.GeneralMessage.Message.InvoiceNo_Caption.</p>
+                            <p class="wd100 txtcenter viewodr">@WBSSLStore.Resources.GeneralMessage.Message.View_Caption</p>
+                        </div>
+                        @foreach (WBSSLStore.Domain.OrderDetail o in Model)
+                        {
+                            <div class="odrtblraw">
+                                <p class="wd100"><span class="tabshow">@WBSSLStore.Resources.GeneralMessage.Message.OrderDate_Caption</span>@o.Order.OrderDate.ToShortDateString()</p>
+                                <p class="wd65per"><span class="tabshow">@WBSSLStore.Resources.GeneralMessage.Message.Product_Caption</span>@o.ProductName<strong>@o.NumberOfMonths @WBSSLStore.Resources.GeneralMessage.Message.Months_Caption</strong></p>
+                                <p class="wd150"><span class="tabshow">@WBSSLStore.Resources.GeneralMessage.Message.InvoiceNo_Caption.</span>
+                                    <a class="invoiceno" href="@Url.Action("invoice", "orders", new { id = OrderID })">@(!string.IsNullOrEmpty(setting.InvoicePrefix) ? setting.InvoicePrefix : "SSL-" + o.OrderID)</a>                                
+                                    <a class="generatecertbtn" href="@Url.Action("generatenow", new { id = o.ID })" target="_blank">Generate Cert</a>                                
+                                </p>
+                                <p class="wd100 txtcenter viewodr"><a href="@Url.Action("details", "Orders", new { id = o.ID })"><img alt=" view" src="@Url.Content("~/content/images/icon-view.png")"></a></p>
+                            </div>                           
+                        }
+                    </div>
+                </div>
+            </div>
+            @Html.Partial("_rightpanel", Username)
+            <div class="clear"></div> 
+        </div>
+    </div>
+</div>
+@{setting = null;}
+
+@section FooterSection{
+    @Html.Raw(page != null ? page.FooterSection : string.Empty)
+}

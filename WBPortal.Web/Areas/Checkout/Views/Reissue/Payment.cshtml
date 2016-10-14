@@ -1,0 +1,793 @@
+﻿@model WBSSLStore.Domain.OrderDetail
+@{
+    ViewBag.Title = "ReIssue";
+
+    WBSSLStore.Web.Util.WBSiteSettings setting = new WBSSLStore.Web.Util.WBSiteSettings(WBSSLStore.Web.Helpers.Caching.SiteCacher.CurrentSite);
+
+    WBSSLStore.Domain.ProductPricing objPricing = ViewBag.Pricing;
+    decimal AvailableCredit = ViewBag.AvailableCredit;
+    int useddomains = 0;
+    if (Model.CertificateRequest.AddDomainNames != null)
+     {
+
+         foreach (string str in Model.CertificateRequest.AddDomainNames.Split(','))
+         {
+             if (!string.IsNullOrEmpty(str))
+             {
+                 useddomains++;  
+             }
+
+         }
+
+     }
+}
+<script src="@Url.Content("~/content/scripts/jquery.validate.min.js")" language="javascript" type="text/javascript" ></script>
+<script src="@Url.Content("~/content/scripts/jQuery.glob.min.js")" language="javascript" type="text/javascript" ></script>
+<script src="@Url.Content("~/content/scripts/jQuery.glob.all.min.js")" language="javascript" type="text/javascript" ></script>
+<script type="text/javascript" language="javascript">
+    $.preferCulture("@setting.CurrentCultureKey");
+    $(function () {
+        $("#frmaddsan").validate({
+            errorElement: "em",
+            rules: {
+                txtAmount: { required: true, range: [1, 99999999] },
+                rbtPaymentMethod:
+                { required: "#rbtPaymentRequire:checked" },
+                txtPaypalID: {
+                    required: "#rbtPaypal:checked",
+                    email: "#rbtPaypal:checked"
+                },
+                txtMoneybookersID: {
+                    email: "#rbtMoneybookers:checked"
+                },
+                txtCCNumber: {
+                    required: "#rbtCC:checked",
+                    minlength: 14,
+                    maxlength: 16,
+                    number: true
+                },
+                txtNameOnCard: { required: "#rbtCC:checked" },
+                drpMonth: { required: "#rbtCC:checked" },
+                drpYear: { required: "#rbtCC:checked" },
+                txtCCV: { required: "#rbtCC:checked", number: true, minlength: 3, maxlength: 4 }
+
+            },
+            messages: {
+                rbtPaymentMethod: "<br/>Please select payment method.",
+                txtNameOnCard: { required: "Please enter your card holder name." },
+                drpMonth: { required: "Please select month." },
+                drpYear: { required: "Please select year." },
+                txtCCV: { required: "Please enter your CVV number min 3 or max 4." },
+                txtPaypalID: "Your PayPalID must be in the format of name@domain.com",
+                txtMoneybookersID: "Your MoneybookersID must be in the format of name@domain.com",
+                txtAmount: "Please enter valid amount.",
+                txtCCNumber: "Please enter a number with at least 14 and max 16 characters!"
+            }
+        });
+    });
+    function CheckValidation() {
+        var isValid = $('#frmaddsan').valid();
+        if (isValid)
+            document.getElementById('dvOrderLogin').style.display = 'block';
+        return isValid;
+    };
+    
+    function CalculateSANPrice(san) {
+        var PaybleAmount = 0.00;
+        //var NewAddedSAN = parseInt(san) - parseInt('@(Model.CertificateRequest.AdditionalDomains)');
+        var NewAddedSAN = parseInt(san);
+        if (parseInt('@(Model.CertificateRequest.AdditionalDomains)') < parseInt('@(Model.Product.SanMin)')) {
+            NewAddedSAN = NewAddedSAN - (parseInt('@(Model.Product.SanMin)') - parseInt('@(Model.CertificateRequest.AdditionalDomains)'));
+        }
+
+        if (NewAddedSAN > 0) {
+            PaybleAmount = NewAddedSAN * parseFloat('@(objPricing.AdditionalSanPrice)');
+        }
+        if (PaybleAmount > 0) {
+            var pamt = parseFloat(PaybleAmount).toFixed(2);
+            $('#strSANamount').html($.format(parseFloat(pamt), "c"));
+        }
+        else {
+            var zeropmt = 0.00;
+            //$('#strSANamount').html($.format(parseFloat($("0")), "c"));
+            $('#strSANamount').html($.format(parseFloat(zeropmt), "c"));
+        }
+
+
+        if (PaybleAmount > 0 && PaybleAmount > parseFloat('@(AvailableCredit)')) {
+            $('#dvPaymentSection').show('slow');
+            $('#rbtPaymentRequire').attr('checked', 'checked');
+            var sanamt = parseFloat(PaybleAmount - parseFloat('@(AvailableCredit)')).toFixed(2);
+            $("#paySANamount").html($.format(parseFloat(sanamt), "c"));
+
+        }
+        else {
+            $('#dvPaymentSection').hide('slow');
+            $('#paySANamount').html($.format(parseFloat(zeropmt), "c"));
+            $('#rbtPaypal').removeAttr('checked');
+            $('#rbtMoneybookers').removeAttr('checked');
+            $('#rbtCC').removeAttr('checked');
+            $('#dvCC').hide();
+            $('#dvPaypal').hide();
+            $('#dvMoneybookers').hide();
+            $('#rbtPaymentRequire').removeAttr('checked');
+        }
+    };
+
+    function btnplaceorder() {
+        if (HidePlaceOrder()) {
+            $('#tblPlaceOrder').fadeOut('slow');
+            $('#tblConfirm').fadeIn('slow');
+        }
+    }
+
+    function btnback() {
+        if (HidePlaceOrder()) {
+            $('#tblPlaceOrder').fadeIn('slow');
+            $('#tblConfirm').fadeOut('slow');
+        }
+    }
+
+    function HidePlaceOrder(btn) {
+        if ($("#frmaddsan").valid()) {
+            $("#cdrpNewSAN").html($("#drpNewSAN option:selected").text());
+            $("#ctdAvailableCredit").html($("#strcredit").text());
+            $("#ctdAddDomainAmt").html($("#strSANamount").text());
+            $("#ctdpayAmt").html($("#paySANamount").text());
+            if ($("#rbtCC").is(":checked")) {
+
+                var cc = $('#txtCCNumber').val();
+                if (cc.length > 4) {
+                    cc = "XXXXXXXXXXXX" + cc.substring(cc.length - 4, cc.length)
+                }
+
+                $('#tdpaymenttype').html("Credit Card");
+                $('#ctdtxtNameOnCard').html($('#txtNameOnCard').val());
+                $('#ctdtxtCCNumber').html(cc);
+                $('#ctdtxtCCV').html($('#txtCCV').val());
+                $('#ctdDateExp').html($("#drpMonth option:selected").text() + "/" + $("#drpYear option:selected").text());
+                $('#vdvCC').show();
+                $('#vdvMoneybookers').hide();
+                $('#vdvPaypal').hide();
+            }
+            else if ($("#rbtPaypal").is(":checked")) {
+                $('#ctdPaypalID').html($('#txtPaypalID').val());
+                $('#vdvCC').hide();
+                $('#vdvMoneybookers').hide();
+                $('#vdvPaypal').show();
+            }
+            else if ($("#rbtMoneybookers").is(":checked")) {
+                $('#ctdMoneybookersID').html($('#txtMoneybookersID').val());
+                $('#vdvCC').hide();
+                $('#vdvPaypal').hide();
+                $('#vdvMoneybookers').show();
+            }
+
+            window.scrollTo(0, 0);
+            return true;
+        }
+        else {
+            return false;
+        }
+    };
+            
+</script>
+<div id="dvOrderLogin" class="backgroundPopup" style="position: fixed; display: none;
+    opacity: 0.7;">
+    <img src='~/content/loadingnew.gif' style="margin-top: 25%;
+            margin-left: 50%;" /></div>
+@using (Html.BeginForm("payment", "reissue", FormMethod.Post, new { @id = "frmaddsan", @onsubmit = "CheckValidation()" }))
+{
+    <table width="100%" border="0" align="center" cellpadding="1" cellspacing="1" id="tblPlaceOrder">
+        <tr>
+            <td width="29" align="left" valign="top">
+            </td>
+            <td width="482" align="left" valign="top">
+            </td>
+            <td width="29" align="left" valign="top">
+            </td>
+        </tr>
+        <tr>
+            <td align="left" valign="top">
+                <input type="hidden" value="@Model.Order.SiteID" name="hndSiteID" id="hndSiteID" />
+                <input type="hidden" value="@Model.Order.UserID" name="hndUserID" id="hndUserID" />
+                @Html.HiddenFor(model => model.ID)
+                @Html.HiddenFor(model => model.ActivatedDate)
+                @Html.HiddenFor(model => model.AuditID)
+                @Html.HiddenFor(model => model.CertificateExpiresOn)
+                @Html.HiddenFor(model => model.CertificateRequestID)
+                @Html.HiddenFor(model => model.Cost)
+                @Html.HiddenFor(model => model.ExternalOrderID)
+                @Html.HiddenFor(model => model.GrossAmount)
+                @Html.HiddenFor(model => model.InvoiceNumber)
+                @Html.HiddenFor(model => model.NumberOfMonths)
+                @Html.HiddenFor(model => model.OrderID)
+                @Html.HiddenFor(model => model.OrderStatusID)
+                @Html.HiddenFor(model => model.ProductID)
+                @Html.HiddenFor(model => model.ProductName)
+                @Html.HiddenFor(model => model.PromoCodeID)
+                @Html.HiddenFor(model => model.StoreAPIInteractionID)
+            </td>
+            <td align="left" valign="top" class="text">
+                @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+                { 
+                    <div class="errormsg">
+                        @Html.Raw(ViewBag.ErrorMessage)
+                    </div>
+                }
+            </td>
+            <td align="left" valign="top">
+            </td>
+        </tr>
+        <tr>
+            <td align="left" valign="top">
+            </td>
+            <td align="left" valign="top">
+                <table width="100%" border="0" align="left" cellpadding="1" cellspacing="1">
+                    <tr>
+                        <td class="text" align="left" valign="top">
+                            <strong>@WBSSLStore.Resources.GeneralMessage.Message.Odetail_Header</strong>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="left" valign="top">
+                            <table width="100%" border="0" align="left" cellpadding="1" cellspacing="3">
+                                <tr>
+                                    <td width="25%" align="right" class="text">
+                                        @WBSSLStore.Resources.GeneralMessage.Message.Product_Caption :
+                                    </td>
+                                    <td width="75%" align="left" valign="middle" id="tdproductnm">
+                                        <span class="text">
+                                            @Model.ProductName
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="20%" align="right" class="text">
+                                        @WBSSLStore.Resources.GeneralMessage.Message.Domain_Caption :
+                                    </td>
+                                    <td width="80%" align="left" valign="middle" id="tddomainnm">
+                                        <span class="text">
+                                            @Model.CertificateRequest.DomainName
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="20%" align="right" class="text">
+                                        @WBSSLStore.Resources.GeneralMessage.Message.OrderId_Caption:
+                                    </td>
+                                    <td width="80%" align="left" valign="middle" id="tdorderid">
+                                        <span class="text">
+                                            @Model.ExternalOrderID
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="20%" align="right" class="text">
+                                        @WBSSLStore.Resources.GeneralMessage.Message.InvoiceNo_Caption :
+                                    </td>
+                                    <td width="80%" align="left" valign="middle" id="tdinvoiceid">
+                                        <span class="text">
+                                            @(WBSSLStore.Web.Helpers.WBHelper.InvoicePrefix(WBSSLStore.Web.Helpers.Caching.SiteCacher.CurrentSite) + Model.OrderID)
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="20%" align="right" class="text">
+                                        @WBSSLStore.Resources.GeneralMessage.Message.TotalAdditionalDomains_Caption
+                                    </td>
+                                    <td width="80%" align="left" valign="middle" id="tdalreaeyDomain">
+                                        <span class="text">
+                                            @Model.CertificateRequest.AdditionalDomains
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="20%" align="right" class="text">
+                                        @WBSSLStore.Resources.GeneralMessage.Message.UsedDomains_Caption
+                                    </td>
+                                    <td width="80%" align="left" valign="middle" id="tdalreaeyDomain">
+                                        <span class="text">
+                                           
+                                            @useddomains
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="20%" align="right" class="text">
+                                        @WBSSLStore.Resources.GeneralMessage.Message.SelectExtraDomains_Caption
+                                        :
+                                    </td>
+                                    <td width="80%" align="left" valign="middle">
+                                        <span class="text">
+                                            <select id="drpNewSAN" name="drpNewSAN" class="in90px" onchange="CalculateSANPrice(this.value)">
+                                                @for (int i = 0; i <= Model.Product.SanMax - Model.CertificateRequest.AdditionalDomains; i++)
+                                                { 
+                                                    <option value="@i">@i</option>
+                                                }
+                                            </select>
+                                        </span>
+                                    </td>
+                                </tr>
+                                @if (AvailableCredit > 0)
+                                {
+                                    <tr>
+                                        <td height="30" class="text" align="right">
+                                            <strong>@WBSSLStore.Resources.GeneralMessage.Message.Checkout_AvailCredit_Caption :</strong>
+                                        </td>
+                                        <td class="text">
+                                            <strong id="strcredit">@string.Format("{0:C}", AvailableCredit)
+                                            </strong>
+                                        </td>
+                                    </tr>
+                                }
+                                <tr>
+                                    <td height="30" class="text" align="right">
+                                        <strong>@WBSSLStore.Resources.GeneralMessage.Message.Additional_DomailAmt_Caption :</strong>
+                                    </td>
+                                    <td class="text" id="tdAddDomainAmt">
+                                        <strong id="strSANamount">@string.Format("{0:C}", 0m)</strong>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td height="30" class="text" align="right">
+                                        <strong>@WBSSLStore.Resources.GeneralMessage.Message.Payable_Amt_Caption :</strong>
+                                    </td>
+                                    <td class="text">@*id="tdpayAmt"*@ <strong id="paySANamount">@string.Format("{0:C}", 0)
+                                    </strong>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text" align="left" valign="top">
+                            <input type="radio" name="rbtPaymentRequire" id="rbtPaymentRequire" value="true"
+                                style="display: none" />
+                            <div id="dvPaymentSection" style="display: none;">
+                                <table width="100%" border="0" align="left" cellpadding="1" cellspacing="3">
+                                    <tr>
+                                        <td class="text" align="left" valign="top">
+                                            <strong>@WBSSLStore.Resources.GeneralMessage.Message.Payment_Method_Caption</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" valign="top">
+                                            <table width="55%" border="0" align="left" cellpadding="1" cellspacing="1">
+                                                <tr>
+                                                    <td width="20%">
+                                                        &nbsp;
+                                                    </td>
+                                                    @if (Convert.ToBoolean(ViewBag.ISCC))
+                                                    {
+                                                        <td width="5%" align="right" valign="middle" class="text">
+                                                            <label>
+                                                                <input type="radio" name="rbtPaymentMethod" id="rbtCC" value="CC" onclick="$('#dvCC').show();$('#dvPaypal').hide();$('#dvMoneybookers').hide();" />
+                                                            </label>
+                                                        </td>
+                                                        <td width="15%" align="left" valign="middle" class="text">
+                                                            @WBSSLStore.Resources.GeneralMessage.Message.CreditCard_Caption
+                                                        </td>
+                                                    }
+                                                    @if (Convert.ToBoolean(ViewBag.IsPayPal))
+                                                    {
+                                                        <td width="5%" align="right" valign="middle" class="text">
+                                                            <input type="radio" name="rbtPaymentMethod" id="rbtPaypal" value="Paypal" onclick="$('#dvPaypal').show();$('#dvCC').hide();$('#dvMoneybookers').hide();" />
+                                                        </td>
+                                                        <td width="15%" align="left" valign="middle" class="text">
+                                                            @WBSSLStore.Resources.GeneralMessage.Message.Paypal_Caption
+                                                        </td>
+                                                    }
+                                                    @if (Convert.ToBoolean(ViewBag.IsMoneybookers))
+                                                    {
+                                                        <td width="5%" align="right" valign="middle" class="text">
+                                                            <input type="radio" name="rbtPaymentMethod" id="rbtMoneybookers" value="Moneybookers"
+                                                                onclick="$('#dvMoneybookers').show();$('#dvPaypal').hide();$('#dvCC').hide();" />
+                                                        </td>
+                                                        <td width="15%" align="left" valign="middle" class="text">
+                                                            @WBSSLStore.Resources.GeneralMessage.Message.Moneybookers_Caption
+                                                        </td>
+                                                    }
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" valign="top">
+                                            <div id="dvPaypal" style="display: none;">
+                                                <table width="100%" border="0" align="left" cellpadding="1" cellspacing="3">
+                                                    <tr>
+                                                        <td class="text" align="left" valign="top" colspan="2">
+                                                            <strong>@WBSSLStore.Resources.GeneralMessage.Message.CheckOut_PaypalInfo_Header</strong>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td width="20%" align="right" class="text">
+                                                            @WBSSLStore.Resources.GeneralMessage.Message.PaypalId_Caption :
+                                                        </td>
+                                                        <td width="80%" align="left" valign="middle" class="text">
+                                                            <input name="txtPaypalID" type="text" id="txtPaypalID" value="" size="30" class="in200px" />
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                            <div id="dvMoneybookers" style="display: none;">
+                                                <table width="100%" border="0" align="left" cellpadding="1" cellspacing="3">
+                                                    <tr>
+                                                        <td class="text" align="left" valign="top" colspan="2">
+                                                            <strong>@WBSSLStore.Resources.GeneralMessage.Message.CheckOut_MoneybookersInfo_Header</strong>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td width="20%" align="right" class="text">
+                                                            @WBSSLStore.Resources.GeneralMessage.Message.MoneybookersId_Caption :
+                                                        </td>
+                                                        <td width="80%" align="left" valign="middle" class="text">
+                                                            <input name="txtMoneybookersID" type="text" id="txtMoneybookersID" value="" size="30"
+                                                                class="in200px" />
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                            <div id="dvCC" style="display: none;">
+                                                <table width="100%" border="0" align="left" cellpadding="1" cellspacing="3">
+                                                    <tr>
+                                                        <td class="text" align="left" valign="top" colspan="2">
+                                                            <strong>@WBSSLStore.Resources.GeneralMessage.Message.Checkout_CreditCInfo_Header</strong>
+                                                        </td>
+                                                    </tr>
+                                                    @*<tr>
+                                                        <td width="20%" align="right" class="text">
+                                                            @WBSSLStore.Resources.GeneralMessage.Message.Select_CreditCard_Type_Caption
+                                                        </td>
+                                                        <td width="80%" align="left" valign="middle" class="text">
+                                                            @Html.DropDownList("drpCardType", Enum.GetValues(typeof(WBSSLStore.Domain.CardTypes)).Cast<WBSSLStore.Domain.CardTypes>().Where(x => ((List<string>)ViewBag.CardType).Contains(((int)x).ToString())).Select(x => new SelectListItem { Text = x.ToString(), Value = ((int)x).ToString() }), "------Select CardType------", new { @id = "drpCardType", @class = "in150px" })
+                                                        </td>
+                                                    </tr>*@
+                                                    <tr>
+                                                        <td align="right" class="text">
+                                                            @WBSSLStore.Resources.GeneralMessage.Message.CardName_Caption :
+                                                        </td>
+                                                        <td align="left" valign="middle" class="text">
+                                                            <input name="txtNameOnCard" type="text" id="txtNameOnCard" value="" size="30" class="in200px" />
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="right" class="text" valign="top">
+                                                            @WBSSLStore.Resources.GeneralMessage.Message.CreditCard_Caption # :
+                                                        </td>
+                                                        <td align="left" valign="middle" class="text">
+                                                            <input name="txtCCNumber" type="text" id="txtCCNumber" value="" maxlength="16" size="30"
+                                                                class="in200px" /><br />
+                                                            ( no spaces,no dashes)
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="right" class="text">
+                                                            @WBSSLStore.Resources.GeneralMessage.Message.Credit_Card_Date_of_Expiry_Caption
+                                                            :
+                                                        </td>
+                                                        <td align="left" valign="middle" class="text">
+                                                            <select id="drpMonth" name="drpMonth" class="in90px">
+                                                                <option value="">@WBSSLStore.Resources.GeneralMessage.Message.Months_Caption</option>
+                                                                <option value="1">1</option>
+                                                                <option value="2">2</option>
+                                                                <option value="3">3</option>
+                                                                <option value="4">4</option>
+                                                                <option value="5">5</option>
+                                                                <option value="6">6</option>
+                                                                <option value="7">7</option>
+                                                                <option value="8">8</option>
+                                                                <option value="9">9</option>
+                                                                <option value="10">10</option>
+                                                                <option value="11">11</option>
+                                                                <option value="12">12</option>
+                                                            </select>
+                                                            <select id="drpYear" name="drpYear" class="in90px">
+                                                                <option value="">@WBSSLStore.Resources.GeneralMessage.Message.Year_Caption</option>
+                                                                @for (int i = DateTimeWithZone.Now.Year; i <= (DateTimeWithZone.Now.Year + 10); i++)
+                                                                {
+                                                                    <option value="@i.ToString()" >@i.ToString()</option>
+                                                                }
+                                                            </select>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="right" class="text">
+                                                            @WBSSLStore.Resources.GeneralMessage.Message.Checkout_CCVCode_Caption :
+                                                        </td>
+                                                        <td align="left" valign="middle" class="text">
+                                                            <input name="txtCCV" type="password" id="txtCCV" value="" size="4" class="cvv valid" />
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="left" style="padding-left: 200px;">
+                            @* <input type="submit" value="Submit" class="btngryCheckout" />*@ <a id="btnplaceOrder"
+                                onclick="btnplaceorder();" class="buttonnew"><span>@WBSSLStore.Resources.GeneralMessage.Message.Submit_Btn
+                                </span></a>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td align="left" valign="top">
+            </td>
+        </tr>
+    </table>
+    <table width="100%" border="0" align="center" cellpadding="1" cellspacing="1" id="tblConfirm"
+        style="display: none;">
+        <tr>
+            <td width="29" align="left" valign="top">
+            </td>
+            <td width="482" align="left" valign="top">
+            </td>
+            <td width="29" align="left" valign="top">
+            </td>
+        </tr>
+        <tr>
+            <td align="left" valign="top">
+            </td>
+            <td align="left" valign="top">
+                <table width="100%" border="0" align="left" cellpadding="1" cellspacing="1">
+                    <tr>
+                        <td class="text" align="left" valign="top">
+                            <strong>@WBSSLStore.Resources.GeneralMessage.Message.Odetail_Header</strong>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="left" valign="top">
+                            <table width="100%" border="0" align="left" cellpadding="1" cellspacing="3">
+                                <tr>
+                                    <td width="25%" align="right" class="text">
+                                        @WBSSLStore.Resources.GeneralMessage.Message.Product_Caption :
+                                    </td>
+                                    <td width="75%" align="left" valign="middle" id="ctdproductnm">
+                                        <span class="text">
+                                            @Model.ProductName
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="20%" align="right" class="text">
+                                        @WBSSLStore.Resources.GeneralMessage.Message.Domain_Caption :
+                                    </td>
+                                    <td width="80%" align="left" valign="middle" id="ctddomainnm">
+                                        <span class="text">
+                                            @Model.CertificateRequest.DomainName
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="20%" align="right" class="text">
+                                        @WBSSLStore.Resources.GeneralMessage.Message.OrderId_Caption:
+                                    </td>
+                                    <td width="80%" align="left" valign="middle" id="ctdorderid">
+                                        <span class="text">
+                                            @Model.ExternalOrderID
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="20%" align="right" class="text">
+                                        @WBSSLStore.Resources.GeneralMessage.Message.InvoiceNo_Caption :
+                                    </td>
+                                    <td width="80%" align="left" valign="middle" id="ctdinvoiceid">
+                                        <span class="text">
+                                            @(WBSSLStore.Web.Helpers.WBHelper.InvoicePrefix(WBSSLStore.Web.Helpers.Caching.SiteCacher.CurrentSite) + Model.OrderID)
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="20%" align="right" class="text">
+                                        @WBSSLStore.Resources.GeneralMessage.Message.TotalAdditionalDomains_Caption
+                                    </td>
+                                    <td width="80%" align="left" valign="middle" id="tdalreaeyDomain">
+                                        <span class="text">
+                                            @Model.CertificateRequest.AdditionalDomains
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="20%" align="right" class="text">
+                                        @WBSSLStore.Resources.GeneralMessage.Message.UsedDomains_Caption
+                                    </td>
+                                    <td width="80%" align="left" valign="middle" id="tdalreaeyDomain">
+                                        <span class="text">
+                                           
+                                            @useddomains
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="20%" align="right" class="text">
+                                        @WBSSLStore.Resources.GeneralMessage.Message.SelectExtraDomains_Caption
+                                        :
+                                    </td>
+                                    <td width="80%" align="left" valign="middle">
+                                        <span id="cdrpNewSAN" class="text"></span>
+                                    </td>
+                                </tr>
+                                @if (AvailableCredit > 0)
+                                {
+                                    <tr>
+                                        <td height="30" class="text" align="right">
+                                            <strong>@WBSSLStore.Resources.GeneralMessage.Message.Checkout_AvailCredit_Caption :</strong>
+                                        </td>
+                                        <td class="text" id="ctdAvailableCredit">
+                                        </td>
+                                    </tr>
+                                }
+                                <tr>
+                                    <td height="30" class="text" align="right">
+                                        <strong>@WBSSLStore.Resources.GeneralMessage.Message.Additional_DomailAmt_Caption :</strong>
+                                    </td>
+                                    <td class="text" id="ctdAddDomainAmt">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td height="30" class="text" align="right">
+                                        <strong>@WBSSLStore.Resources.GeneralMessage.Message.Payable_Amt_Caption :</strong>
+                                    </td>
+                                    <td class="text" id="ctdpayAmt">
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text" align="left" valign="top">
+                            <div id="vdvPaymentSection">
+                                <table width="100%" border="0" align="left" cellpadding="1" cellspacing="3">
+                                    <tr>
+                                        <td class="text" align="left" valign="top">
+                                            <strong>@WBSSLStore.Resources.GeneralMessage.Message.Checkout_SelectPayment_Header</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" valign="top">
+                                            <table width="55%" border="0" align="left" cellpadding="1" cellspacing="1">
+                                                <tr>
+                                                    <td width="20%">
+                                                        &nbsp;
+                                                    </td>
+                                                    @if (Convert.ToBoolean(ViewBag.ISCC))
+                                                    {
+                                                        <td width="5%" align="right" valign="middle" class="text">
+                                                            <label>
+                                                                @*<input type="radio" name="rbtPaymentMethod" id="rbtCC" value="CC" onclick="$('#dvCC').show();$('#dvPaypal').hide();" />*@
+                                                            </label>
+                                                        </td>
+                                                        <td width="15%" align="left" valign="middle" class="text">
+                                                        </td>
+                                                    }
+                                                    @if (Convert.ToBoolean(ViewBag.IsPayPal))
+                                                    {
+                                                        <td width="5%" align="right" valign="middle" class="text">
+                                                            @* <input type="radio" name="rbtPaymentMethod" id="rbtPaypal" value="Paypal" onclick="$('#dvPaypal').show();$('#dvCC').hide();" />*@
+                                                        </td>
+                                                        <td width="15%" align="left" valign="middle" class="text">
+                                                        </td>
+                                                    }
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" valign="top">
+                                            <div id="vdvPaypal" style="display: none;">
+                                                <table width="100%" border="0" align="left" cellpadding="1" cellspacing="3">
+                                                    <tr>
+                                                        <td class="text" align="left" valign="top" colspan="2">
+                                                            <strong>@WBSSLStore.Resources.GeneralMessage.Message.Paypal_Caption</strong>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td width="20%" align="right" class="text">
+                                                            @WBSSLStore.Resources.GeneralMessage.Message.PaypalId_Caption :
+                                                        </td>
+                                                        <td width="80%" align="left" valign="middle" class="text" id="ctdPaypalID">
+                                                            &nbsp;
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                            <div id="vdvMoneybookers" style="display: none;">
+                                                <table width="100%" border="0" align="left" cellpadding="1" cellspacing="3">
+                                                    <tr>
+                                                        <td class="text" align="left" valign="top" colspan="2">
+                                                            <strong>@WBSSLStore.Resources.GeneralMessage.Message.Moneybookers_Caption</strong>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td width="20%" align="right" class="text">
+                                                            @WBSSLStore.Resources.GeneralMessage.Message.MoneybookersId_Caption :
+                                                        </td>
+                                                        <td width="80%" align="left" valign="middle" class="text" id="ctdMoneybookersID">
+                                                            &nbsp;
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                            <div id="vdvCC" style="display: none;">
+                                                <table width="100%" border="0" align="left" cellpadding="1" cellspacing="3">
+                                                    <tr>
+                                                        <td class="text" align="left" valign="top" colspan="2">
+                                                            <strong>@WBSSLStore.Resources.GeneralMessage.Message.Checkout_CreditCard_Caption</strong>
+                                                        </td>
+                                                    </tr>
+                                                    @*<tr>
+                                                        <td width="20%" align="right" class="text">
+                                                            @WBSSLStore.Resources.GeneralMessage.Message.Select_CreditCard_Type_Caption
+                                                                                                                    </td>
+                                                        <td width="80%" align="left" valign="middle" class="text" id="ctddrpCardType">
+                                                        </td>
+                                                    </tr>*@
+                                                    <tr>
+                                                        <td align="right" class="text">
+                                                            @WBSSLStore.Resources.GeneralMessage.Message.CardName_Caption :
+                                                        </td>
+                                                        <td align="left" valign="middle" class="text" id="ctdtxtNameOnCard">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="right" class="text" valign="top">
+                                                            @WBSSLStore.Resources.GeneralMessage.Message.CreditCard_Caption # :
+                                                        </td>
+                                                        <td align="left" valign="middle" class="text" id="ctdtxtCCNumber">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="right" class="text">
+                                                            @WBSSLStore.Resources.GeneralMessage.Message.Credit_Card_Date_of_Expiry_Caption
+                                                            :
+                                                        </td>
+                                                        <td align="left" valign="middle" class="text" id="ctdDateExp">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="right" class="text">
+                                                            @WBSSLStore.Resources.GeneralMessage.Message.Checkout_CCVCode_Caption :
+                                                        </td>
+                                                        <td align="left" valign="middle" class="text" id="ctdtxtCCV">
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="left" style="padding-left: 200px;">
+                            <table width="100%">
+                                <tr>
+                                    <td width="50%" align="left">
+                                        <button type="submit" name="button" id="button" value="Confirm" class="buttonnew">
+                                            <span>@*Confirm*@ @WBSSLStore.Resources.GeneralMessage.Message.Checkout_Confirm_btn</span></button>
+                                    </td>
+                                    <td width="50%" align="left">
+                                        <a id="btnback" onclick="btnback();" style="margin-left: 0px; cursor: pointer; text-decoration: underline;">
+                                            <span><strong>@WBSSLStore.Resources.GeneralMessage.Message.Checkout_Back_btn</strong></span></a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td align="left" valign="top">
+            </td>
+        </tr>
+    </table>    
+        
+    
+}

@@ -1,0 +1,1284 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Accepted_Cards" xml:space="preserve">
+    <value>Accepted Cards_fr</value>
+  </data>
+  <data name="AccountBalance_Caption" xml:space="preserve">
+    <value>Account Balance_fr</value>
+  </data>
+  <data name="Account_Activation_Email" xml:space="preserve">
+    <value>Account Activation Email_fr</value>
+  </data>
+  <data name="AccSummary_Header" xml:space="preserve">
+    <value>Account Summary_fr</value>
+  </data>
+  <data name="AccSum_AddFund_Caption" xml:space="preserve">
+    <value>Add Fund_fr</value>
+  </data>
+  <data name="action_Caption" xml:space="preserve">
+    <value>Action_fr</value>
+  </data>
+  <data name="ActivatedDate_Caption" xml:space="preserve">
+    <value>Activated Date_fr</value>
+  </data>
+  <data name="ActiveContracts_Caption" xml:space="preserve">
+    <value>Active Contracts_fr</value>
+  </data>
+  <data name="ActiveResellers_Caption" xml:space="preserve">
+    <value>Active Resellers_fr</value>
+  </data>
+  <data name="ActiveSupports_Caption" xml:space="preserve">
+    <value>Active Supports_fr</value>
+  </data>
+  <data name="ActiveUsers_Caption" xml:space="preserve">
+    <value>Active Users_fr</value>
+  </data>
+  <data name="AddCustomer_Caption" xml:space="preserve">
+    <value>Add Customer_fr</value>
+  </data>
+  <data name="AddDomainNames_Caption" xml:space="preserve">
+    <value>Add Domain Names_fr</value>
+  </data>
+  <data name="AddEditSlab_Caption" xml:space="preserve">
+    <value>Add/ Edit Slab_fr</value>
+  </data>
+  <data name="AdditionalDomains_Caption" xml:space="preserve">
+    <value>Additional Domains_fr</value>
+  </data>
+  <data name="AddReseller_Caption" xml:space="preserve">
+    <value>Add Reseller_fr</value>
+  </data>
+  <data name="Add_Fund_Notification" xml:space="preserve">
+    <value>Add Fund Notification_fr</value>
+  </data>
+  <data name="Admin_Email" xml:space="preserve">
+    <value>Admin Email_fr</value>
+  </data>
+  <data name="Admin_Email_Notification" xml:space="preserve">
+    <value>Admin Email Notification_fr</value>
+  </data>
+  <data name="AlternativeEmail_Caption" xml:space="preserve">
+    <value>Alternative Email_fr</value>
+  </data>
+  <data name="API_Login_ID" xml:space="preserve">
+    <value>API Login ID_fr</value>
+  </data>
+  <data name="Apply_to_Caption" xml:space="preserve">
+    <value>Apply to_fr</value>
+  </data>
+  <data name="ApproverEmail_Caption" xml:space="preserve">
+    <value>Verification Email_fr</value>
+  </data>
+  <data name="AuthorizationCode_Caption" xml:space="preserve">
+    <value>Authorization Code_fr</value>
+  </data>
+  <data name="Banner_Selection" xml:space="preserve">
+    <value>Banner Selection_fr</value>
+  </data>
+  <data name="BCC_Caption" xml:space="preserve">
+    <value>BCC_fr</value>
+  </data>
+  <data name="BillingAddress_Caption" xml:space="preserve">
+    <value>Billing Address_fr</value>
+  </data>
+  <data name="Billing_Email" xml:space="preserve">
+    <value>Billing Email_fr</value>
+  </data>
+  <data name="Bill_To" xml:space="preserve">
+    <value>Bill To_fr</value>
+  </data>
+  <data name="Blog_Option" xml:space="preserve">
+    <value>Blog Option_fr</value>
+  </data>
+  <data name="blog_Url" xml:space="preserve">
+    <value>Blog Url_fr</value>
+  </data>
+  <data name="Brand_Caption" xml:space="preserve">
+    <value>Brand_fr</value>
+  </data>
+  <data name="Brand_Configuration" xml:space="preserve">
+    <value>Brand Configuration_fr</value>
+  </data>
+  <data name="Business_Design" xml:space="preserve">
+    <value>Business Design_fr</value>
+  </data>
+  <data name="CampaignName_Caption" xml:space="preserve">
+    <value>Campaign Name_fr</value>
+  </data>
+  <data name="CanbeReissued_Caption" xml:space="preserve">
+    <value>CanbeReissued_fr</value>
+  </data>
+  <data name="Cancelation_Header" xml:space="preserve">
+    <value>Cancellation/Refund Request_fr</value>
+  </data>
+  <data name="Cancel_ddlreason_op1" xml:space="preserve">
+    <value>Ordered by Mistake_fr</value>
+  </data>
+  <data name="Cancel_ddlreason_op2" xml:space="preserve">
+    <value>My Hosting company doesn't allow third party SSL_fr</value>
+  </data>
+  <data name="Cancel_ddlreason_op3" xml:space="preserve">
+    <value>I don't have proper documents_fr</value>
+  </data>
+  <data name="Cancel_ddlreason_op4" xml:space="preserve">
+    <value>Can not have approval email_fr</value>
+  </data>
+  <data name="CardName_Caption" xml:space="preserve">
+    <value>Card Name_fr</value>
+  </data>
+  <data name="CardType_Caption" xml:space="preserve">
+    <value>Card Type_fr</value>
+  </data>
+  <data name="Cart_Promocode_Caption" xml:space="preserve">
+    <value>ENTER PROMO CODE_fr</value>
+  </data>
+  <data name="CCName" xml:space="preserve">
+    <value>Name on Card_fr</value>
+  </data>
+  <data name="CC_Caption" xml:space="preserve">
+    <value>CC_fr</value>
+  </data>
+  <data name="CertificateExpiresOn_Caption" xml:space="preserve">
+    <value>Certificate Expires On_fr</value>
+  </data>
+  <data name="Change_Password_Email" xml:space="preserve">
+    <value>Change Password Email_fr</value>
+  </data>
+  <data name="Checkout_AdditionalDomains_caption" xml:space="preserve">
+    <value>Additional Domains_fr</value>
+  </data>
+  <data name="Checkout_AvailCredit_Caption" xml:space="preserve">
+    <value>Available Credit_fr</value>
+  </data>
+  <data name="Checkout_Back_btn" xml:space="preserve">
+    <value>Back_fr</value>
+  </data>
+  <data name="Checkout_BillInfo_Caption" xml:space="preserve">
+    <value>Billing Information_fr</value>
+  </data>
+  <data name="Checkout_CardExpiry_Caption" xml:space="preserve">
+    <value>Date of Expiry_fr</value>
+  </data>
+  <data name="Checkout_CCVCode_Caption" xml:space="preserve">
+    <value>CCV Code_fr</value>
+  </data>
+  <data name="Checkout_Confirm_btn" xml:space="preserve">
+    <value>Confirm_fr</value>
+  </data>
+  <data name="Checkout_ConOrder_Caption" xml:space="preserve">
+    <value>Confirm Order_fr</value>
+  </data>
+  <data name="Checkout_CreditAmt_Caption" xml:space="preserve">
+    <value>Credit Amount_fr</value>
+  </data>
+  <data name="Checkout_CreditCard_Caption" xml:space="preserve">
+    <value>Credit Card # (no spaces, no dashes)_fr</value>
+  </data>
+  <data name="Checkout_CreditCInfo_Header" xml:space="preserve">
+    <value>Credit Card Information_fr</value>
+  </data>
+  <data name="Checkout_Domain_Caption" xml:space="preserve">
+    <value>Domain_fr</value>
+  </data>
+  <data name="Checkout_ForgotPwd" xml:space="preserve">
+    <value>Forgot your password?_fr</value>
+  </data>
+  <data name="Checkout_OrderAmt_Caption" xml:space="preserve">
+    <value>Order Amount_fr</value>
+  </data>
+  <data name="Checkout_PayableAmt_Caption" xml:space="preserve">
+    <value>Payable Amount_fr</value>
+  </data>
+  <data name="Checkout_PayDetail_Caption" xml:space="preserve">
+    <value>Payment Details_fr</value>
+  </data>
+  <data name="Checkout_PaymentInfo_Caption" xml:space="preserve">
+    <value>Payment Information_fr</value>
+  </data>
+  <data name="CheckOut_PaypalInfo_Header" xml:space="preserve">
+    <value>PayPal Information_fr</value>
+  </data>
+  <data name="Checkout_PlaceOrder_Caption" xml:space="preserve">
+    <value>Place Order_fr</value>
+  </data>
+  <data name="Checkout_SelectPayment_Header" xml:space="preserve">
+    <value>Select Payment Mode_fr</value>
+  </data>
+  <data name="Checkout_StreetAdd_Caption" xml:space="preserve">
+    <value>Street Address (Continued)_fr</value>
+  </data>
+  <data name="Checkout_YourAccountPwd" xml:space="preserve">
+    <value>Your Account password_fr</value>
+  </data>
+  <data name="Checkout_YourEmailAddress" xml:space="preserve">
+    <value>Your Email Address_fr</value>
+  </data>
+  <data name="ChngPwd_Header" xml:space="preserve">
+    <value>Change Password_fr</value>
+  </data>
+  <data name="ChngPwd_NewPwd_Caption" xml:space="preserve">
+    <value>New Password_fr</value>
+  </data>
+  <data name="City_Caption" xml:space="preserve">
+    <value>City_fr</value>
+  </data>
+  <data name="Clean_Style_Design" xml:space="preserve">
+    <value>Clean Style Design_fr</value>
+  </data>
+  <data name="ClickHere_Caption" xml:space="preserve">
+    <value>Click here_fr</value>
+  </data>
+  <data name="Click_Here" xml:space="preserve">
+    <value>Click Here_fr</value>
+  </data>
+  <data name="Clients_Caption" xml:space="preserve">
+    <value>Clients_fr</value>
+  </data>
+  <data name="CodeName_Caption" xml:space="preserve">
+    <value>Code Name_fr</value>
+  </data>
+  <data name="Comment_Caption" xml:space="preserve">
+    <value>Comment_fr</value>
+  </data>
+  <data name="CompanyName" xml:space="preserve">
+    <value>Company Name_fr</value>
+  </data>
+  <data name="Company_Caption" xml:space="preserve">
+    <value>Company Name_fr</value>
+  </data>
+  <data name="ConfirmPassword_Caption" xml:space="preserve">
+    <value>Confirm Password_fr</value>
+  </data>
+  <data name="Content_Caption" xml:space="preserve">
+    <value>Content_fr</value>
+  </data>
+  <data name="Content_Header" xml:space="preserve">
+    <value>Edit Store Content_fr</value>
+  </data>
+  <data name="ContractLevel_Caption" xml:space="preserve">
+    <value>Contract Level_fr</value>
+  </data>
+  <data name="Contract_Caption" xml:space="preserve">
+    <value>Contract Name_fr</value>
+  </data>
+  <data name="Country_Caption" xml:space="preserve">
+    <value>Country_fr</value>
+  </data>
+  <data name="CreditCardNo_Caption" xml:space="preserve">
+    <value>Credit Card Number_fr</value>
+  </data>
+  <data name="CreditCard_Caption" xml:space="preserve">
+    <value>Credit Card_fr</value>
+  </data>
+  <data name="Credit_Refund_Caption" xml:space="preserve">
+    <value>Credit/Refund_fr</value>
+  </data>
+  <data name="CropImage_Caption" xml:space="preserve">
+    <value>Crop Image_fr</value>
+  </data>
+  <data name="CSR_Caption" xml:space="preserve">
+    <value>CSR_fr</value>
+  </data>
+  <data name="CurrentCulture_Caption" xml:space="preserve">
+    <value>Current Culture_fr</value>
+  </data>
+  <data name="CurrentLanguage_Caption" xml:space="preserve">
+    <value>Current Language_fr</value>
+  </data>
+  <data name="CustomerName_Caption" xml:space="preserve">
+    <value>Customer Name_fr</value>
+  </data>
+  <data name="CustomerSince_Caption" xml:space="preserve">
+    <value>Customer Since_fr</value>
+  </data>
+  <data name="CustomerType_Caption" xml:space="preserve">
+    <value>Customer Type_fr</value>
+  </data>
+  <data name="CustomerwiseReport_Header" xml:space="preserve">
+    <value>Customerwise Report_fr</value>
+  </data>
+  <data name="Customer_Email_Notification" xml:space="preserve">
+    <value>Customer Email Notification_fr</value>
+  </data>
+  <data name="Dashboard_Caption" xml:space="preserve">
+    <value>Dashboard_fr</value>
+  </data>
+  <data name="DateRange_Caption" xml:space="preserve">
+    <value>Date Range_fr</value>
+  </data>
+  <data name="DatewiseReport_Header" xml:space="preserve">
+    <value>Datewise Report_fr</value>
+  </data>
+  <data name="date_Caption" xml:space="preserve">
+    <value>Date_fr</value>
+  </data>
+  <data name="Date_Created_Caption" xml:space="preserve">
+    <value>Date Created_fr</value>
+  </data>
+  <data name="Date_Modified_Caption" xml:space="preserve">
+    <value>Date Modified_fr</value>
+  </data>
+  <data name="ddlStatus_Active" xml:space="preserve">
+    <value>Active_fr</value>
+  </data>
+  <data name="ddlStatus_All" xml:space="preserve">
+    <value>All_fr</value>
+  </data>
+  <data name="ddlStatus_Expired" xml:space="preserve">
+    <value>Expired_fr</value>
+  </data>
+  <data name="dd_Closed" xml:space="preserve">
+    <value>Closed_fr</value>
+  </data>
+  <data name="dd_NoSale" xml:space="preserve">
+    <value>No Sale_fr</value>
+  </data>
+  <data name="dd_Open" xml:space="preserve">
+    <value>Open_fr</value>
+  </data>
+  <data name="dd_Resolved" xml:space="preserve">
+    <value>Resolved_fr</value>
+  </data>
+  <data name="Delete_Caption" xml:space="preserve">
+    <value>Delete_fr</value>
+  </data>
+  <data name="Description_Caption" xml:space="preserve">
+    <value>Description_fr</value>
+  </data>
+  <data name="Detail_Caption" xml:space="preserve">
+    <value>Detail_fr</value>
+  </data>
+  <data name="Display_Phone_Number" xml:space="preserve">
+    <value>Display Phone Number_fr</value>
+  </data>
+  <data name="DomainName_Caption" xml:space="preserve">
+    <value>Domain Name_fr</value>
+  </data>
+  <data name="Domain_Caption" xml:space="preserve">
+    <value>URL_fr</value>
+  </data>
+  <data name="EditMeta_Caption" xml:space="preserve">
+    <value>Edit Meta Tag_fr</value>
+  </data>
+  <data name="Edit_Caption" xml:space="preserve">
+    <value>Edit_fr</value>
+  </data>
+  <data name="Edit_Contract_Price_of" xml:space="preserve">
+    <value>Edit Contract Price of_fr</value>
+  </data>
+  <data name="Edit_Email_Template" xml:space="preserve">
+    <value>Edit Email Template_fr</value>
+  </data>
+  <data name="EmailContent_Caption" xml:space="preserve">
+    <value>Email Content_fr</value>
+  </data>
+  <data name="EmailExists" xml:space="preserve">
+    <value>Email alredy exist._fr</value>
+  </data>
+  <data name="EmailSubject_Caption" xml:space="preserve">
+    <value>Email Subject_fr</value>
+  </data>
+  <data name="Email_Caption" xml:space="preserve">
+    <value>Email_fr</value>
+  </data>
+  <data name="Email_on_New_Customer_Signup" xml:space="preserve">
+    <value>Email on New Customer Signup_fr</value>
+  </data>
+  <data name="Email_on_New_Reseller_Signup" xml:space="preserve">
+    <value>Email on New Reseller Signup_fr</value>
+  </data>
+  <data name="Email_Templates" xml:space="preserve">
+    <value>Email Templates_fr</value>
+  </data>
+  <data name="EndDate_Caption" xml:space="preserve">
+    <value>End Date_fr</value>
+  </data>
+  <data name="EnterPromoCode_Caption" xml:space="preserve">
+    <value>Enter PromoCode_fr</value>
+  </data>
+  <data name="ErrorMsg" xml:space="preserve">
+    <value>Error while saving settings._fr</value>
+  </data>
+  <data name="ExpireDate_Caption" xml:space="preserve">
+    <value>Expires On_fr</value>
+  </data>
+  <data name="ExternalOrderID_Caption" xml:space="preserve">
+    <value>TheSSLStoreOrderID_fr</value>
+  </data>
+  <data name="Facebook_Caption" xml:space="preserve">
+    <value>Facebook_fr</value>
+  </data>
+  <data name="Fax_Caption" xml:space="preserve">
+    <value>Fax_fr</value>
+  </data>
+  <data name="Fname_Caption" xml:space="preserve">
+    <value>First Name_fr</value>
+  </data>
+  <data name="FooterSection_Caption" xml:space="preserve">
+    <value>FooterSection_fr</value>
+  </data>
+  <data name="ForgotPwd_Caption" xml:space="preserve">
+    <value>Forgot Password_fr</value>
+  </data>
+  <data name="Fraud_Order_Notification" xml:space="preserve">
+    <value>Fraud Order Notification_fr</value>
+  </data>
+  <data name="From_Caption" xml:space="preserve">
+    <value>From_fr</value>
+  </data>
+  <data name="FullName_Caption" xml:space="preserve">
+    <value>Full Name_fr</value>
+  </data>
+  <data name="Fund_EnterAmt_Caption" xml:space="preserve">
+    <value>Enter Amount_fr</value>
+  </data>
+  <data name="Fund_MinAmt_Note" xml:space="preserve">
+    <value>(Minimum Amount is $1.00)_fr</value>
+  </data>
+  <data name="Gateway_Name" xml:space="preserve">
+    <value>Gateway Name_fr</value>
+  </data>
+  <data name="GeneralSettings_SuccessMsg" xml:space="preserve">
+    <value>Settings are saved successfully._fr</value>
+  </data>
+  <data name="GeneralSetting_Header" xml:space="preserve">
+    <value>General Setting_fr</value>
+  </data>
+  <data name="GoogleAnalytic" xml:space="preserve">
+    <value>GoogleAnalytic value_fr</value>
+  </data>
+  <data name="HeaderSection_Caption" xml:space="preserve">
+    <value>HeaderSection_fr</value>
+  </data>
+  <data name="Header_Management" xml:space="preserve">
+    <value>Header Management_fr</value>
+  </data>
+  <data name="HeardBy_Caption" xml:space="preserve">
+    <value>Heard By_fr</value>
+  </data>
+  <data name="Home_Page_Punch_Line" xml:space="preserve">
+    <value>Home Page Punch Line_fr</value>
+  </data>
+  <data name="ImportAllProducts_Caption" xml:space="preserve">
+    <value>Import All Products_fr</value>
+  </data>
+  <data name="InactiveResellers_Caption" xml:space="preserve">
+    <value>Inactive Resellers_fr</value>
+  </data>
+  <data name="IncidentID_Caption" xml:space="preserve">
+    <value>Incident ID_fr</value>
+  </data>
+  <data name="IncompleteOrder_Caption" xml:space="preserve">
+    <value>Incomplete Orders_fr</value>
+  </data>
+  <data name="InternalProductCode_Caption" xml:space="preserve">
+    <value>InternalProductCode_fr</value>
+  </data>
+  <data name="InvoiceDate_Caption" xml:space="preserve">
+    <value>Invoice Date_fr</value>
+  </data>
+  <data name="InvoiceNo_Caption" xml:space="preserve">
+    <value>Invoice No_fr</value>
+  </data>
+  <data name="Invoice_Discount_Caption" xml:space="preserve">
+    <value>Discount_fr</value>
+  </data>
+  <data name="Invoice_Header" xml:space="preserve">
+    <value>Invoice_fr</value>
+  </data>
+  <data name="Invoice_Number_Prefix" xml:space="preserve">
+    <value>Invoice Number Prefix_fr</value>
+  </data>
+  <data name="IP_Caption" xml:space="preserve">
+    <value>IP_fr</value>
+  </data>
+  <data name="isActive_Caption" xml:space="preserve">
+    <value>isActive_fr</value>
+  </data>
+  <data name="isAutoCalculation_Caption" xml:space="preserve">
+    <value>isAutoCalculation_fr</value>
+  </data>
+  <data name="isCompetitiveUpgradeAllowed_Caption" xml:space="preserve">
+    <value>isCompetitiveUpgradeAllowed_fr</value>
+  </data>
+  <data name="IsCompetitiveUpgrade_Caption" xml:space="preserve">
+    <value>IsCompetitiveUpgrade_fr</value>
+  </data>
+  <data name="isForReseller_Caption" xml:space="preserve">
+    <value>isForReseller_fr</value>
+  </data>
+  <data name="isNewOrder_Caption" xml:space="preserve">
+    <value>Order Type_fr</value>
+  </data>
+  <data name="isNoOfServerFree_Caption" xml:space="preserve">
+    <value>isNoOfServerFree_fr</value>
+  </data>
+  <data name="ISOName_Caption" xml:space="preserve">
+    <value>ISOName_fr</value>
+  </data>
+  <data name="isSANEnabled_Caption" xml:space="preserve">
+    <value>isSANEnabled_fr</value>
+  </data>
+  <data name="isWildcard_Caption" xml:space="preserve">
+    <value>isWildcard_fr</value>
+  </data>
+  <data name="Is_Site_Run_with_WWW" xml:space="preserve">
+    <value>Is Site Run with WWW_fr</value>
+  </data>
+  <data name="Is_VAT_Applicable" xml:space="preserve">
+    <value>Is V.A.T. Applicable_fr</value>
+  </data>
+  <data name="KeyFile_Path" xml:space="preserve">
+    <value>KeyFilePath_fr</value>
+  </data>
+  <data name="Keywords_Caption" xml:space="preserve">
+    <value>Keywords_fr</value>
+  </data>
+  <data name="LanguageCode_Caption" xml:space="preserve">
+    <value>Language Code_fr</value>
+  </data>
+  <data name="LanguageName_Caption" xml:space="preserve">
+    <value>Language Name_fr</value>
+  </data>
+  <data name="LastReplier_Caption" xml:space="preserve">
+    <value>Last Replier_fr</value>
+  </data>
+  <data name="ListOrder_Header" xml:space="preserve">
+    <value>List Orders_fr</value>
+  </data>
+  <data name="ListOrder_Search_Caption" xml:space="preserve">
+    <value>Search_fr</value>
+  </data>
+  <data name="Live_CHat_OpTion" xml:space="preserve">
+    <value>Live CHat OpTion_fr</value>
+  </data>
+  <data name="Live_Chat_Script" xml:space="preserve">
+    <value>Live Chat Script_fr</value>
+  </data>
+  <data name="Live_URL" xml:space="preserve">
+    <value>LiveURL_fr</value>
+  </data>
+  <data name="Lname_Caption" xml:space="preserve">
+    <value>Last Name_fr</value>
+  </data>
+  <data name="Locality_Caption" xml:space="preserve">
+    <value>Locality_fr</value>
+  </data>
+  <data name="Login_Header" xml:space="preserve">
+    <value>Login_fr</value>
+  </data>
+  <data name="Logo_Management" xml:space="preserve">
+    <value>Logo Management_fr</value>
+  </data>
+  <data name="ManageCustomer_Caption" xml:space="preserve">
+    <value>Manage Customer_fr</value>
+  </data>
+  <data name="ManagePromocodes_Header" xml:space="preserve">
+    <value>Manage Promocodes_fr</value>
+  </data>
+  <data name="ManageSlab_Caption" xml:space="preserve">
+    <value>Manage Slab_fr</value>
+  </data>
+  <data name="Manage_Contract_Products" xml:space="preserve">
+    <value>Manage Contract Products_fr</value>
+  </data>
+  <data name="Manage_Language_Time_Zone" xml:space="preserve">
+    <value>Manage Language &amp; Time Zone_fr</value>
+  </data>
+  <data name="Manage_Products_Caption" xml:space="preserve">
+    <value>Manage Products_fr</value>
+  </data>
+  <data name="MaxOrders_Caption" xml:space="preserve">
+    <value>Max Orders_fr</value>
+  </data>
+  <data name="Merchant_ID" xml:space="preserve">
+    <value>MerchantID_fr</value>
+  </data>
+  <data name="Mobile_Caption" xml:space="preserve">
+    <value>Mobile_fr</value>
+  </data>
+  <data name="Months_Caption" xml:space="preserve">
+    <value>Months_fr</value>
+  </data>
+  <data name="Need_to_Approve_Reseller" xml:space="preserve">
+    <value>Need to Approve Reseller_fr</value>
+  </data>
+  <data name="New_Order_Notification" xml:space="preserve">
+    <value>New Order Notification_fr</value>
+  </data>
+  <data name="NoOfSan_Caption" xml:space="preserve">
+    <value>No. of SAN_fr</value>
+  </data>
+  <data name="NoRecord" xml:space="preserve">
+    <value>No Record Found._fr</value>
+  </data>
+  <data name="Notes_Caption" xml:space="preserve">
+    <value>NOTES_fr</value>
+  </data>
+  <data name="No_CAption" xml:space="preserve">
+    <value>No_fr</value>
+  </data>
+  <data name="No_Dash_No_Space" xml:space="preserve">
+    <value>(no spaces,no dashes)_fr</value>
+  </data>
+  <data name="Numbercerts" xml:space="preserve">
+    <value>Number of certificates issued_fr</value>
+  </data>
+  <data name="NumberOfMonths_Caption" xml:space="preserve">
+    <value>Validity_fr</value>
+  </data>
+  <data name="NumberOfServers_Caption" xml:space="preserve">
+    <value>Licensed Servers_fr</value>
+  </data>
+  <data name="Odetail_AContactdet_Header" xml:space="preserve">
+    <value>SSL Admin Contact Details_fr</value>
+  </data>
+  <data name="Odetail_CertDetail_Header" xml:space="preserve">
+    <value>Certificate Details_fr</value>
+  </data>
+  <data name="Odetail_Header" xml:space="preserve">
+    <value>Order Detail_fr</value>
+  </data>
+  <data name="Odetail_SiteContacts_Header" xml:space="preserve">
+    <value>Site Contacts_fr</value>
+  </data>
+  <data name="Odetail_TContactdet_Header" xml:space="preserve">
+    <value>SSL Technical Contact Details_fr</value>
+  </data>
+  <data name="OrderDate_Caption" xml:space="preserve">
+    <value>Order Date_fr</value>
+  </data>
+  <data name="OrderId_Caption" xml:space="preserve">
+    <value>Order Id_fr</value>
+  </data>
+  <data name="OrderInformation_Caption" xml:space="preserve">
+    <value>Order Information_fr</value>
+  </data>
+  <data name="OrderNumber_Caption" xml:space="preserve">
+    <value>Order Number_fr</value>
+  </data>
+  <data name="OrderStatus_Caption" xml:space="preserve">
+    <value>Order Status_fr</value>
+  </data>
+  <data name="OrderSummary_Caption" xml:space="preserve">
+    <value>Order Summary_fr</value>
+  </data>
+  <data name="Order_Placed_for" xml:space="preserve">
+    <value>Order Placed for_fr</value>
+  </data>
+  <data name="Order_Status_Reason" xml:space="preserve">
+    <value>Order Status Reason_fr</value>
+  </data>
+  <data name="OrganisationUnit_Caption" xml:space="preserve">
+    <value>Organisation Unit_fr</value>
+  </data>
+  <data name="Organisation_Caption" xml:space="preserve">
+    <value>Organisation_fr</value>
+  </data>
+  <data name="PageNameCatopm" xml:space="preserve">
+    <value>Page Name_fr</value>
+  </data>
+  <data name="Pager_Size" xml:space="preserve">
+    <value>Pager Size_fr</value>
+  </data>
+  <data name="Paid_via" xml:space="preserve">
+    <value>Paid via_fr</value>
+  </data>
+  <data name="Partner_ID" xml:space="preserve">
+    <value>PartnerID_fr</value>
+  </data>
+  <data name="Partner_Pricing_Caption" xml:space="preserve">
+    <value>Partner Pricing_fr</value>
+  </data>
+  <data name="Password_Caption" xml:space="preserve">
+    <value>Password_fr</value>
+  </data>
+  <data name="PayAuthorizationCode_Caption" xml:space="preserve">
+    <value>Payment Authorization Code_fr</value>
+  </data>
+  <data name="PayGatewayDetails_Caption" xml:space="preserve">
+    <value>Payment Gateway Details_fr</value>
+  </data>
+  <data name="PaymentType_Caption" xml:space="preserve">
+    <value>Payment Type_fr</value>
+  </data>
+  <data name="PaypalId_Caption" xml:space="preserve">
+    <value>Paypal ID_fr</value>
+  </data>
+  <data name="Paypal_Caption" xml:space="preserve">
+    <value>Paypal_fr</value>
+  </data>
+  <data name="Phone_Caption" xml:space="preserve">
+    <value>Phone_fr</value>
+  </data>
+  <data name="Phone_Number" xml:space="preserve">
+    <value>Phone Number_fr</value>
+  </data>
+  <data name="PriceMargin_Caption" xml:space="preserve">
+    <value>Price Margin_fr</value>
+  </data>
+  <data name="Price_Caption" xml:space="preserve">
+    <value>Amount_fr</value>
+  </data>
+  <data name="Pricing_Caption" xml:space="preserve">
+    <value>Pricing_fr</value>
+  </data>
+  <data name="Print_Caption" xml:space="preserve">
+    <value>Print_fr</value>
+  </data>
+  <data name="ProductCode_Caption" xml:space="preserve">
+    <value>Product Code_fr</value>
+  </data>
+  <data name="ProductTypeID_Caption" xml:space="preserve">
+    <value>ProductTypeID_fr</value>
+  </data>
+  <data name="ProductwiseReport_Header" xml:space="preserve">
+    <value>Productwise Report_fr</value>
+  </data>
+  <data name="Product_Caption" xml:space="preserve">
+    <value>Product Name_fr</value>
+  </data>
+  <data name="Profit_Margin_Caption" xml:space="preserve">
+    <value>Profit Margin_fr</value>
+  </data>
+  <data name="Promocode_Header" xml:space="preserve">
+    <value>Generate Coupon Code_fr</value>
+  </data>
+  <data name="PromoDiscount_Caption" xml:space="preserve">
+    <value>Coupon Code Discount_fr</value>
+  </data>
+  <data name="Pwdchanged" xml:space="preserve">
+    <value>Password change successfully._fr</value>
+  </data>
+  <data name="Reason_Caption" xml:space="preserve">
+    <value>Reason_fr</value>
+  </data>
+  <data name="ReceiptDetail_Caption" xml:space="preserve">
+    <value>Receipt Details_fr</value>
+  </data>
+  <data name="Recommended_Caption" xml:space="preserve">
+    <value>Recommended_fr</value>
+  </data>
+  <data name="RecordStatus_Caption" xml:space="preserve">
+    <value>RecordStatus_fr</value>
+  </data>
+  <data name="RefundDays_Caption" xml:space="preserve">
+    <value>RefundDays_fr</value>
+  </data>
+  <data name="RefundRequest_Caption" xml:space="preserve">
+    <value>Refund Request_fr</value>
+  </data>
+  <data name="Refund_Notification" xml:space="preserve">
+    <value>Refund Notification_fr</value>
+  </data>
+  <data name="Remark_Caption" xml:space="preserve">
+    <value>Remark_fr</value>
+  </data>
+  <data name="RenewalAlerts_Caption" xml:space="preserve">
+    <value>Renewal Alerts_fr</value>
+  </data>
+  <data name="Renewal_Notification_Before_15_Days" xml:space="preserve">
+    <value>Renewal Notification Before 15 Days_fr</value>
+  </data>
+  <data name="Renewal_Notification_Before_30_Days" xml:space="preserve">
+    <value>Renewal Notification Before 30 Days_fr</value>
+  </data>
+  <data name="Renewal_Notification_Before_3_Days" xml:space="preserve">
+    <value>Renewal Notification Before 3 Days_fr</value>
+  </data>
+  <data name="Renewal_Notification_Before_7_Days" xml:space="preserve">
+    <value>Renewal Notification Before 7 Days_fr</value>
+  </data>
+  <data name="Renewal_Noti_ResellerC_Before_15_Days" xml:space="preserve">
+    <value>Renewal Notification for Reseller's Customer Before 15 Days_fr</value>
+  </data>
+  <data name="Renewal_Noti_ResellerC_Before_30_Days" xml:space="preserve">
+    <value>Renewal Notification for Reseller's Customer Before 30 Days_fr</value>
+  </data>
+  <data name="Renewal_Noti_ResellerC_Before_3_Days" xml:space="preserve">
+    <value>Renewal Notification for Reseller's Customer Before 3 Days_fr</value>
+  </data>
+  <data name="Renewal_Noti_ResellerC_Before_7_Days" xml:space="preserve">
+    <value>Renewal Notification for Reseller's Customer Before 7 Days_fr</value>
+  </data>
+  <data name="Renewal_Noti_Reseller_Before_15_Days" xml:space="preserve">
+    <value>Renewal Notification for Reseller's Customer Before 15 Days_fr</value>
+  </data>
+  <data name="Renewal_Noti_Reseller_Before_30_Days" xml:space="preserve">
+    <value>Renewal Notification for Reseller's Customer Before 30 Days_fr</value>
+  </data>
+  <data name="Renewal_Noti_Reseller_Before_3_Days" xml:space="preserve">
+    <value>Renewal Notification for Reseller's Customer Before 3 Days_fr</value>
+  </data>
+  <data name="Renewal_Noti_Reseller_Before_7_Days" xml:space="preserve">
+    <value>Renewal Notification for Reseller's Customer Before 7 Days_fr</value>
+  </data>
+  <data name="ReplyTO_Caption" xml:space="preserve">
+    <value>Reply TO_fr</value>
+  </data>
+  <data name="Require_Credentials" xml:space="preserve">
+    <value>Require Credentials_fr</value>
+  </data>
+  <data name="ResellerName_Caption" xml:space="preserve">
+    <value>Reseller Name_fr</value>
+  </data>
+  <data name="ResellerPrg_Header" xml:space="preserve">
+    <value>Reseller Program_fr</value>
+  </data>
+  <data name="Reseller_Caption" xml:space="preserve">
+    <value>Reseller_fr</value>
+  </data>
+  <data name="Reseller_Email_Notification" xml:space="preserve">
+    <value>Reseller Email Notification_fr</value>
+  </data>
+  <data name="Reseller_RegDate" xml:space="preserve">
+    <value>Register Date_fr</value>
+  </data>
+  <data name="Reseller_Since" xml:space="preserve">
+    <value>Reseller Since_fr</value>
+  </data>
+  <data name="Reseller_Slab_Contract" xml:space="preserve">
+    <value>Slab/Contract_fr</value>
+  </data>
+  <data name="Reseller_Title" xml:space="preserve">
+    <value>Manage Resellers_fr</value>
+  </data>
+  <data name="Reseller_TotalPur" xml:space="preserve">
+    <value>Total Purchase_fr</value>
+  </data>
+  <data name="RetailPrice_Caption" xml:space="preserve">
+    <value>Retail-Price_fr</value>
+  </data>
+  <data name="Robots_File_Settings" xml:space="preserve">
+    <value>Robots File Settings_fr</value>
+  </data>
+  <data name="SalePrice_Caption" xml:space="preserve">
+    <value>Sale-Price_fr</value>
+  </data>
+  <data name="SanMax_Caption" xml:space="preserve">
+    <value>SanMax_fr</value>
+  </data>
+  <data name="SanMin_Caption" xml:space="preserve">
+    <value>SanMin_fr</value>
+  </data>
+  <data name="SavedSuccessfully" xml:space="preserve">
+    <value>Profile saved successfully._fr</value>
+  </data>
+  <data name="SearchOrder_Header" xml:space="preserve">
+    <value>Search Order_fr</value>
+  </data>
+  <data name="SelectProduct_Caption" xml:space="preserve">
+    <value>Select Product_fr</value>
+  </data>
+  <data name="Select_Country" xml:space="preserve">
+    <value>Select Country_fr</value>
+  </data>
+  <data name="Select_PayGateway_Caption" xml:space="preserve">
+    <value>Select Payment Gateway_fr</value>
+  </data>
+  <data name="Select_Payment_Type" xml:space="preserve">
+    <value>Select Payment Type_fr</value>
+  </data>
+  <data name="Select_Theme" xml:space="preserve">
+    <value>Select Theme_fr</value>
+  </data>
+  <data name="Select_Timezone" xml:space="preserve">
+    <value>Select Timezone_fr</value>
+  </data>
+  <data name="Servers_Caption" xml:space="preserve">
+    <value>Servers_fr</value>
+  </data>
+  <data name="Set_Default_Currancy" xml:space="preserve">
+    <value>Set Default Currancy_fr</value>
+  </data>
+  <data name="Shoppingcart_ SANPrice" xml:space="preserve">
+    <value>Additonal SAN Price_fr</value>
+  </data>
+  <data name="ShoppingCart_Header" xml:space="preserve">
+    <value>Your Shopping Cart_fr</value>
+  </data>
+  <data name="Shoppingcart_Price" xml:space="preserve">
+    <value>Price_fr</value>
+  </data>
+  <data name="ShoppingCart_Sno" xml:space="preserve">
+    <value>S.No._fr</value>
+  </data>
+  <data name="ShoppingCart_Transaction_Detail" xml:space="preserve">
+    <value>Transaction Detail_fr</value>
+  </data>
+  <data name="ShowInSite_Caption" xml:space="preserve">
+    <value>Show in Site_fr</value>
+  </data>
+  <data name="Show_Banner" xml:space="preserve">
+    <value>Show Banner_fr</value>
+  </data>
+  <data name="Show_Status" xml:space="preserve">
+    <value>Show Status_fr</value>
+  </data>
+  <data name="SlabName_Caption" xml:space="preserve">
+    <value>Slab Name_fr</value>
+  </data>
+  <data name="SMTPHost_Caption" xml:space="preserve">
+    <value>SMTP Host_fr</value>
+  </data>
+  <data name="SMTPPassword_Caption" xml:space="preserve">
+    <value>SMTP Password_fr</value>
+  </data>
+  <data name="SMTPPort_Caption" xml:space="preserve">
+    <value>SMTP Port_fr</value>
+  </data>
+  <data name="SMTPUser_Caption" xml:space="preserve">
+    <value>SMTP User_fr</value>
+  </data>
+  <data name="SMTP_Settings" xml:space="preserve">
+    <value>SMTP Settings_fr</value>
+  </data>
+  <data name="Social_Networking" xml:space="preserve">
+    <value>Social Networking_fr</value>
+  </data>
+  <data name="SpecialInstructions_Caption" xml:space="preserve">
+    <value>Special Instructions_fr</value>
+  </data>
+  <data name="StaffNote_Caption" xml:space="preserve">
+    <value>Staff Note_fr</value>
+  </data>
+  <data name="StartDate_Caption" xml:space="preserve">
+    <value>Start Date_fr</value>
+  </data>
+  <data name="Statement_Acc_Balance" xml:space="preserve">
+    <value>Account Balance_fr</value>
+  </data>
+  <data name="Statement_Credit_Caption" xml:space="preserve">
+    <value>Credit_fr</value>
+  </data>
+  <data name="Statement_Header" xml:space="preserve">
+    <value>Account Statement_fr</value>
+  </data>
+  <data name="Statement_Payment_Amount" xml:space="preserve">
+    <value>Payment-Amount_fr</value>
+  </data>
+  <data name="Statement_TransactionDetail_Caption" xml:space="preserve">
+    <value>Transaction Detail_fr</value>
+  </data>
+  <data name="Statement_Type_Caption" xml:space="preserve">
+    <value>Type_fr</value>
+  </data>
+  <data name="State_Caption" xml:space="preserve">
+    <value>State_fr</value>
+  </data>
+  <data name="Status_Caption" xml:space="preserve">
+    <value>Status_fr</value>
+  </data>
+  <data name="StoreConfiguration_Caption" xml:space="preserve">
+    <value>Store Configuration_fr</value>
+  </data>
+  <data name="Street_Caption" xml:space="preserve">
+    <value>Street_fr</value>
+  </data>
+  <data name="Subject_Caption" xml:space="preserve">
+    <value>Subject_fr</value>
+  </data>
+  <data name="Support_Email" xml:space="preserve">
+    <value>Support Email_fr</value>
+  </data>
+  <data name="Support_Incident_Notification" xml:space="preserve">
+    <value>Support Incident Notification_fr</value>
+  </data>
+  <data name="Support_Incident_Update" xml:space="preserve">
+    <value>Support Incident Update_fr</value>
+  </data>
+  <data name="Synchronize_Your_Product" xml:space="preserve">
+    <value>Synchronize Your Product_fr</value>
+  </data>
+  <data name="Tax_Caption" xml:space="preserve">
+    <value>Tax_fr</value>
+  </data>
+  <data name="Templates_Caption" xml:space="preserve">
+    <value>Templates_fr</value>
+  </data>
+  <data name="Template_Caption" xml:space="preserve">
+    <value>Template_fr</value>
+  </data>
+  <data name="Test_Mode" xml:space="preserve">
+    <value>TestMode_fr</value>
+  </data>
+  <data name="Test_URL" xml:space="preserve">
+    <value>TestURL_fr</value>
+  </data>
+  <data name="Title_Caption" xml:space="preserve">
+    <value>Title_fr</value>
+  </data>
+  <data name="TotalOrders_Caption" xml:space="preserve">
+    <value>Total Orders_fr</value>
+  </data>
+  <data name="TotalPrice_Caption" xml:space="preserve">
+    <value>Total Price_fr</value>
+  </data>
+  <data name="TotalTransaction_Caption" xml:space="preserve">
+    <value>Total Transactions_fr</value>
+  </data>
+  <data name="Total_Caption" xml:space="preserve">
+    <value>Total_fr</value>
+  </data>
+  <data name="Total_Sale" xml:space="preserve">
+    <value>Total Sale_fr</value>
+  </data>
+  <data name="TO_Caption" xml:space="preserve">
+    <value>TO_fr</value>
+  </data>
+  <data name="To_Configure" xml:space="preserve">
+    <value>To Configure_fr</value>
+  </data>
+  <data name="TransactionDate_Caption" xml:space="preserve">
+    <value>Transaction Date_fr</value>
+  </data>
+  <data name="TransactionDetail_Caption" xml:space="preserve">
+    <value>Transaction Details_fr</value>
+  </data>
+  <data name="TransactionType_Caption" xml:space="preserve">
+    <value>TransactionType_fr</value>
+  </data>
+  <data name="TransactionwiseReport_Header" xml:space="preserve">
+    <value>Transactionwise Report_fr</value>
+  </data>
+  <data name="Transaction_Key" xml:space="preserve">
+    <value>Transaction Key/Signature_fr</value>
+  </data>
+  <data name="Twitter_Caption" xml:space="preserve">
+    <value>Twitter_fr</value>
+  </data>
+  <data name="Under_Maintanance" xml:space="preserve">
+    <value>Under Maintanance_fr</value>
+  </data>
+  <data name="Upload_Logo" xml:space="preserve">
+    <value>Upload Logo_fr</value>
+  </data>
+  <data name="Username_Caption" xml:space="preserve">
+    <value>Username_fr</value>
+  </data>
+  <data name="UserProfile_Header" xml:space="preserve">
+    <value>Personal Information_fr</value>
+  </data>
+  <data name="UseSSL_Caption" xml:space="preserve">
+    <value>UseSSL_fr</value>
+  </data>
+  <data name="Use_PayPal" xml:space="preserve">
+    <value>Use PayPal_fr</value>
+  </data>
+  <data name="Use_SSL" xml:space="preserve">
+    <value>Use SSL_fr</value>
+  </data>
+  <data name="Value_Caption" xml:space="preserve">
+    <value>Value_fr</value>
+  </data>
+  <data name="VAT" xml:space="preserve">
+    <value>VAT #_fr</value>
+  </data>
+  <data name="WebServerID_Caption" xml:space="preserve">
+    <value>WebServer ID_fr</value>
+  </data>
+  <data name="Welcome_Caption" xml:space="preserve">
+    <value>Welcome_fr</value>
+  </data>
+  <data name="Welcome_Email" xml:space="preserve">
+    <value>Welcome Email_fr</value>
+  </data>
+  <data name="Year_Caption" xml:space="preserve">
+    <value>Year_fr</value>
+  </data>
+  <data name="Year_Caption1" xml:space="preserve">
+    <value>1 Year_fr</value>
+  </data>
+  <data name="Year_Caption2" xml:space="preserve">
+    <value>2 Year_fr</value>
+  </data>
+  <data name="Year_Caption3" xml:space="preserve">
+    <value>3  Year_fr</value>
+  </data>
+  <data name="Year_Caption4" xml:space="preserve">
+    <value>4 Year_fr</value>
+  </data>
+  <data name="Year_Caption5" xml:space="preserve">
+    <value>5 Year_fr</value>
+  </data>
+  <data name="Yes_CAption" xml:space="preserve">
+    <value>Yes_fr</value>
+  </data>
+  <data name="Zip_Caption" xml:space="preserve">
+    <value>Zip_fr</value>
+  </data>
+  <data name="Submit_Btn" xml:space="preserve">
+    <value>Submit_fr</value>
+  </data>
+  <data name="CheckOut_MoneybookersInfo_Header" xml:space="preserve">
+    <value>Monerbookers Information</value>
+  </data>
+  <data name="MoneybookersId_Caption" xml:space="preserve">
+    <value>MoneybookersID</value>
+  </data>
+  <data name="MoneybookersID_Title_Caption" xml:space="preserve">
+    <value>Your MoneybookersID must be in the format of name@domain.com</value>
+  </data>
+  <data name="Moneybookers_Caption" xml:space="preserve">
+    <value>Moneybookers</value>
+  </data>
+  <data name="CheckOut_MoneybookersInfo_Header1" xml:space="preserve">
+    <value>Monerbookers Information</value>
+  </data>
+  <data name="ErrorMBSave" xml:space="preserve">
+    <value>Error while saving moneybookers settings.</value>
+  </data>
+  <data name="MoneybookerSaved" xml:space="preserve">
+    <value>Moneybookers settings saved successfully.</value>
+  </data>
+  <data name="SaveMoneybookersSetting_btn" xml:space="preserve">
+    <value>Save Moneybookers Setting</value>
+  </data>
+  <data name="Use_Moneybookers" xml:space="preserve">
+    <value>Use Moneybookers</value>
+  </data>
+  <data name="InvoiceAddress_Caption" xml:space="preserve">
+    <value>Invoice Address_fr</value>
+  </data>
+  <data name="CustomerLogin_Caption" xml:space="preserve">
+    <value>Login_fr</value>
+  </data>
+  <data name="SelectExtraDomains_Caption" xml:space="preserve">
+    <value>Select Extra SAN</value>
+  </data>
+  <data name="TotalAdditionalDomains_Caption" xml:space="preserve">
+    <value>Total Additional SAN</value>
+  </data>
+  <data name="UsedDomains_Caption" xml:space="preserve">
+    <value>Used SAN</value>
+  </data>
+  <data name="Admin_Caption_billingCurrency" xml:space="preserve">
+    <value>This currency setting only for paypal option_fr</value>
+  </data>
+  <data name="EV_Caption" xml:space="preserve">
+    <value>Extended</value>
+  </data>
+  <data name="Admin_RefundUnsuccessful" xml:space="preserve">
+    <value>Refund amount should be less than order price</value>
+  </data>
+  <data name="payment_Paypal_msg" xml:space="preserve">
+    <value>Vous serez redirigé vers PayPal dans l'étape suivante où vous aurez également la possibilité de payer avec une carte de crédit / débit.</value>
+  </data>
+</root>

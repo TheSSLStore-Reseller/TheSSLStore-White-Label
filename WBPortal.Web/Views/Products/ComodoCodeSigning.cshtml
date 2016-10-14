@@ -1,0 +1,122 @@
+﻿@model WBSSLStore.Service.ViewModels.StaticPageViewModel
+@{
+    ViewBag.Title = "SecureSiteProwithEV";  var productdetails = WBSSLStore.Web.Helpers.WBHelper.GetProductDetailRows();
+    string brand = Model != null && Model.Items != null && Model.Items.FirstOrDefault().Product != null && Model.Items.FirstOrDefault().Product.Brand != null ? Model.Items.FirstOrDefault().Product.Brand.BrandName : "";
+    string username = ViewBag.UserName;
+}
+@section headerTags{
+    @Html.Partial("_renderSEO", Model != null && Model.CMSPage != null ? Model.CMSPage : new WBSSLStore.Domain.CMSPage())
+}
+@Html.Partial("_banner", new Tuple<string, string>("", "SSL Brands"))
+<div class="content">
+  <div class="wrapper">
+    <div class="column3">
+      <div class="mobtopcol">
+        <div class="column3-2">
+          <div class="prodetailswrap marzerotop"> @Html.Partial("_ProdPricing", new Tuple<List<WBSSLStore.Domain.ProductPricing>, List<WBSSLStore.Domain.ProductDetail>>(Model.Items.ToList(), productdetails.ToList())) </div>
+          <div class="prodescrip marzerotop">
+            <div class="prodescriptxt">
+              <h2>Product Description</h2>
+              <p>If you're looking for a quick and affordable way to secure code and increase customer trust, look no further than the Comodo Code Signing certificate. These code signing certificates help ensure that any code or content you're looking to distribute over the internet is safe from modification, re-hosting, and impersonation by malicious third parties. The Comodo Code Signing certificate will immediately let your customers know that they can trust the software they are downloading, since it has been verified by a world-renowned security company like Comodo.</p>
+            </div>
+          </div>
+          <div id="cssmenu">
+            <ul class="accordion_example">
+              <li class="brand-symantec acc_active">
+                <div>
+                  <p>Assurance &amp; Authentication</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>The Comodo Code Signing certificate typically takes between 1-2 business days to be issued.</p>
+                  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Security &amp; Encryption</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>This certificate digitally signs code with 32-bit or 64-bit portable executable including .cab, .exe, .dll, .csx, and kernel mode software. Additionally, the Comodo Code Signing certificate creates digital signatures using a public-key algorithm like the RSA public-key cipher.</p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>SAN &amp; multi-domain support</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>Since these are not technically SSL certificates, but rather security certificates designed to encrypt code, this field does not apply here. There is no SAN or wildcard support available on Code Signing certificates.</p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Features &amp; Benefits</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <ul class="featurelist">
+                    <li><strong>Customer Confidence</strong><br>
+                      They protect and reassure your customers by assuring them that the integrity of the code they download from your site is intact - that it has not been tampered with or altered in transit.</li>
+                    <li><strong>Authenticity</strong><br>
+                      After downloading, end users can be sure that the code they obtained really came from you, helping you preserve your business reputation and intellectual property. Digital ID's allow customers to identify the author of digitally signed code and contact them should an issue or query arise.</li>
+                    <li><strong>Seamless Integration with Industry-Standard Technology</strong><br>
+                      Most browsers will not accept action commands from downloaded code unless the code is signed by a certificate from a trusted Certificate Authority,such as Comodo.</li>
+                    <li><strong>Ease of Use</strong><br>
+                      Code signing certificates are easy to use in conjunction with the vendor software  tools that developers use to create products, macro's and objects.</li>
+                    <li><strong>Digitally sign 32-bit or 64-bit executables</strong> including .exe, .ocx, .dll, .cab and kernel mode software</li>
+                    <li><strong>Create a trusted sales outlet</strong> - Wherever they download from, your customers can be sure they are receiving the genuine software</li>
+                    <li class="bdrbtm"><strong>Widely supported</strong> - Compatible with Microsoft Authenticode (including kernel-mode signing), Adobe Air, Apple applications and plug-ins, Java, MS Office Macro and VBA, Mozilla object files and Microsoft</li>
+                  </ul>
+				  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Site Seal</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>Comodo Code Signing certificates do not come with a Site Seal, since it is not designed to be advertised publically on your site. However, these certificates do include unique digital signatures embedded within the code of your site to ensure customers that the code comes from you and has not been altered or corrupted since it was created and signed.</p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Warranty</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>Unfortunately, the Comodo Code Signing certificate does not come with a warranty.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        @Html.Partial("_rightpanel", username) </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+@section Jscripts{ 
+<script type="text/javascript">
+        $(document).ready(function () {
+            // Mobile Menu
+            $("#showmenu").click(function (e) {
+                e.preventDefault();
+                $("#menu").toggleClass("show");
+            });
+            $("#menu a").click(function (event) {
+                event.preventDefault();
+                if ($(this).next('ul').length) {
+                    $(this).next().toggle('fast');
+                    $(this).children('i:last-child').toggleClass('fa-caret-down fa-caret-left');
+                }
+            });
+            $(document).click(function (e) {
+                if (!$(e.target).is(".mobmemu, .mobmemu  *")) { $("#menu").toggleClass("hide"); $("#menu").removeClass("show"); }
+            });
+            $(".accordion_example").smk_Accordion();
+        });
+    </script> 
+} 

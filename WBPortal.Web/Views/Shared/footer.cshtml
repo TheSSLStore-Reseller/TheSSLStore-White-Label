@@ -1,0 +1,90 @@
+﻿@using WBSSLStore.Web.Helpers.Caching;
+@{
+
+    WBSSLStore.Web.Util.WBSiteSettings setting = new WBSSLStore.Web.Util.WBSiteSettings(SiteCacher.CurrentSite);
+}
+
+<footer>
+    <div class="footer-bot">
+        <div class="wrapper">
+            <div class="foot-lt">
+                <div class="social-media">
+                    
+                    @if (!string.IsNullOrEmpty(@setting.FaceBookUrl))
+                    {
+                        <a href="@setting.FaceBookUrl"><img alt="Facebook icon" src='@Url.Content("~/content/images/icon-fb.png")'></a>
+                    }
+                    @if (!string.IsNullOrEmpty(@setting.GooglePlusUrl))
+                    {
+                        <a href="@setting.GooglePlusUrl"><img alt="Google Plus icon" src='@Url.Content("~/content/images/icon-gplus.png")'></a>
+                    }
+                    @if (!string.IsNullOrEmpty(@setting.TwitterUrl))
+                    {
+                        <a href="@setting.TwitterUrl"><img alt="Twitter icon" src='@Url.Content("~/content/images/icon-Twitter.png")'></a>
+                    }
+                    <div class="clear"></div>
+                </div>
+                <span><img alt="Payment Options" src='@Url.Content("~/content/images/payment-option.png")'></span>
+            </div>
+            <div class="foot-rt">
+                <div class="footmnu">
+                    <ul>
+                        <li><a href="/sitemap">@WBSSLStore.Resources.GeneralMessage.Message.Footer_SiteMap</a></li>
+                        <li><a href="@Url.RouteUrl("privacypolicy_us")">@WBSSLStore.Resources.GeneralMessage.Message.Footer_PrivacyPolicy</a></li>
+                        <li><a href="@Url.RouteUrl("refundpolicy_us")">@WBSSLStore.Resources.GeneralMessage.Message.Footer_RefundPolicy</a></li>
+                        <li><a href="@Url.RouteUrl("Disclaimer_us")">@WBSSLStore.Resources.GeneralMessage.Message.Footer_Disclaimer</a></li>
+                    </ul>
+
+                </div>
+                <p>Copyright © @DateTime.Now.Year All Rights Reserved. </p>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</footer>
+
+@*<div class="footerwrapper">
+        <div class="copyrighttext">
+            @WBSSLStore.Resources.GeneralMessage.Message.All_Rights_Reserved_by @setting.CurrentSite.Alias
+        </div>
+        <div class="footerlinks">
+            @if (WBSSLStore.Web.Helpers.WBHelper.FooterPage("Home"))
+            { <a href="/">@WBSSLStore.Resources.GeneralMessage.Message.Footer_Home</a> @Html.Raw("|") }
+            @if (WBSSLStore.Web.Helpers.WBHelper.FooterPage("About Us"))
+            { <a href="/aboutus">@WBSSLStore.Resources.GeneralMessage.Message.Footer_AboutUs</a>  @Html.Raw("|")}
+            @if (WBSSLStore.Web.Helpers.WBHelper.FooterPage("Refund Policy"))
+            { <a href="@(WBSiteSettings.AppPath)/refundpolicy">
+                @WBSSLStore.Resources.GeneralMessage.Message.Footer_RefundPolicy</a>  @Html.Raw("|")}
+            @if (WBSSLStore.Web.Helpers.WBHelper.FooterPage("Privacy Policy"))
+            { <a href="/privacy-policy">@WBSSLStore.Resources.GeneralMessage.Message.Footer_PrivacyPolicy</a>  @Html.Raw("|")}
+            @if (WBSSLStore.Web.Helpers.WBHelper.FooterPage("Disclaimer"))
+            { <a href="/disclaimer">
+                @WBSSLStore.Resources.GeneralMessage.Message.Footer_Disclaimer</a>  @Html.Raw("|")}
+            @if (WBSSLStore.Web.Helpers.WBHelper.FooterPage("Site Map"))
+            { <a href="/sitemap">@WBSSLStore.Resources.GeneralMessage.Message.Footer_SiteMap</a>  @Html.Raw("|")}
+            @if (WBSSLStore.Web.Helpers.WBHelper.FooterPage("Contact Us"))
+            { <a href="/contactus">@WBSSLStore.Resources.GeneralMessage.Message.Footer_ContactUs</a>  @Html.Raw("|")}
+            @if (!string.IsNullOrEmpty(setting.BlogUrl))
+            {
+                <a target="_blank" href="@setting.BlogUrl">@WBSSLStore.Resources.GeneralMessage.Message.Footer_Blog</a>  @Html.Raw("|")
+            }&nbsp;
+            @if (!string.IsNullOrEmpty(@setting.FaceBookUrl))
+            {
+                <a rel="nofollow" target="_blank" href="@setting.FaceBookUrl">
+                    <img src="@setting.ImagePath/facebook_icon.gif"
+            alt="&lt;empty&gt;" width="16" height="16" border="0" align="absmiddle" /></a> <a rel="nofollow" target="_blank" href="@setting.FaceBookUrl">Facebook</a>
+                @Html.Raw("&nbsp;|&nbsp;")
+            }
+            @if (!string.IsNullOrEmpty(@setting.TwitterUrl))
+            {
+                <a href="@setting.TwitterUrl" target="_blank" rel="nofollow">
+                    <img src="@setting.ImagePath/twitter_icon.gif" alt="&lt;empty&gt;" width="16" height="16"
+                                            border="0"  align="absmiddle" /></a> <a target="_blank" href="@setting.TwitterUrl" rel="nofollow">Twitter</a>
+            }
+        </div>
+        <div class="clear">
+        </div>
+        @{
+            setting = null;
+        }
+    </div>*@

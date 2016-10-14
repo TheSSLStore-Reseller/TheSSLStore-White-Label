@@ -1,0 +1,176 @@
+﻿@using WBSSLStore.Web.Util;
+@using WBSSLStore.Domain
+@using WBSSLStore.Web.Helpers.PagedList;
+@model IPagedList<OrderDetail>
+@{
+    ViewBag.Title = "CustomerWise";
+    string CurrentLangCode = WBSSLStore.Web.Helpers.WBHelper.CurrentLangCode;
+}
+<link rel="stylesheet" href="@Url.Content("~/content/themes/base/jquery-ui.min.css")" type="text/css" />
+<script src="@Url.Content("~/Content/Scripts/Jquery.UI/jquery-ui.min.js")"  type="text/javascript"></script>
+<script src="@Url.Content("~/content/Scripts/jQuery.glob.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/content/Scripts/jquery.glob.all.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/content/Admin/js/common.min.js")" language="javascript" type="text/javascript" ></script>
+
+@if (CurrentLangCode!= "en")
+{
+<script src="@Url.Content("~/content/Scripts/i18n/jquery.ui.datepicker-" + CurrentLangCode + ".js")" type="text/javascript"></script>
+}
+<script type="text/javascript">
+
+    $(function () {
+        $.preferCulture('@(CurrentLangCode)');
+    });
+</script>
+
+<script type="text/javascript" language="javascript">
+    $(function () {
+        var dates = $("#txtFromDate, #txtToDate").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            numberOfMonths: 1,
+            showOn: "both",
+            buttonImage: "@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-date.gif",
+            buttonImageOnly: true,
+            onSelect: function (selectedDate) {
+                var option = this.id == "txtFromDate" ? "minDate" : "maxDate",
+					instance = $(this).data("datepicker"),
+					date = $.datepicker.parseDate(
+						instance.settings.dateFormat ||
+						$.datepicker._defaults.dateFormat,
+						selectedDate, instance.settings);
+                dates.not(this).datepicker("option", option, date);
+            }
+        });
+    });
+</script>
+<tr>
+    <td align="left" valign="top">
+        <table width="881" border="0" align="left" cellpadding="0" cellspacing="0">
+            <tr>
+                <td width="7" align="left" valign="top">
+                    <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/barleft.gif" alt="whitebrand" width="7" height="55">
+                </td>
+                <td width="866" align="left" valign="middle" class="hdbarbg">
+                    <table width="840" border="0" align="center" cellpadding="1" cellspacing="1">
+                        <tr>
+                            <td width="407" align="left" valign="middle" class="head1">
+                                @*Customerwise Report*@ @WBSSLStore.Resources.GeneralMessage.Message.CustomerwiseReport_Header
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td width="9" align="right" valign="top">
+                    <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/barright.gif" alt="whitebrand" width="9" height="55">
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>
+<tr>
+    <td align="left" valign="top" class="contbg">
+        <table width="870" border="0" align="center" cellpadding="0" cellspacing="7">
+            <tr>
+                <td width="867" align="center" valign="top" class="bgclr">
+                    <table width="840" border="0" align="center" cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td width="854" align="left" valign="top">
+                                <table width="840" border="0" align="center" cellpadding="0" cellspacing="0">
+                                    <tr>
+                                        <td width="854" height="20" align="left" valign="middle">
+                                            &nbsp;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" valign="top">
+                                            @using (Html.BeginForm("customerwise", "report", FormMethod.Post))
+                                            {
+                                                <table width="80%" border="0" align="center" cellpadding="1" cellspacing="2">
+                                                    <tr>
+                                                        <td width="31%" align="right" valign="middle" class="bold">
+                                                            @*Customer Name*@ @WBSSLStore.Resources.GeneralMessage.Message.CustomerName_Caption:
+                                                        </td>
+                                                        <td width="69%" align="left" valign="middle">
+                                                            <label>
+                                                                <input name="txtName" type="text" class="inputbox" id="txtName" value="@ViewBag.Name" />
+                                                            </label>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="right" valign="middle" class="bold">
+                                                            @*Customer Email*@ @WBSSLStore.Resources.GeneralMessage.Message.Email_Caption:<br/>
+                                                        </td>
+                                                        <td align="left" valign="middle">
+                                                            <label>
+                                                                <input name="txtEmail" type="text" class="inputbox" id="txtEmail" value="@ViewBag.Email"/>
+                                                            </label>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td height="30" align="right" valign="middle" class="bold">
+                                                            @*Customer Type*@ @WBSSLStore.Resources.GeneralMessage.Message.CustomerType_Caption:
+                                                        </td>
+                                                        <td align="left" valign="middle">
+                                                            @Html.DropDownList("ddlUserType", Enum.GetValues(typeof(WBSSLStore.Domain.UserType)).Cast<WBSSLStore.Domain.UserType>().Where(x => (int)x != (int)UserType.ADMIN).Select(x => new SelectListItem { Text = ((int)x ==0 ? WBSSLStore.Resources.GeneralMessage.Message.Customer_Caption:WBSSLStore.Resources.GeneralMessage.Message.Reseller_Caption), Value = ((int)x).ToString(), Selected = (((int)x) == Convert.ToInt32(ViewBag.UserType) && ViewBag.UserType != null) }), "----"+ @WBSSLStore.Resources.GeneralMessage.Message.ddlStatus_All +"----", new { @class = "listmenusmall" })
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td height="30" align="right" valign="middle" class="bold">
+                                                            @*Order Date*@ @WBSSLStore.Resources.GeneralMessage.Message.OrderDate_Caption:
+                                                        </td>
+                                                        <td align="left" valign="middle">
+                                                            <table width="100%" border="0" align="center" cellpadding="0" cellspacing="1">
+                                                                <tr>
+                                                                    <td width="15%" align="left" valign="middle">
+                                                                        <input name="txtFromDate" type="text" class="inputboxmini" id="txtFromDate" readonly="readonly" value="@(ViewBag.StartDate ?? DateTimeWithZone.Now.AddYears(-1).ToShortDateString())" />
+                                                                    </td>
+                                                                    <td width="10%" align="left" valign="middle" class="bold">
+                                                                        @*End Date*@ @WBSSLStore.Resources.GeneralMessage.Message.EndDate_Caption:
+                                                                    </td>
+                                                                    <td width="35%" align="left" valign="middle">
+                                                                        <input name="txtToDate" type="text" class="inputboxmini" id="txtToDate" readonly="readonly" value="@(ViewBag.EndDate ?? DateTimeWithZone.Now.ToShortDateString())" />
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td height="8" align="right" valign="middle">
+                                                        </td>
+                                                        <td height="8" align="left" valign="top">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="right" valign="middle">
+                                                            &nbsp;
+                                                        </td>
+                                                        <td align="left" valign="top">
+                                                            <label>
+                                                                <input name="btnSearch" type="submit" class="bluebtn" id="btnSearch" value="@WBSSLStore.Resources.GeneralMessage.Message.Search_btn" />
+                                                            </label>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td height="8" align="right" valign="middle">
+                                                        </td>
+                                                        <td height="8" align="left" valign="top">
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            }
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        @Html.Partial("_Reports", Model)
+                        <tr>
+                            <td height="8" align="left" valign="top">
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>

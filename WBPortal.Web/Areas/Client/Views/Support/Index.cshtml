@@ -1,0 +1,65 @@
+﻿@using WBSSLStore.Domain;
+@model IEnumerable<WBSSLStore.Domain.SupportRequest>
+@{
+    ViewBag.Title = "Index";
+    string username = ViewBag.Username;
+    User adminuser = WBSSLStore.Web.Helpers.Caching.SiteCacher.SiteAdminDetail(WBSSLStore.Web.Helpers.Caching.SiteCacher.CurrentSite.ID);
+}
+@section sitecss{
+}
+@section Jscripts{
+
+}
+@Html.Partial("_banner", new Tuple<string, string>("", WBSSLStore.Resources.GeneralMessage.Message.Client_Support_Header))
+<div class="content">
+    <div class="wrapper">
+        <div class="column3">
+            <div class="column3-0">
+                <div class="controlpnldata">
+                    <h2>@WBSSLStore.Resources.GeneralMessage.Message.Client_Support_Header</h2>
+                    @if (Model.Count().Equals(0))
+                    {
+                        <p class="alert-danger">
+                            @WBSSLStore.Resources.GeneralMessage.Message.No_Record_Available
+                        </p>
+                    }
+                    else
+                    {
+                        <div class="odrtabelgrid">
+
+                            <div class="odrtblraw odrheadraw clisup">
+                                <p class="wd90">@WBSSLStore.Resources.GeneralMessage.Message.date_Caption</p>
+                                <p class="wd100">@WBSSLStore.Resources.GeneralMessage.Message.IncidentID_Caption</p>
+                                <p class="wd150 bigcol">@WBSSLStore.Resources.GeneralMessage.Message.Subject_Caption</p>
+                                <p class="wd100">@WBSSLStore.Resources.GeneralMessage.Message.Status_Caption</p>
+                                <p class="wd100">@WBSSLStore.Resources.GeneralMessage.Message.LastReplier_Caption</p>
+                            </div>
+                            @foreach (SupportRequest s in Model)
+                            {
+                                <div class="odrtblraw clisup">
+                                    <p class="wd90"><span class="tabshow">@WBSSLStore.Resources.GeneralMessage.Message.date_Caption</span>@s.AuditDetails.DateCreated.ToShortDateString()</p>
+                                    <p class="wd100">
+                                        <span class="tabshow">@WBSSLStore.Resources.GeneralMessage.Message.IncidentID_Caption</span>
+                                        <a class="tbllink" href="@Url.Action("details", "support", new { id = s.ID })">SSL-@s.ID</a>
+                                    </p>
+                                    <p class="wd150 bigcol">
+                                        <span class="tabshow">@WBSSLStore.Resources.GeneralMessage.Message.Subject_Caption</span>
+                                        <a class="tbllink" href="@Url.Action("details", "support", new { id = s.ID }) ">@s.Subject</a>
+                                    </p>
+                                    <p class="wd100">
+                                        <span class="tabshow">@WBSSLStore.Resources.GeneralMessage.Message.Status_Caption</span>
+                                        @Html.Raw(s.isOpen ? "<span class='orangetext'>" + @WBSSLStore.Resources.GeneralMessage.Message.Open_Status_Caprion + "</span>" : "<span class='greentext'>" + @WBSSLStore.Resources.GeneralMessage.Message.Close_Status_Caption + "</span>")
+                                    </p>
+                                    <p class="wd100"><span class="tabshow">@WBSSLStore.Resources.GeneralMessage.Message.LastReplier_Caption</span><span class="grntxt">@(s.AuditDetails.ByUserID.Equals(adminuser.ID) ? "Staff" : "User")</span></p>
+                                </div>
+                            }
+                        </div>
+                    }
+                </div>
+                <div class="clear"></div>
+            </div>
+            @Html.Partial("_rightpanel", username)
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>

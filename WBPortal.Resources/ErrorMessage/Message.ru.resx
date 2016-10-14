@@ -1,0 +1,480 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AdminEmailRequired" xml:space="preserve">
+    <value>Пожалуйста введите верный е-мейл администратора</value>
+  </data>
+  <data name="AliasRequired" xml:space="preserve">
+    <value>Пожалуйста введите вымышленное имя (логин)</value>
+  </data>
+  <data name="AmountRequired" xml:space="preserve">
+    <value>Пожалуйста введите расчётный период</value>
+  </data>
+  <data name="APIPartnerCodeRequired" xml:space="preserve">
+    <value>Пожалуйста введите код APIPartner (контрагента)</value>
+  </data>
+  <data name="APIPasswordRequired" xml:space="preserve">
+    <value>Пожалуйста введите пароль APIPartner (контрагента)</value>
+  </data>
+  <data name="APIUsernameRequired" xml:space="preserve">
+    <value>Пожалуйста введите имя пользователя API</value>
+  </data>
+  <data name="ApproverEmailRequired" xml:space="preserve">
+    <value>Пожалуйста введите е-мейл,человека подтверждающего (что всё ранне введённое его)</value>
+  </data>
+  <data name="AskToDeletePromocode" xml:space="preserve">
+    <value>Вы уверены что хотите удалить этот промокод?</value>
+  </data>
+  <data name="Autherr" xml:space="preserve">
+    <value>Ошибка во время процесса идентификации (удостоверения подлинности).Пожалуйста ждите.</value>
+  </data>
+  <data name="BillingEmailRequired" xml:space="preserve">
+    <value>Пожалуйста введите действительный платёжный е-мейл</value>
+  </data>
+  <data name="BlogUrlRequired" xml:space="preserve">
+    <value>Пожалуйста введите действительный адрес журнала,дневника</value>
+  </data>
+  <data name="BrandNameRequired" xml:space="preserve">
+    <value>Пожалуйста выберите товарный знак</value>
+  </data>
+  <data name="BrandSettingUpdate" xml:space="preserve">
+    <value>Товарный знак обновлен успешно,пожалуйста сохраните настройки</value>
+  </data>
+  <data name="CampaignNameRequired" xml:space="preserve">
+    <value>Пожалуйста введите название компании</value>
+  </data>
+  <data name="CancelCommentRequired" xml:space="preserve">
+    <value>Пожалуйста введите коментарии</value>
+  </data>
+  <data name="CancelReasonRequired" xml:space="preserve">
+    <value>Пожалуйста введите причину/основание</value>
+  </data>
+  <data name="CardTypeRequired" xml:space="preserve">
+    <value>Пожалуйста введите тип карты</value>
+  </data>
+  <data name="CCNameRequired" xml:space="preserve">
+    <value>Пожалуйста введите имя владельца карты</value>
+  </data>
+  <data name="CityRequired" xml:space="preserve">
+    <value>Пожалуйста введите город</value>
+  </data>
+  <data name="CommentsRequired" xml:space="preserve">
+    <value>Пожалуйста введите коментарии</value>
+  </data>
+  <data name="CommonNameRequired" xml:space="preserve">
+    <value>Пожалуйста введите стандартное имя</value>
+  </data>
+  <data name="CompanyNameRequired" xml:space="preserve">
+    <value>Пожалуйста введите название компании</value>
+  </data>
+  <data name="ComparPassword" xml:space="preserve">
+    <value>Подтвердите пароль и пароль не совпадает</value>
+  </data>
+  <data name="ContactNotSuccess" xml:space="preserve">
+    <value>Неспособность (невозможно) обновить статус контракта</value>
+  </data>
+  <data name="ContractAreYouSure" xml:space="preserve">
+    <value>Вы уверены что хотите удалить этот контракт?</value>
+  </data>
+  <data name="Contractdeleted" xml:space="preserve">
+    <value>Контракт удалён успешно</value>
+  </data>
+  <data name="ContractIDRequired" xml:space="preserve">
+    <value>Пожалуйста выделите название контракта</value>
+  </data>
+  <data name="ContractNameRequired" xml:space="preserve">
+    <value>Пожалуйста введите название контракта</value>
+  </data>
+  <data name="ContractNotdeleted" xml:space="preserve">
+    <value>Неспособность (невозможно) удалить контракт</value>
+  </data>
+  <data name="ContractSuccess" xml:space="preserve">
+    <value>Успешное обновление статуса контракта</value>
+  </data>
+  <data name="CountryNameRequired" xml:space="preserve">
+    <value>Пожалуйста введите название страны</value>
+  </data>
+  <data name="CSRRequired" xml:space="preserve">
+    <value>Введите CSR (запрос на подпись сертификата)</value>
+  </data>
+  <data name="CSRToolErrmsg" xml:space="preserve">
+    <value>Не разрешается этот IP-адрес.Пожалуйста убедитесь в том,что ваши DNS-записи установлены верно</value>
+  </data>
+  <data name="Currency" xml:space="preserve">
+    <value>Введите валюту</value>
+  </data>
+  <data name="CVVnumber" xml:space="preserve">
+    <value>Введите CVV минимум 3,максимум 4 (Card Verification Value=трёхзначный или четырёхзначный код проверки подлинности карты платёжной системы Visa)</value>
+  </data>
+  <data name="DateCreatedRequired" xml:space="preserve">
+    <value>Введите дату создания</value>
+  </data>
+  <data name="DiscountRequired" xml:space="preserve">
+    <value>Введите скидку</value>
+  </data>
+  <data name="DomainNameRequired" xml:space="preserve">
+    <value>Введите имя домена</value>
+  </data>
+  <data name="EmailExists" xml:space="preserve">
+    <value>Е-мейл уже существует</value>
+  </data>
+  <data name="EmailFromRequired" xml:space="preserve">
+    <value>Введите е-мейл из?</value>
+  </data>
+  <data name="EmailRequired" xml:space="preserve">
+    <value>Введите адрес</value>
+  </data>
+  <data name="EmailTORequired" xml:space="preserve">
+    <value>Введите е-мейлу?</value>
+  </data>
+  <data name="FbValidUrl" xml:space="preserve">
+    <value>Введите дейcтвительный адрес страницы Facebook</value>
+  </data>
+  <data name="FirstNameRequired" xml:space="preserve">
+    <value>Введите первое имя (просто имя)</value>
+  </data>
+  <data name="Fromdate" xml:space="preserve">
+    <value>Введите сегодняшнюю дату (начало периода)</value>
+  </data>
+  <data name="gatewayNameRequired" xml:space="preserve">
+    <value>Введите имя шлюза</value>
+  </data>
+  <data name="InvalidURL" xml:space="preserve">
+    <value>Недействителен представленный адрес</value>
+  </data>
+  <data name="InVisibility" xml:space="preserve">
+    <value>Неспособность (невозможно) изменить обзор</value>
+  </data>
+  <data name="InvoicePrifxRequired" xml:space="preserve">
+    <value>Введите префикс (код) счёта-фактуры</value>
+  </data>
+  <data name="keyfilepathRequired" xml:space="preserve">
+    <value>Введите путь ключевого файла</value>
+  </data>
+  <data name="KeywordsRequired" xml:space="preserve">
+    <value>Введите ключевое слово</value>
+  </data>
+  <data name="LangCodeRequired" xml:space="preserve">
+    <value>Введите код языкы</value>
+  </data>
+  <data name="LangNameRequired" xml:space="preserve">
+    <value>Введите название языка</value>
+  </data>
+  <data name="LastNameRequired" xml:space="preserve">
+    <value>Введите последнее имя (фамилию)</value>
+  </data>
+  <data name="LiveUrlRequired" xml:space="preserve">
+    <value>Введите "живой" адрес"</value>
+  </data>
+  <data name="LoginIdRequired" xml:space="preserve">
+    <value>Введите логин ID (пройдите регистрацию идентификации)</value>
+  </data>
+  <data name="MerIDRequired" xml:space="preserve">
+    <value>Введите ID покупателя (идентифицируйте его)</value>
+  </data>
+  <data name="NoGatewaySelected" xml:space="preserve">
+    <value>Нет платежа для выбранного шлюза</value>
+  </data>
+  <data name="NoPricingAdded" xml:space="preserve">
+    <value>Введите цену по крайней мере одного года</value>
+  </data>
+  <data name="NumberOfMonthsRequired" xml:space="preserve">
+    <value>Введите номер месяца</value>
+  </data>
+  <data name="PageSizeRequired" xml:space="preserve">
+    <value>Введите допустимый размер страницы</value>
+  </data>
+  <data name="PartnerIDRequired" xml:space="preserve">
+    <value>Введите идентификатор контрагента (PartnerID)</value>
+  </data>
+  <data name="PasswordRequired" xml:space="preserve">
+    <value>Введите пароль</value>
+  </data>
+  <data name="PaymentGatewayNameRequired" xml:space="preserve">
+    <value>Введите имя платёжного шлюза</value>
+  </data>
+  <data name="PaymentMethod" xml:space="preserve">
+    <value>Выберите метод оплаты</value>
+  </data>
+  <data name="PaypalID" xml:space="preserve">
+    <value>Ваш идентификатор PayPal должен быть формата name@domain.com</value>
+  </data>
+  <data name="PaypalIdRequired" xml:space="preserve">
+    <value>Введите идентификатор PayPal</value>
+  </data>
+  <data name="PhoneRequired" xml:space="preserve">
+    <value>Введите телефон</value>
+  </data>
+  <data name="ProductAskDelete" xml:space="preserve">
+    <value>Вы уверены что хотите удалить этот продукт?</value>
+  </data>
+  <data name="ProductCodeRequired" xml:space="preserve">
+    <value>Введите код продукта</value>
+  </data>
+  <data name="ProductDeleteSuccess" xml:space="preserve">
+    <value>Продукт удалён успешно</value>
+  </data>
+  <data name="ProductDeleteUnSuccess" xml:space="preserve">
+    <value>Невозможно удалить продукт</value>
+  </data>
+  <data name="ProductDescriptionRequired" xml:space="preserve">
+    <value>Введите описание продукта</value>
+  </data>
+  <data name="ProductIDRequired" xml:space="preserve">
+    <value>Выберите продукт</value>
+  </data>
+  <data name="ProductNameRequired" xml:space="preserve">
+    <value>Введите название продукта</value>
+  </data>
+  <data name="ProductUpdateSuccess" xml:space="preserve">
+    <value>Статус продукта успешно обновлён</value>
+  </data>
+  <data name="ProductUpdateUnSuccess" xml:space="preserve">
+    <value>Невозможно обновить статус продукта</value>
+  </data>
+  <data name="ProfitMarginRequired" xml:space="preserve">
+    <value>Введите границы верной прибыли (рентабельности продаж)</value>
+  </data>
+  <data name="PromoAppliedSuccess" xml:space="preserve">
+    <value>Промокод успешно приложен (использован)</value>
+  </data>
+  <data name="PromocodeAlreadyExist" xml:space="preserve">
+    <value>Промокод уже существует</value>
+  </data>
+  <data name="PromoCodeRequired" xml:space="preserve">
+    <value>Введите промокод</value>
+  </data>
+  <data name="PromoDelSuccess" xml:space="preserve">
+    <value>Промокод успено удалён</value>
+  </data>
+  <data name="PromoDelUnSuccess" xml:space="preserve">
+    <value>Невозможно удалить промокод</value>
+  </data>
+  <data name="ReceiptDetRequired" xml:space="preserve">
+    <value>Введите детали (подробности) получения (чека)</value>
+  </data>
+  <data name="RetailPriceRequired" xml:space="preserve">
+    <value>Введите цену розничного продавца</value>
+  </data>
+  <data name="SalesPriceRequired" xml:space="preserve">
+    <value>Введите отпускную цену</value>
+  </data>
+  <data name="SelectMonth" xml:space="preserve">
+    <value>Выберите месяц</value>
+  </data>
+  <data name="SelectYear" xml:space="preserve">
+    <value>Выберите год</value>
+  </data>
+  <data name="SMTPHostRequired" xml:space="preserve">
+    <value>Введите хост простого протокола эл.почты</value>
+  </data>
+  <data name="SMTPPortRequired" xml:space="preserve">
+    <value>Введите порт простого протокола эл.почты</value>
+  </data>
+  <data name="StaffNoteRequired" xml:space="preserve">
+    <value>Введите примечание персоналу</value>
+  </data>
+  <data name="StateRequired" xml:space="preserve">
+    <value>Введите название страны</value>
+  </data>
+  <data name="StreetRequired" xml:space="preserve">
+    <value>Введите название улицы</value>
+  </data>
+  <data name="SubjectRequired" xml:space="preserve">
+    <value>Введите субъект</value>
+  </data>
+  <data name="SupportEmailRequired" xml:space="preserve">
+    <value>Введите действующий е-мейл поддержки</value>
+  </data>
+  <data name="TestUrlRequired" xml:space="preserve">
+    <value>Введите проверочный адрес</value>
+  </data>
+  <data name="TimeZoneRequired" xml:space="preserve">
+    <value>Выберите часовой пояс</value>
+  </data>
+  <data name="TitleRequired" xml:space="preserve">
+    <value>Выберите название</value>
+  </data>
+  <data name="Todate" xml:space="preserve">
+    <value>Выберите сегодняшнюю дату</value>
+  </data>
+  <data name="TranKeyRequired" xml:space="preserve">
+    <value>Введите клавишу управления (ключ транзакции)</value>
+  </data>
+  <data name="TwitterValidURL" xml:space="preserve">
+    <value>Введите действующий адрес Твиттера</value>
+  </data>
+  <data name="UnmandPassWrong" xml:space="preserve">
+    <value>Имя пользователя или пароль некорректны.Попробуйте снова</value>
+  </data>
+  <data name="UserExist" xml:space="preserve">
+    <value>Пользователь системы уже существует.Введите другой адрес эл.почты</value>
+  </data>
+  <data name="ValidAmount" xml:space="preserve">
+    <value>Введите действующий расчётный счёт</value>
+  </data>
+  <data name="ValidCCNumber" xml:space="preserve">
+    <value>Введите номер от 14 до 16 знаков</value>
+  </data>
+  <data name="ValidContractLevel" xml:space="preserve">
+    <value>Уровень контракта должен быть числом</value>
+  </data>
+  <data name="ValidEmail" xml:space="preserve">
+    <value>Введите действующий е-мейл</value>
+  </data>
+  <data name="ValidPaypalID" xml:space="preserve">
+    <value>Введите действующий идентификатор PayPal</value>
+  </data>
+  <data name="ValidPromocode" xml:space="preserve">
+    <value>Ошибочный промокод</value>
+  </data>
+  <data name="ValidUrl" xml:space="preserve">
+    <value>Введите действующий адрес</value>
+  </data>
+  <data name="ValidUsernameandPass" xml:space="preserve">
+    <value>Введите действующее имя пользователя и пароль</value>
+  </data>
+  <data name="ValidVatNo" xml:space="preserve">
+    <value>Введите действующую ставку НДС</value>
+  </data>
+  <data name="VatCountryRequired" xml:space="preserve">
+    <value>Введите страну уплаты НДС</value>
+  </data>
+  <data name="VatNoRequired" xml:space="preserve">
+    <value>Введите НДС-номер (номер налогоплательщика?)</value>
+  </data>
+  <data name="VatPerRequired" xml:space="preserve">
+    <value>Введите процент НДС для выбранной страны</value>
+  </data>
+  <data name="Visibility" xml:space="preserve">
+    <value>Обзор изменён успешно</value>
+  </data>
+  <data name="WebServerNameRequired" xml:space="preserve">
+    <value>Введите имя сервера</value>
+  </data>
+  <data name="ZipRequired" xml:space="preserve">
+    <value>Введите почтовый</value>
+  </data>
+  <data name="MoneybookersIDRequired" xml:space="preserve">
+    <value>Please enter moneybookersid</value>
+  </data>
+  <data name="ValidMoneybookersID" xml:space="preserve">
+    <value>Please enter valid moneybookersid</value>
+  </data>
+</root>

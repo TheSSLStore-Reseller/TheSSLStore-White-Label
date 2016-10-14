@@ -1,0 +1,52 @@
+﻿@model string
+
+<div class="column3-3">
+    @if (User.Identity.IsAuthenticated)
+    {
+        <div class="box sidemenu">
+            <h3>Welcome <span>@Model</span></h3>
+            @if (!User.IsInRole("admin"))
+            {
+                <h4>MY ORDERS</h4>
+
+                <div class="sidemenulinks">
+                    <ul>
+                        <li><a href="@Url.Action("dashboard", "orders", new { area="client" })">Dashboard</a></li>
+                        <li><a href="@Url.Action("index","orders", new { area="client" })">Order Summary</a></li>
+                        <li><a href="@Url.Action("list" ,"orders", new { area="client" })">List Order</a></li>
+                        <li><a href="@Url.Action("SearchOrders", "orders", new { area = "client" })">Search Order</a></li>
+                        <li><a href="@Url.Action("index", "support", new { area = "client" })">Client Support</a></li>
+                    </ul>
+                </div>
+                <h4>MY ACCOUNT</h4>
+                <div class="sidemenulinks">
+                    <ul>
+                        <li><a href="@Url.Action("statement", "account", new { area = "client" })">Account Statement</a></li>
+                        <li><a href="@Url.Action("Edit", "account", new { area = "client" })">Personal Information</a></li>
+                        <li><a href="@Url.Action("Preferences", "account", new { area = "client" })">Preferences</a></li>
+                        @if (User.IsInRole("reseller"))
+                        {
+                            <li><a href="@Url.Action("pricing", "account", new { area = "client" })">Pricing</a></li>
+                        }
+                        
+                        <li><a href="@Url.RouteUrl("logout_us")">Log Out</a></li>
+                    </ul>
+                </div>
+            }
+            else
+            {
+                <h4>Admin Panel</h4>
+                <div class="sidemenulinks">
+                    <ul>
+                        <li><a href="@Url.Action("index", "home", new { area = "admin" })">Admin Dashboard</a></li>
+                    </ul>
+                </div>
+            }
+        </div>
+    }
+    @Html.Partial("_freetools")
+</div>
+
+<div class="clear"></div>
+
+

@@ -1,0 +1,522 @@
+﻿@model WBSSLStore.Domain.PaymentGateways
+@{
+    ViewBag.Title = "_OtherGateway";
+}
+@System.Web.Optimization.Scripts.Render("/bundales/wb/validationjs")
+<style type="text/css">
+    .trhide
+    {
+        display: none;
+    }
+    .trshow
+    {
+        display: table-row;
+    }
+</style>
+<script type="text/javascript" language="javascript">
+var LIDValidate=false;
+var MIDValidate=false;
+var TKeyValidate=false;
+var PasswordValidate=false;
+var KPathValidate=false;
+var PIDValidate=false;
+var TestURLValidate=false;
+var LiveURLValidate=false;
+    function SetCardValue(chk) {
+        $('#AcceptCards').val('');
+        $('.CreditCards').each(function () {
+            var curVal = $('#AcceptCards').val();
+            if ($(this).is(':checked')) {
+                if (curVal != "")
+                    $('#AcceptCards').val(curVal + ',' + $(this).val());
+                else
+                    $('#AcceptCards').val($(this).val());
+            }
+        });
+    }
+    function SetInputOption(opt,cleardata) {
+        if(cleardata)
+            ClearAllData();
+    var trAPILoginID=document.getElementById('trAPILoginID');
+    var trTrans_Sign=document.getElementById('trTrans_Sign');
+    var trMerchantID=document.getElementById('trMerchantID');
+    var trPassword=document.getElementById('trPassword');
+    var trKeyFilePath=document.getElementById('trKeyFilePath');
+    var trPartnerID=document.getElementById('trPartnerID');
+    
+        if (parseInt(opt) == @((int)WBSSLStore.Domain.PGInstances.AuthorizeNet)) {
+               trAPILoginID.className='trshow';
+               LIDValidate=true;
+               trTrans_Sign.className='trshow';
+                TKeyValidate=true;
+               TestURLValidate=true;
+               LiveURLValidate=true;
+               trMerchantID.className='trhide';
+               MIDValidate=false;
+               trPassword.className='trhide';
+               PasswordValidate=false;
+               trKeyFilePath.className='trhide';
+               KPathValidate=false;
+               trPartnerID.className='trhide';
+               PIDValidate=false;
+        }
+    }
+    $(document).ready(function() {
+  SetInputOption(@(Model.InstancesID > 1 ? Model.InstancesID : 2),false);
+});
+function ClearAllData(ele)
+{
+$('#allcontroll').find(':input').each(function() {
+        switch(this.type) {
+            case 'password':
+            case 'select-multiple':
+            case 'select-one':
+            case 'text':
+            case 'text':
+                $(this).val('');
+                break;
+            case 'checkbox':
+            this.checked = false;
+            break;
+            case 'radio':
+                this.checked = false;
+        }
+    });
+}
+</script>
+
+<script type="text/javascript" language="javascript">
+    var loginid = "@WBSSLStore.Resources.ErrorMessage.Message.LoginIdRequired";
+    var merid = "@WBSSLStore.Resources.ErrorMessage.Message.MerIDRequired";
+    var trankey = "@WBSSLStore.Resources.ErrorMessage.Message.TranKeyRequired";
+    var pass = "@WBSSLStore.Resources.ErrorMessage.Message.PasswordRequired";
+    var partnerID = "@WBSSLStore.Resources.ErrorMessage.Message.PartnerIDRequired";
+    var keypath = "@WBSSLStore.Resources.ErrorMessage.Message.keyfilepathRequired";
+    var gateway = "@WBSSLStore.Resources.ErrorMessage.Message.gatewayNameRequired";
+    var LiveUrl = "@WBSSLStore.Resources.ErrorMessage.Message.LiveUrlRequired";
+    var TestUrl = "@WBSSLStore.Resources.ErrorMessage.Message.TestUrlRequired";
+    var validUrl = "@WBSSLStore.Resources.ErrorMessage.Message.ValidUrl";
+    $(document).ready(function () {
+        $.validator.addMethod(
+                "LIDValidate",
+                function (value, element) {
+                    if ($('#chkauth').is(':checked') && LIDValidate && value == "") {
+                        return false;
+                    }
+                    else {
+                        return true;
+                    }
+                },
+                loginid
+            );
+
+        $.validator.addMethod(
+                "MIDValidate",
+                function (value, element) {
+                    if ($('#chkauth').is(':checked') && MIDValidate && value == "") {
+                        return false;
+                    }
+                    else {
+                        return true;
+                    }
+                },
+                merid
+            );
+        $.validator.addMethod(
+                "TKeyValidate",
+                function (value, element) {
+                    if ($('#chkauth').is(':checked') && TKeyValidate && value == "") {
+                        return false;
+                    }
+                    else {
+                        return true;
+                    }
+                },
+                trankey
+            );
+        $.validator.addMethod(
+                "PasswordValidate",
+                function (value, element) {
+                    if ($('#chkauth').is(':checked') && PasswordValidate && value == "") {
+                        return false;
+                    }
+                    else {
+                        return true;
+                    }
+                },
+                pass
+            );
+        $.validator.addMethod(
+                "PIDValidate",
+                function (value, element) {
+                    if ($('#chkauth').is(':checked') && PIDValidate && value == "") {
+                        return false;
+                    }
+                    else {
+                        return true;
+                    }
+                },
+                partnerID
+            );
+        $.validator.addMethod(
+                "KPathValidate",
+                function (value, element) {
+                    if ($('#chkauth').is(':checked') && KPathValidate && value == "") {
+                        return false;
+                    }
+                    else {
+                        return true;
+                    }
+                },
+                keypath
+            );
+        $.validator.addMethod(
+                "LiveURLValidate",
+                function (value, element) {
+                    if ($('#chkauth').is(':checked') && LiveURLValidate && value == "") {
+                        return false;
+                    }
+                    else {
+                        return true;
+                    }
+                },
+                LiveUrl
+            );
+
+        $.validator.addMethod(
+                "TestURLValidate",
+                function (value, element) {
+                    if ($('#chkauth').is(':checked') && TestURLValidate && value == "") {
+                        return false;
+                    }
+                    else {
+                        return true;
+                    }
+                },
+                TestUrl
+            );
+
+
+        $("#frmOtherGateway").validate({
+
+            errorElement: "em",
+            rules: {
+                Name: {
+                    required: $('#chkauth').is(':checked')
+                },
+                LiveURL: {
+                    LiveURLValidate: true, url: true
+                },
+                TestURL: {
+                    TestURLValidate: true, url: true
+                },
+                LoginID: {
+                    LIDValidate: true
+                },
+                MerchantID: {
+                    MIDValidate: true
+                },
+                TransactionKey: {
+                    TKeyValidate: true
+                },
+                Password: {
+                    PasswordValidate: true
+                },
+                KeyFilePath: {
+                    KPathValidate: true
+                },
+                PartnerID: {
+                    PIDValidate: true
+                }
+
+            },
+            messages: {
+                Name: gateway,
+                LoginID: {
+                    required: loginid
+                },
+                MerchantID: {
+                    required: merid
+                },
+                TransactionKey: {
+                    required: trankey
+                },
+                password: {
+                    required: pass
+                },
+                KeyFilePath: {
+                    required: keypath
+                },
+                PartnerID: {
+                    required: partnerID
+                },
+                LiveURL: {
+                    required: LiveUrl, url: true
+                },
+                TestURL: {
+                    required: TestUrl, url: true
+                }
+            }
+        });
+
+        showhide();
+    });
+</script>
+<script type="text/javascript" language="javascript">
+    function showhide() {
+        if ($('#chkauth').is(':checked')) {
+            $('#allcontroll').fadeIn('slow');
+            $('#top1').fadeIn('slow');
+        }
+        else {
+            $('#allcontroll').fadeOut('slow');
+            $('#top1').fadeOut('slow');
+        }
+
+    }
+</script>
+@using (Html.BeginForm("index", "paymentgateway", FormMethod.Post, new { @id = "frmOtherGateway", @name = "frmOtherGateway" }))
+{
+    
+    
+    
+    <tr>
+        <td align="left" valign="top" bgcolor="#f2f2f2">
+            <table width="100%" border="0" align="left" cellpadding="1" cellspacing="1">
+                <tr>
+                    <td width="2%" align="left" valign="middle" class="bold">
+                        &nbsp;
+                    </td>
+                    <td width="31%" height="32" align="left" valign="middle" class="bold">
+                        @*Payment Gateway*@ @WBSSLStore.Resources.GeneralMessage.Message.PayGatewayDetails_Caption:
+                    </td>
+                    <td width="2%" height="32" align="left" valign="middle">
+                        &nbsp;
+                    </td>
+                    <td width="65%" height="32" align="left" valign="middle" class="bold">
+                        Authorize.net
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td height="8" align="left" valign="top">
+        </td>
+    </tr>
+    <tr>
+        <td align="left" valign="top">
+            <table width="840" border="0" align="left" cellpadding="1" cellspacing="1">
+                <tr>
+                    <td>
+                        <table width="840" border="0" align="left" cellpadding="1" cellspacing="1">
+                            <tr>
+                                <td width="33%" height="22" align="right" valign="middle" class="bold">
+                                    @WBSSLStore.Resources.GeneralMessage.Message.Use_Auth:<span class="bold redfont"> *</span>
+                                </td>
+                                <td height="22" width="5" align="left" valign="middle">
+                                    &nbsp;
+                                </td>
+                                <td height="22" align="left" valign="middle" class="bold">
+                                    <table width="50%" border="0" align="left" cellpadding="1" cellspacing="1">
+                                        <tr>
+                                            <td width="23%">
+                                                <label>
+                                                    <input type="checkbox" name="chkauth" onclick="showhide(this);" id="chkauth" @(Model.ID > 0 ? "checked=\"checked\"" : string.Empty)   />
+                                                </label>
+                                            </td>
+                                            <td width="77%">
+                                                <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-help.gif"  title="Use Authorize.NET to avail facility to make paymnet using Credit Card." alt="Use Authorize.NET to avail facility to make paymnet using Credit Card." width="16" height="16" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="22" align="right" valign="top">
+                        <table width="100%" border="0" align="left" cellpadding="1" cellspacing="1" id="top1">
+                            <tr>
+                                <td width="33%" height="22" align="right" valign="middle" class="bold">
+                                    @*Gateway Name*@ @WBSSLStore.Resources.GeneralMessage.Message.Gateway_Name:
+                                </td>
+                                <td height="22" align="left" valign="middle">
+                                    &nbsp;
+                                </td>
+                                <td height="22" align="left" valign="middle">
+                                    @Html.TextBoxFor(model => model.Name, new { @class = "inputbox200px" })
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td height="8" align="left" valign="top">
+        </td>
+    </tr>
+
+    <tr>
+        <td align="left" valign="top">
+            @Html.HiddenFor(model => model.InstancesID)
+            @Html.HiddenFor(model => model.ID)
+            @Html.HiddenFor(model => model.SiteID)
+            @Html.HiddenFor(model => model.AuditID)
+            @Html.HiddenFor(model => model.Name)
+            @Html.HiddenFor(model => model.AuditDetails.ByUserID)
+            @Html.HiddenFor(model => model.AuditDetails.DateCreated)
+            @Html.HiddenFor(model => model.AuditDetails.ID)
+            <table width="100%" border="0" align="left" cellpadding="1" cellspacing="1" id="allcontroll">
+                <tr id="trAPILoginID" class="trhide">
+                    <td width="33%" height="22" align="right" valign="middle" class="bold">
+                        @WBSSLStore.Resources.GeneralMessage.Message.API_Login_ID:<span
+                            class="bold redfont"> *</span>
+                    </td>
+                    <td width="2%" height="22" align="left" valign="middle">
+                        &nbsp;
+                    </td>
+                    <td width="65%" height="22" align="left" valign="middle" class="bold">
+                        @Html.TextBoxFor(model => model.LoginID, new { @class = "inputbox" })
+                    </td>
+                </tr>
+                <tr id="trMerchantID" class="trhide">
+                    <td height="22" align="right" valign="middle" class="bold" width="33%">
+                        @WBSSLStore.Resources.GeneralMessage.Message.Merchant_ID:<span class="bold redfont">
+                            *</span>
+                    </td>
+                    <td height="22" align="left" valign="middle" width="2%">
+                        &nbsp;
+                    </td>
+                    <td height="22" align="left" valign="middle" class="bold" width="65%">
+                        @Html.TextBoxFor(model => model.MerchantID, new { @class = "inputbox" })
+                    </td>
+                </tr>
+                <tr id="trTrans_Sign" class="trhide">
+                    <td height="22" align="right" valign="middle" class="bold" width="33%">
+                        @WBSSLStore.Resources.GeneralMessage.Message.Transaction_Key:<span
+                            class="bold redfont"> *</span>
+                    </td>
+                    <td height="22" align="left" valign="middle" width="2%">
+                        &nbsp;
+                    </td>
+                    <td height="22" align="left" valign="middle" class="bold" width="65%">
+                        @Html.TextBoxFor(model => model.TransactionKey, new { @class = "inputbox" })
+                    </td>
+                </tr>
+                <tr id="trPassword" class="trhide">
+                    <td height="22" align="right" valign="middle" class="bold" width="33%">
+                        @*Password*@ @WBSSLStore.Resources.GeneralMessage.Message.Password_Caption:<span
+                            class="bold redfont"> *</span>
+                    </td>
+                    <td height="22" align="left" valign="middle" width="2%">
+                        &nbsp;
+                    </td>
+                    <td height="22" align="left" valign="middle" class="bold" width="65%">
+                        @Html.TextBoxFor(model => model.Password, new { @class = "inputbox" })
+                    </td>
+                </tr>
+                <tr id="trKeyFilePath" class="trhide">
+                    <td height="22" align="right" valign="middle" class="bold" width="33%">
+                        @*KeyFilePath*@ @WBSSLStore.Resources.GeneralMessage.Message.KeyFile_Path:<span class="bold redfont">
+                            *</span>
+                    </td>
+                    <td height="22" align="left" valign="middle" width="2%">
+                        &nbsp;
+                    </td>
+                    <td height="22" align="left" valign="middle" class="bold" width="65%">
+                        @Html.TextBoxFor(model => model.KeyFilePath, new { @class = "inputbox" })
+                    </td>
+                </tr>
+                <tr id="trPartnerID" class="trhide">
+                    <td height="22" align="right" valign="middle" class="bold" width="33%">
+                        @*PartnerID*@ @WBSSLStore.Resources.GeneralMessage.Message.Partner_ID:<span class="bold redfont">
+                            *</span>
+                    </td>
+                    <td height="22" align="left" valign="middle" width="2%">
+                        &nbsp;
+                    </td>
+                    <td height="22" align="left" valign="middle" class="bold" width="65%">
+                        @Html.TextBoxFor(model => model.PartnerID, new { @class = "inputbox" })
+                    </td>
+                </tr>
+                <tr>
+                    <td height="22" align="right" valign="middle" class="bold" width="33%">
+                        @*LiveURL*@ @WBSSLStore.Resources.GeneralMessage.Message.Live_URL:<span class="bold redfont">
+                            *</span>
+                    </td>
+                    <td height="22" align="left" valign="middle">
+                        &nbsp;
+                    </td>
+                    <td height="22" align="left" valign="middle" class="bold">
+                        @Html.TextBoxFor(model => model.LiveURL, new { @class = "inputbox", @value = "https://secure.authorize.net/gateway/transact.dll" })
+                    </td>
+                </tr>
+                <tr>
+                    <td height="22" align="right" valign="middle" class="bold">
+                        @*TestURL*@ @WBSSLStore.Resources.GeneralMessage.Message.Test_URL:<span class="bold redfont">
+                            *</span>
+                    </td>
+                    <td height="22" align="left" valign="middle">
+                        &nbsp;
+                    </td>
+                    <td height="22" align="left" valign="middle" class="bold">
+                        @Html.TextBoxFor(model => model.TestURL, new { @class = "inputbox", @value = "https://test.authorize.net/gateway/transact.dll" })
+                    </td>
+                </tr>
+                @*<tr>
+                    <td height="22" align="right" valign="middle" class="bold">
+                        @WBSSLStore.Resources.GeneralMessage.Message.Accepted_Cards:
+                    </td>
+                    <td height="22" align="left" valign="middle">
+                        &nbsp;
+                    </td>
+                    <td height="22" align="left" valign="middle" class="bold">
+                        @Html.HiddenFor(model => model.AcceptCards)
+                        <div style="width: 61%">
+                            @foreach (WBSSLStore.Domain.CardTypes ct in Enum.GetValues(typeof(WBSSLStore.Domain.CardTypes)))
+                            { 
+                                
+                                <div style="float: left; width: 50%; height: 25px;">
+                                    <input class="CreditCards" onclick="SetCardValue(this)" type="checkbox" name="@ct.ToString()"  id="@ct.ToString()" value="@(((int)ct).ToString())" @(!string.IsNullOrEmpty(Model.AcceptCards) && Convert.ToString(Model.AcceptCards).Split(',').Contains(((int)ct).ToString()) ? "checked=\"checked\"" : string.Empty)/>
+                                    &nbsp;@ct.ToString()</div>
+                            }
+                        </div>
+                    </td>
+                </tr>*@
+                <tr>
+                    <td height="22" align="right" valign="middle" class="bold">
+                    </td>
+                    <td height="22" align="left" valign="middle">
+                        &nbsp;
+                    </td>
+                    <td height="22" align="left" valign="middle">
+                        @Html.CheckBoxFor(model => model.IsTestMode)
+                        <span class="bold">@*Enable Test Mode*@ @WBSSLStore.Resources.LongText.Message.Enable_Test_Mode
+                        </span><span class="font11">@WBSSLStore.Resources.LongText.Message.PaymentMethodNote</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="22" align="right" valign="middle" class="bold">
+                        &nbsp;
+                    </td>
+                    <td height="22" align="left" valign="middle">
+                        &nbsp;
+                    </td>
+                    <td height="22" align="left" valign="middle">
+                    </td>
+                </tr>
+            </table>
+            <div id="btnSubmit" style="margin-left: 300px">
+                <input name="button" type="submit" class="bluebtn" id="button" value="@WBSSLStore.Resources.GeneralMessage.Message.SaveSetting_btn" />
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td height="8" align="left" valign="top">
+        </td>
+    </tr>
+}

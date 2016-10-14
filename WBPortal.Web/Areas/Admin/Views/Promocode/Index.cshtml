@@ -1,0 +1,242 @@
+﻿@using WBSSLStore.Web.Helpers.PagedList;
+@model IPagedList<WBSSLStore.Domain.PromoCode>
+@{
+    ViewBag.Title = "Index";
+}
+<script type="text/javascript">
+    var q = "@WBSSLStore.Resources.ErrorMessage.Message.AskToDeletePromocode"
+    var su = "@WBSSLStore.Resources.ErrorMessage.Message.PromoDelSuccess"
+    var unsu = "@WBSSLStore.Resources.ErrorMessage.Message.PromoDelUnSuccess"
+    $(function () {
+        $(".Remove").click(function () {
+            if (confirm(q)) {
+                var recordToDelete = $(this).attr("data-id");
+                if (recordToDelete && recordToDelete != '') {
+                    $.post("/admin/promocode/delete/" + recordToDelete,
+                       function (data) {
+                           if (data.toString().toLowerCase() == "true") {
+                               alert(su);
+                               $('#row-' + recordToDelete).fadeOut('slow');
+
+                           }
+                           else
+                               alert(unsu);
+                       });
+                }
+            }
+        });
+    }
+    );    
+</script>
+<tr>
+    <td align="left" valign="top">
+        <table width="881" border="0" align="left" cellpadding="0" cellspacing="0">
+            <tr>
+                <td width="7" align="left" valign="top">
+                    <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/barleft.gif" alt="whitebrand" width="7" height="55">
+                </td>
+                <td width="866" align="left" valign="middle" class="hdbarbg">
+                    <table width="840" border="0" align="center" cellpadding="1" cellspacing="1">
+                        <tr>
+                            <td width="407" align="left" valign="middle" class="head1">
+                                @*Manage Promocodes*@ @WBSSLStore.Resources.GeneralMessage.Message.ManagePromocodes_Header
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td width="9" align="right" valign="top">
+                    <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/barright.gif" alt="whitebrand" width="9" height="55">
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>
+<tr>
+    <td align="left" valign="top" class="contbg">
+        <table width="870" border="0" align="center" cellpadding="0" cellspacing="7">
+            <tr>
+                <td width="867" align="center" valign="top" class="bgclr">
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td align="left" valign="top">
+                                <table width="99%" border="0" align="center" cellpadding="0" cellspacing="0">
+                                    <tr>
+                                        <td height="20" align="left" valign="middle">
+                                            &nbsp;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" valign="top">
+                                            @using (Html.BeginForm("index", "promocode", FormMethod.Post))
+                                            {
+                                                <table width="840" border="0" align="left" cellpadding="1" cellspacing="1">
+                                                    <tr>
+                                                        <td width="261" align="left" valign="middle">
+                                                            <table width="243" border="0" align="left" cellpadding="1" cellspacing="1">
+                                                                <tr>
+                                                                    <td width="119" align="left" valign="middle" class="bold">
+                                                                        @*Enter PromoCode*@ @WBSSLStore.Resources.GeneralMessage.Message.EnterPromoCode_Caption:
+                                                                    </td>
+                                                                    <td width="117" align="left" valign="top">
+                                                                        <input name="txtPromoCode" type="text" class="inputboxmini" id="txtPromoCode" value="@ViewBag.PromoCode" />
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                <td colspan="2" height="20px"></td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                        <td width="422" align="left" valign="middle">
+                                                            <table width="350" border="0" align="left" cellpadding="1" cellspacing="1">
+                                                                <tr>
+                                                                    <td width="230" align="right" valign="middle" class="bold">
+                                                                        @*Select Product*@ @WBSSLStore.Resources.GeneralMessage.Message.SelectProduct_Caption:
+                                                                    </td>
+                                                                    <td width="109" align="left" valign="top">
+                                                                        @Html.DropDownList("ddlProducts", new SelectList(ViewBag.Products as System.Collections.IEnumerable, "ID", "ProductName", ViewBag.ProductID), "----"+ @WBSSLStore.Resources.GeneralMessage.Message.SelectProduct_Caption +"-----", new { @class = "listmenumid" })
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                <td colspan="2"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+
+                                                                    </td>
+                                                                    <td>
+                                                                         <label>
+                                                                            <input name="button" type="submit" class="bluebtnone" id="button" value="@WBSSLStore.Resources.GeneralMessage.Message.Search_btn">
+                                                                        </label>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                        <td width="322" align="left" valign="top">
+                                                            <table width="251" border="0" align="right" cellpadding="1" cellspacing="1">
+                                                                <tr>
+                                                                    <td width="25%" align="right" valign="middle" class="bold">
+                                                                        @*Status*@ @WBSSLStore.Resources.GeneralMessage.Message.Status_Caption :
+                                                                    </td>
+                                                                    <td width="42%" align="left" valign="middle">
+                                                                        <select name="ddlStatus" id="ddlStatus" class="listmenusmall">
+                                                                            <option  value="" @(ViewBag.Status == "" ? "selected=\"selected\"" : string.Empty) >
+                                                                                ---@WBSSLStore.Resources.GeneralMessage.Message.ddlStatus_All---</option>
+                                                                            <option value="1" @(ViewBag.Status == "1" ? "selected=\"selected\"" : string.Empty)>
+                                                                                @*Active*@ @WBSSLStore.Resources.GeneralMessage.Message.ddlStatus_Active</option>
+                                                                            <option value="2" @(ViewBag.Status == "2" ? "selected=\"selected\"" : string.Empty)>
+                                                                                @*Expired*@ @WBSSLStore.Resources.GeneralMessage.Message.ddlStatus_Expired</option>
+                                                                        </select>
+                                                                    </td>
+                                                                    @*<td width="33%" align="left" valign="middle">
+                                                                       
+                                                                    </td>*@
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            }
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="left" valign="top">
+                                <table width="841" border="0" align="center" cellpadding="0" cellspacing="0">
+                                    <tr>
+                                        <td align="left" valign="top">
+                                            &nbsp;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" valign="top" bgcolor="#d6d6d6">
+                                            @if (Model != null && Model.Count > 0)
+                                            {
+                                                <table width="841" border="0" align="left" cellpadding="5" cellspacing="1">
+                                                    <tr>
+                                                        <td width="422" height="35" align="left" valign="middle" bgcolor="#eff8fd" class="bluefont">
+                                                            @*Campaign Name*@ @WBSSLStore.Resources.GeneralMessage.Message.CampaignName_Caption
+                                                        </td>
+                                                        <td width="133" height="35" align="center" valign="middle" bgcolor="#eff8fd" class="bluefont">
+                                                            @*Promo Code*@ @WBSSLStore.Resources.GeneralMessage.Message.Promocode_Header
+                                                        </td>
+                                                        <td width="69" height="35" align="center" valign="middle" bgcolor="#eff8fd" class="bluefont">
+                                                            @*EndDate*@ @WBSSLStore.Resources.GeneralMessage.Message.EndDate_Caption
+                                                        </td>
+                                                        <td width="72" align="center" valign="middle" bgcolor="#eff8fd" class="bluefont">
+                                                            @*Edit*@ @WBSSLStore.Resources.GeneralMessage.Message.Edit_Caption
+                                                        </td>
+                                                        <td width="78" align="center" valign="middle" bgcolor="#eff8fd" class="bluefont">
+                                                            @*Delete*@ @WBSSLStore.Resources.GeneralMessage.Message.Delete_Caption
+                                                        </td>
+                                                    </tr>
+                                                    @foreach (var item in Model)
+                                                    {
+                                                        <tr id="row-@item.ID">
+                                                            <td align="left" valign="top" bgcolor="#FFFFFF">
+                                                                @Html.DisplayFor(modelitem => item.CampaignName)
+                                                            </td>
+                                                            <td align="center" valign="top" bgcolor="#FFFFFF">
+                                                                @Html.DisplayFor(modelitem => item.Code)
+                                                            </td>
+                                                            <td align="center" valign="top" bgcolor="#FFFFFF">
+                                                                @Convert.ToDateTime(item.EndDate).ToShortDateString() 
+                                                            </td>
+                                                            <td align="center" valign="top" bgcolor="#FFFFFF">
+                                                                <a href="@Url.Action("edit", new { id = item.ID })">
+                                                                    <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-edit.gif" alt="edit" width="14" height="14"></a>
+                                                            </td>
+                                                            <td align="center" valign="top" bgcolor="#FFFFFF">
+                                                                <a href="javascript:;" class="Remove" data-id="@item.ID">
+                                                                    <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-delete.gif" alt="delete" width="13" height="15" />
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                </table>
+                                            }
+                                            else
+                                            { 
+                                                <div class="errormsg" style="width: 96%;">
+                                                    @*No promocode found.*@ @WBSSLStore.Resources.GeneralMessage.Message.NoRecord</div>
+                                            }
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td height="8" align="left" valign="top">
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td height="8" align="left" valign="top">
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>
+@if (Model != null && Model.Count > 0)
+{
+    <tr>
+        <td align="center" valign="top" bgcolor="#d6d6d6" class="contbg">
+            <table width="855" border="0" align="center" cellpadding="0" cellspacing="7" class="bgclr">
+                <tr>
+                    <td width="840" align="center" valign="top" bgcolor="#FFFFFF">
+                        <table width="825" border="0" align="center" cellpadding="1" cellspacing="1">
+                            <tr>
+                                <td align="center">
+                                    @Html.PagedListPager(Model, page => Url.Action(Model.ActionName, Model.ControllerName, new { page = page + 1, promo = ViewBag.PromoCode, productid = ViewBag.ProductID, status = ViewBag.Status }))
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+}

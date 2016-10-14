@@ -1,0 +1,137 @@
+﻿@model Tuple<List<WBSSLStore.Domain.ProductPricing>, List<WBSSLStore.Domain.ProductDetail>>
+
+@Html.Hidden("hdfqtyid", 1)
+@{
+    var model1 = Model != null && Model.Item1 != null ? Model.Item1 : null;
+    //var model2 = Model != null && Model.Item2 != null ? Model.Item2 : null;
+
+    WBSSLStore.Domain.Product prod = model1 != null ? model1.First().Product : null;
+
+    var model2 = Model != null && Model.Item2 != null && prod != null ? Model.Item2.Where(x => x.productcode.Equals(prod.InternalProductCode, StringComparison.OrdinalIgnoreCase)).FirstOrDefault() : null;
+    List<SelectListItem> s2 = new List<SelectListItem>();
+    List<SelectListItem> lstQty = new List<SelectListItem>();
+
+    string RadioID = string.Empty;
+    string QtyListID = "qtylist" + @Model.Item1.First().ProductID;
+    bool IsRecommanded = false;
+
+}
+
+@if (model1 != null)
+{
+    if (prod.isSANEnabled)
+    {
+        s2 = Enumerable.Range(Convert.ToInt32(prod.SanMin), Convert.ToInt32(prod.SanMax)).Select(x => new SelectListItem { Text = x.ToString(), Value = x.ToString() }).ToList();
+    }
+    else
+    {
+        s2.Add(new SelectListItem { Text = " 0 ", Value = "0" });
+    }
+
+    lstQty = Enumerable.Range(1, 10).Select(x => new SelectListItem { Text = x.ToString(), Value = x.ToString() }).ToList();
+
+
+    <div class="prodetailcontext">
+        <hgroup>
+            <span class="prodtlbrandlogo"><img src='@Url.Content("/content/images/brand-" + prod.Brand.BrandName + "-logo.png")' alt="" /></span>
+            <h2>@prod.ProductName</h2>
+            <div class="clear"></div>
+        </hgroup>
+        <div class="pricecontrol">
+            <div class="priceonebox custompricebox">
+                @foreach (var item in Model.Item1)
+                {
+                    RadioID = "rbProdPricingList_" + @item.ID;
+                    <div class="priceradiobox">
+                        <label for="@RadioID">
+
+                            <input type="radio" name="rapidssl" value="@item.ID" id="@RadioID" class="customradio" @(item.isRecommended ? "checked=checked" : "") />
+                            <label for="@RadioID">
+                                @(item.NumberOfMonths < 12 ? item.NumberOfMonths : (item.NumberOfMonths / 12))
+                                @(item.NumberOfMonths < 12 ? "month" : "year") @@ Just <span>@(string.Format("{0:C}", item.SalesPrice != 0 ? (item.SalesPrice / (item.NumberOfMonths / 12)) : item.SalesPrice))</span>
+                                per year [RRP: @(string.Format("{0:C}", item.RetailPrice))] @Html.Raw(item.isRecommended ? ("<span class='greentxt'>[Highly Recommended]</span> ") : "")
+                                @if (item.isRecommended)
+                                {
+                                    @Html.Hidden("hdfpricingid", @item.ID)
+                                    IsRecommanded = true;
+                                }
+                            </label>
+                        </label>
+                    </div>
+                }
+                @if (!IsRecommanded)
+                {
+                    @Html.Hidden("hdfpricingid", @Model.Item1.Last().ID)
+                }
+            </div>
+            <div class="quntilisting">
+                @if (Model.Item1.FirstOrDefault().NumberOfMonths >= 12)
+                {
+                    <div class="prodtlslctbox">
+                        <label>
+                            @WBSSLStore.Resources.GeneralMessage.Message.Select_Quantity_Caption :
+                        </label>
+                        @Html.DropDownList(@QtyListID, lstQty, new { @class = "quantinput customddlQnt", @id = @QtyListID })
+                    </div>
+
+                    if (prod.isSANEnabled && s2.Count > 0)
+                    {
+                        <div class="prodtlslctbox">
+
+                            @Html.Raw("<label>Additional Domain(s): </label> ") @Html.DropDownList("ddlSAN", s2, new { @class = "quantinput customddlsan" })
+                        </div>
+                    }
+                }
+
+                <div class="prodtlslctbox fright">
+                    @if (prod.isSANEnabled && s2.Count > 0)
+                    {
+                        <a class="orangebtn" id="btnaddtocartsan" href="javascript:;">@WBSSLStore.Resources.GeneralMessage.Message.Add_to_Cart_btn</a>
+
+                    }
+                    else
+                    {
+                        <a class="orangebtn" id="btnaddtocart" href="javascript:;">@WBSSLStore.Resources.GeneralMessage.Message.Add_to_Cart_btn</a>
+
+                    }
+                </div>
+
+            </div>
+
+
+            <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+        @if (model2 != null)
+        {
+            <div class="brandbtnwrp">
+                <div>
+                    <div class="secubox">
+                        <div class="boxa">
+                            <p>@WBSSLStore.Resources.GeneralMessage.Message.Validation_Caption: <span>@(model2.ValidationType)</span></p>
+                            <p>@WBSSLStore.Resources.GeneralMessage.Message.Issuance_Caption: <span>@(model2.IssuanceTime)</span></p>
+                        </div>
+                        <div class="boxa">
+                            <p>Server licensing: <span>@(model2.ServerLicense)</span></p>
+                            <p>Warranty: <span>@(model2.Warranty)</span></p>
+                        </div>
+                        <div class="clear"></div>
+                        <ul class="boxuli">
+                            <li class='@(model2.GreenBar ? "liyes"  :"lino" )'>Green address bar</li>
+                            <li class='@(model2.SanSupport ?"liyes"  :"lino" )'>SAN Support</li>
+                            <li class='@(model2.VulnerabilityAssessment ?  "liyes"  :"lino" )'>Vulnerability assessment</li>
+                            <li class='@(model2.SealInSearch ?  "liyes"  :"lino" )'>Seal-in-Search</li>
+                        </ul>
+                        <ul class="boxuli">
+                            <li class='@(((!string.IsNullOrEmpty(model2.SiteSeal) ? model2.SiteSeal.ToString() : "" ).Equals("dymanic",StringComparison.OrdinalIgnoreCase) ?   "liyes"  :"lino" ))'>Site Seal: Dynamic</li>
+                            <li class='@(model2.GreenBar ?   "liyes"  :"lino" )'>Wildcard</li>
+                            <li class='@(model2.ScanProduct ?   "liyes"  :"lino" )'>Malware scan</li>
+                        </ul>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+}

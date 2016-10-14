@@ -1,0 +1,143 @@
+﻿@model WBSSLStore.Service.ViewModels.StaticPageViewModel
+@{
+    ViewBag.Title = "SecureSiteProwithEV";  var productdetails = WBSSLStore.Web.Helpers.WBHelper.GetProductDetailRows();
+    string brand = Model != null && Model.Items != null && Model.Items.FirstOrDefault().Product != null && Model.Items.FirstOrDefault().Product.Brand != null ? Model.Items.FirstOrDefault().Product.Brand.BrandName : "";
+    string username = ViewBag.UserName;
+}
+@section headerTags{
+    @Html.Partial("_renderSEO", Model != null && Model.CMSPage != null ? Model.CMSPage : new WBSSLStore.Domain.CMSPage())
+}
+@Html.Partial("_banner", new Tuple<string, string>("", "SSL Brands"))
+<div class="content">
+  <div class="wrapper">
+    <div class="column3">
+      <div class="mobtopcol">
+        <div class="column3-2">
+          <div class="prodetailswrap marzerotop"> @Html.Partial("_ProdPricing", new Tuple<List<WBSSLStore.Domain.ProductPricing>, List<WBSSLStore.Domain.ProductDetail>>(Model.Items.ToList(), productdetails.ToList())) </div>
+          <div class="prodescrip marzerotop">
+            <div class="prodescriptxt">
+              <h2>Product Description</h2>
+              <p>The Comodo EV SSL Certificate is one of the most fully-loaded SSL certificates on the market, featuring the HackerGuardian Vulnerability Scan, a free site seal (valued at $119), free PCI scanning, free daily website scanning, a post-install health check, and the "point-to-verify" Comodo trustmark. However, the main feature of this SSL certificate is the green address bar &ndash; which will encompass the URL of your website across all major browsers. The green address bar is the <strong>most widely trusted visual aid on the web</strong> and is utilized by some of the most visited websites in the world like Amazon, Twitter, and Google.</p>
+            </div>
+          </div>
+          <div id="cssmenu">
+            <ul class="accordion_example">
+              <li class="brand-symantec acc_active">
+                <div>
+                  <p>Assurance &amp; Authentication</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>EV certificates are a <strong>premium security product</strong>, so they require the highest amount of validation as set forth by the CA/Browser Forum. This process is typically completed in as quickly as a week after submitting your legal status and registration information.</p>
+<p>All major browsers such as Explorer 7+, Firefox 3+, and Opera 9.5+ will display the green address bar around the URL of your website. The green address bar is the most recognized visual trust indicator on the web and it will assure your customers that you are safe to do business with.</p>
+<p>The dynamic Comodo trustmark reveals your company's security credentials anytime a visitor points their cursor over the logo. This further proves that your website and business is legitimate.</p>
+                  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Security &amp; Encryption</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>The Comodo EV SSL certificate complies with the security recommendations of the US Government's National Institute for Standards and Technology for SSL root key strength by supporting 256-bit encryption levels and 2048-bit signatures.</p>
+				  <p>This level of protection offers customers a website that meets "best practice" standards.</p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>SAN &amp; multi-domain support</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>Unfortunately this certificate does not have SAN Support and only secures one single domain name.</p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Features &amp; Benefits</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <ul class="featurelist">
+                        <li>Full business validated certificate</li>
+                        <li>2048-bit industry standard SSL Certificate</li>
+                        <li>Unlimited server licenses</li>
+                        <li>99.3% Browser coverage</li>
+                        <li>FREE EV Corner of Trust site seal worth $119.00</li>
+                        <li>128/256 bit encryption</li>
+                        <li>$1,750,000 Relying Party Warranty</li>
+                      </ul>
+					  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Product Specifications</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <ul class="featurelist">
+                        <li>Single Domain Name (FQDN) domain.com and www.domain.com</li>
+                        <li>Issued In 1 week</li>
+                        <li>Organization Validated to EV guidelines</li>
+                        <li>Green Address Bar</li>
+                        <li>Encryption Strength Up to 40-bit minimum, 256-bit maximum</li>
+                        <li>99.3% Browser Compatibility</li>
+                        <li>Site Seal Included</li>
+                        <li>Free Unlimited Server Licenses</li>
+                        <li>Unlimited Reissuance</li>
+                        <li>Warranty Level $1,750,000</li>
+                        <li>Dynamic - TrustLogo delivers real-time verification of business identity</li>
+                      </ul>
+					  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Site Seal</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>The <strong>free EV corner TrustLogo</strong> (valued at $119) authenticates your website and will give your customers the confidence they need to make purchases. How? By prominently displaying the popular Comodo logo, making it immediately viewable for your online customers. Also, when your customers point their cursor over the TrustLogo, they can view your company's registration information, instantly confirming online identity.</p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Warranty</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>Companies that rely on the Comodo EV SSL can rest assured knowing that this certificate is backed by a $1,750,000 warranty.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        @Html.Partial("_rightpanel", username) </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+@section Jscripts{ 
+<script type="text/javascript">
+        $(document).ready(function () {
+            // Mobile Menu
+            $("#showmenu").click(function (e) {
+                e.preventDefault();
+                $("#menu").toggleClass("show");
+            });
+            $("#menu a").click(function (event) {
+                event.preventDefault();
+                if ($(this).next('ul').length) {
+                    $(this).next().toggle('fast');
+                    $(this).children('i:last-child').toggleClass('fa-caret-down fa-caret-left');
+                }
+            });
+            $(document).click(function (e) {
+                if (!$(e.target).is(".mobmemu, .mobmemu  *")) { $("#menu").toggleClass("hide"); $("#menu").removeClass("show"); }
+            });
+            $(".accordion_example").smk_Accordion();
+        });
+    </script> 
+} 

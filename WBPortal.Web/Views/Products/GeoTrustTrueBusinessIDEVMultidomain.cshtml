@@ -1,0 +1,143 @@
+﻿@model WBSSLStore.Service.ViewModels.StaticPageViewModel
+@{
+    ViewBag.Title = "SecureSiteProwithEV";  var productdetails = WBSSLStore.Web.Helpers.WBHelper.GetProductDetailRows();
+    string brand = Model != null && Model.Items != null && Model.Items.FirstOrDefault().Product != null && Model.Items.FirstOrDefault().Product.Brand != null ? Model.Items.FirstOrDefault().Product.Brand.BrandName : "";
+    string username = ViewBag.UserName;
+}
+@section headerTags{
+    @Html.Partial("_renderSEO", Model != null && Model.CMSPage != null ? Model.CMSPage : new WBSSLStore.Domain.CMSPage())
+}
+@Html.Partial("_banner", new Tuple<string, string>("", "SSL Brands"))
+<div class="content">
+  <div class="wrapper">
+    <div class="column3">
+      <div class="mobtopcol">
+        <div class="column3-2">
+          <div class="prodetailswrap marzerotop"> @Html.Partial("_ProdPricing", new Tuple<List<WBSSLStore.Domain.ProductPricing>, List<WBSSLStore.Domain.ProductDetail>>(Model.Items.ToList(), productdetails.ToList())) </div>
+          <div class="prodescrip marzerotop">
+            <div class="prodescriptxt">
+              <h2>Product Description</h2>
+              <p>The <strong>GeoTrust True BusinessID EV Multi Domain SSL</strong> certificate is one of the most affordable and efficient ways to boost your online sales across a multitude of domains. This EV certificate comes bundled with 5 total SAN, and you have the option to purchase more SANs up to 100 domains. There simply is no better way to increase customer trust online than the <strong>green address bar</strong>, as online users are quickly learning to associate this symbol with reputable companies that are safe to do business with. Additionally, the GeoTrust brand, along with their dynamic site seal, is also becoming one of the <strong>most trusted names in internet security</strong>, making this certificate a true investment rather than a cost &ndash; as it will pay for itself in increased online sales. This EV certificate is an ideal option for small-to-medium sized businesses and ecommerce sites that place a premium on customer trust to close deals online.</p>
+            </div>
+          </div>
+          <div id="cssmenu">
+            <ul class="accordion_example">
+              <li class="brand-symantec acc_active">
+                <div>
+                  <p>Assurance &amp; Authentication</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>Before being issued, the GeoTrust True BusinessID w/ EV Multi-Domain requires that a company complete a thorough validation process. This process usually lasts between 1-10 business days, and depends largely on the response time of the company receiving the certificate. However, once the validation process is completed, you will get to reap the benefits of securing <strong>up to 100 domains</strong> with the most trusted symbol on the internet &ndash; the green address bar. With the green address bar, your site will instantly be associated with some of the most trusted sites on the web, like Amazon, Bank of America, Twitter, and more. </p>
+                  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Security &amp; Encryption</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>This Multi-Domain EV certificate offers high-end 256-bit encryption and is signed with a strong 2048-bit root, the industry staple. Also, the GeoTrust True BusinessID w/ EV Multi-Domain includes unlimited server licenses at no additional expense, and protects both www and non-www domain names.</p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>SAN &amp; multi-domain support</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>The GeoTrust True BusinessID w/ EV Multi-Domain can protect up to 100 domains. That's right, you can secure up to 100 domains and display the trusted green address bar on each of them with just one SSL certificate, making management and provisioning a breeze. This certificate already comes with 5 total SAN, and you can add more domains as needed up to 100.</p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Features &amp; Benefits</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <ul class="featurelist">
+                    <li>Includes 5 domains with the option to secure up to 100 domains.</li>
+                    <li>Assures customers of the website's true identity by displaying the GREEN Address bar and the organization's name and GeoTrust's name in all high-security browsers.</li>
+                    <li>Provides highest level of website identity verification to help foil phishing.</li>
+                    <li>Increases customer confidence to maximize online sales potential.</li>
+                    <li>Provides up to 256-bit SSL encryption.</li>
+                    <li>Includes a True Site Seal identity verification - embedded organization name/date/time stamp</li>
+                    <li>Security: business identity authentication, strong 256-bit encryption, 2048-bit root</li>
+                    <li>Assurance: $1,500,000 warranty, GeoTrust dynamic True Site Seal Trustmark</li>
+                    <li>Convenience: issued in 1-10 business days, 1-2 year validity options</li>
+                    <li>Cost-effective: unlimited server licenses, unlimited FREE reissues for certificate lifetime</li>
+                    <li>Universality: support for more than 99% of browsers and most mobile device browsers</li>
+                    <li>Multiplicity: SAN / Multi-Domain / UCC options available</li>
+                    <li>Bonus: secure domain.com for FREE when you order www.domain.com</li>
+                  </ul>
+				  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Product Specifications</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <ul class="featurelist">
+                    <li>Secure both NON-WWW and WWW domain (FQDN)</li>
+                    <li>Issued In 1-10 Working Days</li>
+                    <li>Domain Name Shown On Certificate Only</li>
+                    <li>Encryption Strength Up to 256-bit</li>
+                    <li>99% Browser Compatibility</li>
+                    <li>Unlimited &ndash; Install on any number of servers</li>
+                    <li>FREE self-service reissues during validity period</li>
+                  </ul>
+				  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Site Seal</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>Making it unique among SSL site seals, the GeoTrust True Site identity assurance Smart Seal displays the organization name, date, and an embedded time stamp. The reason this site seal goes <strong>above and beyond</strong> just standard company information is to increase the level of trust an online customer has with your organization. The GeoTrust Site Seal is rapidly becoming one of the most recognized trust indicators on the web and will boost your websites credibility every time a customer clicks it.</p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Warranty</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>This certificate is backed by a $1,500,000 USD warranty. That means an end user would be compensated up to $1,500,000 for losses or damages incurred do to improper validation or issuance to a fraudulent site by GeoTrust.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        @Html.Partial("_rightpanel", username) </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+
+@section Jscripts{ 
+<script type="text/javascript">
+        $(document).ready(function () {
+            // Mobile Menu
+            $("#showmenu").click(function (e) {
+                e.preventDefault();
+                $("#menu").toggleClass("show");
+            });
+            $("#menu a").click(function (event) {
+                event.preventDefault();
+                if ($(this).next('ul').length) {
+                    $(this).next().toggle('fast');
+                    $(this).children('i:last-child').toggleClass('fa-caret-down fa-caret-left');
+                }
+            });
+            $(document).click(function (e) {
+                if (!$(e.target).is(".mobmemu, .mobmemu  *")) { $("#menu").toggleClass("hide"); $("#menu").removeClass("show"); }
+            });
+            $(".accordion_example").smk_Accordion();
+        });
+    </script> 
+} 

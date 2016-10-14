@@ -1,0 +1,2028 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Accepted_Cards" xml:space="preserve">
+    <value>Elfogadott kártyák</value>
+  </data>
+  <data name="AccountBalance_Caption" xml:space="preserve">
+    <value>Számlahitel</value>
+  </data>
+  <data name="Account_Activation_Email" xml:space="preserve">
+    <value>Fiók aktiváló email</value>
+  </data>
+  <data name="AccSummary_Header" xml:space="preserve">
+    <value>Számlaösszesítő</value>
+  </data>
+  <data name="AccSum_AddFund_Caption" xml:space="preserve">
+    <value>Feltöltés</value>
+  </data>
+  <data name="Acc_summary_btn" xml:space="preserve">
+    <value>Az összesítő</value>
+  </data>
+  <data name="action_Caption" xml:space="preserve">
+    <value>Akció</value>
+  </data>
+  <data name="ActivatedDate_Caption" xml:space="preserve">
+    <value>Aktiválás dátuma</value>
+  </data>
+  <data name="ActiveContracts_Caption" xml:space="preserve">
+    <value>Aktív szerződések</value>
+  </data>
+  <data name="ActiveResellers_Caption" xml:space="preserve">
+    <value>Aktív értékesítők</value>
+  </data>
+  <data name="ActiveSupports_Caption" xml:space="preserve">
+    <value>Aktív segítség</value>
+  </data>
+  <data name="ActiveUsers_Caption" xml:space="preserve">
+    <value>Aktív felhasználók</value>
+  </data>
+  <data name="AddCustomer_Caption" xml:space="preserve">
+    <value>Felhasználó létrehozása</value>
+  </data>
+  <data name="AddDomainNames_Caption" xml:space="preserve">
+    <value>Domain nevek hozzáadása</value>
+  </data>
+  <data name="AddEditSlab_Caption" xml:space="preserve">
+    <value>Slab új/szerkesztés</value>
+  </data>
+  <data name="AddFund_btn" xml:space="preserve">
+    <value>Feltöltés hozzáadása</value>
+  </data>
+  <data name="AdditionalDomains_Caption" xml:space="preserve">
+    <value>További domainek</value>
+  </data>
+  <data name="Additional_Caption" xml:space="preserve">
+    <value>további</value>
+  </data>
+  <data name="AddPage_Caption" xml:space="preserve">
+    <value>oldal hozzáadása</value>
+  </data>
+  <data name="AddReseller_Caption" xml:space="preserve">
+    <value>Értékesítő hozzáadása</value>
+  </data>
+  <data name="Add_Admin_User_Caption" xml:space="preserve">
+    <value>Add Admin felhasználó</value>
+  </data>
+  <data name="Add_Fund_Notification" xml:space="preserve">
+    <value>Feltöltés értesítő megadása</value>
+  </data>
+  <data name="Add_Product_Caption" xml:space="preserve">
+    <value>Add termék</value>
+  </data>
+  <data name="Add_to_Cart_btn" xml:space="preserve">
+    <value>A kosárban</value>
+  </data>
+  <data name="Add_To_Cart_Caption" xml:space="preserve">
+    <value>Kosárba tesz</value>
+  </data>
+  <data name="AdminSince_Caption" xml:space="preserve">
+    <value>admin Mivel a</value>
+  </data>
+  <data name="Admin_Caption" xml:space="preserve">
+    <value>Admin</value>
+  </data>
+  <data name="Admin_Email" xml:space="preserve">
+    <value>Admin email</value>
+  </data>
+  <data name="Admin_Email_Notification" xml:space="preserve">
+    <value>Admin email értesítő</value>
+  </data>
+  <data name="Admin_menu_Customers" xml:space="preserve">
+    <value>Az ügyfelek</value>
+  </data>
+  <data name="Admin_menu_Products" xml:space="preserve">
+    <value>termékek</value>
+  </data>
+  <data name="Admin_menu_PromoCodes" xml:space="preserve">
+    <value>promóciós kódok</value>
+  </data>
+  <data name="Admin_menu_Reports" xml:space="preserve">
+    <value>jelentések</value>
+  </data>
+  <data name="Admin_menu_Reseller" xml:space="preserve">
+    <value>viszonteladók</value>
+  </data>
+  <data name="Admin_menu_StoreConfiguration" xml:space="preserve">
+    <value>Store Configuration</value>
+  </data>
+  <data name="Admin_Role_Caption" xml:space="preserve">
+    <value>Admin szerepe</value>
+  </data>
+  <data name="Admin_sbm_AddBanner" xml:space="preserve">
+    <value>Add Banner</value>
+  </data>
+  <data name="Admin_sbm_AddContracts" xml:space="preserve">
+    <value>Add szerződések</value>
+  </data>
+  <data name="Admin_sbm_AddCustomer" xml:space="preserve">
+    <value>Add Ügyfél</value>
+  </data>
+  <data name="Admin_sbm_AddGoogleAnalyics" xml:space="preserve">
+    <value>Add Google Analyics</value>
+  </data>
+  <data name="Admin_sbm_AddProducts" xml:space="preserve">
+    <value>Add termékek</value>
+  </data>
+  <data name="Admin_sbm_AddReseller" xml:space="preserve">
+    <value>Add Viszonteladó</value>
+  </data>
+  <data name="Admin_sbm_AddRobotsFile" xml:space="preserve">
+    <value>Add robotok Fájl</value>
+  </data>
+  <data name="Admin_sbm_CustomerwiseReport" xml:space="preserve">
+    <value>Ügyfél bölcs jelentése</value>
+  </data>
+  <data name="Admin_sbm_DatewiseReport" xml:space="preserve">
+    <value>Dátum bölcs jelentése</value>
+  </data>
+  <data name="Admin_sbm_EditStoreContent" xml:space="preserve">
+    <value>Szerkesztés Store tartalom</value>
+  </data>
+  <data name="Admin_sbm_EmailTemplate" xml:space="preserve">
+    <value>E-mail sablon</value>
+  </data>
+  <data name="Admin_sbm_GeneralSetting" xml:space="preserve">
+    <value>általános beállítások</value>
+  </data>
+  <data name="Admin_sbm_GeneratePromocode" xml:space="preserve">
+    <value>generálása Promocode</value>
+  </data>
+  <data name="Admin_sbm_ManageContracts" xml:space="preserve">
+    <value>kezelése szerződések</value>
+  </data>
+  <data name="Admin_sbm_ManageCustomer" xml:space="preserve">
+    <value>kezelése Ügyfél</value>
+  </data>
+  <data name="Admin_sbm_ManageProducts" xml:space="preserve">
+    <value>Termékek kezelése</value>
+  </data>
+  <data name="Admin_sbm_ManagePromocode" xml:space="preserve">
+    <value>kezelése Promocode</value>
+  </data>
+  <data name="Admin_sbm_ManageReseller" xml:space="preserve">
+    <value>kezelése Viszonteladó</value>
+  </data>
+  <data name="Admin_sbm_ManageTheme" xml:space="preserve">
+    <value>kezelése téma</value>
+  </data>
+  <data name="Admin_sbm_PaymentSetting" xml:space="preserve">
+    <value>Fizetés beállítása</value>
+  </data>
+  <data name="Admin_sbm_ProductwiseReport" xml:space="preserve">
+    <value>Termék bölcs jelentése</value>
+  </data>
+  <data name="Admin_sbm_SMTPSetting" xml:space="preserve">
+    <value>SMTP beállítása</value>
+  </data>
+  <data name="Admin_sbm_SupportRequest" xml:space="preserve">
+    <value>Támogatás kérése</value>
+  </data>
+  <data name="Admin_sbm_TransactionwiseReport" xml:space="preserve">
+    <value>Tranzakció bölcs jelentése</value>
+  </data>
+  <data name="Admin_sbm_ViewYourPricing" xml:space="preserve">
+    <value>Nézet az árképzési</value>
+  </data>
+  <data name="Admin_Username_Caption" xml:space="preserve">
+    <value>Admin felhasználók neve</value>
+  </data>
+  <data name="AdvancedSearch_btn" xml:space="preserve">
+    <value>Részletes keresés</value>
+  </data>
+  <data name="All_Prodcut_Caption" xml:space="preserve">
+    <value>Az összes termék</value>
+  </data>
+  <data name="All_Rights_Reserved_by" xml:space="preserve">
+    <value>Minden jog fenntartva</value>
+  </data>
+  <data name="AlternativeEmail_Caption" xml:space="preserve">
+    <value>Alternatív email</value>
+  </data>
+  <data name="API_Login_ID" xml:space="preserve">
+    <value>API Login ID</value>
+  </data>
+  <data name="Apply_to_Caption" xml:space="preserve">
+    <value>Alkalmaz részére:</value>
+  </data>
+  <data name="ApproverEmail_Caption" xml:space="preserve">
+    <value>Visszaigazoló email</value>
+  </data>
+  <data name="AuthorizationCode_Caption" xml:space="preserve">
+    <value>Hitelesítő kód</value>
+  </data>
+  <data name="BacktoStore_Content_Caption" xml:space="preserve">
+    <value>Vissza Store tartalom</value>
+  </data>
+  <data name="Banner_Selection" xml:space="preserve">
+    <value>Banner választás</value>
+  </data>
+  <data name="BCC_Caption" xml:space="preserve">
+    <value>BCC</value>
+  </data>
+  <data name="BillingAddress_Caption" xml:space="preserve">
+    <value>Számlázási cím</value>
+  </data>
+  <data name="Billing_Email" xml:space="preserve">
+    <value>Számlázási email</value>
+  </data>
+  <data name="Bill_To" xml:space="preserve">
+    <value>Számlázási név</value>
+  </data>
+  <data name="Blog_Option" xml:space="preserve">
+    <value>Blog opció</value>
+  </data>
+  <data name="blog_Url" xml:space="preserve">
+    <value>Blog Url</value>
+  </data>
+  <data name="Brand_Caption" xml:space="preserve">
+    <value>Brand</value>
+  </data>
+  <data name="Brand_Configuration" xml:space="preserve">
+    <value>Brand beállítás</value>
+  </data>
+  <data name="Business_Design" xml:space="preserve">
+    <value>Üzleti modell</value>
+  </data>
+  <data name="CampaignName_Caption" xml:space="preserve">
+    <value>Kampány neve</value>
+  </data>
+  <data name="CanbeReissued_Caption" xml:space="preserve">
+    <value>Újra kibocsájtható</value>
+  </data>
+  <data name="Cancelation_Header" xml:space="preserve">
+    <value>Lemondás/Visszatérítés kérése</value>
+  </data>
+  <data name="CancellationRefundRequest_btn" xml:space="preserve">
+    <value>Lemondás/Visszatérítés kérése</value>
+  </data>
+  <data name="Cancel_btn" xml:space="preserve">
+    <value>Mégse</value>
+  </data>
+  <data name="Cancel_ddlreason_op1" xml:space="preserve">
+    <value>Téves rendelés</value>
+  </data>
+  <data name="Cancel_ddlreason_op2" xml:space="preserve">
+    <value>A hoszting társaságom nem fogad el külsős tanúsítványt</value>
+  </data>
+  <data name="Cancel_ddlreason_op3" xml:space="preserve">
+    <value>Nincs meg egy szükséges dokumentum</value>
+  </data>
+  <data name="Cancel_ddlreason_op4" xml:space="preserve">
+    <value>Nem kaptam meg a megrendelésről az emailt</value>
+  </data>
+  <data name="CardName_Caption" xml:space="preserve">
+    <value>Kártya neve</value>
+  </data>
+  <data name="CardType_Caption" xml:space="preserve">
+    <value>Kártya típusa</value>
+  </data>
+  <data name="Cart_Promocode_Caption" xml:space="preserve">
+    <value>PROMÓCIÓS KÓD</value>
+  </data>
+  <data name="CCName" xml:space="preserve">
+    <value>Kártyabirtokos neve</value>
+  </data>
+  <data name="CCSaved" xml:space="preserve">
+    <value>A bankkártya beállítások sikeresen elmentve</value>
+  </data>
+  <data name="CC_Caption" xml:space="preserve">
+    <value>CC</value>
+  </data>
+  <data name="CertificateExpiresOn_Caption" xml:space="preserve">
+    <value>A tanúsítvány lejárata</value>
+  </data>
+  <data name="Change_Password_Email" xml:space="preserve">
+    <value>Jelszó megváltoztatása e-mailben</value>
+  </data>
+  <data name="Change_Years_Caption" xml:space="preserve">
+    <value>Változás év</value>
+  </data>
+  <data name="CheckCSR_Header" xml:space="preserve">
+    <value>Tanúsítvány aláírási kérvény (Certificate Signing Request / CSR) megadása</value>
+  </data>
+  <data name="Checkout_AdditionalDomains_caption" xml:space="preserve">
+    <value>További domainek</value>
+  </data>
+  <data name="Checkout_AvailCredit_Caption" xml:space="preserve">
+    <value>Elérhető keret</value>
+  </data>
+  <data name="Checkout_Back_btn" xml:space="preserve">
+    <value>Vissza</value>
+  </data>
+  <data name="Checkout_BillInfo_Caption" xml:space="preserve">
+    <value>Fizetési információk</value>
+  </data>
+  <data name="Checkout_CardExpiry_Caption" xml:space="preserve">
+    <value>Lejárati dátum</value>
+  </data>
+  <data name="Checkout_CCVCode_Caption" xml:space="preserve">
+    <value>Kártyaellenőrző kód</value>
+  </data>
+  <data name="Checkout_Confirm_btn" xml:space="preserve">
+    <value>Jóváhagy</value>
+  </data>
+  <data name="Checkout_ConOrder_Caption" xml:space="preserve">
+    <value>Rendelés jóváhagyása</value>
+  </data>
+  <data name="Checkout_CreditAmt_Caption" xml:space="preserve">
+    <value>Hitel</value>
+  </data>
+  <data name="Checkout_CreditCard_Caption" xml:space="preserve">
+    <value>Bankkártya száma (szóköz és kötőjel nélkül)</value>
+  </data>
+  <data name="Checkout_CreditCInfo_Header" xml:space="preserve">
+    <value>Bankkártya információk</value>
+  </data>
+  <data name="Checkout_Domain_Caption" xml:space="preserve">
+    <value>Domain</value>
+  </data>
+  <data name="Checkout_ForgotPwd" xml:space="preserve">
+    <value>Elfelejtette a jelszavát?</value>
+  </data>
+  <data name="Checkout_OrderAmt_Caption" xml:space="preserve">
+    <value>Megrendelés összege</value>
+  </data>
+  <data name="Checkout_PayableAmt_Caption" xml:space="preserve">
+    <value>Fizetendő összeg</value>
+  </data>
+  <data name="Checkout_PayDetail_Caption" xml:space="preserve">
+    <value>Fizetés részletei</value>
+  </data>
+  <data name="Checkout_PaymentInfo_Caption" xml:space="preserve">
+    <value>Fizetési információ</value>
+  </data>
+  <data name="CheckOut_PaypalInfo_Header" xml:space="preserve">
+    <value>PayPal információ</value>
+  </data>
+  <data name="Checkout_PlaceOrder_Caption" xml:space="preserve">
+    <value>Megrendelés véglegesítése</value>
+  </data>
+  <data name="Checkout_SelectPayment_Header" xml:space="preserve">
+    <value>Fizetési módok</value>
+  </data>
+  <data name="Checkout_StreetAdd_Caption" xml:space="preserve">
+    <value>Cím (folytatás)</value>
+  </data>
+  <data name="Checkout_YourAccountPwd" xml:space="preserve">
+    <value>A fiók jelszava</value>
+  </data>
+  <data name="Checkout_YourEmailAddress" xml:space="preserve">
+    <value>Az Ön email címe</value>
+  </data>
+  <data name="chkSSL_Header" xml:space="preserve">
+    <value>Adja meg a domainjának nevét</value>
+  </data>
+  <data name="ChngPwd_Header" xml:space="preserve">
+    <value>Jelszó megváltoztatása</value>
+  </data>
+  <data name="ChngPwd_NewPwd_Caption" xml:space="preserve">
+    <value>Új jelszó</value>
+  </data>
+  <data name="City_Caption" xml:space="preserve">
+    <value>Város</value>
+  </data>
+  <data name="Clean_Style_Design" xml:space="preserve">
+    <value>Clean Style design</value>
+  </data>
+  <data name="ClickHere_Caption" xml:space="preserve">
+    <value>Kattintson ide</value>
+  </data>
+  <data name="Click_Here" xml:space="preserve">
+    <value>Kattintson ide</value>
+  </data>
+  <data name="Clients_Caption" xml:space="preserve">
+    <value>Ügyfelek</value>
+  </data>
+  <data name="Client_Support_Header" xml:space="preserve">
+    <value>Client támogatása</value>
+  </data>
+  <data name="Close_Status_Caption" xml:space="preserve">
+    <value>közeli</value>
+  </data>
+  <data name="CodeName_Caption" xml:space="preserve">
+    <value>Kód neve</value>
+  </data>
+  <data name="Code_Signing" xml:space="preserve">
+    <value>kód aláírása</value>
+  </data>
+  <data name="Comments_Caption" xml:space="preserve">
+    <value>Hozzászólások</value>
+  </data>
+  <data name="Comment_Caption" xml:space="preserve">
+    <value>Megjegyzés</value>
+  </data>
+  <data name="CompanyName" xml:space="preserve">
+    <value>Társaság neve</value>
+  </data>
+  <data name="Company_Caption" xml:space="preserve">
+    <value>Társaság neve</value>
+  </data>
+  <data name="Competitive_Upgrade_Caption" xml:space="preserve">
+    <value>versenyképes Frissítés</value>
+  </data>
+  <data name="ConfirmPassword_Caption" xml:space="preserve">
+    <value>Jelszó újra</value>
+  </data>
+  <data name="Content_Caption" xml:space="preserve">
+    <value>Tartalom</value>
+  </data>
+  <data name="Content_Header" xml:space="preserve">
+    <value>Bolt tartalmának szerkesztése</value>
+  </data>
+  <data name="Continue_btn" xml:space="preserve">
+    <value>Folytat</value>
+  </data>
+  <data name="ContractLevel_Caption" xml:space="preserve">
+    <value>Szerződés szintje</value>
+  </data>
+  <data name="Contract_Caption" xml:space="preserve">
+    <value>Szerződés neve</value>
+  </data>
+  <data name="Country_Caption" xml:space="preserve">
+    <value>Ország</value>
+  </data>
+  <data name="CreditCardNo_Caption" xml:space="preserve">
+    <value>Bankkártyaszám</value>
+  </data>
+  <data name="CreditCard_Caption" xml:space="preserve">
+    <value>Bankkártya</value>
+  </data>
+  <data name="Credit_Refund_Caption" xml:space="preserve">
+    <value>Credit/Visszatérítés</value>
+  </data>
+  <data name="CropImage_Caption" xml:space="preserve">
+    <value>Kép vágása</value>
+  </data>
+  <data name="CropSave_btn" xml:space="preserve">
+    <value>Vág és ment</value>
+  </data>
+  <data name="CSR_Caption" xml:space="preserve">
+    <value>CSR</value>
+  </data>
+  <data name="CurrentCulture_Caption" xml:space="preserve">
+    <value>Jelenlegi kultúra</value>
+  </data>
+  <data name="CurrentLanguage_Caption" xml:space="preserve">
+    <value>Jelenlegi nyelv</value>
+  </data>
+  <data name="CustomerName_Caption" xml:space="preserve">
+    <value>Vásárló neve</value>
+  </data>
+  <data name="CustomerSince_Caption" xml:space="preserve">
+    <value>Ügyfél kor</value>
+  </data>
+  <data name="CustomerType_Caption" xml:space="preserve">
+    <value>Vásárló típusa</value>
+  </data>
+  <data name="CustomerwiseReport_Header" xml:space="preserve">
+    <value>Ügyfélszűrő riport</value>
+  </data>
+  <data name="Customer_Caption" xml:space="preserve">
+    <value>vevő</value>
+  </data>
+  <data name="Customer_Email_Notification" xml:space="preserve">
+    <value>Vásárló értesítése e-mailben</value>
+  </data>
+  <data name="Dashboard_Caption" xml:space="preserve">
+    <value>Összefoglaló</value>
+  </data>
+  <data name="DateRange_Caption" xml:space="preserve">
+    <value>Időszak</value>
+  </data>
+  <data name="DatewiseReport_Header" xml:space="preserve">
+    <value>Időszaki riport</value>
+  </data>
+  <data name="date_Caption" xml:space="preserve">
+    <value>Dátum</value>
+  </data>
+  <data name="Date_Created_Caption" xml:space="preserve">
+    <value>Létrehozási dátum</value>
+  </data>
+  <data name="Date_Modified_Caption" xml:space="preserve">
+    <value>Módosítási dátum</value>
+  </data>
+  <data name="Day_Caption" xml:space="preserve">
+    <value>nap</value>
+  </data>
+  <data name="ddlStatus_Active" xml:space="preserve">
+    <value>Aktív</value>
+  </data>
+  <data name="ddlStatus_All" xml:space="preserve">
+    <value>Minden</value>
+  </data>
+  <data name="ddlStatus_Deleted" xml:space="preserve">
+    <value>töröl</value>
+  </data>
+  <data name="ddlStatus_Expire" xml:space="preserve">
+    <value>lejár</value>
+  </data>
+  <data name="ddlStatus_Expired" xml:space="preserve">
+    <value>Lejárt</value>
+  </data>
+  <data name="ddlStatus_InActive" xml:space="preserve">
+    <value>INAKTÍV</value>
+  </data>
+  <data name="ddlStatus_Pending" xml:space="preserve">
+    <value>függőben levő</value>
+  </data>
+  <data name="ddlStatus_Refund" xml:space="preserve">
+    <value>visszafizetett</value>
+  </data>
+  <data name="ddlStatus_Rejected" xml:space="preserve">
+    <value>elutasított</value>
+  </data>
+  <data name="ddl_Addfund_Caption" xml:space="preserve">
+    <value>addalap</value>
+  </data>
+  <data name="ddl_Cancel" xml:space="preserve">
+    <value>Törölve</value>
+  </data>
+  <data name="ddl_Flat" xml:space="preserve">
+    <value>lapos</value>
+  </data>
+  <data name="ddl_Order_Caption" xml:space="preserve">
+    <value>MEGRENDELÉS</value>
+  </data>
+  <data name="ddl_Percentage" xml:space="preserve">
+    <value>SZÁZALÉK</value>
+  </data>
+  <data name="ddl_Refund_Caption" xml:space="preserve">
+    <value>VISSZATÉRÍTÉS</value>
+  </data>
+  <data name="ddl_Reissue_Caption" xml:space="preserve">
+    <value>kiadáson</value>
+  </data>
+  <data name="dd_Closed" xml:space="preserve">
+    <value>Lezárva</value>
+  </data>
+  <data name="dd_NoSale" xml:space="preserve">
+    <value>Nincs eladás</value>
+  </data>
+  <data name="dd_Open" xml:space="preserve">
+    <value>Nyitott</value>
+  </data>
+  <data name="dd_Resolved" xml:space="preserve">
+    <value>Megoldott</value>
+  </data>
+  <data name="Delete_Caption" xml:space="preserve">
+    <value>Törölt</value>
+  </data>
+  <data name="Description_Caption" xml:space="preserve">
+    <value>Meghatározás</value>
+  </data>
+  <data name="Detail_Caption" xml:space="preserve">
+    <value>Részlet</value>
+  </data>
+  <data name="DisplayOrder_Caption" xml:space="preserve">
+    <value>Display Order</value>
+  </data>
+  <data name="Display_Phone_Number" xml:space="preserve">
+    <value>Telefonszám megjelenítése</value>
+  </data>
+  <data name="DomainName_Caption" xml:space="preserve">
+    <value>Domain név</value>
+  </data>
+  <data name="Domain_Caption" xml:space="preserve">
+    <value>URL</value>
+  </data>
+  <data name="DownloadCertificate_btn" xml:space="preserve">
+    <value>Tanúsítvány letöltése</value>
+  </data>
+  <data name="EditMeta_Caption" xml:space="preserve">
+    <value>Meta tag szerkesztése</value>
+  </data>
+  <data name="EditPage_Caption" xml:space="preserve">
+    <value>oldal szerkesztése</value>
+  </data>
+  <data name="Edit_Caption" xml:space="preserve">
+    <value>Szerkeszt</value>
+  </data>
+  <data name="Edit_Contract_Price_of" xml:space="preserve">
+    <value>Szerződési ár szerkesztése</value>
+  </data>
+  <data name="Edit_Email_Template" xml:space="preserve">
+    <value>Email sablon szerkesztése</value>
+  </data>
+  <data name="Edit_Product_Caption" xml:space="preserve">
+    <value>Szerkesztés termék</value>
+  </data>
+  <data name="Edit_Shopping_Cart_Caption" xml:space="preserve">
+    <value>Szerkesztés Kosár</value>
+  </data>
+  <data name="EmailContent_Caption" xml:space="preserve">
+    <value>Email tartalom</value>
+  </data>
+  <data name="EmailExists" xml:space="preserve">
+    <value>Email cím már létezik.</value>
+  </data>
+  <data name="EmailSubject_Caption" xml:space="preserve">
+    <value>Email tárgy</value>
+  </data>
+  <data name="Email_Caption" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="Email_on_New_Customer_Signup" xml:space="preserve">
+    <value>Email új vásárlónak</value>
+  </data>
+  <data name="Email_on_New_Reseller_Signup" xml:space="preserve">
+    <value>Email új értékesítőnek</value>
+  </data>
+  <data name="Email_Templates" xml:space="preserve">
+    <value>Email sablonok</value>
+  </data>
+  <data name="EndDate_Caption" xml:space="preserve">
+    <value>Befejező dátum</value>
+  </data>
+  <data name="EnterPromoCode_Caption" xml:space="preserve">
+    <value>Promóciós kód megadása</value>
+  </data>
+  <data name="Enter_btn" xml:space="preserve">
+    <value>Enter</value>
+  </data>
+  <data name="ErrorCCSave" xml:space="preserve">
+    <value>Hiba a bankkártya beállítások mentésekor.</value>
+  </data>
+  <data name="ErrorMsg" xml:space="preserve">
+    <value>Hiba a beállítások mentésekor.</value>
+  </data>
+  <data name="ErrorPaypalSave" xml:space="preserve">
+    <value>Hiba a PayPal beállítások mentésekor.</value>
+  </data>
+  <data name="ExpireDate_Caption" xml:space="preserve">
+    <value>Lejárati idő:</value>
+  </data>
+  <data name="ExportToCSV_btn" xml:space="preserve">
+    <value>Export (CSV)</value>
+  </data>
+  <data name="ExternalOrderID_Caption" xml:space="preserve">
+    <value>ExternalOrderID</value>
+  </data>
+  <data name="Facebook_Caption" xml:space="preserve">
+    <value>Facebook</value>
+  </data>
+  <data name="Fax_Caption" xml:space="preserve">
+    <value>Fax</value>
+  </data>
+  <data name="Fname_Caption" xml:space="preserve">
+    <value>Keresztnév</value>
+  </data>
+  <data name="FooterSection_Caption" xml:space="preserve">
+    <value>Lábléc</value>
+  </data>
+  <data name="ForgotPwd_Caption" xml:space="preserve">
+    <value>Elfelejtett jelszó</value>
+  </data>
+  <data name="Format_Caption" xml:space="preserve">
+    <value>Formátum</value>
+  </data>
+  <data name="Fraud_Order_Notification" xml:space="preserve">
+    <value>Becsapós megrendelés értesítő</value>
+  </data>
+  <data name="From_Caption" xml:space="preserve">
+    <value>Feladó</value>
+  </data>
+  <data name="FullName_Caption" xml:space="preserve">
+    <value>Teljes név</value>
+  </data>
+  <data name="FundAmount" xml:space="preserve">
+    <value>Költségkeret feltöltése</value>
+  </data>
+  <data name="Fund_EnterAmt_Caption" xml:space="preserve">
+    <value>Feltöltés</value>
+  </data>
+  <data name="Fund_MinAmt_Note" xml:space="preserve">
+    <value>(Minimális feltöltési korlát: 1.00 €)</value>
+  </data>
+  <data name="Gateway_Name" xml:space="preserve">
+    <value>Átjáró neve</value>
+  </data>
+  <data name="GeneralSettings_SuccessMsg" xml:space="preserve">
+    <value>A beállítások mentése sikeres</value>
+  </data>
+  <data name="GeneralSetting_Header" xml:space="preserve">
+    <value>Általános beállítások</value>
+  </data>
+  <data name="Give_me_Store_Credit_Caption" xml:space="preserve">
+    <value>Adj tárolni hitel (azonnali)</value>
+  </data>
+  <data name="GoogleAnalytic" xml:space="preserve">
+    <value>GoogleAnalytics érték</value>
+  </data>
+  <data name="GoogleAnalytics_File_Settings" xml:space="preserve">
+    <value>Google Analytics fájl beállítások</value>
+  </data>
+  <data name="Handle_Caption" xml:space="preserve">
+    <value>Indok</value>
+  </data>
+  <data name="HeaderSection_Caption" xml:space="preserve">
+    <value>Fejléc</value>
+  </data>
+  <data name="Header_Management" xml:space="preserve">
+    <value>Fejléc kezelés</value>
+  </data>
+  <data name="HeardBy_Caption" xml:space="preserve">
+    <value>Honnan hallott az oldalról?</value>
+  </data>
+  <data name="High_Assurance_btn" xml:space="preserve">
+    <value>nagy Assurance</value>
+  </data>
+  <data name="Home_Page_Punch_Line" xml:space="preserve">
+    <value>Home Page Punch Line</value>
+  </data>
+  <data name="ImportAllProducts_btn" xml:space="preserve">
+    <value>Minden termék importálása</value>
+  </data>
+  <data name="ImportAllProducts_Caption" xml:space="preserve">
+    <value>Minden termék importálása</value>
+  </data>
+  <data name="InactiveResellers_Caption" xml:space="preserve">
+    <value>Inaktív értékesítő</value>
+  </data>
+  <data name="IncidentID_Caption" xml:space="preserve">
+    <value>Esteszám</value>
+  </data>
+  <data name="IncompleteOrder_Caption" xml:space="preserve">
+    <value>Teljesítetlen megrendelések</value>
+  </data>
+  <data name="InComplete_Caption" xml:space="preserve">
+    <value>befejezetlen</value>
+  </data>
+  <data name="insert_btn" xml:space="preserve">
+    <value>beszúr</value>
+  </data>
+  <data name="InternalProductCode_Caption" xml:space="preserve">
+    <value>Belső termékkód</value>
+  </data>
+  <data name="InvoiceDate_Caption" xml:space="preserve">
+    <value>Számla dátuma</value>
+  </data>
+  <data name="InvoiceNo_Caption" xml:space="preserve">
+    <value>Számlaszám</value>
+  </data>
+  <data name="Invoice_Discount_Caption" xml:space="preserve">
+    <value>Diszkont</value>
+  </data>
+  <data name="Invoice_Header" xml:space="preserve">
+    <value>Számla</value>
+  </data>
+  <data name="Invoice_Number_Prefix" xml:space="preserve">
+    <value>Számlaszám előtag</value>
+  </data>
+  <data name="IP_Caption" xml:space="preserve">
+    <value>IP</value>
+  </data>
+  <data name="isActive_Caption" xml:space="preserve">
+    <value>Aktív</value>
+  </data>
+  <data name="isAutoCalculation_Caption" xml:space="preserve">
+    <value>Automata számolás</value>
+  </data>
+  <data name="isCompetitiveUpgradeAllowed_Caption" xml:space="preserve">
+    <value>Versenyképes frissítés elérhető</value>
+  </data>
+  <data name="IsCompetitiveUpgrade_Caption" xml:space="preserve">
+    <value>Versenyképes frissítés</value>
+  </data>
+  <data name="isForReseller_Caption" xml:space="preserve">
+    <value>Értékesítőnek</value>
+  </data>
+  <data name="isNewOrder_Caption" xml:space="preserve">
+    <value>Megrendelés típusa</value>
+  </data>
+  <data name="isNoOfServerFree_Caption" xml:space="preserve">
+    <value>Nem „szabadszerveres”</value>
+  </data>
+  <data name="ISOName_Caption" xml:space="preserve">
+    <value>ISO név</value>
+  </data>
+  <data name="isSANEnabled_Caption" xml:space="preserve">
+    <value>SAN engedélyezve</value>
+  </data>
+  <data name="IssuerName_Caption" xml:space="preserve">
+    <value>Kibocsájtó</value>
+  </data>
+  <data name="isWildcard_Caption" xml:space="preserve">
+    <value>Wildcard</value>
+  </data>
+  <data name="Is_Site_Run_with_WWW" xml:space="preserve">
+    <value>Ez az oldal www-vel érhető el.</value>
+  </data>
+  <data name="Is_VAT_Applicable" xml:space="preserve">
+    <value>V.A.T. (adószám) alkalmazható</value>
+  </data>
+  <data name="KeyAlgorithm_Caption" xml:space="preserve">
+    <value>Kulcs algoritmus</value>
+  </data>
+  <data name="KeyFile_Path" xml:space="preserve">
+    <value>KeyFilePath</value>
+  </data>
+  <data name="Keywords_Caption" xml:space="preserve">
+    <value>Kulcsszavak</value>
+  </data>
+  <data name="Know_More_btn" xml:space="preserve">
+    <value>Tudjon meg többet</value>
+  </data>
+  <data name="LanguageCode_Caption" xml:space="preserve">
+    <value>Nyelvi kód</value>
+  </data>
+  <data name="LanguageName_Caption" xml:space="preserve">
+    <value>Nyelv neve</value>
+  </data>
+  <data name="LastReplier_Caption" xml:space="preserve">
+    <value>Utolsó válaszoló</value>
+  </data>
+  <data name="Layout_Dynamic_Caption" xml:space="preserve">
+    <value>dinamikus</value>
+  </data>
+  <data name="Layout_Organization_Caption" xml:space="preserve">
+    <value>szervezet</value>
+  </data>
+  <data name="Layout_Within1hr_Caption" xml:space="preserve">
+    <value>Belül 1 óra</value>
+  </data>
+  <data name="ListOrder_Header" xml:space="preserve">
+    <value>Megrendelések listája</value>
+  </data>
+  <data name="ListOrder_Search_Caption" xml:space="preserve">
+    <value>Keresés</value>
+  </data>
+  <data name="List_Of_Incomplere_Order_Header" xml:space="preserve">
+    <value>LISTÁJA INCOMPLETED MEGBÍZÁSOK</value>
+  </data>
+  <data name="Live_CHat_OpTion" xml:space="preserve">
+    <value>Live Chat opciók</value>
+  </data>
+  <data name="Live_Chat_Script" xml:space="preserve">
+    <value>Live Chat szkript</value>
+  </data>
+  <data name="Live_URL" xml:space="preserve">
+    <value>Éles URL</value>
+  </data>
+  <data name="Lname_Caption" xml:space="preserve">
+    <value>Családnév</value>
+  </data>
+  <data name="Locality_Caption" xml:space="preserve">
+    <value>Helység</value>
+  </data>
+  <data name="Login_BTN" xml:space="preserve">
+    <value>Bejelentkezés</value>
+  </data>
+  <data name="Login_Header" xml:space="preserve">
+    <value>Bejelentkezés</value>
+  </data>
+  <data name="Logo_Management" xml:space="preserve">
+    <value>Logó kezelés</value>
+  </data>
+  <data name="ManageCustomer_Caption" xml:space="preserve">
+    <value>Vásárló kezelése</value>
+  </data>
+  <data name="ManagePromocodes_Header" xml:space="preserve">
+    <value>Promóciós kódok kezelése</value>
+  </data>
+  <data name="ManageSlab_Caption" xml:space="preserve">
+    <value>Slab kezelése</value>
+  </data>
+  <data name="Manage_Admin_Users_Caption" xml:space="preserve">
+    <value>Kezelése Admin felhasználók</value>
+  </data>
+  <data name="Manage_Contract_Products" xml:space="preserve">
+    <value>Szerződött termékek kezelése</value>
+  </data>
+  <data name="Manage_Language_Time_Zone" xml:space="preserve">
+    <value>Nyelvek és időzóna kezelése</value>
+  </data>
+  <data name="Manage_Order_btn" xml:space="preserve">
+    <value>kezelése Rendelés</value>
+  </data>
+  <data name="Manage_Products_Caption" xml:space="preserve">
+    <value>Termékek kezelése</value>
+  </data>
+  <data name="MaxOrders_Caption" xml:space="preserve">
+    <value>Maximális rendelések</value>
+  </data>
+  <data name="Merchant_ID" xml:space="preserve">
+    <value>Kereskedő ID</value>
+  </data>
+  <data name="Mobile_Caption" xml:space="preserve">
+    <value>Mobil</value>
+  </data>
+  <data name="Months_Caption" xml:space="preserve">
+    <value>Hónap</value>
+  </data>
+  <data name="Need_to_Approve_Reseller" xml:space="preserve">
+    <value>Elfogadásra váró értékesítők</value>
+  </data>
+  <data name="New_Caption" xml:space="preserve">
+    <value>új</value>
+  </data>
+  <data name="New_Order_Notification" xml:space="preserve">
+    <value>Új megrendelés értesítő</value>
+  </data>
+  <data name="NoOfSan_Caption" xml:space="preserve">
+    <value>SAN száma</value>
+  </data>
+  <data name="NoRecord" xml:space="preserve">
+    <value>Nincs rekord.</value>
+  </data>
+  <data name="Notes_Caption" xml:space="preserve">
+    <value>MEGJ.</value>
+  </data>
+  <data name="No_CAption" xml:space="preserve">
+    <value>Nem</value>
+  </data>
+  <data name="No_Dash_No_Space" xml:space="preserve">
+    <value>(szóköz és kötőjelek nélkül)</value>
+  </data>
+  <data name="No_Of_Day_Caption" xml:space="preserve">
+    <value>Nem a Nap</value>
+  </data>
+  <data name="No_Of_Server_Caption" xml:space="preserve">
+    <value>Nem a szerver</value>
+  </data>
+  <data name="No_Record_Available" xml:space="preserve">
+    <value>Nem Records elérhető</value>
+  </data>
+  <data name="Numbercerts" xml:space="preserve">
+    <value>Kibocsájtott tanúsítványok száma</value>
+  </data>
+  <data name="NumberOfMonths_Caption" xml:space="preserve">
+    <value>Érvényes</value>
+  </data>
+  <data name="NumberOfServers_Caption" xml:space="preserve">
+    <value>Licencelt szerverek</value>
+  </data>
+  <data name="Number_of_Additional_Domains" xml:space="preserve">
+    <value>Számos további domain</value>
+  </data>
+  <data name="Number_of_Certs" xml:space="preserve">
+    <value>Száma CERT-ek</value>
+  </data>
+  <data name="Number_of_Licensed_Servers_Caption" xml:space="preserve">
+    <value>Száma licencelt kiszolgálókon</value>
+  </data>
+  <data name="Odetail_AContactdet_Header" xml:space="preserve">
+    <value>SSL adminisztratív kapcsolat részletei</value>
+  </data>
+  <data name="Odetail_CertDetail_Header" xml:space="preserve">
+    <value>Tanúsítvány részletei</value>
+  </data>
+  <data name="Odetail_Header" xml:space="preserve">
+    <value>Megrendelés részletei</value>
+  </data>
+  <data name="Odetail_SiteContacts_Header" xml:space="preserve">
+    <value>Oldal kapcsolat</value>
+  </data>
+  <data name="Odetail_TContactdet_Header" xml:space="preserve">
+    <value>SSL technikai kapcsolat részletei</value>
+  </data>
+  <data name="Open_Status_Caprion" xml:space="preserve">
+    <value>nyitott</value>
+  </data>
+  <data name="Optional_caption" xml:space="preserve">
+    <value>választható</value>
+  </data>
+  <data name="OrderDate_Caption" xml:space="preserve">
+    <value>Megrendelés dátuma</value>
+  </data>
+  <data name="OrderId_Caption" xml:space="preserve">
+    <value>Megrendelés száma</value>
+  </data>
+  <data name="OrderInformation_Caption" xml:space="preserve">
+    <value>Megrendelési információk</value>
+  </data>
+  <data name="OrderNumber_Caption" xml:space="preserve">
+    <value>Rendelési szám</value>
+  </data>
+  <data name="OrderStatusSuccess" xml:space="preserve">
+    <value>Rendelési státus sikeresen frissítve.</value>
+  </data>
+  <data name="OrderStatus_Caption" xml:space="preserve">
+    <value>Rendelés státusza</value>
+  </data>
+  <data name="OrderSummary_Caption" xml:space="preserve">
+    <value>Megrendelés összesítő</value>
+  </data>
+  <data name="Order_Placed_for" xml:space="preserve">
+    <value>Megrendelés számára:</value>
+  </data>
+  <data name="Order_Status_Reason" xml:space="preserve">
+    <value>Megrendelés státuszának oka</value>
+  </data>
+  <data name="Order_Type_Caption" xml:space="preserve">
+    <value>Megrendelés típusa</value>
+  </data>
+  <data name="OrganisationUnit_Caption" xml:space="preserve">
+    <value>Szervezeti egység</value>
+  </data>
+  <data name="Organisation_Caption" xml:space="preserve">
+    <value>Szervezet</value>
+  </data>
+  <data name="Other" xml:space="preserve">
+    <value>más</value>
+  </data>
+  <data name="PageNameCatopm" xml:space="preserve">
+    <value>Lap neve</value>
+  </data>
+  <data name="Pager_Size" xml:space="preserve">
+    <value>Lap mérete</value>
+  </data>
+  <data name="Paid_via" xml:space="preserve">
+    <value>Fizetési átjáró</value>
+  </data>
+  <data name="Partner_ID" xml:space="preserve">
+    <value>PartnerID</value>
+  </data>
+  <data name="Partner_Pricing_Caption" xml:space="preserve">
+    <value>Partner ár</value>
+  </data>
+  <data name="Password_Caption" xml:space="preserve">
+    <value>Jelszó</value>
+  </data>
+  <data name="PayAuthorizationCode_Caption" xml:space="preserve">
+    <value>Fizetési azonosító kód</value>
+  </data>
+  <data name="PayGatewayDetails_Caption" xml:space="preserve">
+    <value>Fizetési átjáró részleti</value>
+  </data>
+  <data name="PaymentType_Caption" xml:space="preserve">
+    <value>Fizetés típusa</value>
+  </data>
+  <data name="PaypalId_Caption" xml:space="preserve">
+    <value>Paypal ID</value>
+  </data>
+  <data name="PaypalSaved" xml:space="preserve">
+    <value>Paypal beállítások sikeresen mentve.</value>
+  </data>
+  <data name="Paypal_Caption" xml:space="preserve">
+    <value>Paypal</value>
+  </data>
+  <data name="per_year_Caption" xml:space="preserve">
+    <value>évente</value>
+  </data>
+  <data name="Phone_Caption" xml:space="preserve">
+    <value>Telefon</value>
+  </data>
+  <data name="Phone_Number" xml:space="preserve">
+    <value>Telefonszám</value>
+  </data>
+  <data name="PriceMargin_Caption" xml:space="preserve">
+    <value>Árrés</value>
+  </data>
+  <data name="Price_Caption" xml:space="preserve">
+    <value>Keret</value>
+  </data>
+  <data name="Pricing_Caption" xml:space="preserve">
+    <value>Ár</value>
+  </data>
+  <data name="Print_Caption" xml:space="preserve">
+    <value>Nyomtat</value>
+  </data>
+  <data name="ProductCode_Caption" xml:space="preserve">
+    <value>Termékkód</value>
+  </data>
+  <data name="ProductTypeID_Caption" xml:space="preserve">
+    <value>TermékTípusID</value>
+  </data>
+  <data name="ProductwiseReport_Header" xml:space="preserve">
+    <value>Termékszűrő riport</value>
+  </data>
+  <data name="Product_Caption" xml:space="preserve">
+    <value>Termék neve</value>
+  </data>
+  <data name="Profit_Margin_Caption" xml:space="preserve">
+    <value>Nyereség árrése</value>
+  </data>
+  <data name="Promocode_Header" xml:space="preserve">
+    <value>Kupon generálása</value>
+  </data>
+  <data name="PromoDiscount_Caption" xml:space="preserve">
+    <value>Diszkont kupon</value>
+  </data>
+  <data name="Pwdchanged" xml:space="preserve">
+    <value>A jelszó megváltoztatása sikeres</value>
+  </data>
+  <data name="Quantity_Caption" xml:space="preserve">
+    <value>mennyiség</value>
+  </data>
+  <data name="Reason_Caption" xml:space="preserve">
+    <value>Indok</value>
+  </data>
+  <data name="ReceiptDetail_Caption" xml:space="preserve">
+    <value>Nyugta részletei</value>
+  </data>
+  <data name="Recommended_Caption" xml:space="preserve">
+    <value>Ajánlott</value>
+  </data>
+  <data name="RecordStatus_Caption" xml:space="preserve">
+    <value>Rekord állapota</value>
+  </data>
+  <data name="RefundDays_Caption" xml:space="preserve">
+    <value>Visszatérítés napja</value>
+  </data>
+  <data name="RefundRequest_Caption" xml:space="preserve">
+    <value>Visszatérítés kérvény</value>
+  </data>
+  <data name="Refund_Notification" xml:space="preserve">
+    <value>Visszatérítés értesítő</value>
+  </data>
+  <data name="Refund_status_Caption" xml:space="preserve">
+    <value>Visszatérítés a hitelkártya (3-5 munkanap)</value>
+  </data>
+  <data name="ReissueCertificate" xml:space="preserve">
+    <value>Re-kérdés tanúsítvány</value>
+  </data>
+  <data name="ReissueCertificate_btn" xml:space="preserve">
+    <value>Újra kibocsájtott tanúsítvány</value>
+  </data>
+  <data name="Remark_Caption" xml:space="preserve">
+    <value>Észrevétel</value>
+  </data>
+  <data name="Remove_btn" xml:space="preserve">
+    <value>Vegye</value>
+  </data>
+  <data name="RenewalAlerts_Caption" xml:space="preserve">
+    <value>Figyelmeztetés megújításra</value>
+  </data>
+  <data name="Renewal_Notification_Before_15_Days" xml:space="preserve">
+    <value>Megújítási figyelmeztetés 15 nappal előtte</value>
+  </data>
+  <data name="Renewal_Notification_Before_30_Days" xml:space="preserve">
+    <value>Megújítási figyelmeztetés 30 nappal előtte</value>
+  </data>
+  <data name="Renewal_Notification_Before_3_Days" xml:space="preserve">
+    <value>Megújítási figyelmeztetés 3 nappal előtte</value>
+  </data>
+  <data name="Renewal_Notification_Before_7_Days" xml:space="preserve">
+    <value>Megújítási figyelmeztetés 7 nappal előtte</value>
+  </data>
+  <data name="Renewal_Noti_ResellerC_Before_15_Days" xml:space="preserve">
+    <value>Megújítási figyelmeztetés az értékesítő vásárlóinak 15 nappal előtte</value>
+  </data>
+  <data name="Renewal_Noti_ResellerC_Before_30_Days" xml:space="preserve">
+    <value>Megújítási figyelmeztetés az értékesítő vásárlóinak 30 nappal előtte</value>
+  </data>
+  <data name="Renewal_Noti_ResellerC_Before_3_Days" xml:space="preserve">
+    <value>Megújítási figyelmeztetés az értékesítő vásárlóinak 3 nappal előtte</value>
+  </data>
+  <data name="Renewal_Noti_ResellerC_Before_7_Days" xml:space="preserve">
+    <value>Megújítási figyelmeztetés az értékesítő vásárlóinak 7 nappal előtte</value>
+  </data>
+  <data name="Renewal_Noti_Reseller_Before_15_Days" xml:space="preserve">
+    <value>Megújítási figyelmeztetés az értékesítőnek 15 nappal előtte</value>
+  </data>
+  <data name="Renewal_Noti_Reseller_Before_30_Days" xml:space="preserve">
+    <value>Megújítási figyelmeztetés az értékesítőnek 30 nappal előtte</value>
+  </data>
+  <data name="Renewal_Noti_Reseller_Before_3_Days" xml:space="preserve">
+    <value>Megújítási figyelmeztetés az értékesítőnek 3 nappal előtte</value>
+  </data>
+  <data name="Renewal_Noti_Reseller_Before_7_Days" xml:space="preserve">
+    <value>Megújítási figyelmeztetés az értékesítőnek 7 nappal előtte</value>
+  </data>
+  <data name="ReNewNow_btn" xml:space="preserve">
+    <value>Megújítás most</value>
+  </data>
+  <data name="ReNew_Caption" xml:space="preserve">
+    <value>megújítása</value>
+  </data>
+  <data name="ReplyTO_Caption" xml:space="preserve">
+    <value>Válaszcím</value>
+  </data>
+  <data name="RequestPassword_btn" xml:space="preserve">
+    <value>Jelszó kérése</value>
+  </data>
+  <data name="Require_Credentials" xml:space="preserve">
+    <value>Megbízólevél szükséges</value>
+  </data>
+  <data name="ResellerName_Caption" xml:space="preserve">
+    <value>Értékesítő neve</value>
+  </data>
+  <data name="ResellerPrg_Header" xml:space="preserve">
+    <value>Értékesítő program</value>
+  </data>
+  <data name="Reseller_Caption" xml:space="preserve">
+    <value>Értékesítő</value>
+  </data>
+  <data name="Reseller_Email_Notification" xml:space="preserve">
+    <value>Értékesítő értesítése e-mailben</value>
+  </data>
+  <data name="Reseller_RegDate" xml:space="preserve">
+    <value>Regisztráció dátuma</value>
+  </data>
+  <data name="Reseller_Since" xml:space="preserve">
+    <value>Értékesít ez óta</value>
+  </data>
+  <data name="Reseller_Slab_Contract" xml:space="preserve">
+    <value>Slab/Contract</value>
+  </data>
+  <data name="Reseller_Title" xml:space="preserve">
+    <value>Értékesítők kezelése</value>
+  </data>
+  <data name="Reseller_TotalPur" xml:space="preserve">
+    <value>Összes vásárlás</value>
+  </data>
+  <data name="ResendApprovalEmail_btn" xml:space="preserve">
+    <value>Elfogadó email újraküldése</value>
+  </data>
+  <data name="RetailPrice_Caption" xml:space="preserve">
+    <value>Kiskereskedelmi ár</value>
+  </data>
+  <data name="Robots_File_Settings" xml:space="preserve">
+    <value>Robots fájl beállítások</value>
+  </data>
+  <data name="SalePrice_Caption" xml:space="preserve">
+    <value>Eladási ár</value>
+  </data>
+  <data name="Sales_Caption" xml:space="preserve">
+    <value>értékesítési</value>
+  </data>
+  <data name="SanMax_Caption" xml:space="preserve">
+    <value>SanMax</value>
+  </data>
+  <data name="SanMin_Caption" xml:space="preserve">
+    <value>SanMin</value>
+  </data>
+  <data name="SavedSuccessfully" xml:space="preserve">
+    <value>Profil mentése sikeres.</value>
+  </data>
+  <data name="SavePaypalSetting_btn" xml:space="preserve">
+    <value>PayPal beállítások mentése</value>
+  </data>
+  <data name="SaveSetting_btn" xml:space="preserve">
+    <value>Beállítások mentése</value>
+  </data>
+  <data name="SAVE_btn" xml:space="preserve">
+    <value>MENT</value>
+  </data>
+  <data name="Save_Changes_Caption" xml:space="preserve">
+    <value>változtatások mentése</value>
+  </data>
+  <data name="SearchOrder_Header" xml:space="preserve">
+    <value>Megrendelés keresése</value>
+  </data>
+  <data name="Search_btn" xml:space="preserve">
+    <value>Keresés</value>
+  </data>
+  <data name="SelectProduct_Caption" xml:space="preserve">
+    <value>Termék kiválasztása</value>
+  </data>
+  <data name="SelectTheme_btn" xml:space="preserve">
+    <value>Téma kiválasztása</value>
+  </data>
+  <data name="Select_API_Product_Caption" xml:space="preserve">
+    <value>Válasszon API Termék</value>
+  </data>
+  <data name="select_brand_Caption" xml:space="preserve">
+    <value>válassza márka</value>
+  </data>
+  <data name="Select_Contract" xml:space="preserve">
+    <value>Válassza ki a szerződés</value>
+  </data>
+  <data name="Select_Country" xml:space="preserve">
+    <value>Ország kiválasztása</value>
+  </data>
+  <data name="Select_Currency_Caption" xml:space="preserve">
+    <value>válasszuk a Pénznem</value>
+  </data>
+  <data name="Select_PayGateway_Caption" xml:space="preserve">
+    <value>Fizetési átjáró kiválasztása</value>
+  </data>
+  <data name="Select_Payment_Type" xml:space="preserve">
+    <value>Fizetési típus kiválasztása</value>
+  </data>
+  <data name="Select_Product_Type_Caption" xml:space="preserve">
+    <value>Válassza ki a Terméktípus</value>
+  </data>
+  <data name="Select_Quantity_Caption" xml:space="preserve">
+    <value>Válasszon mennyiséget</value>
+  </data>
+  <data name="Select_Status_Caption" xml:space="preserve">
+    <value>Válassza ki a Status</value>
+  </data>
+  <data name="Select_Theme" xml:space="preserve">
+    <value>Téma kiválasztása</value>
+  </data>
+  <data name="Select_Timezone" xml:space="preserve">
+    <value>Időzóna kiválasztása</value>
+  </data>
+  <data name="SEO_Caption" xml:space="preserve">
+    <value>SEO</value>
+  </data>
+  <data name="SerialNumber_caption" xml:space="preserve">
+    <value>Sorozatszám</value>
+  </data>
+  <data name="Servers_Caption" xml:space="preserve">
+    <value>Szerverek</value>
+  </data>
+  <data name="Set_Default_Currancy" xml:space="preserve">
+    <value>Állítsa Számlázási Pénznem</value>
+  </data>
+  <data name="Shoppingcart_SANPrice" xml:space="preserve">
+    <value>További SAN ára</value>
+  </data>
+  <data name="ShoppingCart_Header" xml:space="preserve">
+    <value>Kosár</value>
+  </data>
+  <data name="Shoppingcart_Price" xml:space="preserve">
+    <value>Ár</value>
+  </data>
+  <data name="ShoppingCart_Sno" xml:space="preserve">
+    <value>K.Sz.</value>
+  </data>
+  <data name="ShowInSite_Caption" xml:space="preserve">
+    <value>Jelenjen meg az oldalon</value>
+  </data>
+  <data name="Show_Banner" xml:space="preserve">
+    <value>Banner megjelenítése</value>
+  </data>
+  <data name="Show_Status" xml:space="preserve">
+    <value>Státusz megjelenítése</value>
+  </data>
+  <data name="SlabName_Caption" xml:space="preserve">
+    <value>Slab neve</value>
+  </data>
+  <data name="Slug_Caption" xml:space="preserve">
+    <value>Az oldal URL</value>
+  </data>
+  <data name="SMTPHost_Caption" xml:space="preserve">
+    <value>SMTP hoszt</value>
+  </data>
+  <data name="SMTPPassword_Caption" xml:space="preserve">
+    <value>SMTP jelszó</value>
+  </data>
+  <data name="SMTPPort_Caption" xml:space="preserve">
+    <value>SMTP port</value>
+  </data>
+  <data name="SMTPUser_Caption" xml:space="preserve">
+    <value>SMTP felhasználó</value>
+  </data>
+  <data name="SMTP_Settings" xml:space="preserve">
+    <value>SMTP beállítások</value>
+  </data>
+  <data name="Social_Networking" xml:space="preserve">
+    <value>Szociális hálózat</value>
+  </data>
+  <data name="SpecialInstructions_Caption" xml:space="preserve">
+    <value>Különleges instrukciók</value>
+  </data>
+  <data name="StaffNote_Caption" xml:space="preserve">
+    <value>Vezetőségi megjegyzés</value>
+  </data>
+  <data name="StandardSSL_btn" xml:space="preserve">
+    <value>szabványos SSL</value>
+  </data>
+  <data name="StartDate_Caption" xml:space="preserve">
+    <value>Indulási dátum</value>
+  </data>
+  <data name="Statement_Credit_Caption" xml:space="preserve">
+    <value>Credit</value>
+  </data>
+  <data name="Statement_Header" xml:space="preserve">
+    <value>Fiók kimutatás</value>
+  </data>
+  <data name="Statement_Payment_Amount" xml:space="preserve">
+    <value>Költségkeret</value>
+  </data>
+  <data name="Statement_Type_Caption" xml:space="preserve">
+    <value>Típus</value>
+  </data>
+  <data name="State_Caption" xml:space="preserve">
+    <value>Állapot</value>
+  </data>
+  <data name="Status_Caption" xml:space="preserve">
+    <value>Státusz</value>
+  </data>
+  <data name="StoreConfiguration_Caption" xml:space="preserve">
+    <value>Bolt beállítása</value>
+  </data>
+  <data name="Street_Caption" xml:space="preserve">
+    <value>Utca</value>
+  </data>
+  <data name="Subject_Caption" xml:space="preserve">
+    <value>Tárgy</value>
+  </data>
+  <data name="Submit_Btn" xml:space="preserve">
+    <value>Elküld</value>
+  </data>
+  <data name="Support_Email" xml:space="preserve">
+    <value>Támogató email</value>
+  </data>
+  <data name="Support_Incident_Notification" xml:space="preserve">
+    <value>Értesítő új támogatási esetről</value>
+  </data>
+  <data name="Support_Incident_Update" xml:space="preserve">
+    <value>Értesítő támogatás frissülésről</value>
+  </data>
+  <data name="Support_Request_Information_Header" xml:space="preserve">
+    <value>Támogatás Információ kérése</value>
+  </data>
+  <data name="Synchronize_Your_Product" xml:space="preserve">
+    <value>Termékek szinkronizálása</value>
+  </data>
+  <data name="Tax_Caption" xml:space="preserve">
+    <value>ÁFA</value>
+  </data>
+  <data name="Templates_Caption" xml:space="preserve">
+    <value>Sablonok</value>
+  </data>
+  <data name="Template_Caption" xml:space="preserve">
+    <value>Sablon</value>
+  </data>
+  <data name="Test_Mode" xml:space="preserve">
+    <value>Tesztüzem</value>
+  </data>
+  <data name="Test_URL" xml:space="preserve">
+    <value>Teszt URL</value>
+  </data>
+  <data name="Title_Caption" xml:space="preserve">
+    <value>Cím</value>
+  </data>
+  <data name="TotalOrders_Caption" xml:space="preserve">
+    <value>Összes megrendelés</value>
+  </data>
+  <data name="TotalPrice_Caption" xml:space="preserve">
+    <value>Összes ár</value>
+  </data>
+  <data name="TotalTransaction_Caption" xml:space="preserve">
+    <value>Összes tranzakció</value>
+  </data>
+  <data name="Total_Caption" xml:space="preserve">
+    <value>Összesen</value>
+  </data>
+  <data name="Total_Sale" xml:space="preserve">
+    <value>Összes eladás</value>
+  </data>
+  <data name="TO_Caption" xml:space="preserve">
+    <value>Címzett</value>
+  </data>
+  <data name="To_Configure" xml:space="preserve">
+    <value>Beállításhoz</value>
+  </data>
+  <data name="TransactionDate_Caption" xml:space="preserve">
+    <value>Tranzakció dátuma</value>
+  </data>
+  <data name="TransactionDetail_Caption" xml:space="preserve">
+    <value>Tranzakció részletei</value>
+  </data>
+  <data name="TransactionType_Caption" xml:space="preserve">
+    <value>Tranzakció típusa</value>
+  </data>
+  <data name="TransactionwiseReport_Header" xml:space="preserve">
+    <value>Tranzakciószűrő riport</value>
+  </data>
+  <data name="Transaction_Key" xml:space="preserve">
+    <value>Tranzakciós kulcs/aláírás</value>
+  </data>
+  <data name="Trust_Seal" xml:space="preserve">
+    <value>Trust Seal</value>
+  </data>
+  <data name="Twitter_Caption" xml:space="preserve">
+    <value>Twitter</value>
+  </data>
+  <data name="Under_Maintanance" xml:space="preserve">
+    <value>Karbantartás alatt</value>
+  </data>
+  <data name="Upload_Logo" xml:space="preserve">
+    <value>Logó feltöltése</value>
+  </data>
+  <data name="URLTarget_Caption" xml:space="preserve">
+    <value>cél</value>
+  </data>
+  <data name="Username_Caption" xml:space="preserve">
+    <value>Felhasználó neve</value>
+  </data>
+  <data name="UserProfile_Header" xml:space="preserve">
+    <value>Személyes információ</value>
+  </data>
+  <data name="UseSSL_Caption" xml:space="preserve">
+    <value>SSL használata</value>
+  </data>
+  <data name="Use_Auth" xml:space="preserve">
+    <value>Authorized.net használata</value>
+  </data>
+  <data name="Use_PayPal" xml:space="preserve">
+    <value>PayPal használata</value>
+  </data>
+  <data name="Use_SSL" xml:space="preserve">
+    <value>SSL használata</value>
+  </data>
+  <data name="Value_Caption" xml:space="preserve">
+    <value>Értékesítő</value>
+  </data>
+  <data name="VAT" xml:space="preserve">
+    <value>Adószám (VAT)</value>
+  </data>
+  <data name="WebServerID_Caption" xml:space="preserve">
+    <value>WebSzerver ID</value>
+  </data>
+  <data name="Welcome_Caption" xml:space="preserve">
+    <value>Üdvözlöm</value>
+  </data>
+  <data name="Welcome_Email" xml:space="preserve">
+    <value>Üdvözlő email</value>
+  </data>
+  <data name="Wildcard_SSL_btn" xml:space="preserve">
+    <value>Wildcard SSL</value>
+  </data>
+  <data name="Year_Caption" xml:space="preserve">
+    <value>Év</value>
+  </data>
+  <data name="Year_Caption1" xml:space="preserve">
+    <value>1 év</value>
+  </data>
+  <data name="Year_Caption2" xml:space="preserve">
+    <value>2 év</value>
+  </data>
+  <data name="Year_Caption3" xml:space="preserve">
+    <value>3 év</value>
+  </data>
+  <data name="Year_Caption4" xml:space="preserve">
+    <value>4 év</value>
+  </data>
+  <data name="Year_Caption5" xml:space="preserve">
+    <value>5 év</value>
+  </data>
+  <data name="Yes_CAption" xml:space="preserve">
+    <value>Igen</value>
+  </data>
+  <data name="You_Save_Caption" xml:space="preserve">
+    <value>Megtakarítás</value>
+  </data>
+  <data name="Yr_Caption" xml:space="preserve">
+    <value>/yr</value>
+  </data>
+  <data name="Zip_Caption" xml:space="preserve">
+    <value>Zip</value>
+  </data>
+  <data name="Call_Caption" xml:space="preserve">
+    <value>hívás</value>
+  </data>
+  <data name="CheckCSR_Caption" xml:space="preserve">
+    <value>Ellenőrizze a CSR Key</value>
+  </data>
+  <data name="CheckSSLCertificate_Caption" xml:space="preserve">
+    <value>Ellenőrizze SSL tanúsítvány</value>
+  </data>
+  <data name="Confirm_Password_Caption" xml:space="preserve">
+    <value>Jelszó megerősítése</value>
+  </data>
+  <data name="Footer_AboutUs" xml:space="preserve">
+    <value>Rólunk</value>
+  </data>
+  <data name="Footer_Blog" xml:space="preserve">
+    <value>Blog</value>
+  </data>
+  <data name="Footer_ContactUs" xml:space="preserve">
+    <value>Kapcsolat</value>
+  </data>
+  <data name="Footer_Disclaimer" xml:space="preserve">
+    <value>lemondás</value>
+  </data>
+  <data name="Footer_Home" xml:space="preserve">
+    <value>otthon</value>
+  </data>
+  <data name="Footer_PrivacyPolicy" xml:space="preserve">
+    <value>Adatvédelem</value>
+  </data>
+  <data name="Footer_RefundPolicy" xml:space="preserve">
+    <value>visszatérítési politika</value>
+  </data>
+  <data name="Footer_SiteMap" xml:space="preserve">
+    <value>Oldaltérkép</value>
+  </data>
+  <data name="FreeTools_Caption" xml:space="preserve">
+    <value>ingyenes eszközök</value>
+  </data>
+  <data name="Immediate_Caption" xml:space="preserve">
+    <value>azonnali</value>
+  </data>
+  <data name="Issuance_Caption" xml:space="preserve">
+    <value>kiadása</value>
+  </data>
+  <data name="My_Cart" xml:space="preserve">
+    <value>Kosár</value>
+  </data>
+  <data name="New_Password_Caption" xml:space="preserve">
+    <value>új jelszó</value>
+  </data>
+  <data name="PageCaption_Caption" xml:space="preserve">
+    <value>Az oldal neve</value>
+  </data>
+  <data name="ParentID_Caption" xml:space="preserve">
+    <value>szülőoldal</value>
+  </data>
+  <data name="Question_Caption" xml:space="preserve">
+    <value>Kérdései vannak?</value>
+  </data>
+  <data name="Save_Caption" xml:space="preserve">
+    <value>kivéve</value>
+  </data>
+  <data name="Save_up_to_Caption" xml:space="preserve">
+    <value>Akár</value>
+  </data>
+  <data name="SiteSeal_Caption" xml:space="preserve">
+    <value>webhely Seal</value>
+  </data>
+  <data name="SSLComparison_Caption" xml:space="preserve">
+    <value>SSL összehasonlítása</value>
+  </data>
+  <data name="Static_Caption" xml:space="preserve">
+    <value>statikus</value>
+  </data>
+  <data name="Unlimited_Server_License_Caption" xml:space="preserve">
+    <value>Korlátlan Server licencek @ további költség nélkül</value>
+  </data>
+  <data name="USerMenu_AdminHome" xml:space="preserve">
+    <value>Admin Kezdőlap</value>
+  </data>
+  <data name="UserMenu_ClientSupport" xml:space="preserve">
+    <value>Client támogatása</value>
+  </data>
+  <data name="UserMenu_MYACCOUNT" xml:space="preserve">
+    <value>FIÓKOM</value>
+  </data>
+  <data name="UserMenu_MYORDERS" xml:space="preserve">
+    <value>Kilépés</value>
+  </data>
+  <data name="UserMenu_OrderSSL" xml:space="preserve">
+    <value>Rendelés SSL</value>
+  </data>
+  <data name="UserMenu_Preferences" xml:space="preserve">
+    <value>Beállítások</value>
+  </data>
+  <data name="UserMenu_Welcome" xml:space="preserve">
+    <value>Üdvözöljük</value>
+  </data>
+  <data name="Validation_Caption" xml:space="preserve">
+    <value>érvényesítés</value>
+  </data>
+  <data name="WeAccept_Caption" xml:space="preserve">
+    <value>mi elfogadása</value>
+  </data>
+  <data name="More_Info_Caption" xml:space="preserve">
+    <value>TÖBB INFO</value>
+  </data>
+  <data name="Reset_Btn" xml:space="preserve">
+    <value>Alaphelyzet</value>
+  </data>
+  <data name="AdvanceBanner_Caption" xml:space="preserve">
+    <value>Advance Banner</value>
+  </data>
+  <data name="Banner_Header" xml:space="preserve">
+    <value>kezelése Banner</value>
+  </data>
+  <data name="Pager_Page_Caption" xml:space="preserve">
+    <value>oldal</value>
+  </data>
+  <data name="Pager_Viewing_Record_Caption" xml:space="preserve">
+    <value>Profil: Record</value>
+  </data>
+  <data name="Confirm_Delete_Caption" xml:space="preserve">
+    <value>Biztosan törölni szeretné ezt az oldalt, és a gyermeket oldal tartalmát folyamatosan?</value>
+  </data>
+  <data name="Email_Exist_Caption" xml:space="preserve">
+    <value>E-mail már létezik</value>
+  </data>
+  <data name="ResellerAcvivation_Mail_Caption" xml:space="preserve">
+    <value>Viszonteladó aktiváló e-mail elküldve</value>
+  </data>
+  <data name="Reset_Password_Heading_Caption" xml:space="preserve">
+    <value>Jelszó törlése</value>
+  </data>
+  <data name="Total_purchase_Caption" xml:space="preserve">
+    <value>Összes Vásárlás</value>
+  </data>
+  <data name="AccessDenied_Caption" xml:space="preserve">
+    <value>Ön illetéktelen az oldal megtekintésére.</value>
+  </data>
+  <data name="Additional_DomailAmt_Caption" xml:space="preserve">
+    <value>Kiegészítő Domain összeg</value>
+  </data>
+  <data name="CC_No_Title_Caption" xml:space="preserve">
+    <value>Kérjük, adja meg a számot, legalább 14 és legfeljebb 16 karakter!</value>
+  </data>
+  <data name="Credit_Card_Date_of_Expiry_Caption" xml:space="preserve">
+    <value>A lejárat dátuma</value>
+  </data>
+  <data name="Go_Back_Msg_Caption" xml:space="preserve">
+    <value>Kattintson ide vissza.</value>
+  </data>
+  <data name="Invoice_Note_Caption1" xml:space="preserve">
+    <value>Felhívjuk figyelmét, hogy ez a díj Megjelenítés company.COM AZ ÖN hitelkártya kivonat.</value>
+  </data>
+  <data name="Invoice_Note_Email_Receive_Caption1" xml:space="preserve">
+    <value>Ön hamarosan kap e-mail üzenetek</value>
+  </data>
+  <data name="Invoice_Note_Email_Receive_Caption2" xml:space="preserve">
+    <value>Ez az e-mail üzeneteket fog tartalmazni számla másolatát.</value>
+  </data>
+  <data name="Payable_Amt_Caption" xml:space="preserve">
+    <value>fizetendő összeg</value>
+  </data>
+  <data name="Payment_Method_Caption" xml:space="preserve">
+    <value>fizetési mód</value>
+  </data>
+  <data name="PayPalID_Title_Caption" xml:space="preserve">
+    <value>A PayPal ID kell a formátuma name@domain.com</value>
+  </data>
+  <data name="Paypal_Wait_msg1_Caption" xml:space="preserve">
+    <value>A fizetés feldolgozása Kérem, várjon ...</value>
+  </data>
+  <data name="Paypal_Wait_msg2_Caption" xml:space="preserve">
+    <value>Kérjük, ne nyomja frissítés, vagy vissza gomb. A türelem értékelik.</value>
+  </data>
+  <data name="Select_Caption" xml:space="preserve">
+    <value>Válasszon</value>
+  </data>
+  <data name="Select_CreditCard_Type_Caption" xml:space="preserve">
+    <value>Válassza ki a hitelkártya típusa</value>
+  </data>
+  <data name="Select_Month_Caption" xml:space="preserve">
+    <value>Válassza ki a hónap</value>
+  </data>
+  <data name="Select_Year_Caption" xml:space="preserve">
+    <value>Válasszon évet</value>
+  </data>
+  <data name="Thank_you_Caption" xml:space="preserve">
+    <value>köszönöm</value>
+  </data>
+  <data name="Thank_you_Place_Order_Caption" xml:space="preserve">
+    <value>Köszönjük, hogy a megrendelés a</value>
+  </data>
+  <data name="Year_PromoDisc_Caption" xml:space="preserve">
+    <value>Évek promo kedvezmény</value>
+  </data>
+  <data name="Your_Order_Detail" xml:space="preserve">
+    <value>A Rendelés részletei</value>
+  </data>
+  <data name="Admin_new_use_signup" xml:space="preserve">
+    <value>Admin új felhasználói regisztráció</value>
+  </data>
+  <data name="Continue_Shopping_btn" xml:space="preserve">
+    <value>Tovább vásárolok</value>
+  </data>
+  <data name="Delete_Sucessfully_Caption" xml:space="preserve">
+    <value>törölt sikeresen</value>
+  </data>
+  <data name="Proceed_Checkout_btn" xml:space="preserve">
+    <value>Pénztárhoz</value>
+  </data>
+  <data name="Unable_toDelete_Caption" xml:space="preserve">
+    <value>Nem lehet törölni</value>
+  </data>
+  <data name="View_Caption" xml:space="preserve">
+    <value>kilátás</value>
+  </data>
+  <data name="SmtpConfigureMSG_AdminMaster" xml:space="preserve">
+    <value>Állítsa be az SMTP beállításokat, mielőtt tovább!</value>
+  </data>
+  <data name="PaymentGatewayConfigureMSG_AdminMaster" xml:space="preserve">
+    <value>Állítsa be a Payment Gateway beállításokat, mielőtt tovább!</value>
+  </data>
+  <data name="SmtpandPayment_Configure_Msg" xml:space="preserve">
+    <value>Beállítások mentése sikerült. Kérjük, állítsa smtp és fizetési beállításait, hogy a webhely él.</value>
+  </data>
+  <data name="API_Credential_Header" xml:space="preserve">
+    <value>Kezelés API Bizonyítvány</value>
+  </data>
+  <data name="API_Change_Username_Password_Header" xml:space="preserve">
+    <value>Változás API Felhasználónév és Jelszó</value>
+  </data>
+  <data name="CheckOut_MoneybookersInfo_Header" xml:space="preserve">
+    <value>Monerbookers Information</value>
+  </data>
+  <data name="MoneybookersId_Caption" xml:space="preserve">
+    <value>MoneybookersID</value>
+  </data>
+  <data name="MoneybookersID_Title_Caption" xml:space="preserve">
+    <value>Your MoneybookersID must be in the format of name@domain.com</value>
+  </data>
+  <data name="Moneybookers_Caption" xml:space="preserve">
+    <value>Moneybookers</value>
+  </data>
+  <data name="CheckOut_MoneybookersInfo_Header1" xml:space="preserve">
+    <value>Monerbookers Information</value>
+  </data>
+  <data name="ErrorMBSave" xml:space="preserve">
+    <value>Error while saving moneybookers settings.</value>
+  </data>
+  <data name="MoneybookerSaved" xml:space="preserve">
+    <value>Moneybookers settings saved successfully.</value>
+  </data>
+  <data name="SaveMoneybookersSetting_btn" xml:space="preserve">
+    <value>Save Moneybookers Setting</value>
+  </data>
+  <data name="Use_Moneybookers" xml:space="preserve">
+    <value>Use Moneybookers</value>
+  </data>
+  <data name="InvoiceAddress_Caption" xml:space="preserve">
+    <value>Számlázási cím</value>
+  </data>
+  <data name="PaymentNote_Caption" xml:space="preserve">
+    <value>fizetési megjegyzés</value>
+  </data>
+  <data name="PaymentNote_Small_Caption" xml:space="preserve">
+    <value>Ez a hitelkártya nyilatkozatot tudomásul.</value>
+  </data>
+  <data name="CustomerLogin_Caption" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="SelectExtraDomains_Caption" xml:space="preserve">
+    <value>Select Extra SAN</value>
+  </data>
+  <data name="TotalAdditionalDomains_Caption" xml:space="preserve">
+    <value>Total Additional SAN</value>
+  </data>
+  <data name="UsedDomains_Caption" xml:space="preserve">
+    <value>Used SAN</value>
+  </data>
+  <data name="Admin_Caption_billingCurrencySmlNote" xml:space="preserve">
+    <value>Ez a pénznem beállítás csak paypal opció</value>
+  </data>
+  <data name="Admin_Caption_Default_CurrencySymbol" xml:space="preserve">
+    <value>Alapértelmezett Oldal Pénznem Jelkép</value>
+  </data>
+  <data name="EV_Caption" xml:space="preserve">
+    <value>Extended</value>
+  </data>
+  <data name="Admin_RefundUnsuccessful" xml:space="preserve">
+    <value>Refund amount should be less than order price</value>
+  </data>
+  <data name="DownloadAuthFile_btnCaption" xml:space="preserve">
+    <value>Download Auth Fájl</value>
+  </data>
+  <data name="AuthFileDetails_Caption" xml:space="preserve">
+    <value>Auth File Details</value>
+  </data>
+  <data name="PollDate_Caption" xml:space="preserve">
+    <value>Utolsó Poll dátuma</value>
+  </data>
+  <data name="PollStatus_Caption" xml:space="preserve">
+    <value>Poll állapot</value>
+  </data>
+  <data name="TokenCode_Caption" xml:space="preserve">
+    <value>Token kód</value>
+  </data>
+  <data name="TokenID_Caption" xml:space="preserve">
+    <value>TokenID</value>
+  </data>
+  <data name="ResellersCustomerNotification_caption" xml:space="preserve">
+    <value>Egyedi e-mail cím</value>
+  </data>
+  <data name="ResellersCustomerNotification_note" xml:space="preserve">
+    <value>Testreszabása az e-mail cím viszonteladó ügyfél megújulás értesítő e-mailt.</value>
+  </data>
+  <data name="ShowBaner_on_HomePage_only_caption" xml:space="preserve">
+    <value>Honlap megjelenítése Csak</value>
+  </data>
+  <data name="ShowBaner_on_HomePage_only_Note" xml:space="preserve">
+    <value>Mutass banner csak nyitólap részleteiben nem oldalt, ha ellenőrizte</value>
+  </data>
+  <data name="payment_Paypal_msg" xml:space="preserve">
+    <value>Ön át lesz irányítva a PayPal a következő lépésben, ahol akkor is van lehetőség, hogy fizetni a hitel / betéti kártya.</value>
+  </data>
+  <data name="CheckOut_Header_Caption" xml:space="preserve">
+    <value>biztonságos Pénztár</value>
+  </data>
+  <data name="AddFund_Caption" xml:space="preserve">
+    <value>Biztonságos Add Alap</value>
+  </data>
+  <data name="AMSSL_Caption" xml:space="preserve">
+    <value>Anti-malware</value>
+  </data>
+  <data name="CSSSL_Caption" xml:space="preserve">
+    <value>kódaláírás</value>
+  </data>
+  <data name="DVSSL_Caption" xml:space="preserve">
+    <value>Domain érvényesített SSL</value>
+  </data>
+  <data name="EVSSL_Caption" xml:space="preserve">
+    <value>Extended Validation SSL</value>
+  </data>
+  <data name="OVSSL_Caption" xml:space="preserve">
+    <value>Szervezet érvényesített SSL</value>
+  </data>
+  <data name="UCSANSSL_Caption" xml:space="preserve">
+    <value>UCC SAN SSL</value>
+  </data>
+  <data name="WCSSL_Caption" xml:space="preserve">
+    <value>joker SSL</value>
+  </data>
+</root>

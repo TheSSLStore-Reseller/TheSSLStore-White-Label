@@ -1,0 +1,74 @@
+﻿@model WBSSLStore.Domain.SiteSettings
+@{
+    ViewBag.Title = "robots";
+}
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <tr>
+        <td align="left" valign="top">
+            <table width="881" border="0" align="left" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td width="7" align="left" valign="top">
+                        <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/barleft.gif" alt="whitebrand" width="7" height="55"/>
+                    </td>
+                    <td width="866" align="left" valign="middle" class="hdbarbg">
+                        <table width="840" border="0" align="center" cellpadding="1" cellspacing="1">
+                            <tr>
+                                <td width="407" align="left" valign="middle" class="head1">
+                                    @*Robots File Settings*@ @WBSSLStore.Resources.GeneralMessage.Message.Robots_File_Settings
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td width="9" align="right" valign="top">
+                        <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/barright.gif" alt="whitebrand" width="9" height="55">
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td align="left" valign="top" class="contbg">
+            <table width="95%" border="0" align="left" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td height="25" align="left" valign="middle" colspan="2">
+                        @if (!string.IsNullOrEmpty(ViewBag.Message))
+                        { 
+                            @Html.Raw(ViewBag.Message)
+                        }
+                        <p>
+                            &nbsp;
+                            @Html.HiddenFor(model => model.ID)
+                            @Html.HiddenFor(model => model.SiteID)
+                            @Html.HiddenFor(model => model.Key)
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="10%" align="left" valign="top" class="bold">
+                        &nbsp;&nbsp;&nbsp;@*Value*@ @WBSSLStore.Resources.GeneralMessage.Message.Value_Caption : 
+                    </td>
+                    <td width="90%" align="left" valign="middle">
+                        <label>
+                            @Html.TextAreaFor(model => model.Value, new { @class = "inputNormal", @style="width: 762px; height: 321px;" })                            
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                </tr>
+               
+                <tr>
+                    <td>
+                    </td>
+                    <td>
+                        <input type="submit" value="@WBSSLStore.Resources.GeneralMessage.Message.Submit_Btn" class="bluebtn" />
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr> 
+ 
+}

@@ -1,0 +1,142 @@
+﻿@model WBSSLStore.Domain.CMSPage
+@{
+    ViewBag.Title = "EditMeta";
+    ViewBag.version = WBSSLStore.Web.Helpers.Caching.SiteCacher.ResourceVersion();
+}
+@*<script src="@Url.Content("~/content/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/content/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>*@
+@System.Web.Optimization.Scripts.Render("/bundales/wb/jquery.unobtrusive.validate-js?v=" + ViewBag.version)
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <tr>
+        <td align="left" valign="top">
+            <table width="881" border="0" align="left" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td width="7" align="left" valign="top">
+                        <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/barleft.gif" alt="whitebrand" width="7" height="55">
+                    </td>
+                    <td width="866" align="left" valign="middle" class="hdbarbg">
+                        <table width="840" border="0" align="center" cellpadding="1" cellspacing="1">
+                            <tr>
+                                <td width="407" align="left" valign="middle" class="head1">
+                                    @*Edit Meta Tag*@ @WBSSLStore.Resources.GeneralMessage.Message.EditMeta_Caption
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td width="9" align="right" valign="top">
+                        <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/barright.gif" alt="whitebrand" width="9" height="55">
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td align="left" valign="top" class="contbg">
+            <table width="870" border="0" align="center" cellpadding="0" cellspacing="7">
+                <tr>
+                    <td width="867" align="center" valign="top" class="bgclr">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td align="left" valign="top">
+                                    <table width="820" border="0" align="center" cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <td height="30" align="left" valign="middle">
+                                                @Html.HiddenFor(model => model.ID)
+                                                @Html.HiddenFor(model => model.LangID)
+                                                @Html.HiddenFor(model => model.PageID)
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="left" valign="top">
+                                                <table width="90%" border="0" align="center" cellpadding="1" cellspacing="2">
+                                                    <tr>
+                                                        <td width="33%" align="right" valign="middle" class="bold">
+                                                            @Html.LabelFor(model => model.Title) :
+                                                        </td>
+                                                        <td width="67%" align="left" valign="middle">
+                                                            <label>
+                                                                @Html.TextBoxFor(model => model.Title, new { @class = "inputboxbig" })
+                                                                @Html.ValidationMessageFor(model => model.Title)
+                                                            </label>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="right" valign="middle" class="bold">
+                                                            @Html.LabelFor(model => model.Keywords) :
+                                                        </td>
+                                                        <td align="left" valign="middle">
+                                                            <label>
+                                                                @Html.TextAreaFor(model => model.Keywords, new { @cols = "25", @rows = "3", @class = "inputboxbig" })
+                                                                @Html.ValidationMessageFor(model => model.Keywords)
+                                                            </label>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="right" valign="middle" class="bold">
+                                                            @Html.LabelFor(model => model.Description) :
+                                                        </td>
+                                                        <td align="left" valign="top">
+                                                            @Html.TextAreaFor(model => model.Description, new { @cols = "25", @rows = "3", @class = "inputboxbig" })
+                                                            @Html.ValidationMessageFor(model => model.Description)
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="right" valign="middle" class="bold">
+                                                            @Html.LabelFor(model => model.HeaderSection) :
+                                                        </td>
+                                                        <td align="left" valign="top">
+                                                            @Html.TextAreaFor(model => model.HeaderSection, new { @cols = "25", @rows = "3", @class = "inputboxbig" })
+                                                            @Html.ValidationMessageFor(model => model.HeaderSection)
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="right" valign="middle" class="bold">
+                                                            @Html.LabelFor(model => model.FooterSection) :
+                                                        </td>
+                                                        <td align="left" valign="top">
+                                                            @Html.TextAreaFor(model => model.FooterSection, new { @cols = "25", @rows = "3", @class = "inputboxbig" })
+                                                            @Html.ValidationMessageFor(model => model.FooterSection)
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="right" valign="middle" class="bold">
+                                                            &nbsp;
+                                                        </td>
+                                                        <td align="left" valign="top">
+                                                            <label>
+                                                                <input name="button" type="submit" class="bluebtn" id="button" value="@WBSSLStore.Resources.GeneralMessage.Message.Submit_Btn">
+                                                            </label>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="right" valign="middle" class="bold">
+                                                            &nbsp;
+                                                        </td>
+                                                        <td align="left" valign="top">
+                                                            &nbsp;
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="left" valign="top">
+                                    &nbsp;
+                                </td>
+                            </tr>
+                            <tr>
+                                <td height="8" align="left" valign="top">
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+}

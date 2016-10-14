@@ -1,0 +1,171 @@
+﻿@model WBSSLStore.Gateways.RestAPIModels.Response.SSLConvertorResponse
+@{
+    ViewBag.Title = "SSL Converter";
+}
+@Html.Partial("_banner", new Tuple<string, string>("", "SSL TOOLS"))
+<div class="content">
+    <div class="wrapper">
+        <div class="column3">
+            <div class="mobtopcol">
+                <!--Center Panel Start-->
+                <div class="column3-2">
+                    <div class="cmnpagewrap">
+                        <h2>SSL Converter</h2>
+                        <h4>FREE SSL Format Converter</h4>
+                        <p>The SSL Converter tool allows you to convert the format of any SSL Certificate. Simply click the current format of your certificate, and then select the desired format and convert. Sometimes an SSL Certificate is issued in a format which may not be compatible with your server type, simply convert it into the compatible format.</p>
+                        <p>To enable encryption on the site, different servers require different formats of SSL certificates. SSL converter changes 6 format files in an easy and fast way. Choose the one which is required: PEM, DER, PKCS#7, P7B, PKCS#12 or PFX.</p>
+                        <p><strong>If your certificate was issued in the format not compatible with the server, convert it below:</strong></p>
+                        <ul class="commonuli">
+                            <li>Find current type,</li>
+                            <li>Check the new format,</li>
+                            <li>Select your certificate file,</li>
+                            <li>Click convert button.</li>
+                        </ul>
+                        <form method="post" action="/FreeTools/sslconvertor" id="frmsslconvertor" name="frmsslconvertor" enctype = "multipart/form-data">
+                            <div class="convernow">
+                                <div class="convertnowbox">
+                                    <label>Current type:</label>
+                                    <p>
+                                        <input type="radio" id="group_name_0" value="PEM" name="group_name" class="radmar">
+                                        <span>PEM</span>
+                                    </p>
+                                    <p>
+                                        <input type="radio" id="group_name_1" value="DER" name="group_name" class="radmar">
+                                        <span>DER</span>
+                                    </p>
+                                    <p>
+                                        <input type="radio" id="group_name_2" value="PFX" name="group_name" class="radmar">
+                                        <span>PFX</span>
+                                    </p>
+                                    <p>
+                                        <input type="radio" id="group_name_3" value="P7B" name="group_name" class="radmar">
+                                        <span>P7B</span>
+                                    </p>
+                                    <p></p>
+                                </div>
+                                <div class="convertnowbox">
+                                    <label>Change for:</label>
+                                    <p>
+                                        <input type="radio" id="chn_group_name_0" value="PEM" disabled="" name="chn_group_name" class="radmar">
+                                        <span>PEM</span>
+                                    </p>
+                                    <p>
+                                        <input type="radio" id="chn_group_name_1" value="DER" name="chn_group_name" class="radmar">
+                                        <span>DER</span>
+                                    </p>
+                                    <p>
+                                        <input type="radio" id="chn_group_name_2" value="PFX" name="chn_group_name" class="radmar">
+                                        <span>PFX</span>
+                                    </p>
+                                    <p>
+                                        <input type="radio" id="chn_group_name_3" value="P7B" name="chn_group_name" class="radmar">
+                                        <span>P7B</span>
+                                    </p>
+                                </div>
+                                <div class="convertnowbox">
+                                    <label><em>*</em>Certificate:</label>
+                                    <p class="upload">
+                                        <input type="file" id="pemfile" name="pemfile" class="inputsign">
+                                    </p>
+                                </div>
+                                <div class="convertnowbox">
+                                    <label><em>*</em>Certificate:</label>
+                                    <p class="upload">
+                                        <input type="file" id="derfile" name="derfile" class="inputsign">
+                                    </p>
+                                </div>
+                                <div class="convertnowbox">
+                                    <label><em>*</em>Certificate:</label>
+                                    <p class="upload">
+                                        <input type="file" id="pfxfile" name="pfxfile" class="inputsign">
+                                    </p>
+                                </div>
+                                <div class="convertnowbox">
+                                    <label><em>*</em>Private Key:</label>
+                                    <p class="upload">
+                                        <input type="file" id="pfxkey" name="pfxkey" class="inputsign">
+                                    </p>
+                                </div>
+                                <div class="convertnowbox">
+                                    <label>Root CA (option)</label>
+                                    <p class="upload">
+                                        <input type="file" id="chain1file" name="chain1file" class="inputsign">
+                                    </p>
+                                </div>
+                                <div class="convertnowbox">
+                                    <label>Intermediate(s) CA (option)</label>
+                                    <p class="upload">
+                                        <input type="file" id="chain2file" name="chain2file" class="inputsign">
+                                    </p>
+                                </div>
+                                <div class="convertnowbox">
+                                    <label class="setkey setlabel"><em>*</em>Set key password:</label>
+                                    <p class="upload">
+                                        <input type="password" id="pfxkeypass" name="pfxkeypass" class="chkinput inutmini">
+                                    </p>
+                                </div>
+                                <div class="convertnowbox">
+                                    <label class="mohide">&nbsp;</label>
+                                    <p class="upload">
+                                        <input type="submit" value="Convert" id="btnconvert" name="btnconvert" class="greenbtn">
+                                    </p>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </form>
+                        @if (Model != null)
+                        {
+                            if (!Model.AuthResponse.isError)
+                            {
+                        <!--Show Result Start-->
+                                <div class="graybarbox">
+                                    <h4>Your Certificate</h4>
+                                    <div class="graybarboxdtl">
+                                        <p><strong>Please save this information in a safe place!</strong></p>
+                                        <pre>@Model.Certificate
+                      
+                        </pre>
+                                    </div>
+                                </div>
+                                    <div class="graybarbox mrgbotnone">
+                                        <h4>Your Private Server Key</h4>
+                                        <div class="graybarboxdtl">
+                                            <p><strong>Save this as a .TXT file and keep it secure - your SSL certificate WILL NOT WORK without this.</strong></p>
+                                            <pre>@Model.PrivateKey
+                    </pre>
+                                        </div>
+                                    </div>
+                        <!--Show Result End-->
+                            }
+                            else
+                            {   <div class='alert-danger'>
+                            <p>@Model.AuthResponse.Message[0]</p>
+                        </div>
+                            }
+                        }
+
+                        <p> <strong>DER format: </strong>It is a binary form of PEM. It has extension .der or .cer. </p>
+                        <p> DER is typically used with Java platforms. Converter can change the type of certificate to this format &ndash; to change a private key, please use OpenSSL <a target="_blank" rel="nofollow, no index" href="http://openssl.org/docs/manmaster/apps/rsa.html">commands</a>. </p>
+                        <p> <strong>PKCS#7 or P7B format: </strong>Is usually stored in Base64 format and has extension <strong>.p7b</strong> or <strong>.p7c</strong>. Files in this format contain lines "-----BEGIN PKCS7-----" and "-----END PKCS7-----". This format is just for certificates, not for private key. </p>
+                        <p> PKCS#7 and P7B are installed on <strong>Microsoft Windows</strong> and <strong>Java Tomcat</strong> servers. </p>
+                        <p> <strong>PKCS#12 or PFX format: </strong> Is binary format storing the server certificate, intermediates certificates, and private key in one file. Usually has the extension <strong>.pfx</strong> or <strong>.p12.</strong> Typically are used on <strong>Windows</strong> machines. </p>
+                        <p> When converting PFX format to PEM, in one file will be included all certificates and private key. To separate it, you need to open this file in a simple text editor, copy every single part (with BEGIN and END lines) to different files and save it as certificate.cer, CACert.cer and privatekey.key. </p>
+                        <p> Click <a target="_blank" rel="nofollow, no index" href="http://openssl.org/docs/manmaster/apps/rsa.html">here</a> to convert formats with OpenSSL commands. </p>
+
+
+                    </div>
+                </div>
+                <!--Center Panel End-->
+                <!--Right Panel Start-->
+                @Html.Partial("_rightpanel", "")
+                <!--Right Panel Start-->
+            </div>
+
+            <!--Left Panel Start-->
+            <!--Left Panel End-->
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+
+

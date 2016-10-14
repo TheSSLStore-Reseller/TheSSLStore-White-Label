@@ -1,0 +1,96 @@
+﻿@using WBSSLStore.Domain;
+@using WBSSLStore.Web.Helpers.PopupForm
+@model WBSSLStore.Service.ViewModels.StaticPageViewModel
+@{
+    ViewBag.version = WBSSLStore.Web.Helpers.Caching.SiteCacher.ResourceVersion();
+    //WBSSLStore.Web.Util.WBSiteSettings setting = new WBSSLStore.Web.Util.WBSiteSettings(WBSSLStore.Web.Helpers.Caching.SiteCacher.CurrentSite);
+    var productdetails = WBSSLStore.Web.Helpers.WBHelper.GetProductDetailRows();
+    string UserName = Convert.ToString(ViewBag.UserName);
+}
+@section headerTags{
+    @Html.Partial("_renderSEO", Model != null && Model.CMSPage != null ? Model.CMSPage : new WBSSLStore.Domain.CMSPage())
+}
+@section sitecss{
+    @System.Web.Optimization.Styles.Render("/bundales/tabcss?v=" + ViewBag.version)
+    @System.Web.Optimization.Styles.Render("/bundales/jquery-ui-css?v=" + ViewBag.version)
+}
+@section Jscripts{
+    @System.Web.Optimization.Scripts.Render("/bundales/wb/scripts?v=" + ViewBag.version)
+}
+
+@Html.Partial("_banner", new Tuple<string, string>("banner.png", ""))
+<div class="content">
+    <div class="wrapper">
+        <div class="column3">
+            <div class="mobtopcol">
+                <div class="column3-2">
+
+                    <div id="parentHorizontalTab">
+                        <ul class="resp-tabs-list hor_1">
+                            <li><span class="brand-icon"><img alt="Symentec icon" src="/content/images/tab-symentec.png"></span><span class="brand-name"><img alt="Symentec icon" src="/content/images/tab-symentec-r.png"></span></li>
+                            <li><span class="brand-icon"><img alt="Geotrust icon" src="/content/images/tab-geotrust.png"></span><span class="brand-name"><img alt="Geotrust icon" src="/content/images/tab-geotrust-r.png"></span></li>
+                            <li><span class="brand-icon"><img alt="RapidSSL icon" src="/content/images/tab-rapid.png"></span><span class="brand-name"><img alt="RapidSSL icon" src="/content/images/tab-rapid-r.png"></span></li>
+                            <li><span class="brand-icon"><img alt="Thawte icon" src="/content/images/tab-thawte.png"></span><span class="brand-name"><img alt="Symentec icon" src="/content/images/tab-thawte-r.png"></span></li>
+                            <li><span class="brand-icon"><img alt="Comodo icon" src="/content/images/tab-comodo.png"></span><span class="brand-name"><img alt="Comodo icon" src="/content/images/tab-comodo-r.png"></span></li>
+                        </ul>
+                        <div class="resp-tabs-container hor_1">
+                            <div>
+                                @Html.Partial("_BrandControl",new Tuple<List<ProductPricing>, List<ProductDetail>>(Model.Items.Where(x => x.Product.BrandID.Equals((int)ProductBrands.Symantec)).ToList(), productdetails.ToList()))
+                            </div>
+                            <div>
+                                @Html.Partial("_BrandControl", new Tuple<List<ProductPricing>, List<ProductDetail>>(Model.Items.Where(x => x.Product.BrandID.Equals((int)ProductBrands.GeoTrust)).ToList(), productdetails.ToList()))
+                            </div>
+                            <div>
+                                @Html.Partial("_BrandControl", new Tuple<List<ProductPricing>, List<ProductDetail>>(Model.Items.Where(x => x.Product.BrandID.Equals((int)ProductBrands.RapidSSL)).ToList(), productdetails.ToList()))
+                            </div>
+                            <div>
+                                @Html.Partial("_BrandControl", new Tuple<List<ProductPricing>, List<ProductDetail>>(Model.Items.Where(x => x.Product.BrandID.Equals((int)ProductBrands.Thawte)).ToList(), productdetails.ToList()))
+                            </div>
+                            <div>
+                                @Html.Partial("_BrandControl", new Tuple<List<ProductPricing>, List<ProductDetail>>(Model.Items.Where(x => x.Product.BrandID.Equals((int)ProductBrands.Comodo)).ToList(), productdetails.ToList()))
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sslservices">
+                        <div class="tabsection">
+                            <h2>Who are we?</h2>
+                            <p><strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</strong></p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis interdum quis enim et iaculis. In ultrices ex quis risus ultrices, quis commodo sem congue. Nam malesuada bibendum dolor, in euismod neque venenatis id. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis malesuada ultrices venenatis. Etiam vulputate sodales velit, at finibus elit lobortis at. Duis ut purus eget risus dapibus pretium vitae in quam. Donec elementum cursus blandit.  <a href="about-us.html">Read more</a></p>
+                            <div class="tabbutton"> <a class="graybtn" href="what-is-ssl.html">What is SSL?</a> <a class="graybtn" href="solutions.html">SSL Solutions</a> <a class="graybtn" href="brands.html">SSL Brands</a> </div>
+                        </div>
+                        <div class="tabsection">
+                            <h2>SSL Solutions</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum in egestas ligula, vel venenatis tellus. Integer non maximus ligula, at aliquam urna. Aliquam dapibus, dui quis fringilla ullamcorper, nibh nunc tempus odio, a feugiat leo massa a quam. Nunc eleifend tincidunt elit, et vulputate felis cursus nec. Nam vel sapien ac libero ornare maximus. Aenean eget nunc sit amet nunc convallis vestibulum vitae tincidunt lectus.</p>
+                            <p>Cras sit amet suscipit erat. Quisque tempor laoreet odio sed consectetur. Curabitur condimentum tortor ac odio sollicitudin, facilisis ullamcorper turpis ornare. Mauris ut libero nisl. Phasellus non eros pellentesque, dapibus arcu et, congue mi. Sed velit metus, pulvinar sed rhoncus et, ultrices blandit elit. Integer porta lectus sed nisi varius, vitae malesuada lacus interdum. Quisque dapibus quam non tellus tempus venenatis. Duis tristique, elit eget facilisis efficitur, felis urna rutrum metus, ut dapibus neque orci at lacus. </p>
+                        </div>
+                    </div>
+                    <div class="whyus">
+                        <h2>Why Us?</h2>
+                        <p>Buying through us would be the same as buying direct from the Vendor, only with us you have one point of contact for every single type of SSL solution imaginable. Customers who buy from us get to leverage off of our High volume Platinum partner benefits which include, much better pricing and dedicated priority support for faster more efficient issuance times. We can also facilitate procurement for you and offer free security assessments and none biased solutions across the 5 brands we cover. This along with our decade in the Security business makes us the No1 choice for all our clients. <a href="why-trust-the-site.html">Read more</a></p>
+                        <div class="categories">
+                            <ul>
+                                <li><a href="#"><img alt="Multi Branded Offerring" src="/content/images/whyus-icon1.png"><span>Multi Branded Offerring</span></a></li>
+                                <li><a href="#"><img alt="Free Trust Site Seal" src="/content/images/whyus-icon2.png"><span>Free Trust Site Seal</span></a></li>
+                                <li><a href="#"><img alt="2048 Bit Encryption" src="/content/images/whyus-icon3.png"><span>2048 Bit Encryption</span></a></li>
+                                <li><a href="#"><img alt="Unlimited Free Re-Issue" src="/content/images/whyus-icon4.png"><span>Unlimited Free Re-Issue</span></a></li>
+                                <li><a href="#"><img alt="Free Priority Live Support" src="/content/images/whyus-icon5.png"><span>Free Priority Live Support</span></a></li>
+                                <li><a href="#"><img alt="Lowest Pricing" src="/content/images/whyus-icon6.png"><span>Lowest Pricing</span></a></li>
+                                <li><a href="#"><img alt="Technology and Support" src="/content/images/whyus-icon7.png"><span>Technology and Support</span></a></li>
+                                <li><a href="#"><img alt="Economies of Scale" src="/content/images/whyus-icon8.png"><span>Economies of Scale</span></a></li>
+                                <li><a href="#"><img alt="Competitive Replacement" src="/content/images/whyus-icon9.png"><span>Competitive Replacement</span></a></li>
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="tabbutton"> <a class="graybtn" href="#">Buy SSL</a> <a class="graybtn" href="#">Become a SSL Reseller</a> <a class="orangebtn" href="#">Request a Quote</a> </div>
+                    </div>
+                </div>
+                @Html.Partial("_rightpanel", (Model != null && !string.IsNullOrEmpty(Model.CurrentUserName) ? Model.CurrentUserName : ""))
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+
+@section PopupScript{
+    @Html.MakePopupForm("Edit", new[] { "id", "ppid" }, controller: "ShoppingCart", title: @WBSSLStore.Resources.GeneralMessage.Message.Add_To_Cart_Caption, successFunction: "EditSuccess", height: 450, width: 700, refreshOnSuccess: false, okText: @WBSSLStore.Resources.GeneralMessage.Message.SAVE_btn)
+}

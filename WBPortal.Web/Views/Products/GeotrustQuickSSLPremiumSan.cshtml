@@ -1,0 +1,136 @@
+﻿@model WBSSLStore.Service.ViewModels.StaticPageViewModel
+@{
+    ViewBag.Title = "SecureSiteProwithEV";  var productdetails = WBSSLStore.Web.Helpers.WBHelper.GetProductDetailRows();
+    string brand = Model != null && Model.Items != null && Model.Items.FirstOrDefault().Product != null && Model.Items.FirstOrDefault().Product.Brand != null ? Model.Items.FirstOrDefault().Product.Brand.BrandName : "";
+    string username = ViewBag.UserName;
+}
+@section headerTags{
+    @Html.Partial("_renderSEO", Model != null && Model.CMSPage != null ? Model.CMSPage : new WBSSLStore.Domain.CMSPage())
+}
+@Html.Partial("_banner", new Tuple<string, string>("", "SSL Brands"))
+<div class="content">
+  <div class="wrapper">
+    <div class="column3">
+      <div class="mobtopcol">
+        <div class="column3-2">
+          <div class="prodetailswrap marzerotop"> @Html.Partial("_ProdPricing", new Tuple<List<WBSSLStore.Domain.ProductPricing>, List<WBSSLStore.Domain.ProductDetail>>(Model.Items.ToList(), productdetails.ToList())) </div>
+          <div class="prodescrip marzerotop">
+            <div class="prodescriptxt">
+              <h2>Product Description</h2>
+              <p>The GeoTrust Quick SSL Premium Multi-Domain is an <strong>economical</strong> and <strong>efficient</strong> way to secure one main domain (www.domain.com) and up to 4 additional single-level subdomains (mail.domain.com, login.domain.com, retail.domain.com, etc.). GeoTrust is one of the most recognized online security companies in the world, and you can harness the power of this brand for an unbelievable price. Plus, this certificate is true to its name, as it can be issued in only a few minutes, since it requires just basic domain validation. This certificate is best suited for small-to-medium sized businesses and start-ups that want to instantly throw their name in the hat with some of the larger players in the ecommerce industry.</p>
+            </div>
+          </div>
+          <div id="cssmenu">
+            <ul class="accordion_example">
+              <li class="brand-symantec acc_active">
+                <div>
+                  <p>Assurance &amp; Authentication</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>Your customers will get the assurance they need to make purchases on your site with the GeoTrust Site Seal, the <strong>https</strong> display, and the <strong>padlock icon</strong> next to your URL. These visual indicators establish that company's website is a trustworthy place and secure to make transactions online. Authentication for this certificate typically takes just 10 minutes, since it requires only basic domain validation. Once GeoTrust verifies that you own the domain you wish to secure, the certificate will be issued. </p>
+                  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Security &amp; Encryption</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>The GeoTrust&reg; QuickSSL Premium Multi-Domain offers full <strong>256-bit encryption</strong> and is signed with a <strong>2048-bit root</strong>. With this certificate, you can rest assured that you won't have to break the bank for a premium-level encryption on your domain and subdomains. </p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>SAN &amp; Multi-Domain Support</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>You can cover one main domain and 4 additional single-level subdomains with this economical certificate.</p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Features &amp; Benefits</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <ul class="featurelist">
+                    <li>Secure up to 4 additional SANs</li>
+                    <li>Fully automated Domain Validated Certificate</li>
+                    <li>99.9% browser recognition rate</li>
+                    <li>Unlimited reissues</li>
+                    <li>Quickssl premium with SAN carry the warranty of $500,000</li>
+                    <li>Secure Multiple Domains on a Single IP Address**</li>
+                  </ul>
+				  <div class="clear"></div>
+                  <p class="notesml">** Applicable to a server that supports SNI (Server Name Indication)</p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Product Specifications</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <ul class="featurelist">
+                    <li>Domain validated certificate</li>
+                    <li>WWW and non-WWW domain name secured with a single certificate.</li>
+                    <li>Unlimited, free self-service reissues</li>
+                    <li>Compatible with 99% of current browsers.</li>
+                    <li>Site Seal Included</li>
+                    <li>Unlimited &ndash; Install on any number of servers</li>
+                    <li>FREE self-service reissues during validity period</li>
+                  </ul>
+				  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Site Seal</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>This Site Seal embeds time-stamped information like the organization name and date. The GeoTrust site seal goes <strong>above and beyond</strong> just standard company information offered in site seals from other similar-priced SSL certificates. A GeoTrust site seal will let your customers know that you've invested in their security and have been thoroughly vetted by a third-party specialist.</p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Warranty</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>The GeoTrust QuickSSL Premium Multi-Domain certificate comes with by a <strong>$500,000 USD warranty</strong>. A warranty here means that if your site is breached due to a flaw in the SSL, an extremely unlikely event, you will be compensated for up to $500,000 by GeoTrust if any of your customers experience a loss because of this.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        @Html.Partial("_rightpanel", username) </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+@section Jscripts{ 
+<script type="text/javascript">
+        $(document).ready(function () {
+            // Mobile Menu
+            $("#showmenu").click(function (e) {
+                e.preventDefault();
+                $("#menu").toggleClass("show");
+            });
+            $("#menu a").click(function (event) {
+                event.preventDefault();
+                if ($(this).next('ul').length) {
+                    $(this).next().toggle('fast');
+                    $(this).children('i:last-child').toggleClass('fa-caret-down fa-caret-left');
+                }
+            });
+            $(document).click(function (e) {
+                if (!$(e.target).is(".mobmemu, .mobmemu  *")) { $("#menu").toggleClass("hide"); $("#menu").removeClass("show"); }
+            });
+            $(".accordion_example").smk_Accordion();
+        });
+    </script> 
+} 

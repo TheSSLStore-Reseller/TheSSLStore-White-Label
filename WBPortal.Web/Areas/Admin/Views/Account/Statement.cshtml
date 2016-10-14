@@ -1,0 +1,247 @@
+﻿@using WBSSLStore.Web.Helpers.PagedList
+@model IPagedList<WBSSLStore.Service.ViewModels.AccountStatement>           
+@{
+    ViewBag.Title = "Account Statement";
+    string CurrentLangCode = WBSSLStore.Web.Helpers.WBHelper.CurrentLangCode;
+    ViewBag.version = WBSSLStore.Web.Helpers.Caching.SiteCacher.ResourceVersion();   
+}
+@*<link rel="stylesheet" href="@Url.Content("~/content/themes/base/jquery-ui.min.css")" type="text/css" />*@
+@*<script src="@Url.Content("~/Content/Scripts/Jquery.UI/jquery-ui.min.js")"  type="text/javascript"></script>*@
+
+@System.Web.Optimization.Scripts.Render("/bundales/jquery-ui?v=" + ViewBag.version)
+@System.Web.Optimization.Styles.Render("/bundales/jquery-ui-css?v=" + ViewBag.version)
+
+
+<script src="@Url.Content("~/content/Scripts/i18n/jquery.ui.datepicker-" +CurrentLangCode + ".js")" type="text/javascript"></script>
+
+<script type="text/javascript">
+
+</script>
+<script type="text/javascript" language="javascript">
+    $(function () {
+        var dates = $("#txtFromDate, #txtToDate").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            numberOfMonths: 1,
+            showOn: "both",
+            buttonImage: "@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-date.gif",
+            buttonImageOnly: true,
+            onSelect: function (selectedDate) {
+                var option = this.id == "txtFromDate" ? "minDate" : "maxDate",
+					instance = $(this).data("datepicker"),
+					date = $.datepicker.parseDate(
+						instance.settings.dateFormat ||
+						$.datepicker._defaults.dateFormat,
+						selectedDate, instance.settings);
+                dates.not(this).datepicker("option", option, date, $.datepicker.regional["@(CurrentLangCode)"]);
+
+
+            }
+        });
+    });
+</script>
+<tr>
+    <td align="left" valign="top">
+        <table width="881" border="0" align="left" cellpadding="0" cellspacing="0">
+            <tr>
+                <td width="7" align="left" valign="top">
+                    <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/barleft.gif" alt="whitebrand" width="7" height="55" />
+                </td>
+                <td width="866" align="left" valign="middle" class="hdbarbg">
+                    <table width="840" border="0" align="center" cellpadding="1" cellspacing="1">
+                        <tr>
+                            <td width="407" align="left" valign="middle" class="head1">
+                                @*Account Statement*@ @WBSSLStore.Resources.GeneralMessage.Message.Statement_Header
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td width="9" align="right" valign="top">
+                    <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/barright.gif" alt="whitebrand" width="9" height="55" />
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>
+<tr>
+    <td align="left" valign="top" class="contbg">
+        <table width="870" border="0" align="center" cellpadding="0" cellspacing="7">
+            <tr>
+                <td width="867" align="center" valign="top" class="bgclr">
+                    <table width="840" border="0" align="center" cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td width="854" align="left" valign="top">
+                                <table width="840" border="0" align="center" cellpadding="0" cellspacing="0">
+                                    <tr>
+                                        <td width="854" height="20" align="left" valign="middle">
+                                            &nbsp;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" valign="top">
+                                            <table width="840" border="0" align="left" cellpadding="1" cellspacing="1">
+                                                <tr>
+                                                    <td width="27%" align="left" valign="middle">
+                                                        <table width="100%" border="0" align="left" cellpadding="1" cellspacing="1">
+                                                            <tr>
+                                                                <td width="59%" align="left" valign="middle" class="bold">
+                                                                    <h3>
+                                                                        @*Account Balance*@ @WBSSLStore.Resources.GeneralMessage.Message.AccountBalance_Caption:</h3>
+                                                                </td>
+                                                                <td width="44%" align="left" valign="top" class="redfont">
+                                                                    <strong>@(string.Format("{0:C}", Convert.ToDecimal(ViewBag.AccountBalance)))</strong>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                    <td width="70%" align="left" valign="top">
+                                                        @using (Html.BeginForm("statement", "account", FormMethod.Post))
+                                                        {
+                                                            <table width="98%" border="0" align="right" cellpadding="1" cellspacing="1">
+                                                                <tr>
+                                                                    <td width="64%" align="left" valign="middle">
+                                                                        <table width="100%" border="0" align="right" cellpadding="0" cellspacing="0">
+                                                                            <tr>
+                                                                                <td width="20%" align="left" valign="middle">
+                                                                                    @*Start Date*@ @WBSSLStore.Resources.GeneralMessage.Message.StartDate_Caption:
+                                                                                </td>
+                                                                                <td width="30%" align="left" valign="middle">
+                                                                                    <input name="txtFromDate" class="inputboxmini" type="text" size="10"  id="txtFromDate" value="@(ViewBag.FromDate ?? DateTimeWithZone.Now.AddYears(-1).ToShortDateString())" />
+                                                                                </td>
+                                                                                <td width="20%" align="center" valign="middle" class="bold">
+                                                                                    @*End Date*@ @WBSSLStore.Resources.GeneralMessage.Message.EndDate_Caption:
+                                                                                </td>
+                                                                                <td width="40%" align="left" valign="middle">
+                                                                                    <input name="txtToDate" class="inputboxmini" type="text" size="10"   id="txtToDate" value="@(ViewBag.ToDate ?? DateTimeWithZone.Now.ToShortDateString())" />
+                                                                                </td>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </td>
+                                                                    <td width="28%" align="left" valign="middle">
+                                                                        <input type="submit" id="btnSubmit" name="btnSubmit" value="@WBSSLStore.Resources.GeneralMessage.Message.Search_btn" class="bluebtnlitesml" />
+                                                                        &nbsp;
+                                                                        <input type="submit" id="btnExport" name="btnExport" value="@WBSSLStore.Resources.GeneralMessage.Message.ExportToCSV_btn" class="bluebtnlitesml" />
+                                                                    </td>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td>
+                                                                    </td>
+                                                                    <td>
+
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        }
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td height="8" align="left" valign="top">
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="left" valign="top">
+                                <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/grydivider.gif" alt="" width="840" height="6" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="left" valign="top">
+                                <table width="841" border="0" align="center" cellpadding="0" cellspacing="0">
+                                    <tr>
+                                        <td height="8" align="left" valign="top">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" valign="top" bgcolor="#d6d6d6">
+                                            <div>
+                                                <table width="100%" border="0" align="left" cellpadding="5" cellspacing="1">
+                                                    @if (Model != null && Model.Count() > 0)
+                                                    {
+                                                        <tr>
+                                                            <td width="11%" align="left" valign="middle" bgcolor="#eff8fd" class="bluefont">
+                                                                @*Order Date*@ @WBSSLStore.Resources.GeneralMessage.Message.OrderDate_Caption
+                                                            </td>
+                                                            <td width="43%" height="35" align="left" valign="middle" bgcolor="#eff8fd" class="bluefont">
+                                                                @*Transaction Details*@ @WBSSLStore.Resources.GeneralMessage.Message.TransactionDetail_Caption
+                                                            </td>
+                                                            <td width="12%" align="center" valign="middle" bgcolor="#eff8fd" class="bluefont">
+                                                                @*Type*@ @WBSSLStore.Resources.GeneralMessage.Message.Statement_Type_Caption
+                                                            </td>
+                                                            <td width="11%" align="center" valign="middle" bgcolor="#eff8fd" class="bluefont">
+                                                                @*Payment-Amount*@ @WBSSLStore.Resources.GeneralMessage.Message.Statement_Payment_Amount
+                                                            </td>
+                                                            <td width="11%" align="center" valign="middle" bgcolor="#eff8fd" class="bluefont">
+                                                                @*Credit*@ @WBSSLStore.Resources.GeneralMessage.Message.Statement_Credit_Caption
+                                                            </td>
+                                                            <td width="12%" align="center" valign="middle" bgcolor="#eff8fd" class="bluefont">
+                                                                @*Price*@ @WBSSLStore.Resources.GeneralMessage.Message.Price_Caption
+                                                            </td>
+                                                        </tr>
+                                                        foreach (var item in Model)
+                                                        {
+                                                        <tr>
+                                                            <td align="left" valign="top" bgcolor="#FFFFFF">
+                                                                @item.TransactionDate.ToShortDateString()
+                                                            </td>
+                                                            <td align="left" valign="top" bgcolor="#FFFFFF">
+                                                                @Html.Raw(item.TransactionDetail)
+                                                            </td>
+                                                            <td align="center" valign="top" bgcolor="#FFFFFF">
+                                                                @item.TransactionMode.ToString()
+                                                            </td>
+                                                            <td align="center" valign="top" bgcolor="#FFFFFF">
+                                                                @(item.PaymentMode != null ? item.PaymentMode.ToString() + "-" + item.PaymentAmount.ToString("C") : "-")
+                                                            </td>
+                                                            <td align="center" valign="top" bgcolor="#FFFFFF" class="bold">
+                                                                @(item.CreditAmount != null && item.CreditAmount > 0 ? item.CreditAmount.ToString("C") : "-")
+                                                            </td>
+                                                            <td align="center" valign="top" bgcolor="#FFFFFF" class="bold">
+                                                                @if (item.TransactionMode == WBSSLStore.Domain.TransactionMode.ORDER || item.TransactionMode == WBSSLStore.Domain.TransactionMode.REISSUE)
+                                                                {
+                                                                    <span class="redfont">@((item.CreditAmount + item.PaymentAmount).ToString("C"))</span>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <span class="greensfont">@((item.CreditAmount + item.PaymentAmount).ToString("C"))</span>
+                                                                }
+                                                            </td>
+                                                        </tr>
+                                                        }
+                                                        <tr>
+                                                            <td align="center" valign="top" bgcolor="#FFFFFF" class="bold" colspan="6">
+                                                                @Html.PagedListPager(Model, page => Url.Action(Model.ActionName, Model.ControllerName, new { page = page + 1 }))
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                    else
+                                                    { 
+                                                        <tr>
+                                                            <td width="100%" colspan="6">
+                                                                <div class="errormsg">
+                                                                    @*No Record Found*@ @WBSSLStore.Resources.GeneralMessage.Message.NoRecord</div>
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                </table>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td height="8" align="left" valign="top">
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>

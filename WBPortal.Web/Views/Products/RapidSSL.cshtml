@@ -1,0 +1,145 @@
+﻿@model WBSSLStore.Service.ViewModels.StaticPageViewModel
+@{
+    ViewBag.Title = "SecureSiteProwithEV";  var productdetails = WBSSLStore.Web.Helpers.WBHelper.GetProductDetailRows();
+    string brand = Model != null && Model.Items != null && Model.Items.FirstOrDefault().Product != null && Model.Items.FirstOrDefault().Product.Brand != null ? Model.Items.FirstOrDefault().Product.Brand.BrandName : "";
+    string username = ViewBag.UserName;
+}
+@section headerTags{
+    @Html.Partial("_renderSEO", Model != null && Model.CMSPage != null ? Model.CMSPage : new WBSSLStore.Domain.CMSPage())
+}
+@Html.Partial("_banner", new Tuple<string, string>("", "SSL Brands"))
+<div class="content">
+    <div class="wrapper">
+        <div class="column3">
+            <div class="mobtopcol">
+                <div class="column3-2">
+                    <div class="prodetailswrap marzerotop"> @Html.Partial("_ProdPricing", new Tuple<List<WBSSLStore.Domain.ProductPricing>, List<WBSSLStore.Domain.ProductDetail>>(Model.Items.ToList(), productdetails.ToList())) </div>
+                    <div class="prodescrip marzerotop">
+                        <div class="prodescriptxt">
+                            <h2>Product Description</h2>
+                            <p>RapidSSL&reg; is an SSL industry staple. This low-cost certificate option is the standard 128/256-bit and it's one of the most popular Domain Validated (DV) SSL certificates in the world. It's known for its blazing fast issuance process and super affordable price. 99+% of all browsers recognize this certificate and it's an ideal solution for entry-level websites.</p>
+                            </div>
+                        
+                    </div>
+                    <div id="cssmenu">
+                        <ul class="accordion_example">
+                            
+                            <li class="brand-symantec acc_active">
+                                <div>
+                                    <p>Assurance &amp; Authentication</p>
+                                    <div class="clear"></div>
+                                </div>
+                                <div>
+                                    <p>It's quick, <strong>cost-effective &amp; easy</strong> to install a DV SSL certificate, and this solution offers a basic level of assurance to site users by displaying https and activating the little padlock icon in the URL space of web browsers. You can get this almost INSTANTLY*** by using our lightning-fast and automated Domain Control Validation (DCV) process. You'll also have access to a static trust seal (or trust mark) that you can download and display on your website.</p>
+                                    <p class="notesml">*** Issuance of the certificate is based on the validation process</p>
+                                    <div class="clear"></div>
+                                </div>
+                            </li>
+                            <li class="brand-symantec">
+                                <div>
+                                    <p>Security &amp; Encryption</p>
+                                    <div class="clear"></div>
+                                </div>
+                                <div>
+                                    <p>RapidSSL&reg; is a fully-stable 128/256-bit single-root SSL certificate. This makes it an ideal solution for a very light ecommerce site or a perfect way to safely secure something like a customer login form.</p>
+                                </div>
+                            </li>
+                            <li class="brand-symantec">
+                                <div>
+                                    <p>SAN &amp; multi-domain support</p>
+                                    <div class="clear"></div>
+                                </div>
+                                <div>
+                                    <p>Unfortunately, a standard RapidSSL® Certificate does <strong>NOT</strong> have a SAN or Multi-Domain supported option.</p>
+                                </div>
+                            </li>
+                            <li class="brand-symantec">
+                                <div>
+                                    <p>Features &amp; Benefits</p>
+                                    <div class="clear"></div>
+                                </div>
+                                <div>
+                                    <ul class="featurelist">
+                                        <li>Strong 128/256 bit encryption, industry standard SSL</li>
+                                        <li>The lowest cost install SSL certificate </li>
+                                        <li>99% browser recognition rate, no chained installation</li>
+                                        <li>Automated online validation &ndash; no paperwork</li>
+                                        <li>Immediate SSL certificate issuance 24/7/365 </li>
+                                        <li>Multi-year savings available &ndash; 1 to 4 year issuance </li>
+                                        <li>FREE "Secured by RapidSSL" site seal </li>
+                                        <li class="bdrbtm">$10,000 warranty</li>
+                                    </ul>
+									<div class="clear"></div>
+                                    <p class="notesml">** Applicable to a server that supports SNI (Server Name Indication)</p>
+                                </div>
+                            </li>
+                            <li class="brand-symantec">
+                                <div>
+                                    <p>Product Specifications</p>
+                                    <div class="clear"></div>
+                                </div>
+                                <div>
+                                    <ul>
+                                        <li>Single Domain Name (FQDN)</li>
+                                        <li>Issued Immediate ***</li>
+                                        <li>Domain Validation</li>
+                                        <li>Domain Name Shown On Certificate Only</li>
+                                        <li>Encryption Strength Up to 256-bit</li>
+                                        <li>99% Browser Compatibility</li>
+                                        <li>Site Seal Included</li>
+                                        <li>Unlimited Server Licenses &ndash; Install on any number of servers</li>
+                                        <li>FREE self-service reissues during validity period</li>
+                                    </ul>
+									<div class="clear"></div>
+                                    <p class="notesml">*** Issuance of the certificate is based on the  validation process</p>
+                                </div>
+                            </li>
+                            <li class="brand-symantec">
+                                <div>
+                                    <p>Site Seal</p>
+                                    <div class="clear"></div>
+                                </div>
+                                <div>
+                                    <p>With this DV cert, you get to display a <strong>static site seal</strong>, to show off that your site is protected by this recognized SSL brand. It says "Secured by RapidSSL&reg;" right on it. Static site seals are quick &amp; easy to install, however they are not "clickable" to show additional verification information related to your site. It also does not display any dynamic or real-time data related to your site's security. </p>
+                                </div>
+                            </li>
+                            <li class="brand-symantec">
+                                <div>
+                                    <p>Warranty</p>
+                                    <div class="clear"></div>
+                                </div>
+                                <div>
+                                    <p>With this product, you get a <strong>$10,000</strong> warranty. This means that if the site was improperly validated, actually not secured and/or issued to a fraudulent site by this Certificate Authority (CA), etc., the CA would compensate the end user of the site or victim up to $10,000 for any loss or damages incurred. Warranties are geared towards protecting your customers and to establish credibility of the site owner, giving users the confidence they need to make purchases on your site.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                @Html.Partial("_rightpanel", username)
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+@section Jscripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Mobile Menu
+            $("#showmenu").click(function (e) {
+                e.preventDefault();
+                $("#menu").toggleClass("show");
+            });
+            $("#menu a").click(function (event) {
+                event.preventDefault();
+                if ($(this).next('ul').length) {
+                    $(this).next().toggle('fast');
+                    $(this).children('i:last-child').toggleClass('fa-caret-down fa-caret-left');
+                }
+            });
+            $(document).click(function (e) {
+                if (!$(e.target).is(".mobmemu, .mobmemu  *")) { $("#menu").toggleClass("hide"); $("#menu").removeClass("show"); }
+            });
+            $(".accordion_example").smk_Accordion();
+        });
+    </script>
+} 

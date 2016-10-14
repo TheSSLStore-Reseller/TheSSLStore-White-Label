@@ -1,0 +1,54 @@
+﻿@using WBSSLStore.Web.Util;
+@using WBSSLStore.Domain;
+@model IEnumerable<WBSSLStore.Domain.OrderDetail>
+@{
+    WBSiteSettings setting = new WBSiteSettings(WBSSLStore.Web.Helpers.Caching.SiteCacher.CurrentSite);
+    ViewBag.Title = "Account Summary";
+    string username = ViewBag.UserName;
+}
+@section sitecss{
+}
+@section Jscripts{
+    <script type="text/javascript" language="javascript">
+        function addfundSuccess(result) {
+            if (result.isSuccess) {
+                document.getElementById('dvSummaryLogin').style.display = 'block';
+                location.href = result.RedirectUrl;
+            }
+            else {
+                alert(result.ErrorMessage);
+            }
+        }
+    </script>
+    @if (!string.IsNullOrEmpty(ViewBag.JsonResult))
+    {
+        <script type="text/javascript" language="javascript">
+            var objResult =@Html.Raw(ViewBag.JsonResult)
+            addfundSuccess(objResult);
+        </script>
+    }
+}
+@Html.Partial("_banner", new Tuple<string, string>("", WBSSLStore.Resources.GeneralMessage.Message.AccSummary_Header))
+<div class="content">
+    <div class="wrapper">
+        <div class="column3">
+            <div class="column3-0">
+                <div class="controlpnldata">
+                    <h2>
+                        @WBSSLStore.Resources.GeneralMessage.Message.AccSummary_Header
+                    </h2>
+                    @{Html.RenderPartial("_AccountSummary", ViewBag.AccountSummary as WBSSLStore.Service.ViewModels.AccountSummary);}
+
+                    @Html.Partial("_incompleteOrderslist", new Tuple<List<WBSSLStore.Domain.OrderDetail>, string>(Model.ToList(), !string.IsNullOrEmpty(setting.InvoicePrefix) ? setting.InvoicePrefix.ToString() : ""))
+                    <div class="clear"></div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            @Html.Partial("_rightpanel", username)
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+@{
+    setting = null;
+}

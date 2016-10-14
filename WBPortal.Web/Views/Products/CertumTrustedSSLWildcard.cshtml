@@ -1,0 +1,133 @@
+﻿@model WBSSLStore.Service.ViewModels.StaticPageViewModel
+@{
+    ViewBag.Title = "SecureSiteProwithEV";  var productdetails = WBSSLStore.Web.Helpers.WBHelper.GetProductDetailRows();
+    string brand = Model != null && Model.Items != null && Model.Items.FirstOrDefault().Product != null && Model.Items.FirstOrDefault().Product.Brand != null ? Model.Items.FirstOrDefault().Product.Brand.BrandName : "";
+    string username = ViewBag.UserName;
+}
+@section headerTags{
+    @Html.Partial("_renderSEO", Model != null && Model.CMSPage != null ? Model.CMSPage : new WBSSLStore.Domain.CMSPage())
+}
+@Html.Partial("_banner", new Tuple<string, string>("", "SSL Brands"))
+<div class="content">
+  <div class="wrapper">
+    <div class="column3">
+      <div class="mobtopcol">
+        <div class="column3-2">
+          <div class="prodetailswrap marzerotop"> @*@Html.Partial("_ProdPricing", new Tuple<List<WBSSLStore.Domain.ProductPricing>, List<WBSSLStore.Domain.ProductDetail>>(Model.Items.ToList(), productdetails.ToList()))*@ </div>
+          <div class="prodescrip marzerotop">
+            <div class="prodescriptxt">
+              <h2>Product Description</h2>
+              <p>With the Certum Trusted SSL Wildcard certificate, you can get a premium and economical security product without breaking your budget. That's because with just one certificate, you can cover your main domain and all of your accompanying subdomains. Additionally, because this is an Organization Validated (OV) cert, it includes a dynamic site seal that will display your validated company information, instantly assuring your online customers that you are who you say you are. This certificate will also activate "<strong>https</strong>" next to your URL and display the trusted <strong>padlock icon</strong>. The Certum Trusted SSL Wildcard certificate is perfect for any company looking to secure all of their subdomains and boost the trust of their website.</p>
+            </div>
+          </div>
+          <div id="cssmenu">
+            <ul class="accordion_example">
+              <li class="brand-symantec acc_active">
+                <div>
+                  <p>Assurance &amp; Authentication</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>In as few as 15 minutes, after the domain ownership verification is complete, you can present the Certum site seal on your website and encrypt your end users' information. The benefit of only validating domain ownership means you <strong>spend less time waiting</strong> on issuance and <strong>save money</strong> by choosing the most basic verification process. Easy installation &amp; quick issuance makes this certificate highly attractive for any of the smaller ecommerce websites, along with internal sites.</p>
+                  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Security &amp; Encryption</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>The excellent can be issued with either 128-bit or 256-bit encryption and signed with an industry standard 2048-bit root. Customers can rest assured that, with a Certum Trusted SSL certificate, they are getting a <strong>premium security product</strong>. </p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>SAN &amp; Multi-Domain Support</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>Because this is a wildcard certificate, it covers one main domain and all of the accompanying subdomains, which makes it one of the most efficient certificates on the market. So, you can use the Certum Trusted SSL Wildcard certificate to cover www.domain.com and also mail.domain.com, signup.domain.com, subdomain.domain.com, etc.</p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Features &amp; Benefits</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <ul class="featurelist">
+                        <li>Validation: OV</li>
+                        <li>$250,000 Warranty</li>
+                        <li>Secures all subdomains of 1 domain name [*.exampledomain.com]</li>
+                        <li>99.00% browser recognition</li>
+                        <li>128-256 bit encryption strength</li>
+                        <li>Fast Verification</li>
+                      </ul>
+					  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Product Specifications</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <ul class="featurelist">
+                        <li>Universal major browser compatibility</li>
+                        <li>Free CERTUM Site Seal &ndash; visibly display your credibility</li>
+                        <li>Secures unlimited no. of servers with only 1 SSL certificate</li>
+                        <li>Certificate contains one domain name</li>
+                        <li>Protects domain name with www (eg. www.exampledomain.com) and without www (eg. exampledomain.com)</li>
+                      </ul>
+					  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Site Seal</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>This certificate includes the "Secured by Certum" Site Seal. Since this is an Organization Validated (OV) wildcard certificate, the site seal is dynamic. A <strong>dynamic site seal</strong> displays real-time validated information about your company that a customer can access just by clicking it. This is just another way that a user can quickly verify that your company is who it says it is and feel confident making purchases online.</p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Warranty</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>The Certum Trusted SSL Wildcard certificate is backed by a generous <strong>$250,000 warranty</strong>, one of the highest warranties available for a wildcard cert. This warranty means that, in the improbable event that a website is hacked due to a flaw in the SSL and a customer experiences losses because of this, you will be compensated by the Certification Authority for up to $250,000 in damages.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        @Html.Partial("_rightpanel", username) </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+@section Jscripts{ 
+<script type="text/javascript">
+        $(document).ready(function () {
+            // Mobile Menu
+            $("#showmenu").click(function (e) {
+                e.preventDefault();
+                $("#menu").toggleClass("show");
+            });
+            $("#menu a").click(function (event) {
+                event.preventDefault();
+                if ($(this).next('ul').length) {
+                    $(this).next().toggle('fast');
+                    $(this).children('i:last-child').toggleClass('fa-caret-down fa-caret-left');
+                }
+            });
+            $(document).click(function (e) {
+                if (!$(e.target).is(".mobmemu, .mobmemu  *")) { $("#menu").toggleClass("hide"); $("#menu").removeClass("show"); }
+            });
+            $(".accordion_example").smk_Accordion();
+        });
+    </script> 
+} 

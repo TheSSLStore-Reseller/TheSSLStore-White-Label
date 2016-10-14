@@ -1,0 +1,132 @@
+﻿@using WBSSLStore.Web.Util;
+@using WBSSLStore.Domain;
+@model IEnumerable<WBSSLStore.Domain.OrderDetail>
+@{
+    WBSiteSettings setting = new WBSiteSettings(WBSSLStore.Web.Helpers.Caching.SiteCacher.CurrentSite);
+    ViewBag.Title = "Invoice";
+
+    User adminuser = WBSSLStore.Web.Helpers.Caching.SiteCacher.SiteAdminDetail(setting.SiteID);
+    User currentuser = ViewBag.CurrentUser as User;
+    int OrderID = 0;
+    if (Model != null && Model.Count() > 0)
+    {
+        OrderID = Model.First().OrderID;
+    }
+    string username = currentuser != null ? currentuser.FirstName + " " + currentuser.LastName : string.Empty;
+    var SiteSettingsData = DependencyResolver.Current.GetService<WBSSLStore.Data.Infrastructure.IRepository<SiteSettings>>();
+    var sitesignature = SiteSettingsData.Find(ss => ss.SiteID == setting.SiteID && ss.Key.ToLower() == WBSSLStore.Domain.SettingConstants.CURRENT_SITE_SIGNATURE).FirstOrDefault();
+}
+
+@section sitecss{
+
+}
+@section Jscripts{
+    <script type="text/javascript" language="javascript">
+    $(function () {
+        $(".printBtn").click(function () {
+            $('#printData').hide();
+            var disp_setting = "toolbar=yes,location=no,directories=yes,menubar=yes,";
+            disp_setting += "scrollbars=yes,width=750, height=600, left=100, top=25";
+            var docprint = window.open("", "", disp_setting);
+            docprint.document.open();
+            docprint.document.write('<html><head><title>Invoice</title>');
+            docprint.document.write('<link href="/bundales/homepagecss" rel="stylesheet" type="text/css" />');
+            docprint.document.write('</head><body onload="window.print();window.close();">');
+            docprint.document.write('<table width="100%" border="0" align="left" cellpadding="0" cellspacing="0"><tr>' + $('#invoiceData').html() + '</tr></table>');
+            docprint.document.write('</body></html>');
+            docprint.document.close();
+            $('#printData').show();
+        });
+    });
+    </script>
+}
+@Html.Partial("_banner", new Tuple<string, string>("", WBSSLStore.Resources.GeneralMessage.Message.Invoice_Header))
+<div class="content">
+    <div class="wrapper">
+        <div class="column3">
+            <div class="column3-0">
+                <div class="controlpnldata">
+                    <div class="invoiceheader">
+                        <span><img alt="logo" src="/upload/sitelogo/logo.png"></span>
+                        <p>
+                        <a class="printlink printBtn" href="javascript:;">@WBSSLStore.Resources.GeneralMessage.Message.Print_Caption</a>
+                        </p>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="invoicedtl">
+                        <p><strong>@WBSSLStore.Resources.GeneralMessage.Message.InvoiceNo_Caption:</strong> @(!string.IsNullOrEmpty(setting.InvoicePrefix) ? setting.InvoicePrefix : "SSL-" + OrderID)</p>
+                        <p class="cmnpara"><strong>@WBSSLStore.Resources.GeneralMessage.Message.InvoiceDate_Caption: </strong> @Model.FirstOrDefault().Order.OrderDate.ToString("MMM dd ,yyyy")</p>
+                        <div class="invoicebillinfo">
+                            <p class="cmnpara">
+                                @if (sitesignature != null && !string.IsNullOrEmpty(sitesignature.Value))
+                                {
+                                    @Html.Raw(sitesignature.Value.ToString());
+                                }
+                                else
+                                {
+                                    <strong>@adminuser.Address.CompanyName</strong>
+                                    <br />
+                                    @adminuser.Address.Street
+                                    <br />
+                                    @adminuser.Address.City; @adminuser.Address.State; @adminuser.Address.Zip;
+                                    <br />
+                                    @WBSSLStore.Resources.GeneralMessage.Message.Phone_Caption  @adminuser.Address.Phone; <br />
+                                    @WBSSLStore.Resources.GeneralMessage.Message.Fax_Caption @adminuser.Address.Fax; <br />
+                                    <strong>Email :</strong> <strong>@setting.SiteBillingEmail</strong>
+                                }
+                            </p>
+                            <p class="cmnpara">
+                                <strong>@WBSSLStore.Resources.GeneralMessage.Message.Bill_To:</strong><br>
+                                @(currentuser.FirstName + " " + currentuser.LastName)<br />
+                                @currentuser.CompanyName<br />
+                                @currentuser.Address.Street<br />
+                                @currentuser.Address.City, @currentuser.Address.State &nbsp; @currentuser.Address.Zip<br />
+                                <span><strong>@WBSSLStore.Resources.GeneralMessage.Message.Phone_Caption:</strong> @currentuser.Address.Phone</span>
+                                <span><strong>@WBSSLStore.Resources.GeneralMessage.Message.Email_Caption:</strong>@currentuser.Email</span>
+                                @if (!string.IsNullOrEmpty(Model.FirstOrDefault().Order.VATNumber))
+                                {
+                                    <span><strong>@(WBSSLStore.Resources.GeneralMessage.Message.VAT):</strong> @(Model.FirstOrDefault().Order.VATNumber)</span>
+                                }
+                            </p>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                    <div class="odrtabelgrid invoicetbl">
+                        <div class="odrtblraw odrheadraw">
+                            <p class="wd90">@WBSSLStore.Resources.GeneralMessage.Message.OrderNumber_Caption</p>
+                            <p class="wd100 bigcol">@WBSSLStore.Resources.GeneralMessage.Message.Product_Caption</p>
+                            <p class="wd70 txtcenter">@WBSSLStore.Resources.GeneralMessage.Message.NumberOfMonths_Caption</p>
+                            <p class="wd70 txtcenter">@WBSSLStore.Resources.GeneralMessage.Message.NumberOfServers_Caption</p>
+                            <p class="wd80 txtcenter">@WBSSLStore.Resources.GeneralMessage.Message.NoOfSan_Caption</p>
+                            <p class="wd80 txtcenter">@WBSSLStore.Resources.GeneralMessage.Message.Invoice_Discount_Caption</p>
+                            <p class="wd100 txtright">@WBSSLStore.Resources.GeneralMessage.Message.Price_Caption</p>
+                        </div>
+                        @foreach (OrderDetail ord in Model)
+                        {
+                            <div class="odrtblraw">
+                                <p class="wd90"><span class="tabshow">@WBSSLStore.Resources.GeneralMessage.Message.OrderNumber_Caption</span><a class="invoiceno" href="javascript:;">@(string.IsNullOrEmpty(ord.ExternalOrderID) ? "-" : @ord.ExternalOrderID)</a></p>
+                                <p class="wd100 bigcol">
+                                    <span class="tabshow">Product Name</span>@ord.ProductName
+                                    <span><b>Invoice ID:</b> @(!string.IsNullOrEmpty(setting.InvoicePrefix) ? setting.InvoicePrefix : "SSL-" + ord.OrderID)</span>
+                                </p>
+                                <p class="wd70 txtcenter"><span class="tabshow">@WBSSLStore.Resources.GeneralMessage.Message.NumberOfMonths_Caption</span>@ord.NumberOfMonths</p>
+                                <p class="wd70 txtcenter"><span class="tabshow">@WBSSLStore.Resources.GeneralMessage.Message.NumberOfServers_Caption</span>@CurrentSiteSettings.GetNumberOfServers(ord.Product, ord.CertificateRequest.NumberOfServers)</p>
+                                <p class="wd80 txtcenter"><span class="tabshow">@WBSSLStore.Resources.GeneralMessage.Message.NoOfSan_Caption</span>@ord.CertificateRequest.AdditionalDomains</p>
+                                <p class="wd80 txtcenter"><span class="tabshow">@WBSSLStore.Resources.GeneralMessage.Message.Invoice_Discount_Caption</span>@string.Format("{0:C}", ord.PromoDiscount)</p>
+                                <p class="wd100 txtright"><span class="tabshow">@WBSSLStore.Resources.GeneralMessage.Message.Price_Caption</span>@string.Format("{0:C}", ord.Price)</p>
+                            </div>
+                        }
+                        <div class="odrtotal txtright">
+                            <strong>@WBSSLStore.Resources.GeneralMessage.Message.Total_Caption:</strong> @string.Format("{0:C}", Model.Sum(m => m.Price))
+                        </div>
+                    </div>
+                    <p class="cmnpara txtcenter">@WBSSLStore.Resources.LongText.Message.All_prices_in @setting.CurrentCurrencyCode. @WBSSLStore.Resources.LongText.Message.Any_Questions <a href="mailto:@setting.SiteBillingEmail">@setting.SiteBillingEmail</a></p>
+                    <p class="cmnpara txtcenter grntxt"><strong>@WBSSLStore.Resources.LongText.Message.Thanks_biz_msg</strong></p>
+                </div>
+            </div>
+            @Html.Partial("_rightpanel", username)
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+@{setting = null;}

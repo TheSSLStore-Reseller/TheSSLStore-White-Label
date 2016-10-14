@@ -1,0 +1,191 @@
+/*============= After Login Common ==============*/
+.column3 .column3-0 { width: 82%; float: left; box-sizing: border-box; padding-right: 20px; }
+/*---------- Right Side Bar ----------- */
+.sidemenu { margin-bottom: 15px; }
+.sidemenu h3 { color: #363e4c; background: #3792cb; padding: 7px 10px; text-transform: uppercase; line-height: 20px; font-size: 16px; }
+.sidemenu h3 span { display: block; color: #FFF; }
+.sidemenu h4 { background: #EEE; padding: 10px 10px 7px; font-size: 13px; text-transform: uppercase; }
+.sidemenulinks { padding: 10px; }
+.sidemenulinks li a { color: #666; background: url(/content/images/bullet-arrow.png) left 5px no-repeat; padding-left: 15px; line-height: 24px; }
+.sidemenulinks li a.active, .sidemenulinks li a:hover { color: #289b48; }
+/*---------- Order Summary ----------- */
+
+.controlpnldata { padding: 20px; background: #f6f6f6; border-top: 4px solid #4e5568; min-height:630px;}
+.controlpnldata h3 { font-size: 16px; margin-bottom: 10px; }
+.controlpnldata h3 span { font-weight: normal; font-size: 11px; }
+.acsummarytbl { border: 1px solid #d7d7d7; margin-bottom: 20px; }
+.acsummarytbl .acsumraw { float: left; width: 100%; box-sizing: border-box; font-weight: bold; background: #FFF; }
+.acsummarytbl .acsumraw:nth-child(2n) { background: #EEE; }
+.acsummarytbl .acsumraw p { float: left; width: 50%; padding: 10px; box-sizing: border-box; margin: 0; }
+.acsumraw p span { float: left; width: 50%; }
+.acsumraw p strong { float: left; font-weight: bold; color: #4e5568; }
+.acsumraw p + p { border-left: 1px solid #d7d7d7; }
+.acsumraw p a { float: right; }
+.acorderlist ul { float: left; width: 100%; }
+.acorderlist ul li { float: left; width:22.75%; margin: 0 3% 3% 0; box-sizing: border-box; padding: 15px; border: 1px solid #d7d7d7; background: #FFF; text-align: center; }
+.acorderlist ul li:nth-child(4n) { margin-right: 0; }
+.acorderlist ul li .icon { display: inline-block; border: 1px solid #d7d7d7; border-radius: 50%; padding: 40px; }
+.acorderlist ul li span { padding-top: 15px; text-transform: uppercase; font-weight: bold; display: block; color: #666; }
+.acorderlist ul li:hover { background: #f5f5f5; }
+.odrtabelgrid { border: 1px solid #CCC; }
+.odrtabelgrid .odrheadraw { background: #4e5568 !important; font-weight: bold; color: #FFF; }
+.odrtabelgrid .odrtblraw { background: #FFF; }
+.odrtabelgrid .odrtblraw:nth-child(2n+1) { background: #efefef; }
+.odrtabelgrid p { display: table-cell; padding: 10px; box-sizing: border-box; vertical-align: middle; }
+.odrtabelgrid p + p { border-left: 1px solid #CCC; }
+.odrtabelgrid p strong, .odrtabelgrid p span { display: block; }
+.odrtabelgrid .invoiceno { text-decoration: underline; color: #3792cb; }
+.odrtabelgrid .invoiceno:hover { text-decoration: none; }
+.generatecertbtn { text-transform: uppercase; color: #FFF; font-size: 11px; background: #4e5568; padding: 5px; line-height: 12px; display: block; text-align: center; font-weight: bold; text-decoration: none; }
+.generatecertbtn:hover { background: #363e4c; }
+
+.clisup .bigcol{width:600px;}
+
+/*List View Records*/
+.PagedList-pager{ margin:25px 0 0 0; width:100%;}
+.PagedList-pager ul{}
+.PagedList-pager ul li{ display:inline-block; padding:0 5px;}
+.PagedList-pager ul li.PagedList-pageCountAndLocation span{ margin-right:10px;}
+.PagedList-pager ul li.PagedList-skipToFirst{ margin:0 0 0 0;}
+.PagedList-pager ul li.PagedList-skipToPrevious{ margin:0 0 0 0;}
+.PagedList-pager ul li.PagedList-currentPage{ margin:0 0px;}
+.PagedList-pager ul li.PagedList-currentPage a{ text-decoration:none;}
+.PagedList-pager ul li.PagedList-currentPage a:hover{ text-decoration:none;}
+.PagedList-pager ul li.PagedList-skipToNext{ margin:0 0 0 0;}
+.PagedList-skipToPage > a{ color:#3792cb; text-decoration:underline;}
+.PagedList-skipToPage > a:hover{text-decoration:none;}
+
+
+
+
+
+/*---------- Search Orders ----------- */
+.searchodr { margin-bottom: 30px; }
+.searchodr .daterange { width: 48%; float: left; }
+.searchodr .raw .daterange input[type="text"] { width: 87%; float: left; box-sizing: border-box; }
+.searchodr .daterange + .daterange { float: right; }
+.searchodr .daterange img { margin-left: 5px; cursor: pointer; }
+.searchodr .srchbtnsec { width: 100% !important; margin: 0; }
+.searchodr .srchbtnsec .exportcsv { float: right; }
+.exportcsv { color: #f15d22; font-weight: bold; text-decoration: underline; display: inline-block; background: url(/content/images/csv-icon.png) no-repeat; padding-left: 30px; line-height: 24px; }
+.exportcsvbtn { color: #f15d22; font-weight: bold; text-decoration: underline; display: inline-block; background: url(/content/images/csv-icon.png) no-repeat #fff 2px 2px; padding-left:18px; line-height:22px; margin-left:10px; cursor:pointer; border:none; padding:2px; width:25px;}
+.exportcsvbtnbig { color: #f15d22; font-weight: bold; display: inline-block; background: url(/content/images/csv-icon.png) no-repeat #fff 4px 4px; padding-left:18px; line-height:22px; margin-left:10px; cursor:pointer; padding:4px 5px; text-indent:25px; border:solid 1px #f15d22;}
+.exportcsvbtnsml { color: #f15d22; font-weight: bold; display: inline-block; background: url(/content/images/csv-iconsmall.png) no-repeat #fff 4px 2px; padding-left:18px; line-height:18px; margin-left:10px; cursor:pointer; padding:2px 5px; text-indent:25px; border:solid 1px #f15d22;}
+
+
+.odrtabelgrid .tbllink { color: #666; text-decoration: underline; }
+.odrtabelgrid .tbllink:hover { text-decoration: none; }
+/*---------- Account Statement ----------- */
+.searchsection { padding-bottom: 30px; }
+.availablebal { font-weight: bold; padding: 10px; background: #EEE; margin-bottom: 20px; }
+.searchsection .daterange { float: left; margin-right: 10px; width: 150px; }
+.searchsection label { font-weight: bold; float: left; margin-right: 10px; line-height: 24px; }
+.searchsection .exportcsv { float: right; }
+.searchsection input[type=text] { border: 1px solid #d9d9d9; box-sizing: border-box; height: 24px; padding: 3px 5px; width: 80%; float: left; }
+.searchsection .daterange img { margin-left: 5px; float: left; }
+.personalinfo p { margin-bottom: 20px; }
+.personalinfo label { font-weight: bold; float: left; margin-right: 10px; line-height: 24px; }
+.personalinfo label em { font-style: normal; color: #F00; }
+
+.personalinfo .raw { width: 49%; margin: 0 2% 15px 0; float: left; }
+.personalinfo .raw em { font-style: normal; color: #F00; line-height:24px;}
+.personalinfo .raw + .raw { margin-top: 0; }
+.personalinfo .raw:nth-child(2n) { margin-right: 0; }
+.personalinfo .srchbtnsec { width: 100%; margin-bottom: 0; }
+.raw select { border: 1px solid #d9d9d9; box-sizing: border-box; height: 24px; padding: 3px 5px; width: 100%; font-size: 12px; }
+.listmenu.in300px{width:auto;}
+.required.select{width:auto;}
+.list304px{width:auto !important;}
+.listform .raw .textarea{ width:auto;}
+.listform .raw span.cancelcomment{ padding:5px; border:1px solid #d7d7d7; float:right; background:#eee; line-height:20px;}
+.renewnotification { padding-top: 20px; border-top: 1px solid #d7d7d7; margin-top: 10px; }
+.renewnotification label { font-weight: bold; margin-right: 10px; line-height: 24px; }
+.renewnotification .raw { margin-bottom: 15px; margin-top: 0 !important; }
+.renewnotification input[type=checkbox] { margin: 0 5px 0 0; vertical-align: middle; }
+.renewnotification .expircheckbox { margin-top: 10px; }
+.renewnotification .expircheckbox p+p { margin-top: 0px; }
+.expircheckbox p { float: left; }
+.expircheckbox p + p { margin-left: 20px; }
+.checkboxpara input[type=checkbox] { float: left; margin: 3px 5px 10px 0; }
+.listform .raw { float: left; width: 100%; }
+.listform .raw + .raw { margin-top: 15px; }
+.listform .raw label { font-weight: bold; width: 20%; float: left; padding-right: 10px; box-sizing: border-box; }
+.listform .raw span { float: left; width: 80%; box-sizing: border-box; }
+.checkssl p, .checkcsr p { line-height: 20px; }
+.checkcsr p + p { margin-top: 15px; }
+.checkssl p { margin-bottom: 15px; }
+.paymentinfo { margin-bottom: 20px; }
+.confirmodrtbl { margin-bottom: 20px; }
+.confirmodrtbl .bigcol { width:550px; }
+.odrtotal { border-top: 1px solid #cccccc; padding: 10px; }
+.odrtotal strong { text-align: left; display: inline-block !important; }
+.odrbtn { margin-bottom: 20px; }
+.toplinesection { border-top: 1px solid #CCC; margin-top: 15px; padding-top: 15px; }
+.acstate .bigcol{width:390px;}
+
+
+/*---------- Invoice Report ----------- */
+
+.invoicetbl { margin-bottom: 20px; }
+.invoicetbl .bigcol { width: 500px; }
+.invoiceheader { margin-bottom: 20px; }
+.invoiceheader span { float: left; }
+.invoiceheader p { float: right; margin-top: 42px; }
+.invoiceheader p a { float: left; color: #f15d22; text-decoration: underline; font-weight: bold; padding-left: 25px; line-height: 20px; }
+.invoiceheader p a:hover { text-decoration: none; }
+.invoiceheader p a.downpdflink { background: url(/content/images/icon-pdf.png) no-repeat; }
+.invoiceheader p a.printlink { background: url(/content/images/icon-print.png) no-repeat; margin-left: 15px; }
+.invoicedtl { padding-top: 15px; margin-top: 15px; border-top: 1px solid #CCC; }
+.invoicebillinfo { border-top: 1px solid #CCC; padding-top: 15px; }
+.invoicebillinfo p { float: left; }
+.invoicebillinfo p + p { float: right; }
+.invoicebillinfo p span { display: block; }
+/*---------- List Order ----------- */
+
+.daterangesec { float: left; }
+.srchstatus { float: left; margin-right: 20px; }
+.srchstatus .select { width: 120px; }
+.advancesrchlink { float: right; }
+.advancesrchlink a { font-weight: bold; float: left; color: #f15d22; text-decoration: underline; line-height: 24px; }
+.advancesrchlink a:hover { text-decoration: none; }
+.advancesrchlink a.exportcsv { margin-left: 20px; }
+.listodrtbl .bigcol { width: 36%; }
+/*---------- Thank You ----------- */
+
+.halfrawdata { border-top: 1px solid #CCC; border-bottom: 1px solid #CCC; margin-top: 20px; padding-top: 20px; margin-bottom: 20px; }
+.halfrawdata p { float: left; margin-bottom: 10px; width: 100%; }
+.halfrawdata p label { width: 49%; text-align: right; float: left; font-weight: bold; }
+.halfrawdata p span { width: 49%; float: right; }
+.halfrawdata p span a { text-decoration: underline; color: #666; }
+.halfrawdata p span a:hover { text-decoration: none; }
+.halfrawdata p span .generatecertbtn { width: 124px; text-decoration: none; background: #4e5568; color: #fff; }
+.halfrawdata p span .generatecertbtn:hover { background: #363e4c; }
+.odrboxspacing p { float: left; width: 100%; padding: 5px; box-sizing: border-box; margin: 0; background: #FFF; }
+.odrboxspacing p:nth-child(2n) { background: #eeeeee; }
+.odrboxspacing p label { width: 49%; text-align: right; float: left; font-weight: bold; box-sizing: border-box; }
+.odrboxspacing p span { width: 49%; float: right; box-sizing: border-box; }
+.wordbreak{word-break:break-all;}
+.odrdtlbtns a { float: left; margin: 0 10px 10px 0; }
+.ptrpricingtbl .bigcol { width: 385px; }
+.ptrpricingtbl .btnraw .greenbtn { padding: 0 10px; }
+.selectsml { width: 50px !important; }
+.chekbtnleftmar{margin-left:9px;}
+/*---------- Testimonials ----------- */
+
+.testimoniwrap + .testimoniwrap { margin-top: 20px; }
+.testimonialtxt { border: 1px solid #d7d7d7; -webkit-border-radius: 2px; -moz-border-radius: 2px; border-radius: 2px; padding: 10px; position: relative; background: #ffffff; }
+.testimonialtxt:after { content: ""; height: 0; width: 0; border-top: 8px solid #d7d7d7; border-left: 1px solid transparent; border-right: 10px solid transparent; position: absolute; bottom: -9px; right: 10px; }
+.testimoniwrap p { line-height: 20px; }
+.testimoniwrap p + p { margin-top: 10px; }
+.testimoniwrap .author { font-size: 14px; font-weight: bold; text-align: right; margin-top: 10px; }
+.testimoniwrap .author span { display: block; font-style: italic; font-size: 12px; font-weight: normal; }
+.testimoniwrap:last-child { border-bottom: none; margin-bottom: 0px; }
+.invitetbl .bigcol { width: 725px; }
+.plznote { margin-bottom: 30px; }
+.plznote p + p { margin-top: 5px; }
+
+/*---------- Add Fund ----------- */
+.martoptwenty{width:600px; margin:0 auto; padding:10px;}
+.martoptwenty h3{font-size:20px;}
+.tdpaypayllogo{ line-height:20px;}
+.payiconaddfund{margin-bottom:15px;}

@@ -1,0 +1,138 @@
+﻿@model WBSSLStore.Service.ViewModels.StaticPageViewModel
+@{
+    ViewBag.Title = "SecureSiteProwithEV";  var productdetails = WBSSLStore.Web.Helpers.WBHelper.GetProductDetailRows();
+    string brand = Model != null && Model.Items != null && Model.Items.FirstOrDefault().Product != null && Model.Items.FirstOrDefault().Product.Brand != null ? Model.Items.FirstOrDefault().Product.Brand.BrandName : "";
+    string username = ViewBag.UserName;
+}
+@section headerTags{
+    @Html.Partial("_renderSEO", Model != null && Model.CMSPage != null ? Model.CMSPage : new WBSSLStore.Domain.CMSPage())
+}
+@Html.Partial("_banner", new Tuple<string, string>("", "SSL Brands"))
+<div class="content">
+  <div class="wrapper">
+    <div class="column3">
+      <div class="mobtopcol">
+        <div class="column3-2">
+          <div class="prodetailswrap marzerotop"> @Html.Partial("_ProdPricing", new Tuple<List<WBSSLStore.Domain.ProductPricing>, List<WBSSLStore.Domain.ProductDetail>>(Model.Items.ToList(), productdetails.ToList())) </div>
+          <div class="prodescrip marzerotop">
+            <div class="prodescriptxt">
+              <h2>Product Description</h2>
+              <p>Thawte&trade; is one of the most respected names in the SSL industry. This low-cost certificate offers the industry standard 128/256-bit encryption and is one of the most popular Domain Validated (DV) SSL certificates on the planet. What makes it so popular is its combination of <strong>trust, security, and speed</strong> &ndash; as this certificate and it's widely recognized brand can be issued to a domain in less than one business day. The Thawte SSL123 name says it all, getting a quality security certificate on your small business website or light ecommerce site is as easy as 1... 2… 3!</p>
+            </div>
+          </div>
+          <div id="cssmenu">
+            <ul class="accordion_example">
+              <li class="brand-symantec acc_active">
+                <div>
+                  <p>Assurance &amp; Authentication</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>Getting this certificate issued and installed on your site is a simple process and can usually be completed in less than one business day. That's because the Thawte SSL123 certificate is a <strong>Domain Validated certificate</strong>, offering a basic level of assurance to your customers and security to your website. However, the Thawte brand is one of the most respected and recognized trust seals on the web, making this certificate one of our more premium DV options.</p>
+                  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Security &amp; Encryption</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>The Thawte SSL123 is a suitable 128/256-bit single-root SSL certificate, which makes it an ideal solution for a smaller ecommerce site. This certificate is also a perfect way to safely secure something simple like a customer login form.</p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>SAN &amp; Multi-Domain Support</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>Unfortunately, a standard Thawte SSL123 Certificate does NOT support multiple domains or subdomains.</p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Features &amp; Benefits</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <ul class="featurelist">
+                    <li>Entry Level Certificate</li>
+                    <li>Immediate SSL certificate issuance 24/7/365</li>
+                    <li>Multi-year savings available - 1 to 4 year certs available</li>
+                    <li>Automated two step online validation - no paperwork</li>
+                    <li>Browser recognition - Highest in Industry!</li>
+                    <li>Free Site Seal</li>
+                    <li>Thawte SSL123 is a mobile browsers friendly certificate</li>
+                    <li>$500,000 warranty</li>
+                  </ul>
+				  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Product Specifications</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <ul class="featurelist">
+                    <li>Single Domain Name (FQDN)</li>
+                    <li>Due to Automated Validation, Immediate Issuance</li>
+                    <li>Domain Validation</li>
+                    <li>Domain Name Shown On Certificate Only</li>
+                    <li>A Standard Encryption Strength Up to 256-bit</li>
+                    <li>Site Seal from Thawte</li>
+                    <li>FREE self-service reissues during validity period</li>
+                    <li>Single server - Additional can be purchased</li>
+                  </ul>
+				  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Site Seal</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>With this DV certificate, your website will display a <strong>static site seal</strong> that shows off that your site is protected by this recognized SSL brand. It says "Secured by Thawte" right on it for all of your users to see. Static site seals are quick &amp; easy to install and can help increase the amount of trust a customer has in your website. However, these seals are not "clickable" and therefore don't show additional verification information related to your site. It also does not display any dynamic or real-time data related to your site's security.</p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Warranty</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>This product comes with a <strong>$500,000</strong> warranty. This means that if the site was improperly validated, actually not secured and/or issued to a fraudulent site by Thawte, the Certification Authority (CA) would compensate the end user of the site or victim up to $500,000 for any losses or damages. These types of warranties are geared towards protecting your customers, along with establishing the credibility of the site owner, which gives users the confidence they need to make transactions on your site.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        @Html.Partial("_rightpanel", username) </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+@section Jscripts{ 
+<script type="text/javascript">
+        $(document).ready(function () {
+            // Mobile Menu
+            $("#showmenu").click(function (e) {
+                e.preventDefault();
+                $("#menu").toggleClass("show");
+            });
+            $("#menu a").click(function (event) {
+                event.preventDefault();
+                if ($(this).next('ul').length) {
+                    $(this).next().toggle('fast');
+                    $(this).children('i:last-child').toggleClass('fa-caret-down fa-caret-left');
+                }
+            });
+            $(document).click(function (e) {
+                if (!$(e.target).is(".mobmemu, .mobmemu  *")) { $("#menu").toggleClass("hide"); $("#menu").removeClass("show"); }
+            });
+            $(".accordion_example").smk_Accordion();
+        });
+    </script> 
+} 

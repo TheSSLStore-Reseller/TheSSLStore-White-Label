@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    @Styles.Render("~/bundales/sitestylecss")
+</head>
+<body>
+    <header class="header">
+        <div class="wrapper">
+            <div class="logo"><a href="#"><img alt="TheSSLstore" src="@(Url.Content("~/content/images/sslstore-logo.png"))"></a></div>
+            <div class="social">
+                <a class="fbicon" href="#"><img alt="Facebook" src="@(Url.Content("~/content/images/fb-icon.png"))"></a>
+                <a class="twicon" href="#"><img alt="Twitter" src="@(Url.Content("~/content/images/twitt-icon.png"))"></a>
+                <a class="gpicon" href="#"><img alt="Google Plus" src="@(Url.Content("~/content/images/gplus-icon.png"))"></a>
+                <a class="inicon" href="#"><img alt="Linked In" src="@(Url.Content("~/content/images/in-icon.png"))"></a>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </header>
+    <div class="formsection">
+        <div class="wrapper">
+            <div class="formwarp">
+              
+                @RenderBody()
+                
+            </div>
+        </div>
+    </div>
+
+
+    @Scripts.Render("~/bundales/jquery11.3js")
+    
+    @RenderSection("scripts", required: false)
+    <script type="text/javascript">
+    $(document).ready(function () {
+        $('input[type="checkbox"]').click(function () {
+            if ($(this).attr("id") == "chkTCPport") {
+                $(".chk1").toggle();
+            }
+            if ($(this).attr("id") == "chkConnTimeOut") {
+                $(".chk2").toggle();
+            }
+            if ($(this).attr("value") == "chk3") {
+                $(".chk3").toggle();
+            }
+        });
+        $('input[type="radio"]').click(function () {
+            if ($(this).attr("value") == "radio1") {
+                $(".radioboxdtl").not(".sqldtl").hide();
+                $(".sqldtl").slideToggle();
+            }
+            if ($(this).attr("value") == "radio2") {
+                $(".radioboxdtl").not(".stringdtl").hide();
+                $(".stringdtl").slideDown();
+            }
+            if ($(this).attr("value") == "radio3") {
+                $(".windowauthentication").slideDown();
+            }
+            if ($(this).attr("value") == "radio4") {
+                $(".windowauthentication").slideUp();
+            }
+        });
+    });
+    </script>
+
+</body>
+
+</html>

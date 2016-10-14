@@ -1,0 +1,65 @@
+﻿@using WBSSLStore.Web.Helpers.PagedList;
+@model Tuple<WBSSLStore.Web.Helpers.PagedList.IPagedList<WBSSLStore.Domain.OrderDetail>, string>
+@{
+
+
+}
+@if (Model != null && Model.Item1 != null && Model.Item1.Count() > 0)
+{
+    <div class="odrtabelgrid listodrtbl">
+        <div class="odrtblraw odrheadraw">
+            <p class="wd100">@WBSSLStore.Resources.GeneralMessage.Message.OrderDate_Caption</p>
+            <p class="wd100">@WBSSLStore.Resources.GeneralMessage.Message.OrderNumber_Caption</p>
+            <p class="bigcol">@WBSSLStore.Resources.GeneralMessage.Message.Product_Caption</p>
+            <p class="wd250">@WBSSLStore.Resources.GeneralMessage.Message.Domain_Caption</p>
+            <p class="wd80 txtcenter">@WBSSLStore.Resources.GeneralMessage.Message.OrderStatus_Caption</p>
+            <p class="wd100 txtright">@WBSSLStore.Resources.GeneralMessage.Message.Price_Caption</p>
+        </div>
+        @foreach (WBSSLStore.Domain.OrderDetail o in Model.Item1)
+        {
+            <div class="odrtblraw">
+                <p class="wd100"><span class="tabshow">@WBSSLStore.Resources.GeneralMessage.Message.OrderDate_Caption</span>@o.Order.OrderDate.ToShortDateString()</p>
+                <p class="wd100">
+                    <span class="tabshow">@WBSSLStore.Resources.GeneralMessage.Message.OrderNumber_Caption</span>
+                    <a class="invoiceno" href="@Url.Action("details", "orders", new { id = o.ID })">@o.ExternalOrderID</a>
+                </p>
+                <p class="bigcol">
+                    <span class="tabshow">@WBSSLStore.Resources.GeneralMessage.Message.Product_Caption</span>@o.ProductName
+                    <span>
+                        <b>@WBSSLStore.Resources.GeneralMessage.Message.InvoiceNo_Caption:</b>
+                        <a class="invoiceno" href="@Url.Action("invoice", new { id = o.OrderID })">@(Model.Item2 + o.OrderID)</a>
+                    </span>
+                </p>
+                <p class="wd250">
+                    <span class="tabshow">@WBSSLStore.Resources.GeneralMessage.Message.Domain_Caption</span>
+                    <span class="breaktxt">
+                        @if (!string.IsNullOrEmpty(o.CertificateRequest.DomainName))
+                        {
+                            @o.CertificateRequest.DomainName
+                        }
+                        else if (o.OrderStatus != WBSSLStore.Domain.OrderStatus.REFUNDED && o.OrderStatus != WBSSLStore.Domain.OrderStatus.REJECTED)
+                        {
+                            <a class="generatecertbtn" href="@Url.Action("generatenow", "thankyou", new { id = o.ID })" target="_blank">Generate Cert</a>
+                        }
+                        else
+                        {
+                            <span>-</span>
+                        }
+                    </span>
+                </p>
+                <p class="wd80 txtcenter">
+                    <span class="tabshow">@WBSSLStore.Resources.GeneralMessage.Message.OrderStatus_Caption</span>
+                    <span class="@o.OrderStatus.ToString()">@o.OrderStatus </span>
+                </p>
+                <p class="wd100 txtright"><span class="tabshow">@WBSSLStore.Resources.GeneralMessage.Message.Price_Caption</span>@string.Format("{0:C}", o.Price)</p>
+            </div>
+        }
+    </div>
+    <div>
+        @Html.PagedListPager(Model.Item1, page => Url.Action(Model.Item1.ActionName, Model.Item1.ControllerName, new { page = page + 1, lstStatus = ViewBag.Status, txtFromDate = ViewBag.FormDate, txtToDate = ViewBag.ToDate }))
+    </div>
+}
+else
+{
+    <div class="errormsg">@WBSSLStore.Resources.GeneralMessage.Message.NoRecord</div>
+}

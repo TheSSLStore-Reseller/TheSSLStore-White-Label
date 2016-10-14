@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pages>
+  <page>
+    <title>Home</title>
+    <brand>0</brand>
+    <url>/</url>
+    <iconimgae>icon-home.png</iconimgae>
+  </page>
+  <page>
+    <title>About Us</title>
+    <brand>0</brand>
+    <url>/about</url>
+    <iconimgae>icon-ssl_certificates.png</iconimgae>
+  </page>
+  <page>
+    <title>Recommendations</title>
+    <brand>0</brand>
+    <url>/recommendations</url>
+    <iconimgae>icon-recommandetion.png</iconimgae>
+  </page>
+  <page>
+    <title>Support</title>
+    <brand>0</brand>
+    <url>/support</url>
+    <iconimgae>icon-support.png</iconimgae>
+  </page>
+  <page>
+    <title>Rapidssl</title>
+    <brand>1</brand>
+    <url>/rapidssl</url>
+    <iconimgae>icon-ssl_certificates.png</iconimgae>
+  </page>
+  <page>
+    <title>Rapidssl Certificate</title>
+    <brand>1</brand>
+    <url>/rapidssl/rapidssl-certificate</url>
+    <iconimgae>icon-ssl_certificates.png</iconimgae>
+  </page>
+</pages>

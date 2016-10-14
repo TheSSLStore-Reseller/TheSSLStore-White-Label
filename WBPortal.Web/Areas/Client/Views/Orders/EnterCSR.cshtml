@@ -1,0 +1,53 @@
+﻿@model WBSSLStore.Domain.OrderDetail
+@{
+    string username = ViewBag.UserName;
+    ViewBag.Title = "Re-issue Certificate";
+}
+@section sitecss{
+}
+@section Jscripts{
+
+
+}
+<div id="dvOrderLogin" class="loader" style="display: none;">
+    <img src="~/Content/loadingnew.gif" />
+</div>
+@Html.Partial("_banner", new Tuple<string, string>("", WBSSLStore.Resources.GeneralMessage.Message.ReissueCertificate))
+<div class="content">
+    <div class="wrapper">
+        <div class="column3">
+            <div class="column3-0">
+                <div class="controlpnldata">
+                    @using (Html.BeginForm("entercsr", "reissue", new { area = "checkout", id = Model.ID }, FormMethod.Post, new { @id = "frmentercsr" }))
+                    {
+                        if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+                        {
+                            <div class="errormsg">
+                                @Html.Raw(ViewBag.ErrorMessage)
+                            </div>
+                        }
+                        <div class="checkcsr" id="tblPlaceOrder">
+                            <h2>@WBSSLStore.Resources.GeneralMessage.Message.CheckCSR_Header</h2>
+
+                            <p>
+                                <textarea name="txtcsr" id="txtcsr" cols="100" rows="20" class="chkinput chkinputbxbig"></textarea>
+                                @Html.HiddenFor(model => model.ID)
+                            </p>
+                            <p class="mrgbotnone">
+                                <input type="submit" id="btnSubmit" name="btnSubmit" class="greenbtn" value="@WBSSLStore.Resources.GeneralMessage.Message.Submit_Btn" />
+                            </p>
+                        </div>
+                    }
+                </div>
+            </div>
+            @Html.Partial("_rightpanel", username)
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+

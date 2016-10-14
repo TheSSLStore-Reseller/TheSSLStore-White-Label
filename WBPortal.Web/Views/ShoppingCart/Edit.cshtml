@@ -1,0 +1,95 @@
+﻿@model WBSSLStore.Domain.ShoppingCartDetail
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@WBSSLStore.Resources.GeneralMessage.Message.Edit_Shopping_Cart_Caption</title>
+</head>
+<body>
+    @using (Html.BeginForm("edit", "shoppingcart", FormMethod.Post))
+    {
+        @Html.HiddenFor(x => x.ID)
+        @Html.HiddenFor(x => x.ProductID)
+        @Html.HiddenFor(x => x.ShoppingCartID)
+        @Html.HiddenFor(x => x.PromoCode)
+        @Html.HiddenFor(x => x.PromoDiscount) 
+        @Html.HiddenFor(x => x.ShoppingCart.SiteID)     
+        <div class="contentInnerbg">
+            <div class="screwbg">
+            </div>
+            <table width="100%" border="0" cellspacing="2" cellpadding="6" class="darkgrytext">
+                <tr>
+                    <td align="left" valign="middle" class="tablebodycell">
+                        @WBSSLStore.Resources.GeneralMessage.Message.Product_Caption:
+                    </td>
+                    <td align="left" valign="middle" class="tablebodycell">
+                        <strong>@Model.Product.ProductName</strong>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left" valign="middle" class="tablebodycell">
+                        @WBSSLStore.Resources.GeneralMessage.Message.Change_Years_Caption:
+                    </td>
+                    <td align="left" valign="middle" class="tablebodycell">
+                        @Html.DropDownListFor(x => x.ProductPriceID, ViewBag.Price as List<SelectListItem>, new { @class = "dropdown" })
+                    </td>
+                </tr>
+                @if (Model.ID <= 0 && !Model.Product.InternalProductCode.Equals("freessl", StringComparison.OrdinalIgnoreCase))
+                {
+                    <tr>
+                        <td align="left" valign="middle" class="tablebodycell">
+                            @WBSSLStore.Resources.GeneralMessage.Message.Quantity_Caption:
+                        </td>
+                        <td align="left" valign="middle" class="tablebodycell">
+                            @Html.DropDownList("drpQty", new SelectList(new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }), new { @class = "dropdown", @id = "drpQty" })
+                        </td>
+                    </tr>
+                }
+                <tr>
+                    <td colspan="2" align="left" valign="middle" class="tablebodycell">
+                        <strong>@WBSSLStore.Resources.GeneralMessage.Message.Additional_Caption Add-ons</strong>
+                    </td>
+                </tr>
+                @if (!@Model.Product.isNoOfServerFree)
+                {
+                    <tr>
+                        <td align="left" valign="middle" class="tablebodycell">
+                            @WBSSLStore.Resources.GeneralMessage.Message.Number_of_Licensed_Servers_Caption
+                            :
+                        </td>
+                        <td align="left" valign="middle" class="tablebodycell">
+                            @Html.DropDownListFor(x => x.NumberOfServers, new SelectList(new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }, Model.NumberOfServers), new { @class = "dropdown" })
+                        </td>
+                    </tr>
+                }
+                @if (Model.Product.isSANEnabled)
+                { 
+                    <tr>
+                        <td align="left" valign="middle" class="tablebodycell">
+                            @WBSSLStore.Resources.GeneralMessage.Message.Number_of_Additional_Domains :
+                        </td>
+                        <td align="left" valign="middle" class="tablebodycell">
+                            @Html.DropDownListFor(x => x.AdditionalDomains, ViewBag.Domains as List<SelectListItem>, new { @class = "dropdown" })
+                        </td>
+                    </tr>
+                }
+                <tr>
+                    <td align="left" valign="middle" class="tablebodycell">
+                        @WBSSLStore.Resources.GeneralMessage.Message.Order_Type_Caption:
+                    </td>
+                    <td align="left" valign="middle" class="tablebodycell">
+                        @Html.RadioButtonFor(x => x.isNewOrder, true) @WBSSLStore.Resources.GeneralMessage.Message.New_Caption
+                        @Html.RadioButtonFor(x => x.isNewOrder, false) @WBSSLStore.Resources.GeneralMessage.Message.ReNew_Caption
+                      
+                    </td>
+                </tr>
+               
+            </table>
+            <div class="screwbgbtm">
+            </div>
+        </div>
+    }
+</body>
+</html>

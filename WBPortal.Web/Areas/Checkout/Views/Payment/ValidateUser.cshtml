@@ -1,0 +1,23 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ValidateUser</title>
+    <script src="@Url.Content("~/content/scripts/jquery.validate.js")" language="javascript" type="text/javascript" ></script>
+</head>
+<body>
+    @using (@Html.BeginForm())
+    {
+        <div>
+            Email Alredy Exists Please Enter Your Password.
+            <br />
+            @Html.Password("txtPassword", "", new { @class = "required email", @title = "Please enter a valid email address." })
+            <div>
+                <a href="forgotpassword.aspx">Forgot your password?</a>
+            </div>
+        </div>
+    }
+</body>
+</html>

@@ -1,0 +1,128 @@
+﻿@model WBSSLStore.Service.ViewModels.StaticPageViewModel
+@{
+    ViewBag.Title = "SecureSiteProwithEV";  var productdetails = WBSSLStore.Web.Helpers.WBHelper.GetProductDetailRows();
+    string brand = Model != null && Model.Items != null && Model.Items.FirstOrDefault().Product != null && Model.Items.FirstOrDefault().Product.Brand != null ? Model.Items.FirstOrDefault().Product.Brand.BrandName : "";
+    string username = ViewBag.UserName;
+}
+@section headerTags{
+    @Html.Partial("_renderSEO", Model != null && Model.CMSPage != null ? Model.CMSPage : new WBSSLStore.Domain.CMSPage())
+}
+@Html.Partial("_banner", new Tuple<string, string>("", "SSL Brands"))
+<div class="content">
+  <div class="wrapper">
+    <div class="column3">
+      <div class="mobtopcol">
+        <div class="column3-2">
+          <div class="prodetailswrap marzerotop"> @Html.Partial("_ProdPricing", new Tuple<List<WBSSLStore.Domain.ProductPricing>, List<WBSSLStore.Domain.ProductDetail>>(Model.Items.ToList(), productdetails.ToList())) </div>
+          <div class="prodescrip marzerotop">
+            <div class="prodescriptxt">
+              <h2>Product Description</h2>
+              <p>Securing Unified Communications got a bit easier with <strong>Comodo's Unified Communication Multiple Domain Wildcard</strong> certificate. This certificate is a perfect blend of all the benefits of a Unified Communication certificate and a Wildcard certificate. Designed for Microsoft Exchange and Office Communications infrastructures, this feature-rich UC wildcard certificate efficiently secures multiple domains and unlimited sub-domains under just one certificate! It is an Organization Validated (OV) certificate with 99.3% browser and mobile compatibility.</p>
+            </div>
+          </div>
+          <div id="cssmenu">
+            <ul class="accordion_example">
+              <li class="brand-symantec acc_active">
+                <div>
+                  <p>Assurance &amp; Authentication</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>The Comodo Unified Communication Multiple Domain Wildcard lets you secure your Exchange server and efficiently maintain your data's privacy. Perfectly compatible with Microsof's products Exchange 2007, Office communication server 2007, Office Collaboration Server 2007, Exchange 2010, etc., this certificate enables you to secure each name used by the server to communicate with clients such as – Autodiscover (email client), Outlook Web Access, ActiveSync etc. Since this is an Organization Validated (OV) certificate, a vetting process is carried out which includes checking the applicant's business credentials and checking if the company's physical address matches the application.</p>
+                  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Security &amp; Encryption</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>This certificate lets you maintain a <strong>high level of security</strong> with strong encryption of 2048-bit signatures and 128-256 bit encryption levels. </p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>SAN &amp; multi-domain support</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>This UC certificate does not limit its ability to protect just multiple domains; however, being a Wildcard as well, it efficiently secures an unlimited number of sub-domains on a single certificate. They are SAN supported and its SAN field control lets you adjust the domains listed in the certificate.</p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Features &amp; Benefits</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <ul class="featurelist">
+                    <li>SAN option enabled</li>
+                    <li>Simple and convenient &ndash; one certificate to manage instead of many to secure unlimited sub-domains and multiple domains.</li>
+                    <li>Trusted by 99.3% major browsers and mobile devices</li>
+                    <li>2048 bit digital signatures and encryption strength up to 256-bit &ndash; Highest level of SSL security</li>
+                    <li>Issuance time: One week</li>
+                    <li>Free Re-issuance</li>
+                    <li>Organization Validation</li>
+                    <li>3 Domain names already included in package</li>
+                  </ul>
+				  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Product Specifications</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <ul class="featurelist">
+                    <li>Secures multiple domains and unlimited sub-domains with one certificate</li>
+                    <li>Multiple domains support MS Exchange 2010 and Office Communication Server 2007</li>
+                    <li>Issued in one week</li>
+                    <li>2048-bit signatures and 256-bit encryption level</li>
+                    <li>Organization Validation (OV)</li>
+                    <li>Free Re-Issuance</li>
+                    <li>99.3% browser and mobile device recognition</li>
+                  </ul>
+				  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Site Seal</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>This certificate comes with the trusted <strong>Comodo Secure Site Seal</strong>, which is one of the most recognized seals online. Also, since this is an Organization Validated (OV) certificate, the site seal is dynamic, which means a user can click on it to see real-time, validated information about your company. </p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        @Html.Partial("_rightpanel", username) </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+@section Jscripts{ 
+<script type="text/javascript">
+        $(document).ready(function () {
+            // Mobile Menu
+            $("#showmenu").click(function (e) {
+                e.preventDefault();
+                $("#menu").toggleClass("show");
+            });
+            $("#menu a").click(function (event) {
+                event.preventDefault();
+                if ($(this).next('ul').length) {
+                    $(this).next().toggle('fast');
+                    $(this).children('i:last-child').toggleClass('fa-caret-down fa-caret-left');
+                }
+            });
+            $(document).click(function (e) {
+                if (!$(e.target).is(".mobmemu, .mobmemu  *")) { $("#menu").toggleClass("hide"); $("#menu").removeClass("show"); }
+            });
+            $(".accordion_example").smk_Accordion();
+        });
+    </script> 
+} 

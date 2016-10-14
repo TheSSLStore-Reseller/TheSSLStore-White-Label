@@ -1,0 +1,144 @@
+﻿@model WBSSLStore.Service.ViewModels.StaticPageViewModel
+@{
+    ViewBag.Title = "SecureSiteProwithEV";  var productdetails = WBSSLStore.Web.Helpers.WBHelper.GetProductDetailRows();
+    string brand = Model != null && Model.Items != null && Model.Items.FirstOrDefault().Product != null && Model.Items.FirstOrDefault().Product.Brand != null ? Model.Items.FirstOrDefault().Product.Brand.BrandName : "";
+    string username = ViewBag.UserName;
+}
+@section headerTags{
+    @Html.Partial("_renderSEO", Model != null && Model.CMSPage != null ? Model.CMSPage : new WBSSLStore.Domain.CMSPage())
+}
+@Html.Partial("_banner", new Tuple<string, string>("", "SSL Brands"))
+<div class="content">
+  <div class="wrapper">
+    <div class="column3">
+      <div class="mobtopcol">
+        <div class="column3-2">
+          <div class="prodetailswrap marzerotop"> @Html.Partial("_ProdPricing", new Tuple<List<WBSSLStore.Domain.ProductPricing>, List<WBSSLStore.Domain.ProductDetail>>(Model.Items.ToList(), productdetails.ToList())) </div>
+          <div class="prodescrip marzerotop">
+            <div class="prodescriptxt">
+              <h2>Product Description</h2>
+              <p>This popular certificate allows you to secure one fully qualified domain name (www or non-www) with up to 256-bit encryption. GeoTrust&reg; is one of the most trusted names in the industry, and your customers will feel <strong>instant assurance</strong> knowing that your site is protected by such a premium brand. Best of all, the QuickSSL Premium is typically issued in less than 10 minutes, as it requires just simple, domain verification for the validation process. The <strong>GeoTrust&reg; QuickSSL Premium</strong> is an excellent option for small-to-medium size online businesses that want a more premium brand at a budget-friendly price.</p>
+
+            </div>
+          </div>
+          <div id="cssmenu">
+            <ul class="accordion_example">
+              <li class="brand-symantec acc_active">
+                <div>
+                  <p>Assurance &amp; Authentication</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>Your customers will get the assurance they need to make purchases on your site with the Smart Seal, the https display, and the padlock icon. These are all visual indicators that establish your website and company as a trustworthy place to make online transactions. Authentication for this certificate typically takes just 10 minutes, once <strong>GeoTrust verifies</strong> that you own the domain you wish to secure. Your customers will be able to click on the site seal to view a time/date stamp that identifies your site has been authenticated by a trusted third-party vendor.</p>
+                  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Security &amp; Encryption</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>The GeoTrust&reg; QuickSSL Premium offers an <strong>excellent 256-bit encryption</strong> and is signed with a 2048-bit root, the same level of encryption that the other more premium SSL certificates offer.</p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>SAN &amp; Multi-Domain Support</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>Unfortunately, the GeoTrust QuickSSL Premium certificate does not offer SAN support.</p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Features &amp; Benefits</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <ul class="featurelist">
+                      <li>Secures both NON-WWW and WWW domain (FQDN)</li>
+					  <li>Automated domain name validation</li>
+					  <li>Unlimited Server Licenses at no extra cost + Secure www &amp; non-www domains</li>
+					  <li>Fully automated provisioning process</li>
+					  <li>Lifetime Reissue FREE!</li>
+					  <li>Enables up to 256-bit SSL encryption</li>
+					  <li>Compatible with 99% of current browsers</li>
+					  <li>Present in 99%+ of mobile devices and smart phones</li>
+					  <li>Dynamically-generated site seal with a time/date stamp that identifies your site as authentic and validated by a trusted 3rd party</li>
+					  <li>$500,000 warranty</li>
+                  </ul>
+				  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Product Specifications</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <ul class="featurelist">
+                      <li>Secure both NON-WWW and WWW domain (FQDN)</li>
+					  <li>Issued In Less than 10 minutes</li>
+					  <li>Domain Validation</li>
+					  <li>Domain Name Shown On Certificate Only</li>
+					  <li>Encryption Strength Up to 256-bit</li>
+					  <li>99% Browser Compatibility</li>
+					  <li>Site Seal Included</li>
+					  <li>Unlimited &ndash; Install on any number of servers</li>
+					  <li>FREE self-service reissues during validity period</li>
+                  </ul>
+				  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Site Seal</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>The GeoTrust&reg; Site Seal embeds the organization name, date, along with a time stamp. This site seal goes beyond just standard company information offered in site seals from similar-priced SSL certificates. So, your customers will know that <strong>you've invested in their security</strong>, with a clickable site seal ensures you have been thoroughly vetted by a professional third-party company. </p>
+
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Warranty</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>This SSL certificate comes backed by a <strong>$500,000 USD Warranty</strong>. There is no need for your customers to worry about improper validation or issuance to a fraudulent site by this CA (Certificate Authority), because the end user would be compensated up to $100k for any losses or damages.</p>
+
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        @Html.Partial("_rightpanel", username) </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+@section Jscripts{ 
+<script type="text/javascript">
+        $(document).ready(function () {
+            // Mobile Menu
+            $("#showmenu").click(function (e) {
+                e.preventDefault();
+                $("#menu").toggleClass("show");
+            });
+            $("#menu a").click(function (event) {
+                event.preventDefault();
+                if ($(this).next('ul').length) {
+                    $(this).next().toggle('fast');
+                    $(this).children('i:last-child').toggleClass('fa-caret-down fa-caret-left');
+                }
+            });
+            $(document).click(function (e) {
+                if (!$(e.target).is(".mobmemu, .mobmemu  *")) { $("#menu").toggleClass("hide"); $("#menu").removeClass("show"); }
+            });
+            $(".accordion_example").smk_Accordion();
+        });
+    </script> 
+} 

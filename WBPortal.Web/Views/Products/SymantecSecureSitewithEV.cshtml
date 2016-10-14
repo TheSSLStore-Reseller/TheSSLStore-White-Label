@@ -1,0 +1,150 @@
+﻿@model WBSSLStore.Service.ViewModels.StaticPageViewModel
+@{
+    ViewBag.Title = "SecureSiteProwithEV";  var productdetails = WBSSLStore.Web.Helpers.WBHelper.GetProductDetailRows();
+    string brand = Model != null && Model.Items != null && Model.Items.FirstOrDefault().Product != null && Model.Items.FirstOrDefault().Product.Brand != null ? Model.Items.FirstOrDefault().Product.Brand.BrandName : "";
+    string username = ViewBag.UserName;
+}
+@section headerTags{
+    @Html.Partial("_renderSEO", Model != null && Model.CMSPage != null ? Model.CMSPage : new WBSSLStore.Domain.CMSPage())
+}
+@Html.Partial("_banner", new Tuple<string, string>("", "SSL Brands"))
+<div class="content">
+    <div class="wrapper">
+        <div class="column3">
+            <div class="mobtopcol">
+                <div class="column3-2">
+                    <div class="prodetailswrap marzerotop"> @Html.Partial("_ProdPricing", new Tuple<List<WBSSLStore.Domain.ProductPricing>, List<WBSSLStore.Domain.ProductDetail>>(Model.Items.ToList(), productdetails.ToList())) </div>
+                    <div class="prodescrip marzerotop">
+                        <div class="prodescriptxt">
+                            <h2>Product Description</h2>
+                            <p>Symantec&#8482; is the most trusted and recognized brand name in the SSL industry and all of their certificates display the globally known Norton™ Secured Seal on every site they protect. The Symantec Secure Site with EV not only provides websites with the power of the Symantec name and the Norton checkmark, but also the green address bar, the most trusted visual indicator on the web. There is simply no better way to assure your customers that they are safe to make purchases on your site than this combination of the Symantec name, the Norton checkmark, and the green address bar. This SSL certificate isn't a cost, it's an investment – an investment in the trust of your company and a sure-fire way to let your customers know that their information is protected by the best of the best.</p>
+                            </div>
+                    </div>
+                    <div id="cssmenu">
+                        <ul class="accordion_example">
+                            
+                            <li class="brand-symantec acc_active">
+                                <div>
+                                    <p>Assurance &amp; Authentication</p>
+                                    <div class="clear"></div>
+                                </div>
+                                <div>
+                                    <p>As an Extended Validated (EV) certificate, the Symantec Secure Site with EV requires a thorough company vetting process before issuance, and this process can typically be completed in around 5 business days. Also, this certificate boasts a <strong>99.9% browser recognition rate</strong>, while the Norton&#8482; logo will be recognized and trusted by your customers, given its prominence on the web. In fact, The Norton seal gets around 800 million impressions per day across 165 countries.</p>
+                                    <div class="clear"></div>
+                                </div>
+                            </li>
+                            <li class="brand-symantec">
+                                <div>
+                                    <p>Security &amp; Encryption</p>
+                                    <div class="clear"></div>
+                                </div>
+                                <div>
+                                    <p>The Secure Site w/ EV is available in encryption levels ranging from 40-bit to 256-bit. This allows web security administrators to select the level of protection that best suits their unique needs. Also this certificate goes beyond the security of your typical SSL. That's because it includes <strong>daily malware scans and a vulnerability assessment</strong>. There simply isn't a more comprehensive SSL security solution available on the market today.</p>
+
+                                </div>
+                            </li>
+                            <li class="brand-symantec">
+                                <div>
+                                    <p>SAN &amp; multi-domain support</p>
+                                    <div class="clear"></div>
+                                </div>
+                                <div>
+                                    <p>This certificate can secure up to 25 domains. The Subject Alternate Name (SAN) & Multi-Domain feature enables protection across a variety of websites by just a single SSL certificate. This one certificate can do a host of jobs, securing multiple domains on a single IP address. Also, every website that is protected by this certificate will display the same trust imagery, including the green address bar.</p>
+                                </div>
+                            </li>
+                            <li class="brand-symantec">
+                                <div>
+                                    <p>Features &amp; Benefits</p>
+                                    <div class="clear"></div>
+                                </div>
+                                <div>
+                                    <ul class="featurelist">
+                                         <li>Extended Validation, Green Address Bar</li>
+										  <li>Secure up to 25 Domains ( Multi SAN Certificate)</li>
+										  <li>High 256-bit encryption 2048 bit root Certificate</li>
+										  <li>99.9% Browser Recognition Rate</li>
+										  <li>Supports Mobile Devices</li>
+										  <li>Secure Site EV SSL Carry warranty of $1,750,000 - highest in industry</li>
+										  <li><strong>FREE Norton&trade; Secured Seal</strong></li>
+										  <li>Includes Reissuance Insurance</li>
+										  <li><strong>FREE Installation Checker</strong></li>
+										  <li><strong>FREE Vulnerability Assessment &amp; Actionable Report</strong></li>
+										  <li><strong>FREE Daily Symantec&trade; Malware Scanning (behavioral/predictive)</strong></li>
+										  <li>Supports 3 encryption algorithms, RSA, DSA</li>
+										  <li>Secure Multiple Domains on a Single IP Address**</li>
+                                    </ul>
+									<div class="clear"></div>
+                                    <p class="notesml">** Applicable to a server that supports SNI (Server Name Indication)</p>
+                                </div>
+                            </li>
+                            <li class="brand-symantec">
+                                <div>
+                                    <p>Product Specifications</p>
+                                    <div class="clear"></div>
+                                </div>
+                                <div>
+                                    <ul class="featurelist">
+									<li>Certificate Secures 1 FQDN</li>
+									<li>Issued in 1-10 working days</li>
+									<li>Extensive Business and Domain Validation</li>
+									<li>Organization Name Highlighted in Green in Address Bar</li>
+									<li>Encryption Strength Up to 40-bit minimum, 256-bit maximum</li>
+									<li>99.9% Browser Compatibility</li>
+									<li>Site Seal Included</li>
+									<li>Single Server - Additional server licenses may be purchased</li>
+									<li>Uses Chained Certificates</li>
+									<li>FREE self-service reissues during validity period</li>
+								  </ul>
+                                    <div class="clear"></div>
+                                </div>
+                            </li>
+                            <li class="brand-symantec">
+                                <div>
+                                    <p>Site Seal</p>
+                                    <div class="clear"></div>
+                                </div>
+                                <div>
+                                    <p>The Norton&#8482; Secured Site Seal receives around 800 million impressions a day across 165 countries. So, you can feel confident that this widely known and esteemed symbol will be recognized and trusted by a large number of your online customers immediately after visiting your web page.</p>
+                                </div>
+                            </li>
+                            <li class="brand-symantec">
+                                <div>
+                                    <p>Warranty</p>
+                                    <div class="clear"></div>
+                                </div>
+                                <div>
+                                      <p>This certificate comes backed by <strong>the largest industry warranty offered at $1,750,000</strong>. Plus, reissuance insurance and a free installation checker make purchasing this certificate as simple as possible.</p>
+  <p>Symantec&trade; also includes the NetSure&trade; Protection Plan which protects SSL certificate customers from certain losses incurred as a result of a breach. When you purchase this certificate, your investment will be completely protected.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                @Html.Partial("_rightpanel", username)
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+@section Jscripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Mobile Menu
+            $("#showmenu").click(function (e) {
+                e.preventDefault();
+                $("#menu").toggleClass("show");
+            });
+            $("#menu a").click(function (event) {
+                event.preventDefault();
+                if ($(this).next('ul').length) {
+                    $(this).next().toggle('fast');
+                    $(this).children('i:last-child').toggleClass('fa-caret-down fa-caret-left');
+                }
+            });
+            $(document).click(function (e) {
+                if (!$(e.target).is(".mobmemu, .mobmemu  *")) { $("#menu").toggleClass("hide"); $("#menu").removeClass("show"); }
+            });
+            $(".accordion_example").smk_Accordion();
+        });
+    </script>
+} 

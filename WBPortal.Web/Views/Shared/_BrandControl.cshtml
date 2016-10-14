@@ -1,0 +1,58 @@
+﻿@using WBSSLStore.Web.Helpers.PopupForm
+@using WBSSLStore.Domain;
+@model Tuple<List<ProductPricing>, List<ProductDetail>>
+@{
+
+    int BrandID = 0;
+    if (Model != null && Model.Item1 != null && Model.Item1.Count > 0 && Model.Item1.First().Product != null)
+    {
+        BrandID = Model.Item1.First().Product.BrandID;
+    }
+    var products = Model != null && Model.Item1 != null ? Model.Item1.GroupBy(x => x.ProductID, x => x.Product, (key, g) => new { ProductID = key, ProductPricing = g.ToList() }).Select(x => new { Product = x.ProductPricing.FirstOrDefault(), pricing = Model.Item1.Where(y => y.ProductID == x.ProductID).ToList() }).ToList() : null;
+    string issuancetime = string.Empty;
+    string validationtype = string.Empty;
+}
+@if (Model != null && Model.Item1.Count > 0)
+{
+    <div>
+        <div class="tabcert-list">
+            <h3>@Enum.Parse(typeof(ProductBrands), BrandID.ToString()).ToString() SSL Certificates</h3>
+            <span>Save 20%</span>
+            <div class="clear"></div>
+        </div>
+        <div class="tbllist">
+            <div class="certraw certheadraw">
+                <p class="wd410">@WBSSLStore.Resources.GeneralMessage.Message.Product_Caption</p>
+                <p class="wd130">@WBSSLStore.Resources.GeneralMessage.Message.Shoppingcart_Price</p>
+                <p class="wd130">@WBSSLStore.Resources.GeneralMessage.Message.Save_Caption</p>
+                <p class="wd130">@WBSSLStore.Resources.GeneralMessage.Message.Issuance_Caption</p>
+                <p class="wd130">@WBSSLStore.Resources.GeneralMessage.Message.Validation_Caption</p>
+            </div>
+            @foreach (var item in products)
+            {
+                {
+                    var data = Model.Item2 != null ? Model.Item2.Where(x => x.productcode.Equals(item.Product.InternalProductCode, StringComparison.OrdinalIgnoreCase)).FirstOrDefault() : null;
+                    issuancetime = data != null ? data.IssuanceTime : string.Empty;
+                    validationtype = data != null ? data.ValidationType : string.Empty;
+
+                }
+
+                <div class="certraw">
+                    <p class="wd410"><span class="mobshow">@WBSSLStore.Resources.GeneralMessage.Message.Product_Caption</span>@item.Product.ProductName</p>
+                    <p class="wd130"><span class="mobshow">@WBSSLStore.Resources.GeneralMessage.Message.Price_Caption</span>@WBSSLStore.Web.Helpers.WBHelper.GetProductPricing(item.pricing)</p>
+                    <p class="wd130"><span class="mobshow">@WBSSLStore.Resources.GeneralMessage.Message.Save_Caption</span>@WBSSLStore.Web.Helpers.WBHelper.GetProductPricingSave(item.pricing)</p>
+                    <p class="wd130"><span class="mobshow">@WBSSLStore.Resources.GeneralMessage.Message.Issuance_Caption</span>@(issuancetime)</p>
+                    <p class="wd130"><span class="mobshow">@WBSSLStore.Resources.GeneralMessage.Message.Validation_Caption</span>@(issuancetime)</p>
+                    <p class="wd100 txtright">
+                        <a href="@item.Product.DetailPageslug" class="buybtn generalBtnGRN" title="@WBSSLStore.Resources.GeneralMessage.Message.Add_to_Cart_btn">
+                            @WBSSLStore.Resources.GeneralMessage.Message.Add_to_Cart_btn
+                        </a>
+                        @*<a href="javascript:;" class="buybtn generalBtnGRN" title="@WBSSLStore.Resources.GeneralMessage.Message.Add_to_Cart_btn" onclick="callpfeditshoppingcart(0,@(WBSSLStore.Web.Helpers.WBHelper.GetMAXProductPricingID(Model.Where(e => e.Product.InternalProductCode.ToLower().Equals(item.Product.InternalProductCode, StringComparison.OrdinalIgnoreCase)).ToList())));">
+                                @WBSSLStore.Resources.GeneralMessage.Message.Add_to_Cart_btn
+                            </a>*@
+                    </p>
+                </div>
+            }
+        </div>
+    </div>
+}

@@ -1,0 +1,140 @@
+﻿@model WBSSLStore.Service.ViewModels.StaticPageViewModel
+@{
+    ViewBag.Title = "SecureSiteProwithEV";  var productdetails = WBSSLStore.Web.Helpers.WBHelper.GetProductDetailRows();
+    string brand = Model != null && Model.Items != null && Model.Items.FirstOrDefault().Product != null && Model.Items.FirstOrDefault().Product.Brand != null ? Model.Items.FirstOrDefault().Product.Brand.BrandName : "";
+    string username = ViewBag.UserName;
+}
+@section headerTags{
+    @Html.Partial("_renderSEO", Model != null && Model.CMSPage != null ? Model.CMSPage : new WBSSLStore.Domain.CMSPage())
+}
+@Html.Partial("_banner", new Tuple<string, string>("", "SSL Brands"))
+<div class="content">
+  <div class="wrapper">
+    <div class="column3">
+      <div class="mobtopcol">
+        <div class="column3-2">
+          <div class="prodetailswrap marzerotop"> @Html.Partial("_ProdPricing", new Tuple<List<WBSSLStore.Domain.ProductPricing>, List<WBSSLStore.Domain.ProductDetail>>(Model.Items.ToList(), productdetails.ToList())) </div>
+          <div class="prodescrip marzerotop">
+            <div class="prodescriptxt">
+              <h2>Product Description</h2>
+              <p>The Comodo Unified Communications Certificate (UCC) is the most effective solution for securing a Microsoft Exchange and/or Microsoft Office Communication Server environment. This single SSL certificate can provide secured communications on many different domains, external, which will reduce the complexity of your server security administration, along with reducing cost. Additionally, this certificate supports the Microsoft Exchange Autodiscover service, which is a new capability on the Exchange platform designed to ease client administration.</p>
+            </div>
+          </div>
+          <div id="cssmenu">
+            <ul class="accordion_example">
+              <li class="brand-symantec acc_active">
+                <div>
+                  <p>Assurance &amp; Authentication</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>Since this is an Organization Validated (OV) certificate, a company must complete a light validation process before having the certificate issued. This validation process typically takes between 2-3 business days to complete.</p>
+                  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Security &amp; Encryption</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>This certificate offers full 128/256-bit encryption strength and also provides the industry standard 2048-bit signature.</p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>SAN &amp; multi-domain support</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>The Comodo UCC comes pre-packaged with a total of 5 SANS. So, you can manage and provision 5 domains with just a single certificate. You can additional domains to this certificate if you need, as the Comodo Unified Communications Certificate can cover <strong>up to 100 total domains</strong>.</p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Features &amp; Benefits</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <ul class="featurelist">
+                    <li>Full business validated certificate</li>
+                    <li>Trusted by over 99.3% of major Browsers</li>
+                    <li>Subject Alternative Name (SAN) control</li>
+                    <li>Supported by MS&reg; Exchange server 2010</li>
+                    <li>Supported by Office Communications Server (OCS) 2007</li>
+                    <li>Unlimited server licenses</li>
+                    <li>Unlimited Re-Issuance Policy</li>
+                    <li>128/256 bit encryption</li>
+                    <li>From one of the three Microsoft&reg; official UCC vendors</li>
+                    <li>Provides SSL for multiple domain names in a single certificate</li>
+                    <li>Move/change domains as required</li>
+                  </ul>
+				  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Product Specifications</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <ul class="featurelist">
+                    <li>Multiple domains Supports MS Exchange 2010 and Office Communications Server 2007</li>
+                    <li>Issued In one week</li>
+                    <li>Full business validation</li>
+                    <li>Encryption Up to 256-bit</li>
+                    <li>99.3% Browser Compatibile</li>
+                    <li>Free Unlimited Server Licenses</li>
+                    <li>Unlimited Reissuance</li>
+                  </ul>
+				  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Site Seal</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>This certificate comes with the trusted <strong>Comodo Secure Site Seal</strong>, which is one of the most recognized seals online. Also, since this is an Organization Validated (OV) certificate, the site seal is dynamic, which means a user can click on it to see real-time, validated information about your company.</p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Warranty</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>Since this is a Unified Communications Certificate, which comes with 5 total SANS, it does not come with a warranty.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        @Html.Partial("_rightpanel", username) </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+@section Jscripts{ 
+<script type="text/javascript">
+        $(document).ready(function () {
+            // Mobile Menu
+            $("#showmenu").click(function (e) {
+                e.preventDefault();
+                $("#menu").toggleClass("show");
+            });
+            $("#menu a").click(function (event) {
+                event.preventDefault();
+                if ($(this).next('ul').length) {
+                    $(this).next().toggle('fast');
+                    $(this).children('i:last-child').toggleClass('fa-caret-down fa-caret-left');
+                }
+            });
+            $(document).click(function (e) {
+                if (!$(e.target).is(".mobmemu, .mobmemu  *")) { $("#menu").toggleClass("hide"); $("#menu").removeClass("show"); }
+            });
+            $(".accordion_example").smk_Accordion();
+        });
+    </script> 
+} 

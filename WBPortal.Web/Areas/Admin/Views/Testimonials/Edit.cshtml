@@ -1,0 +1,192 @@
+﻿@using System.Data.Entity.Infrastructure
+@using WBSSLStore.Domain
+@model Testimonials
+@{
+    ViewBag.Title = "Edit";   
+   
+}
+<script type="text/javascript" >
+    var statusid = '@Model.RecordStatusID';
+    var showinpage = '@TestimonialStatus.SHOWINPAGE';
+    $(function () {
+        f();
+    });
+</script>
+<script src="@Url.Content("~/content/Admin/js/testimonial.min.js")" language="javascript" type="text/javascript" ></script>
+<script src="@Url.Content("~/content/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/content/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.ID)
+    @Html.HiddenFor(model => model.SiteID)
+        
+        
+    @Html.ValidationSummary(true)
+    <tr>
+        <td align="left" valign="top">
+            <table width="881" border="0" align="left" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td width="7" align="left" valign="top">
+                        <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/barleft.gif" alt="whitebrand" width="7" height="55">
+                    </td>
+                    <td width="866" align="left" valign="middle" class="hdbarbg">
+                        <table width="840" border="0" align="center" cellpadding="1" cellspacing="1">
+                            <tr>
+                                <td width="407" align="left" valign="middle" class="head1">
+                                    @if (Model != null && Model.ID > 0)
+                                    {
+                                        <span>@*Edit*@ @WBSSLStore.Resources.GeneralMessage.Message.Edit_Caption</span>
+                                    }
+                                    else
+                                    {
+                                        <span>@*Add Customer*@ @WBSSLStore.Resources.GeneralMessage.Message.Add_Testimonial_Caption</span>
+                                    }
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td width="9" align="right" valign="top">
+                        <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/barright.gif" alt="whitebrand" width="9" height="55">
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td align="left" valign="top" class="contbg">
+            <table width="870" border="0" align="center" cellpadding="0" cellspacing="7">
+                @* @if (!string.IsNullOrEmpty(@ViewBag.ErrMsg))
+                {
+                    <tr>
+                        <td class="errormsg">
+                            @WBSSLStore.Resources.GeneralMessage.Message.SmtpConfigureMSG_AdminMaster <a href="@Url.Action("smtpsettings", "sitesettings")">
+                                @WBSSLStore.Resources.GeneralMessage.Message.Click_Here</a> @WBSSLStore.Resources.GeneralMessage.Message.To_Configure
+                        </td>
+                    </tr>
+                }*@
+                <tr>
+                    <td width="867" align="center" valign="top" class="bgclr">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td height="30" align="right" valign="middle" class="bluefont" colspan="2">
+                                    @Html.ActionLink(@WBSSLStore.Resources.GeneralMessage.Message.BacktoTestimonial_Caption, "index")
+                                    &nbsp;
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="left" valign="top">
+                                    <br />
+                                    <br />
+                                    <br />
+                                    <table width="820" border="0" align="center" cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <td align="left" valign="top">
+                                                <table width="80%" border="0" align="center" cellpadding="1" cellspacing="2">
+                                                    <tr>
+                                                        <td width="31%" align="right" valign="middle" class="bold">
+                                                            @Html.LabelFor(model => model.Signature): <span class="redfont">*</span>
+                                                        </td>
+                                                        <td width="69%" align="left" valign="middle">
+                                                            <label>
+                                                                @Html.TextAreaFor(model => model.Signature, new { @class = "inputbox", ID = "txtName", @style = "width: 300px;height:35px;", @rows = "25" })
+                                                                @Html.ValidationMessageFor(model => model.Signature)
+                                                            </label>
+                                                        </td>
+                                                    </tr>
+                                                    <tr >
+                                                        <td align="right" valign="middle" class="bold">
+                                                            @Html.LabelFor(model => model.RecordStatusID):
+                                                        </td>
+                                                        <td align="left" valign="top">
+                                                            @Html.DropDownListFor(model => model.RecordStatusID, Enum.GetValues(typeof(TestimonialStatus)).Cast<TestimonialStatus>().Select(x => new SelectListItem { Text = ((int)x == (int)TestimonialStatus.ACTIVE || (int)x == (int)TestimonialStatus.SHOWINPAGE ? WBSSLStore.Resources.GeneralMessage.Message.ddlStatus_Active : WBSSLStore.Resources.GeneralMessage.Message.ddlStatus_InActive), Value = ((int)x).ToString() }).Where(x => Convert.ToInt32(x.Value) != (int)TestimonialStatus.DELETED && Convert.ToInt32(x.Value) != (int)TestimonialStatus.SHOWINPAGE), new { @class = "listmenusmall", ID = "ddlStatus" })                                                           
+                                                            
+                                                        </td>
+                                                    </tr>
+                                                    <tr id="statusrow">
+                                                        <td align="right" valign="middle" class="bold">
+                                                            @WBSSLStore.Resources.GeneralMessage.Message.Testimonial_ShowinPage_Caption :
+                                                        </td>
+                                                        <td align="left" valign="top">
+                                                            <label>
+                                                                <input type="checkbox" value="true"  name="chkTestimonials" id="chkTestimonials"  @(Convert.ToBoolean(ViewBag.IsTestimonials) ? "checked=\"checked\"" : "") />
+                                                            </label>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="right" valign="top" class="bold">
+                                                            @Html.LabelFor(model => model.Description):<span class="redfont"> *</span>
+                                                        </td>
+                                                        <td align="left" valign="middle">
+                                                            <label>
+                                                                @Html.TextAreaFor(model => model.Description, new { @class = "inputNormal", @style = "width: 400px;height:200px;", @rows = "25" })
+                                                                <br />
+                                                                @Html.ValidationMessageFor(model => model.Description)
+                                                            </label>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="right" valign="middle" class="bold">
+                                                            &nbsp;
+                                                        </td>
+                                                        <td align="left" valign="top">
+                                                            &nbsp;
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="left" valign="top">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="left" valign="top">
+                                                <table width="100%" border="0" align="left" cellpadding="0" cellspacing="0">
+                                                    <tr>
+                                                        <td height="8" align="left" valign="top">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="left" valign="top">
+                                                            <table width="80%" border="0" align="center" cellpadding="1" cellspacing="2">
+                                                                <tr>
+                                                                    <td height="8" align="right" valign="middle" class="bold">
+                                                                    </td>
+                                                                    <td height="8" align="left" valign="top">
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td width="31%" align="right" valign="middle" class="bold">
+                                                                        &nbsp;
+                                                                    </td>
+                                                                    <td width="69%" align="left" valign="top">
+                                                                        <label>
+                                                                            <input name="btnSubmit" type="submit" class="bluebtn" id="btnSubmit" value="@WBSSLStore.Resources.GeneralMessage.Message.SAVE_btn" />
+                                                                        </label>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="left" valign="top">
+                                                &nbsp;
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td height="8" align="left" valign="top">
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+}

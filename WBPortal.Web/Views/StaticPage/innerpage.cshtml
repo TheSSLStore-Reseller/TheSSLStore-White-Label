@@ -1,0 +1,28 @@
+﻿@model WBSSLStore.Service.ViewModels.StaticPageViewModel
+@section headerTags{
+    @Html.Partial("_renderSEO", Model.CMSPage)
+}
+
+@Html.Partial("_banner", new Tuple<string, string>("", Model.CMSPageContent.CmsPage.Title))
+<div class="content">
+    <div class="wrapper">
+        <div class="column3">
+            <div class="mobtopcol">
+                <div class="column3-2">
+                    <div class="aboutwrap marzerotop">
+                        <div class="aboutcontext">
+
+                            @Html.Raw(Model.CMSPageContent.PageContent)
+
+                        </div>
+                    </div>
+
+                </div>
+                @Html.Partial("_rightpanel", Model.CurrentUserName)
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+
+

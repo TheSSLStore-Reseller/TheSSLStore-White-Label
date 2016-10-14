@@ -1,0 +1,105 @@
+﻿<div class="headermain">
+    <div class="wrapper">
+        <div class="logo">
+            <a href="/"><img alt="Trust the Site Logo" src="/upload/sitelogo/logo.png"></a>
+            <div class="clear"></div>
+        </div>
+        <div class="navigation">
+            <ul>
+                <li>
+                    <a href="@Url.RouteUrl("AllBrand_us")" class="grnarrow">Brands</a>
+                    <div class="submenu">
+                        <ul>
+                            <li><a href="@Url.RouteUrl("symantecBrand_us")">Symantec</a></li>
+                            <li><a href="@Url.RouteUrl("GeoTrustBrand_us")">GeoTrust</a></li>
+                            <li><a href="@Url.RouteUrl("thawteBrand_us")">Thawte</a></li>
+                            <li><a href="@Url.RouteUrl("comodoBrand_us")">Comodo</a></li>
+                            <li><a href="@Url.RouteUrl("RapidSSLBrand_us")">RapidSSL</a></li>
+                            <li><a href="@Url.RouteUrl("CertumBrand_us")">Certum</a></li>
+
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <a href="@Url.RouteUrl("Allsolutions_us")" class="grnarrow">Solutions</a>
+                    <div class="submenu">
+                        <ul class="bigwid">
+                            <li><a href="@Url.RouteUrl("dvssl_us")">Domain Validated SSL</a></li>
+                            <li><a href="@Url.RouteUrl("ovssl_us")">Organisation Validated SSL</a></li>
+                            <li><a href="@Url.RouteUrl("evssl_us")">Extended Validation SSL</a></li>
+                            <li><a href="@Url.RouteUrl("wildcardssl_us")">Wildcard SSL</a></li>
+                            <li><a href="@Url.RouteUrl("uccsanSsl_us")">UCC SAN SSL</a></li>
+                            <li><a href="@Url.RouteUrl("csssl_us")">Code Signing</a></li>
+                            <li><a href="@Url.RouteUrl("antimalware_us")">Anti-malware</a></li>
+                        </ul>
+                    </div>
+                </li>
+                @if (!User.IsInRole("reseller"))
+                {
+                    <li><a href="@Url.RouteUrl("becamereseller_us")">Reseller</a></li>
+                }
+                <li>
+                    <a href="" class="grnarrow">Resources</a>
+                    <div class="submenu">
+                        <ul class="bigwid">
+                            <li><a href="@Url.RouteUrl("faq_us")">Frequently Asked Questions</a></li>
+                            <li><a href="">SSL Tools</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a href="">Compare SSL</a></li>
+            </ul>
+            <div class="clear"></div>
+        </div>
+        <div class="mobmemu">
+            <a href="#" id="showmenu"><img alt="Mobile Menu Icon" src="/content/images/icon-menu.png"></a>
+            <nav id="menu" class="left">
+                <ul>
+                    <li>
+                        <a href="@Url.RouteUrl("AllBrand_us")" class="active">Brands<i class="fa fa-caret-down"></i></a>
+                        <ul>
+                            <li><a href="@Url.RouteUrl("symantecBrand_us")">Symantec</a></li>
+                            <li><a href="@Url.RouteUrl("GeoTrustBrand_us")">GeoTrust</a></li>
+                            <li><a href="@Url.RouteUrl("symantecBrand_us")">Thawte</a></li>
+                            <li><a href="@Url.RouteUrl("symantecBrand_us")">Comodo</a></li>
+                            <li><a href="@Url.RouteUrl("RapidSSLBrand_us")">RapidSSL</a></li>
+                            <li><a href="@Url.RouteUrl("CertumBrand_us")">Certum</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="@Url.RouteUrl("Allsolutions_us")" class="grnarrow">Solutions</a>
+                        <ul>
+                            <li><a href="@Url.RouteUrl("dvssl_us")">Domain Validated SSL</a></li>
+                            <li><a href="@Url.RouteUrl("ovssl_us")">Organisation Validated SSL</a></li>
+                            <li><a href="@Url.RouteUrl("evssl_us")">Extended Validation SSL</a></li>
+                            <li><a href="@Url.RouteUrl("wildcardssl_us")">Wildcard SSL</a></li>
+                            <li><a href="@Url.RouteUrl("uccsanSsl_us")">UCC SAN SSL</a></li>
+                            <li><a href="@Url.RouteUrl("csssl_us")">Code Signing</a></li>
+                            <li><a href="@Url.RouteUrl("antimalware_us")">Anti-malware</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="@Url.RouteUrl("becamereseller_us")">Reseller</a></li>
+                    <li><a href="">SSL Promotions</a></li>
+                    <li>
+                        <a href="">Resources <i class="fa fa-caret-down"></i></a>
+                        <ul class="bigwid">
+                            <li><a href="@Url.RouteUrl("faq_us")">Frequently Asked Questions</a></li>
+                            <li><a href="">SSL Tools</a></li>
+                            <li><a href="">White Papers</a></li>
+                            <li><a href="">Request a Quote</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="">Compare SSL</a></li>
+                    <li><a href="@Url.RouteUrl("aboutus_us")">About Us</a></li>
+                    <li><a href="@Url.RouteUrl("Contact_us")">Contact Us</a></li>
+                    <li><a href="@Url.Action("Index", "shoppingcart")">My Cart</a></li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li><a href="@Url.Action("edit","account")">My Account</a></li>
+                    }
+                </ul>
+            </nav>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>

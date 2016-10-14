@@ -1,0 +1,525 @@
+﻿@model WBSSLStore.Service.ViewModels.ProductPricingModel    
+@{
+    ViewBag.Title = "Add";
+
+    string CurrentLangCode = WBSSLStore.Web.Helpers.WBHelper.CurrentLangCode;
+    ViewBag.version = WBSSLStore.Web.Helpers.Caching.SiteCacher.ResourceVersion();
+}
+@*<script src="@Url.Content("~/content/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/content/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/content/Scripts/jQuery.glob.min.js")" type="text/javascript"></script>*@
+
+@System.Web.Optimization.Scripts.Render("/bundales/wb/validationjs?v=" + ViewBag.version)
+@System.Web.Optimization.Scripts.Render("/bundales/jquery-glob?v=" + ViewBag.version)
+
+@if (CurrentLangCode!= "en")
+{
+@System.Web.Optimization.Scripts.Render("/bundales/jquery-glob-all?v=" + ViewBag.version)
+@*<script src="@Url.Content("~/content/Scripts/jquery.glob.all.min.js")" type="text/javascript"></script>*@
+}
+<script type="text/javascript">
+    $.validator.methods.number = function (value, element) {
+        return !isNaN($.parseFloat(value));
+    }
+
+    $(function () {
+        $.preferCulture('@(CurrentLangCode)');
+    });
+</script>
+<script type="text/javascript" language="javascript">
+    function FillProductCode(val) {
+        $('#product_InternalProductCode').val(val);
+    }
+    $(document).ready(function () {
+
+        if (document.getElementById("chk").checked) {
+
+            $('.Sanminmax').each(function () { $(".Sanminmax").css('display', 'table-cell'); });
+        }
+        else {
+
+            $('.Sanminmax').each(function () { $(".Sanminmax").css('display', 'none'); });
+        }
+        // Handler for .ready() called.
+    });
+    
+</script>
+<style type="text/css">
+    .Sanminmax
+    {
+        display: none;
+    }
+</style>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(model => model.product.ID)
+    @*@Html.HiddenFor(model => model.productAvailablity.)*@
+    @*@Html.HiddenFor(model => model.productAvailablity.isActive)
+        @Html.HiddenFor(model => model.productAvailablity.ProductID)
+        @Html.HiddenFor(model => model.productAvailablity.SiteID)*@
+    <tr>
+        <td align="left" valign="top">
+            <table width="881" border="0" align="left" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td width="7" align="left" valign="top">
+                        <img src="/content/Admin/images/barleft.gif" alt="whitebrand" width="7" height="55">
+                    </td>
+                    <td width="866" align="left" valign="middle" class="hdbarbg">
+                        <table width="840" border="0" align="center" cellpadding="1" cellspacing="1">
+                            <tr>
+                                <td width="407" align="left" valign="middle" class="head1">
+                                    @if (Model != null && Model.product != null && Model.product.ID > 0)
+                                    {
+                                        <span>@WBSSLStore.Resources.GeneralMessage.Message.Edit_Product_Caption </span>
+                                    }
+                                    else
+                                    {
+                                        <span>@WBSSLStore.Resources.GeneralMessage.Message.Add_Product_Caption</span>
+                                    }
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td width="9" align="right" valign="top">
+                        <img src="/content/Admin/images/barright.gif" alt="whitebrand" width="9" height="55">
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td align="left" valign="top" class="contbg">
+            <table width="870" border="0" align="center" cellpadding="0" cellspacing="7">
+                <tr>
+                    <td width="867" align="center" valign="top" class="bgclr">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td height="8" align="left" valign="top"></td>
+                            </tr>
+                            <tr>
+                                <td align="left" valign="top">
+                                    <table width="841" border="0" align="center" cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <td align="left" valign="top">
+                                                &nbsp;
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="left" valign="top">
+                                                <table width="840" border="0" align="left" cellpadding="1" cellspacing="1">
+                                                    <tr>
+                                                        <td width="249" align="right">
+                                                            <strong>
+                                                                @Html.LabelFor(model => model.product.BrandID, WBSSLStore.Resources.GeneralMessage.Message.Brand_Caption)
+                                                            :
+                                                        </strong><strong class="redfont">*</strong>
+                                                    </td>
+                                                    <td width="15" height="22" align="left" valign="middle">
+                                                        &nbsp;
+                                                    </td>
+                                                    <td width="566" height="22" align="left" valign="middle">
+                                                        @Html.DropDownListFor(model => model.product.BrandID, new SelectList(ViewBag.Brand as System.Collections.IEnumerable, "ID", "BrandName"), "----" + @WBSSLStore.Resources.GeneralMessage.Message.select_brand_Caption + "----", new { @class = "listmenumid" })
+                                                        @Html.ValidationMessageFor(model => model.product.ID)
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="249" align="right">
+                                                        <strong>
+                                                            @Html.LabelFor(model => model.product.ProductName)
+                                                        :
+                                                    </strong><strong class="redfont">*</strong>
+                                                </td>
+                                                <td width="15" height="22" align="left" valign="middle">
+                                                    &nbsp;
+                                                </td>
+                                                <td width="566" height="22" align="left" valign="middle">
+                                                    <label>
+                                                        @Html.TextBoxFor(model => model.product.ProductName, new { @class = "inputbox200px" })
+                                                    </label>
+                                                    @Html.ValidationMessageFor(model => model.product.ProductName)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="right" valign="top">
+                                                    <strong>
+                                                        @Html.LabelFor(model => model.product.ProductDescription)
+                                                    :
+                                                </strong><strong class="redfont">*</strong>
+                                            </td>
+                                            <td height="22" align="left" valign="middle">
+                                                &nbsp;
+                                            </td>
+                                            <td align="left" valign="middle">
+                                                @Html.TextAreaFor(model => model.product.ProductDescription, new { @class = "inputNormal", @rows = "5", @cols = "25" })
+                                                @Html.ValidationMessageFor(model => model.product.ProductDescription)
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="right">
+                                                <strong>
+                                                    @Html.LabelFor(model => model.product.InternalProductCode)
+                                                :
+                                            </strong><strong class="redfont">*</strong>
+                                        </td>
+                                        <td height="22" align="left" valign="middle">
+                                            &nbsp;
+                                        </td>
+                                        <td align="left" valign="middle">
+                                            @Html.TextBoxFor(model => model.product.InternalProductCode, new { @class = "inputbox200px", @readonly = "readonly" })
+                                            @if (Model.product.ID <= 0)
+                                            {
+                                                @Html.DropDownList("APIProduct", new SelectList(ViewBag.APIProduct as System.Collections.IEnumerable, "ProductCode", "ProductName"), "----" + @WBSSLStore.Resources.GeneralMessage.Message.Select_API_Product_Caption + "----", new { @class = "listmenumid", @onchange = "FillProductCode(this.value)" })
+                                            }
+                                            @Html.ValidationMessageFor(model => model.product.InternalProductCode)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="right" valign="top">
+                                            <strong>Price :</strong><strong class="redfont">*</strong>
+                                        </td>
+                                        <td height="22" align="left" valign="middle">
+                                            &nbsp;
+                                        </td>
+                                        <td bgcolor="#d6d6d6" align="left" valign="top">
+                                            <table width="100%" align="left" cellpadding="3" cellspacing="1">
+                                                <tr>
+                                                    <td width="51" height="30" align="center" valign="middle" bgcolor="#FFFFFF" class="bluefont">
+                                                        @*Months*@ @WBSSLStore.Resources.GeneralMessage.Message.Months_Caption
+                                                    </td>
+                                                    <td width="72" height="30" align="center" valign="middle" bgcolor="#FFFFFF" class="bluefont">
+                                                        @*Retail-Price*@ @WBSSLStore.Resources.GeneralMessage.Message.RetailPrice_Caption
+                                                    </td>
+                                                    <td width="86" height="30" align="center" valign="middle" bgcolor="#FFFFFF" class="bluefont">
+                                                        @*Sale-Price*@ @WBSSLStore.Resources.GeneralMessage.Message.SalePrice_Caption
+                                                    </td>
+                                                    <td width="118" height="30" align="center" valign="middle" bgcolor="#FFFFFF" class="bluefont">
+                                                        @*Additional Domain*@ @WBSSLStore.Resources.GeneralMessage.Message.AdditionalDomains_Caption
+                                                    </td>
+                                                    <td width="86" height="30" align="center" valign="middle" bgcolor="#FFFFFF" class="bluefont">
+                                                        @*Recommended*@ @WBSSLStore.Resources.GeneralMessage.Message.Recommended_Caption
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="51" height="24" align="center" valign="middle" bgcolor="#FFFFFF">
+                                                        @Html.HiddenFor(model => model.Month_12.ID)
+                                                        @Html.HiddenFor(model => model.Month_12.isRecommended)
+                                                        @Html.HiddenFor(model => model.Month_12.RecordStatusID)
+                                                        @Html.HiddenFor(model => model.Month_12.ContractID)
+                                                        @Html.HiddenFor(model => model.Month_12.SiteID)
+                                                        @Html.HiddenFor(model => model.Month_12.ProductID)
+                                                        @Html.TextBoxFor(model => model.Month_12.NumberOfMonths, new { @class = "inputboxmini", @readonly = "readonly" })
+                                                        @Html.ValidationMessageFor(model => model.Month_12.NumberOfMonths)
+                                                    </td>
+                                                    <td width="72" height="24" align="center" valign="middle" bgcolor="#FFFFFF">
+                                                        @Html.TextBoxFor(model => model.Month_12.RetailPrice, new { @class = "inputboxmini alignright" })
+                                                        @Html.ValidationMessageFor(model => model.Month_12.RetailPrice)
+                                                    </td>
+                                                    <td width="86" height="24" align="center" valign="middle" bgcolor="#FFFFFF">
+                                                        @Html.TextBoxFor(model => model.Month_12.SalesPrice, new { @class = "inputboxmini alignright" })
+                                                        @Html.ValidationMessageFor(model => model.Month_12.SalesPrice)
+                                                    </td>
+                                                    <td width="64" height="24" align="center" valign="middle" bgcolor="#FFFFFF">
+                                                        @Html.TextBoxFor(model => model.Month_12.AdditionalSanPrice, new { @class = "inputboxmini alignright" })
+                                                        @Html.ValidationMessageFor(model => model.Month_12.AdditionalSanPrice)
+                                                    </td>
+                                                    <td width="64" height="24" align="center" valign="middle" bgcolor="#FFFFFF">
+                                                        <input type="radio" value="@Model.Month_12.NumberOfMonths" name="isRecommended" @(Model.Month_12.isRecommended ? "checked=\"checked\"" : string.Empty) />
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    @Html.HiddenFor(model => model.Month_24.ID)
+                                                    @Html.HiddenFor(model => model.Month_24.isRecommended)
+                                                    @Html.HiddenFor(model => model.Month_24.RecordStatusID)
+                                                    @Html.HiddenFor(model => model.Month_24.ContractID)
+                                                    @Html.HiddenFor(model => model.Month_24.SiteID)
+                                                    @Html.HiddenFor(model => model.Month_24.ProductID)
+                                                    <td width="51" height="24" align="center" valign="middle" bgcolor="#FFFFFF">
+                                                        @Html.TextBoxFor(model => model.Month_24.NumberOfMonths, new { @class = "inputboxmini", @readonly = "readonly" })
+                                                        @Html.ValidationMessageFor(model => model.Month_24.NumberOfMonths)
+                                                    </td>
+                                                    <td width="72" height="24" align="center" valign="middle" bgcolor="#FFFFFF">
+                                                        @Html.TextBoxFor(model => model.Month_24.RetailPrice, new { @class = "inputboxmini alignright" })
+                                                        @Html.ValidationMessageFor(model => model.Month_24.RetailPrice)
+                                                    </td>
+                                                    <td width="86" height="24" align="center" valign="middle" bgcolor="#FFFFFF">
+                                                        @Html.TextBoxFor(model => model.Month_24.SalesPrice, new { @class = "inputboxmini alignright" })
+                                                        @Html.ValidationMessageFor(model => model.Month_24.SalesPrice)
+                                                    </td>
+                                                    <td width="64" height="24" align="center" valign="middle" bgcolor="#FFFFFF">
+                                                        @Html.TextBoxFor(model => model.Month_24.AdditionalSanPrice, new { @class = "inputboxmini alignright" })
+                                                        @Html.ValidationMessageFor(model => model.Month_24.AdditionalSanPrice)
+                                                    </td>
+                                                    <td width="64" height="24" align="center" valign="middle" bgcolor="#FFFFFF">
+                                                        <input type="radio" value="@Model.Month_24.NumberOfMonths" name="isRecommended" @(Model.Month_24.isRecommended ? "checked=\"checked\"" : string.Empty) />
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    @Html.HiddenFor(model => model.Month_36.ID)
+                                                    @Html.HiddenFor(model => model.Month_36.isRecommended)
+                                                    @Html.HiddenFor(model => model.Month_36.RecordStatusID)
+                                                    @Html.HiddenFor(model => model.Month_36.ContractID)
+                                                    @Html.HiddenFor(model => model.Month_36.SiteID)
+                                                    @Html.HiddenFor(model => model.Month_36.ProductID)
+                                                    <td width="51" height="24" align="center" valign="middle" bgcolor="#FFFFFF">
+                                                        @Html.TextBoxFor(model => model.Month_36.NumberOfMonths, new { @class = "inputboxmini", @readonly = "readonly" })
+                                                        @Html.ValidationMessageFor(model => model.Month_36.NumberOfMonths)
+                                                    </td>
+                                                    <td width="72" height="24" align="center" valign="middle" bgcolor="#FFFFFF">
+                                                        @Html.TextBoxFor(model => model.Month_36.RetailPrice, new { @class = "inputboxmini alignright" })
+                                                        @Html.ValidationMessageFor(model => model.Month_36.RetailPrice)
+                                                    </td>
+                                                    <td width="86" height="24" align="center" valign="middle" bgcolor="#FFFFFF">
+                                                        @Html.TextBoxFor(model => model.Month_36.SalesPrice, new { @class = "inputboxmini alignright" })
+                                                        @Html.ValidationMessageFor(model => model.Month_36.SalesPrice)
+                                                    </td>
+                                                    <td width="64" height="24" align="center" valign="middle" bgcolor="#FFFFFF">
+                                                        @Html.TextBoxFor(model => model.Month_36.AdditionalSanPrice, new { @class = "inputboxmini alignright" })
+                                                        @Html.ValidationMessageFor(model => model.Month_36.AdditionalSanPrice)
+                                                    </td>
+                                                    <td width="64" height="24" align="center" valign="middle" bgcolor="#FFFFFF">
+                                                        <input type="radio" value="@Model.Month_36.NumberOfMonths" name="isRecommended" @(Model.Month_36.isRecommended ? "checked=\"checked\"" : string.Empty) />
+                                                    </td>
+                                                </tr>
+                                                @if (Model.Month_48 != null)
+                                                {
+                                                    <tr>
+                                                        @Html.HiddenFor(model => model.Month_48.ID)
+                                                        @Html.HiddenFor(model => model.Month_48.isRecommended)
+                                                        @Html.HiddenFor(model => model.Month_48.RecordStatusID)
+                                                        @Html.HiddenFor(model => model.Month_48.ContractID)
+                                                        @Html.HiddenFor(model => model.Month_48.SiteID)
+                                                        @Html.HiddenFor(model => model.Month_48.ProductID)
+                                                        <td width="51" height="24" align="center" valign="middle" bgcolor="#FFFFFF">
+                                                            @Html.TextBoxFor(model => model.Month_48.NumberOfMonths, new { @class = "inputboxmini", @readonly = "readonly" })
+                                                            @Html.ValidationMessageFor(model => model.Month_48.NumberOfMonths)
+                                                        </td>
+                                                        <td width="72" height="24" align="center" valign="middle" bgcolor="#FFFFFF">
+                                                            @Html.TextBoxFor(model => model.Month_48.RetailPrice, new { @class = "inputboxmini alignright" })
+                                                            @Html.ValidationMessageFor(model => model.Month_48.RetailPrice)
+                                                        </td>
+                                                        <td width="86" height="24" align="center" valign="middle" bgcolor="#FFFFFF">
+                                                            @Html.TextBoxFor(model => model.Month_48.SalesPrice, new { @class = "inputboxmini alignright" })
+                                                            @Html.ValidationMessageFor(model => model.Month_48.SalesPrice)
+                                                        </td>
+                                                        <td width="64" height="24" align="center" valign="middle" bgcolor="#FFFFFF">
+                                                            @Html.TextBoxFor(model => model.Month_48.AdditionalSanPrice, new { @class = "inputboxmini alignright" })
+                                                            @Html.ValidationMessageFor(model => model.Month_48.AdditionalSanPrice)
+                                                        </td>
+                                                        <td width="64" height="24" align="center" valign="middle" bgcolor="#FFFFFF">
+                                                            <input type="radio" value="@Model.Month_48.NumberOfMonths" name="isRecommended" @(Model.Month_48.isRecommended ? "checked=\"checked\"" : string.Empty) />
+                                                        </td>
+                                                    </tr>
+                                                }
+                                                @if (Model.Month_60 != null)
+                                                {
+                                                    <tr>
+                                                        @Html.HiddenFor(model => model.Month_60.ID)
+                                                        @Html.HiddenFor(model => model.Month_60.isRecommended)
+                                                        @Html.HiddenFor(model => model.Month_60.RecordStatusID)
+                                                        @Html.HiddenFor(model => model.Month_60.ContractID)
+                                                        @Html.HiddenFor(model => model.Month_60.SiteID)
+                                                        @Html.HiddenFor(model => model.Month_60.ProductID)
+                                                        <td width="51" height="24" align="center" valign="middle" bgcolor="#FFFFFF">
+                                                            @Html.TextBoxFor(model => model.Month_60.NumberOfMonths, new { @class = "inputboxmini", @readonly = "readonly" })
+                                                            @Html.ValidationMessageFor(model => model.Month_60.NumberOfMonths)
+                                                        </td>
+                                                        <td width="72" height="24" align="center" valign="middle" bgcolor="#FFFFFF">
+                                                            @Html.TextBoxFor(model => model.Month_60.RetailPrice, new { @class = "inputboxmini alignright" })
+                                                            @Html.ValidationMessageFor(model => model.Month_60.RetailPrice)
+                                                        </td>
+                                                        <td width="86" height="24" align="center" valign="middle" bgcolor="#FFFFFF">
+                                                            @Html.TextBoxFor(model => model.Month_60.SalesPrice, new { @class = "inputboxmini alignright" })
+                                                            @Html.ValidationMessageFor(model => model.Month_60.SalesPrice)
+                                                        </td>
+                                                        <td width="64" height="24" align="center" valign="middle" bgcolor="#FFFFFF">
+                                                            @Html.TextBoxFor(model => model.Month_60.AdditionalSanPrice, new { @class = "inputboxmini alignright" })
+                                                            @Html.ValidationMessageFor(model => model.Month_60.AdditionalSanPrice)
+                                                        </td>
+                                                        <td width="64" height="24" align="center" valign="middle" bgcolor="#FFFFFF">
+                                                            <input type="radio" value="@Model.Month_60.NumberOfMonths" name="isRecommended" @(Model.Month_60.isRecommended ? "checked=\"checked\"" : string.Empty) />
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="right">
+                                            <strong>@Html.LabelFor(model => model.product.isWildcard):</strong>
+                                        </td>
+                                        <td height="22" align="left" valign="middle">
+                                            &nbsp;
+                                        </td>
+                                        <td align="left" valign="middle">
+                                            @Html.CheckBoxFor(model => model.product.isWildcard)
+                                            @Html.ValidationMessageFor(model => model.product.isWildcard)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="right">
+                                            <strong>@Html.LabelFor(model => model.product.ProductTypeID)</strong>
+                                        </td>
+                                        <td height="22" align="left" valign="middle">
+                                            &nbsp;
+                                        </td>
+                                        <td align="left" valign="middle">
+                                            @Html.DropDownListFor(model => model.product.ProductTypeID, Enum.GetValues(typeof(WBSSLStore.Domain.ProductType)).Cast<WBSSLStore.Domain.ProductType>().Select(x => new SelectListItem { Text = x.ToString(), Value = ((int)x).ToString() }), "----" + @WBSSLStore.Resources.GeneralMessage.Message.Select_Product_Type_Caption + "----", new { @class = "listmenumid" })
+                                            @Html.ValidationMessageFor(model => model.product.ProductTypeID)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="right">
+                                            <strong>@Html.LabelFor(model => model.product.isCompetitiveUpgradeAllowed)</strong>
+                                        </td>
+                                        <td height="22" align="left" valign="middle">
+                                            &nbsp;
+                                        </td>
+                                        <td align="left" valign="middle">
+                                            @Html.CheckBoxFor(model => model.product.isCompetitiveUpgradeAllowed)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="right">
+                                            <strong>
+                                                @Html.LabelFor(model => model.product.RefundDays)
+                                            :
+                                        </strong><strong class="redfont">*</strong>
+                                    </td>
+                                    <td height="22" align="left" valign="middle">
+                                        &nbsp;
+                                    </td>
+                                    <td align="left" valign="middle">
+                                        @Html.TextBoxFor(model => model.product.RefundDays, new { @class = "inputboxmini", @min = "0" })
+                                        @Html.ValidationMessageFor(model => model.product.RefundDays)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="right">
+                                        <strong>@Html.LabelFor(model => model.product.CanbeReissued):</strong>
+                                    </td>
+                                    <td height="22" align="left" valign="middle">
+                                        &nbsp;
+                                    </td>
+                                    <td align="left" valign="middle">
+                                        @Html.CheckBoxFor(model => model.product.CanbeReissued, new { @onchange = "if(this.checked){$('#dvReissue').show('slow');}else{$('#dvReissue').hide('slow');}" })
+                                        @Html.ValidationMessageFor(model => model.product.CanbeReissued)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="right"></td>
+                                    <td align="left" valign="middle">
+                                        &nbsp;
+                                    </td>
+                                    <td align="left" valign="middle">
+                                        <div id="dvReissue" @(Model.product.CanbeReissued ? string.Empty : "style=display:none;")>
+                                            <table width="199" border="0" align="left" cellpadding="1" cellspacing="1">
+                                                <tr>
+                                                    <td width="89" align="left" valign="middle">
+                                                        @Html.TextBoxFor(model => model.product.ReissueDays, new { @class = "inputboxmini", @min = "0" })
+                                                        @Html.ValidationMessageFor(model => model.product.ReissueDays)
+                                                    </td>
+                                                    <td width="103" align="left" valign="middle" class="font11">
+                                                        (@WBSSLStore.Resources.GeneralMessage.Message.No_Of_Day_Caption)
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="right">
+                                        <strong>@Html.LabelFor(model => model.product.isSANEnabled):</strong>
+                                    </td>
+                                    <td height="22" align="left" valign="middle">
+                                        &nbsp;
+                                    </td>
+                                    <td align="left" valign="middle">
+                                        @Html.CheckBoxFor(model => model.product.isSANEnabled, new { @id = "chk", @onchange = "if(this.checked){$('.Sanminmax').each(function(){$(this).css('display','table-cell');});}else{$('.Sanminmax').each(function(){$(this).css('display','none');});}" })
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="right" class="Sanminmax">
+                                        <strong>@Html.LabelFor(model => model.product.SanMin):</strong>
+                                    </td>
+                                    <td align="left" valign="middle">
+                                        &nbsp;
+                                    </td>
+                                    <td align="left" valign="middle" class="Sanminmax">
+                                        @Html.TextBoxFor(model => model.product.SanMin, new { @class = "inputboxmini", @min = "0" })
+                                        @Html.ValidationMessageFor(model => model.product.SanMin)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="right" class="Sanminmax">
+                                        <strong>@Html.LabelFor(model => model.product.SanMax):</strong>
+                                    </td>
+                                    <td class="Sanminmax" align="left" valign="middle">
+                                        &nbsp;
+                                    </td>
+                                    <td align="left" valign="middle" class="Sanminmax">
+                                        @Html.TextBoxFor(model => model.product.SanMax, new { @class = "inputboxmini", @min = "0" })
+                                        @Html.ValidationMessageFor(model => model.product.SanMax)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="right">
+                                        <strong>@Html.LabelFor(model => model.product.isNoOfServerFree):</strong>
+                                    </td>
+                                    <td height="22" align="left" valign="middle">
+                                        &nbsp;
+                                    </td>
+                                    <td align="left" valign="middle">
+                                        @Html.CheckBoxFor(model => model.product.isNoOfServerFree)
+                                        @Html.HiddenFor(model => model.product.RecordStatusID)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="right">
+                                        <strong>@Html.LabelFor(model => model.product.DetailPageslug):</strong>
+                                    </td>
+                                    <td height="22" align="left" valign="middle">
+                                        &nbsp;
+                                    </td>
+                                    <td align="left" valign="middle">
+                                        @Html.TextBoxFor(model => model.product.DetailPageslug, new { @class = "inputbox200px" })
+                                        @Html.ValidationMessageFor(model => model.product.DetailPageslug)
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td height="8" align="left" valign="top"></td>
+                    </tr>
+                    <tr>
+                        <td align="center" valign="top">
+                            <img src="/content/Admin/images/grydivider.gif" alt="" width="840" height="6">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td height="8" align="left" valign="top"></td>
+                    </tr>
+                    <tr>
+                        <td align="center" valign="top">
+                            <input name="button2" type="submit" class="bluebtn" id="button2" value="@WBSSLStore.Resources.GeneralMessage.Message.SAVE_btn">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center" valign="top">
+                            &nbsp;
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td height="8" align="left" valign="top"></td>
+        </tr>
+    </table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+}

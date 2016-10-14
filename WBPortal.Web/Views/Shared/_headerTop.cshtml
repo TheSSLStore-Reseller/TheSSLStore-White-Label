@@ -1,0 +1,16 @@
+﻿<div class="header-top">
+    <div class="wrapper">
+        <div class="search">
+        </div>
+        <div class="topnav">
+            <ul>
+                <li><a href="@Url.RouteUrl("aboutus_us")"><i class="icon ico-about"><img alt="Icon About us" src='@Url.Content("~/content/images/ico-aboutus.png")'></i>About Us</a></li>
+                <li><a href="@Url.RouteUrl("Contact_us")"><i class="icon ico-contact"><img alt="Icon Contact us" src='@Url.Content("~/content/images/ico-contact.png")'></i>Contact Us</a></li>
+                <li><a href="@Url.RouteUrl("shoppingcart_us")"><i class="icon ico-cart"><img alt="Icon My Cart" src='@Url.Content("~/content/images/ico-cart.png")'></i>My Cart</a></li>
+                <li><a href="@(User.Identity.IsAuthenticated ? Url.Action("dashboard", "orders", new { area = "client" }) : Url.RouteUrl("logon_us"))"><i class="icon ico-account"><img alt="Icon My Account" src='@Url.Content("~/content/images/ico-myaccount.png")'></i>My Account</a></li>
+                <li class="support"><a href="@Url.RouteUrl("support_us")"><i class="icon ico-support"><img alt="Icon Support" src='@Url.Content("~/content/images/ico-support.png")'></i>Support</a></li>
+            </ul>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>

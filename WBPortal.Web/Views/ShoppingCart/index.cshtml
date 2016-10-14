@@ -1,0 +1,140 @@
+﻿@using WBSSLStore.Web.Helpers.PopupForm
+@using WBSSLStore.Web.Util;
+@model WBSSLStore.Service.ViewModels.ShoppingCartViewModel
+@{
+    ViewBag.version = WBSSLStore.Web.Helpers.Caching.SiteCacher.ResourceVersion();
+    WBSiteSettings settings = new WBSiteSettings(WBSSLStore.Web.Helpers.Caching.SiteCacher.CurrentSite);
+    string strProtocol = "http";
+    if (settings.USESSL)
+    {
+        strProtocol = "https";
+
+    }
+    ViewBag.Title = "My Cart";
+    ViewBag.ImagePath = settings.ImagePath;
+    string username = ViewBag.Username;
+    string strEditCart = "<img alt='Edit Cart' src='" + Url.Content("~/content/images/ico-edit.png") + "'> <span>" + WBSSLStore.Resources.GeneralMessage.Message.Edit_Caption + "</span>";
+    var c = ViewContext.RouteData.Values["Controller"].ToString();
+    int iCnt = 0;
+}
+@section sitecss{
+    @System.Web.Optimization.Styles.Render("/bundales/tabcss?v=" + ViewBag.version)
+    @System.Web.Optimization.Styles.Render("/bundales/jquery-ui-css?v=" + ViewBag.version)
+}
+@section Jscripts{
+    @System.Web.Optimization.Scripts.Render("/bundales/wb/scripts?v=" + ViewBag.version)
+}
+@Html.Partial("_banner", new Tuple<string, string>("", WBSSLStore.Resources.GeneralMessage.Message.ShoppingCart_Header))
+
+<script type="text/javascript">
+    var Alias = "@ViewBag.Site";
+    var CentarlUrlPath = '';
+</script>
+
+<div class="content">
+    <div class="wrapper">
+        <div class="column3">
+            <div class="mobtopcol">
+                <div class="column3-2">
+                    <div class="cmnpagewrap">
+                        <h2>Cart Items</h2>
+                        @if (1 == 1 && Model.Cart != null && Model.Cart.ID > 0 && Model.CartDetails != null && Model.CartDetails.Count > 0)
+                        {
+                            <div class="carttbl">
+                                <div class="tblraw headraw">
+                                    <p class="prodecp">@WBSSLStore.Resources.GeneralMessage.Message.TransactionDetail_Caption</p>
+                                    <p class="proaction">&nbsp;</p>
+                                    <p class="proprice">@WBSSLStore.Resources.GeneralMessage.Message.Price_Caption</p>
+                                </div>
+                                @foreach (WBSSLStore.Domain.ShoppingCartDetail s in Model.CartDetails)
+                                {
+                                    iCnt += 1;
+                                    <div class="tblraw" id="row-@s.ID">
+                                        <p class="prodecp">
+                                            @s.Product.ProductName <span style="font-weight: bold">
+                                                @(s.ProductPricing.NumberOfMonths < 12 ? s.ProductPricing.NumberOfMonths : (s.ProductPricing.NumberOfMonths / 12))
+                                                @(s.ProductPricing.NumberOfMonths < 12 ? "Month" : @WBSSLStore.Resources.GeneralMessage.Message.Year_Caption)
+                                            </span>
+                                            <span style="font-style: italic">@(s.Product.isNoOfServerFree ? string.Empty : (@WBSSLStore.Resources.GeneralMessage.Message.No_Of_Server_Caption + ": " + s.NumberOfServers.ToString()))</span>
+                                            @if (s.AdditionalDomains > 0)
+                                            {
+                                                <span id="sanrow-@s.ID">
+                                                    <span style="font-style: italic">
+                                                        @WBSSLStore.Resources.GeneralMessage.Message.AdditionalDomains_Caption : @( s.AdditionalDomains > s.Product.SanMin ? (s.Product.SanMin + " Free + " + (s.AdditionalDomains - s.Product.SanMin) + " Purchased = " + s.AdditionalDomains) : (s.Product.SanMin + " Free"))
+                                                        @if (s.AdditionalDomains > s.Product.SanMin)
+                                                        {
+                                                            <br />
+                                                            @(WBSSLStore.Resources.GeneralMessage.Message.Shoppingcart_SANPrice + " :" + s.ProductPricing.AdditionalSanPrice.ToString("C") + " /" + @WBSSLStore.Resources.GeneralMessage.Message.Checkout_Domain_Caption)
+                                                        }
+                                                    </span>
+                                                    <span class="tablebodycell">
+                                                        @( string.Format("{0:C}", s.ProductPricing.AdditionalSanPrice * (s.AdditionalDomains - s.Product.SanMin)))
+                                                    </span>
+                                                </span>
+                                            }
+                                            @if (s.PromoDiscount > 0 && !string.IsNullOrEmpty(s.PromoCode))
+                                            {
+                                                <span id="prow-@s.ID">
+                                                    <span class="tablebodycell" style="font-style: italic">
+                                                        @s.Product.ProductName <span style="font-weight: bold">
+                                                            @(s.ProductPricing.NumberOfMonths / 12)
+                                                            @WBSSLStore.Resources.GeneralMessage.Message.Year_Caption
+                                                            @WBSSLStore.Resources.GeneralMessage.Message.PromoDiscount_Caption
+                                                        </span>
+                                                    </span>
+                                                    <span align="center" class="tablebodycell" style="font-weight: bold;text-align:right" id="promodiscount-@s.ID">
+                                                        -@string.Format("{0:C}", s.PromoDiscount)
+                                                    </span>
+                                                </span>
+                                            }
+                                        </p>
+                                        <p class="proaction">
+                                            <a class="delete RemoveLink" href="javascript:;" data-id="@s.ID">
+                                                <img alt="Delete" src="@Url.Content("~/content/images/icon-delete.png")" />
+                                                <span>@WBSSLStore.Resources.GeneralMessage.Message.Delete_Caption</span>
+                                            </a>
+                                            <a href="javascript:;">
+                                                @(Html.PopupFormActionLink<WBSSLStore.Web.Controllers.ShoppingCartController>(a => a.Edit(@s.ID, null), strEditCart, htmlAttributes: new { value = "" }))
+                                            </a>
+                                        </p>
+                                        <p class="proprice">@(s.Product.isNoOfServerFree ? string.Format("{0:C}", s.ProductPricing.SalesPrice) : string.Format("{0:C}", (s.ProductPricing.SalesPrice * s.NumberOfServers)))</p>
+                                    </div>
+                                }
+                                <div class="clear"></div>
+                            </div>
+                        }
+                    </div>
+                    <div class="box carttotal">
+                        <div class="promocode">
+                            <label>@WBSSLStore.Resources.GeneralMessage.Message.Cart_Promocode_Caption </label>
+                            <input class="txtinput" type="text" id="textpromo" name="textpromo" placeholder="Enter Promo Code">
+                            <input type="submit" id="code"  value="@WBSSLStore.Resources.GeneralMessage.Message.Enter_btn" onclick="@("ApplyPromo('" + WBSSLStore.Resources.ErrorMessage.Message.PromoCodeRequired + "');")">
+                        </div>
+                        <div class="totalsection">
+                            <div class="cttotal">
+                                <div class="amount">
+                                    <label>@WBSSLStore.Resources.GeneralMessage.Message.Total_Caption</label>
+                                    <span id="cart-total">@string.Format("{0:C}", ViewBag.CartTotal - ViewBag.TotalDiscount)</span>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="cartbtnsection">
+                                    <input type="button" class="orangesmlbtn floatleft" id="codea" name="code" value="@WBSSLStore.Resources.GeneralMessage.Message.Proceed_Checkout_btn" onclick=@("location.href='" + Url.Action("checkout", "Shoppingcart", new { id = Model.Cart.ID }, strProtocol) + "'")>
+                                    <input type="button" class="graysmlbtn floatleft" id="codeb" name="code" value="@WBSSLStore.Resources.GeneralMessage.Message.Continue_Shopping_btn" onclick="location.href = '/'">
+                                    <div class="clear"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+                @Html.Partial("_rightpanel", username)
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+
+@section PopupScript{
+    @*@Html.MakePopupForm("Edit", new[] { "id", "ppid" }, controller: "ShoppingCart", title: @WBSSLStore.Resources.GeneralMessage.Message.Add_To_Cart_Caption, successFunction: "EditSuccess", height: 450, width: 700, refreshOnSuccess: false, okText: @WBSSLStore.Resources.GeneralMessage.Message.SAVE_btn)*@
+@Html.MakePopupForm("Edit", new[] { "id" }, title: @WBSSLStore.Resources.GeneralMessage.Message.Edit_Shopping_Cart_Caption, successFunction: "EditSuccess", width: 680, refreshOnSuccess: false, okText: @WBSSLStore.Resources.GeneralMessage.Message.Submit_Btn)
+}

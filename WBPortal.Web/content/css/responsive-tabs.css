@@ -1,0 +1,12 @@
+.r-tabs .r-tabs-tab { display: inline-block; margin: 0; list-style: none; }
+.r-tabs .r-tabs-panel { display: none; }
+.r-tabs .r-tabs-accordion-title { display: none;}
+.r-tabs .r-tabs-panel.r-tabs-state-active { display: block; background:#f7f7f7;}
+
+/* Accordion responsive breakpoint */
+@media only screen and (max-width: 768px) {
+.r-tabs .r-tabs-nav { display: none; }
+.r-tabs .r-tabs-accordion-title { display: block; background:#4e5568;}
+.tabdtl{border-top:none;}
+.r-tabs .r-tabs-accordion-title .r-tabs-anchor{padding:15px;}
+}

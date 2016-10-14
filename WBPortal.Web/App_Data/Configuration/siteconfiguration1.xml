@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<SetupConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Configurations>
+    <DataBaseSettings>
+      <IsExists>false</IsExists>
+      <IsWindowsAuthentication>false</IsWindowsAuthentication>
+      <IsCustomRawConnection>false</IsCustomRawConnection>
+      <ConnectionString>Data Source=192.168.100.8;Initial Catalog=veeraltest2;Integrated Security=False;Persist Security Info=False;User ID=sa;Password=Intruder@#91</ConnectionString>
+      <ServerName>192.168.100.8</ServerName>
+      <DatabaseName>veeraltest2</DatabaseName>
+      <UserName>sa</UserName>
+      <Password>Intruder@#91</Password>
+      <TCPPort />
+      <ConnectionTimeout>300</ConnectionTimeout>
+      <UseSSL>false</UseSSL>
+      <ID>0</ID>
+      <IsFinishDBSetup>true</IsFinishDBSetup>
+      <IsFinishPaymentSetup>true</IsFinishPaymentSetup>
+      <IsFinishSMTPSetup>true</IsFinishSMTPSetup>
+      <IsFinishAdminSetup>true</IsFinishAdminSetup>
+      <IsFinishGeneralSetup>true</IsFinishGeneralSetup>
+    </DataBaseSettings>
+  </Configurations>
+</SetupConfig>

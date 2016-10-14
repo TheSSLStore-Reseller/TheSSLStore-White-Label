@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{12B57499-7ED2-4399-96F2-1AF6DC07DEFB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WBSSLStore.Domain</RootNamespace>
+    <AssemblyName>WBSSLStore.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Address.cs" />
+    <Compile Include="AdminDashboard.cs" />
+    <Compile Include="Audit.cs" />
+    <Compile Include="Brand.cs" />
+    <Compile Include="CertificateContact.cs" />
+    <Compile Include="CertificateRequest.cs" />
+    <Compile Include="CMSPage.cs" />
+    <Compile Include="CMSPageContent.cs" />
+    <Compile Include="Contract.cs" />
+    <Compile Include="Country.cs" />
+    <Compile Include="Crypt.cs" />
+    <Compile Include="CustomDBModels.cs" />
+    <Compile Include="DateTimeWithZone.cs" />
+    <Compile Include="EmailQueue.cs" />
+    <Compile Include="EmailTemplates.cs" />
+    <Compile Include="Enums\EmailType.cs" />
+    <Compile Include="Enums\OrderStatus.cs" />
+    <Compile Include="Enums\PageStatus.cs" />
+    <Compile Include="Enums\PaymentMode.cs" />
+    <Compile Include="Enums\ProductType.cs" />
+    <Compile Include="Enums\RecordStatus.cs" />
+    <Compile Include="Enums\RefundStatus.cs" />
+    <Compile Include="Enums\SupportType.cs" />
+    <Compile Include="Enums\TransactionMode.cs" />
+    <Compile Include="Enums\URLTarget.cs" />
+    <Compile Include="Enums\UserType.cs" />
+    <Compile Include="GatewayInteraction.cs" />
+    <Compile Include="GeneralHelper.cs" />
+    <Compile Include="IEntity.cs" />
+    <Compile Include="Language.cs" />
+    <Compile Include="Order.cs" />
+    <Compile Include="OrderDetail.cs" />
+    <Compile Include="Pages.cs" />
+    <Compile Include="Payment.cs" />
+    <Compile Include="PaymentGateway.cs" />
+    <Compile Include="PaymentGateways.cs" />
+    <Compile Include="PayPalData.cs" />
+    <Compile Include="Product.cs" />
+    <Compile Include="ProductAvailablity.cs" />
+    <Compile Include="ProductDetailRow.cs" />
+    <Compile Include="ProductPricing.cs" />
+    <Compile Include="PromoCode.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResellerContract.cs" />
+    <Compile Include="ResellerSignup.cs" />
+    <Compile Include="SearchOderInfo.cs" />
+    <Compile Include="SettingConstants.cs" />
+    <Compile Include="ShoppingCart.cs" />
+    <Compile Include="ShoppingCartDetail.cs" />
+    <Compile Include="Site.cs" />
+    <Compile Include="SiteSettings.cs" />
+    <Compile Include="SiteSMTP.cs" />
+    <Compile Include="SSLCategories.cs" />
+    <Compile Include="States.cs" />
+    <Compile Include="SupportDetail.cs" />
+    <Compile Include="SupportRequest.cs" />
+    <Compile Include="Testimonials.cs" />
+    <Compile Include="User.cs" />
+    <Compile Include="UserExt.cs" />
+    <Compile Include="UserOptions.cs" />
+    <Compile Include="UserTransaction.cs" />
+    <Compile Include="WebServerType.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WBPortal.Resources\WBPortal.Resources.csproj">
+      <Project>{daa144dc-76f4-47f1-89c7-8424aa02a2ed}</Project>
+      <Name>WBPortal.Resources</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

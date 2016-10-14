@@ -1,0 +1,105 @@
+﻿@model WBSSLStore.Gateways.RestAPIModels.Response.WhyNoPadLockResponse
+@{
+    ViewBag.Title = "Why No PadLock?";
+}
+@Html.Partial("_banner", new Tuple<string, string>("", "Why No Pad Lock?"))
+<div class="content">
+    <div class="wrapper">
+        <div class="column3">
+            <div class="mobtopcol">
+                <div class="column3-2">
+                    <div class="cmnpagewrap">
+                        <h2>Why No PadLock?</h2>
+                        <h4>Check for Insecure Links</h4>
+                        <p> If you feel your website is not displaying the proper security lock, the Why No Padlock tool is just for you! By simply entering your URL into the box below, you can instantaneously check if there are ANY insecure links found within your URL.</p>
+                        <div class="csrgener chkcmnbx">
+                            @using (Html.BeginForm("whynopadlock", "freetools", FormMethod.Post, new { area = "", id = "frmwhynopadlock" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                <ul>
+                                    <li>
+                                        <label class="lineht30"><strong>Secure URL:</strong></label>
+                                        <div class="formdata">
+                                            @Html.TextBox("txtUrl", "", new { @class = "genetxtbox", id = "txtUrl" })
+                                            <span class="formhint">(example: https://www.your_domain.com/secure_page.html)</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <label class="tabhide">&nbsp;</label>
+                                        <div class="formdata"><input type="submit" class="greenbtn" value="Check" id="Check" name="Check"></div>
+                                    </li>
+                                </ul>
+                            }
+                            <div class="clear"></div>
+                        </div>
+                        @if (Model != null)
+                        {
+                            if (!Model.AuthResponse.isError)
+                            {
+                                <div class="csresult">
+
+                                    @if (Model.InsecureLinks != null && Model.InsecureLinks.Count > 0)
+                                    {
+                                        <ul>
+                                            <li><strong>Number of Insecure links found: </strong>3</li>
+                                            <li><strong>Line Numbers</strong> Insecure Links</li>
+
+                                            @foreach (var item in Model.InsecureLinks)
+                                            {
+                                                <li><strong>@item.Line</strong> @item.Link</li>
+                                            }
+                                        </ul>
+                                    }
+
+
+                                </div>
+                                <hr>
+                                <div class="csresult">
+                                    <ul>
+                                        <li><strong>Domain name:</strong> @Model.Domain</li>
+                                        <li><strong>IP Address:</strong> @Model.ServerIP</li>
+                                        <li><strong>URL Tested:</strong> @Model.URLTested</li>
+                                    </ul>
+                                </div>
+                                <hr>
+                                <div class="commonuli">
+                                    <ul>
+                                        <li><strong>Certificate Valid:</strong> @Model.CertificateEndDate </li>
+                                        <li><strong>Certificate Issuer:</strong> @Model.Issuer </li>
+                                        <li><strong>All items called securely!</strong></li>
+                                    </ul>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="alert-error">
+                                    @Model.AuthResponse.Message[0]
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+                @Html.Partial("_rightpanel", "")
+            </div>
+            
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+
+@section Jscripts{
+    <script type="text/javascript">
+        $(function () {
+            $("#frmwhynopadlock").submit(function (event) {
+                var $url = $("#txtUrl").val();
+
+
+                if ($url == '') {
+                    alert('Please inser ');
+                    return false;
+                }
+            });
+
+        });
+    </script>
+}

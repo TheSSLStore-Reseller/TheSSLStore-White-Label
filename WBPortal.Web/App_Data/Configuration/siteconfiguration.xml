@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<SetupConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <DataBaseSettings>
+    <IsExists>false</IsExists>
+    <IsWindowsAuthentication>false</IsWindowsAuthentication>
+    <IsCustomRawConnection>false</IsCustomRawConnection>
+    <ConnectionString><![CDATA[]]></ConnectionString>
+    <ServerName />
+    <DatabaseName />
+    <UserName />
+    <Password />
+    <TCPPort />
+    <ConnectionTimeout>300</ConnectionTimeout>
+    <UseSSL>false</UseSSL>
+    <ID>0</ID>
+    <IsFinishDBSetup>false</IsFinishDBSetup>
+    <IsFinishPaymentSetup>false</IsFinishPaymentSetup>
+    <IsFinishSMTPSetup>false</IsFinishSMTPSetup>
+    <IsFinishAdminSetup>false</IsFinishAdminSetup>
+    <IsFinishGeneralSetup>false</IsFinishGeneralSetup>
+  </DataBaseSettings>
+</SetupConfig>

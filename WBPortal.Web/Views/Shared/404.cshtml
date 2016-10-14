@@ -1,0 +1,192 @@
+﻿@using WBSSLStore.Web.Util;
+@using WBSSLStore.Web.Helpers.Caching;
+@model dynamic
+@{
+    WBSiteSettings setting = new WBSSLStore.Web.Util.WBSiteSettings(SiteCacher.CurrentSite);
+    Layout = null;
+    var data = Model as string;
+    string[] arr = null;
+
+    if (!string.IsNullOrEmpty(data) && data.IndexOf("---") > 0)
+    {
+        arr = data.Split("---".ToCharArray());
+    }
+    else
+    {
+
+        arr = new string[2] { "500", "Internal server error" };
+    }  
+}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Error</title>
+    <link href="@setting.CurrentMinCSS" rel="stylesheet" type="text/css" />
+</head>
+<body class="body">
+    <table width="95%" border="0" align="center" cellpadding="1" cellspacing="1">
+        <tr>
+            <td align="center" valign="top">
+                &nbsp;
+            </td>
+        </tr>
+        <tr>
+            <td align="center" valign="top">
+                <table width="550" border="0" align="center" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td align="left" valign="top">
+                            <table width="550" border="0" align="left" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td width="7" align="left" valign="top">
+                                        <img src="@setting.ImagePath/barleft.gif" alt="whitebrand" width="7" height="55" />
+                                    </td>
+                                    <td width="866" align="center" valign="middle" class="hdbarbg">
+                                        <table width="98%" border="0" align="center" cellpadding="1" cellspacing="1">
+                                            <tr>
+                                                <td width="92%" align="left" valign="middle">
+                                                    <h1>
+                                                        Uh oh! Page not found</h1>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td width="9" align="right" valign="top">
+                                        <img src="@setting.ImagePath/barright.gif" alt="whitebrand" width="9" height="55" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="left" valign="top" class="popupcontbg">
+                            <table width="550" border="0" align="center" cellpadding="1" cellspacing="1">
+                                <tr>
+                                    <td width="29" align="left" valign="top">
+                                    </td>
+                                    <td width="482" align="left" valign="top">
+                                    </td>
+                                    <td width="29" align="left" valign="top">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="left" valign="top">
+                                    </td>
+                                    <td align="left" valign="top">
+                                        &nbsp;
+                                    </td>
+                                    <td align="left" valign="top">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="left" valign="top">
+                                    </td>
+                                    <td align="left" valign="top">
+                                        <table width="100%" border="0" align="left" cellpadding="1" cellspacing="1">
+                                            <tr>
+                                                <td height="30" align="center" valign="middle" class="c1">
+                                                    <h3 style="font-size: 17px; font-family: Arial, Helvetica, sans-serif; font-weight: normal;">
+                                                        Sorry the page you requested may have been moved or deleted</h3>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="left" valign="top">
+                                                    <table width="100%" border="0" align="left" cellpadding="1" cellspacing="3">
+                                                        <tr>
+                                                            <td width="33%" align="left" valign="top" style="font-size: 55px;">
+                                                                404
+                                                            </td>
+                                                            <td width="67%" align="left" valign="top">
+                                                                <img src="@setting.LogoImagePath" width="217" height="60">
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td height="25" align="center" valign="middle" class="c1">
+                                                    <h3 style="font-size: 17px; font-family: Arial, Helvetica, sans-serif; font-weight: normal;">
+                                                        Let's try one of the following remedied to get you back on track</h3>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="left" valign="top">
+                                                    &nbsp;
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="left" valign="top">
+                                                    <hr>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="c1" align="left" valign="top">
+                                                    &nbsp;
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="c1" align="left" valign="top">
+                                                    <h2>
+                                                        1) <a href="Javascript:;" onclick="history.back();">Revisit the previous page</a><br />
+                                                        2) <a href="/">Go to homepage</a><br>
+                                                        3) <a href="/sitemap">Checkout Our Sitemap</a></h2>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="c1" align="left" valign="top">
+                                                    &nbsp;
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td align="left" valign="top">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="left" valign="top">
+                                    </td>
+                                    <td align="left" valign="top">
+                                        &nbsp;
+                                    </td>
+                                    <td align="left" valign="top">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="left" valign="top">
+                                    </td>
+                                    <td align="left" valign="top">
+                                    </td>
+                                    <td align="left" valign="top">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="left" valign="top">
+                                    </td>
+                                    <td align="left" valign="top">
+                                    </td>
+                                    <td align="left" valign="top">
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="left" valign="top">
+                            <img src="@setting.ImagePath/popupbtm.gif" alt="" width="550" height="10" />
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td align="center" valign="top">
+                &nbsp;
+            </td>
+        </tr>
+    </table>
+    @{
+        setting = null;
+    }
+</body>
+</html>

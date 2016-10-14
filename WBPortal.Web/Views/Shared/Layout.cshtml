@@ -1,0 +1,90 @@
+﻿@{
+    ViewBag.version = WBSSLStore.Web.Helpers.Caching.SiteCacher.ResourceVersion();
+    WBSSLStore.Web.Util.WBSiteSettings setting = new WBSSLStore.Web.Util.WBSiteSettings(WBSSLStore.Web.Helpers.Caching.SiteCacher.CurrentSite);
+}
+<!DOCTYPE html>
+<html>
+<head>
+    @if (IsSectionDefined("headerTags"))
+    {
+        @RenderSection("headerTags", required: false)
+    }
+    else
+    {
+        <title>@ViewBag.Title</title>
+    }
+    @System.Web.Optimization.Styles.Render("/bundales/homepagecss?v=" + ViewBag.version)
+    @RenderSection("sitecss", required: false)
+    <noscript>
+        <meta http-equiv='refresh' content='0; URL=/JavascriptDisabled' />
+    </noscript>
+    @Html.Raw(@setting.GoogleAnalytics)
+    @if (IsSectionDefined("GoogleAnalytics"))
+    {
+        @RenderSection("GoogleAnalytics", required: false)
+    }
+</head>
+<body>
+    <div id="wrapper" class="main-warp">
+        <header class="header">
+            @Html.Partial("_headerTop")
+            @Html.Partial("_header")
+        </header>
+        @if (!string.IsNullOrEmpty(setting.LiveChatScript))
+        {
+
+            <div class="live-chat">
+            <img alt="Live Chat" src="@(Url.Content("~/content/images/livechat.png"))">
+                @Html.Raw(setting.LiveChatScript)
+            </div>
+        }
+        @RenderBody()
+    </div>
+    <footer>
+        @Html.Partial("footer")
+    </footer>
+    
+    @if (IsSectionDefined("FooterSection"))
+    {
+        @RenderSection("FooterSection", required: false)
+    }
+    @System.Web.Optimization.Scripts.Render("/bundales/homepagejs?v=" + ViewBag.version)
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Mobile Menu
+            $("#showmenu").click(function (e) {
+                e.preventDefault();
+                $("#menu").toggleClass("show");
+            });
+            $("#menu a").click(function (event) {
+                event.preventDefault();
+                if ($(this).next('ul').length) {
+                    $(this).next().toggle('fast');
+                    $(this).children('i:last-child').toggleClass('fa-caret-down fa-caret-left');
+                }
+            });
+            $(document).click(function (e) {
+                if (!$(e.target).is(".mobmemu, .mobmemu  *")) { $("#menu").toggleClass("hide"); $("#menu").removeClass("show"); }
+            });
+            $('#parentHorizontalTab').easyResponsiveTabs({
+                type: 'default', //Types: default, vertical, accordion
+                width: 'auto', //auto or any width like 600px
+                fit: true, // 100% fit in a container
+                tabidentify: 'hor_1', // The tab groups identifier
+                activate: function (event) { // Callback function if tab is switched
+                    var $tab = $(this);
+                    var $info = $('#nested-tabInfo');
+                    var $name = $('span', $info);
+                    $name.text($tab.text());
+                    $info.show();
+                }
+            });
+        });
+    </script>
+    @RenderSection("Jscripts", required: false)
+    @RenderSection("PopupScript", required: false)
+    @{
+        setting = null;
+    }
+</body>
+</html>

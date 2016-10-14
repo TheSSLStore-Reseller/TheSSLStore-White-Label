@@ -1,0 +1,393 @@
+﻿@using WBSSLStore.Web.Util;
+@using WBSSLStore.Domain;
+@model IEnumerable<OrderDetail>
+@{ 
+    ViewBag.Title = "Invoice";
+
+
+   User adminuser=new User();
+
+    WBSiteSettings setting = new WBSiteSettings(WBSSLStore.Web.Helpers.Caching.SiteCacher.CurrentSite); 
+    if (User != null && User.Identity.IsAuthenticated)
+    {
+        WBSSLStore.Web.Helpers.Authentication.SSLStoreUser loginuser = (WBSSLStore.Web.Helpers.Authentication.SSLStoreUser)Membership.GetUser();
+        if (loginuser != null && loginuser.Details != null)
+        {
+            adminuser = loginuser.Details;
+        }
+        else if (!string.IsNullOrEmpty(User.Identity.Name))
+        {
+            loginuser = (WBSSLStore.Web.Helpers.Authentication.SSLStoreUser)Membership.GetUser(User.Identity.Name);
+            if (loginuser != null && loginuser.Details != null)
+            {
+                adminuser = loginuser.Details;
+            }
+        }
+
+    }
+    //var SiteSettingsData = DependencyResolver.Current.GetService<WBSSLStore.Data.Infrastructure.IRepository<SiteSettings>>();
+
+   // SiteSettings sitesignature = setting.SiteSignature;//SiteSettingsData.Find(ss => ss.SiteID == ((adminuser != null) ? adminuser.SiteID : 0) && ss.Key.ToLower() == WBSSLStore.Domain.SettingConstants.CURRENT_SITE_SIGNATURE).FirstOrDefault();
+
+    int iCnt = 10;    
+}
+<script type="text/javascript" language="javascript">
+    $(function () {
+        $(".printBtn").click(function () {
+            $('#printData').hide();
+            var disp_setting = "toolbar=yes,location=no,directories=yes,menubar=yes,";
+            disp_setting += "scrollbars=yes,width=750, height=600, left=100, top=25";
+            var docprint = window.open("", "", disp_setting);
+            docprint.document.open();
+            docprint.document.write('<html><head><title>Invoice</title>');
+            docprint.document.write('<link href="@Url.Content("~/content/admin/css/master.min.css")" rel="stylesheet" type="text/css" />');
+            docprint.document.write('<link href="@Url.Content("~/content/controls.min.css")" rel="Stylesheet" type="text/css" />');
+            docprint.document.write('</head><body onload="window.print();window.close();">');
+            docprint.document.write('<table width="100%" border="0" align="left" cellpadding="0" cellspacing="0"><tr>' + $('#invoiceData').html() + '</tr></table>');
+            docprint.document.write('</body></html>');
+            docprint.document.close();
+            $('#printData').show();
+        });
+    });
+</script>
+<tr>
+    <td align="left" valign="top">
+        <table width="881" border="0" align="left" cellpadding="0" cellspacing="0">
+            <tr>
+                <td width="7" align="left" valign="top">
+                    <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/barleft.gif" alt="whitebrand" width="7" height="55">
+                </td>
+                <td width="866" align="left" valign="middle" class="hdbarbg">
+                    <table width="840" border="0" align="center" cellpadding="1" cellspacing="1">
+                        <tr>
+                            <td width="407" align="left" valign="middle" class="head1">
+                                @*Invoice*@ @WBSSLStore.Resources.GeneralMessage.Message.Invoice_Header
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td width="9" align="right" valign="top">
+                    <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/barright.gif" alt="whitebrand" width="9" height="55">
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>
+<tr id="invoiceData">
+    <td align="left" valign="top" class="contbg">
+        <table width="870" border="0" align="center" cellpadding="0" cellspacing="7">
+            <tr>
+                <td width="867" align="center" valign="top" class="bgclr">
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td align="left" valign="top">
+                                <table width="854" border="0" align="center" cellpadding="0" cellspacing="0">
+                                    <tr>
+                                        <td width="854" height="30" align="left" valign="middle">
+                                            <table width="837" border="0" align="center" cellpadding="0" cellspacing="0">
+                                                <tr>
+                                                    <td width="493" align="left" valign="top">
+                                                        <img src="@(!string.IsNullOrEmpty(setting.CurrentSiteLogoPath) ? setting.CurrentSiteLogoPath.Replace("~","") : "")" alt="company logo" width="217" height="60" />
+                                                    </td>
+                                                    <td width="344" align="left" valign="bottom" id="printData">
+                                                        <table width="239" border="0" align="right" cellpadding="0" cellspacing="3">
+                                                            <tr>
+                                                                <td width="24" align="left" valign="middle">
+                                                                    &nbsp;
+                                                                </td>
+                                                                <td width="135" align="left" valign="middle" class="commonlink">
+                                                                    &nbsp;
+                                                                </td>
+                                                                <td width="22" align="left" valign="middle">
+                                                                    <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-print.gif" alt="print" width="18" height="19" />
+                                                                </td>
+                                                                <td width="58" align="left" valign="middle" class="commonlink">
+                                                                    <a href="javascript:;" class="printBtn">Print</a>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" valign="top">
+                                            <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/divider.gif" alt="company" width="854" height="3">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td height="45" align="center" valign="middle" class="blackhd">
+                                            @*INVOICE*@ @WBSSLStore.Resources.GeneralMessage.Message.Invoice_Header
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" valign="top">
+                                            <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/divider.gif" alt="company" width="854" height="3">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" valign="top">
+                                            &nbsp;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" valign="top">
+                                            <table width="840" border="0" align="center" cellpadding="0" cellspacing="0">
+                                                <tr>
+                                                    <td width="284" align="left" valign="top">
+                                                        @if ( !string.IsNullOrEmpty(setting.SiteSignature))
+                                                        {
+                                                            @Html.Raw(setting.SiteSignature);
+                                                        }
+                                                        else
+                                                        { 
+                                                       
+                                                            <strong>@adminuser.Address.CompanyName </strong>
+                                                            <br />
+                                                            @adminuser.Address.Street
+                                                            <br />
+                                                            @adminuser.Address.City; @adminuser.Address.State  @adminuser.Address.Zip
+                                                            <br />
+                                                            @WBSSLStore.Resources.GeneralMessage.Message.Phone_Caption  @adminuser.Address.Phone <br />
+                                                            @WBSSLStore.Resources.GeneralMessage.Message.Fax_Caption @adminuser.Address.Fax
+                                                            <br />
+                                                            @WBSSLStore.Resources.GeneralMessage.Message.Domain_Caption  <strong><a class="bluelink" target="_blank"  href="http://@adminuser.Site.Alias"> http://@adminuser.Site.Alias</a></strong>
+                                                               <br />
+                                                            @WBSSLStore.Resources.GeneralMessage.Message.Email_Caption  <strong><a class="bluelink" href="mailto:@setting.SiteBillingEmail">@setting.SiteBillingEmail</a></strong>
+                                                        }
+                                                    </td>
+                                                    <td width="284" align="left" valign="top">
+                                                        <strong>@*BILL TO*@ @WBSSLStore.Resources.GeneralMessage.Message.Bill_To:</strong><br>
+                                                        @(Model.FirstOrDefault().Order.User.FirstName + " " + Model.FirstOrDefault().Order.User.LastName)<br />
+                                                        @Model.FirstOrDefault().Order.User.CompanyName<br />
+                                                        @Model.FirstOrDefault().Order.User.Address.Street<br />
+                                                        @Model.FirstOrDefault().Order.User.Address.City, Model.Order.User.Address.State
+                                                        &nbsp; @Model.FirstOrDefault().Order.User.Address.Zip<br />
+                                                        @*Tel*@ @WBSSLStore.Resources.GeneralMessage.Message.Phone_Caption : <strong>@Model.FirstOrDefault().Order.User.Address.Phone</strong><br />
+                                                        @*Email*@ @WBSSLStore.Resources.GeneralMessage.Message.Email_Caption : <strong><a class="bluelink" href="mailto:@Model.FirstOrDefault().Order.User.Email">@Model.FirstOrDefault().Order.User.Email</a>
+                                                        </strong>
+                                                        <br />
+                                                        @if (!string.IsNullOrEmpty(Model.FirstOrDefault().Order.VATNumber))
+                                                        {
+                                                            @(WBSSLStore.Resources.GeneralMessage.Message.VAT + "   :  " + Model.FirstOrDefault().Order.VATNumber)
+                                                        }
+                                                    </td>
+                                                    <td width="286" align="left" valign="top">
+                                                        <table width="200" border="0" align="right" cellpadding="1" cellspacing="3">
+                                                            <tr>
+                                                                <td height="20" align="left" valign="middle" bgcolor="#cfcfcf" class="bold">
+                                                                    @WBSSLStore.Resources.GeneralMessage.Message.InvoiceNo_Caption
+                                                                    <br>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td height="20" align="left" valign="middle" bgcolor="#f5f5f5" class="bold">
+                                                                    @setting.InvoicePrefix@Model.FirstOrDefault().OrderID
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td height="20" align="left" valign="middle" bgcolor="#cfcfcf" class="bold">
+                                                                    @WBSSLStore.Resources.GeneralMessage.Message.InvoiceDate_Caption
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td height="20" align="left" valign="middle" bgcolor="#f5f5f5" class="bold">
+                                                                    @Model.FirstOrDefault().Order.OrderDate.ToLongDateString()
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" valign="top">
+                                            &nbsp;
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="left" valign="top">
+                                <table width="841" border="0" align="center" cellpadding="0" cellspacing="0">
+                                    <tr>
+                                        <td align="left" valign="top" bgcolor="#d6d6d6">
+                                            <table width="841" border="0" align="left" cellpadding="5" cellspacing="1">
+                                                <tr>
+                                                    <td width="77" height="35" align="left" valign="middle" bgcolor="#eff8fd" class="bluefont">
+                                                        @*OrderID*@ @WBSSLStore.Resources.GeneralMessage.Message.OrderId_Caption
+                                                    </td>
+                                                    <td width="329" height="35" align="left" valign="middle" bgcolor="#eff8fd" class="bluefont">
+                                                        @*Product Name*@ @WBSSLStore.Resources.GeneralMessage.Message.Product_Caption
+                                                    </td>
+                                                    <td width="61" height="35" align="center" valign="middle" bgcolor="#eff8fd" class="bluefont">
+                                                        @*Validity*@ @WBSSLStore.Resources.GeneralMessage.Message.NumberOfMonths_Caption
+                                                    </td>
+                                                    <td width="90" height="35" align="center" valign="middle" bgcolor="#eff8fd" class="bluefont">
+                                                        @*No. of Server*@ @WBSSLStore.Resources.GeneralMessage.Message.NumberOfServers_Caption
+                                                    </td>
+                                                    <td width="66" height="35" align="center" valign="middle" bgcolor="#eff8fd" class="bluefont">
+                                                        @*No. of SAN*@ @WBSSLStore.Resources.GeneralMessage.Message.NoOfSan_Caption
+                                                    </td>
+                                                    <td width="61" height="35" align="center" valign="middle" bgcolor="#eff8fd" class="bluefont">
+                                                        @*Discount*@ @WBSSLStore.Resources.GeneralMessage.Message.Invoice_Discount_Caption
+                                                    </td>
+                                                    @if (setting.IsVatApplicable)
+                                                    {
+                                                        <td width="79" height="35" align="left" valign="middle" bgcolor="#eff8fd" class="bluefont">
+                                                            @*Tax*@ @WBSSLStore.Resources.GeneralMessage.Message.VAT
+                                                        </td>
+                                                    }
+                                                    <td width="79" height="35" align="left" valign="middle" bgcolor="#eff8fd" class="bluefont">
+                                                        @*Amount*@ @WBSSLStore.Resources.GeneralMessage.Message.Price_Caption
+                                                    </td>
+                                                </tr>
+                                                @foreach (OrderDetail ord in Model)
+                                                { 
+                                                    <tr>
+                                                        <td align="left" valign="top" bgcolor="#FFFFFF" class="blueline">
+                                                            <a href="javascript:;">&nbsp;@(string.IsNullOrEmpty(ord.ExternalOrderID) ? "-" : @ord.ExternalOrderID)
+                                                            </a>
+                                                        </td>
+                                                        <td align="left" valign="top" bgcolor="#FFFFFF" class="bluefont">
+                                                            @ord.ProductName
+                                                        </td>
+                                                        <td align="center" valign="top" bgcolor="#FFFFFF" class="blueline">
+                                                            @ord.NumberOfMonths
+                                                        </td>
+                                                        <td align="center" valign="top" bgcolor="#FFFFFF" class="blueline">
+                                                            @CurrentSiteSettings.GetNumberOfServers(ord.Product, ord.CertificateRequest.NumberOfServers)
+                                                        </td>
+                                                        <td align="center" valign="top" bgcolor="#FFFFFF" class="blueline">
+                                                            @ord.CertificateRequest.AdditionalDomains
+                                                        </td>
+                                                        <td align="center" valign="top" bgcolor="#FFFFFF">
+                                                            @string.Format("{0:C}", ord.PromoDiscount)
+                                                        </td>
+                                                        @if (setting.IsVatApplicable)
+                                                        {
+                                                            <td align="center" valign="top" bgcolor="#FFFFFF">
+                                                                @string.Format("{0:C}", ord.VATAmount)
+                                                            </td>
+                                                        }
+                                                        <td align="left" valign="top" bgcolor="#FFFFFF" class="bold">
+                                                            @string.Format("{0:C}", ord.Price)
+                                                        </td>
+                                                    </tr>
+                                                }
+                                                @if (iCnt > Model.Count())
+                                                {
+                                                    for (int i = 0; i < (iCnt - Model.Count()); i++)
+                                                    {
+                                                    <tr>
+                                                        <td align="left" valign="top" bgcolor="#FFFFFF" class="blueline">
+                                                            &nbsp;
+                                                        </td>
+                                                        <td align="left" valign="top" bgcolor="#FFFFFF" class="bluefont">
+                                                            &nbsp;
+                                                        </td>
+                                                        <td align="center" valign="top" bgcolor="#FFFFFF" class="blueline">
+                                                            &nbsp;
+                                                        </td>
+                                                        <td align="center" valign="top" bgcolor="#FFFFFF" class="blueline">
+                                                            &nbsp;
+                                                        </td>
+                                                        <td align="center" valign="top" bgcolor="#FFFFFF" class="blueline">
+                                                            &nbsp;
+                                                        </td>
+                                                        <td align="center" valign="top" bgcolor="#FFFFFF">
+                                                            &nbsp;
+                                                        </td>
+                                                        @if (setting.IsVatApplicable)
+                                                        {
+                                                            <td align="center" valign="top" bgcolor="#FFFFFF" class="blueline">
+                                                                &nbsp;
+                                                            </td>
+                                                        }
+                                                        <td align="left" valign="top" bgcolor="#FFFFFF" class="bold">
+                                                            &nbsp;
+                                                        </td>
+                                                    </tr>
+                                                    }
+                                                }
+                                                <tr>
+                                                    <td align="left" valign="top" bgcolor="#FFFFFF" class="blueline">
+                                                        &nbsp;
+                                                    </td>
+                                                    <td align="left" valign="top" bgcolor="#FFFFFF" class="bluefont">
+                                                        &nbsp;
+                                                    </td>
+                                                    <td align="center" valign="top" bgcolor="#FFFFFF" class="blueline">
+                                                        &nbsp;
+                                                    </td>
+                                                    <td align="center" valign="top" bgcolor="#FFFFFF" class="blueline">
+                                                        &nbsp;
+                                                    </td>
+                                                    <td align="center" valign="top" bgcolor="#FFFFFF" class="blueline">
+                                                        &nbsp;
+                                                    </td>
+                                                    @if (setting.IsVatApplicable)
+                                                    {
+                                                        <td align="center" valign="top" bgcolor="#FFFFFF" class="blueline">
+                                                            @*Tax*@ @WBSSLStore.Resources.GeneralMessage.Message.Tax_Caption
+                                                        </td>
+                                                    }
+                                                    <td align="center" valign="top" bgcolor="#FFFFFF">
+                                                        @*Total*@ @WBSSLStore.Resources.GeneralMessage.Message.Total_Caption
+                                                    </td>
+                                                    <td align="left" valign="top" bgcolor="#FFFFFF" class="bold">
+                                                        @string.Format("{0:C}", Model.Sum(m => m.Price))
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="left" valign="top">
+                                &nbsp;
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="center" valign="top">
+                                <span class="bold">
+                                    @*All prices are in USD. If you have any questions concerning this
+    invoice, contact us at @WBSSLStore.Resources.LongText.Message.Invoice_Note*@ 
+
+                                    @WBSSLStore.Resources.LongText.Message.All_prices_in @setting.CurrentCurrencyCode. @WBSSLStore.Resources.LongText.Message.Any_Questions
+                                </span>
+                                <a href="mailto:@setting.SiteBillingEmail"><span class="bluelink">
+                                    @setting.SiteBillingEmail</span></a><br>
+                                <br>
+                                <span class="bluehd">@*We thank you for your business.*@ @WBSSLStore.Resources.LongText.Message.InvoiceThankMsg
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="left" valign="top">
+                                &nbsp;
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="left" valign="top">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="left" valign="top">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="left" valign="top">
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>

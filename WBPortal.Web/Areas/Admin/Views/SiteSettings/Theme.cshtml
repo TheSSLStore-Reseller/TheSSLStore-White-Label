@@ -1,0 +1,696 @@
+﻿@model List<WBSSLStore.Domain.SiteSettings>
+@{
+    ViewBag.Title = "Theme";
+    WBSSLStore.Domain.SiteSettings s;
+
+    s = Model.Where(ss => ss.Key.ToLower() == WBSSLStore.Domain.SettingConstants.CURRENT_LAYOUT_KEY).FirstOrDefault();
+    ViewBag.Layout = s != null && s.Value != null ? Convert.ToString(s.Value).ToLower() : string.Empty;
+
+    s = Model.Where(ss => ss.Key.ToLower() == WBSSLStore.Domain.SettingConstants.CURRENT_COLORCODE_KEY).FirstOrDefault();
+    ViewBag.Color = s != null && s.Value != null ? Convert.ToString(s.Value).ToLower() : string.Empty;
+}
+@using (Html.BeginForm())
+{
+    
+    <tr>
+        <td align="left" valign="top">
+            <table width="881" border="0" align="left" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td width="7" align="left" valign="top">
+                        <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/barleft.gif" alt="whitebrand" width="7" height="55">
+                    </td>
+                    <td width="866" align="left" valign="middle" class="hdbarbg">
+                        <table width="840" border="0" align="center" cellpadding="1" cellspacing="1">
+                            <tr>
+                                <td width="407" align="left" valign="middle" class="head1">
+                                    @*Select Theme*@ @WBSSLStore.Resources.GeneralMessage.Message.Select_Theme
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td width="9" align="right" valign="top">
+                        <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/barright.gif" alt="whitebrand" width="9" height="55" />
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td align="left" valign="top" class="contbg">
+            <table width="870" border="0" align="center" cellpadding="0" cellspacing="7">
+                <tr>
+                    <td width="867" align="center" valign="top" class="bgclr">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td align="left" valign="top">
+                                    <table width="840" border="0" align="center" cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <td height="30" align="left" valign="middle">
+                                                <h1>
+                                                    @*Business Design*@ @WBSSLStore.Resources.GeneralMessage.Message.Business_Design</h1>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td height="25" align="left" valign="middle">
+                                                @if (!string.IsNullOrEmpty(ViewBag.Message))
+                                                { 
+                                                    @Html.Raw(ViewBag.Message)
+                                                }
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="left" valign="middle">
+                                                <table width="840" border="0" align="left" cellpadding="1" cellspacing="1">
+                                                    <tr>
+                                                        <td width="165" align="left" valign="middle">
+                                                            <div class="themebg">
+                                                                <table width="91%" border="0" align="center" cellpadding="1" cellspacing="1">
+                                                                    <tr>
+                                                                        <td align="left" valign="top">
+                                                                            <table width="100%" border="0" align="left" cellpadding="1" cellspacing="1">
+                                                                                <tr>
+                                                                                    <td width="18%" align="left" valign="top">
+                                                                                        <label>
+                                                                                            <input type="radio" name="Theme" id="layout1color1" value="layout1|color1" @((ViewBag.Layout + "|" + ViewBag.Color) == "layout1|color1" ? "checked=\"checked\"" : string.Empty)/>
+                                                                                        </label>
+                                                                                    </td>
+                                                                                    <td width="82%" align="left" valign="middle" class="bold">
+                                                                                        Dark Cyan
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </table>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td align="left" valign="top">
+                                                                            <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/theme01color01.jpg" alt="Dark Green" width="150" height="127">
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </div>
+                                                        </td>
+                                                        <td width="165" align="center" valign="top">
+                                                            <div class="themebg">
+                                                                <table width="91%" border="0" align="center" cellpadding="1" cellspacing="1">
+                                                                    <tr>
+                                                                        <td align="left" valign="top">
+                                                                            <table width="100%" border="0" align="left" cellpadding="1" cellspacing="1">
+                                                                                <tr>
+                                                                                    <td width="18%" align="left" valign="top">
+                                                                                        <label>
+                                                                                            <input type="radio" name="Theme" id="layout1color2" value="layout1|color2" @((ViewBag.Layout + "|" + ViewBag.Color) == "layout1|color2" ? "checked=\"checked\"" : string.Empty) />
+                                                                                        </label>
+                                                                                    </td>
+                                                                                    <td width="82%" align="left" valign="middle" class="bold">
+                                                                                        Dark Golden
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </table>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td align="left" valign="top">
+                                                                            <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/theme01color02.jpg" alt="Maroon" width="150" height="127">
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </div>
+                                                        </td>
+                                                        <td width="165" align="center" valign="top">
+                                                            <div class="themebg">
+                                                                <table width="91%" border="0" align="center" cellpadding="1" cellspacing="1">
+                                                                    <tr>
+                                                                        <td align="left" valign="top">
+                                                                            <table width="100%" border="0" align="left" cellpadding="1" cellspacing="1">
+                                                                                <tr>
+                                                                                    <td width="18%" align="left" valign="top">
+                                                                                        <label>
+                                                                                            <input type="radio" name="Theme" id="layout1color3" value="layout1|color3" @((ViewBag.Layout + "|" + ViewBag.Color) == "layout1|color3" ? "checked=\"checked\"" : string.Empty)/>
+                                                                                        </label>
+                                                                                    </td>
+                                                                                    <td width="82%" align="left" valign="middle" class="bold">
+                                                                                        Orange
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </table>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td align="left" valign="top">
+                                                                            <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/theme01color03.jpg" alt="Olive" width="150" height="127">
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </div>
+                                                        </td>
+                                                        <td width="165" align="center" valign="top">
+                                                            <div class="themebg">
+                                                                <table width="91%" border="0" align="center" cellpadding="1" cellspacing="1">
+                                                                    <tr>
+                                                                        <td align="left" valign="top">
+                                                                            <table width="100%" border="0" align="left" cellpadding="1" cellspacing="1">
+                                                                                <tr>
+                                                                                    <td width="18%" align="left" valign="top">
+                                                                                        <label>
+                                                                                            <input type="radio" name="Theme" id="layout1color4" value="layout1|color4" @((ViewBag.Layout + "|" + ViewBag.Color) == "layout1|color4" ? "checked=\"checked\"" : string.Empty)/>
+                                                                                        </label>
+                                                                                    </td>
+                                                                                    <td width="82%" align="left" valign="middle" class="bold">
+                                                                                        Cobalt
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </table>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td align="left" valign="top">
+                                                                            <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/theme01color04.jpg" alt="MidnightBlue" width="150" height="127">
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </div>
+                                                        </td>
+                                                        <td width="165" align="right" valign="top">
+                                                            <div class="themebg">
+                                                                <table width="91%" border="0" align="center" cellpadding="1" cellspacing="1">
+                                                                    <tr>
+                                                                        <td align="left" valign="top">
+                                                                            <table width="100%" border="0" align="left" cellpadding="1" cellspacing="1">
+                                                                                <tr>
+                                                                                    <td width="18%" align="left" valign="top">
+                                                                                        <label>
+                                                                                            <input type="radio" name="Theme" id="layout1color5" value="layout1|color5" @((ViewBag.Layout + "|" + ViewBag.Color) == "layout1|color5" ? "checked=\"checked\"" : string.Empty)/>
+                                                                                        </label>
+                                                                                    </td>
+                                                                                    <td width="82%" align="left" valign="middle" class="bold">
+                                                                                        Midnightblue
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </table>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td align="left" valign="top">
+                                                                            <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/theme01color05.jpg" alt="Dark Gray" width="150" height="127">
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="left" valign="middle">
+                                                &nbsp;
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td height="30" align="left" valign="middle">
+                                                <h1>
+                                                    Lite Design</h1>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="left" valign="middle">
+                                                <table width="840" border="0" align="left" cellpadding="1" cellspacing="1">
+                                                    <tr>
+                                                        <td width="165" align="left" valign="middle">
+                                                            <div class="themebg">
+                                                                <table width="91%" border="0" align="center" cellpadding="1" cellspacing="1">
+                                                                    <tr>
+                                                                        <td align="left" valign="top">
+                                                                            <table width="100%" border="0" align="left" cellpadding="1" cellspacing="1">
+                                                                                <tr>
+                                                                                    <td width="18%" align="left" valign="top">
+                                                                                        <label>
+                                                                                            <input type="radio" name="Theme" id="layout2color1" value="layout2|color1" @((ViewBag.Layout + "|" + ViewBag.Color) == "layout2|color1" ? "checked=\"checked\"" : string.Empty)/>
+                                                                                        </label>
+                                                                                    </td>
+                                                                                    <td width="82%" align="left" valign="middle" class="bold">
+                                                                                        Dark Cyan
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </table>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td align="left" valign="top">
+                                                                            <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/theme02color01.jpg" alt="Dark Green" width="150" height="127">
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </div>
+                                                        </td>
+                                                        <td width="165" align="center" valign="top">
+                                                            <div class="themebg">
+                                                                <table width="91%" border="0" align="center" cellpadding="1" cellspacing="1">
+                                                                    <tr>
+                                                                        <td align="left" valign="top">
+                                                                            <table width="100%" border="0" align="left" cellpadding="1" cellspacing="1">
+                                                                                <tr>
+                                                                                    <td width="18%" align="left" valign="top">
+                                                                                        <label>
+                                                                                            <input type="radio" name="Theme" id="layout2color2" value="layout2|color2" @((ViewBag.Layout + "|" + ViewBag.Color) == "layout2|color2" ? "checked=\"checked\"" : string.Empty)/>
+                                                                                        </label>
+                                                                                    </td>
+                                                                                    <td width="82%" align="left" valign="middle" class="bold">
+                                                                                        Dark Golden
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </table>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td align="left" valign="top">
+                                                                            <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/theme02color02.jpg" alt="Maroon" width="150" height="127">
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </div>
+                                                        </td>
+                                                        <td width="165" align="center" valign="top">
+                                                            <div class="themebg">
+                                                                <table width="91%" border="0" align="center" cellpadding="1" cellspacing="1">
+                                                                    <tr>
+                                                                        <td align="left" valign="top">
+                                                                            <table width="100%" border="0" align="left" cellpadding="1" cellspacing="1">
+                                                                                <tr>
+                                                                                    <td width="18%" align="left" valign="top">
+                                                                                        <label>
+                                                                                            <input type="radio" name="Theme" id="layout2color3" value="layout2|color3" @((ViewBag.Layout + "|" + ViewBag.Color) == "layout2|color3" ? "checked=\"checked\"" : string.Empty)/>
+                                                                                        </label>
+                                                                                    </td>
+                                                                                    <td width="82%" align="left" valign="middle" class="bold">
+                                                                                        Orange
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </table>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td align="left" valign="top">
+                                                                            <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/theme02color03.jpg" alt="Olive" width="150" height="127">
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </div>
+                                                        </td>
+                                                        <td width="165" align="center" valign="top">
+                                                            <div class="themebg">
+                                                                <table width="91%" border="0" align="center" cellpadding="1" cellspacing="1">
+                                                                    <tr>
+                                                                        <td align="left" valign="top">
+                                                                            <table width="100%" border="0" align="left" cellpadding="1" cellspacing="1">
+                                                                                <tr>
+                                                                                    <td width="18%" align="left" valign="top">
+                                                                                        <label>
+                                                                                            <input type="radio" name="Theme" id="layout2color4" value="layout2|color4" @((ViewBag.Layout + "|" + ViewBag.Color) == "layout2|color4" ? "checked=\"checked\"" : string.Empty)/>
+                                                                                        </label>
+                                                                                    </td>
+                                                                                    <td width="82%" align="left" valign="middle" class="bold">
+                                                                                        Cobalt
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </table>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td align="left" valign="top">
+                                                                            <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/theme02color04.jpg" alt="MidnightBlue" width="150" height="127">
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </div>
+                                                        </td>
+                                                        <td width="165" align="right" valign="top">
+                                                            <div class="themebg">
+                                                                <table width="91%" border="0" align="center" cellpadding="1" cellspacing="1">
+                                                                    <tr>
+                                                                        <td align="left" valign="top">
+                                                                            <table width="100%" border="0" align="left" cellpadding="1" cellspacing="1">
+                                                                                <tr>
+                                                                                    <td width="18%" align="left" valign="top">
+                                                                                        <label>
+                                                                                            <input type="radio" name="Theme" id="layout2color5" value="layout2|color5" @((ViewBag.Layout + "|" + ViewBag.Color) == "layout2|color5" ? "checked=\"checked\"" : string.Empty)/>
+                                                                                        </label>
+                                                                                    </td>
+                                                                                    <td width="82%" align="left" valign="middle" class="bold">
+                                                                                        Midnightblue
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </table>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td align="left" valign="top">
+                                                                            <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/theme02color05.jpg" alt="Dark Gray" width="150" height="127">
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="left" valign="middle">
+                                                &nbsp;
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td height="30" align="left" valign="middle">
+                                                <h1>
+                                                    @*Clean Style Design*@ @WBSSLStore.Resources.GeneralMessage.Message.Clean_Style_Design</h1>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="left" valign="middle">
+                                                <table width="840" border="0" align="left" cellpadding="1" cellspacing="1">
+                                                    <tr>
+                                                        <td width="165" align="left" valign="middle">
+                                                            <div class="themebg">
+                                                                <table width="91%" border="0" align="center" cellpadding="1" cellspacing="1">
+                                                                    <tr>
+                                                                        <td align="left" valign="top">
+                                                                            <table width="100%" border="0" align="left" cellpadding="1" cellspacing="1">
+                                                                                <tr>
+                                                                                    <td width="18%" align="left" valign="top">
+                                                                                        <label>
+                                                                                            <input type="radio" name="Theme" id="layout3color1" value="layout3|color1" @((ViewBag.Layout + "|" + ViewBag.Color) == "layout3|color1" ? "checked=\"checked\"" : string.Empty)/>
+                                                                                        </label>
+                                                                                    </td>
+                                                                                    <td width="82%" align="left" valign="middle" class="bold">
+                                                                                        Dark Green
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </table>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td align="left" valign="top">
+                                                                            <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/theme03color01.jpg" alt="Dark Green" width="150" height="127">
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </div>
+                                                        </td>
+                                                        <td width="165" align="center" valign="top">
+                                                            <div class="themebg">
+                                                                <table width="91%" border="0" align="center" cellpadding="1" cellspacing="1">
+                                                                    <tr>
+                                                                        <td align="left" valign="top">
+                                                                            <table width="100%" border="0" align="left" cellpadding="1" cellspacing="1">
+                                                                                <tr>
+                                                                                    <td width="18%" align="left" valign="top">
+                                                                                        <label>
+                                                                                            <input type="radio" name="Theme" id="layout3color2" value="layout3|color2" @((ViewBag.Layout + "|" + ViewBag.Color) == "layout3|color2" ? "checked=\"checked\"" : string.Empty)/>
+                                                                                        </label>
+                                                                                    </td>
+                                                                                    <td width="82%" align="left" valign="middle" class="bold">
+                                                                                        Dark Golden
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </table>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td align="left" valign="top">
+                                                                            <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/theme03color02.jpg" alt="Maroon" width="150" height="127">
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </div>
+                                                        </td>
+                                                        <td width="165" align="center" valign="top">
+                                                            <div class="themebg">
+                                                                <table width="91%" border="0" align="center" cellpadding="1" cellspacing="1">
+                                                                    <tr>
+                                                                        <td align="left" valign="top">
+                                                                            <table width="100%" border="0" align="left" cellpadding="1" cellspacing="1">
+                                                                                <tr>
+                                                                                    <td width="18%" align="left" valign="top">
+                                                                                        <label>
+                                                                                            <input type="radio" name="Theme" id="layout3color3" value="layout3|color3" @((ViewBag.Layout + "|" + ViewBag.Color) == "layout3|color3" ? "checked=\"checked\"" : string.Empty)/>
+                                                                                        </label>
+                                                                                    </td>
+                                                                                    <td width="82%" align="left" valign="middle" class="bold">
+                                                                                        Orange
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </table>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td align="left" valign="top">
+                                                                            <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/theme03color03.jpg" alt="Olive" width="150" height="127">
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </div>
+                                                        </td>
+                                                        <td width="165" align="center" valign="top">
+                                                            <div class="themebg">
+                                                                <table width="91%" border="0" align="center" cellpadding="1" cellspacing="1">
+                                                                    <tr>
+                                                                        <td align="left" valign="top">
+                                                                            <table width="100%" border="0" align="left" cellpadding="1" cellspacing="1">
+                                                                                <tr>
+                                                                                    <td width="18%" align="left" valign="top">
+                                                                                        <label>
+                                                                                            <input type="radio" name="Theme" id="layout3color4" value="layout3|color4" @((ViewBag.Layout + "|" + ViewBag.Color) == "layout3|color4" ? "checked=\"checked\"" : string.Empty)/>
+                                                                                        </label>
+                                                                                    </td>
+                                                                                    <td width="82%" align="left" valign="middle" class="bold">
+                                                                                        Cobalt
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </table>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td align="left" valign="top">
+                                                                            <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/theme03color04.jpg" alt="MidnightBlue" width="150" height="127" />
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </div>
+                                                        </td>
+                                                        <td width="165" align="right" valign="top">
+                                                            <div class="themebg">
+                                                                <table width="91%" border="0" align="center" cellpadding="1" cellspacing="1">
+                                                                    <tr>
+                                                                        <td align="left" valign="top">
+                                                                            <table width="100%" border="0" align="left" cellpadding="1" cellspacing="1">
+                                                                                <tr>
+                                                                                    <td width="18%" align="left" valign="top">
+                                                                                        <label>
+                                                                                            <input type="radio" name="Theme" id="layout3color5" value="layout3|color5" @((ViewBag.Layout + "|" + ViewBag.Color) == "layout3|color5" ? "checked=\"checked\"" : string.Empty)/>
+                                                                                        </label>
+                                                                                    </td>
+                                                                                    <td width="82%" align="left" valign="middle" class="bold">
+                                                                                        Midnightblue
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </table>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td align="left" valign="top">
+                                                                            <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/theme03color05.jpg" alt="Dark Gray" width="150" height="127" />
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="left" valign="middle">
+                                                &nbsp;
+                                            </td>
+                                        </tr>
+                                         <tr>
+                                            <td height="30" align="left" valign="middle">
+                                                <h1>
+                                                    New Style Design</h1>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="left" valign="middle">
+                                                <table width="840" border="0" align="left" cellpadding="1" cellspacing="1">
+                                                    <tr>
+                                                        <td width="165" align="left" valign="middle">
+                                                            <div class="themebg">
+                                                                <table width="91%" border="0" align="center" cellpadding="1" cellspacing="1">
+                                                                    <tr>
+                                                                        <td align="left" valign="top">
+                                                                            <table width="100%" border="0" align="left" cellpadding="1" cellspacing="1">
+                                                                                <tr>
+                                                                                    <td width="18%" align="left" valign="top">
+                                                                                        <label>
+                                                                                            <input type="radio" name="Theme" id="layout5color1" value="layout5|color1" @((ViewBag.Layout + "|" + ViewBag.Color) == "layout5|color1" ? "checked=\"checked\"" : string.Empty)/>
+                                                                                        </label>
+                                                                                    </td>
+                                                                                    <td width="82%" align="left" valign="middle" class="bold">
+                                                                                        Blue
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </table>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td align="left" valign="top">
+                                                                            <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/design01.png" alt="Dark Green" width="150" height="127">
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </div>
+                                                        </td>
+                                                        <td width="165" align="center" valign="top">
+                                                            <div class="themebg">
+                                                                <table width="91%" border="0" align="center" cellpadding="1" cellspacing="1">
+                                                                    <tr>
+                                                                        <td align="left" valign="top">
+                                                                            <table width="100%" border="0" align="left" cellpadding="1" cellspacing="1">
+                                                                                <tr>
+                                                                                    <td width="18%" align="left" valign="top">
+                                                                                        <label>
+                                                                                            <input type="radio" name="Theme" id="layout5color2" value="layout5|color2" @((ViewBag.Layout + "|" + ViewBag.Color) == "layout5|color2" ? "checked=\"checked\"" : string.Empty)/>
+                                                                                        </label>
+                                                                                    </td>
+                                                                                    <td width="82%" align="left" valign="middle" class="bold">
+                                                                                        Green
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </table>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td align="left" valign="top">
+                                                                            <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/design02.png" alt="Maroon" width="150" height="127">
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </div>
+                                                        </td>
+                                                        <td width="165" align="center" valign="top">
+                                                            <div class="themebg">
+                                                                <table width="91%" border="0" align="center" cellpadding="1" cellspacing="1">
+                                                                    <tr>
+                                                                        <td align="left" valign="top">
+                                                                            <table width="100%" border="0" align="left" cellpadding="1" cellspacing="1">
+                                                                                <tr>
+                                                                                    <td width="18%" align="left" valign="top">
+                                                                                        <label>
+                                                                                            <input type="radio" name="Theme" id="layout5color3" value="layout5|color3" @((ViewBag.Layout + "|" + ViewBag.Color) == "layout5|color3" ? "checked=\"checked\"" : string.Empty)/>
+                                                                                        </label>
+                                                                                    </td>
+                                                                                    <td width="82%" align="left" valign="middle" class="bold">
+                                                                                        Dark Gray
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </table>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td align="left" valign="top">
+                                                                            <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/design03.png" alt="Olive" width="150" height="127">
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </div>
+                                                        </td>
+                                                        <td width="165" align="center" valign="top">
+                                                            <div class="themebg">
+                                                                <table width="91%" border="0" align="center" cellpadding="1" cellspacing="1">
+                                                                    <tr>
+                                                                        <td align="left" valign="top">
+                                                                            <table width="100%" border="0" align="left" cellpadding="1" cellspacing="1">
+                                                                                <tr>
+                                                                                    <td width="18%" align="left" valign="top">
+                                                                                        <label>
+                                                                                            <input type="radio" name="Theme" id="layout5color4" value="layout5|color4" @((ViewBag.Layout + "|" + ViewBag.Color) == "layout5|color4" ? "checked=\"checked\"" : string.Empty)/>
+                                                                                        </label>
+                                                                                    </td>
+                                                                                    <td width="82%" align="left" valign="middle" class="bold">
+                                                                                        Midnightblue 
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </table>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td align="left" valign="top">
+                                                                            <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/design04.png" alt="MidnightBlue" width="150" height="127" />
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </div>
+                                                        </td>
+                                                        <td width="165" align="right" valign="top">
+                                                            <div class="themebg">
+                                                                <table width="91%" border="0" align="center" cellpadding="1" cellspacing="1">
+                                                                    <tr>
+                                                                        <td align="left" valign="top">
+                                                                            <table width="100%" border="0" align="left" cellpadding="1" cellspacing="1">
+                                                                                <tr>
+                                                                                    <td width="18%" align="left" valign="top">
+                                                                                        <label>
+                                                                                            <input type="radio" name="Theme" id="layout5color5" value="layout5|color5" @((ViewBag.Layout + "|" + ViewBag.Color) == "layout5|color5" ? "checked=\"checked\"" : string.Empty)/>
+                                                                                        </label>
+                                                                                    </td>
+                                                                                    <td width="82%" align="left" valign="middle" class="bold">
+                                                                                        Orange
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </table>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td align="left" valign="top">
+                                                                            <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/design05.png" alt="Dark Gray" width="150" height="127" />
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="left" valign="middle">
+                                                &nbsp;
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="center" valign="middle">
+                                                <label>
+                                                    <input name="button" type="submit" class="bluebtn" id="button" value="@WBSSLStore.Resources.GeneralMessage.Message.Select_Theme">
+                                                </label>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="left" valign="middle">
+                                                &nbsp;
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td height="8" align="left" valign="top">
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+}

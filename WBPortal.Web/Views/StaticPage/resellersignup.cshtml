@@ -1,0 +1,203 @@
+﻿@model WBSSLStore.Domain.User
+
+@{
+    var strMessage = @ViewBag.Message;
+    string action = string.Empty;
+    action = WBSSLStore.Web.Helpers.WBHelper.ApllicationSecurePath + "/authentication/user/resellersignup";
+    string username = ViewBag.UserName;
+    ViewBag.version = WBSSLStore.Web.Helpers.Caching.SiteCacher.ResourceVersion();
+}
+
+
+
+@*<script src="@Url.Content("~/content/Admin/js/common.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/content/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/content/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>*@
+
+
+@section sitecss{
+
+}
+@section Jscripts{
+@System.Web.Optimization.Scripts.Render("/bundales/wb/validationjs?v=" + ViewBag.version)
+@System.Web.Optimization.Scripts.Render("/bundales/admincommonjs?v=" + ViewBag.version)
+<script type="text/javascript" language="javascript">
+    var objEmailExist = '@WBSSLStore.Resources.GeneralMessage.Message.Email_Exist_Caption';
+    var objmsg = '@WBSSLStore.Resources.ErrorMessage.Message.ValidPassword_Caption';
+    var email = false;
+    var password = false;
+    $(function () {
+        $('#txtEmail1').blur(function () {
+            var recordToCheck = $(this).attr("dataid");
+            $('#pLoaderImg').html('<img alt="" src="' + adminImgPath + '/loading1.gif" border="0" />');
+            $.post("/CheckEmailExist?id=" + recordToCheck + "&email=" + escape($('#txtEmail1').val()),
+                function (data) {
+                    if (data.toString().toLowerCase() == "true") {
+                        email = true;
+                        $('#pLoaderImg').html(objEmailExist);
+                        $('#btnSubmit').attr("disabled", email);
+                    }
+                    else {
+                        $('#pLoaderImg').html('');
+                        $('#btnSubmit').removeAttr("disabled");
+                    }
+                }
+            );
+        }
+        );
+
+
+    });
+
+    if (email == password) {
+        $('#btnSubmit').removeAttr("disabled");
+    }
+</script>
+}
+
+@Html.Partial("_banner", new Tuple<string, string>("", "Reseller"))
+<div class="content">
+    <div class="wrapper">
+        <div class="column3">
+            <div class="mobtopcol">
+                <div class="column3-2">
+                    <div class="cmnpagewrap">
+                        @using (Html.BeginForm("resellersignup", "User", FormMethod.Post, new { area = "Authentication" }))
+                        {
+
+                            <h2>@WBSSLStore.Resources.GeneralMessage.Message.ResellerPrg_Header</h2>
+                            <p>@WBSSLStore.Resources.LongText.Message.Reseller_Desc</p>
+							<div class="reselleresult">
+                                    @Html.ValidationSummary(true)
+                                    @if (!string.IsNullOrEmpty(strMessage))
+                                    {
+									
+                                        <div>@Html.Raw(strMessage)</div>
+                                    }
+                                </div>
+								
+                            <div class="halfrawform">
+
+                                
+
+                                <div class="raw">
+                                    @Html.HiddenFor(model => model.SiteID)
+                                    @Html.LabelFor(model => model.CompanyName): <span class="redtext">*</span>
+                                    @Html.TextBoxFor(model => model.CompanyName, new { @size = "30", @class = "in200px" })
+                                    @Html.ValidationMessageFor(model => model.CompanyName)
+                                </div>
+
+                                <div class="raw">
+                                    @Html.LabelFor(model => model.FirstName): <span class="redtext">*</span>
+                                    @Html.TextBoxFor(model => model.FirstName, new { @size = "30", @class = "in200px" })
+                                    @Html.ValidationMessageFor(model => model.FirstName)
+                                </div>
+
+                                <div class="raw">
+                                    @Html.LabelFor(model => model.LastName): <span class="redtext">*</span>
+                                    @Html.TextBoxFor(model => model.LastName, new { @size = "30", @class = "" })
+                                    @Html.ValidationMessageFor(model => model.LastName)
+                                </div>
+
+
+                                <div class="raw">
+                                    @Html.LabelFor(model => model.Email)
+                                    @Html.TextBoxFor(model => model.Email, new { @size = "30", @class = "in200px", ID = "txtEmail1", @dataid = (Model == null ? 0 : Model.ID) })
+                                    <span id="pLoaderImg" class="redtext"></span>
+                                    @Html.ValidationMessageFor(model => model.Email)
+                                </div>
+
+                                <div class="raw">
+                                    @Html.LabelFor(model => model.PasswordHash, "Password") :<span class="redtext">*</span>
+                                    @Html.PasswordFor(model => model.PasswordHash, new { @size = "30", @class = "in200px", @onblur = "ValidatePassword(this,'btnSubmit','spMsg');" })
+                                    @Html.ValidationMessageFor(model => model.PasswordHash)
+                                    <span class="redtext" id="spMsg"></span>
+                                </div>
+
+
+                                <div class="raw">
+                                    @Html.LabelFor(model => model.ConfirmPassword, "Confirm Password") :<span class="redtext">*</span>
+                                    @Html.PasswordFor(model => model.ConfirmPassword, new { @size = "30", ID = "txtConfirmPassword", @class = "in200px" })
+                                    @Html.ValidationMessageFor(model => model.ConfirmPassword)
+                                </div>
+
+                                
+                                    <div class="raw">
+                                        @Html.LabelFor(model => model.AlternativeEmail)
+                                        @Html.TextBoxFor(model => model.AlternativeEmail, new { @size = "30", @class = "in200px" })
+                                        @Html.ValidationMessageFor(model => model.AlternativeEmail)
+                                    </div>
+                                
+                               
+                                    <div class="raw">
+                                        @Html.LabelFor(model => model.Address.Street)<span class="redtext">*</span>
+                                        @Html.TextBoxFor(model => model.Address.Street, new { @size = "30", @class = "in200px" })
+                                        @Html.ValidationMessageFor(model => model.Address.Street)
+                                    </div>
+                               
+                                
+                                <div class="raw">
+                                    @Html.LabelFor(model => model.Address.Country.CountryName): <span class="redtext">*</span>
+                                    @Html.DropDownListFor(model => model.Address.CountryID, new SelectList(ViewBag.Country as System.Collections.IEnumerable, "ID", "CountryName"), "--------select country--------", new { @class = "dropdown" })
+                                    @Html.ValidationMessageFor(model => model.Address.CountryID)
+                                </div>
+                                
+                                
+                                <div class="raw">
+                                    @Html.LabelFor(model => model.Address.State): <span class="redtext">*</span>
+                                    @Html.EditorFor(model => model.Address.State)
+                                    @Html.ValidationMessageFor(model => model.Address.State)
+                                </div>
+                                
+                                    <div class="raw">
+                                        @Html.LabelFor(model => model.Address.City): <span class="redtext">*</span>
+                                        @Html.TextBoxFor(model => model.Address.City, new { @class = "in150px" })
+                                        @Html.ValidationMessageFor(model => model.Address.City)
+                                    </div>
+                                
+                                
+                                    <div class="raw">
+                                        @Html.LabelFor(model => model.Address.Zip): <span class="redtext">*</span>
+                                        @Html.TextBoxFor(model => model.Address.Zip, new { @size = "30", @class = "in150px" })
+                                        @Html.ValidationMessageFor(model => model.Address.Zip)
+                                    </div>
+                                
+                                
+                                <div class="raw">
+                                    @Html.LabelFor(model => model.Address.Phone):<span class="redtext">*</span>
+                                    @Html.TextBoxFor(model => model.Address.Phone, new { @size = "30", @class = "in200px" })
+                                    @Html.ValidationMessageFor(model => model.Address.Phone)
+                                </div>
+                                
+                                
+                                    <div class="raw">
+                                        @Html.LabelFor(model => model.Address.Fax):
+                                        @Html.TextBoxFor(model => model.Address.Fax, new { @size = "30", @class = "in200px" })
+                                    </div>
+                                
+                                
+                                    <div class="raw">
+                                        @Html.LabelFor(model => model.Address.Mobile):
+                                        @Html.TextBoxFor(model => model.Address.Mobile, new { @size = "30", @class = "in200px" })
+                                    </div>
+                               
+                                    <div class="raw">
+                                        @Html.LabelFor(model => model.HeardBy):
+                                        @Html.TextBoxFor(model => model.HeardBy, new { @size = "30", @class = "in200px" })
+                                    </div>
+                                <div class="clear"></div>
+                                   <div class="text">
+                                        <input type="submit" id="btnSubmit" name="btnSubmit" class="greenbtn odrbtn" value="@WBSSLStore.Resources.GeneralMessage.Message.Submit_Btn" />
+                                    </div>
+                                <div class="clear"></div>
+                            </div>
+                        }
+                    </div>
+
+                </div>
+                @Html.Partial("_rightpanel", username)
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>

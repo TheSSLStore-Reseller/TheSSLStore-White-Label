@@ -1,0 +1,177 @@
+﻿@model IEnumerable<WBSSLStore.Gateways.RestAPIModels.Response.ALLProduct>
+@{
+    ViewBag.Title = "Pricing";
+    System.Threading.Thread.CurrentThread.CurrentUICulture = System.Globalization.CultureInfo.CreateSpecificCulture("en");
+    System.Threading.Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.CreateSpecificCulture("en-US");
+}
+@*<script src="@Url.Content("~/content/scripts/jquery.validate.min.js")" language="javascript" type="text/javascript" ></script>*@
+@System.Web.Optimization.Scripts.Render("/bundales/wb/validationjs?v=" + ViewBag.version)
+
+<script type="text/javascript" language="javascript">
+var c = "@WBSSLStore.Resources.ErrorMessage.Message.ProfitMarginRequired"
+$(document).ready(function () {
+        $("#frmSetting").validate({
+            rules: {
+                txtPricePer:{
+                             required: true,
+                             number: true
+                            }
+            },
+            messages: {
+                txtPricePer: c,
+            }
+        });
+    });
+</script>
+<tr>
+    <td align="left" valign="top">
+        <table width="881" border="0" align="left" cellpadding="0" cellspacing="0">
+            <tr>
+                <td width="7" align="left" valign="top">
+                    <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/barleft.gif" alt="whitebrand" width="7" height="55">
+                </td>
+                <td width="866" align="left" valign="middle" class="hdbarbg">
+                    <table width="840" border="0" align="center" cellpadding="1" cellspacing="1">
+                        <tr>
+                            <td width="407" align="left" valign="middle" class="head1">
+                                @*Pricing*@ @WBSSLStore.Resources.GeneralMessage.Message.Pricing_Caption
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td width="9" align="right" valign="top">
+                    <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/barright.gif" alt="whitebrand" width="9" height="55">
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>
+<tr>
+    <td align="left" valign="top" class="contbg">
+        <table width="870" border="0" align="center" cellpadding="0" cellspacing="7">
+            <tr>
+                <td width="867" align="center" valign="top" class="bgclr">
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td align="left" valign="top">
+                                <table width="841" border="0" align="center" cellpadding="0" cellspacing="0">
+                                    <tr>
+                                        <td height="30" align="left" valign="middle">
+                                            <h1>
+                                                @*Partner Pricing*@ @WBSSLStore.Resources.GeneralMessage.Message.Partner_Pricing_Caption</h1>
+                                        </td>
+                                    </tr>
+                                    @if (string.IsNullOrEmpty(ViewBag.APIError))
+                                    {
+                                        using (Html.BeginForm("pricing", "", FormMethod.Post, new { @id = "frmSetting" }))
+                                        {
+                                        <tr>
+                                            <td height="30" align="left" valign="middle">
+                                                @*Profit Margin*@ @WBSSLStore.Resources.GeneralMessage.Message.Profit_Margin_Caption
+                                                <input type="text" id="txtPricePer" name="txtPricePer" class="inputboxminimum" min="0" style="text-align: right" />%<input
+                                                    type="submit" id="btnSubmit" name="btnSubmit" value="@WBSSLStore.Resources.GeneralMessage.Message.ImportAllProducts_btn" class="bluebtn" />
+                                                <br /><br />
+                                                <i><b>@*NOTE*@ @WBSSLStore.Resources.GeneralMessage.Message.Notes_Caption</b>:@*Please add margin (in %) which will added to your existing purchase cost. This
+                                                    is for 1 time only per product.*@ @WBSSLStore.Resources.LongText.Message.Pricing_Note </i><br /><br />
+                                            </td>
+                                        </tr>
+                                        }
+                                    }
+                                    else
+                                    { 
+                                        <tr>
+                                            <td height="30" align="left" valign="middle">
+                                                <div class="errormsg" style="max-height: 100px; overflow: auto">
+                                                    @Html.Raw(ViewBag.APIError)
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
+                                    @if (!string.IsNullOrEmpty(ViewBag.SuccessProduct))
+                                    { 
+                                        <tr>
+                                            <td height="30" align="left" valign="middle">
+                                                <div class="normsg" style="max-height: 100px; overflow: auto">
+                                                    @Html.Raw(ViewBag.SuccessProduct)
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
+                                    @if (!string.IsNullOrEmpty(ViewBag.UnSuccessProduct))
+                                    { 
+                                        <tr>
+                                            <td height="30" align="left" valign="middle">
+                                                <div class="errormsg" style="max-height: 100px; overflow: auto">
+                                                    @Html.Raw(ViewBag.UnSuccessProduct)
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
+                                    <tr>
+                                        <td align="left" valign="top" bgcolor="#d6d6d6">
+                                            <table width="841" border="0" align="left" cellpadding="5" cellspacing="1">
+                                                <tr>
+                                                    <td width="315" height="30" align="left" valign="middle" bgcolor="#eff8fd" class="bluefont">
+                                                        @*Product*@ @WBSSLStore.Resources.GeneralMessage.Message.Product_Caption
+                                                    </td>
+                                                    <td width="97" height="30" align="left" valign="middle" bgcolor="#eff8fd" class="bluefont">
+                                                        @*Product Code*@ @WBSSLStore.Resources.GeneralMessage.Message.ProductCode_Caption
+                                                    </td>
+                                                    <td width="80" height="30" align="center" valign="middle" bgcolor="#eff8fd" class="lightbgblue">
+                                                        @*1 Year*@ @WBSSLStore.Resources.GeneralMessage.Message.Year_Caption1
+                                                    </td>
+                                                    <td width="80" height="30" align="center" valign="middle" bgcolor="#eff8fd" class="lightbgblue">
+                                                        @*2 Year*@ @WBSSLStore.Resources.GeneralMessage.Message.Year_Caption2
+                                                    </td>
+                                                    <td width="80" height="30" align="center" valign="middle" bgcolor="#eff8fd" class="lightbgblue">
+                                                        @*3 Year*@ @WBSSLStore.Resources.GeneralMessage.Message.Year_Caption3
+                                                    </td>
+                                                    <td width="80" height="30" align="center" valign="middle" bgcolor="#eff8fd" class="lightbgblue">
+                                                        @*4 Year*@ @WBSSLStore.Resources.GeneralMessage.Message.Year_Caption4
+                                                    </td>
+                                                    <td width="80" height="30" align="center" valign="middle" bgcolor="#eff8fd" class="lightbgblue">
+                                                        @*5 Year*@ @WBSSLStore.Resources.GeneralMessage.Message.Year_Caption5
+                                                    </td>
+                                                </tr>
+                                                @foreach (var item in Model)
+                                                {
+                                                    <tr>
+                                                        <td align="left" valign="top" bgcolor="#FFFFFF" class="bold">
+                                                            @item.ProductName
+                                                        </td>
+                                                        <td align="left" valign="top" bgcolor="#FFFFFF" class="bold">
+                                                            @item.ProductCode
+                                                        </td>
+                                                        <td align="right" valign="middle" bgcolor="#FFFFFF" class="bold">
+                                                            @(item.Pricings.Where(pp => pp.NumberOfMonth < 24 && pp.NumberOfMonth > 0).FirstOrDefault() != null ? item.Pricings.Where(pp => pp.NumberOfMonth < 24 && pp.NumberOfMonth > 0).FirstOrDefault().Price.ToString("C") : "-")
+                                                        </td>
+                                                        <td align="right" valign="middle" bgcolor="#FFFFFF" class="bold">
+                                                            @(item.Pricings.Where(pp => pp.NumberOfMonth < 36 && pp.NumberOfMonth > 23).FirstOrDefault() != null ? item.Pricings.Where(pp => pp.NumberOfMonth < 36 && pp.NumberOfMonth > 23).FirstOrDefault().Price.ToString("C") : "-")
+                                                        </td>
+                                                        <td align="right" valign="middle" bgcolor="#FFFFFF" class="bold">
+                                                            @(item.Pricings.Where(pp => pp.NumberOfMonth < 48 && pp.NumberOfMonth > 35).FirstOrDefault() != null ? item.Pricings.Where(pp => pp.NumberOfMonth < 48 && pp.NumberOfMonth > 35).FirstOrDefault().Price.ToString("C") : "-")
+                                                        </td>
+                                                        <td align="right" valign="middle" bgcolor="#FFFFFF" class="bold">
+                                                            @(item.Pricings.Where(pp => pp.NumberOfMonth < 60 && pp.NumberOfMonth > 47).FirstOrDefault() != null ? item.Pricings.Where(pp => pp.NumberOfMonth < 60 && pp.NumberOfMonth > 47).FirstOrDefault().Price.ToString("C") : "-")
+                                                        </td>
+                                                        <td align="right" valign="middle" bgcolor="#FFFFFF" class="bold">
+                                                            @(item.Pricings.Where(pp => pp.NumberOfMonth >= 60).FirstOrDefault() != null ? item.Pricings.Where(pp => pp.NumberOfMonth >= 60).FirstOrDefault().Price.ToString("C") : "-")
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td height="8" align="left" valign="top">
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>

@@ -1,0 +1,110 @@
+﻿@model WBSSLStore.Domain.User
+@{
+    ViewBag.Title = "Details";
+}
+@section sitecss{
+
+}
+@section Jscripts{
+    @System.Web.Optimization.Scripts.Render("/bundales/wb/jquery.unobtrusive.validate-js?v=" + ViewBag.version)
+
+    <script type="text/javascript">
+        var password = false;
+        var email = false;
+        function ValidatePassword(objThis, btn, spMsg) {
+            var regex = /(?=.*\d)(?=.*[a-zA-Z]).{8,}/;
+            if (!regex.test(objThis.value)) {
+                password = true;
+                $('#' + spMsg).html(objmsg);
+            }
+            else {
+                $('#' + spMsg).html('');
+                password = false;
+            }
+            disableButton();
+        }
+        function disableButton() {
+
+            if (password || email) {
+                $('#btnSubmit').attr("disabled", true);
+            }
+            else {
+                $('#btnSubmit').removeAttr("disabled");
+            }
+        }
+
+        $().ready(function () {
+            // validate the comment form when it is submitted
+            $("#frmSetting").validate({
+                rules: {
+                    txtPassword: "required",
+                    txtConfirmPassword: {
+                        required: true,
+                        equalTo: "#txtPassword"
+                    }
+                },
+                messages: {
+                    txtPassword: "@WBSSLStore.Resources.ErrorMessage.Message.PasswordRequired",
+                    txtConfirmPassword: {
+                        required: "@WBSSLStore.Resources.ErrorMessage.Message.PasswordRequired",
+                        equalTo: "@WBSSLStore.Resources.ErrorMessage.Message.ComparPassword"
+                    }
+                }
+            });
+        });
+        var objmsg = "@WBSSLStore.Resources.ErrorMessage.Message.ValidPassword_Caption";
+    </script>
+}
+@Html.Partial("_banner", new Tuple<string, string>("", WBSSLStore.Resources.GeneralMessage.Message.ChngPwd_Header))
+<div class="content">
+    <div class="wrapper">
+        <div class="column3">
+            <div class="column3-0">
+                <div class="controlpnldata">
+                    <h2>@WBSSLStore.Resources.GeneralMessage.Message.ChngPwd_Header</h2>
+                    <div class="personalinfo changepasswrp">
+
+                        @using (Html.BeginForm("preferences", "account", FormMethod.Post, new { id = "frmSetting" }))
+                        {
+                            
+                            if (!string.IsNullOrEmpty(ViewBag.Message))
+                            {
+                                <p class="">
+                                    @Html.Raw(ViewBag.Message)
+                                </p>
+                            }
+                            @Html.AntiForgeryToken()
+                            <p> @WBSSLStore.Resources.LongText.Message.UserProfile_Desc</p>
+
+                            <div class="formsection">
+                                <div class="raw">
+                                        @WBSSLStore.Resources.GeneralMessage.Message.Email_Caption:<em>*</em>
+                                        @Model.Email
+                                    </div>
+                                <div class="raw">
+                                    <label>@WBSSLStore.Resources.GeneralMessage.Message.ChngPwd_NewPwd_Caption:<em>*</em></label>
+                                    <input name="txtPassword" type="password" id="txtPassword" class="changeinputsml required" value="" size="30" onblur="ValidatePassword(this,'btnSubmit','spMsg');" />
+                                    <div class="msgdiv"><span id="spMsg" class="redtext"></span></div>
+                                </div>
+                                <div class="raw">
+                                    <label>@WBSSLStore.Resources.GeneralMessage.Message.ConfirmPassword_Caption:<em>*</em></label>
+                                    <input name="txtConfirmPassword" type="password" id="txtConfirmPassword" value="" size="30" class="changeinputsml"/>
+                                </div>
+
+                                <div class="clear"></div>
+                            </div>
+                            <div class="srchbtnsec">
+                                <input type="submit" name="btnSubmit" id="btnSubmit" value="@WBSSLStore.Resources.GeneralMessage.Message.Submit_Btn" class="greenbtn" />
+                            </div>
+
+
+                         
+                        }
+                    </div>
+                </div>
+            </div>
+            @Html.Partial("_rightpanel", Model.FirstName + " " + Model.LastName)
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>

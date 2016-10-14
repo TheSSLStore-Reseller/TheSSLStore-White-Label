@@ -1,0 +1,151 @@
+﻿@model WBSSLStore.Service.ViewModels.StaticPageViewModel
+@{
+    ViewBag.Title = "SecureSiteProwithEV";  var productdetails = WBSSLStore.Web.Helpers.WBHelper.GetProductDetailRows();
+    string brand = Model != null && Model.Items != null && Model.Items.FirstOrDefault().Product != null && Model.Items.FirstOrDefault().Product.Brand != null ? Model.Items.FirstOrDefault().Product.Brand.BrandName : "";
+    string username = ViewBag.UserName;
+}
+@section headerTags{
+    @Html.Partial("_renderSEO", Model != null && Model.CMSPage != null ? Model.CMSPage : new WBSSLStore.Domain.CMSPage())
+}
+@Html.Partial("_banner", new Tuple<string, string>("", "SSL Brands"))
+<div class="content">
+  <div class="wrapper">
+    <div class="column3">
+      <div class="mobtopcol">
+        <div class="column3-2">
+          <div class="prodetailswrap marzerotop"> @Html.Partial("_ProdPricing", new Tuple<List<WBSSLStore.Domain.ProductPricing>, List<WBSSLStore.Domain.ProductDetail>>(Model.Items.ToList(), productdetails.ToList())) </div>
+          <div class="prodescrip marzerotop">
+            <div class="prodescriptxt">
+              <h2>Product Description</h2>
+              <p>Thawte SSL Web Server certificates will bring a new level of trust to your website. Since these are Organization Validated, or OV, certificates, your online customers will be able to see that your business was verified by one of the most trusted names in internet security. As one of the more premium brands in the SSL industry, Thawte is used in more than 240 countries around the world, so you can rest assured that these certificates will be recognized by customers across the globe. Any business that wants to make their website more reputable should consider these certificates, but they are especially recommended to medium sized ecommerce sites.</p>
+            </div>
+
+          </div>
+          <div id="cssmenu">
+            <ul class="accordion_example">
+              <li class="brand-symantec acc_active">
+                <div>
+                  <p>Assurance &amp; Authentication</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>Companies must complete a light validation before having this certificate issued. That's because Thawte SSL Web Server certificates are Organization Validated. This process typically takes between 2-3 business days to complete. The benefit to going with an OV certificate is that it brings more trust to your website. Along with the standard https and encryption, this certificate includes a dynamic site seal which will help assure your visitors that you are who you say you are – the most important message to get across on the web.</p>
+                  
+                  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Security &amp; Encryption</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>Thawte SSL Web Server certificates are available with the <strong>highest 256-bit encryption</strong> level. Your customers will know that your website is secure once they notice the Thawte Site Seal and the company information embedded within it, once you receive after passing the Organization Validation process.</p>
+
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>SAN &amp; multi-domain support</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>This certificate does offer SAN support, as you can protect <strong>up to 25 domains</strong> on just a single Thawte SSL Web Server.</p>
+
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Features &amp; Benefits</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <ul class="featurelist">
+                     <li>Web server SSL is a fully business validated ssl certificate</li>
+					  <li>256-bit with lowest possible encryption level of 128-bit protection for 99.9% of users even with older browsers</li>
+					  <li>Compatible with 99%+ of all browsers</li>
+					  <li>Online Certificate Status Protocol</li>
+					  <li>Certificate Revocation List fully supported</li>
+					  <li>Domain and identity authentication and verification</li>
+					  <li>Free Thawte Trusted Site Seal</li>
+					  <li>Reissuance unlimited for the lifespan of the certificate</li>
+					  <li>Immediate SSL certificate issuance 24/7/365</li>
+					  <li>Multi&ndash;year savings available &ndash; 1 to 4 year issuance</li>
+					  <li>Full range of support options &ndash; 24x7</li>
+					  <li>$1,250,000 warranty</li>
+                  </ul>
+				  <div class="clear"></div>
+                  <p class="notesml">** Applicable to a server that supports SNI (Server Name Indication)</p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Product Specifications</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                 <ul class="featurelist">
+                      <li>Certificate Secures 1 FQDN</li>
+					  <li>Issued In Less than 2 days typically</li>
+					  <li>Business and Domain Validation</li>
+					  <li>Domain Name and Business Name Shown On Certificate</li>
+					  <li>Encryption Strength Up to 256&ndash;bit, Automatic step-up (SGC)</li>
+					  <li>99% Browser Compatibility</li>
+					  <li>Support all mobile browsers</li>
+					  <li>Site Seal Included</li>
+					  <li>Single Server &ndash; Additional server licenses may be purchased</li>
+					  <li>Uses Chained Certificates (since all certs have intermediates)</li>
+                  </ul>
+				  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Site Seal</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>Since this is an Organization Validated (OV) certificate, your website will display a <strong>dynamic site seal</strong> that injects a lot of trust into your website. The Thawte Site Seal has already established a tremendous amount of credibility online, so your customers will know you've been vetted by an industry leader. Plus, they will be able to click on your site seal and see updated information about your business, further establishing your credibility.</p>
+
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Warranty</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>Thawte SSL Web Server certificates backed by a <strong>$1,250,000</strong> warranty. So, if a site was improperly validated, not actually secured and/or issued to a fraudulent site by Thawte, they would compensate the end-user of the site or victim up to $1,250,000 for any damages or losses. These warranties are there in order to protect your customers, but also help establish the credibility of you, the site owner, which gives users the confidence they need to make transact online.</p>
+
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        @Html.Partial("_rightpanel", username) </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+@section Jscripts{ 
+<script type="text/javascript">
+        $(document).ready(function () {
+            // Mobile Menu
+            $("#showmenu").click(function (e) {
+                e.preventDefault();
+                $("#menu").toggleClass("show");
+            });
+            $("#menu a").click(function (event) {
+                event.preventDefault();
+                if ($(this).next('ul').length) {
+                    $(this).next().toggle('fast');
+                    $(this).children('i:last-child').toggleClass('fa-caret-down fa-caret-left');
+                }
+            });
+            $(document).click(function (e) {
+                if (!$(e.target).is(".mobmemu, .mobmemu  *")) { $("#menu").toggleClass("hide"); $("#menu").removeClass("show"); }
+            });
+            $(".accordion_example").smk_Accordion();
+        });
+    </script> 
+} 

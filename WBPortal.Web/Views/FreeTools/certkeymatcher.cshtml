@@ -1,0 +1,109 @@
+﻿@model WBSSLStore.Gateways.RestAPIModels.Response.KeyMatcherresponse
+@{
+    ViewBag.Title = "Certificate Key Matcher";
+}
+
+@Html.Partial("_banner", new Tuple<string, string>("", "Certificate Key Matcher"))
+<div class="content">
+    <div class="wrapper">
+        <div class="column3">
+            <div class="mobtopcol">
+                <div class="column3-2">
+                    <div class="cmnpagewrap">
+                        <h2>Certificate Key Matcher</h2>
+                        <h4>Match Your SSL &amp; Private Key Pairs</h4>
+                        <p>The Certificate Key Matcher makes it easy to determine whether a private key or CSR file matches a certificate.</p>
+                        <p>The Certificate Key Matcher allows you to check whether a private key matches a certificate, or if a certificate matches a CSR file. Any mismatches between pairs will prevent your certificate from working properly.</p>
+                        <div class="ssltoolscover">
+                            @using (Html.BeginForm("certkeymatcher", "freetools", FormMethod.Post, new { area = "", id = "frmKeyMatcher" }))
+                            {
+                                @Html.Hidden("hdnType", "", new { id = "hdnType" })
+                                @Html.AntiForgeryToken()
+                                <div class="radio">
+                                    <div class="radiobox">
+                                        @Html.RadioButton("rbtype", "yes", true, new { name = "rbtype", id = "CSRFILE" })
+                                        <label for="CSRFILE">CSR File</label>
+                                    </div>
+                                    <div class="radiobox">
+                                        @*<input type="radio" id="PRIVATEKEY" name="rbtype" />*@
+                                        @Html.RadioButton("rbtype", "yes", false, new { name = "rbtype", id = "PRIVATEKEY" })
+                                        <label for="PRIVATEKEY">Private Key</label>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="PrivateKey_box">
+
+                                    <div class="ssltoolscover">
+                                        <h3 id="hcert">Paste SSL certificate:</h3>
+                                        <div class="chkcmnbx">
+                                            <textarea class="chkinput chkinputbxbig" rows="12" id="txtsslcert" name="txtsslcert"></textarea>
+                                            @*<label for="txtsslcert" generated="true" class="error">Please enter the valid Certificate.</label>*@
+                                        </div>
+                                        <h3 id="hkey">Paste CSR:</h3>
+                                        <div class="chkcmnbx">
+                                            <textarea class="chkinput chkinputbxbig" rows="12" id="txtprivatekey" name="txtprivatekey"></textarea>
+                                            @*<label for="txtprivatekey" generated="true" class="error">Please enter the valid PrivateKey.</label>*@
+                                        </div>
+                                        <p>
+                                            <input type="submit" class="greenbtn chrbtn" value="Check" id="keysubmit" name="keysubmit">
+                                        </p>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+
+                        @if (Model != null)
+                        {
+
+                            <p class="alert-info">
+                                @if (Model.IsCSRMatched)
+                                {
+                                    @Html.Raw("Certificate matches CSR file");
+                                }
+                                else if (Model.IsPrivateKeyMatched)
+                                {
+                                    @Html.Raw("Certificate matches Private key file");
+                                }
+                                else if(Model.AuthResponse.isError)
+                                {
+                                    @Model.AuthResponse.Message[0]
+                                }
+                        </p>
+
+                        }
+                    </div>
+                </div>
+
+                @Html.Partial("_rightpanel", "")
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+
+@section Jscripts{
+    <script type="text/javascript">
+        $(function () {
+            $("#frmKeyMatcher").submit(function (event) {
+                if ($("#txtsslcert").val() == '' || $("#txtprivatekey").val() == '') {
+                    var msg = ($("input[name=rbtype]:checked").attr('id') == 'PRIVATEKEY') ? 'Please insert SSL certificate and Private key!' : 'Please insert SSL certificate and CSR!';
+                    alert(msg);
+                    return false;
+                }
+            });
+
+            $("#CSRFILE").attr('checked', "checked");
+            $("input[name=rbtype]").change(function () {
+                if ($("input[name=rbtype]:checked").attr('id') == 'PRIVATEKEY') {
+                    $("#hdnType").val('PRIVATEKEY');
+                    $("#hkey").html('Paste private key');
+                } else {
+                    $("#hkey").html('Paste CSR');
+                    $("#hdnType").val('CSR');
+                }
+            });
+            $("input[name=rbtype]").change();
+            
+        });
+    </script>
+}

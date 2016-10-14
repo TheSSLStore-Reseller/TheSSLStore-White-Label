@@ -1,0 +1,117 @@
+﻿@model WBSSLStore.Service.ViewModels.StaticPageViewModel
+@{
+    ViewBag.Title = "SecureSiteProwithEV";  var productdetails = WBSSLStore.Web.Helpers.WBHelper.GetProductDetailRows();
+    string brand = Model != null && Model.Items != null && Model.Items.FirstOrDefault().Product != null && Model.Items.FirstOrDefault().Product.Brand != null ? Model.Items.FirstOrDefault().Product.Brand.BrandName : "";
+    string username = ViewBag.UserName;
+}
+@section headerTags{
+    @Html.Partial("_renderSEO", Model != null && Model.CMSPage != null ? Model.CMSPage : new WBSSLStore.Domain.CMSPage())
+}
+@Html.Partial("_banner", new Tuple<string, string>("", "SSL Brands"))
+<div class="content">
+  <div class="wrapper">
+    <div class="column3">
+      <div class="mobtopcol">
+        <div class="column3-2">
+          <div class="prodetailswrap marzerotop"> @Html.Partial("_ProdPricing", new Tuple<List<WBSSLStore.Domain.ProductPricing>, List<WBSSLStore.Domain.ProductDetail>>(Model.Items.ToList(), productdetails.ToList())) </div>
+          <div class="prodescrip marzerotop">
+            <div class="prodescriptxt">
+              <h2>Product Description</h2>
+              <p>Thawte Code Signing certificates allow you can protect your code with one of the original and most trusted brands in web security. Thawte protects identities and transactions with more than one million SSL & code signing certificates across 240+ countries. This global reach ensures that your customers will instantly be able to verify that your software is safe for download, once they see the reputable Thawte digital signatures. These certificates work across virtually all platforms and applications and ensure that your valued content or code cannot be maliciously modified without immediate detection.</p>
+            </div>
+          </div>
+          <div id="cssmenu">
+            <ul class="accordion_example">
+              <li class="brand-symantec acc_active">
+                <div>
+                  <p>Assurance &amp; Authentication</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>Thawte Code Signing certificates help guarantee the authenticity and the identity of your software. These certificates verify the code publisher's identity with a complete authentication process and safeguards the contents from any kind of tampering by an unlicensed third party. Obtaining these certificates for your company usually takes around 1-2 business days.</p>
+                  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Security &amp; Encryption</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>With a Thawte Code Signing certificate, you can <strong>safeguard your content</strong> from being tampered with and from unapproved distribution. These security certificates make sure that your users are aware of your authenticity, since the validity of your code has been established and protected with "digital shrink wrap."</p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Features &amp; Benefits</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <ul class="featurelist">
+                    <li>Thawte Code Siging is a fully Business Validated Certificate</li>
+                    <li>Uses a single certificate for most platforms and applications &ndash; this is unique to Thawte</li>
+                    <li>Allows you to sign active content such as ActiveX, Macros, MIDlet (J2ME) and Java&trade; Applets for secure electronic distribution over the Internet. This authenticated digital signature effectively verifies the source of your software before it is downloaded.</li>
+                    <li>Ensures that your active content or code cannot be maliciously modified without being detected</li>
+                    <li>Unlimited signing with a valid code signing certificate</li>
+                    <li>One-to-two-year validity and easy renewal</li>
+                    <li>Inspire user confidence and protect your brand</li>
+                    <li>Eliminate disruptive security alerts and reduce support inquiries</li>
+                    <li>Meet requirements for more platforms than any other code signing provider</li>
+                    <li>Increase adoption of downloadable software and online sales</li>
+                    <li>Thawte's world-class certification procedures</li>
+                    <li>Reduce the cost of maintaining code with a free timestamp.</li>
+                    <li>Protect users from downloading harmful files</li>
+                    <li>$50,000 warranty</li>
+                    <li>Now supports Silverlight&reg; 4 applications</li>
+                  </ul>
+				  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Site Seal</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>Code Signing certificates do not come with a Site Seal because they are not designed to be advertised publically on websites. However, these certificates do come with unique digital signatures embedded within the code of your website, which helps ensure your customers that the code comes from you and has not been altered or corrupted since it was signed and created.</p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Warranty</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>The Thawte Code Signing certificate includes a <strong>$50,000 warranty</strong>. This excellent warranty exists to protect against any unauthorized use, revocation, safety compromise, disclosure, incorrect issuance, and loss of use. So, you can rest assured knowing that your investment is covered.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        @Html.Partial("_rightpanel", username) </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+@section Jscripts{ 
+<script type="text/javascript">
+        $(document).ready(function () {
+            // Mobile Menu
+            $("#showmenu").click(function (e) {
+                e.preventDefault();
+                $("#menu").toggleClass("show");
+            });
+            $("#menu a").click(function (event) {
+                event.preventDefault();
+                if ($(this).next('ul').length) {
+                    $(this).next().toggle('fast');
+                    $(this).children('i:last-child').toggleClass('fa-caret-down fa-caret-left');
+                }
+            });
+            $(document).click(function (e) {
+                if (!$(e.target).is(".mobmemu, .mobmemu  *")) { $("#menu").toggleClass("hide"); $("#menu").removeClass("show"); }
+            });
+            $(".accordion_example").smk_Accordion();
+        });
+    </script> 
+} 

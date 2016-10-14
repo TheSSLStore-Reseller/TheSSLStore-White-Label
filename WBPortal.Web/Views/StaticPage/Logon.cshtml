@@ -1,0 +1,103 @@
+﻿@model WBSSLStore.Domain.User
+@{
+    ViewBag.Title = "Log On";
+    ViewBag.version = WBSSLStore.Web.Helpers.Caching.SiteCacher.ResourceVersion();
+    string Error = ViewBag.Error;
+
+    string action = string.Empty;
+    string ForgotPwdLink = string.Empty;
+    if (!WBSSLStore.Web.Helpers.WBHelper.USESSL(WBSSLStore.Web.Helpers.Caching.SiteCacher.CurrentSite))
+    {
+        action = "/authentication/user/logon";
+        ForgotPwdLink = "/forgotpassword";
+    }
+    else
+    {
+        action = WBSSLStore.Web.Helpers.WBHelper.ApllicationSecurePath + "/authentication/user/logon";
+        ForgotPwdLink = WBSSLStore.Web.Helpers.WBHelper.ApllicationSecurePath + "/forgotpassword";
+    }
+
+}
+
+@section sitecss{
+    @System.Web.Optimization.Styles.Render("/bundales/tabcss?v=" + ViewBag.version)
+    @System.Web.Optimization.Styles.Render("/bundales/jquery-ui-css?v=" + ViewBag.version)
+}
+@section Jscripts{
+
+    @System.Web.Optimization.Scripts.Render("/bundales/wb/jquery.validate?v=" + ViewBag.version)
+
+    <script type="text/javascript" language="javascript">
+
+        var passvalidation = "require password"
+
+        $(document).ready(function () {
+            $("#frmlogin").validate({
+                rules: {
+                    Email: "required",
+                    txtpassword: "required",
+                    password: "required"
+                },
+                messages: {
+                    Email: "Username is required!",
+                    txtpassword: "Password is required!",
+                    password: "required"
+                }
+
+            });
+        })
+    </script>
+}
+
+@Html.Partial("_banner", new Tuple<string, string>("", WBSSLStore.Resources.GeneralMessage.Message.Login_Header))
+<div class="content">
+    <div class="wrapper">
+        <div class="column3">
+            <div class="mobtopcol">
+                <div class="column3-2">
+                    <div class="aboutwrap marzerotop">
+                        <div class="logincontext">
+                            <p>@WBSSLStore.Resources.LongText.Message.Login_Desc</p>
+                            @using (Html.BeginForm("", "", FormMethod.Post, new { id = "frmlogin", action = @action }))
+                            {
+                                @Html.HiddenFor(m => m.SiteID)
+                                @Html.ValidationSummary(true)
+                                if (!string.IsNullOrEmpty(Error))
+                                {
+                                    <div class="alert-danger">@Error</div>
+                                }
+                                <div class="loginform">
+                                    <ul>
+                                        <li>
+                                            <span>
+                                                @(WBSSLStore.Resources.GeneralMessage.Message.Username_Caption):
+                                            </span>
+                                            @Html.TextBoxFor(model => model.Email, new { @class = "", placeholder = "Enter Username" })
+                                            @Html.ValidationMessageFor(model => model.Email)
+                                        </li>
+                                        <li>
+                                            <span> @(WBSSLStore.Resources.GeneralMessage.Message.Password_Caption)</span>:
+                                            @Html.PasswordFor(model => model.PasswordHash, new { @class = "required", id = "password", placeholder = "Enter Password" })
+                                            @Html.ValidationMessageFor(model => model.PasswordHash)
+                                        </li>
+                                        <li>
+                                            <input type="submit" value="@WBSSLStore.Resources.GeneralMessage.Message.Login_BTN" class="greenbtn loginbutton" id="btnSubmit" name="btnSubmit" />
+                                            <p><a href="@ForgotPwdLink">@WBSSLStore.Resources.GeneralMessage.Message.ForgotPwd_Caption</a></p>
+                                        </li>
+                                    </ul>
+                                    <div class="clear"></div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+                @Html.Partial("_rightpanel", "")
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- InstanceEndEditable -->

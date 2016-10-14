@@ -1,0 +1,327 @@
+﻿@using WBSSLStore.Web.Helpers.PagedList;
+@model IPagedList<WBSSLStore.Domain.UserExt>
+@{
+    ViewBag.Title = "Index";
+    string CurrentLangCode = WBSSLStore.Web.Helpers.WBHelper.CurrentLangCode;
+    ViewBag.version = WBSSLStore.Web.Helpers.Caching.SiteCacher.ResourceVersion();
+}
+@*<link rel="stylesheet" href="@Url.Content("~/content/themes/base/jquery-ui.min.css")" type="text/css" />
+    <script src="@Url.Content("~/Content/Scripts/Jquery.UI/jquery-ui.min.js")" type="text/javascript"></script>*@
+
+@System.Web.Optimization.Styles.Render("/bundales/jquery-ui-css?v=" + ViewBag.version)
+@System.Web.Optimization.Scripts.Render("/bundales/jquery-ui?v=" + ViewBag.version)
+
+
+
+@*<script src="@Url.Content("~/content/Scripts/jQuery.glob.min.js")" type="text/javascript"></script>*@
+@*<script src="@Url.Content("~/content/Admin/js/common.min.js")" language="javascript" type="text/javascript" ></script>*@
+
+@System.Web.Optimization.Scripts.Render("/bundales/jquery-glob?v=" + ViewBag.version)
+@System.Web.Optimization.Scripts.Render("/bundales/admincommonjs?v=" + ViewBag.version)
+
+
+@if (CurrentLangCode != "en")
+{
+    @System.Web.Optimization.Scripts.Render("/bundales/jquery-glob-all?v=" + ViewBag.version)
+    <script src="@Url.Content("~/content/Scripts/i18n/jquery.ui.datepicker-" + CurrentLangCode + ".js")" type="text/javascript"></script>    
+}
+
+<script type="text/javascript">
+    
+
+    $(function () {
+        $.preferCulture('@(CurrentLangCode)');
+    });
+</script>
+<script type="text/javascript" language="javascript">
+    var objReselleractmail = '@WBSSLStore.Resources.GeneralMessage.Message.ResellerAcvivation_Mail_Caption';
+    $(function () {
+        var dates = $("#txtFromDate, #txtToDate").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            numberOfMonths: 1,
+            showOn: "both",
+            buttonImage: "@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-date.gif",
+            buttonImageOnly: true,
+            onSelect: function (selectedDate) {
+                var option = this.id == "txtFromDate" ? "minDate" : "maxDate",
+					instance = $(this).data("datepicker"),
+					date = $.datepicker.parseDate(
+						instance.settings.dateFormat ||
+						$.datepicker._defaults.dateFormat,
+						selectedDate, instance.settings);
+                dates.not(this).datepicker("option", option, date);
+            }
+        });
+
+        $("#ddlTotalPurchase option[value='@ViewBag.TotalPurchase']").attr("selected", "selected");
+    });
+</script>
+<tr>
+    <td align="left" valign="top">
+        <table width="881" border="0" align="left" cellpadding="0" cellspacing="0">
+            <tr>
+                <td width="7" align="left" valign="top">
+                    <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/barleft.gif" alt="whitebrand" width="7" height="55">
+                </td>
+                <td width="866" align="left" valign="middle" class="hdbarbg">
+                    <table width="840" border="0" align="center" cellpadding="1" cellspacing="1">
+                        <tr>
+                            <td width="407" align="left" valign="middle" class="head1">
+                                @*Manage Resellers*@ @WBSSLStore.Resources.GeneralMessage.Message.Reseller_Title
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td width="9" align="right" valign="top">
+                    <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/barright.gif" alt="whitebrand" width="9" height="55">
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>
+<tr>
+    <td align="left" valign="top" bgcolor="#d6d6d6">
+        @ViewBag.Message
+    </td>
+</tr>
+<tr>
+    <td align="left" valign="top" class="contbg">
+        <table width="870" border="0" align="center" cellpadding="0" cellspacing="7">
+            <tr>
+                <td width="867" align="center" valign="top" class="bgclr">
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td align="left" valign="top">
+                                <table width="820" border="0" align="center" cellpadding="0" cellspacing="0">
+                                    <tr>
+                                        <td height="30" align="left" valign="middle">
+                                            &nbsp;
+                                        </td>
+                                    </tr>
+                                    @using (Html.BeginForm("index", "reseller", FormMethod.Post))
+                                    {
+                                        <tr>
+                                            <td align="left" valign="top">
+                                                <table width="80%" border="0" align="center" cellpadding="1" cellspacing="2">
+                                                    <tr>
+                                                        <td width="31%" align="right" valign="middle" class="bold">
+                                                            @*Reseller Name*@ @WBSSLStore.Resources.GeneralMessage.Message.ResellerName_Caption:
+                                                        </td>
+                                                        <td width="69%" align="left" valign="middle">
+                                                            <label>
+                                                                <input name="txtResellerName" type="text" class="inputbox" id="txtResellerName" value="@ViewBag.ResellerName"/>
+                                                            </label>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="right" valign="middle" class="bold">
+                                                            @*Email*@ @WBSSLStore.Resources.GeneralMessage.Message.Email_Caption :
+                                                        </td>
+                                                        <td align="left" valign="middle">
+                                                            <label>
+                                                                <input name="txtEmail" type="text" class="inputbox" id="txtEmail" value="@ViewBag.Email" />
+                                                            </label>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="right" valign="middle" class="bold">
+                                                            @*Status*@ @WBSSLStore.Resources.GeneralMessage.Message.Status_Caption:
+                                                        </td>
+                                                        <td align="left" valign="top">
+                                                            @Html.DropDownList("ddlStatus", Enum.GetValues(typeof(WBSSLStore.Domain.RecordStatus)).Cast<WBSSLStore.Domain.RecordStatus>().Where(x => ((int)x) != (int)WBSSLStore.Domain.RecordStatus.DELETED).Select(x => new SelectListItem { Text = ((int)x==0?WBSSLStore.Resources.GeneralMessage.Message.ddlStatus_InActive:WBSSLStore.Resources.GeneralMessage.Message.ddlStatus_Active), Value = ((int)x).ToString(), Selected = (x.ToString() == ViewBag.Status && ViewBag.Status != null) }), "----" + @WBSSLStore.Resources.GeneralMessage.Message.ddlStatus_All + "----", new { @class = "listmenumid" })
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="right" valign="middle" class="bold">
+                                                            @*Register Date*@  @WBSSLStore.Resources.GeneralMessage.Message.Reseller_RegDate:
+                                                        </td>
+                                                        <td align="left" valign="top">
+                                                            <table width="71%" border="0" align="left" cellpadding="0" cellspacing="0">
+                                                                <tr>
+                                                                    <td width="40%" align="left" valign="middle">
+                                                                        <input name="txtFromDate" type="text" class="inputboxmini" readonly="readonly" id="txtFromDate" value="@(ViewBag.StartDate ?? DateTimeWithZone.Now.AddYears(-1).ToShortDateString())" />
+                                                                    </td>
+                                                                    <td width="20%" align="center" valign="middle" class="bold">
+                                                                        @*End Date*@ @WBSSLStore.Resources.GeneralMessage.Message.EndDate_Caption:
+                                                                    </td>
+                                                                    <td width="40%" align="left" valign="middle">
+                                                                        <input name="txtToDate" type="text" class="inputboxmini" readonly="readonly" id="txtToDate" value="@(ViewBag.EndDate ?? DateTimeWithZone.Now.ToShortDateString())" />
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="right" valign="middle" class="bold">
+                                                            @*Total Purchase*@ @WBSSLStore.Resources.GeneralMessage.Message.Reseller_TotalPur :
+                                                        </td>
+                                                        <td align="left" valign="top">
+                                                            <select id="ddlTotalPurchase" name="ddlTotalPurchase" class="listmenumid">
+                                                                <option value="0-@Decimal.MaxValue" selected="selected">--@WBSSLStore.Resources.GeneralMessage.Message.ddlStatus_All--</option>
+                                                                <option value="0-0">@*No Sales*@ @WBSSLStore.Resources.GeneralMessage.Message.dd_NoSale</option>
+                                                                <option value="1-250">@(string.Format("{0:C}", 1)) - @(string.Format("{0:C}", 250))</option>
+                                                                <option value="251-499">@(string.Format("{0:C}", 251)) - @(string.Format("{0:C}", 499))</option>
+                                                                <option value="500-999">@(string.Format("{0:C}", 500)) - @(string.Format("{0:C}", 999))</option>
+                                                                <option value="1000-2499">@(string.Format("{0:C}", 1000)) - @(string.Format("{0:C}", 2499))</option>
+                                                                <option value="2500-4999">@(string.Format("{0:C}", 2500)) - @(string.Format("{0:C}", 4999))</option>
+                                                                <option value="5000-9999">@(string.Format("{0:C}", 5000)) - @(string.Format("{0:C}", 9999))</option>
+                                                                <option value="10000-19999">@(string.Format("{0:C}", 10000)) - @(string.Format("{0:C}", 19999))</option>
+                                                                <option value="20000-29999">@(string.Format("{0:C}", 20000)) - @(string.Format("{0:C}", 29999))</option>
+                                                                <option value="30000-@Decimal.MaxValue">&gt;@(string.Format("{0:C}", 30000))</option>
+                                                            </select>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="right" valign="middle" class="bold">
+                                                            &nbsp;
+                                                        </td> 
+                                                        <td align="left" valign="top">
+                                                            <input name="btnSearch" type="submit" class="bluebtn" id="btnSearch" value="@WBSSLStore.Resources.GeneralMessage.Message.Search_btn" />
+                                                            &nbsp;
+                                                            <input name="btnExport" type="submit" class="bluebtn" id="btnExport" value="@WBSSLStore.Resources.GeneralMessage.Message.ExportToCSV_btn" />
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="left" valign="top">
+                                                            &nbsp;
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>                                        
+                                    }
+                                    @if (Model != null && Model.Count() > 0)
+                                    {
+                                        <tr>
+                                            <td align="left" valign="top">
+                                                &nbsp;
+                                            </td>
+                                        </tr>                                        
+                                        <tr>
+                                            <td align="left" valign="top">
+                                                &nbsp;
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="left" valign="top" bgcolor="#d6d6d6">
+                                                <table width="100%" border="0" align="left" cellpadding="3" cellspacing="1">
+                                                    <tr>
+                                                        <td width="29%" height="34" align="left" valign="middle" bgcolor="#eff8fd" class="bluefont">
+                                                            @*Reseller Name*@ @WBSSLStore.Resources.GeneralMessage.Message.ResellerName_Caption
+                                                        </td>
+                                                        <td width="13%" height="34" align="left" valign="middle" bgcolor="#eff8fd" class="bluefont">
+                                                            @*Slab/Contract*@ @WBSSLStore.Resources.GeneralMessage.Message.Reseller_Slab_Contract
+                                                        </td>
+                                                        <td width="11%" height="34" align="left" valign="middle" bgcolor="#eff8fd" class="bluefont">
+                                                            @*Reseller Since*@ @WBSSLStore.Resources.GeneralMessage.Message.Reseller_Since
+                                                        </td>
+                                                        <td width="13%" height="34" align="center" valign="middle" bgcolor="#eff8fd" class="bluefont">
+                                                            @*Total Purchase*@ @WBSSLStore.Resources.GeneralMessage.Message.Reseller_TotalPur
+                                                        </td>
+                                                        <td width="7%" height="34" align="center" valign="middle" bgcolor="#eff8fd" class="bluefont">
+                                                            @*Status*@ @WBSSLStore.Resources.GeneralMessage.Message.Status_Caption
+                                                        </td>
+                                                        <td width="7%" height="34" align="center" valign="middle" bgcolor="#eff8fd" class="bluefont">
+                                                            @*Edit*@ @WBSSLStore.Resources.GeneralMessage.Message.Edit_Caption
+                                                        </td>
+                                                        <td width="7%" height="34" align="center" valign="middle" bgcolor="#eff8fd" class="bluefont">
+                                                            @*Delete*@ @WBSSLStore.Resources.GeneralMessage.Message.Delete_Caption
+                                                        </td>
+                                                    </tr>
+                                                    @foreach (var item in Model)
+                                                    {
+                                                        <tr id="row-@item.ID">
+                                                            <td align="left" valign="middle" bgcolor="#FFFFFF">
+                                                                @Html.DisplayFor(modelItem => item.FirstName)&nbsp;@Html.DisplayFor(modelItem => item.LastName)
+                                                            </td>
+                                                            <td align="left" valign="middle" bgcolor="#FFFFFF">
+                                                                @Html.DisplayFor(modelItem => item.ContractName)
+                                                            </td>
+                                                            <td align="left" valign="middle" bgcolor="#FFFFFF">
+                                                                @((DateTimeWithZone.Now.Date - item.RegisterDate.Date).Days)
+                                                                Days<br />
+                                                                (@item.RegisterDate.ToShortDateString())
+                                                            </td>
+                                                            <td align="right" valign="middle" bgcolor="#FFFFFF">
+                                                                @string.Format("{0:C}", (@item.TotalPurchase == null ? 0 : @item.TotalPurchase))
+                                                            </td>
+                                                            <td align="center" valign="middle" bgcolor="#FFFFFF">
+                                                                <a href="javascript:;" class="UpdateStatus" data-id="@item.ID" data-type="reseller">
+                                                                    @if (item.RecordStatus == WBSSLStore.Domain.RecordStatus.ACTIVE)
+                                                                    {
+                                                                        <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-active.gif" id="img-@item.ID" alt="status" />
+                                                                    }
+                                                                    @if (item.RecordStatus == WBSSLStore.Domain.RecordStatus.INACTIVE)
+                                                                    {
+                                                                        <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-deactive.gif" id="img-@item.ID" alt="status" />
+                                                                    }
+                                                                </a>
+                                                            </td>
+                                                            <td align="center" valign="middle" bgcolor="#FFFFFF">
+                                                                <a href="@Url.Action("edit", new { id = item.ID })" title="Edit">
+                                                                    <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-edit.gif" alt="edit" />
+                                                                </a>
+                                                            </td>
+                                                            <td align="center" valign="middle" bgcolor="#FFFFFF">
+                                                                <a href="javascript:;" class="Remove" data-id="@item.ID">
+                                                                    <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-delete.gif" alt="delete" />
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    }
+                                    else
+                                    { 
+                                        <tr>
+                                            <td height="8" valign="top" class="errormsg">
+                                                @*No record found.*@ @WBSSLStore.Resources.GeneralMessage.Message.NoRecord
+                                            </td>
+                                        </tr>
+                                    }
+                                    <tr>
+                                        <td height="8" valign="top">
+                                            &nbsp;
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="left" valign="top">
+                                &nbsp;
+                            </td>
+                        </tr>
+                        <tr>
+                            <td height="8" align="left" valign="top">
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>
+@if (Model != null && Model.Count() > 0)
+{
+    <tr>
+        <td align="center" valign="top" bgcolor="#d6d6d6" class="contbg">
+            <table width="855" border="0" align="center" cellpadding="0" cellspacing="7" class="bgclr">
+                <tr>
+                    <td width="840" align="center" valign="top" bgcolor="#FFFFFF">
+                        <table width="825" border="0" align="center" cellpadding="1" cellspacing="1">
+                            <tr>
+                                <td>
+                                    @Html.PagedListPager(Model, page => Url.Action(Model.ActionName, Model.ControllerName, new { page = page + 1, txtResellerName = ViewBag.ResellerName, txtEmail = ViewBag.Email, ddlTotalPurchase = ViewBag.TotalPurchase, ddlStatus = ViewBag.Status, txtFromDate = ViewBag.StartDate, txtToDate = ViewBag.EndDate, }))
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+}

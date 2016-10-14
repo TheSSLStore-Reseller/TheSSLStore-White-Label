@@ -1,0 +1,378 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Account_password" xml:space="preserve">
+    <value>Account &amp; Password</value>
+  </data>
+  <data name="Account_to_checkout_faster" xml:space="preserve">
+    <value>Account to checkout faster</value>
+  </data>
+  <data name="CheckCSRNote" xml:space="preserve">
+    <value>Use this CSR Decoder to decode your Certificate Signing Request and and verify that it contains the correct information. A Certificate Signing Request is a block of encoded text that contains information about the company that an SSL certificate will be issued to and the SSL public key. Once a CSR is created it is difficult to verify what information is contained in it because it is encoded. Since certificate authorities use the information in CSRs to create the certificate, you need to decode CSRs to make sure the information is accurate. To check CSRs and view the information inside of them, simply paste your CSR into the box below and the AJAX CSR Decoder will do the rest. Your CSR should start with "-----BEGIN CERTIFICATE REQUEST----- " and end with "-----ENDCERTIFICATE REQUEST----- ".</value>
+  </data>
+  <data name="Checkout_Desc" xml:space="preserve">
+    <value>Your order details will be sent to this email address.</value>
+  </data>
+  <data name="CheckOut_Note" xml:space="preserve">
+    <value>Please review and submit your order by selecting "Confirm".</value>
+  </data>
+  <data name="CheckSSLNote" xml:space="preserve">
+    <value>This SSL Checker will help you diagnose problems with your SSL certificate installation.
+    You can verify the SSL certificate on your web server to make sure it is correctly
+    installed, valid, trusted and doesn't give any errors to any of your users. To use
+    the SSL Checker, simply enter your server's hostname (must be public) in the boxbelow and click the Submit button</value>
+  </data>
+  <data name="Comodo_Code_Signing_Certificates_Desc" xml:space="preserve">
+    <value>Code Signing, through the use of digital signatures, enables software developers to include information about themselves and their code with their software. Your end users who download digitally signed 32-bit or 64-bit Portable Executable (.exe, .ocx, .dll or other) or .cab files can be confident that code really comes from you and has not been altered or corrupted since it was created and signed.</value>
+  </data>
+  <data name="Comodo_Essential_SSL_Desc" xml:space="preserve">
+    <value>Issued within 10 minutes, an Essential SSL Certificate provides a quick cost-effective solution to secure your customer transactions. More importantly, your customers are assured that it is safe to do business with you because sensitive information is encrypted and remains private.</value>
+  </data>
+  <data name="Comodo_Essential_SSL_Wildcard_Desc" xml:space="preserve">
+    <value>128-bit SSL certificates designed for encrypting web sites that handle low-volume online transactions. Trusted by over 99.3% of current Internet users, Essential SSL is the solution for new web sites or environments where trust has been established and entity verification (for identity assurance) is not needed.</value>
+  </data>
+  <data name="Comodo_EV_SSL_Desc" xml:space="preserve">
+    <value>EV SSL Certificates provide the highest levels of encryption, security and trust. They immediately reassure web site visitors that it is safe to conduct online transactions by turning the address bar green on next generation browsers such as Internet Explorer 7 +, FireFox 3 + and Opera 9.5 +.</value>
+  </data>
+  <data name="Comodo_EV_SSL_EV_SGC_Desc" xml:space="preserve">
+    <value>Guard sensitive customer information, financial transactions and transmit confidential data with identity assured Extended Validation (EV) SGC SSL Certificates. These certificates provide 128- or 256-bit encryption to over 99% of Web site visitors by offering the strongest encryption and identity assurance available to every site visitor - even the millions using older versions of Windows and IE.</value>
+  </data>
+  <data name="Comodo_EV_SSL_Multi_Domain_Desc" xml:space="preserve">
+    <value>Multi-Domain EV SSL Certificates (EV MDCs) allow you to secure up to 100 different domains or sub-domains with a single SSL certificate. EV technology adds an additional layer of trust to your online business by turning the browser address bar green every time one of your customers enters the secure area of your web site.</value>
+  </data>
+  <data name="Comodo_Instant_SSL_Desc" xml:space="preserve">
+    <value>InstantSSL Certificates enable you and your customers to complete transactions with the assurance that no one else can read or change information as it travels over the Internet. This leads to increased visitor conversion rate, lower web site abandonment and an increase in average purchase price.</value>
+  </data>
+  <data name="Comodo_Instant_SSL_Premium_Desc" xml:space="preserve">
+    <value>InstantSSL Premium Certificates are the professional solution for securing ecommerce web sites and provide compelling visual assurance that your web site can be trusted. InstantSSL Premium Certificates enable your customers to complete transactions with the assurance.</value>
+  </data>
+  <data name="Comodo_Instant_SSL_Pro_Desc" xml:space="preserve">
+    <value>An InstantSSL Pro Certificate enables you and your customers to complete transactions with the assurance that no one else can read or change information as it travels over the Internet. This leads to increased visitor conversion rate, lower web site abandonment and an increase in average purchase price.</value>
+  </data>
+  <data name="Comodo_Multi_Domain_Desc" xml:space="preserve">
+    <value>Multi-domain certificates (MDC) are your solutions for securing anywhere from two to 100 domains on the same server under one SSL certificate. Consolidate your SSL management process and manage the SSL encryption for all of your domains under just one SSL certificate for multiple domains. You can start by implementing a Comodo Multi-Domain SSL Certificate.</value>
+  </data>
+  <data name="Comodo_Positive_SSL_Desc" xml:space="preserve">
+    <value>Issued within 10 minutes, a Positive SSL Certificate provides a quick cost-effective solution to secure your customer transactions. More importantly, your customers are assured that it is safe to do business with you because sensitive information is encrypted and remains private.</value>
+  </data>
+  <data name="Comodo_Positive_SSL_Wildcard_Desc" xml:space="preserve">
+    <value>128 bit-SSL certificates designed for encrypting web sites that handle low-volume online transactions. Trusted by over 99.3% of current Internet users, Positive SSL is the solution for new web sites or environments where trust has been established and entity verification (for identity assurance) is not needed. Positive SSL Certificates carry a $10,000 warranty.</value>
+  </data>
+  <data name="Comodo_Premium_SSL_Wildcard_Desc" xml:space="preserve">
+    <value>Comodo's Premium SSL Wildcards secure unlimited sub-domains on your site such as www.yourdomain.com, secure.yourdomain.com and mail.yourdomain.com. One Premium SSL Wildcard Certificate saves you money and time by simplifying SSL certificate management. Use a single certificate to secure all of your sub-domains.</value>
+  </data>
+  <data name="Comodo_SGC_Desc" xml:space="preserve">
+    <value>Comodo SGC SSL Certificates upgrade the encryption capabilities of older browsers from 40-bit encryption into full 128- or 256-bit encryption. This means your website protects and is trusted by the highest number of internet users possible, even the millions using older versions of Windows and Internet Explorer.</value>
+  </data>
+  <data name="Comodo_SGC_Wildcard_Desc" xml:space="preserve">
+    <value>Secure unlimited sub-domains on your website with a single Comodo SGC Wildcard SSL Certificate (e.g. www.yourdomain.com, secure.yourdomain.com, signup.yourdomain.com). A Comodo SGC Wildcard SSL Certificate is a cost effective and efficient means of securing all sub-domains without the need to manage multiple certificates.</value>
+  </data>
+  <data name="Comodo_Unified_Communication_UC_Desc" xml:space="preserve">
+    <value>Designed exclusively for Microsoft Exchange and Office Communications infrastructures, Comodo's Unified Communications Certificates allow a single certificate to provide SSL-secured communications for multiple domains and multiple host names operating on a single IP address.</value>
+  </data>
+  <data name="Dashboard_Note" xml:space="preserve">
+    <value>Please configure the following items before your site goes Live.</value>
+  </data>
+  <data name="Dashboard_Notice1" xml:space="preserve">
+    <value>Configure Products &amp; its pricing.</value>
+  </data>
+  <data name="Dashboard_Notice2" xml:space="preserve">
+    <value>Configure your payment settings.</value>
+  </data>
+  <data name="Dashboard_Notice3" xml:space="preserve">
+    <value>Configure your SMTP settings to be able to send out emails from the system.</value>
+  </data>
+  <data name="Enable_Test_Mode" xml:space="preserve">
+    <value>Enable Test Mode</value>
+  </data>
+  <data name="GeoTrust_QuickSSL_Premium_Desc" xml:space="preserve">
+    <value>GeoTrust QuickSSL Premium certificates are the most convenient and cost effective solution for any business that needs to conduct secure online transactions. These certificates enable up to 256-bit encryption and instill confidence and trust in your customers and business partners when providing sensitive information over the Web or mobile devices.</value>
+  </data>
+  <data name="GeoTrust_True_BusinessID_Desc" xml:space="preserve">
+    <value>GeoTrust® True BusinessID® certificates provide end-to-end Internet security coverage and are ideal for high-profile, high-traffic sites that are likely to be targets for phishing. True BusinessID certificate enables up to 256-bit encryption and an identity verification seal in a single bundle.</value>
+  </data>
+  <data name="GeoTrust_True_BusinessID_Multi_Domain_Desc" xml:space="preserve">
+    <value>With a True BusinessID Multi-Domain certificate, you can add, edit, or delete up to 25 domain names over the lifetime of the certificate. You can add, edit or delete any additional domain names to the subject alt name (SAN) field during the enrollment process.</value>
+  </data>
+  <data name="GeoTrust_True_BusinessID_Wildcard_Desc" xml:space="preserve">
+    <value>True BusinessID Wildcard is the easy, affordable solution. True BusinessID Wildcard is an ideal solution if you need to secure multiple Fully Qualified Domains that share the same base domain name, reside on the same physical server and share the same second-level domain name.</value>
+  </data>
+  <data name="GeoTrust_True_BusinessID_with_EV_Desc" xml:space="preserve">
+    <value>EV SSL can help you to protect your site from phishing scams and increase your customer transactions. True BusinessID with EV comes with the highest levels of identity authentication, up to 256-bit encryption, and the GeoTrust True Site® seal.</value>
+  </data>
+  <data name="GeoTrust_True_Business_ID_With_EV_Multi_Domain_Desc" xml:space="preserve">
+    <value>Make a strong security statement with the green address bar. GeoTrust® True BusinessID with EV (Extended Validation) Multi-Domain is our premium business-class SSL security product, visually confirming the highest level of authentication available among SSL certificates.</value>
+  </data>
+  <data name="InvoiceThankMsg" xml:space="preserve">
+    <value>We thank you for your business.</value>
+  </data>
+  <data name="Invoice_Note" xml:space="preserve">
+    <value>All prices are in USD. If you have any questions concerning this invoice, contact us a</value>
+  </data>
+  <data name="I_have_a" xml:space="preserve">
+    <value>I have a</value>
+  </data>
+  <data name="Login_Desc" xml:space="preserve">
+    <value>Login to your account to view order summary, account statement, pending orders and other stuff</value>
+  </data>
+  <data name="OrderDetClickNote" xml:space="preserve">
+    <value>Click here to see Order Detail</value>
+  </data>
+  <data name="OrderDetClickNote2" xml:space="preserve">
+    <value>Click here to see Reseller Detail.</value>
+  </data>
+  <data name="OrderDetClickNote3" xml:space="preserve">
+    <value>Click here to see Customer Detail.</value>
+  </data>
+  <data name="PaymentMethodNote" xml:space="preserve">
+    <value>(Credit cards will not be charged)</value>
+  </data>
+  <data name="Pricing_Note" xml:space="preserve">
+    <value>Please add the desired profit margin (in percentage %) that you would like to add on to your existing purchasing cost. This is applied to all of your products and is the amount you will profit per product. Below are YOUR purchasing prices, to view or manage the prices of individual products, go to Manage Products.</value>
+  </data>
+  <data name="RapidSSL_Desc" xml:space="preserve">
+    <value>RapidSSL is industry standard 128 / 256 bit single root SSL certificate. RapidSSL certificates have browser recognition of around 99% including IE 5.01+, Netscape 4.7+ and Mozilla 1+ browsers and many other browsers.</value>
+  </data>
+  <data name="RapidSSL_Desc1" xml:space="preserve">
+    <value>RapidSSL is industry standard 128 / 256 bit single root SSL certificate. RapidSSL certificates have browser recognition of around 99% including IE 5.01+, Netscape 4.7+ and Mozilla 1+ browsers and many other browsers. </value>
+  </data>
+  <data name="RapidSSL_Wildcard_Desc" xml:space="preserve">
+    <value>RapidSSL Wildcard Certificates allows you to secure unlimited number of sub domains on the same domain name with a single certificate. RapidSSL Wildcard is low cost and easy to manage.</value>
+  </data>
+  <data name="Reseller_Desc" xml:space="preserve">
+    <value>Please review the information on this page, When you have completed this review,
+        please submit your order for processing</value>
+  </data>
+  <data name="Sign_in_to_your" xml:space="preserve">
+    <value>Sign in to your</value>
+  </data>
+  <data name="Thawte_Code_Signing_Certificate_Desc" xml:space="preserve">
+    <value>With the advent of online distribution, developing and disseminating functional code is easier than ever. However, such an environment also subjects code and software to potential dangers presented by fraudulent and malicious code. Don’t expose your customers to these threats. With a Thawte® Code Signing Certificate, you can protect your customers and provide them with the safe, trustworthy code they deserve.</value>
+  </data>
+  <data name="Thawte_SGC_SuperCerts_Desc" xml:space="preserve">
+    <value>Thawte® SGC SuperCert provides SGC SSL certificates with full authentication, and capable of 256-bit encryption with lowest possible encryption level of 128-bit protection for 99.9% of users even with older browsers and browser recognition of around 99%.</value>
+  </data>
+  <data name="Thawte_SSL_123_Desc" xml:space="preserve">
+    <value>SSL123 is Thawte's entry level certificate which provides validation that your domain is registered and that you have authorized the purchase of the certificate.</value>
+  </data>
+  <data name="Thawte_SSL_Web_Server_Desc" xml:space="preserve">
+    <value>Thawte® SSL Web Server Certificate is fully authenticated SSL certificates which offers comprehensive authentication procedures with 256, 128, 56 or 40-bit encryption and browser recognition of around 99%.</value>
+  </data>
+  <data name="Thawte_SSL_Web_Server_EV_Desc" xml:space="preserve">
+    <value>Thawte's SSL Web Server Certificate with Extended Validation (EV) offers corporations and government entities the highest industry standard for identity authentication as well as 256-, 128-, 56-, or 40-bit encryption.</value>
+  </data>
+  <data name="Thawte_SSL_Web_Server_Wildcard_Desc" xml:space="preserve">
+    <value>Thawte SSL Webserver Wildcard is an easy, affordable solution if you need to secure multiple fully qualified domains that share the same base domain name, reside on the same physical server, and share the same second level domain name.</value>
+  </data>
+  <data name="TrustKeeper_PCI_DSS_Desc" xml:space="preserve">
+    <value>Trustwave PCI Product protect the transfer of sensitive data on Web sites, intranets, and extranets using a minimum of 40-bit and up to 256-bit encryption (the highest that each individual browser will allow). It also includes the Trustwave Secured Seal.</value>
+  </data>
+  <data name="TrustKeeper_Plus_EV_SSL_Desc" xml:space="preserve">
+    <value>EV SSL Certificates are validated to the highest degree to provide consumer confidence in the identity of the web site operator. If you are taking orders online, you need to get the green bar with EV SSL. Customers will receive the green bar as a striking trust indicator in the web browser, and you will see fewer abandoned shopping carts and more conversions. </value>
+  </data>
+  <data name="TrustKeeper_SSL_Plus_Desc" xml:space="preserve">
+    <value>Trustwave understands the pressure merchants are under to prove compliance with Payment Card Industry Data Security Standard (PCI DSS). TrustKeeper is a certified remote assessment and compliance solution designed to help merchants meet the security standards of all credit card companies.</value>
+  </data>
+  <data name="Trustwave_Domain_Validated_SSL_Desc" xml:space="preserve">
+    <value>Trustwave Domain Validated Certificates are best suited for small and medium capital e-commerce web sites. Domain Validated Certificates offer 99% desktop and server browser compatibility with up to 256 bit SSL encryption and 204- bit CSR encryption.</value>
+  </data>
+  <data name="Trustwave_Enterprise_SSL_Desc" xml:space="preserve">
+    <value>Are you an Enterprise looking for our highest warranty? Trustwave Enterprise SSL Certificates provide everything you will need to protect a single domain and assure your customers that your site is trustworthy and secure with our highest Relying Party Warranty on a standard SSL certificate.</value>
+  </data>
+  <data name="Trustwave_Premium_EV_SSL_Desc" xml:space="preserve">
+    <value>EV SSL Certificates are validated to the highest degree to provide consumer confidence in the identity of the web site operator. If you are taking orders online, you need to get the green bar with EV SSL. Customers will receive the green bar as a striking trust indicator in the web browser, and you will see fewer abandoned shopping carts and more conversions.</value>
+  </data>
+  <data name="Trustwave_Premium_SSL_Desc" xml:space="preserve">
+    <value>Do you need to secure a single server domain name? Trustwave Premium SSL Certificates provide everything you will need to protect a single domain and assure your customers that your site is trustworthy and secure. Every Trustwave SSL Certificate includes a dynamic security site seal to give your customers confidence in your identity and feel safe in doing business with you. </value>
+  </data>
+  <data name="Trustwave_Premium_Wildcard_SSL_Desc" xml:space="preserve">
+    <value>"Do you need to secure multiple server sub-domain names? Trustwave Premium Wildcard SSL Certificates provide a quick and easy way to protect multiple sub-domain names and assure your customers that your site is trustworthy and secure. You can use a Trustwave Wildcard SSL certificate to secure domains such as: www.mycompany.com, mail.mycompany.com, secure.mycompany.com and more! Every Trustwave SSL Certificate includes a dynamic security site seal to give your customers confidence in your identity and feel safe in doing business with you.
+
+The Trustwave Premium Wildcard SSL Certificate features 256-Bit encryption, and includes a $100,000 identification guarantee and a 30 day, no questions asked, money back policy. All our certificates come with free reissues for the life of the certificate
+
+Free Reissues For Life 
+Trustwave offers you free SSL certificate reissues for any reason. Did your server crash and you lost your private key? Simply login to the Trustwave SSL Control Center and you can quickly reissue your certificate so you're back in business with minimal downtime.
+
+Satisfaction Guarantee 
+Trustwave offers a 30 day money back guarantee. If for any reason you're not satisfied with your SSL certificate, just let us know and we will refund your purchase price. It's Simple, customer satisfaction is our main goal. "</value>
+  </data>
+  <data name="Trustwave_Secure_Email_Digital_ID_Desc" xml:space="preserve">
+    <value>Trustwave Secure E-Mail Digital IDs allow you and your organization to secure your email communications in a cost-effective manner. With this certificate, you can ensure the privacy of both your email messages and attachments quickly and effortlessly.</value>
+  </data>
+  <data name="UsePaypal" xml:space="preserve">
+    <value>Use Your PayPal Email Address!</value>
+  </data>
+  <data name="UserProfile_Desc" xml:space="preserve">
+    <value>Please review the information on this page, When you have completed this review,
+        please submit your order for processing</value>
+  </data>
+  <data name="VeriSign_Code_Signing_Certificate_Desc" xml:space="preserve">
+    <value>For developers and software publishers of active content, code signing reduces error messages and builds trust. VeriSign® Code Signing Certificates for Microsoft® Authenticode® authenticate your identity and validate code integrity</value>
+  </data>
+  <data name="VeriSign_Secure_Site_Desc" xml:space="preserve">
+    <value>A VeriSign Secure Site SSL certificate provides a minimum of 40-bit up to 256-bit encryption and more than 99% browser recognition. It also includes a $100,000 warranty and the VeriSign Secured Seal.</value>
+  </data>
+  <data name="VeriSign_Secure_Site_Pro_Desc" xml:space="preserve">
+    <value>VeriSign Secure Site Pro SSL Certificate provides 128-bit encryption. Secure Site Pro is enabled by Server Gated Cryptography (SGC) to help ensure strong encryption site visitors.</value>
+  </data>
+  <data name="VeriSign_Secure_Site_Pro_SGC_Desc" xml:space="preserve">
+    <value>A VeriSign Secure Site Pro SSL certificate provides 128-bit encryption. Secure Site Pro is enabled by Server Gated Cryptography (SGC) to help ensure strong encryption for site visitors. It also includes a $250,000 warranty and the VeriSign Secured Seal.</value>
+  </data>
+  <data name="VeriSign_Secure_Site_Pro_with_EV_Desc" xml:space="preserve">
+    <value>A VeriSign Secure Site Pro with EV SSL certificate provides a minimum of 128-bit up to 256-bit encryption and more than 99% browser recognition.</value>
+  </data>
+  <data name="VeriSign_Secure_Site_with_EV_Desc" xml:space="preserve">
+    <value>VeriSign Secure Site with EV SSL Certificate provides minimum of 40-bit and up to 256-bit encryption and more than 99% browser recognition. It also includes a $100,000 warranty and the VeriSign Secured Seal.</value>
+  </data>
+  <data name="VeriSign_Trust_Seal_Desc" xml:space="preserve">
+    <value>Trust turns visitors into customers, develops repeat business and increases sales. The VeriSign Trust™ Seal helps to bring trust to your web site by authenticating your business, protecting it from malware and increasing its recognition and confidence by displaying the VeriSign brand.</value>
+  </data>
+  <data name="All_prices_in" xml:space="preserve">
+    <value>All prices are in</value>
+  </data>
+  <data name="Any_Questions" xml:space="preserve">
+    <value>If you have any questions concerning this invoice, contact us at</value>
+  </data>
+  <data name="Thanks_biz_msg" xml:space="preserve">
+    <value>We thank you for your business.</value>
+  </data>
+  <data name="Banner_Note" xml:space="preserve">
+    <value>To change banner image just select any banner image and click on "Insert/edit Image" icon and upload your own new banner(s). Please use 960px X 150px(width X height)</value>
+  </data>
+  <data name="Partner_Pricing_Caption_1" xml:space="preserve">
+    <value>Our Partner program is based on loyalty, just like a Frequent Flyer program. The    more you sell (or buy) the more you save. And it’s all cumulative. We will add all    your purchases up and as soon as you reach the next level you automatically receive  the additional discounts associated with the higher level tier. Never expires and  continues to add on as you keep selling.</value>
+  </data>
+  <data name="Partner_Pricing_Caption_2" xml:space="preserve">
+    <value>What’s even better is, we’ll give you access to the higher tiers immediately! Simply  either show us your receipts for SSL purchases over the past 2 years or make a deposit to your account. Either way, we will grant you the associated level.</value>
+  </data>
+  <data name="Free_SSL_Desc" xml:space="preserve">
+    <value>The FreeSSL security certificate is a fully functional security certificate with
+a term of 30 days, available completely free of charge. This trial SSL certificate allows you to try before you buy. Since FreeSSL uses the same exact technology as  a RapidSSL certificate (a Symantec subsidiary), you can use it to test RapidSSL before live implementation.</value>
+  </data>
+  <data name="GeotrustAntiMalware_Desc" xml:space="preserve">
+    <value>Never let your site get hacked again, protect you and your potential customers.
+You can now add some trust and protect your customer's online interests with a cost-effective  daily anti-malware scan.</value>
+  </data>
+  <data name="UseMoneybookers" xml:space="preserve">
+    <value>Use Your Moneybookers Email Address!</value>
+  </data>
+  <data name="GeoTrust_QuickSSL_Premium_multiDomain_Desc" xml:space="preserve">
+    <value>Secure 4 Additional Domains with a Single GeoTrust QuickSSL Premium SAN Certificate GeoTrust, one of the world’s most trusted SSL brand, delivers a SAN/Multi-Domain solution with a fast issuing process at very low cost. GeoTrust now offers their popular QuickSSL Premium certificate with SAN enabled.</value>
+  </data>
+</root>

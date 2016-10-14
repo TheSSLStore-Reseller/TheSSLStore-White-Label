@@ -1,0 +1,169 @@
+﻿@model WBSSLStore.Domain.PaymentGateways
+@{
+    ViewBag.Title = "__moneybookersettings";
+}
+@System.Web.Optimization.Scripts.Render("/bundales/wb/validationjs")
+<script type="text/javascript" language="javascript">
+    $(document).ready(function () {
+        var opt = 3;        
+        var MB_EMLValidate = false;
+
+            var MBlid = "@WBSSLStore.Resources.ErrorMessage.Message.MoneybookersIDRequired";
+            var validmoneybookers = "@WBSSLStore.Resources.ErrorMessage.Message.ValidMoneybookersID";
+
+             if (parseInt(opt) == @((int)WBSSLStore.Domain.PGInstances.Moneybookers)) {
+                MB_EMLValidate = true;
+             }
+
+            $.validator.addMethod(
+                "MB_EMLValidate",
+                function (value, element) {
+                    if ($('#chkmoneybookers').is(':checked') && MB_EMLValidate && value == "") {
+                        return false;
+                    }
+                    else {
+                        return true;
+                    }
+                },
+                MBlid
+            );
+             
+
+        $("#frmMBSettings").validate({
+            rules: {
+                LoginID: {
+                    MB_EMLValidate: true, email: true               
+                }                
+            },
+            messages: {
+                LoginID: {
+                required:MBlid,email:validmoneybookers
+                }
+            }
+        });
+        showhide2();
+    });
+</script>
+<script type="text/javascript" language="javascript">
+    function showhide2() {
+        if ($('#chkmoneybookers').is(':checked')) {
+            $('#pptop2').fadeIn('slow');
+        } else {
+            $('#pptop2').fadeOut('slow');
+        }
+    }
+</script>
+@using (Html.BeginForm("index", "paymentgateway", FormMethod.Post, new { @id = "frmMBSettings", @name = "frmMBSettings" }))
+{
+    <table width="50%" border="0" align="left" cellpadding="1" cellspacing="1">
+        <tr>
+            <td width="66%" height="22" align="right" valign="middle" class="bold">
+                @WBSSLStore.Resources.GeneralMessage.Message.Use_Moneybookers:<span class="bold redfont">
+                    *</span>
+            </td>
+            <td width="6%" height="22" align="right" valign="middle" class="bold">
+            </td>
+            <td width="15%" align="left">
+                <label>
+                    <input type="checkbox" name="chkmoneybookers" onclick="showhide2();" id="chkmoneybookers" @(Model.ID > 0 ? "checked=\"checked\"" : string.Empty)   />
+                </label>
+            </td>
+            <td width="24%">
+                <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-help.gif"  title="Moneybookers lets you send money to anyone with email. Moneybookers is free for consumers and works seamlessly with your existing credit card and checking account." alt="Moneybookers lets you send money to anyone with email. Moneybookers is free for consumers and works seamlessly with your existing credit card and checking account." width="16" height="16" />
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">
+            </td>
+        </tr>
+    </table>
+    <table width="91%" border="0" align="left" cellpadding="1" cellspacing="1" id="pptop2">
+        <tr>
+            <td colspan="3">
+            </td>
+        </tr>
+        <tr>
+            <td width="36%" height="22" align="right" valign="middle" class="bold">
+            </td>
+            <td width="3%" height="22" align="left" valign="middle">
+                &nbsp;
+            </td>
+            <td width="61%" height="22" align="left" valign="middle" class="bold">
+                @Html.HiddenFor(model => model.InstancesID)
+                @Html.HiddenFor(model => model.ID)
+                @Html.HiddenFor(model => model.SiteID)
+                @Html.HiddenFor(model => model.AuditID)
+                @Html.HiddenFor(model => model.Name)
+                @Html.HiddenFor(model => model.AuditDetails.ByUserID)
+                @Html.HiddenFor(model => model.AuditDetails.DateCreated)
+                @Html.HiddenFor(model => model.AuditDetails.ID)
+            </td>
+        </tr>
+        <tr>
+            <td height="22" align="right" valign="middle" class="bold">
+                @WBSSLStore.Resources.GeneralMessage.Message.MoneybookersId_Caption:<span class="bold redfont"> *</span>
+            </td>
+            <td height="22" align="left" valign="middle">
+                &nbsp;
+            </td>
+            <td height="22" align="left" valign="middle" class="bold">
+                @Html.TextBoxFor(model => model.LoginID, new { @class = "inputbox" })
+            </td>
+        </tr>
+        <tr>
+            <td height="22" align="right" valign="middle" class="bold">
+                &nbsp;
+            </td>
+            <td height="22" align="left" valign="middle">
+                &nbsp;
+            </td>
+            <td height="22" align="left" valign="middle" class="font11">
+                @WBSSLStore.Resources.LongText.Message.UseMoneybookers We recommended to use your test account detail while testing.
+            </td>
+        </tr>
+        <tr>
+            <td height="22" align="right" valign="middle" class="bold">
+                Secret Word:
+            </td>
+            <td height="22" align="left" valign="middle">
+                &nbsp;
+            </td>
+            <td height="22" align="left" valign="middle" class="bold">                
+                @Html.PasswordFor(model => model.Password, new { @class = "inputbox" })
+            </td>
+        </tr>
+        <tr>
+            <td height="22" align="right" valign="middle" class="bold">
+                &nbsp;
+            </td>
+            <td height="22" align="left" valign="middle">
+                &nbsp;
+            </td>
+            <td height="22" align="left" valign="middle" class="font11">
+                Set your Moneybookers account's secret word. We recommended this for security reason.
+            </td>
+        </tr>
+        <tr>
+            <td height="22" align="right" valign="middle" class="bold">
+                @WBSSLStore.Resources.GeneralMessage.Message.Live_URL:<span class="bold redfont"> *</span>
+            </td>
+            <td height="22" align="left" valign="middle">
+                &nbsp;
+            </td>
+            <td height="22" align="left" valign="middle" class="bold">
+                @Html.TextBoxFor(model => model.LiveURL, new { @class = "inputbox", @readonly = "readonly", @value = "https://www.moneybookers.com/app/payment.pl" })
+            </td>
+        </tr>        
+    </table>
+    <table width="91%" border="0" align="left" cellpadding="1" cellspacing="1">
+        <tr>
+            <td width="48%" height="22" align="right" valign="middle" class="bold">
+            </td>
+            <td width="3%" height="22" align="left" valign="middle">
+                <input name="button" type="submit" class="bluebtn" id="button" value="@WBSSLStore.Resources.GeneralMessage.Message.SaveMoneybookersSetting_btn" />
+            </td>
+            <td width="61%" height="22" align="left" valign="middle" class="bold">
+            </td>
+        </tr>
+    </table>
+}

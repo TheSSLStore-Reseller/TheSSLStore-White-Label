@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DAA144DC-76F4-47F1-89C7-8424AA02A2ED}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WBSSLStore.Resources</RootNamespace>
+    <AssemblyName>WBSSLStore.Resources</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ErrorMessage\Message.cs.Designer.cs" />
+    <Compile Include="ErrorMessage\Message.Designer.cs" />
+    <Compile Include="ErrorMessage\Message.ru.Designer.cs" />
+    <Compile Include="ErrorMessage\Message.zh.Designer.cs" />
+    <Compile Include="GeneralMessage\Message.cs.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Message.cs.resx</DependentUpon>
+    </Compile>
+    <Compile Include="GeneralMessage\Message.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Message.resx</DependentUpon>
+    </Compile>
+    <Compile Include="GeneralMessage\Message.hu.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Message.hu.resx</DependentUpon>
+    </Compile>
+    <Compile Include="GeneralMessage\Message.ru1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Message.ru.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ImageResource\ImageCaption.Designer.cs" />
+    <Compile Include="ImageResource\ImageCaption.es.Designer.cs" />
+    <Compile Include="LongText\Message.cs.Designer.cs" />
+    <Compile Include="LongText\Message.Designer.cs" />
+    <Compile Include="LongText\Message.ru.Designer.cs" />
+    <Compile Include="NavigationResource\Message.cs.Designer.cs" />
+    <Compile Include="NavigationResource\Message.Designer.cs" />
+    <Compile Include="NavigationResource\Message.ru.Designer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ErrorMessage\Message.cs.resx" />
+    <EmbeddedResource Include="ErrorMessage\Message.de.resx" />
+    <EmbeddedResource Include="ErrorMessage\Message.es.resx" />
+    <EmbeddedResource Include="ErrorMessage\Message.fr.resx" />
+    <EmbeddedResource Include="ErrorMessage\Message.hu.resx" />
+    <EmbeddedResource Include="ErrorMessage\Message.it.resx" />
+    <EmbeddedResource Include="ErrorMessage\Message.ja.resx" />
+    <EmbeddedResource Include="ErrorMessage\Message.resx" />
+    <EmbeddedResource Include="ErrorMessage\Message.ru.resx" />
+    <EmbeddedResource Include="ErrorMessage\Message.zh.resx" />
+    <EmbeddedResource Include="GeneralMessage\Message.cs.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Message.cs.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GeneralMessage\Message.de.resx" />
+    <EmbeddedResource Include="GeneralMessage\Message.es.resx" />
+    <EmbeddedResource Include="GeneralMessage\Message.fr.resx" />
+    <EmbeddedResource Include="GeneralMessage\Message.hu.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Message.hu.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GeneralMessage\Message.it.resx" />
+    <EmbeddedResource Include="GeneralMessage\Message.ja.resx" />
+    <EmbeddedResource Include="GeneralMessage\Message.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Message.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GeneralMessage\Message.ru.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Message.ru1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GeneralMessage\Message.zh.resx" />
+    <EmbeddedResource Include="ImageResource\ImageCaption.es.resx" />
+    <EmbeddedResource Include="ImageResource\ImageCaption.resx" />
+    <EmbeddedResource Include="LongText\Message.cs.resx" />
+    <EmbeddedResource Include="LongText\Message.es.resx" />
+    <EmbeddedResource Include="LongText\Message.fr.resx" />
+    <EmbeddedResource Include="LongText\Message.hu.resx" />
+    <EmbeddedResource Include="LongText\Message.resx" />
+    <EmbeddedResource Include="LongText\Message.ru.resx" />
+    <EmbeddedResource Include="NavigationResource\Message.cs.resx" />
+    <EmbeddedResource Include="NavigationResource\Message.es.resx" />
+    <EmbeddedResource Include="NavigationResource\Message.fr.resx" />
+    <EmbeddedResource Include="NavigationResource\Message.hu.resx" />
+    <EmbeddedResource Include="NavigationResource\Message.resx" />
+    <EmbeddedResource Include="NavigationResource\Message.ru.resx" />
+    <EmbeddedResource Include="Resources\Resources.es-CL.resx" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

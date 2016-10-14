@@ -1,0 +1,145 @@
+﻿@using WhiteBrandShrink.Models;
+@model WhiteBrandShrink.Models.AdminUserModel
+@{
+    ViewBag.Title = "Admin user Configuration";
+    Layout = "~/Areas/runsetup/Views/Shared/_Layout.cshtml";
+}
+@section scripts{
+    @Scripts.Render("~/bundales/unobtrusive-ajaxjs")
+    @Scripts.Render("~/bundales/validate-unobtrusive")
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('#installation-form').submit(function () {
+                if ($('#installation-form').valid()) {
+                    window.setTimeout(function () {
+                        //$(".throbber.show()");
+                    }, 1000);
+
+                    $('input[type=submit]', this).attr('disabled', 'disabled');
+                }
+            });
+        });
+
+        function StartProcess(data) {
+            ShowLoader();
+        }
+        function onSuccess(data) {
+            HideLoader();
+            if (data != null && data != '' && data.isSuccess.toString() == 'false' && data.msg.toString() != '') {
+                $("#geneMsg").html('');
+                $("#geneMsg").addClass('errormsg');
+                $("#geneMsg").html(data.msg);
+            } else if (data != null && data != '' && data.isSuccess.toString().toLowerCase() == 'true' && data.url.toString() != '') {
+                window.location.href = data.url.toString();
+            }
+            $('#installation-form input[type=submit]').removeAttr('disabled');
+        }
+        function OnFail(data) {
+            $("#geneMsg").addClass('errormsg');
+            $("#geneMsg").html((data != null && data != '' && data.status == 500) ? data.statusText : 'General system error. Please try again');
+            HideLoader();
+            $('#installation-form input[type=submit]').removeAttr('disabled');
+        }
+
+        function ShowLoader() {
+            $("#dvLoader").addClass('loader');
+            $("#dvLoader").show();
+        }
+        function HideLoader() {
+            $("#dvLoader").removeClass('loader');
+            $("#dvLoader").hide();
+        }
+    </script>
+}
+
+@Html.Partial("_wizardsteps", 2)
+<div>
+    @using (Ajax.BeginForm("adminusersave", "install", "", new AjaxOptions { OnBegin = "StartProcess", OnSuccess = "onSuccess", OnFailure = "OnFail" }, new { id = "installation-form" }))
+    {
+        @Html.AntiForgeryToken()
+        <div id="dvLoader" class="" style="display:none;">
+            <span class="throbber-header">
+                Installing Site's settings...
+            </span>
+        </div>
+        <div id="geneMsg">
+
+        </div>
+        <div class="formbox">
+            <h2>Admin User setup</h2>
+            <div class="formdtl">
+                <div class="formraw">
+                    <label>Full Name<span>*</span></label>
+                    @Html.TextBoxFor(x => x.FullName)
+                    @Html.ValidationMessageFor(x => x.FullName)
+                </div>
+                <div class="formraw">
+                    <label>Company Name<span>*</span></label>
+                    @Html.TextBoxFor(x => x.CompanyName)
+                    @Html.ValidationMessageFor(x => x.CompanyName)
+                </div>
+                <div class="formraw">
+                    <label>Password<span>*</span></label>
+                    @Html.PasswordFor(x => x.Password)
+                    @Html.ValidationMessageFor(x => x.Password)
+                </div>
+                <div class="formraw">
+                    <label>Confirm Password<span>*</span></label>
+                    @Html.PasswordFor(x => x.ConfirmPassword)
+                    @Html.ValidationMessageFor(x => x.ConfirmPassword)
+                </div>
+                <div class="formraw">
+                    <label>Email<span>*</span></label>
+                    @Html.TextBoxFor(x => x.Email)
+                    @Html.ValidationMessageFor(x => x.Email)
+                </div>
+                <div class="formraw">
+                    <label>Phone</label>
+                    @Html.TextBoxFor(x => x.Phone)
+                </div>
+                <div class="fullraw formraw">
+                    <label>Address (to be used in Invoice as well).</label>
+                    @Html.TextAreaFor(x => x.Address)
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="formbox">
+            <h2>API Settings</h2>
+            <div class="formdtl">
+                <div class="halfsection">
+                    <h3>Live API Credentials</h3>
+                    <div class="formraw">
+                        <label>Partner Code<span>*</span></label>
+                        @Html.TextBoxFor(x => x.LivePartnerCode)
+                        @Html.ValidationMessageFor(x => x.LivePartnerCode)
+                    </div>
+                    <div class="formraw">
+                        <label>Live Authentication Code<span>*</span></label>
+                        @Html.TextBoxFor(x => x.LivePartnerAuthCode)
+                        @Html.ValidationMessageFor(x => x.LivePartnerAuthCode)
+                    </div>
+                </div>
+                @*<div class="halfsection">
+                    <h3>Test API Credentials</h3>
+                    <div class="formraw">
+                        <label>Test Partner Code<span>*</span></label>
+                        @Html.TextBoxFor(x => x.TestPartnerCode)
+                        @Html.ValidationMessageFor(x => x.TestPartnerCode)
+                    </div>
+                    <div class="formraw">
+                        <label>Test Authentication Code<span>*</span></label>
+                        @Html.TextBoxFor(x => x.TestPartnerAuthCode)
+                        @Html.ValidationMessageFor(x => x.TestPartnerAuthCode)
+                    </div>
+                </div>*@
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="fullrawbtn">
+            <input type="submit" id="next" name="next" value="Next">
+        </div>
+    }
+</div>

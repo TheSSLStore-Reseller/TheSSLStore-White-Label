@@ -1,0 +1,143 @@
+﻿@model WBSSLStore.Service.ViewModels.StaticPageViewModel
+@{
+    ViewBag.Title = "SecureSiteProwithEV";  var productdetails = WBSSLStore.Web.Helpers.WBHelper.GetProductDetailRows();
+    string brand = Model != null && Model.Items != null && Model.Items.FirstOrDefault().Product != null && Model.Items.FirstOrDefault().Product.Brand != null ? Model.Items.FirstOrDefault().Product.Brand.BrandName : "";
+    string username = ViewBag.UserName;
+}
+@section headerTags{
+    @Html.Partial("_renderSEO", Model != null && Model.CMSPage != null ? Model.CMSPage : new WBSSLStore.Domain.CMSPage())
+}
+@Html.Partial("_banner", new Tuple<string, string>("", "SSL Brands"))
+<div class="content">
+  <div class="wrapper">
+    <div class="column3">
+      <div class="mobtopcol">
+        <div class="column3-2">
+          <div class="prodetailswrap marzerotop"> @Html.Partial("_ProdPricing", new Tuple<List<WBSSLStore.Domain.ProductPricing>, List<WBSSLStore.Domain.ProductDetail>>(Model.Items.ToList(), productdetails.ToList())) </div>
+          <div class="prodescrip marzerotop">
+            <div class="prodescriptxt">
+              <h2>Product Description</h2>
+              <p>Secure your domain, as well as an unlimited number of sub-domains, with the most recognized and well-respected security brands in the SSL/TLS Industry. Symantec is the global leader in web security and the Symantec Secure Site Pro Wildcard SSL certificate is the most complete website security option available if you're looking to secure your website and all its accompanying sub-domains with the strongest & highest performing ECC encryption available–all with the power of the Norton brand standing behind you. Give your customers the confidence they desire to do business with you online by providing an unmistakable safe and reliable encrypted connection across your websites by purchasing this all-encompassing solution. Also, it's packed with all of Symantec's extra premium features that simply can't be beat.</p>
+            </div>
+            
+          </div>
+          <div id="cssmenu">
+            <ul class="accordion_example">
+              <li class="brand-symantec acc_active">
+                <div>
+                  <p>Assurance &amp; Authentication</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>This is an Organization Validated (OV) certificate, meaning the Symantec Secure Site Pro Wildcard requires your company to complete a light vetting process before the certificate can actually be issued. This in turn will give your customers that peace of mind about the authenticity of who they're attempting to do business with and will separate you from the pack. The OV validation process usually takes about 1-3 days to successfully complete, but if you're actually a real business, validation's a breeze!</p>
+                  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Security &amp; Encryption</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>The Symantec Secure Site Pro Wildcard provides up to 256-bit encryption, along with supporting 3 encryption algorithms, RSA, DSA and of course; the new lighter, faster & stronger Elliptic Curve Cryptography (ECC) algorithm that drastically improves server performance. In addition to being ECC-enabled, Symantec also includes their daily malware scanning & vulnerability assessment technologies with this certificate, to top-off the most comprehensive wildcard security solutions available.</p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>SAN &amp; multi-domain support</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>Since this is a wildcard certificate, it can easily protect one main domain and an unlimited number of sub-domains. For example, you can use the Symantec Secure Site Pro Wildcard to protect your main domain, let's call it www.domain.com, along with all associated sub-domains, I.E. mail.domain.com, billing.domain.com, ftp.domain.com, etc. It's a true cost saver.</p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Features &amp; Benefits</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <ul class="featurelist">
+                    <li>Secure an UNLIMITED number of Sub Domains!</li>
+                    <li>Basic organization validation gives your customers greater peace of mind.</li>
+                    <li>Provide security for online transactions with encryption up to 256-bit.</li>
+                    <li>Supports 3 encryption algorithms, RSA, DSA and ECC.</li>
+                    <li>FREE Norton Secured Seal.</li>
+                    <li>FREE 24/7 Technical Support.</li>
+                    <li>FREE Norton Daily Malware Scanning</li>
+                    <li>30-day Money Back Guarantee!</li>
+                    <li>Comes with a $1.5 million warranty</li>
+                    <li>99.9% Browser Recognition Rate</li>
+                  </ul>
+				  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Product Specifications</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <ul class="featurelist">
+                    <li>Secure an UNLIMITED number of Sub Domains!</li>
+                    <li>Basic organization validation gives your customers greater peace of mind.</li>
+                    <li>Provide security for online transactions with encryption up to 256-bit.</li>
+                    <li>Supports 3 encryption algorithms, RSA, DSA and ECC.</li>
+                    <li>FREE Norton Secured Seal.</li>
+                    <li>FREE 24/7 Technical Support.</li>
+                    <li>FREE Norton Daily Malware Scanning</li>
+                    <li>30-day Money Back Guarantee!</li>
+                    <li>Comes with a $1.5 million warranty</li>
+                    <li>99.9% Browser Recognition Rate</li>
+                  </ul>
+				  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Site Seal</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>Symantec's site seal, officially named Norton Secured Seal, is the most recognized & trusted trust seal on the web by far. That's because, in addition to the reputable Symantec name that the product carries, the seal also features the iconic Norton brand name and checkmark. For years, the majority of online users have associated the Norton checkmark and brand with the most secure sites and PCs on the net. By installing this seal on your website, your company will instantly be thought of in the same light as the largest and most secure companies in the world. Who wouldn't want to leverage the most powerful security brand in the World?</p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Warranty</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>Symantec certificates comes with some of the best warranties in the industry and the Symantec Secure Site Pro Wildcard is no exception. A $1.5 million warranty is offered on this certificate. So if anything goes wrong on Symantec's end, you are covered and your customers will be compensated for all damages up to $1.5 million.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        @Html.Partial("_rightpanel", username) </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+@section Jscripts{ 
+<script type="text/javascript">
+        $(document).ready(function () {
+            // Mobile Menu
+            $("#showmenu").click(function (e) {
+                e.preventDefault();
+                $("#menu").toggleClass("show");
+            });
+            $("#menu a").click(function (event) {
+                event.preventDefault();
+                if ($(this).next('ul').length) {
+                    $(this).next().toggle('fast');
+                    $(this).children('i:last-child').toggleClass('fa-caret-down fa-caret-left');
+                }
+            });
+            $(document).click(function (e) {
+                if (!$(e.target).is(".mobmemu, .mobmemu  *")) { $("#menu").toggleClass("hide"); $("#menu").removeClass("show"); }
+            });
+            $(".accordion_example").smk_Accordion();
+        });
+    </script> 
+} 

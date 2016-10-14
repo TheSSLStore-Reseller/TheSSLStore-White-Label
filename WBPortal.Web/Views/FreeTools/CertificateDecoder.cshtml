@@ -1,0 +1,87 @@
+﻿@model WBSSLStore.Gateways.RestAPIModels.Response.CertificateDecodeResponse
+@{
+    ViewBag.Title = "Certificate Decoder";
+}
+@Html.Partial("_banner", new Tuple<string, string>("", "Certificate Decoder"))
+<div class="content">
+    <div class="wrapper">
+        <div class="column3">
+            <div class="mobtopcol">
+                <div class="column3-2">
+                    <div class="cmnpagewrap">
+                        <div class="checkcsr">
+                            <h2>Certificate Decoder</h2>
+                            <h4>Verify your SSL Certificate is Correct</h4>
+                            <p> The Certificate Decoder allows you to instantly decode an SSL Certificate. Use this to decode your PEM, DER, or PFX encoded SSL Certificate and verify that all the information is correct. You can use this certificate decoder by simply pasting your certificate into the box below and the decoder will do the rest. Your Certificate Decoder should start with: -----BEGIN CERTIFICATE REQUEST----- and end with: -----END CERTIFICATE REQUEST-----</p>
+                            <p>Once the SSL Certificate is installed on the web server, you can use the SSL Checker to check and make sure it is installed correctly.</p>
+                            <div class="ssltoolscover">
+                                @using (Html.BeginForm("CertificateDecoder", "freetools", FormMethod.Post, new { area = "", id = "frmchkcertdec" }))
+                                {  @Html.AntiForgeryToken()
+                                    <p>
+                                 
+                                      <textarea class="chkinput chkinputbxbig" rows="15" id="txtCertificate" name="txtCertificate"></textarea>
+                                </p>
+                                <p class="chkcmnbx"><input type="submit" value="Check Certificate" class="greenbtn" id="submit" name="submit"></p>
+                                }
+                            </div>
+                            @if (Model != null)
+                            {
+                                if (!Model.AuthResponse.isError)
+                                {
+                                    <p></p>
+                                    <div class="graybarbox mrgbotnone">
+                                        <h4>Certificate Information:</h4>
+                                        <div class="graybarboxdtl csresult">
+                                            <ul>
+                                                <li><strong>@WBSSLStore.Resources.GeneralMessage.Message.Domain_Caption:</strong> <span class="grntxt">@Model.CommonName</span></li>
+                                                <li><strong>Subject Alternative Names:</strong> <span class="grntxt">@Model.AlternativeNames</span></li>
+                                                <li><strong>@WBSSLStore.Resources.GeneralMessage.Message.Organisation_Caption:</strong> <span class="grntxt">@Model.OrganizationName</span></li>
+                                                <li><strong>@WBSSLStore.Resources.GeneralMessage.Message.OrganisationUnit_Caption:</strong> <span class="grntxt">@Model.OrganizationUnit</span></li>
+                                                <li><strong>Valid From:</strong> <span class="grntxt">@Model.CertificateStartDate</span></li>
+                                                <li><strong>Valid To:</strong> <span class="grntxt">@Model.CertificateEndDate</span></li>
+                                                <li><strong>Issuer:</strong> <span class="grntxt">@Model.Issuer</span></li>
+                                                <li><strong>Serial Number:</strong> <span class="grntxt breaktxt">@Model.SerialNumber</span></li>
+                                                <li><strong>@WBSSLStore.Resources.GeneralMessage.Message.Locality_Caption:</strong> <span class="grntxt">@Model.Locality</span></li>
+                                                <li><strong>@WBSSLStore.Resources.GeneralMessage.Message.State_Caption:</strong> <span class="grntxt">@Model.State</span></li>
+                                                <li><strong>@WBSSLStore.Resources.GeneralMessage.Message.Country_Caption:</strong> <span class="grntxt breaktxt">@Model.Country</span></li>
+
+
+                                            </ul>
+                                            <div class="clear"></div>
+                                        </div>
+                                    </div>
+                                }
+                                else
+                                {
+
+                                    <div class='alert-error'>
+                                        <p>@Model.AuthResponse.Message[0]</p>
+                                    </div>
+                                }
+                            }
+
+
+                        </div>
+                    </div>
+                </div>
+
+                @Html.Partial("_rightpanel", "")
+            </div>
+           
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+@section Jscripts{
+    <script type="text/javascript">
+        $(function () {
+            $("#frmchkcertdec").submit(function (event) {
+                var $csrval = $("#txtCertificate").val();
+                if ($csrval == '') {
+                    alert('Please insert Certificate!')
+                    return false;
+                }
+            });
+        });
+    </script>
+}

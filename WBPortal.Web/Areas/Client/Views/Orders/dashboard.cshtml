@@ -1,0 +1,105 @@
+﻿@using WBSSLStore.Web.Util;
+@using WBSSLStore.Web.Helpers.PopupForm
+@using WBSSLStore.Domain;
+@model IEnumerable<WBSSLStore.Domain.OrderDetail>
+@{
+    ViewBag.version = WBSSLStore.Web.Helpers.Caching.SiteCacher.ResourceVersion();
+    WBSiteSettings setting = new WBSiteSettings(WBSSLStore.Web.Helpers.Caching.SiteCacher.CurrentSite);
+    ViewBag.Title = "Dashboard";
+    string username = ViewBag.UserName;
+}
+@section sitecss{
+@System.Web.Optimization.Styles.Render("/bundales/tabcss?v=" + ViewBag.version)
+@System.Web.Optimization.Styles.Render("/bundales/jquery-ui-css?v=" + ViewBag.version)
+}
+@section Jscripts{
+@System.Web.Optimization.Scripts.Render("/bundales/wb/scripts?v=" + ViewBag.version)
+    <script type="text/javascript" language="javascript">
+        function addfundSuccess(result) {
+            if (result.isSuccess) {
+                document.getElementById('dvSummaryLogin').style.display = 'block';
+                location.href = result.RedirectUrl;
+            }
+            else {
+                alert(result.ErrorMessage);
+            }
+        }
+    </script>
+    @if (!string.IsNullOrEmpty(ViewBag.JsonResult))
+    {
+        <script type="text/javascript" language="javascript">
+            var objResult =@Html.Raw(ViewBag.JsonResult)
+            addfundSuccess(objResult);
+        </script>
+    }
+}
+@section PopupScript{
+    @Html.MakePopupForm("addfund", controller: "payment", area: "checkout", title: @WBSSLStore.Resources.GeneralMessage.Message.Add_To_Cart_Caption, successFunction: "addfundSuccess", height: 450, width: 700, refreshOnSuccess: true, okText: @WBSSLStore.Resources.GeneralMessage.Message.SAVE_btn)
+}
+@Html.Partial("_banner", new Tuple<string, string>("", WBSSLStore.Resources.GeneralMessage.Message.Dashboard_Caption))
+<div class="content">
+    <div class="wrapper">
+        <div class="column3">
+            <div class="column3-0">
+                <div class="controlpnldata">
+                    <h2>
+                        @WBSSLStore.Resources.GeneralMessage.Message.AccSummary_Header
+                    </h2>
+                    @{Html.RenderPartial("_AccountSummary", ViewBag.AccountSummary as WBSSLStore.Service.ViewModels.AccountSummary);}
+
+
+                    <div class="acorderlist">
+                        <ul>
+                            <li>
+                                <a href="@Url.Action("index","orders")">
+                                    <i class="icon"><img alt="Order Summary" src="/content/images/icon-order-summary.png"></i>
+                                    <span>Order Summary</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("list" ,"orders")">
+                                    <i class="icon"><img alt="My Order" src="/content/images/icon-my-order.png"></i>
+                                    <span>My Order</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Edit", "account")">
+                                    <i class="icon"><img alt="My Account" src="/content/images/icon-my-account.png"></i>
+                                    <span>My Account</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("index", "support")">
+                                    <i class="icon"><img alt="Client Support" src="/content/images/icon-client-support.png"></i>
+                                    <span>Client Support</span>
+                                </a>
+                            </li>
+                            @*<li>
+                                <a href="send-invitation.html">
+                                    <i class="icon"><img alt="Send Invitation" src="/content/images/icon-send-invitation.png"></i>
+                                    <span>Send Invitation</span>
+                                </a>
+                            </li>*@
+                            @*<li>
+                                <a href="partner-pricing.html">
+                                    <i class="icon"><img alt="Pricing" src="/content/images/icon-pricing.png"></i>
+                                    <span>Pricing</span>
+                                </a>
+                            </li>*@
+                        </ul>
+                        <div class="clear"></div>
+                    </div>
+                    
+                    @Html.Partial("_incompleteOrderslist", new Tuple<List<WBSSLStore.Domain.OrderDetail>, string>(Model.ToList(), !string.IsNullOrEmpty(setting.InvoicePrefix) ? setting.InvoicePrefix.ToString() : ""))
+                    <div class="clear"></div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            @Html.Partial("_rightpanel", username)
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+@{
+    setting = null;
+}

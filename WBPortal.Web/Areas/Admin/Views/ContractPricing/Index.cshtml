@@ -1,0 +1,90 @@
+﻿@model IEnumerable<WBSSLStore.Domain.Product>
+@{ 
+    ViewBag.Title = "Products";
+}
+<tr>
+    <td align="left" valign="top">
+        <table width="881" border="0" align="left" cellpadding="0" cellspacing="0">
+            <tr>
+                <td width="7" align="left" valign="top">
+                    <img src="/content/Admin/images/barleft.gif" alt="whitebrand" width="7" height="55">
+                </td>
+                <td width="866" align="left" valign="middle" class="hdbarbg">
+                    <table width="840" border="0" align="center" cellpadding="1" cellspacing="1">
+                        <tr>
+                            <td width="407" align="left" valign="middle" class="head1">
+                               @* Manage Contract Products*@ @WBSSLStore.Resources.GeneralMessage.Message.Manage_Contract_Products
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td width="9" align="right" valign="top">
+                    <img src="/content/Admin/images/barright.gif" alt="whitebrand" width="9" height="55">
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>
+<tr>
+    <td align="left" valign="top" class="contbg">
+        <table width="870" border="0" align="center" cellpadding="0" cellspacing="7">
+            <tr>
+                <td width="867" align="center" valign="top" class="bgclr">
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td height="8" align="left" valign="top">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="left" valign="top">
+                                <table width="841" border="0" align="center" cellpadding="0" cellspacing="0">
+                                    <tr>
+                                        <td align="left" valign="top" bgcolor="#d6d6d6">
+                                            <table width="841" border="0" align="left" cellpadding="5" cellspacing="1">
+                                                <tr>
+                                                    <td width="50%" height="35" align="left" valign="middle" bgcolor="#eff8fd" class="bluefont">
+                                                        @*Product Name*@ @WBSSLStore.Resources.GeneralMessage.Message.Product_Caption
+                                                    </td>
+                                                    <td width="40%" height="35" align="left" valign="middle" bgcolor="#eff8fd" class="bluefont">
+                                                        @*Product Code*@ @WBSSLStore.Resources.GeneralMessage.Message.ProductCode_Caption
+                                                    </td>
+                                                    <td width="10%" align="center" valign="middle" bgcolor="#eff8fd" class="bluefont">
+                                                        @*Edit Price*@ @WBSSLStore.Resources.GeneralMessage.Message.Edit_Caption
+                                                    </td>
+                                                </tr>
+                                                @foreach (var item in Model)
+                                                { 
+                                                    <tr id="row-@item.ID">
+                                                        <td align="left" valign="top" bgcolor="#FFFFFF">
+                                                            @Html.DisplayFor(modelItem => item.ProductName)
+                                                        </td>
+                                                        <td align="left" valign="top" bgcolor="#FFFFFF">
+                                                            @Html.DisplayFor(modelItem => item.InternalProductCode)
+                                                        </td>
+                                                        <td align="center" valign="top" bgcolor="#FFFFFF">
+                                                            <a href="@Url.Action("edit", "contractpricing", new { id = item.ID, cid = ViewBag.ContractID })" title="Edit">
+                                                                <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-pricing.png" alt="edit" />
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td height="8" align="left" valign="top">
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td height="8" align="left" valign="top">
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>

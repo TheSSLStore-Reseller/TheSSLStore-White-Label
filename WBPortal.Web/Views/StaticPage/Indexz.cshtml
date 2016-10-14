@@ -1,0 +1,25 @@
+﻿@using WBSSLStore.Domain;
+@using WBSSLStore.Web.Helpers.PopupForm
+@model WBSSLStore.Service.ViewModels.StaticPageViewModel
+@{
+    ViewBag.version = WBSSLStore.Web.Helpers.Caching.SiteCacher.ResourceVersion();
+    //WBSSLStore.Web.Util.WBSiteSettings setting = new WBSSLStore.Web.Util.WBSiteSettings(WBSSLStore.Web.Helpers.Caching.SiteCacher.CurrentSite);
+    var productdetails = WBSSLStore.Web.Helpers.WBHelper.GetProductDetailRows();
+    string UserName = Convert.ToString(ViewBag.UserName);
+}
+@section headerTags{
+    @Html.Partial("_renderSEO", Model != null && Model.CMSPage != null ? Model.CMSPage : new WBSSLStore.Domain.CMSPage())
+}
+@section sitecss{
+}
+@section Jscripts{
+}
+
+@Html.Raw(Model.CMSPageContent.PageContent.Equals("<h1>Set Content of your Page.</h1>") ? string.Empty : Model.CMSPageContent.PageContent)
+
+@Html.Partial((@setting.CurrentLayout) + "/productList", Model.Items)
+
+
+@{
+    setting = null;
+}

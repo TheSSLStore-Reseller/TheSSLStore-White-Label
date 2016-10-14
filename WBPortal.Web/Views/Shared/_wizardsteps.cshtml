@@ -1,0 +1,10 @@
+﻿@model int
+<div class="steps">
+    <p>
+        <span class="step1 @( Model > 0 ? "completed" : "")">@Html.Raw((Model > 0 ? "<img alt='' src="+  Url.Content("~/Content/images/right-icon.png") +">" : "1"))</span>
+        <span class="step2 @( Model > 1 ? "completed" : "")">@Html.Raw((Model > 1 ? "<img alt='' src=" + Url.Content("~/Content/images/right-icon.png") + ">" : "2"))</span>
+        <span class="step3 @( Model > 2 ? "completed" : "")">@Html.Raw((Model > 2 ? "<img alt='' src=" + Url.Content("~/Content/images/right-icon.png") + ">" : "3"))</span>
+        <span class="step4 @( Model > 3 ? "completed" : "")">@Html.Raw((Model > 3 ? "<img alt='' src=" + Url.Content("~/Content/images/right-icon.png") + ">" : "4"))</span>
+    </p>
+    <div class="clear"></div>
+</div>

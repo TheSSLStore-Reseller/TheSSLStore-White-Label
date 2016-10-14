@@ -1,0 +1,54 @@
+/*=============After Login=============*/
+
+/* Use these classes to set the width of a column. */
+.productraw { padding: 30px 20px 30px; }
+.productraw h2 { font-size: 16px; text-decoration: underline; margin-bottom: 10px; }
+.productraw h3 { font-size: 16px; margin-bottom: 10px; }
+
+.grayboldboxone { background: #f6f6f6; border-bottom: dotted 2px #a8a7a7; border-top: dotted 2px #a8a7a7; padding: 7px; margin-bottom: 15px; }
+
+.redtext { color:#FF0000; font-size: 12px; line-height: 18px; }
+.bold { font-weight: bold; }
+.tableheadingcell { color:#ffffff; background: #289b48; font-size: 12px; line-height: 20px; padding: 5px 5px; }
+.tablebodycell {  font-size: 12px; padding: 3px 2px; color:#666666; background: #f2f2f2; }
+.tablebodycell a { text-decoration: underline; color:#666666; }
+.tablebodycell a:hover { text-decoration: none; color:#666666; }
+.tablebodycell strong { display: inline-block; padding-top: 2px; }
+.dashinfo { background: #f6f6f6; border: solid 1px #d7d7d7; -webkit-border-radius: 2px; -moz-border-radius: 2px; border-radius: 2px; margin: 0 auto 5px auto; padding: 10px; }
+.dashinfo p { margin-bottom: 0px; }
+.bluelinefont { color:#666666; font-size: 12px; font-weight: normal; }
+.bluelinefont a:link, .bluelinefont a:visited { color:#014694; text-decoration: underline; text-transform: uppercase; }
+.bluelinefont a:hover { color:#014694; text-decoration: none; }
+.head14 { font-size: 12px; font-weight: bold; padding: 5px 0 5px 0; color:#666666; }
+.head14 a:link, .head14 a:visited { text-decoration: none; color:#666666; }
+.head14 a:hover { text-decoration: underline; color:#666666; }
+.commonbold { font-size: 12px; font-weight: normal; color:#666666; }
+.commonbold a:link, .commonbold a:visited { text-decoration: underline; color:#666666; }
+.commonbold a:hover { text-decoration: none; color:#666666; }
+.font11 { color:#666666; font-size: 11px; }
+.inputbox { padding: 2px 2px 2px 2px; background: #FFFFFF; border: solid 1px #818181; font-size: 12px; color:#666666; }
+.in300px { width: 300px; padding:4px 2px 4px 2px; border: solid 1px #d7d7d7; color:#666666; }
+.in580px { width: 580px; padding:4px 2px 4px 2px; border: solid 1px #d7d7d7; color:#666666; }
+.in200px { width: 200px; padding:4px 2px 4px 2px; border: solid 1px #d7d7d7; color:#666666; }
+.list304px { width: 306px; padding:4px 2px 4px 2px; border: solid 1px #d7d7d7; color:#666666; }
+.list200px { width: 206px; padding:4px 2px 4px 2px; border: solid 1px #d7d7d7; color:#666666; }
+.list90px { width: 90px; padding:4px 2px 4px 2px; border: solid 1px #d7d7d7; color:#666666; }
+.list45px { width: 45px; padding:4px 2px 4px 2px; border: solid 1px #d7d7d7; color:#666666; }
+.in90px { width: 90px; padding:4px 2px 4px 2px; border: solid 1px #d7d7d7; color:#666666; }
+.in60px { width: 60px; padding:4px 2px 4px 2px; border: solid 1px #d7d7d7; color:#666666; }
+.in45px { width: 45px; padding:4px 2px 4px 2px; border: solid 1px #d7d7d7; color:#666666; }
+.greenbtn { background:#289b48; color:#FFFFFF; border: none; }
+.greenbtnsml { background: #289b48; color:#FFFFFF; border: none; }
+.btngry { background: #289b48; color:#FFFFFF; border: none; }
+.grayboldboxone img { width: auto; }
+.hdbarbg { background: url(/content/images/barbg.png) repeat-x left top; }
+.popupcontbg { background: url(/content/images/popupbg.png) repeat-y left top; }
+.popupcontbg p { margin: 5px 2px; }
+td.c1 { background-color:#F2F2F2 }
+
+.bottomdashedmargin {border-bottom:#cccccc dashed 1px; padding-bottom:10px; margin-bottom:10px;}
+ul.contentlist {font-size:12px; margin:0 0 15px 10px; list-style:none; }
+ul.contentlist li {background:url(/content/images/bullet-arrowone.png) left 9px no-repeat; line-height:18px; padding:0 0 0 20px; margin-bottom:5px;}
+ul.contentlist a {color:#666666; text-decoration:none;}
+ul.contentlist a:hover {color:#4f4f4f; text-decoration:none;}
+/* tabs css end */

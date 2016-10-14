@@ -1,0 +1,47 @@
+﻿@using WBSSLStore.Domain;
+@model  User
+<div class="sidemenu">
+    <div class="sidemenutopcurve">
+    </div>
+    <div class="sidemenuheading notopborder">
+        @WBSSLStore.Resources.GeneralMessage.Message.UserMenu_Welcome @(Model != null ? (Model.FirstName + " " + Model.LastName) : string.Empty)</div>
+    @if (Roles.IsUserInRole("admin") || Roles.IsUserInRole("support") || Roles.IsUserInRole("finance"))
+    {
+        <div class="sidemenulinks redtext">
+            <ul>
+                <li><a href="/admin/home">@WBSSLStore.Resources.GeneralMessage.Message.USerMenu_AdminHome</a></li></ul>
+        </div>
+    }
+    else
+    {
+        <div class="sidemenulinks redtext">
+            <ul>
+                <li><a href="/">@WBSSLStore.Resources.GeneralMessage.Message.UserMenu_OrderSSL</a></li></ul>
+        </div>
+        <div class="sidemenuheading">
+            @WBSSLStore.Resources.GeneralMessage.Message.UserMenu_MYORDERS</div>
+        <div class="sidemenulinks">
+            <ul>
+                <li><a href="@Url.Action("index", "orders", new { area = "client" })">@WBSSLStore.Resources.GeneralMessage.Message.OrderSummary_Caption</a></li>
+                <li><a href="@Url.Action("list", "orders", new { area = "client" })">@WBSSLStore.Resources.GeneralMessage.Message.ListOrder_Header</a></li>
+                <li><a href="@Url.Action("searchorders", "orders", new { area = "client" })">@WBSSLStore.Resources.GeneralMessage.Message.SearchOrder_Header</a></li>
+                <li><a href="@Url.Action("index", "support", new { area = "client" })">@WBSSLStore.Resources.GeneralMessage.Message.UserMenu_ClientSupport</a></li>
+            </ul>
+        </div>
+        <div class="sidemenuheading">
+            @WBSSLStore.Resources.GeneralMessage.Message.UserMenu_MYACCOUNT</div>
+        <div class="sidemenulinks">
+            <ul>
+                <li><a href="@Url.Action("statement", "account", new { area = "client" })">@WBSSLStore.Resources.GeneralMessage.Message.Statement_Header</a></li>
+                <li><a href="@Url.Action("edit", "account", new { area = "client" })">@WBSSLStore.Resources.GeneralMessage.Message.UserProfile_Header</a></li>
+                <li><a href="@Url.Action("preferences", "account", new { area = "client" })">@WBSSLStore.Resources.GeneralMessage.Message.UserMenu_Preferences</a></li>
+                @if (System.Web.HttpContext.Current.User.IsInRole("reseller"))
+                {
+                    <li><a href="@Url.Action("pricing", "account")">@WBSSLStore.Resources.GeneralMessage.Message.Shoppingcart_Price</a></li>
+                }
+            </ul>
+        </div>
+    }
+    <div class="sidemenubtmcurve">
+    </div>
+</div>

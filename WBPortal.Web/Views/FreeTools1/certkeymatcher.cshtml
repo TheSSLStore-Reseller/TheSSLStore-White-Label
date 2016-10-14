@@ -1,0 +1,88 @@
+﻿@model WBSSLStore.Gateways.RestAPIModels.Response.KeyMatcherresponse
+@{
+    ViewBag.Title = "Key Matcher";
+}
+@Html.Partial("_banner", new Tuple<string, string>("", "SSL TOOLS"))
+<div class="content">
+    <div class="wrapper">
+        <div class="column3">
+            <div class="mobtopcol">
+                <!--Center Panel Start-->
+                <div class="column3-2">
+                    <div class="cmnpagewrap">
+                        <h2>Certificate Key Matcher</h2>
+                        <h4>Match Your SSL &amp; Private Key Pairs</h4>
+                        <p>The Certificate Key Matcher makes it easy to determine whether a private key or CSR file matches a certificate.</p>
+                        <p>The Certificate Key Matcher allows you to check whether a private key matches a certificate, or if a certificate matches a CSR file. Any mismatches between pairs will prevent your certificate from working properly.</p>
+                        <div class="ssltoolscover">
+                            <div class="radio">
+                                <div class="radiobox"><input type="radio" id="yes" name="yes"><label for="yes">CSR File</label></div>
+                                <div class="radiobox"><input type="radio" id="no" name="no"><label for="no">Private Key</label></div>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="PrivateKey_box">
+                                <form method="post" action="/FreeTools/certkeymatcher" id="privatekey_match" name="privatekey_match">
+                                    <div class="ssltoolscover">
+                                        <h3>Paste SSL certificate:</h3>
+                                        <div class="chkcmnbx">
+                                            <textarea class="chkinput chkinputbxbig" rows="12" id="txtcertfield" name="txtcertfield"></textarea>
+                                            <label for="certfield" generated="true" class="error">Please enter the valid Certificate.</label>
+                                        </div>
+                                        <h3>Paste private key:</h3>
+                                        <div class="chkcmnbx">
+                                            <textarea class="chkinput chkinputbxbig" rows="12" id="txtkeyfield" name="txtkeyfield"></textarea>
+                                            <label for="keyfield" generated="true" class="error">Please enter the valid PrivateKey.</label>
+                                        </div>
+                                        <p>
+                                            <input type="submit" class="greenbtn chrbtn" value="Check" id="keysubmit" name="keysubmit">
+                                        </p>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <!--Show Result Start-->
+                        @if (Model != null)
+                        {
+                            if (!Model.AuthResponse.isError)
+                            {
+                                if (!Model.IsPrivateKeyMatched)
+                                {
+                                <p class="mrgbotnone">Certificate does not match with Private key file</p>
+                                }
+                                else
+                                {
+                                    <p class="mrgbotnone">Certificate is match with Private key file</p>
+                                }
+                                if (!Model.IsCSRMatched)
+                                {
+                                    <p class="mrgbotnone">CSR does not match with Private key file</p>
+                                }
+                                else
+                                {
+                                    <p class="mrgbotnone">CSR is match with Private key file</p>
+                                }
+                            }
+                        }
+                        else
+                        {
+
+                            <div class='alert-danger'>
+                                <p>@Model.AuthResponse.Message[0]</p>
+                            </div>
+                        }
+                        <!--Show Result End-->
+                    </div>
+                </div>
+                <!--Center Panel End-->
+                <!--Right Panel Start-->
+                @Html.Partial("_rightpanel", "")
+                <!--Right Panel Start-->
+            </div>
+
+            <!--Left Panel Start-->
+            <!--Left Panel End-->
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>

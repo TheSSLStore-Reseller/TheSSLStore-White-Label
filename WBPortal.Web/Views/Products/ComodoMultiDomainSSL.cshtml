@@ -1,0 +1,138 @@
+﻿@model WBSSLStore.Service.ViewModels.StaticPageViewModel
+@{
+    ViewBag.Title = "SecureSiteProwithEV";  var productdetails = WBSSLStore.Web.Helpers.WBHelper.GetProductDetailRows();
+    string brand = Model != null && Model.Items != null && Model.Items.FirstOrDefault().Product != null && Model.Items.FirstOrDefault().Product.Brand != null ? Model.Items.FirstOrDefault().Product.Brand.BrandName : "";
+    string username = ViewBag.UserName;
+}
+@section headerTags{
+    @Html.Partial("_renderSEO", Model != null && Model.CMSPage != null ? Model.CMSPage : new WBSSLStore.Domain.CMSPage())
+}
+@Html.Partial("_banner", new Tuple<string, string>("", "SSL Brands"))
+<div class="content">
+  <div class="wrapper">
+    <div class="column3">
+      <div class="mobtopcol">
+        <div class="column3-2">
+          <div class="prodetailswrap marzerotop"> @Html.Partial("_ProdPricing", new Tuple<List<WBSSLStore.Domain.ProductPricing>, List<WBSSLStore.Domain.ProductDetail>>(Model.Items.ToList(), productdetails.ToList())) </div>
+          <div class="prodescrip marzerotop">
+            <div class="prodescriptxt">
+              <h2>Product Description</h2>
+              <p>With the Comodo Multi-Domain SSL, you can cover up to 100 domains with just one certificate. And not just any certificate, one backed by a top brand name that has become synonymous with trust. Comodo has grown to become one of the largest and most popular Certification Authorities (CAs) in the industry, so you can rest assured that you're getting a top-of-the-line Organization Validated (OV) certificate at an extremely reasonable price. This multi-domain certificate is an excellent option for small to medium sized companies that want to make managing and provisioning their domains as simple as possible.</p>
+            </div>
+          </div>
+          <div id="cssmenu">
+            <ul class="accordion_example">
+              <li class="brand-symantec acc_active">
+                <div>
+                  <p>Assurance &amp; Authentication</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>In order to get this certificate issued, companies must complete a light vetting process. This typically takes anywhere from 2-5 business days, as the Certification Authority, Comodo, just needs to verify that your business is legitimate, so it can broadcast this to <strong>all of your web visitors</strong>.</p>
+                  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Security &amp; Encryption</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>The Comodo Multi-Domain SSL can be encrypted with both 128- and 256-bit. It will also be signed with the industry standard 2048-bit root. So, you can rest assured that the information passed between your customers and your server can be secured to the highest potential for all of your domains.</p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>SAN &amp; multi-domain support</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>As the name suggests, the Comodo Multi-Domain SSL certificate can support multiple domains on just one cert. In fact, this certificate can support <strong>up to 100 domains</strong>.  As packaged, this cert <strong>comes with 5 total domains</strong> and you can add as many more as you need, up to 100.</p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Features &amp; Benefits</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <ul class="featurelist">
+                    <li>Secure up to 100 unique domains</li>
+                    <li>Save money over purchasing several SSLs</li>
+                    <li>Save time over managing several certificates</li>
+                    <li>Trusted by over 99% of the browsers</li>
+                    <li>128/256 bit encryption</li>
+                    <li>Unlimited Server</li>
+                    <li>Unlimited Reissue of Certificate Life time</li>
+                    <li>Full Business Validation</li>
+                    <li>1 year free PCI scanning service, 1 year free daily website vulnerability scanning</li>
+                  </ul>
+				  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Product Specifications</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <ul class="featurelist">
+                    <li>Secures all domains on your shared hosting environment with one certificate</li>
+                    <li>Issued In 1 week</li>
+                    <li>Full business validation</li>
+                    <li>Encryption 128/256-bit maximum</li>
+                    <li>99.3% Browser Compatibility</li>
+                    <li>Free Unlimited Server Licenses</li>
+                    <li>Unlimited Reissuance</li>
+                  </ul>
+				  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Site Seal</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>This multi-domain certificate will display the <strong>widely trusted</strong> Comodo Site Seal on your domains, which can be prominently displayed for your visitors to see. This popular site seal is gaining more and more recognition online every day, which means that customers are learning that the "Comodo Secure" logo and trust go hand-in-hand.</p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Warranty</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>Unfortunately, the Comodo Multi-Domain SSL does not come with a warranty.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        @Html.Partial("_rightpanel", username) </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+@section Jscripts{ 
+<script type="text/javascript">
+        $(document).ready(function () {
+            // Mobile Menu
+            $("#showmenu").click(function (e) {
+                e.preventDefault();
+                $("#menu").toggleClass("show");
+            });
+            $("#menu a").click(function (event) {
+                event.preventDefault();
+                if ($(this).next('ul').length) {
+                    $(this).next().toggle('fast');
+                    $(this).children('i:last-child').toggleClass('fa-caret-down fa-caret-left');
+                }
+            });
+            $(document).click(function (e) {
+                if (!$(e.target).is(".mobmemu, .mobmemu  *")) { $("#menu").toggleClass("hide"); $("#menu").removeClass("show"); }
+            });
+            $(".accordion_example").smk_Accordion();
+        });
+    </script> 
+} 

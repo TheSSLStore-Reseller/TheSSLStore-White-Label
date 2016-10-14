@@ -1,0 +1,337 @@
+﻿@using WhiteBrandShrink.Models;
+@model WhiteBrandShrink.Models.GeneralSettings
+@{
+    ViewBag.Title = "General settings Configuration";
+    Layout = "~/Areas/runsetup/Views/Shared/_Layout.cshtml";
+}
+@section scripts{
+    @Scripts.Render("~/bundales/unobtrusive-ajaxjs")
+    @Scripts.Render("~/bundales/validate-unobtrusive")
+    @Scripts.Render("~/bundales/fluploadjs")
+    @Styles.Render("~/bundales/fluploadcss")
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('#installation-form').submit(function () {
+                if ($('#installation-form').valid()) {
+                    window.setTimeout(function () {
+                        //$(".throbber.show()");
+                    }, 1000);
+
+                    $('input[type=submit]', this).attr('disabled', 'disabled');
+                }
+                
+            });
+
+            $('input[name=countryLanguage]').change(function () {
+
+                $("#hdnSiteLanguage").val($('input[name=countryLanguage]:checked', '#installation-form').val());
+            });
+            $('#rbusen').attr('checked', "checked");
+            $('input[name=countryLanguage]').change();
+            
+            $("#ddCurrancy").change(function () {
+                $("#hdnBillingcurrency").val($(this).val());
+            });
+            $("#ddCurrancy").val('USD');
+            $("#ddCurrancy").change();
+
+            $("#drpTimezone").change(function () {
+                $("#hdnTimeZone").val($(this).val());
+            });
+
+            $("#drpTimezone").change();
+
+            $("#txtdomainname").blur(function () {
+                if (!($(".validdomain span").hasClass('field-validation-error')) && $(this).val() != '') {
+                    var dm = $(this).val();
+                    dm = dm.indexOf('https://') > -1 ? dm.replace('https://', '') : dm;
+                    dm = dm.indexOf('http://') > -1 ? dm.replace('http://', '') : dm;
+                    dm = dm.indexOf("www.") > -1 ? dm.replace("www.", '') : dm;
+                    $("#txtadminemail   ").val('admin@@' + dm);
+                    $("#txtsupportemail ").val('support@@' + dm);
+                    $("#txtbillingemail ").val('billing@@' + dm);
+                }
+            });
+            if ($.find("#mulitplefileuploader").length > 0) {
+                var dsc = $("#hdndirectory").val();
+                dsc = dsc.toString().toLowerCase().replace(/\/\//g, '/');
+                var settings = {
+                    url: "/runsetup/install/filehandler",
+                    dragDrop: true,
+                    multiple: false,
+                    fileName: "myfile",
+                    maxFileSize: 40000,
+                    allowedTypes: "gif,jpeg,png,jpg,bmp",
+                    returnType: "json",
+                    formData: { "hdndirectory": dsc },
+                    onSuccess: function (files, data, xhr) {
+
+                    },
+                    showDelete: true,
+                    showDone: false,
+                    showFileCounter: false,
+                    onSelect: function (data) {
+                        var img = new Image();
+                        img.src = window.URL.createObjectURL(data[0]);
+                        var width = 0;
+                        var height = 0;
+                        img.onload = function () {
+                            width = parseInt(img.naturalWidth);
+                            height = parseInt(img.naturalHeight);
+                            if (parseInt(width) == 400 || parseInt(height) == 90)
+                                return true;
+                            else {
+                                var msg = "Logo size should be 400 X 90";
+                                if ($(".ajax-file-upload-statusbar cmsg").length > 0) {
+                                    $("#cmsg").html(msg);
+                                }
+                                else {
+                                    $(".ajax-upload-dragdrop").eq(0).append("<div class='ajax-file-upload-statusbar'></div>");
+                                    $(".ajax-file-upload-statusbar").eq(0).append('<p style="color:red;" id="cmsg"> ' + msg + ' </p>');
+                                }
+                                return false;
+                            }
+                        }
+
+
+                    },
+                    deleteCallback: function (data, pd) {
+                        if (data != '' && data.flnm != '') {
+                            $.post("/runsetup/install/filedelete", { hdndirectory: dsc, name: data.flnm },
+                            function (res) {
+                                if (res != '' && res.issuccess.toString().toLowerCase() == 'true') {
+                                    pd.statusbar.remove();
+                                }
+                            });
+                        }
+
+                    }
+                }
+                var uploadObj = $("#mulitplefileuploader").uploadFile(settings);
+            }
+        });
+
+        function StartProcess(data) {
+            ShowLoader();
+        }
+        function onSuccess(data) {
+            HideLoader();
+            if (data != null && data != '' && data.isSuccess.toString() == 'false' && data.msg.toString() != '') {
+                $("#geneMsg").html('');
+                $("#geneMsg").addClass('errormsg');
+                $("#geneMsg").html(data.msg);
+            } else if (data != null && data != '' && data.isSuccess.toString().toLowerCase() == 'true' && data.url.toString() != '') {
+                window.location.href = data.url.toString();
+            }
+            $('#installation-form input[type=submit]').removeAttr('disabled');
+        }
+        function OnFail(data) {
+            $("#geneMsg").addClass('errormsg');
+            $("#geneMsg").html((data != null && data != '' && data.status == 500) ? data.statusText : 'General system error. Please try again');
+            HideLoader();
+            $('#installation-form input[type=submit]').removeAttr('disabled');
+        }
+
+        function ShowLoader() {
+            $("#dvLoader").addClass('loader');
+            $("#dvLoader").show();
+        }
+        function HideLoader() {
+            $("#dvLoader").removeClass('loader');
+            $("#dvLoader").hide();
+        }
+    </script>
+}
+
+@Html.Partial("_wizardsteps", 3)
+<div class="frmins">
+    @*@using (Html.BeginForm("generalsettingssave", "install", FormMethod.Post, new { id = "installation-form", @class = "" }))*@
+    @using (Ajax.BeginForm("generalsettingssave", "install", new { area = "runsetup" }, new AjaxOptions { OnBegin = "StartProcess", OnSuccess = "onSuccess", OnFailure = "OnFail" }, new { id = "installation-form" }))
+    {@Html.AntiForgeryToken()
+        <div id="dvLoader" class="" style="display:none;">
+            <span class="throbber-header">
+                Installing Site's settings...
+            </span>
+        </div>
+        <div id="geneMsg">
+
+        </div>
+        <div class="formbox">
+            <h2>General Settings</h2>
+            <div class="formdtl">
+
+                <div class="formraw validdomain">
+                    <label>Domain name</label>
+                    @Html.TextBoxFor(x => x.DomainName, new { id = "txtdomainname" })
+                    @Html.ValidationMessageFor(x => x.DomainName)
+                </div>
+                <div class="formraw">
+                    @Html.HiddenFor(x => x.BillingCurrency, new { id = "hdnBillingcurrency" })
+                    <label>Billing Currency </label>
+                    <select name="ddCurrancy" id="ddCurrancy" class="listmenu">
+                        <option value="">------Select Currency------</option>
+                        <option value="AUD">Australian Dollar</option>
+                        <option value="BRL">Brazilian Real</option>
+                        <option value="CAD">Canadian Dollar</option>
+                        <option value="CZK">Czech Koruna</option>
+                        <option value="DKK">Danish Krone</option>
+                        <option value="EUR">Euro</option>
+                        <option value="HKD">Hong Kong Dollar</option>
+                        <option value="HUF">Hungarian Forint</option>
+                        <option value="ILS">Israeli New Sheqel</option>
+                        <option value="JPY">Japanese Yen</option>
+                        <option value="MXN">Mexican Peso</option>
+                        <option value="NOK">Norwegian Krone</option>
+                        <option value="NZD">New Zealand Dollar</option>
+                        <option value="PHP">Philippine Peso</option>
+                        <option value="PLN">Polish Zloty</option>
+                        <option value="GBP">Pound Sterling</option>
+                        <option value="SGD">Singapore Dollar</option>
+                        <option value="SEK">Swedish Krona</option>
+                        <option value="CHF">Swiss Franc</option>
+                        <option value="TWD">Taiwan New Dollar</option>
+                        <option value="THB">Thai Baht</option>
+                        <option value="USD">U.S. Dollar</option>
+
+                    </select>
+                </div>
+                <div class="formraw">
+                    <label>Admin Email</label>
+                    @Html.TextBoxFor(x => x.AdminEmail, new { id = "txtadminemail" })
+                    @Html.ValidationMessageFor(x => x.AdminEmail)
+                </div>
+                <div class="formraw">
+                    <label>Support Email</label>
+                    @Html.TextBoxFor(x => x.SupportEmail, new { id = "txtsupportemail" })
+                    @Html.ValidationMessageFor(x => x.SupportEmail)
+                </div>
+                <div class="formraw">
+                    <label>Billing Email </label>
+                    @Html.TextBoxFor(x => x.BillingEmail, new { id = "txtbillingemail" })
+                    @Html.ValidationMessageFor(x => x.BillingEmail)
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="formbox">
+            <h2>Manage Language &amp; Time Zone</h2>
+            <div class="formdtl">
+                <div class="formraw">
+                    @Html.HiddenFor(x => x.SiteLanguage, new { id = "hdnSiteLanguage" })
+                    @Html.HiddenFor(x => x.TimeZone, new { id = "hdnTimeZone" })
+                    <div class="selectcountry">
+
+                        @Html.RadioButton("countryLanguage", "en", true, new { id = "rbusen" })
+                        <span><img alt="US" src="@Url.Content("~/content/images/us.png")"></span>
+                        <label>English</label>
+                    </div>
+                    <div class="selectcountry">
+                        @Html.RadioButton("countryLanguage", "es", false, new { id = "rbspain" })
+                        <span><img alt="Spanish" src="@Url.Content("~/content/images/spain.png")"></span>
+                        <label>Spanish</label>
+                    </div>
+                    <div class="selectcountry">
+                        @Html.RadioButton("countryLanguage", "hu", false, new { id = "rbhungaria" })
+                        <span><img alt="Hungarian" src="@Url.Content("~/content/images/hungaria.png")"></span>
+                        <label>Hungarian</label>
+                    </div>
+                    <div class="selectcountry">
+                        @Html.RadioButton("countryLanguage", "ru", false, new { id = "rbrussia" })
+                        <span><img alt="Russian" src="@Url.Content("~/content/images/russia.png")"></span>
+                        <label>Russian</label>
+                    </div>
+                </div>
+                <div class="formraw">
+                    <label>Select Timezone:</label>
+                    <select id="drpTimezone" name="drpTimezone">
+                        <option value="">Select Timezone</option>
+                        <option value="-720">(GMT-12:00) International Date Line West</option>
+                        <option value="-660">(GMT-11:00) Midway Island, Samoa</option>
+                        <option value="-600">(GMT-10:00) Hawaii</option>
+                        <option value="-540">(GMT-09:00) Alaska</option>
+                        <option value="-480">(GMT-08:00) Pacific Time(US &amp; Canada); Tijuana</option>
+                        <option value="-420">(GMT-07:00) Arizona</option>
+                        <option value="-360">(GMT-06:00) Central Time (Us &amp; Canada)</option>
+                        <option selected="selected" value="-300">(GMT-05:00) Eastern Time (US &amp; Canada)</option>
+                        <option value="-240">(GMT-04:00) Atlantic Time (Canada)</option>
+                        <option value="-198">(GMT-03:30) Newfoundland</option>
+                        <option value="-180">(GMT-03:00) Greenland</option>
+                        <option value="-120">(GMT-02:00) Mid-Atlantic</option>
+                        <option value="-60">(GMT-01:00) Azores</option>
+                        <option value="0">(GMT) Greenwich Mean Time: Dublin, Edinburgh, Lisbon, London</option>
+                        <option value="60">(GMT+01:00) Amsterdam, Berlin, Bern, Rome, Stockholm, Vienna</option>
+                        <option value="120">(GMT+02:00) Athens, Beirut, Istanbul, Minsk</option>
+                        <option value="180">(GMT+03:00) Baghdad</option>
+                        <option value="240">(GMT+04:00) Abu Dhabi, Muscat</option>
+                        <option value="258">(GMT+04:30) Kabul</option>
+                        <option value="300">(GMT+05:00) Ekaterinburg</option>
+                        <option value="318">(GMT+05:30) Chennai, Kolkata, Mumbai, New Delhi</option>
+                        <option value="327">(GMT+05:45) Katmandu</option>
+                        <option value="378">(GMT+06:30) Rangoon</option>
+                        <option value="420">(GMT+07:00) Bangkok, Hanoi, Jakarta</option>
+                        <option value="480">(GMT+08:00) Beijing, Chongging, Hong Kong, Urumgi</option>
+                        <option value="540">(GMT+09:00) Osaka, Sapporo, Tokyo</option>
+                        <option value="558">(GMT+09:30) Adelaide</option>
+                        <option value="600">(GMT+10:00) Brisbane</option>
+                        <option value="660">(GMT+11:00) Magadan, Soloman Is., New Caledonia</option>
+                        <option value="720">(GMT+12:00) Auckland, Wellington</option>
+                        <option value="780">(GMT+13:00) Nuku'alofa</option>
+                    </select>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="formbox">
+            <h2>Header Management</h2>
+            <div class="formdtl">
+                <div class="halfpart">
+                    <div class="formraw">
+                        <label>Facebook</label>
+                        @Html.TextBoxFor(x => x.FBUrl)
+                        @Html.ValidationMessageFor(x => x.FBUrl)
+                    </div>
+                    <div class="formraw">
+                        <label>Twitter</label>
+                        @Html.TextBoxFor(x => x.TwiterURL)
+                        @Html.ValidationMessageFor(x => x.TwiterURL)
+                    </div>
+                    <div class="formraw">
+                        <label>Google Plus</label>
+                        @Html.TextBoxFor(x => x.GPURL)
+                        @Html.ValidationMessageFor(x => x.GPURL)
+                    </div>
+                    <div class="formraw">
+                        <label>Phone Text</label>
+                        @Html.TextBoxFor(x => x.SitePhone)
+                        @Html.ValidationMessageFor(x => x.SitePhone)
+                    </div>
+                </div>
+
+                <div class="clear"></div>
+            </div>
+        </div>
+
+        <div class="fullrawbtn">
+            <input type="submit" id="next" name="next" value="Save">
+        </div>
+    }
+
+    <div class="halfpart dvupload">
+        <div class="formraw">
+            <label>Upload Logo</label>
+
+            <div>
+                @Html.Hidden("hdndirectory", "sitelogo")
+                <div id="mulitplefileuploader">Upload</div>
+            </div>
+            <p class="formhint">(Valid file types are *.gif, *.jpeg, *.png, *.jpg and *.bmp. Logo size is 400 X 90) </p>
+
+        </div>
+    </div>
+
+
+</div>

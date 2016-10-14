@@ -1,0 +1,85 @@
+﻿@model WBSSLStore.Gateways.RestAPIModels.Response.WhyNoPadLockResponse
+@{
+    ViewBag.Title = "SSLComparison";
+}
+@Html.Partial("_banner", new Tuple<string, string>("", "SSL TOOLS"))
+<div class="content">
+    <div class="wrapper">
+        <div class="column3">
+            <div class="mobtopcol">
+                <!--Center Panel Start-->
+                <div class="column3-2">
+                    <div class="cmnpagewrap">
+                        <h2>Why No PadLock?</h2>
+                        <h4>Check for Insecure Links</h4>
+                        <p> If you feel your website is not displaying the proper security lock, the Why No Padlock tool is just for you! By simply entering your URL into the box below, you can instantaneously check if there are ANY insecure links found within your URL.</p>
+                        <form method="post" action="/FreeTools/whynopadlock" id="generate_csr" name="generate_csr">
+                            <div class="csrgener chkcmnbx">
+                                <ul>
+                                    <li>
+                                        <label class="lineht30"><strong>Secure URL:</strong></label>
+                                        <div class="formdata">
+                                            <input type="text" class="genetxtbox" id="txturl" name="txturl">
+                                            <span class="formhint">(example: https://www.your_domain.com/secure_page.html)</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <label class="tabhide">&nbsp;</label>
+                                        <div class="formdata"><input type="submit" class="greenbtn" value="Check" id="Check" name="Check"></div>
+                                    </li>
+                                </ul>
+                                <div class="clear"></div>
+                            </div>
+                        </form>
+                        @if (Model != null)
+                        {
+                            if (!Model.AuthResponse.isError)
+                            {
+                                <div class="csresult">
+                                    <ul>
+                                        <li><strong>Number of Insecure links found: </strong>3</li>
+                                        <li><strong>Line Numbers</strong> Insecure Links</li>
+                                        <li><strong>2255</strong> http://www.shopperapproved.com/reviews/thesslstore.com/</li>
+                                        <li><strong>2421</strong> http://statcounter.com/free-web-stats/</li>
+                                        <li><strong>2435</strong> http://c.statcounter.com/7713473/0/789250e8/1/</li>
+                                    </ul>
+                                </div>
+                                <hr>
+                                <div class="csresult">
+                                    <ul>
+                                        <li><strong>Domain name:</strong> www.google.com</li>
+                                        <li><strong>IP Address:</strong> 216.58.217.164</li>
+                                        <li><strong>URL Tested:</strong> https://www.google.com</li>
+                                    </ul>
+                                </div>
+                                <hr>
+                                <div class="commonuli">
+                                    <ul>
+                                        <li><strong>Certificate Valid:</strong> from May 04, 2016 to July 27, 2016 </li>
+                                        <li><strong>Certificate Issuer:</strong> Google Inc </li>
+                                        <li><strong>All items called securely!</strong></li>
+                                    </ul>
+                                </div>
+                            }
+                            else
+                            {
+
+                                <div class='alert-danger'>
+                                    <p>@Model.AuthResponse.Message[0]</p>
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+                <!--Center Panel End-->
+                <!--Right Panel Start-->
+                @Html.Partial("_rightpanel", "")
+                <!--Right Panel Start-->
+            </div>
+
+            <!--Left Panel Start-->
+            <!--Left Panel End-->
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>

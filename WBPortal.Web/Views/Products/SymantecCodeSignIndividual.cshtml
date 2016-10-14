@@ -1,0 +1,126 @@
+﻿@model WBSSLStore.Service.ViewModels.StaticPageViewModel
+@{
+    ViewBag.Title = "SecureSiteProwithEV";  var productdetails = WBSSLStore.Web.Helpers.WBHelper.GetProductDetailRows();
+    string brand = Model != null && Model.Items != null && Model.Items.FirstOrDefault().Product != null && Model.Items.FirstOrDefault().Product.Brand != null ? Model.Items.FirstOrDefault().Product.Brand.BrandName : "";
+    string username = ViewBag.UserName;
+}
+@section headerTags{
+    @Html.Partial("_renderSEO", Model != null && Model.CMSPage != null ? Model.CMSPage : new WBSSLStore.Domain.CMSPage())
+}
+@Html.Partial("_banner", new Tuple<string, string>("", "SSL Brands"))
+<div class="content">
+  <div class="wrapper">
+    <div class="column3">
+      <div class="mobtopcol">
+        <div class="column3-2">
+          <div class="prodetailswrap marzerotop"> @Html.Partial("_ProdPricing", new Tuple<List<WBSSLStore.Domain.ProductPricing>, List<WBSSLStore.Domain.ProductDetail>>(Model.Items.ToList(), productdetails.ToList())) </div>
+          <div class="prodescrip marzerotop">
+            <div class="prodescriptxt">
+              <h2>Product Description</h2>
+              <p><strong>Symantec&trade; Individual Code Signing certificates</strong> are an excellent option if you're looking to secure and distribute your content, code or software over the Internet as an individual, meaning you are not a company, but you still wish to safeguard code. With this, you can easily get rid of all the security warning messages and instantly enhance your reputation as a publisher by providing your customers the assurance that your code is credible with a Symantec Individual Code Signing certificate. It effectively supports JavaSoft&trade;, Adobe&reg; AIR&trade;, Microsoft Authenticode&reg;, VBA and Office and Apple.</p>
+            </div>
+          </div>
+          <div id="cssmenu">
+            <ul class="accordion_example">
+              <li class="brand-symantec acc_active">
+                <div>
+                  <p>Assurance &amp; Authentication</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>Symantec Code Signing certificates for individuals assure your customers about the identity and the authenticity of the publisher of that software. It verifies the publisher's identity with a strict authentication procedure and safeguards the contents from any kind of tampering by third party. Since you are not an actual company, obtaining this certificate as an individual will require you to present a notarized form that validates some sort of a government issued photo identification. Don't worry, it's easy.</p>
+                  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Security &amp; Encryption</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>Secure your content from getting tampered with or unapproved distribution by using Symantec Code Signing certificate. It ensures your users about your authenticity as the distributor and the integrity of the 'shrink-wrapped' content.</p>
+                </div>
+              </li>
+
+              <li class="brand-symantec">
+                <div>
+                  <p>Features &amp; Benefits</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <ul class="featurelist">
+                    <li>Symantec Individual Code Signing is a fully Business Validated Signing Certificate</li>
+                    <li>Supports the broadest range of platforms in the industry that includes Microsoft Windows, Java, Adobe Air, Qualcomm BREW etc</li>
+                    <li>The Publisher's Identity is verified by a strong &amp;proven authentication procedure</li>
+                    <li>Effective protects against malware and other malicious threats</li>
+                    <li>Safeguards from code tampering</li>
+                    <li>Ensures an individual's integrity</li>
+                    <li>Allows you to sign kernel-mode software &amp;device drivers</li>
+                    <li>Onlyprovider of code signing certificates for Microsoft Window Mobile, Azure and Qualcomm BREW</li>
+                    <li>Digital signature for Microsoft Authenticode, VBA and Office, Sun Java, Adobe AIR and Macromedia Shockwave</li>
+                    <li>Robust and time-tested authentication process to verify the publisher identity</li>
+                    <li>Proof that code has not changed or been tampered with since signing</li>
+                    <li>Lets you obtain a certificate for your code as an individual software developer</li>
+                  </ul>
+				  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Product Specifications</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <ul class="featurelist">
+                    <li>More platforms supported compared to other providers</li>
+                    <li>Unique time-stamping option accommodates a wide range of development cycles</li>
+                    <li>Highly compatible with Windows 64-bit kernel mode signing</li>
+                    <li>Time-tested authentication procedures are annually audited by KPMG</li>
+                    <li>1&ndash;3 years validity options and unlimited signing with a valid certificate</li>
+                    <li>Abides by all security requirements and reduces security warnings</li>
+                    <li>Encourages to downloading software online</li>
+                    <li>Extended warranty up to $125,000</li>
+                  </ul>
+				  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Warranty</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>Symantec's Code Signing certificate provides warranty protection up to $125,000 against any unauthorized use, disclosure, safety compromise, unauthorized revocation, loss of use and possibly an incorrect issuance.</p>
+                  <p>Also, the reissuance insurance and free installation checker is another reason to go for a Symantec's Code Signing Certificate! These extraordinary features are proven to be a distinct advantage over the competition.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        @Html.Partial("_rightpanel", username) </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+@section Jscripts{ 
+<script type="text/javascript">
+        $(document).ready(function () {
+            // Mobile Menu
+            $("#showmenu").click(function (e) {
+                e.preventDefault();
+                $("#menu").toggleClass("show");
+            });
+            $("#menu a").click(function (event) {
+                event.preventDefault();
+                if ($(this).next('ul').length) {
+                    $(this).next().toggle('fast');
+                    $(this).children('i:last-child').toggleClass('fa-caret-down fa-caret-left');
+                }
+            });
+            $(document).click(function (e) {
+                if (!$(e.target).is(".mobmemu, .mobmemu  *")) { $("#menu").toggleClass("hide"); $("#menu").removeClass("show"); }
+            });
+            $(".accordion_example").smk_Accordion();
+        });
+    </script> 
+} 

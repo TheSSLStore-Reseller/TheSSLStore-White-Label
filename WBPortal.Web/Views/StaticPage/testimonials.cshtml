@@ -1,0 +1,37 @@
+﻿@using WBSSLStore.Domain;
+@using WBSSLStore.Data.Infrastructure;
+@using WBSSLStore.Web.Util; 
+@{
+     WBSiteSettings settings=new WBSiteSettings(WBSSLStore.Web.Helpers.Caching.SiteCacher.CurrentSite);
+
+    var _testimonial = DependencyResolver.Current.GetService<IRepository<Testimonials>>();
+    var testimonials = _testimonial.Find(t => t.SiteID == settings.SiteID && (t.RecordStatusID == (int)TestimonialStatus.ACTIVE || t.RecordStatusID == (int)TestimonialStatus.SHOWINPAGE)).OrderByDescending(t => t.ID);
+    
+
+    ViewBag.Title = "Testimonials";
+}
+<div class="">
+    @if (testimonials.Count() > 0 && settings.IsTestimonials)
+    { 
+        <h1>
+            Testimonials</h1>
+        
+        foreach (var item in testimonials)
+        {
+        <div class="testibg">
+            <div class="testidivider testibgnone hrline">
+                @Html.Raw(@item.Description)
+                <br /><br /><br />
+                <div class="signature">
+                    @Html.Raw(@item.Signature.Replace("\n", "</br>"))
+                </div>
+                <br />
+            </div>
+        </div>   
+        }
+
+    }
+    @{
+        settings = null;
+    }
+</div>

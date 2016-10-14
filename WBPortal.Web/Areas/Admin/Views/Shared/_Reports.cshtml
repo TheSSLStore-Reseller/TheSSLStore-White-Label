@@ -1,0 +1,144 @@
+﻿@using WBSSLStore.Web.Util;
+@using WBSSLStore.Domain
+@using WBSSLStore.Web.Helpers.PagedList;
+@model IPagedList<OrderDetail>
+@{
+    ViewBag.Title = "_Reports";
+}
+@if (Model != null && Model.Count() > 0)
+{
+    <tr>
+        <td align="left" valign="top">
+            <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/grydivider.gif" alt="" width="840" height="6">
+        </td>
+    </tr>
+    <tr>
+        <td align="left" valign="top">
+            <table width="841" border="0" align="center" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td height="8" align="left" valign="top">
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left" valign="top">
+                        <table width="100%" border="0" cellspacing="1" cellpadding="1">
+                            <tr>
+                                <td width="30%" height="22" align="right" valign="middle" class="bold">
+                                    @*Total Sale*@ @WBSSLStore.Resources.GeneralMessage.Message.Total_Sale:
+                                </td>
+                                <td width="70%" height="22" align="left" valign="middle" class="bluefont">
+                                    @(string.Format("{0:C}", (ViewBag.TotalPurchase ?? 0)))
+                                </td>
+                            </tr>
+                            <tr>
+                                <td height="22" align="right" valign="middle" class="bold">
+                                    @*Number of certificates issued*@ @WBSSLStore.Resources.GeneralMessage.Message.Numbercerts
+                                    :
+                                </td>
+                                <td height="22" align="left" valign="middle" class="bluefont">
+                                    @(ViewBag.NoOfCerts ?? 0)
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left" valign="top">
+                        &nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left" valign="top" bgcolor="#d6d6d6">
+                        <table width="841" border="0" align="left" cellpadding="5" cellspacing="1">
+                            <tr>
+                                <td width="77" align="left" valign="middle" bgcolor="#eff8fd" class="bluefont">
+                                    @* Order Date*@ @WBSSLStore.Resources.GeneralMessage.Message.OrderDate_Caption
+                                </td>
+                                <td width="79" height="35" align="left" valign="middle" bgcolor="#eff8fd" class="bluefont">
+                                    @*OrderID*@ @WBSSLStore.Resources.GeneralMessage.Message.OrderId_Caption
+                                </td>
+                                <td width="79" height="35" align="left" valign="middle" bgcolor="#eff8fd" class="bluefont">
+                                    @*Order Status*@ @WBSSLStore.Resources.GeneralMessage.Message.OrderStatus_Caption
+                                </td>
+                                <td width="182" height="35" align="left" valign="middle" bgcolor="#eff8fd" class="bluefont">
+                                    @*Customer Name*@ @WBSSLStore.Resources.GeneralMessage.Message.CustomerName_Caption
+                                </td>
+                                <td width="277" height="35" align="left" valign="middle" bgcolor="#eff8fd" class="bluefont">
+                                    @*Product Detail*@ @WBSSLStore.Resources.GeneralMessage.Message.Product_Caption
+                                </td>
+                                <td width="92" align="left" valign="middle" bgcolor="#eff8fd" class="bluefont">
+                                    @*Customer Type*@ @WBSSLStore.Resources.GeneralMessage.Message.CustomerType_Caption
+                                </td>
+                                <td width="67" align="right" valign="middle" bgcolor="#eff8fd" class="bluefont">
+                                    @*Price*@ @WBSSLStore.Resources.GeneralMessage.Message.Price_Caption
+                                </td>
+                            </tr>
+                            @foreach (OrderDetail item in Model)
+                            {
+                                <tr>
+                                    <td align="left" valign="top" bgcolor="#FFFFFF">
+                                        @item.AuditDetails.DateCreated.ToShortDateString()
+                                    </td>
+                                    <td align="left" valign="top" bgcolor="#FFFFFF" class="blueline">
+                                        <span class="blueline"><a href="@Url.Action("detail", "orders", new { id = item.ID })">@(string.IsNullOrEmpty(item.ExternalOrderID) ? @WBSSLStore.Resources.GeneralMessage.Message.InComplete_Caption : item.ExternalOrderID)</a></span>
+                                    </td>
+                                    <td align="left" valign="top" bgcolor="#FFFFFF" class="blueline">
+                                        <span class="@item.OrderStatus">@item.OrderStatus</span>
+                                    </td>
+                                    <td align="left" valign="top" bgcolor="#FFFFFF" class="blueline">
+                                        <a href="@Url.Action("edit", (item.Order.User.UserType == UserType.CUSTOMER ? @WBSSLStore.Resources.GeneralMessage.Message.Customer_Caption : @WBSSLStore.Resources.GeneralMessage.Message.Reseller_Caption), new { id = item.Order.UserID })">@(item.Order.User.FirstName + " " + item.Order.User.LastName)<br />@item.Order.User.CompanyName</a>
+                                    </td>
+                                    <td align="left" valign="top" bgcolor="#FFFFFF">
+                                        <span class="bluefont">@item.ProductName</span> <span class="bold redfont">(@(item.CertificateRequest.isNewOrder ? @WBSSLStore.Resources.GeneralMessage.Message.New_Caption : @WBSSLStore.Resources.GeneralMessage.Message.ReNew_Caption)-
+                                            @(item.NumberOfMonths / 12)
+                                            @WBSSLStore.Resources.GeneralMessage.Message.Yr_Caption)</span><br />
+                                        <span class="bold">@WBSSLStore.Resources.GeneralMessage.Message.Domain_Caption:</span>
+                                        <span class="blueline">@item.CertificateRequest.DomainName</span><br />
+                                        <span class="bold">@WBSSLStore.Resources.GeneralMessage.Message.Servers_Caption: @item.CertificateRequest.NumberOfServers</span><br />
+                                        <span class="bold">@WBSSLStore.Resources.GeneralMessage.Message.Invoice_Header #:</span>
+                                        <span class="blueline"><a href="@Url.Action("invoice", "orders", new { id = item.OrderID })">@(WBSSLStore.Web.Helpers.WBHelper.InvoicePrefix(WBSSLStore.Web.Helpers.Caching.SiteCacher.CurrentSite)   + item.OrderID)</a></span>
+                                    </td>
+                                    <td align="left" valign="top" bgcolor="#FFFFFF">
+                                        @(item.Order.User.UserTypeID == 0 ? WBSSLStore.Resources.GeneralMessage.Message.Customer_Caption : item.Order.User.UserTypeID == 1 ? WBSSLStore.Resources.GeneralMessage.Message.Reseller_Caption : WBSSLStore.Resources.GeneralMessage.Message.Admin_Caption)
+                                    </td>
+                                    <td align="right" valign="top" bgcolor="#FFFFFF" class="bold">
+                                        @item.Price
+                                    </td>
+                                </tr>
+                            }
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="8" align="left" valign="top">
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td align="center" valign="top" bgcolor="#d6d6d6" class="contbg">
+            <table width="841" border="0" align="center" cellpadding="0" cellspacing="7" class="bgclr">
+                <tr>
+                    <td width="840" align="center" valign="top" bgcolor="#FFFFFF">
+                        <table width="825" border="0" align="center" cellpadding="1" cellspacing="1">
+                            <tr>
+                                <td>
+                                    @Html.PagedListPager(Model, page => Url.Action(Model.ActionName, Model.ControllerName, new { page = page + 1, name = ViewBag.Name, email = ViewBag.Email, utype = ViewBag.UserType, brandid = ViewBag.BrandID, productid = ViewBag.ProductID, month = ViewBag.Month, status = ViewBag.Status, txtFromDate = ViewBag.StartDate, txtToDate = ViewBag.EndDate }))
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+}
+else
+{ 
+    <tr>
+        <td height="8" valign="top" class="errormsg">
+            @*No record found.*@ @WBSSLStore.Resources.GeneralMessage.Message.NoRecord
+        </td>
+    </tr>
+}

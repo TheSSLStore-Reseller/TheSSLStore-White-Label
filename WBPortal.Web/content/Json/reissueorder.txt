@@ -1,0 +1,25 @@
+﻿{
+	"AuthRequest":{
+		"PartnerCode":"[PARTNERCODE]",
+		"AuthToken":"[AUTHCODE]",
+		"ReplayToken":"[REPLAYTOKEN]",
+		"UserAgent":"[USERAGENT]"
+	},
+	"TheSSLStoreOrderID":"[PARTNEROID]",
+	"CSR":"[CSR]",
+	"WebServerType":"[WEBSERVER]",
+	"DNSNames":["[DNS1]"],
+	"isRenewalOrder":[ISRENEWALORDER],
+	"SpecialInstructions":"[SPECINST]",
+	"EditSAN":[
+		[EDIT]
+	],
+	"DeleteSAN":[
+		[DELETE]
+	],
+	"AddSAN":[
+		[ADD]
+	],
+	"isWildCard":[ISWILDCARD],
+	"ReissueEmail":"[REISSUEEMAIL]"
+}

@@ -1,0 +1,972 @@
+﻿@using WBSSLStore.Web.Helpers.PopupForm
+@model WBSSLStore.Service.ViewModels.CheckOutViewModel
+@{ WBSSLStore.Web.Util.WBSiteSettings setting = new WBSSLStore.Web.Util.WBSiteSettings(WBSSLStore.Web.Helpers.Caching.SiteCacher.CurrentSite);
+ ViewBag.Title = "Payment";
+ List<WBSSLStore.Domain.ShoppingCartDetail> lstShoppingCart = ViewBag.CartDetails as List<WBSSLStore.Domain.ShoppingCartDetail>;
+ int iCount = 1;
+
+
+ string strEditCart = "<img width='20' height='21'  alt='edit' src='" + @Url.Content("~/Areas/Checkout/content/images/ico-edit.png") + "'  />";
+
+}
+
+<script src="@Url.Content("~/content/scripts/jquery.validate.min.js")" language="javascript" type="text/javascript"></script>
+<script src="@Url.Content("~/Areas/Checkout/content/scripts/jsvat.js")" language="javascript" type="text/javascript"></script>
+<script src="@Url.Content("~/Areas/Checkout/content/scripts/payment.js")" language="javascript" type="text/javascript"></script>
+<script src="@Url.Content("~/content/scripts/jQuery.glob.min.js")" language="javascript" type="text/javascript"></script>
+<link href="@Url.Content("~/content/Themes/" + setting.JQueryTheme + "/jquery-ui.min.css")" rel="stylesheet" type="text/css" />
+@*<script src="@Url.Content("~/Content/Scripts/Jquery.UI/jquery-ui.min.js")"  type="text/javascript"></script>*@
+
+
+<script src="@Url.Content("~/Content/Scripts/WB/WBScript.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Content/Scripts/WB/jquery.form.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Content/Scripts/WB/popup.min.js")" type="text/javascript"></script>
+@if (setting.CurrentCultureKey != "en-US")
+{
+    <script src="@Url.Content("~/content/scripts/jQuery.glob.all.min.js")" language="javascript" type="text/javascript"></script>
+}
+<script type="text/javascript">
+    $.preferCulture("@setting.CurrentCultureKey");
+    var CentarlUrlPath = '@(System.Web.Configuration.WebConfigurationManager.AppSettings["CentralUrl"])';
+    var ISCC = '@(Model.paymentmode == WBSSLStore.Domain.PaymentMode.CC || Model.ISCC)';
+    var IsPayPal = '@(Model.paymentmode == WBSSLStore.Domain.PaymentMode.PAYPAL || Model.IsPayPal)';
+    var IsMoneybookers = '@(Model.paymentmode == WBSSLStore.Domain.PaymentMode.MONEYBOOKERS || Model.IsMoneybookers)';
+    var PayableAmount = parseFloat('@(Convert.ToString(Model.PayableAmount, System.Globalization.CultureInfo.InvariantCulture.NumberFormat))');
+    var PromoDiscount = parseFloat('@(Convert.ToString(Model.PromoDiscount, System.Globalization.CultureInfo.InvariantCulture.NumberFormat))');
+    var OrderAmount = parseFloat('@(Convert.ToString(Model.OrderAmount, System.Globalization.CultureInfo.InvariantCulture.NumberFormat))');
+    var AvailableCredit = parseFloat('@(Convert.ToString(Model.AvailableCredit, System.Globalization.CultureInfo.InvariantCulture.NumberFormat))');
+    var CCName = "@WBSSLStore.Resources.ErrorMessage.Message.CCNameRequired";
+    var Month = "@WBSSLStore.Resources.ErrorMessage.Message.SelectMonth";
+    var Year = "@WBSSLStore.Resources.ErrorMessage.Message.SelectYear";
+    var CVV = "@WBSSLStore.Resources.ErrorMessage.Message.CVVnumber";
+    var defaultVATCountryID = '@setting.VatCountry';
+    var defaultVATCCode = '@ViewBag.VATCountryCode';
+    var vatpercent = '@setting.VATTax';
+    var isvatapplicable = '@setting.IsVatApplicable';
+</script>
+<script src="@Url.Content("~/Content/Scripts/WB/cart.min.js")" type="text/javascript"></script>
+@Html.MakePopupForm("Edit", new[] { "id" }, controller: "ShoppingCart", title: @WBSSLStore.Resources.GeneralMessage.Message.Edit_Shopping_Cart_Caption, successFunction: "", width: 680, refreshOnSuccess: true, okText: @WBSSLStore.Resources.GeneralMessage.Message.SAVE_btn, area: "")
+<div id="dvpayment" class="backgroundPopup" style="position: fixed; display: none; opacity: 0.7;">
+    <img src='@System.Web.Configuration.WebConfigurationManager.AppSettings["CentralUrl"]/Areas/Checkout/content/images/loadingnew.gif' style="margin-top: 25%;
+            margin-left: 50%;" />
+</div>
+<div class="checkoutbg" id="tblShoppingCart">
+
+    <div id="rightpnl">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+
+            <tr>
+                <td class="righthdr">
+                    @WBSSLStore.Resources.GeneralMessage.Message.OrderSummary_Caption
+                </td>
+            </tr>
+            <tr class="rightbox">
+                <td class="headfont">
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0" style="border-left: #d6d6d6 1px solid; border-right: #d6d6d6 1px solid;">
+                        @foreach (WBSSLStore.Domain.ShoppingCartDetail s in lstShoppingCart)
+                        {
+                            <tr id="row-@s.ID">
+                                <td>
+                                    <table width="90%" border="0" align="center" cellpadding="0" cellspacing="0" style="margin-top: 20px;">
+                                        <tr>
+                                            <td width="66%" class="prosumarytitle">
+                                                @s.Product.ProductName
+                                            </td>
+                                            <td width="34%" rowspan="2" valign="middle">
+                                                <table width="50%" border="0" align="right" cellpadding="0" cellspacing="0">
+                                                    <tr>
+                                                        <td align="center">
+                                                            @*<img src="images/ico-edit.png" width="20" height="21" alt="Edit" />*@
+                                                            @(Html.PopupFormActionLink<WBSSLStore.Web.Controllers.ShoppingCartController>(a => a.Edit(@s.ID, null), strEditCart, htmlAttributes: new { value = "" }, area: ""))
+                                                        </td>
+                                                        <td align="center">
+                                                            @*<img src="images/ico-delete.png" width="22" height="22" alt="delete" />*@
+                                                            <img src="@Url.Content("~/Areas/Checkout/content/images/ico-delete.png")" width="22" height="22" alt="edit" class="RemoveLink" data-id="@s.ID" /><br />
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="othertxt">
+                                                @(s.ProductPricing.NumberOfMonths / 12)
+                                                @WBSSLStore.Resources.GeneralMessage.Message.Year_Caption @@<span class="orngtxt">
+                                                    @(s.Product.isNoOfServerFree ? string.Format("{0:C}", s.ProductPricing.SalesPrice) : string.Format("{0:C}", (s.ProductPricing.SalesPrice * s.NumberOfServers)))
+                                                </span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="left" valign="top" class="othertxtitalic">
+                                                @if (!@s.Product.isNoOfServerFree)
+                                                {
+                                                    @((@WBSSLStore.Resources.GeneralMessage.Message.No_Of_Server_Caption + " :" + s.NumberOfServers.ToString()))
+                                                    <br />
+                                                }
+                                                @WBSSLStore.Resources.GeneralMessage.Message.isNewOrder_Caption : @(s.isNewOrder ? "New" : "Renew")
+                                                <br />
+                                                @if (s.AdditionalDomains > 0)
+                                                {
+                                                    @(WBSSLStore.Resources.GeneralMessage.Message.AdditionalDomains_Caption + ":" + (s.AdditionalDomains > s.Product.SanMin ? (s.Product.SanMin + " Free + " + (s.AdditionalDomains - s.Product.SanMin) + " extra=" + s.AdditionalDomains) : (s.Product.SanMin + " Free")))
+                                                    if (s.AdditionalDomains > s.Product.SanMin)
+                                                    {
+                                                        <br />
+                                                        @(WBSSLStore.Resources.GeneralMessage.Message.Shoppingcart_SANPrice + " :" + s.ProductPricing.AdditionalSanPrice.ToString("C") + "/" + WBSSLStore.Resources.GeneralMessage.Message.Checkout_Domain_Caption)
+                                                        <span class="pricetxt">@( string.Format("{0:C}", s.ProductPricing.AdditionalSanPrice * (s.AdditionalDomains - s.Product.SanMin)))</span>
+                                                    }
+                                                }
+                                                @if (s.PromoDiscount > 0 && !string.IsNullOrEmpty(s.PromoCode))
+                                                {
+                                                    @(s.ProductPricing.NumberOfMonths / 12)
+                                                    @WBSSLStore.Resources.GeneralMessage.Message.Year_PromoDisc_Caption
+                                                    <span class="txtitalic">: <b>-@string.Format("{0:C}", s.PromoDiscount)</b></span>
+                                                }
+                                            </td>
+                                            <td align="right" valign="bottom">
+                                                @( string.Format("{0:C}", (((s.AdditionalDomains > 0 && s.AdditionalDomains > s.Product.SanMin) ? s.ProductPricing.AdditionalSanPrice * (s.AdditionalDomains - s.Product.SanMin) : 0) + (s.Product.isNoOfServerFree ? (s.ProductPricing.SalesPrice) : ((s.ProductPricing.SalesPrice * s.NumberOfServers)))) - (s.PromoDiscount > 0 && !string.IsNullOrEmpty(s.PromoCode) ? s.PromoDiscount : 0)))
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2" align="left" valign="top" class="rightpnlbdr">
+                                                &nbsp;
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                                                iCount++;
+                        }
+                        @{
+                            iCount = 1;
+                        }
+
+                        <tr>
+                            <td height="55" class="rightpnltotal">
+                                <table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
+                                    <tr>
+                                        <td>
+                                            @WBSSLStore.Resources.GeneralMessage.Message.Total_Caption
+                                        </td>
+                                        <td align="right" valign="middle" id="cart-total">
+                                            @string.Format("{0:C}", Model.OrderAmount - Model.PromoDiscount)
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+</div>
+<div>
+    @using (Html.BeginForm("pay", "payment", FormMethod.Post, new { @id = "frmpayment" }))
+    {
+        <div>
+            <div id="tblPlaceOrder" class="billingbox billingboxbg">
+                @Html.HiddenFor(x => x.ShoppingCartID)
+                @Html.HiddenFor(x => x.user.ID)
+                @Html.HiddenFor(x => x.user.AddressID)
+                @Html.HiddenFor(x => x.SiteID)
+                @Html.HiddenFor(x => x.user.SiteID)
+                @Html.HiddenFor(x => x.PayableAmount)
+                @Html.HiddenFor(x => x.AvailableCredit)
+                @Html.HiddenFor(x => x.OrderAmount)
+                @Html.HiddenFor(x => x.PromoDiscount)
+                @Html.HiddenFor(x => x.Tax)
+                @Html.HiddenFor(x => x.ISVatApplicable)
+                @Html.HiddenFor(x => x.VatCountry)
+                @Html.HiddenFor(x => x.VatPercent)
+                @Html.HiddenFor(x => x.IsPayPal)
+                @Html.HiddenFor(x => x.IsMoneybookers)
+                @Html.HiddenFor(x => x.ISCC)
+                <!-- Start Billing Info -->
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" border="0">
+                    <tr>
+                        <td height="30" class="text headingtext">
+                            @WBSSLStore.Resources.GeneralMessage.Message.Checkout_BillInfo_Caption
+                        </td>
+                    </tr>
+                    <tr class="boxbg1">
+                        <td align="left" valign="top" style="border: #d6d6d6 1px solid; border-top: none;">
+                            <table width="96%" border="0" align="center" cellpadding="0" cellspacing="0" class="martoptwenty">
+                                <tr>
+                                    <td height="30" colspan="2" class="text">
+                                        <table>
+                                            @if (!string.IsNullOrEmpty(ViewBag.Errormsg))
+                                            {
+                                                <tr>
+                                                    <td colspan="2">
+                                                        <div class="errormsg">
+                                                            @ViewBag.Errormsg
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            }
+                                            <tr>
+                                                <td colspan="2">
+                                                    <label for="email6">
+                                                        @WBSSLStore.Resources.GeneralMessage.Message.FullName_Caption<span class="redtext">
+                                                            *
+                                                        </span>
+                                                    </label>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    @Html.TextBoxFor(x => x.user.FirstName, new { @class = "txtfeild wid190 required", @title = @WBSSLStore.Resources.ErrorMessage.Message.FirstNameRequired })
+                                                    <br>
+                                                    <span class="txtitalic">(@Html.LabelFor(x => x.user.FirstName))</span>
+                                                </td>
+                                                <td>
+                                                    @Html.TextBoxFor(x => x.user.LastName, new { @class = "txtfeild wid190 required", @title = @WBSSLStore.Resources.ErrorMessage.Message.LastNameRequired })
+                                                    <br>
+                                                    <span class="txtitalic">(@Html.LabelFor(x => x.user.LastName))</span>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td height="30" colspan="2" class="text">
+                                        <label for="fullname2">
+                                            @Html.LabelFor(x => x.user.Email) <span class="redtext">
+                                                *<br />
+                                                @Html.TextBoxFor(x => x.user.Email, new { @class = "txtfeild biginput required", @title = WBSSLStore.Resources.ErrorMessage.Message.EmailRequired, @size = 40, @readonly = "readonly" })
+                                            </span>
+                                        </label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td height="30" colspan="2" class="text">
+                                        <label for="organizationalname6">
+                                            @WBSSLStore.Resources.GeneralMessage.Message.Organisation_Caption<span class="redtext">
+                                                *<br />
+                                                @Html.TextBoxFor(x => x.user.CompanyName, new { @class = "txtfeild biginput required", @title = @WBSSLStore.Resources.ErrorMessage.Message.CompanyNameRequired })
+                                            </span>
+                                        </label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td height="30" colspan="2" class="text">
+                                        <label for="country2">
+                                            @WBSSLStore.Resources.GeneralMessage.Message.Country_Caption<span class="redtext">
+                                                *
+                                                <br />
+                                                @Html.DropDownListFor(x => x.user.Address.CountryID, new SelectList(ViewBag.Country as System.Collections.IEnumerable, "ID", "CountryName", Model.user.Address.CountryID), "----Select----", new { @class = "required txtfeild biginput", @title = @WBSSLStore.Resources.ErrorMessage.Message.CountryNameRequired })
+                                            </span>
+                                        </label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td height="30" colspan="2" class="text">
+                                        <label for="city2">
+                                            @WBSSLStore.Resources.GeneralMessage.Message.Checkout_StreetAdd_Caption<span class="redtext">*</span>
+                                        </label>
+                                        <br />
+                                        @Html.TextBoxFor(x => x.user.Address.Street, new { @class = " txtfeild biginput required", @title = @WBSSLStore.Resources.ErrorMessage.Message.StreetRequired })
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td height="30" colspan="2" class="text">
+                                        <label for="province/state2">
+                                            @WBSSLStore.Resources.GeneralMessage.Message.City_Caption <span class="redtext">
+                                                *<br />
+                                            </span>
+                                        </label>
+                                        @Html.TextBoxFor(x => x.user.Address.City, new { @class = "txtfeild biginput required", @title = @WBSSLStore.Resources.ErrorMessage.Message.CityRequired })
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td height="30" class="text wid190">
+                                        <label for="postal/zipcode6">
+                                            @WBSSLStore.Resources.GeneralMessage.Message.State_Caption <span class="redtext">*</span>
+                                        </label>
+                                        <br />
+                                        @Html.EditorFor(x => x.user.Address.State, new { @class = "required txtfeild !important " })
+                                    </td>
+                                    <td class="text">
+                                        <label for="postal/zipcode6">
+                                            @WBSSLStore.Resources.GeneralMessage.Message.Zip_Caption <span class="redtext">*</span>
+                                        </label>
+                                        <br />
+                                        @Html.TextBoxFor(x => x.user.Address.Zip, new { @class = "txtfeild wid60 required", @title = @WBSSLStore.Resources.ErrorMessage.Message.ZipRequired, @maxlength = "30" })
+                                        <br />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td height="30" colspan="2" class="text">
+                                        <label for="phone2">
+                                            @WBSSLStore.Resources.GeneralMessage.Message.Phone_Caption <span class="redtext">*</span>
+                                        </label>
+                                        <br />
+                                        @Html.TextBoxFor(x => x.user.Address.Phone, new { @class = "txtfeild wid130 required", @title = @WBSSLStore.Resources.ErrorMessage.Message.PhoneRequired, @maxlength = "20" })
+                                        <br />
+                                        <span class="txtitalic">ie (727) 123-4567</span>
+                                    </td>
+                                </tr>
+                                @if (Model.ISVatApplicable)
+                                {
+                                    <tr>
+                                        <td height="30" colspan="2" class="text">
+                                            <label for="postal/zipcode6">
+                                                @WBSSLStore.Resources.GeneralMessage.Message.VAT
+                                                <span class="redtext">*</span>
+                                            </label>
+                                            <br />
+                                            @Html.TextBoxFor(x => x.VATNumber, new { @class = "txtfeild wid130" })
+                                            <span id="pLoaderImg" class="redtext"></span>
+                                        </td>
+                                    </tr>
+                                }
+                            </table>
+                        </td>
+                    </tr>
+                    <tr class="tdbodybg">
+                        <td height="30" align="left" valign="top" class="text">
+                            &nbsp;
+                        </td>
+                    </tr>
+                </table>
+                <table border="0" align="left" cellpadding="0" cellspacing="0" width="100%">
+                    <tr>
+                        <td height="30" align="left" valign="top" class="text">
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td height="30" class="headingtext">
+                                        @WBSSLStore.Resources.GeneralMessage.Message.Checkout_PayDetail_Caption
+                                    </td>
+                                </tr>
+                                <tr class="boxbg">
+                                    <td align="left" valign="top" style="border: #d6d6d6 1px solid; border-top: none;">
+                                        <table width="96%" border="0" align="center" cellpadding="0" cellspacing="0" class="martoptwenty">
+                                            @if (Model.AvailableCredit > 0)
+                                            {
+                                                <tr>
+                                                    <td height="30" colspan="2" class="text">
+                                                        <label for="email6">
+                                                            @WBSSLStore.Resources.GeneralMessage.Message.Checkout_AvailCredit_Caption
+                                                        </label>
+                                                    </td>
+                                                    <td id="strcredit">
+                                                        @string.Format("{0:C}", Model.AvailableCredit)
+                                                    </td>
+                                                </tr>
+                                            }
+                                            <tr id="trvattaxamount" style="display: none;">
+                                                <td height="30" colspan="2" class="text">
+                                                    <label for="email6">
+                                                        @WBSSLStore.Resources.GeneralMessage.Message.Tax_Caption
+                                                    </label>
+                                                </td>
+                                                <td id="vattaxamount">
+                                                    @string.Format("{0:C}", Model.Tax)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td height="30" colspan="2" class="text">
+                                                    <label>
+                                                        @WBSSLStore.Resources.GeneralMessage.Message.Checkout_PayableAmt_Caption
+                                                    </label>
+                                                </td>
+                                                <td id="payorderamount">
+                                                    @string.Format("{0:C}", Model.PayableAmount)
+                                                </td>
+                                            </tr>
+                                            <div id="useCredit">
+                                                <tr>
+                                                    <td height="30" colspan="2" class="text">
+                                                        <label for="email6">
+                                                            @WBSSLStore.Resources.GeneralMessage.Message.Checkout_OrderAmt_Caption
+                                                        </label>
+                                                    </td>
+                                                    <td id="strorderamount">
+                                                        @string.Format("{0:C}", Model.OrderAmount)
+                                                    </td>
+                                                </tr>
+                                                @if (Model.PromoDiscount > 0)
+                                                {
+                                                    <tr>
+                                                        <td height="30" colspan="2" class="text">
+                                                            <label for="email6">
+                                                                @WBSSLStore.Resources.GeneralMessage.Message.Invoice_Discount_Caption
+                                                            </label>
+                                                        </td>
+                                                        <td id="strdiscount">
+                                                            @string.Format("{0:C}", Model.PromoDiscount)
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            </div>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr class="tdbodybg">
+                        <td height="30">
+                            &nbsp;
+                        </td>
+                    </tr>
+                    @if ((Model.ISCC || Model.IsPayPal || Model.IsMoneybookers))
+                    {
+                        <tr>
+                            <td height="30" class="headingtext">
+                                @if (Model.PayableAmount > 0)
+                                {
+                                    @WBSSLStore.Resources.GeneralMessage.Message.Checkout_SelectPayment_Header
+                                }
+                                else
+                                {
+                                    @WBSSLStore.Resources.GeneralMessage.Message.Checkout_PlaceOrder_Caption
+                                }
+                            </td>
+                        </tr>
+                        <tr>
+                            <td height="30" align="left" valign="top" class="text">
+                                <table width="100%" border="0" cellspacing="0" cellpadding="0" style="border: #d6d6d6 1px solid; border-top: none;">
+                                    <tr class="boxbg">
+                                        <td colspan="2" align="left" valign="top" class="text">
+                                            @if (Model.PayableAmount > 0 && (Model.ISCC || Model.IsPayPal || Model.IsMoneybookers))
+                                            {
+                                                <table width="96%" border="0" cellpadding="0" cellspacing="0" class="martoptwenty">
+                                                    <tr>
+                                                        <td>
+                                                            <table width="75%" border="0" cellspacing="0" cellpadding="0">
+                                                                <tr>
+                                                                    @if (Model.ISCC)
+                                                                    {
+                                                                        <td>
+                                                                            @*<input name="button" type="submit" class="cardbtn" id="button" onclick="location.href='#'"
+                                                                                value="Credit Card" />*@
+                                                                            <label for="rbcc" class="actbtn">
+                                                                                @Html.RadioButtonFor(x => x.paymentmode, WBSSLStore.Domain.PaymentMode.CC, new { @id = "rbcc" })
+                                                                                @WBSSLStore.Resources.GeneralMessage.Message.CreditCard_Caption
+                                                                            </label>
+                                                                        </td>
+                                                                    }
+                                                                    @if (Model.IsPayPal)
+                                                                    {
+                                                                        <td>
+                                                                            @* <input name="button3" type="submit" class="cardbtndeactive" id="button3" onclick="location.href='#'"
+                                                                                value="Pay Pal" />*@
+                                                                            <label for="rbpp" class="deactbtn">
+                                                                                @Html.RadioButtonFor(x => x.paymentmode, WBSSLStore.Domain.PaymentMode.PAYPAL, new { @id = "rbpp" })
+                                                                                @WBSSLStore.Resources.GeneralMessage.Message.Paypal_Caption
+                                                                            </label>
+                                                                        </td>
+                                                                    }
+                                                                    @if (Model.IsMoneybookers)
+                                                                    {
+                                                                        <td>
+                                                                            @*<input name="button4" type="submit" class="cardbtndeactive" id="button4" onclick="location.href='#'"
+                                                                                value="Google Wallet" />*@
+                                                                            <label for="rbmb" class="deactbtn">
+                                                                                @Html.RadioButtonFor(x => x.paymentmode, WBSSLStore.Domain.PaymentMode.MONEYBOOKERS, new { @id = "rbmb" })
+                                                                                @if (Model.SiteID.Equals(10))
+                                                                                { <span>Pay by credit card</span> }
+                                                                                else
+                                                                                { <span>@WBSSLStore.Resources.GeneralMessage.Message.Moneybookers_Caption</span>
+                                                                                }
+                                                                            </label>
+                                                                        </td>
+                                                                    }
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            }
+                                            <table width="96%" border="0" align="center" cellpadding="0" cellspacing="0" style="border: #d6d6d6 1px solid"
+                                                   class="martoptwenty">
+                                                @if (Model.PayableAmount > 0 && (Model.ISCC || Model.IsPayPal || Model.IsMoneybookers))
+                                                {
+
+                                                    if (Model.ISCC)
+                                                    {
+                                                        <tr>
+                                                            <td height="30" colspan="2">
+                                                                <table id="CCcreditCARD" width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+                                                                    <tr>
+                                                                        <td width="25" align="left" valign="middle" class="creditcard">
+                                                                            @WBSSLStore.Resources.GeneralMessage.Message.Checkout_CreditCInfo_Header
+                                                                        </td>
+                                                                        <td width="73%" align="center" valign="middle">
+                                                                            <img src="@Url.Content("~/Areas/Checkout/content/images/all-cards.png")" width="179" height="38" alt="cards">
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td colspan="2" align="left" valign="top">
+                                                                            <table width="96%" border="0" align="center" cellpadding="0" cellspacing="0">
+                                                                                <tr>
+                                                                                    <td height="30" colspan="2" class="text">
+                                                                                        <label for="fullname4">
+                                                                                            @WBSSLStore.Resources.GeneralMessage.Message.Checkout_CreditCard_Caption:<span class="redtext">*</span><br />
+                                                                                            @Html.TextBoxFor(x => x.CCNumber, new { @title = @WBSSLStore.Resources.GeneralMessage.Message.CC_No_Title_Caption, @maxlength = "16", @class = "txtfeild wid190" })
+                                                                                            <br />
+                                                                                        </label>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td height="30" colspan="2" class="text">
+                                                                                        <label for="organizationalname8">
+                                                                                            @WBSSLStore.Resources.GeneralMessage.Message.CardName_Caption: <span class="redtext">*</span><br />
+                                                                                            @Html.TextBoxFor(x => x.CCName, new { @class = "txtfeild wid190" })
+                                                                                        </label>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td height="30" class="text">
+                                                                                        <label for="postal/zipcode8">
+                                                                                            @WBSSLStore.Resources.GeneralMessage.Message.Checkout_CardExpiry_Caption: <span class="redtext">*</span>
+                                                                                        </label>
+                                                                                        <br />
+                                                                                        @*<input type="text" name="city" id="city" class="txtfeild smalltxt60" />*@
+                                                                                        @Html.DropDownListFor(x => x.Month, new SelectList(new[] { 01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12 }, Model.Month), @WBSSLStore.Resources.GeneralMessage.Message.Months_Caption, new { @class = "txtfeild smalltxt60" })
+                                                                                        / @*<input type="text" name="city2" id="city6" class="txtfeild smalltxt60" />*@
+                                                                                        @Html.DropDownListFor(x => x.Year, new SelectList(new[] { 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022 }, Model.Year), @WBSSLStore.Resources.GeneralMessage.Message.Year_Caption, new { @class = "txtfeild smalltxt60" })
+                                                                                    </td>
+                                                                                    <td align="left" valign="bottom" class="text">
+                                                                                        <label for="postal/zipcode8">
+                                                                                            @WBSSLStore.Resources.GeneralMessage.Message.Checkout_CCVCode_Caption: <span class="redtext">*</span>
+                                                                                            <br />
+                                                                                            @Html.PasswordFor(x => x.CVV, new { @size = 4, @class = "txtfeild smalltxt60 floatleft" })
+                                                                                            <img src="@Url.Content("~/Areas/Checkout/content/images/card.jpg")" width="44" height="28" alt="card" class="floatleft" style="margin: 5px 0; padding: 0 10px;" />
+                                                                                            <br />
+                                                                                        </label>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td height="30" colspan="2" class="text">
+                                                                                        &nbsp;
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td width="60%" height="30" class="text"></td>
+                                                                                    <td width="40%" class="text"></td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td height="10" class="text">
+                                                                                        &nbsp;
+                                                                                    </td>
+                                                                                    <td class="text">
+                                                                                        &nbsp;
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </table>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                    }
+
+                                                    if (Model.IsPayPal)
+                                                    {
+
+
+                                                        <tr id="ppPaypal">
+                                                            <td colspan="2">
+                                                                <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+                                                                    <tr>
+                                                                        <td width="25" align="left" valign="middle" class="creditcard">
+                                                                            @WBSSLStore.Resources.GeneralMessage.Message.Paypal_Caption
+                                                                        </td>
+                                                                        <td width="73%" align="right" valign="middle"></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td width="25" align="left" valign="middle" class=""></td>
+                                                                        <td width="73%" align="right" valign="middle"></td>
+                                                                    </tr>
+                                                                    <tr class="paypaltxt">
+                                                                        <td width="90%" align="left" valign="middle" class="leftpadding">
+                                                                            <img src="@Url.Content("~/Areas/Checkout/content/images/checkout-paypal.png")" width="300" alt="paypal" />
+                                                                            <br />
+
+                                                                            @WBSSLStore.Resources.GeneralMessage.Message.payment_Paypal_msg
+                                                                            <br />
+                                                                        </td>
+                                                                        <td width="10%" align="right" valign="middle"></td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                    if (Model.IsMoneybookers)
+                                                    {
+                                                        <tr id="ppMoneybookers">
+                                                            <td colspan="2">
+                                                                <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+                                                                    <tr>
+                                                                        <td width="25" align="left" valign="middle" class="creditcard">
+                                                                            @WBSSLStore.Resources.GeneralMessage.Message.MoneybookersId_Caption
+                                                                        </td>
+                                                                        <td width="73%" align="right" valign="middle"></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td width="25" align="left" valign="middle" class=""></td>
+                                                                        <td width="73%" align="right" valign="middle"></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td width="90%" align="left" valign="middle" class="leftpadding">
+                                                                            <img src="@Url.Content("~/Areas/Checkout/content/images/checkout-moneybookers.png")" alt="paypal" />
+                                                                        </td>
+                                                                        <td width="10%" align="right" valign="middle" class=""></td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+
+                                                    }
+
+                                                }
+                                                @if (Model.ISCC || Model.IsPayPal || Model.IsMoneybookers)
+                                                {
+                                                    <tr>
+                                                        <td width="60%" height="30" class="text leftpadding" style="padding-top:15px;">
+                                                            <button type="button" name="button" id="btnplaceOrder" value="Confirm" class="btnormal">
+                                                                <span>@WBSSLStore.Resources.GeneralMessage.Message.Checkout_PlaceOrder_Caption</span>
+                                                            </button>
+                                                        </td>
+                                                        <td width="40%" class="text">
+                                                            @* <script language="JavaScript" type="text/javascript" src="https://smarticon.geotrust.com/si.js"></script>*@
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            &nbsp;
+                                                        </td>
+                                                        <td></td>
+                                                    </tr>
+
+                                                }
+                                            </table>
+                                        </td>
+                                        <td>
+                                            &nbsp;
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
+        </div>
+        <div>
+            <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" id="tblConfirm"
+                   style="display: none" class="">
+                <tr>
+                    <td class="headingtext brdlftritnone" colspan="5">
+                        @WBSSLStore.Resources.GeneralMessage.Message.Checkout_ConOrder_Caption
+                    </td>
+                </tr>
+                <tr align="left" valign="top">
+                    <td colspan="5" class="boxbg">
+                        <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" class="martoptwenty">
+                            <tr>
+                                <td colspan="2">
+                                    <span class="text">@WBSSLStore.Resources.LongText.Message.CheckOut_Note</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="50%" bgcolor="#CCCCCC" class="billingleft">
+                                    <strong>@WBSSLStore.Resources.GeneralMessage.Message.BillingAddress_Caption</strong><br />
+                                    <p id="spBilling">
+                                    </p>
+                                </td>
+                                <td width="50%" class="billingright">
+                                    <table>
+                                        <tr>
+                                            <td colspan="2">
+                                                <strong>@WBSSLStore.Resources.GeneralMessage.Message.Checkout_PaymentInfo_Caption</strong><br />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                @WBSSLStore.Resources.GeneralMessage.Message.PaymentType_Caption:
+                                            </td>
+                                            <td id="tdpaymenttype"></td>
+                                        </tr>
+                                        <tr>
+                                            <td id="ccnoCaption">
+                                                @*@WBSSLStore.Resources.GeneralMessage.Message.CreditCardNo_Caption*@
+                                            </td>
+                                            <td id="tdccnumber"></td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr align="left" valign="top">
+                    <td>
+                        &nbsp;
+                    </td>
+                </tr>
+                <tr align="left" valign="top">
+                    <td colspan="5" class="boxbg">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td class="headingtext brdlftritnone">
+                                    @WBSSLStore.Resources.GeneralMessage.Message.OrderSummary_Caption
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="left" valign="top">
+                                    <table width="98%" border="0" align="center" cellpadding="0" cellspacing="1" class="martoptwenty">
+                                        <tr class="rawtitletxt">
+                                            <td width="52%" align="left" class="padlft15">
+                                                @WBSSLStore.Resources.GeneralMessage.Message.Product_Caption
+                                            </td>
+                                            <td width="12%" align="center">
+                                                Servers
+                                            </td>
+                                            <td width="12%" align="center">
+                                                @WBSSLStore.Resources.GeneralMessage.Message.Year_Caption
+                                            </td>
+                                            <td width="12%" align="center">
+                                                @WBSSLStore.Resources.GeneralMessage.Message.isNewOrder_Caption
+                                            </td>
+                                            <td width="12%" align="center">
+                                                @WBSSLStore.Resources.GeneralMessage.Message.Price_Caption
+                                            </td>
+                                        </tr>
+                                        @foreach (WBSSLStore.Domain.ShoppingCartDetail s in lstShoppingCart)
+                                        {
+                                            <tr>
+                                                <td height="30" class="rawonetxt padlft15" align="left" valign="top">
+                                                    @s.Product.ProductName
+                                                    <br />
+                                                    @if (s.AdditionalDomains > 0 && s.AdditionalDomains > s.Product.SanMin)
+                                                    {
+                                                        <span style="font-style: italic; font-size: 12px;">
+                                                            @WBSSLStore.Resources.GeneralMessage.Message.AdditionalDomains_Caption
+                                                            : San (@(s.AdditionalDomains - s.Product.SanMin))
+                                                        </span>
+                                                    }
+                                                </td>
+                                                <td align="center" class="rawonetxt" valign="top">
+                                                    @(!@s.Product.isNoOfServerFree ? s.NumberOfServers.ToString() : "Unlimited")
+                                                </td>
+                                                <td align="center" class="rawonetxt" valign="top">
+                                                    @if (s.AdditionalDomains > 0 && s.AdditionalDomains > s.Product.SanMin)
+                                                    {
+                                                        <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+                                                            <tr>
+                                                                <td align="center">
+                                                                    @(s.ProductPricing.NumberOfMonths / 12)
+                                                                    @WBSSLStore.Resources.GeneralMessage.Message.Year_Caption
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td align="center"></td>
+                                                            </tr>
+                                                        </table>
+
+                                                    }
+                                                    else
+                                                    {
+                                                        @(s.ProductPricing.NumberOfMonths / 12)
+                                                        @WBSSLStore.Resources.GeneralMessage.Message.Year_Caption
+                                                    }
+                                                </td>
+                                                <td align="center" class="rawonetxt" valign="top">
+                                                    @if (s.AdditionalDomains > 0 && s.AdditionalDomains > s.Product.SanMin)
+                                                    {
+                                                        <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+                                                            <tr>
+                                                                <td align="center">
+                                                                    @(s.isNewOrder ? "New" : "Renew")
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td align="center">
+                                                                    @(s.ProductPricing.AdditionalSanPrice.ToString("C") + "/" + WBSSLStore.Resources.GeneralMessage.Message.Checkout_Domain_Caption)
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    }
+                                                    else
+                                                    {
+
+                                                        @(s.isNewOrder ? "New" : "Renew")
+                                                    }
+                                                </td>
+                                                <td align="center" class="rawonetxt" valign="top">
+                                                    @if (s.AdditionalDomains > 0 && s.AdditionalDomains > s.Product.SanMin)
+                                                    {
+                                                        <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+                                                            <tr>
+                                                                <td align="center">
+                                                                    @(s.Product.isNoOfServerFree ? string.Format("{0:C}", s.ProductPricing.SalesPrice) : string.Format("{0:C}", (s.ProductPricing.SalesPrice * s.NumberOfServers)))
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td align="center">
+                                                                    @( string.Format("{0:C}", s.ProductPricing.AdditionalSanPrice * (s.AdditionalDomains - s.Product.SanMin)))
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    }
+                                                    else
+                                                    {
+                                                        @(s.Product.isNoOfServerFree ? string.Format("{0:C}", s.ProductPricing.SalesPrice) : string.Format("{0:C}", (s.ProductPricing.SalesPrice * s.NumberOfServers)))
+                                                    }
+                                                </td>
+                                            </tr>
+                                                    iCount++;
+                                        }
+                                        @{
+        iCount = 1;
+                                        }
+                                        <tr>
+                                            <td width="52%">
+                                                &nbsp;
+                                            </td>
+                                            <td width="12%">
+                                                &nbsp;
+                                            </td>
+                                            <td width="12%">
+                                                &nbsp;
+                                            </td>
+                                            <td width="12%">
+                                                <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="rawtitletxt">
+                                                    <tr>
+                                                        <td align="center">
+                                                            @WBSSLStore.Resources.GeneralMessage.Message.Checkout_OrderAmt_Caption
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="center">
+                                                            @WBSSLStore.Resources.GeneralMessage.Message.Tax_Caption
+                                                        </td>
+                                                    </tr>
+                                                    @if (Model.AvailableCredit > 0)
+                                                    {
+                                                        <tr>
+                                                            <td align="center">
+                                                                @WBSSLStore.Resources.GeneralMessage.Message.Checkout_CreditAmt_Caption
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                    @if (Model.PromoDiscount > 0)
+                                                    {
+                                                        <tr>
+                                                            <td height="30" align="center" class="text">
+                                                                @WBSSLStore.Resources.GeneralMessage.Message.Invoice_Discount_Caption:
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                    <tr>
+                                                        <td align="center">
+                                                            @WBSSLStore.Resources.GeneralMessage.Message.Checkout_PayableAmt_Caption
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                            <td width="12%">
+                                                <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="rawonetxt">
+                                                    <tr>
+                                                        <td align="center" class="rawtwotxt" id="tdorderamount"></td>
+                                                    </tr>
+                                                    <tr id="trtax">
+                                                        <td align="center" class="rawtwotxt" id="tdtax"></td>
+                                                    </tr>
+                                                    @if (Model.AvailableCredit > 0)
+                                                    {
+                                                        <tr>
+                                                            <td align="center" class="rawtwotxt" id="tdcreditamount"></td>
+                                                        </tr>
+                                                    }
+                                                    @if (Model.PromoDiscount > 0)
+                                                    {
+
+                                                        <tr>
+                                                            <td align="center" class="rawtwotxt" id="tddiscount"></td>
+                                                        </tr>
+                                                    }
+                                                    <tr>
+                                                        <td align="center" id="tdpayableamount"></td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                &nbsp;
+                                            </td>
+                                            <td>
+                                                &nbsp;
+                                            </td>
+                                            <td>
+                                                &nbsp;
+                                            </td>
+                                            <td colspan="2">
+                                                &nbsp;
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td width="52%">
+                                                <a id="btnback" style="margin-left: 0px; cursor: pointer; text-decoration: underline;">
+                                                    <strong>@WBSSLStore.Resources.GeneralMessage.Message.Checkout_Back_btn</strong>
+                                                </a>
+                                            </td>
+                                            <td width="12%">
+                                                &nbsp;
+                                            </td>
+                                            <td width="12%">
+                                                &nbsp;
+                                            </td>
+                                            <td colspan="2">
+                                                <button type="submit" name="button" id="button" value="@WBSSLStore.Resources.GeneralMessage.Message.Checkout_Confirm_btn" class="btnormal"
+                                                        onclick="CheckValidation()">
+                                                    @WBSSLStore.Resources.GeneralMessage.Message.Checkout_Confirm_btn
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        &nbsp;
+                    </td>
+                    <td>
+                        &nbsp;
+                    </td>
+                    <td>
+                        &nbsp;
+                    </td>
+                    <td colspan="2">
+                        &nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        &nbsp;
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="clear">
+        </div>
+        @*<table width="980" border="0" align="center" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td height="55" align="center" valign="middle" class="footerbar">
+                        All Rights Reserved by @( setting.CurrentSite.Alias)
+                    </td>
+                </tr>
+            </table>*@
+    }
+    @{
+        setting = null;
+    }
+</div>

@@ -1,0 +1,12 @@
+﻿{
+	"AuthRequest":{
+		"PartnerCode":"[PARTNERCODE]",
+		"AuthToken":"[AUTHCODE]",
+		"ReplayToken":"[REPLAYTOKEN]",
+		"UserAgent":"[USERAGENT]"
+	},
+	"StartDate":[STARTDATE],
+	"EndDate":[ENDDATE],
+	"SubUserID":"[SUBUSERID]",
+	"ProductCode":"[PRDCODE]"
+}

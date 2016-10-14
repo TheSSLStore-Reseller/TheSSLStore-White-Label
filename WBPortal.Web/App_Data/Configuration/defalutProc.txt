@@ -1,0 +1,134 @@
+
+CREATE PROCEDURE [dbo].[DefalutProcedures]
+AS
+    BEGIN
+        DECLARE @dm AS NVARCHAR(max) = 'CREATE PROCEDURE [dbo].[GetUserAccountDeatils] (@UserID as int,	@SiteID as INT) AS BEGIN	
+	SET NOCOUNT ON;
+	Declare @ContractName as Varchar(50),@TotalPurchase as money,@CuurentBalance as money,@TotalOrders as int,@TotalInCompleteOrders as int,@TotalSupportIncident as int
+	
+	SELECT @ContractName=ContractName from Contracts where ID=dbo.GetCurrentContractFromUserID(@UserID,@SiteID)
+	
+	SELECT @TotalPurchase=SUM(od.Price) from 
+	Orders o inner join OrderDetails od on o.ID=od.OrderID 
+	where od.OrderStatusID!=2 and o.UserID=@UserID and o.SiteID=@SiteID
+	
+	Select @CuurentBalance=SUM(TransactionAmount) from UserTransactions where UserID=@UserID and SiteID=@SiteID
+	
+
+	Select @TotalOrders=count(od.ID)  from 
+	Orders o inner join OrderDetails od on o.ID=od.OrderID 
+	where od.OrderStatusID!=2 and o.UserID=@UserID and o.SiteID=@SiteID and isnull(od.ExternalOrderID,'')!='' and od.OrderStatusID!=2
+	
+	Select @TotalInCompleteOrders=count(od.ID)  from 
+	Orders o inner join OrderDetails od on o.ID=od.OrderID 
+	where od.OrderStatusID!=2 and o.UserID=@UserID and o.SiteID=@SiteID and isnull(od.ExternalOrderID,'')='' and od.OrderStatusID!=2
+	
+	select @TotalSupportIncident=COUNT(ID) from SupportRequests where UserID=@UserID and SiteID=@SiteID and isOpen=1
+	
+	select u.*,@ContractName as ContractName,
+	a.DateCreated as RegisterDate,@TotalPurchase as TotalPurchase,@CuurentBalance as CuurentBalance,@TotalOrders as TotalOrders,@TotalInCompleteOrders as TotalInCompleteOrders
+	 from Users u inner join Audits a on u.AuditID=a.ID where u.ID=@UserID and SiteID=@SiteID 
+	END  '
+        EXEC @dm
+
+		SET @dm = 'Create PROCEDURE [dbo].[SSLAdmin_GetAdminDashBord] @SiteID INT    
+	AS     
+    BEGIN    
+     
+        DECLARE @Renew AS INT ,    
+            @Orders AS INT ,    
+            @ActiveCustomer AS INT ,    
+            @RefundRequest AS INT ,    
+            @ActiveContracts AS INT ,    
+            @ActiveResellers AS INT ,    
+            @InActiveResellers AS INT    
+	--Renew    
+        SELECT  @Renew = COUNT(od.ID)    
+        FROM    dbo.OrderDetails od    
+                INNER JOIN dbo.Orders o ON od.OrderID = o.ID    
+        WHERE   o.SiteID = @SiteID    
+                AND od.OrderStatusID = 1    
+                AND ( DATEDIFF(day, GETDATE(), od.CertificateExpiresOn) <= 30 )      
+                    
+	--Orders                    
+        SELECT  @Orders = COUNT(OrderDetails.ID)    
+        FROM    Orders    
+                INNER JOIN OrderDetails ON Orders.ID = OrderDetails.OrderID    
+        WHERE   Orders.SiteID = @SiteID    
+                --AND ISNULL(OrderDetails.ExternalOrderID, '') <> ''
+                AND dbo.OrderDetails.OrderStatusID != 2            
+     
+	--Active Customer     
+        SELECT  @ActiveCustomer = COUNT(ID)    
+        FROM    Users    
+        WHERE   SiteID = @SiteID    
+                AND ISNULL(RecordStatusID, 0) = 1    
+                AND ISNULL(UserTypeID, 0) = 0    
+                    
+                       
+	--Refund Request     
+        SELECT  @RefundRequest = COUNT(ID)    
+        FROM    dbo.SupportRequests    
+        WHERE   SiteID = @SiteID    
+                AND isOpen = 1    
+                --AND RefundStatusID = 1    
+     
+	--Active Contracts     
+        SELECT  @ActiveContracts = COUNT(ID)    
+        FROM    dbo.Contracts    
+        WHERE   SiteID = @SiteID    
+                AND isForReseller = 1    
+                AND RecordStatusID = 1    
+     
+	--Active Resellers     
+        SELECT  @ActiveResellers = COUNT(ID)    
+        FROM    dbo.Users    
+        WHERE   SiteID = @SiteID    
+                AND ISNULL(RecordStatusID, 0) = 1    
+                AND ISNULL(UserTypeID, 0) = 1    
+                    
+	--InActive Resellers     
+        SELECT  @InActiveResellers = COUNT(ID)    
+        FROM    dbo.Users    
+        WHERE   SiteID = @SiteID    
+                AND ISNULL(RecordStatusID, 0) = 0    
+                AND ISNULL(UserTypeID, 0) = 1    
+                    
+        SELECT  @Renew Renew,    
+                @Orders TotalOrders,    
+                @ActiveCustomer ActiveUsers,    
+                @RefundRequest RefundRequest,    
+                @ActiveContracts ActiveContracts,    
+                @ActiveResellers ActiveResellers,    
+                @InActiveResellers InActiveResellers    
+                    
+    END '
+
+	EXEC @dm
+
+
+	SET @dm = 'Create PROCEDURE [dbo].[SSLAdmin_GetSiteDefaultData] @APIPartnerCode INT
+	AS 
+    BEGIN   
+        SELECT  dbo.Users.* ,
+                dbo.Sites.CName ,
+                dbo.Sites.Alias ,
+                dbo.Sites.isActive ,
+                dbo.Sites.DateCreated ,
+                dbo.Sites.DateModified ,
+                dbo.Sites.APIUsername ,
+                dbo.Sites.APIPassword ,
+                dbo.Sites.APIPartnerCode ,
+                dbo.Sites.APIisInTest
+        FROM    dbo.Users
+                INNER JOIN dbo.Sites ON dbo.Users.SiteID = dbo.Sites.ID
+        WHERE   Sites.APIPartnerCode = @APIPartnerCode
+                AND dbo.Sites.isActive = 1
+    END'
+	EXEC @dm
+
+
+	SET @dm = 'Create PROCEDURE [dbo].[SSLAdmin_GetSites]  AS     BEGIN    Select * from sites END '
+	EXEC @dm
+
+    END  

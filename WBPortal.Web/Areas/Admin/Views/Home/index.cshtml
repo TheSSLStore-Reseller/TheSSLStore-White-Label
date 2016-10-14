@@ -1,0 +1,482 @@
+﻿@using WBSSLStore.Web.Helpers.Authentication
+@model WBSSLStore.Domain.AdminDashboard
+@{
+    ViewBag.Title = "Home";
+    if (User.Identity.IsAuthenticated)
+    {
+        SSLStoreUser loginuser = (SSLStoreUser)Membership.GetUser();
+        ViewBag.UserID = loginuser.Details.ID;
+    }
+}
+<tr>
+    <td align="left" valign="top">
+        <table width="881" border="0" align="left" cellpadding="0" cellspacing="0">
+            <tr>
+                <td width="7" align="left" valign="top">
+                    <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/barleft.gif" alt="whitebrand" width="7" height="55">
+                </td>
+                <td width="866" align="left" valign="middle" class="hdbarbg">
+                    <table width="840" border="0" align="center" cellpadding="1" cellspacing="1">
+                        <tr>
+                            <td width="407" align="left" valign="middle" class="head1">
+                                @*Dashboard*@ @WBSSLStore.Resources.GeneralMessage.Message.Dashboard_Caption
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td width="9" align="right" valign="top">
+                    <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/barright.gif" alt="whitebrand" width="9" height="55">
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>
+<tr>
+    <td align="left" valign="top" class="contbg">
+        <table width="870" border="0" align="center" cellpadding="0" cellspacing="7">
+            <tr>
+                <td width="867" align="center" valign="top" class="bgclr">
+                    <table width="820" border="0" align="center" cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td height="40" align="left" valign="middle">
+                                <h1>
+                                    @*Account Summary*@ @WBSSLStore.Resources.GeneralMessage.Message.AccSummary_Header</h1>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="left" valign="top">
+                                <table width="820" border="0" align="left" cellpadding="0" cellspacing="0">
+                                    <tr>
+                                        <td width="410" align="left" valign="top">
+                                            <table width="365" border="0" cellspacing="0" cellpadding="0">
+                                                <tr>
+                                                    <td width="369" align="left" valign="top" class="barbtnbg">
+                                                        <table width="350" border="0" align="center" cellpadding="0" cellspacing="0">
+                                                            <tr>
+                                                                <td width="30" align="center" valign="middle">
+                                                                    <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-renewal.png" alt="renewal" width="16" height="16">
+                                                                </td>
+                                                                <td width="147" align="left" valign="middle" class="commonlink">
+                                                                    @*Renewal Alerts*@ @WBSSLStore.Resources.GeneralMessage.Message.RenewalAlerts_Caption:
+                                                                </td>
+                                                                <td width="175" height="22" align="left" valign="middle" class="bluefont">
+                                                                    @Model.RenewalAlerts
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td height="5" align="left" valign="top">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="left" valign="middle" class="barbtnbg">
+                                                        <table width="350" border="0" align="center" cellpadding="0" cellspacing="0">
+                                                            <tr>
+                                                                <td width="30" align="center" valign="middle">
+                                                                    <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-total.png" alt="renewal" width="16" height="16">
+                                                                </td>
+                                                                <td width="147" align="left" valign="middle" class="commonlink">
+                                                                    @*Total Orders*@ @WBSSLStore.Resources.GeneralMessage.Message.TotalOrders_Caption:
+                                                                </td>
+                                                                <td width="175" height="22" align="left" valign="middle" class="bluefont">
+                                                                    <a href="@Url.Action("index", "Orders")">@Model.TotalOrders</a>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td height="5" align="left" valign="top">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="left" valign="top" class="barbtnbg">
+                                                        <table width="350" border="0" align="center" cellpadding="0" cellspacing="0">
+                                                            <tr>
+                                                                <td width="30" align="center" valign="middle">
+                                                                    <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-action.png" alt="renewal" width="16" height="16">
+                                                                </td>
+                                                                <td width="147" align="left" valign="middle" class="commonlink">
+                                                                    @*Active Users*@ @WBSSLStore.Resources.GeneralMessage.Message.ActiveUsers_Caption:
+                                                                </td>
+                                                                <td width="175" height="22" align="left" valign="middle" class="bluefont">
+                                                                    <a href="@Url.Action("index", "customer")">@Model.ActiveUsers</a>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td height="5" align="left" valign="top">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="left" valign="top" class="barbtnbg">
+                                                        <table width="350" border="0" align="center" cellpadding="0" cellspacing="0">
+                                                            <tr>
+                                                                <td width="30" align="center" valign="middle">
+                                                                    <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-refund-request.png" alt="refund request" width="16"
+                                                                        height="16">
+                                                                </td>
+                                                                <td width="147" align="left" valign="middle" class="commonlink">
+                                                                    @*Refund Request*@ @WBSSLStore.Resources.GeneralMessage.Message.RefundRequest_Caption:
+                                                                </td>
+                                                                <td width="175" height="22" align="left" valign="middle" class="bluefont">
+                                                                    <a href="@Url.Action("index", "support", new { utype = "all" })">@Model.RefundRequest</a>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td height="5" align="left" valign="top">
+                                                    </td>
+                                                </tr>
+                                                @*<tr>
+                                                    <td align="left" valign="top" class="barbtnbg">
+                                                        <table width="350" border="0" align="center" cellpadding="0" cellspacing="0">
+                                                            <tr>
+                                                                <td width="30" align="center" valign="middle">
+                                                                    <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-search.png" alt="Search User" width="16" height="16">
+                                                                </td>
+                                                                <td width="147" align="left" valign="middle" class="commonlink">
+                                                                    Search User
+                                                                </td>
+                                                                <td width="175" align="left" valign="middle">
+                                                                    <a href="search-user.htm">
+                                                                        <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/btn-search-user.png" alt="Search User" width="118"
+                                                                            height="22"></a>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>*@
+                                                <tr>
+                                                    <td height="5" align="left" valign="top">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="left" valign="top" class="barbtnbg">
+                                                        <table width="350" border="0" align="center" cellpadding="0" cellspacing="0">
+                                                            <tr>
+                                                                <td width="30" align="center" valign="middle">
+                                                                    <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-store.png" alt="renewal" width="16" height="16">
+                                                                </td>
+                                                                <td width="147" align="left" valign="middle" class="commonlink">
+                                                                    <a href="@Url.Action("index", "sitesettings")">@*Store Configuration*@ @WBSSLStore.Resources.GeneralMessage.Message.StoreConfiguration_Caption</a>
+                                                                </td>
+                                                                <td width="175" height="22" align="left" valign="middle">
+                                                                    &nbsp;
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td height="5" align="left" valign="top">
+                                                     
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="left" valign="top" class="barbtnbg">
+                                                        <table width="350" border="0" align="center" cellpadding="0" cellspacing="0">
+                                                            <tr>
+                                                                <td width="10%" align="center" valign="middle">
+                                                                    <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-action.png" alt="renewal" width="16" height="16">
+                                                                </td>
+                                                                <td width="90%" align="left" valign="middle" class="commonlink" colspan="2">
+                                                                    <a href="@Url.Action("index", "Adminusers")">@WBSSLStore.Resources.GeneralMessage.Message.Manage_Admin_Users_Caption</a>
+                                                                </td>
+                                                                
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td height="5" align="left" valign="top">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="left" valign="top" class="barbtnbg">
+                                                        <table width="350" border="0" align="center" cellpadding="0" cellspacing="0">
+                                                            <tr>
+                                                                <td width="10%" align="center" valign="middle">
+                                                                    <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-action.png" alt="renewal" width="16" height="16">
+                                                                </td>
+                                                                <td width="90%" align="left" valign="middle" class="commonlink" colspan="2">
+                                                                    <a href="@Url.Action("myaccount", "adminusers")">
+                                                                      @WBSSLStore.Resources.GeneralMessage.Message.UserMenu_MYACCOUNT </a>
+                                                                </td>
+                                                                
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <td width="410" align="left" valign="top">
+                                            <table width="365" border="0" align="right" cellpadding="0" cellspacing="0">
+                                                <tr>
+                                                    <td width="369" align="left" valign="top" class="barbtnbg">
+                                                        <table width="350" border="0" align="center" cellpadding="0" cellspacing="0">
+                                                            <tr>
+                                                                <td width="30" align="center" valign="middle">
+                                                                    <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-view-your-price.png" alt="View Your Current Pricing"
+                                                                        width="16" height="16">
+                                                                </td>
+                                                                <td width="161" align="left" valign="middle" class="commonlink">
+                                                                    <a href="@Url.Action("pricing", "product")"> View Your Current Pricing</a>
+                                                                </td>
+                                                                <td width="161" height="22" align="left" valign="middle">
+                                                                    
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td height="5" align="left" valign="top">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="left" valign="middle" class="barbtnbg">
+                                                        <table width="350" border="0" align="center" cellpadding="0" cellspacing="0">
+                                                            <tr>
+                                                                <td width="30" align="center" valign="middle">
+                                                                    <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-active-contract.png" alt="Active Contracts"
+                                                                        width="16" height="16">
+                                                                </td>
+                                                                <td width="161" align="left" valign="middle" class="commonlink">
+                                                                    @*Active Contracts*@ @WBSSLStore.Resources.GeneralMessage.Message.ActiveContracts_Caption:
+                                                                </td>
+                                                                <td width="165" height="22" align="left" valign="middle" class="bluefont">
+                                                                    <a href="/Admin/Contract">@Model.ActiveContracts</a>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td height="5" align="left" valign="top">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="left" valign="top" class="barbtnbg">
+                                                        <table width="350" border="0" align="center" cellpadding="0" cellspacing="0">
+                                                            <tr>
+                                                                <td width="32" align="center" valign="middle">
+                                                                    <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-active-reseller.png" alt="Active Resellers"
+                                                                        width="16" height="16">
+                                                                </td>
+                                                                <td width="152" align="left" valign="middle" class="commonlink">
+                                                                    @*Active Resellers*@ @WBSSLStore.Resources.GeneralMessage.Message.ActiveResellers_Caption:
+                                                                </td>
+                                                                <td width="166" height="22" align="left" valign="middle" class="bluefont">
+                                                                    <a href="@Url.Action("index", "reseller")">@Model.ActiveResellers</a>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td height="5" align="left" valign="top">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="left" valign="top" class="barbtnbg">
+                                                        <table width="350" border="0" align="center" cellpadding="0" cellspacing="0">
+                                                            <tr>
+                                                                <td width="30" align="center" valign="middle">
+                                                                    <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-Inactive-reseller.png" alt="Inactive Resellers"
+                                                                        width="16" height="16">
+                                                                </td>
+                                                                <td width="152" align="left" valign="middle" class="commonlink">
+                                                                    @*Inactive Resellers*@ @WBSSLStore.Resources.GeneralMessage.Message.InactiveResellers_Caption:<br />
+                                                                </td>
+                                                                <td width="166" height="22" align="left" valign="middle" class="bluefont">
+                                                                    <a href="@Url.Action("index", "reseller")">@Model.InactiveResellers</a>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td height="5" align="left" valign="top">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="left" valign="top" class="barbtnbg">
+                                                        <table width="350" border="0" align="center" cellpadding="0" cellspacing="0">
+                                                            <tr>
+                                                                <td width="30" align="center" valign="middle">
+                                                                    <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-search-order.png" alt="Search Order" width="16"
+                                                                        height="16">
+                                                                </td>
+                                                                <td width="157" align="left" valign="middle" class="commonlink">
+                                                                    @*Search Order*@ @WBSSLStore.Resources.GeneralMessage.Message.SearchOrder_Header
+                                                                </td>
+                                                                <td width="165" align="left" valign="middle">
+                                                                    <a href="@Url.Action("search", "Orders")">
+                                                                        <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/btn-search-order.png" alt="Search Order" width="118"
+                                                                            height="22"></a>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td height="5" align="left" valign="top">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="left" valign="top" class="barbtnbg">
+                                                        <table width="350" border="0" align="center" cellpadding="0" cellspacing="0">
+                                                            <tr>
+                                                                <td width="30" align="center" valign="middle">
+                                                                    <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-edit-content.png" alt="renewal" width="16" height="16">
+                                                                </td>
+                                                                <td width="152" align="left" valign="middle" class="commonlink">
+                                                                    <a href="@Url.Action("index", "Content")">@*Edit Store Content*@ @WBSSLStore.Resources.GeneralMessage.Message.Content_Header</a>
+                                                                </td>
+                                                                <td width="166" height="22" align="left" valign="middle">
+                                                                   
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td height="5" align="left" valign="top">
+                                                       
+                                                    </td>
+                                                </tr>
+                                                 <tr>
+                                                    <td align="left" valign="top" class="barbtnbg">
+                                                        <table width="350" border="0" align="center" cellpadding="0" cellspacing="0">
+                                                            <tr>
+                                                                <td width="30" align="center" valign="middle">
+                                                                    <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/icon-change_API_password.png" alt="renewal" width="16" height="16">
+                                                                </td>
+                                                                <td width="152" align="left" valign="middle" class="commonlink">
+                                                                    <a href="@Url.Action("apicredential", "SiteSettings")">@*Edit Store Content*@ @WBSSLStore.Resources.GeneralMessage.Message.API_Credential_Header</a>
+                                                                </td>
+                                                                <td width="166" height="22" align="left" valign="middle">
+                                                                   
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td height="5" align="left" valign="top">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" valign="top" colspan="2" class="notice">
+                                            @*<br />
+                                            &nbsp;&nbsp;NOTES: Please configure the following items before your site goes Live.
+                                            <ul>
+                                                <li>Configure Products & its pricing. <a href="@Url.Action("pricing", "product")">Click
+                                                    here</a> to configure.</li>
+                                                <li>Configure your payment settings. <a href="@Url.Action("index", "paymentgateway")">Click
+                                                    here</a> to configure.</li>
+                                                <li>Configure your SMTP settings to be able to send out emails from the system.<a href="@Url.Action("smtpsettings", "sitesettings")">
+                                                    Click here</a> to configure. </li>
+                                            </ul>*@
+                                            <table width="96%" cellspacing="0" cellpadding="0" border="0" align="center">
+                                                <tbody>
+                                                    <tr>
+                                                        <td valign="top" align="left">
+                                                           
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td valign="top" align="left">
+                                                            <table width="100%" cellspacing="0" cellpadding="0" border="0" align="left">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td valign="middle" align="left">
+                                                                            <img width="22" height="22" alt="Notice" src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/notice.png">
+                                                                        </td>
+                                                                        <td valign="middle" align="left" class="fontone">
+                                                                            <strong>@*NOTES*@ @WBSSLStore.Resources.GeneralMessage.Message.Notes_Caption: </strong>@*Please configure the following items before your site goes
+                                                                            Live.*@ @WBSSLStore.Resources.LongText.Message.Dashboard_Note
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td valign="top" align="left">
+                                                            
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td valign="top" align="left">
+                                                            <table width="98%" cellspacing="2" cellpadding="2" border="0" align="right">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td width="4%" valign="middle" align="center">
+                                                                            <img width="16" height="16" alt="Configure" src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/price.png">
+                                                                        </td>
+                                                                        <td width="96%" valign="middle" height="22" align="left" class="fontwo">
+                                                                            @*Configure Products &amp; its pricing.*@ @WBSSLStore.Resources.LongText.Message.Dashboard_Notice1
+                                                                            <a href="@Url.Action("pricing", "product")">@*Click here*@ @WBSSLStore.Resources.GeneralMessage.Message.Click_Here</a>
+                                                                            @WBSSLStore.Resources.GeneralMessage.Message.To_Configure .
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td valign="middle" align="center">
+                                                                            <img width="16" height="16" alt="Configure" src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/paypal.png">
+                                                                        </td>
+                                                                        <td valign="middle" height="22" align="left" class="fontwo">
+                                                                            @* Configure your payment settings.*@ @WBSSLStore.Resources.LongText.Message.Dashboard_Notice2
+                                                                            <a href="@Url.Action("index", "paymentgateway")">
+                                                                                @WBSSLStore.Resources.GeneralMessage.Message.Click_Here</a> @WBSSLStore.Resources.GeneralMessage.Message.To_Configure
+                                                                            .
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td valign="middle" align="center">
+                                                                            <img width="16" height="16" alt="Configure" src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/smtp.png">
+                                                                        </td>
+                                                                        <td valign="middle" height="22" align="left" class="fontwo">
+                                                                            @*Configure your SMTP settings to be able to send out emails from the system.*@
+                                                                            @WBSSLStore.Resources.LongText.Message.Dashboard_Notice3<a href="@Url.Action("smtpsettings", "sitesettings")">
+                                                                                @WBSSLStore.Resources.GeneralMessage.Message.Click_Here</a> @WBSSLStore.Resources.GeneralMessage.Message.To_Configure .
+                                                                          
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td valign="top" align="left">
+                                                            &nbsp;
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" valign="top" colspan="2">
+                                            &nbsp;
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>

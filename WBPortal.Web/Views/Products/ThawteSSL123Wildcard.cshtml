@@ -1,0 +1,137 @@
+﻿@model WBSSLStore.Service.ViewModels.StaticPageViewModel
+@{
+    ViewBag.Title = "SecureSiteProwithEV";  var productdetails = WBSSLStore.Web.Helpers.WBHelper.GetProductDetailRows();
+    string brand = Model != null && Model.Items != null && Model.Items.FirstOrDefault().Product != null && Model.Items.FirstOrDefault().Product.Brand != null ? Model.Items.FirstOrDefault().Product.Brand.BrandName : "";
+    string username = ViewBag.UserName;
+}
+@section headerTags{
+    @Html.Partial("_renderSEO", Model != null && Model.CMSPage != null ? Model.CMSPage : new WBSSLStore.Domain.CMSPage())
+}
+@Html.Partial("_banner", new Tuple<string, string>("", "SSL Brands"))
+<div class="content">
+  <div class="wrapper">
+    <div class="column3">
+      <div class="mobtopcol">
+        <div class="column3-2">
+          <div class="prodetailswrap marzerotop"> @Html.Partial("_ProdPricing", new Tuple<List<WBSSLStore.Domain.ProductPricing>, List<WBSSLStore.Domain.ProductDetail>>(Model.Items.ToList(), productdetails.ToList())) </div>
+          <div class="prodescrip marzerotop">
+            <div class="prodescriptxt">
+              <h2>Product Description</h2>
+              <p>Now you can cost-effectively secure unlimited sub-domains with just a single SSL certificate thanks to the <strong>Thawte SSL123 Wildcard</strong> certificate. Thawte is one of the most respected names in the SSL industry, was the first international CA and supports the most languages worldwide. This Thawte SSL123 Wildcard DV SSL certificate offers your site's visitors a quick and reliable encrypted connection to your web server and activates HTTPS and the green padlock within browsers. This domain validation-level SSL/TLS certificate offers quick security for one main domain &ndash; and unlimited sub-domains &ndash; by simply using the * in the common name of your CSR (for example, *.yourdomain.com). It's an ideal certificate for any business looking to cost-effectively encrypt its main domain and all accompanying sub-domains and/or any sub-domains you may be looking to add in the future. And thanks to Thawte's speedy Domain Validation process, it can be issued within minutes of purchasing it.</p>
+            </div>
+          </div>
+          <div id="cssmenu">
+            <ul class="accordion_example">
+              <li class="brand-symantec acc_active">
+                <div>
+                  <p>Assurance &amp; Authentication</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>Getting this certificate issued and installed on your site is an extremely simple process. That's because the Thawte SSL123 Wildcard certificate is a Domain Validated or DV SSL / TLS certificate, offering an affordable & entry level of assurance to your customers and encryption security to your website. The Thawte brand is one of the most respected brands in the marketplace, thus its included trust seal is widely known & recognized, making this certificate one of our more premium DV options.</p>
+                  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Security &amp; Encryption</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>The Thawte SSL123 Wildcard can be issued with the strongest available encryption strength: up to 256-bit. So you can rest assured that you are receiving the highest level of security with this premium wildcard certificate at an extremely affordable rate.</p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>SAN &amp; Multi-Domain Support</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>You can cover one domain and an unlimited number of sub-domains with the Thawte SSL123 Wildcard certificate. For example, you could assign this certificate to your main domain, let's call it www.domain.com, and then also protect an unlimited number of sub-domains, i.e. mail.domain.com, billing.domain.com, ftp.domain.com, etc. at no additional cost. Simply use the asterisk "*" in the common name field of your CSR and you're good to go.</p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Features &amp; Benefits</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <ul class="featurelist">
+                    <li>Offers security for unlimited sub-domains with a single SSL / TLS certificate.</li>
+                    <li>It's an Entry Level certificate as it provides Domain Validated Authentication.</li>
+                    <li>Offers encryption up to the 256-bit level to secure online transactions.</li>
+                    <li>Offers 99.9% browser recognition.</li>
+                    <li>Thawte SSL123 Wildcard is mobile browser friendly.</li>
+                    <li>Comes with a $500,000 warranty.</li>
+                    <li>Offers 24&ndash;7 Support with a 30-day money back guarantee.</li>
+                  </ul>
+				  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Product Specifications</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <ul class="featurelist">
+                    <li>Offers security for one main domain and unlimited sub-domains.</li>
+                    <li>Automated two step online validation.</li>
+                    <li>Domain name and business name shown on certificate.</li>
+                    <li>Encryption Strength Up to 256-bit.</li>
+                    <li>99% Browser Compatibility.</li>
+                    <li>Site Seal Included.</li>
+                    <li>Unlimited Server License.</li>
+                    <li>Reissue unlimited for the lifespan of the certificate.</li>
+                  </ul>
+				  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Site Seal</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>Websites protected by the Thawte SSL123 Wildcard certificate will get the reputable Thawte Site Seal displayed on pages of their choosing. This Site Seal is rapidly becoming one of the most trusted in the world and your customers will be able to click on it and see your organization and certificate details. This will help assure your customers that you have been vetted by a third party security specialist and are safe to do business with. When using this site seal on your sub-domains, the badge will only show you're authenticated based domain with the asterisk, for example: *.yourdomain.com.</p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Warranty</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>This product comes with a $500,000 warranty. This means that if the site was improperly validated, and/or issued to a fraudulent site by Thawte, the Certification Authority (CA) would compensate the end user of the site or victim up to $500,000 for any possible losses or damages. These types of warranties are geared towards protecting your customers, along with establishing the credibility of the site owner, which gives users the confidence they need to make transactions or convert on your site.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        @Html.Partial("_rightpanel", username) </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+@section Jscripts{ 
+<script type="text/javascript">
+        $(document).ready(function () {
+            // Mobile Menu
+            $("#showmenu").click(function (e) {
+                e.preventDefault();
+                $("#menu").toggleClass("show");
+            });
+            $("#menu a").click(function (event) {
+                event.preventDefault();
+                if ($(this).next('ul').length) {
+                    $(this).next().toggle('fast');
+                    $(this).children('i:last-child').toggleClass('fa-caret-down fa-caret-left');
+                }
+            });
+            $(document).click(function (e) {
+                if (!$(e.target).is(".mobmemu, .mobmemu  *")) { $("#menu").toggleClass("hide"); $("#menu").removeClass("show"); }
+            });
+            $(".accordion_example").smk_Accordion();
+        });
+    </script> 
+} 

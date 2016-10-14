@@ -1,0 +1,42 @@
+﻿@using WBSSLStore.Domain;
+@using WBSSLStore.Data.Infrastructure;
+@{
+    var _testimonial = DependencyResolver.Current.GetService<IRepository<Testimonials>>();
+    var testimonials = _testimonial.Find(t => t.SiteID == WBSSLStore.Web.Helpers.Caching.SiteCacher.CurrentSite.ID && (t.RecordStatusID == (int)TestimonialStatus.SHOWINPAGE)).OrderByDescending(t => t.ID);
+   
+}
+@if (testimonials.Count() > 0)
+{    
+    
+    <br />
+    <div class="sidemenu">
+        <div class="sidemenutopcurve">
+        </div>
+        <div class="sidemenuheading notopborder">
+            Testimonials</div>
+        @foreach (Testimonials item in testimonials)
+        {    
+            <div class="sideTestimonial">
+                <div class="tabset">
+                    @Html.Raw(@item.Description).ToString().Substring(0, Convert.ToInt32(Convert.ToString(@item.Description).Length) > 150 ? 150 : Convert.ToInt32(Convert.ToString(@item.Description).Length))
+                    ..
+                    <br />
+                    <div class="signature">
+                     @*@Html.Raw(@item.Signature).ToString()*@
+                     @Html.Raw(@item.Signature.ToString().Replace("\n","</br>"))
+                     
+                        <br />
+                        @Html.ActionLink("view more", "../../testimonials")
+                        <br />
+                    </div><br/><br/>
+                    <br />
+                    <br />
+                </div>
+            </div>                      
+        }
+        <div class="sideTestimonial textalignright">
+        </div>
+        <div class="sidemenubtmcurve">
+        </div>
+    </div>
+}

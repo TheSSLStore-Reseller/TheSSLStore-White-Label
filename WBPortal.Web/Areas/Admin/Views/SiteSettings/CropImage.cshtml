@@ -1,0 +1,125 @@
+﻿@{
+    Layout = null;
+    string ImageUrl = ViewBag.ImageUrl;
+    string ImageType = ViewBag.ImageType;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CropImage</title>
+    <link href="@Url.Content("~/content/Admin/css/master.min.css")" rel="stylesheet" type="text/css" />
+    @* Do not remove jquery-1.5.1.js     *@  
+    <script src="@Url.Content("~/content/scripts/jquery-1.5.1.js")" language="javascript" type="text/javascript" ></script>
+    <script type="text/javascript" src="@Url.Content("~/content/admin/js/jquery.Jcrop.min.js")" language="javascript"></script>
+    <link href="@Url.Content("~/content/admin/css/jquery.Jcrop.min.css")" type="text/css" rel="stylesheet" />
+    <style type="text/css">
+        body
+        {
+            margin: 0;
+            padding: 0;
+            background: #eee;
+            font-family: Calibri, sans-serif;
+        }
+        .article h1
+        {
+            color: #333;
+            font-size: 2.2em;
+            margin-top: .2em;
+        }
+        .jcropper-holder
+        {
+            border: 1px black solid;
+        }
+        #outer
+        {
+            text-align: center;
+        }
+        .jcExample
+        {
+            text-align: left;
+            background: white;
+            font-size: 80%;
+            margin: 1.5em auto 2em auto;
+            border: 1px #999 solid;
+            padding: 1em 2em 2em;
+        }
+        .jcExample .article
+        {
+            width: auto;
+        }
+        form
+        {
+            margin: 1.5em 0;
+        }
+        form.coords label
+        {
+            margin-right: 1em;
+            font-weight: bold;
+            color: #900;
+        }
+        form.coords input
+        {
+            width: 3em;
+        }
+    </style>
+    <script language="Javascript" type="text/javascript"  >
+    
+        $(function () {
+
+            $('#cropbox').Jcrop({
+                aspectRatio: @(ImageType.Equals("logo") ? "40 / 9" : "96 / 11"),
+               // maxSize: @(ImageType.Equals("logo") ? "[230, 60]" : "[960, 110]"),
+                onSelect: updateCoords
+            });
+
+        });
+
+        function updateCoords(c) {
+            $('#x').val(c.x);
+            $('#y').val(c.y);
+            $('#w').val(c.w);
+            $('#h').val(c.h);
+        };
+
+        function checkCoords() {
+            if (parseInt($('#w').val())) return true;
+            alert('Please select a crop region then press submit.');
+            return false;
+        };
+
+    </script>
+</head>
+<body>
+    <div id="outer">
+        <div class="jcExample">
+            <div class="article">
+                <h1>
+                    @*Crop Image*@ @WBSSLStore.Resources.GeneralMessage.Message.CropImage_Caption</h1>
+                <hr />
+                @if (!string.IsNullOrEmpty(ImageUrl))
+                {
+                    <div style="width: 100%; height: auto; min-height:405px;overflow:hidden; border: 1px solid gray;background-color:#DBDBDB;">
+                        <img src="@ImageUrl" id="cropbox" alt="Flowers"  />
+                    </div>
+                }
+                else
+                { 
+                    <div class="errormsg">
+                     @WBSSLStore.Resources.ErrorMessage.Message.InvalidURL</div>
+                }
+                @using (Html.BeginForm("cropimage", "sitesettings", FormMethod.Post, new { onsubmit = "return checkCoords();" }))
+                {
+                
+                    <input type="hidden" id="x" name="x" />
+                    <input type="hidden" id="y" name="y" />
+                    <input type="hidden" id="w" name="w" />
+                    <input type="hidden" id="h" name="h" />
+                    <input type="hidden" id="ImageType" name="ImageType" value="@(ImageType)" />
+                    <input type="submit" value="@WBSSLStore.Resources.GeneralMessage.Message.CropSave_btn" class="bluebtn" />
+                
+                }
+            </div>
+        </div>
+    </div>
+</body>
+</html>

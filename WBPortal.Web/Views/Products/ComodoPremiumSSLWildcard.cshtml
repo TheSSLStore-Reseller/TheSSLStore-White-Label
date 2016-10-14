@@ -1,0 +1,142 @@
+﻿@model WBSSLStore.Service.ViewModels.StaticPageViewModel
+@{
+    ViewBag.Title = "SecureSiteProwithEV";  var productdetails = WBSSLStore.Web.Helpers.WBHelper.GetProductDetailRows();
+    string brand = Model != null && Model.Items != null && Model.Items.FirstOrDefault().Product != null && Model.Items.FirstOrDefault().Product.Brand != null ? Model.Items.FirstOrDefault().Product.Brand.BrandName : "";
+    string username = ViewBag.UserName;
+}
+@section headerTags{
+    @Html.Partial("_renderSEO", Model != null && Model.CMSPage != null ? Model.CMSPage : new WBSSLStore.Domain.CMSPage())
+}
+@Html.Partial("_banner", new Tuple<string, string>("", "SSL Brands"))
+<div class="content">
+  <div class="wrapper">
+    <div class="column3">
+      <div class="mobtopcol">
+        <div class="column3-2">
+          <div class="prodetailswrap marzerotop"> @Html.Partial("_ProdPricing", new Tuple<List<WBSSLStore.Domain.ProductPricing>, List<WBSSLStore.Domain.ProductDetail>>(Model.Items.ToList(), productdetails.ToList())) </div>
+          <div class="prodescrip marzerotop">
+            <div class="prodescriptxt">
+              <h2>Product Description</h2>
+              <p>Securing one domain and all of your subdomains is easy with the Comodo Premium SSL Wildcard certificate. This certificate will protect www.yourdomain.com and all of the associated subdomains like mail.yourdomain.com, abc.yourdomain.com, etc. Also, since this is an Organization Validated (OV) certificate, it will help enhance the trust in your website by activating imagery like "https", the padlock icon next to the URL, and the Comodo Site Seal, which will display real-time company data when a user clicks it. This wildcard certificate is an excellent option for medium-sized companies and ecommerce sites that wish to bolster the trust their users will have with them.</p>
+            </div>
+          </div>
+          <div id="cssmenu">
+            <ul class="accordion_example">
+              <li class="brand-symantec acc_active">
+                <div>
+                  <p>Assurance &amp; Authentication</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>This is an Organization Validated (OV) wildcard certificate, which means that your company must complete a light vetting process before it can be issued to your domain. This is just to ensure that you are an actual business, which will then be communicated to your customers. This process usually only takes between 3-5 business days, and you will be contacted by the Certificate Authority (CA), shortly after purchasing the certificate with further instruction.</p>
+                  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Security &amp; Encryption</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>One of the premier wildcard security options, the Comodo Premium SSL Wildcard certificate can be issued in either 128- or 256-bit encryption along with a 2048-bit root. Additionally, this certificate is automatically set up with Server Gated Cryptography (SGC), assuring that even older browsers will reap the full security benefits that this certificate offers.</p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>SAN &amp; multi-domain support</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>A wildcard certificate protects one main domain along with <strong>an unlimited number of subdomains</strong>. So, you can use the Comodo Premium SSL Wildcard to protect www.domain.com and payment.domain.com, mail.domain.com, example.domain.com, etc.</p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Features &amp; Benefits</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <ul class="featurelist">
+                    <li>Secure multiple subdomains with one certificate</li>
+                    <li>Full business validated certificate</li>
+                    <li>Futureproof 2048-bit root keys</li>
+                    <li>Trusted by all popular browsers</li>
+                    <li>99.3% browser compatibility</li>
+                    <li>$250,000 Warranty</li>
+                    <li>128/256 bit encryption</li>
+                    <li>FREE Comodo TrustMark ($119.00 value)</li>
+                    <li>Unlimited Re-issuance Policy</li>
+                    <li>1 year free PCI scanning service, 1 year free daily website vulnerability scanning</li>
+                  </ul>
+				  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Product Specifications</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <ul class="featurelist">
+                    <li>Multiple subdomains on a Single Domain Name</li>
+                    <li>Issued Within 1 week</li>
+                    <li>Validation of both domain name and company details</li>
+                    <li>Domain Name and Business Name Shown On Certificate</li>
+                    <li>256 bit encryption</li>
+                    <li>99% Browser Compatibile</li>
+                    <li>Free Unlimited Server Licenses</li>
+                    <li>Includes Comodo Site Seal</li>
+                    <li>Warranty $250,000</li>
+                    <li>Unlimited Reissuance</li>
+                  </ul>
+				  <div class="clear"></div>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Site Seal</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>The Comodo Premium SSL Wildcard certificate will display the widely recognized Comodo Site Seal on your website. This seal will be immediately visible to your online customers, assuring them that you are who you say you are. This popular icon is gaining more and more credibility on the web, and customers are continuing to associate it with <strong>trust and reputability</strong>. Plus, since this is an OV cert, the site seal is <strong>dynamic</strong> and will display real-time information to your customers just be clicking it &ndash; furthering the trust in your site.</p>
+                </div>
+              </li>
+              <li class="brand-symantec">
+                <div>
+                  <p>Warranty</p>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <p>This Organization Validated (OV) certificate is backed by a generous warranty totaling <strong>$250,000</strong>. Therefore, in the unlikely event that one of your customers experiences a loss due to a breach in your SSL, you will be compensated by the Certificate Authority (CA), Comodo, for up to $250,000 in damages.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        @Html.Partial("_rightpanel", username) </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+@section Jscripts{ 
+<script type="text/javascript">
+        $(document).ready(function () {
+            // Mobile Menu
+            $("#showmenu").click(function (e) {
+                e.preventDefault();
+                $("#menu").toggleClass("show");
+            });
+            $("#menu a").click(function (event) {
+                event.preventDefault();
+                if ($(this).next('ul').length) {
+                    $(this).next().toggle('fast');
+                    $(this).children('i:last-child').toggleClass('fa-caret-down fa-caret-left');
+                }
+            });
+            $(document).click(function (e) {
+                if (!$(e.target).is(".mobmemu, .mobmemu  *")) { $("#menu").toggleClass("hide"); $("#menu").removeClass("show"); }
+            });
+            $(".accordion_example").smk_Accordion();
+        });
+    </script> 
+} 

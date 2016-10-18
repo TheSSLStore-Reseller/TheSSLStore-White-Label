@@ -24,23 +24,18 @@ namespace WBSSLStore.Web.Controllers
 
             CSRGenerateRequest req = new CSRGenerateRequest();
             req.AuthRequest = GetAuthrequest();
-            req.CommonName = Request.Form["generate_csr_cn"];
-            req.Country = Request.Form["generate_csr_c"];
-            req.Email = Request.Form["generate_csr_email"];
-            req.KeySize = Request.Form["generate_csr_key"];
-            req.Locality = Request.Form["generate_csr_l"];
-            req.OrganizationName = Request.Form["generate_csr_o"];
-            req.OrganizationUnit = Request.Form["generate_csr_ou"];
-            req.SignatureAlgorithm = Request.Form["generate_csr_algorithm"];
-            req.State = Request.Form["generate_csr_st"];
+            req.CommonName = Request.Form["generate_csr_cn"].Trim();
+            req.Country = Request.Form["generate_csr_c"].Trim();
+            req.Email = Request.Form["generate_csr_email"].Trim();
+            req.KeySize = Request.Form["generate_csr_key"].Trim();
+            req.Locality = Request.Form["generate_csr_l"].Trim();
+            req.OrganizationName = Request.Form["generate_csr_o"].Trim();
+            req.OrganizationUnit = Request.Form["generate_csr_ou"].Trim();
+            req.SignatureAlgorithm = Request.Form["generate_csr_algorithm"].Trim();
+            req.State = Request.Form["generate_csr_st"].Trim();
 
             CSRGenerateResponse objRestResponse = FreeSSLToolsService.CsrGenerator(req);
 
-            if(objRestResponse != null && !objRestResponse.AuthResponse.isError && !string.IsNullOrEmpty (objRestResponse.CSR))
-            {
-                objRestResponse.CSR = System.Web.HttpUtility.HtmlDecode(objRestResponse.CSR);
-            }
-            
             return View(objRestResponse);
         }
 
@@ -57,7 +52,6 @@ namespace WBSSLStore.Web.Controllers
         {
             KeyMatcherRequest req = new KeyMatcherRequest();
             KeyMatcherresponse objRestResponse = null;
-            //bool iscsr =   Convert.ToString(Request.Form["rbtype"]).Equals("yes",StringComparison.OrdinalIgnoreCase);
             bool iscsr = Convert.ToString(Request.Form["hdnType"]).Equals("CSR", StringComparison.OrdinalIgnoreCase);
 
             if (iscsr && (string.IsNullOrEmpty(Request.Form["txtsslcert"]) || string.IsNullOrEmpty(Request.Form["txtprivatekey"])))
@@ -70,9 +64,9 @@ namespace WBSSLStore.Web.Controllers
             }
 
             req.AuthRequest = GetAuthrequest();
-            req.Certificate = Request.Form["txtsslcert"];
-            req.CSR = iscsr ? Request.Form["txtprivatekey"] : "";
-            req.PrivateKey = !iscsr ? Convert.ToString(Request.Form["txtprivatekey"]) : "";
+            req.Certificate = Request.Form["txtsslcert"].Trim();
+            req.CSR = iscsr ? Request.Form["txtprivatekey"].Trim() : "";
+            req.PrivateKey = !iscsr ? Convert.ToString(Request.Form["txtprivatekey"]).Trim() : "";
             objRestResponse = FreeSSLToolsService.KeyMatcher(req);
 
 
@@ -91,13 +85,13 @@ namespace WBSSLStore.Web.Controllers
         {
             SSLConvertorRequest req = new SSLConvertorRequest();
             req.AuthRequest = GetAuthrequest();
-            req.Certificate = Request.Form["CommonName"];
-            req.ConvertFrom = Request.Form["Country"];
-            req.ConvertTo = Request.Form["Email"];
-            req.IntermediatesCA = Request.Form["IntermediatesCA"];
-            req.KeyPassword = Request.Form["KeyPassword"];
-            req.PrivateKey = Request.Form["PrivateKey"];
-            req.RootCA = Request.Form["RootCA"];
+            req.Certificate = Request.Form["CommonName"].Trim();
+            req.ConvertFrom = Request.Form["Country"].Trim();
+            req.ConvertTo = Request.Form["Email"].Trim();
+            req.IntermediatesCA = Request.Form["IntermediatesCA"].Trim();
+            req.KeyPassword = Request.Form["KeyPassword"].Trim();
+            req.PrivateKey = Request.Form["PrivateKey"].Trim();
+            req.RootCA = Request.Form["RootCA"].Trim();
 
 
             SSLConvertorResponse objRestResponse = FreeSSLToolsService.SSLConvertor(req);
@@ -121,7 +115,7 @@ namespace WBSSLStore.Web.Controllers
             {
                 WhyNoPadLockRequest req = new WhyNoPadLockRequest();
                 req.AuthRequest = GetAuthrequest();
-                req.URL = Request.Form["txtUrl"];
+                req.URL = Request.Form["txtUrl"].Trim();
 
                 objRestResponse = FreeSSLToolsService.WhyNoPadLock(req);
             }
@@ -152,7 +146,7 @@ namespace WBSSLStore.Web.Controllers
             {
                 CertificateDecodeRequest req = new CertificateDecodeRequest();
                 req.AuthRequest = GetAuthrequest();
-                req.Certificate = Request.Form["txtCertificate"];
+                req.Certificate = Request.Form["txtCertificate"].Trim();
                 objRestResponse = FreeSSLToolsService.DecodeCertificate(req);
             }
             else
@@ -185,7 +179,7 @@ namespace WBSSLStore.Web.Controllers
 
                 CSRDecodeRequest request = new CSRDecodeRequest();
                 request.AuthRequest = GetAuthrequest();
-                request.CSR = CSR.Replace("\r\n", "\n");
+                request.CSR = CSR.Trim().Replace("\r\n", "\n");
                 objRestResponse = FreeSSLToolsService.DecodeCSRDetail(request);
 
             }
@@ -216,7 +210,7 @@ namespace WBSSLStore.Web.Controllers
             {
                 SSLCheckerRequest req = new SSLCheckerRequest();
                 req.AuthRequest = GetAuthrequest();
-                req.HostName = Request.Form["txtDomain"];
+                req.HostName = Request.Form["txtDomain"].Trim();
 
                 objRestResponse = FreeSSLToolsService.CheckSSLCertificate(req);
 

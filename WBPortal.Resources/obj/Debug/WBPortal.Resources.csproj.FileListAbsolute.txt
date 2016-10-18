@@ -71,7 +71,6 @@ D:\Dev\WBPortableStore\Dev-GitRepo\WBPortal.Resources\bin\Debug\ja\WBSSLStore.Re
 D:\Dev\WBPortableStore\Dev-GitRepo\WBPortal.Resources\bin\Debug\ru\WBSSLStore.Resources.resources.dll
 D:\Dev\WBPortableStore\Dev-GitRepo\WBPortal.Resources\bin\Debug\zh\WBSSLStore.Resources.resources.dll
 D:\Dev\WBPortableStore\Dev-GitRepo\WBPortal.Resources\bin\Debug\es-CL\WBSSLStore.Resources.resources.dll
-D:\Dev\WBPortableStore\Dev-GitRepo\WBPortal.Resources\obj\Debug\WBPortal.Resources.csprojResolveAssemblyReference.cache
 D:\Dev\WBPortableStore\Dev-GitRepo\WBPortal.Resources\obj\Debug\WBSSLStore.Resources.ErrorMessage.Message.resources
 D:\Dev\WBPortableStore\Dev-GitRepo\WBPortal.Resources\obj\Debug\WBSSLStore.Resources.GeneralMessage.Message.resources
 D:\Dev\WBPortableStore\Dev-GitRepo\WBPortal.Resources\obj\Debug\WBSSLStore.Resources.ImageResource.ImageCaption.resources

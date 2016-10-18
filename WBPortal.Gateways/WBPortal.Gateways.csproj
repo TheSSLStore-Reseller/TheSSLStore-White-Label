@@ -82,9 +82,7 @@
   <ItemGroup>
     <None Include="app.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="TheSSLStoreAPI\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\WBPortal.Logger\WBPortal.Logger.csproj">
       <Project>{538d3378-5e9e-4c1e-9d83-76f8fa0ad530}</Project>

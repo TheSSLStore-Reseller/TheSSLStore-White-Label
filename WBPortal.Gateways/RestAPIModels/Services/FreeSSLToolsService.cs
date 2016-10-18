@@ -1,4 +1,4 @@
-﻿using System.Web.Script.Serialization;
+﻿using Newtonsoft.Json;
 using WBSSLStore.Gateways.RestAPIModels.Helpers;
 using WBSSLStore.Gateways.RestAPIModels.Request;
 using WBSSLStore.Gateways.RestAPIModels.Response;
@@ -12,10 +12,9 @@ namespace WBSSLStore.Gateways.RestAPIModels.Services
         {
             CertificateDecodeResponse Response = new CertificateDecodeResponse();
 
-            var json = new JavaScriptSerializer().Serialize(request);
+            var json = JsonConvert.SerializeObject(request);
             string strResponse = ApiHelper.GetResponseFromAPI(json, "ssltools/certdecoder/");
-
-            Response = new JavaScriptSerializer().Deserialize<CertificateDecodeResponse>(strResponse);
+            Response = JsonConvert.DeserializeObject<CertificateDecodeResponse>(strResponse);
 
             return Response;
         }
@@ -23,26 +22,21 @@ namespace WBSSLStore.Gateways.RestAPIModels.Services
         {
             CSRDecodeResponse Response = new CSRDecodeResponse();
 
-            var json = new JavaScriptSerializer().Serialize(csrdetails);
+            var json = JsonConvert.SerializeObject(csrdetails);
             string strResponse = ApiHelper.GetResponseFromAPI(json, "ssltools/csrdecoder/");
-            
-            
-            Response = new JavaScriptSerializer().Deserialize<CSRDecodeResponse>(strResponse);
-            
+
+
+            Response = JsonConvert.DeserializeObject<CSRDecodeResponse>(strResponse);
+
             return Response;
         }
         public static CSRGenerateResponse CsrGenerator(CSRGenerateRequest csrdetails)
         {
             CSRGenerateResponse Response = new CSRGenerateResponse();
 
-            var json = new JavaScriptSerializer().Serialize(csrdetails);
+            var json = JsonConvert.SerializeObject(csrdetails);
             string strResponse = ApiHelper.GetResponseFromAPI(json, "ssltools/csrgenerator/");
-
-            Response = new JavaScriptSerializer().Deserialize<CSRGenerateResponse>(strResponse);
-            
-            //JavaScriptSerializer jsse = new JavaScriptSerializer();            
-            //DataContractJsonSerializer jsonSerializer = new DataContractJsonSerializer(typeof(CSRGenerateResponse));
-            //Response = JsonConvert.DeserializeObject<CSRGenerateResponse>(strResponse);
+            Response = JsonConvert.DeserializeObject<CSRGenerateResponse>(strResponse);
 
             return Response;
         }
@@ -51,10 +45,10 @@ namespace WBSSLStore.Gateways.RestAPIModels.Services
         {
             SSLConvertorResponse Response = new SSLConvertorResponse();
 
-            var json = new JavaScriptSerializer().Serialize(req);
+            var json = JsonConvert.SerializeObject(req);
             string strResponse = ApiHelper.GetResponseFromAPI(json, "ssltools/sslconverter/");
 
-            Response = new JavaScriptSerializer().Deserialize<SSLConvertorResponse>(strResponse);
+            Response = JsonConvert.DeserializeObject<SSLConvertorResponse>(strResponse);
 
             return Response;
         }
@@ -63,10 +57,15 @@ namespace WBSSLStore.Gateways.RestAPIModels.Services
             SSLCheckerResponse Response = new SSLCheckerResponse();
 
             Req.HostName = Req.HostName.Trim();
-            var json = new JavaScriptSerializer().Serialize(Req);
+            var json = JsonConvert.SerializeObject(Req);
             string strResponse = ApiHelper.GetResponseFromAPI(json, "ssltools/sslchecker/");
-           // strResponse = strResponse.Replace("null", "\"\"");
-            Response = new JavaScriptSerializer().Deserialize<SSLCheckerResponse>(strResponse);
+
+            var settings = new JsonSerializerSettings
+            {
+                NullValueHandling = NullValueHandling.Ignore
+
+            };
+            Response = JsonConvert.DeserializeObject<SSLCheckerResponse>(strResponse, settings);
 
             return Response;
         }
@@ -75,10 +74,10 @@ namespace WBSSLStore.Gateways.RestAPIModels.Services
         {
             WhyNoPadLockResponse Response = new WhyNoPadLockResponse();
 
-            var json = new JavaScriptSerializer().Serialize(csrdetails);
+            var json = JsonConvert.SerializeObject(csrdetails);
             string strResponse = ApiHelper.GetResponseFromAPI(json, "ssltools/whynopadlock/");
 
-            Response = new JavaScriptSerializer().Deserialize<WhyNoPadLockResponse>(strResponse);
+            Response = JsonConvert.DeserializeObject<WhyNoPadLockResponse>(strResponse);
 
             return Response;
         }
@@ -86,24 +85,14 @@ namespace WBSSLStore.Gateways.RestAPIModels.Services
         {
             KeyMatcherresponse Response = new KeyMatcherresponse();
 
-            var json = new JavaScriptSerializer().Serialize(csrdetails);
+            var json = JsonConvert.SerializeObject(csrdetails);
             string strResponse = ApiHelper.GetResponseFromAPI(json, "ssltools/certkeymatcher/");
 
-            Response = new JavaScriptSerializer().Deserialize<KeyMatcherresponse>(strResponse);
+            Response = JsonConvert.DeserializeObject<KeyMatcherresponse>(strResponse);
 
             return Response;
         }
 
-        //public static CSRDecodeResponse DecodeCSRDetail(CSRDecodeRequest csrdetails)
-        //{
-        //    CSRDecodeResponse Response = new CSRDecodeResponse();
 
-        //    var json = new JavaScriptSerializer().Serialize(csrdetails);
-        //    string strResponse = ApiHelper.GetResponseFromAPI(json, "ssltools/csrdecoder/");
-
-        //    Response = new JavaScriptSerializer().Deserialize<CSRDecodeResponse>(strResponse);
-
-        //    return Response;
-        //}
     }
 }

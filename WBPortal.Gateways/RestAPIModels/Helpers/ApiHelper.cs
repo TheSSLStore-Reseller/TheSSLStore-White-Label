@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Net;
 using System.IO;
@@ -27,7 +25,7 @@ namespace WBSSLStore.Gateways.RestAPIModels.Helpers
 
                 Url = ConfigurationManager.AppSettings["RestAPIURL"] + Url;
 
-                System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
                 HttpWebRequest req = (HttpWebRequest)WebRequest.Create(Url);
                 req.Method = method;
@@ -49,7 +47,7 @@ namespace WBSSLStore.Gateways.RestAPIModels.Helpers
                     {
                         using (StreamReader streamIn = new StreamReader(resp.GetResponseStream()))
                         {
-                            strData = HttpUtility.UrlDecode(streamIn.ReadToEnd());
+                            strData = Url.Contains("ssltools") ? streamIn.ReadToEnd() : HttpUtility.UrlDecode(streamIn.ReadToEnd());
                         }
                     }
                     else

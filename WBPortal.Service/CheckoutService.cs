@@ -13,6 +13,8 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Soap;
 using System.Web.Mvc;
 using WBSSLStore.Gateways.PaymentGateway.MoneyBookers;
+using System.Data.Entity.Validation;
+
 namespace WBSSLStore.Service
 {
     public interface ICheckoutService
@@ -123,7 +125,6 @@ namespace WBSSLStore.Service
             WBSSLStore.Gateway.PaymentGatewayInteraction gt = null;
             if (_viewModel.PayableAmount > 0)
             {
-
                 gt = PaymentProcess(_viewModel, site, "Order");
             }
 
@@ -358,12 +359,13 @@ namespace WBSSLStore.Service
         private bool PlaceOrder(CheckOutViewModel _viewModel, Site site, WBSSLStore.Gateway.PaymentGatewayInteraction gt, int SMTPId, int LangID, string AdminEmail, string InvoicePrefix)
         {
             bool result = false;
+            Payment payment = null;
+            GatewayInteraction GT = null;
+
             try
             {
                 if (_viewModel.OrderAmount >= 0)
                 {
-                    Payment payment = null;
-                    GatewayInteraction GT = null;
 
                     Audit audit = null;
                     OrderDetail ordDetail = null;
@@ -405,6 +407,8 @@ namespace WBSSLStore.Service
                             payment.GatewayInteraction = GT;
                             payment.TransactionAmount = gt.TransactionWrapper.TransactionAmount;
                             payment.PaymentModeID = gt.TransactionWrapper.PaymentModeID;
+
+                            _unitOfWork.Commit();
                         }
                         else if (gt != null)
                         {
@@ -420,7 +424,6 @@ namespace WBSSLStore.Service
                             GT.AuditDetails = audit;
 
                             _repository.SaveGatewayIntraction(GT);
-
 
                             return false;
                         }
@@ -617,13 +620,36 @@ namespace WBSSLStore.Service
 
                     result = true;
 
-                }
-
-
+                }                
             }
+            catch (System.Data.Entity.Infrastructure.DbUpdateException ex)
+            {
+
+                var errorMessages = ex.Entries.Select((x) => new { en = x.Entity.GetType().Name }).Select(x => x.en).ToArray();
+                var fullErrorMessage = string.Join("; ", errorMessages);
+                logger.Log(string.Format("Error During PlaceOrder-1 DbUpdateException : DateTime : {0} and UserID: {1}, Error message: {2} ", DateTime.Now, _viewModel.user.ID, fullErrorMessage), Logger.LogType.CRITICAL);                
+            }
+            catch (DbEntityValidationException ex)
+            {
+                var errorMessages = ex.EntityValidationErrors
+                    .SelectMany(x => x.ValidationErrors)
+                    .Select(x => x.ErrorMessage);
+
+                // Join the list to a single string.
+                var fullErrorMessage = string.Join("; ", errorMessages);
+
+                // Combine the original exception message with the new one.
+                var exceptionMessage = string.Concat(ex.Message, " The validation errors are: ", fullErrorMessage);
+
+                // Throw a new DbEntityValidationException with the improved exception message.
+                logger.Log(string.Format("Error During PlaceOrder-2 DbEntityValidationException :  DateTime : {0} and UserID: {1}, Error message: {2} ", DateTime.Now, _viewModel.user.ID, fullErrorMessage), Logger.LogType.CRITICAL);
+                //throw new DbEntityValidationException(exceptionMessage, ex.EntityValidationErrors);
+            }                 
             catch (Exception ex)
             {
                 _viewModel.Errormsg = ex.Message;
+
+                logger.Log(string.Format("Error During PlaceOrder. DateTime : {0} and UserID: {1} and GatewayInteractionID: {2} ", DateTime.Now, _viewModel.user.ID, GT != null ? GT.ID : 0), Logger.LogType.CRITICAL);
                 logger.LogException(ex);
                 throw ex;
 

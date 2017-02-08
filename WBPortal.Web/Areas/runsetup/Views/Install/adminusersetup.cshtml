@@ -101,7 +101,7 @@
                 </div>
                 <div class="fullraw formraw">
                     <label>Address (to be used in Invoice as well).</label>
-                    @Html.TextAreaFor(x => x.Address)
+                    @Html.TextAreaFor(x => x.Address, new { rows = "5", cols = "52" })
                 </div>
                 <div class="clear"></div>
             </div>
@@ -123,18 +123,18 @@
                     </div>
                 </div>
                 @*<div class="halfsection">
-                    <h3>Test API Credentials</h3>
-                    <div class="formraw">
-                        <label>Test Partner Code<span>*</span></label>
-                        @Html.TextBoxFor(x => x.TestPartnerCode)
-                        @Html.ValidationMessageFor(x => x.TestPartnerCode)
-                    </div>
-                    <div class="formraw">
-                        <label>Test Authentication Code<span>*</span></label>
-                        @Html.TextBoxFor(x => x.TestPartnerAuthCode)
-                        @Html.ValidationMessageFor(x => x.TestPartnerAuthCode)
-                    </div>
-                </div>*@
+                        <h3>Test API Credentials</h3>
+                        <div class="formraw">
+                            <label>Test Partner Code<span>*</span></label>
+                            @Html.TextBoxFor(x => x.TestPartnerCode)
+                            @Html.ValidationMessageFor(x => x.TestPartnerCode)
+                        </div>
+                        <div class="formraw">
+                            <label>Test Authentication Code<span>*</span></label>
+                            @Html.TextBoxFor(x => x.TestPartnerAuthCode)
+                            @Html.ValidationMessageFor(x => x.TestPartnerAuthCode)
+                        </div>
+                    </div>*@
                 <div class="clear"></div>
             </div>
         </div>

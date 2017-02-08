@@ -1,6 +1,6 @@
 ﻿@model WBSSLStore.Gateways.RestAPIModels.Response.WhyNoPadLockResponse
-@{
-    ViewBag.Title = "Why No PadLock?";
+@section headerTags{
+    @Html.Partial("_renderSEO", new WBSSLStore.Domain.CMSPage())
 }
 @Html.Partial("_banner", new Tuple<string, string>("", "Why No Pad Lock?"))
 <div class="content">

@@ -1,0 +1,7 @@
+D:\Dev\WBPortableStore\Dev-GitRepo\WBPortal.Logger\bin\WBSSLStore.Logger.dll
+D:\Dev\WBPortableStore\Dev-GitRepo\WBPortal.Logger\bin\WBSSLStore.Logger.pdb
+D:\Dev\WBPortableStore\Dev-GitRepo\WBPortal.Logger\bin\Elmah.dll
+D:\Dev\WBPortableStore\Dev-GitRepo\WBPortal.Logger\bin\System.Web.Mvc.dll
+D:\Dev\WBPortableStore\Dev-GitRepo\WBPortal.Logger\bin\System.Web.Mvc.xml
+D:\Dev\WBPortableStore\Dev-GitRepo\WBPortal.Logger\obj\Release\WBSSLStore.Logger.dll
+D:\Dev\WBPortableStore\Dev-GitRepo\WBPortal.Logger\obj\Release\WBSSLStore.Logger.pdb

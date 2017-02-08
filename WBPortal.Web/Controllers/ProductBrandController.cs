@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Security;
 using WBSSLStore.Data.Infrastructure;
 using WBSSLStore.Domain;
@@ -53,7 +49,7 @@ namespace WBSSLStore.Web.Controllers
             }
 
             if (ContractID.Equals(0))
-                ContractID = WBSSLStore.Web.Helpers.WBHelper.GetCurrentContractID(UserID, Site.ID);
+                ContractID = WBHelper.GetCurrentContractID(UserID, Site.ID);
 
             _viewModel.Items = _service.GetProductPricing(Site.ID, 0, ContractID, BrandID, code);
         }
@@ -112,7 +108,7 @@ namespace WBSSLStore.Web.Controllers
             _viewModel.CMSPage = _service.GetPageMetadata(Site.ID, WBHelper.CurrentLangID(), Request.RawUrl);
             return View(_viewModel);
         }
-        [Route("brands/Comodo", Name = "ComodoBrand_us")]
+        [Route("brands/comodo", Name = "ComodoBrand_us")]
         public ActionResult Comodo()
         {
             SetPricing((int)ProductBrands.Comodo, "");
@@ -120,7 +116,7 @@ namespace WBSSLStore.Web.Controllers
             return View(_viewModel);
         }
 
-        [Route("brands/RapidSSL", Name = "RapidSSLBrand_us")]
+        [Route("brands/rapidSSL", Name = "RapidSSLBrand_us")]
         public ActionResult RapidSSL()
         {
             SetPricing((int)ProductBrands.RapidSSL, "");
@@ -128,7 +124,7 @@ namespace WBSSLStore.Web.Controllers
             return View(_viewModel);
         }
 
-        [Route("brands/GeoTrust", Name = "GeoTrustBrand_us")]
+        [Route("brands/geotrust", Name = "GeoTrustBrand_us")]
         public ActionResult GeoTrust()
         {
             SetPricing((int)ProductBrands.GeoTrust, "");
@@ -136,7 +132,7 @@ namespace WBSSLStore.Web.Controllers
             return View(_viewModel);
         }
 
-        [Route("brands/Certum", Name = "CertumBrand_us")]
+        [Route("brands/certum", Name = "CertumBrand_us")]
         public ActionResult Certum()
         {
             SetPricing((int)ProductBrands.Certum, "");
@@ -149,7 +145,7 @@ namespace WBSSLStore.Web.Controllers
         [Route("ssl/domain-validated", Name = "dvssl_us")]
         public ActionResult dvSSL()
         {
-            SetPricing(0, "rapidssl,freessl,ssl123,quicksslpremium,quicksslpremiummd,287,301");
+            SetPricing(0, "quicksslpremium,ssl123,rapidssl,rapidsslwildcard,freessl,essentialssl,essentialwildcard,comodossl,positivessl,positivesslwildcard,comodowildcard,ucommercialssl,ucommercialwildcard,quicksslpremiumwildcard,ssl123wildcard");
             _viewModel.CMSPage = _service.GetPageMetadata(Site.ID, WBHelper.CurrentLangID(), Request.RawUrl);
             return View(_viewModel);
         }
@@ -157,7 +153,7 @@ namespace WBSSLStore.Web.Controllers
         [Route("ssl/organisation-validated", Name = "ovssl_us")]
         public ActionResult ovSSL()
         {
-            SetPricing(0, "securesite,securesitepro,sslwebserver,truebizid,24,34,7");
+            SetPricing(0, "securesitepro,securesite,truebizid,sslwebserver,instantssl,instantsslpro,comodopremiumssl,elitessl,utrustedssl,securesitemdwc,securesitepromdwc,truebizidmdwc,sslwebservermdwc,securesitepro_SHA1");
             _viewModel.CMSPage = _service.GetPageMetadata(Site.ID, WBHelper.CurrentLangID(), Request.RawUrl);
             return View(_viewModel);
         }
@@ -165,7 +161,8 @@ namespace WBSSLStore.Web.Controllers
         [Route("ssl/extended-validated", Name = "evssl_us")]
         public ActionResult evSSL()
         {
-            SetPricing(0, "truebizidmd,truebusinessidevmd,truebusinessidev,sslwebserverev,337,335,410,securesiteproev,securesiteev");
+
+            SetPricing(0, "securesiteproev,securesiteev,truebusinessidev,truebusinessidevmd,sslwebserverev,comodoevssl,comodoevmdc");
             _viewModel.CMSPage = _service.GetPageMetadata(Site.ID, WBHelper.CurrentLangID(), Request.RawUrl);
             return View(_viewModel);
         }
@@ -174,7 +171,7 @@ namespace WBSSLStore.Web.Controllers
         [Route("ssl/wildcard", Name = "wildcardssl_us")]
         public ActionResult WildcardSSL()
         {
-            SetPricing(0, "truebusinessidwildcard,sslwebserverwildcard,rapidsslwildcard,343,35,289");
+            SetPricing(0, "truebusinessidwildcard,sslwebserverwildcard,rapidsslwildcard,essentialwildcard,positivesslwildcard,comodowildcard,comodopremiumwildcard,securesitewildcard,ucommercialwildcard,utrustedwildcard,positivemdcwildcard,comodomdcwildcard,comodouccwildcard,quicksslpremiumwildcard,ssl123wildcard,securesiteprowildcard,basicDVWildcard,securesitemdwc,securesitepromdwc,truebizidmdwc,sslwebservermdwc");
             _viewModel.CMSPage = _service.GetPageMetadata(Site.ID, WBHelper.CurrentLangID(), Request.RawUrl);
             return View(_viewModel);
         }
@@ -182,7 +179,7 @@ namespace WBSSLStore.Web.Controllers
         [Route("ssl/ucc-san", Name = "uccsanSsl_us")]
         public ActionResult UccsanSSL()
         {
-            SetPricing(0, "361");
+            SetPricing(0, "securesiteproev,securesiteev,securesitepro,securesite,truebizidmd,truebusinessidevmd,sslwebserverev,sslwebserver,comodomdc,comodoevmdc,comodoucc,comododvucc,positivemdcssl,quicksslpremiummd,positivemdcwildcard,comodomdcwildcard,comodouccwildcard,securesitemdwc,securesitepromdwc,truebizidmdwc,sslwebservermdwc,securesitepro_SHA1");
             _viewModel.CMSPage = _service.GetPageMetadata(Site.ID, WBHelper.CurrentLangID(), Request.RawUrl);
             return View(_viewModel);
         }
@@ -190,14 +187,14 @@ namespace WBSSLStore.Web.Controllers
         [Route("ssl/code-signing", Name = "csssl_us")]
         public ActionResult csSSL()
         {
-            SetPricing(0, "verisigncsc,thawtecsc,8");
+            SetPricing(0, "verisigncsc,thawtecsc,comodocsc");
             _viewModel.CMSPage = _service.GetPageMetadata(Site.ID, WBHelper.CurrentLangID(), Request.RawUrl);
             return View(_viewModel);
         }
         [Route("ssl/anti-malware", Name = "antimalware_us")]
         public ActionResult antimalwareSSL()
         {
-            SetPricing(0, "malwarescan");
+            SetPricing(0, "trustsealorg,malwarescan,hgpcicontrolscan,hackerprooftm,comodopciscan,webinsbasic,webinsplus,webinspremium,webinsnterprise,ubasicid,uenterpriseid,uprofessionalid,pacbasic,pacpro,pacenterprise,malwarebasic");
             _viewModel.CMSPage = _service.GetPageMetadata(Site.ID, WBHelper.CurrentLangID(), Request.RawUrl);
             return View(_viewModel);
         }

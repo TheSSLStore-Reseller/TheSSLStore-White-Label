@@ -1,11 +1,11 @@
 ﻿using System.Web.Mvc;
 using System.Web.Routing;
+using WhiteBrandShrink.Migrations;
 
 namespace WBSSLStore
 {
     public class RouteConfig
     {
-
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
@@ -25,17 +25,17 @@ namespace WBSSLStore
             //routes.MapRoute("SiteDefault", "{controller}/{action}/{id}", new { controller = "StaticPage", action = "index", id = UrlParameter.Optional }, new string[] { "WBSSLStore.Web.Controllers" });
 
 
-            using (WhiteBrandShrink.ConfigurationHelper help = new WhiteBrandShrink.ConfigurationHelper())
+            using (ConfigurationHelper help = new ConfigurationHelper())
             {
 
                 var allsettings = help.GetAllSettings();
-                WhiteBrandShrink.DataBaseSettings dbsettings = allsettings != null && allsettings.DataBaseSetting != null ? allsettings.DataBaseSetting : null;
+                DataBaseSettings dbsettings = allsettings != null && allsettings.DataBaseSetting != null ? allsettings.DataBaseSetting : null;
                 if (dbsettings != null)
                 {
                     var eConfigset = WBSSLStore.Web.Helpers.WBHelper.GetSiteConfiguration(dbsettings.ConnectionString);
                     if ((int)WBSSLStore.Domain.ConfigurationStage.GeneralSetup != (int)(WBSSLStore.Domain.ConfigurationStage)eConfigset)
                     {
-                        routes.MapRoute("Installation", "siteinstallation/{controller}/{action}/{id}", new { controller = "Install", action = "Index", id = UrlParameter.Optional }, new string[] { "WhiteBrandShrink.Controllers" });
+                        routes.MapRoute("Installation", "siteinstallation/{controller}/{action}/{id}", new { controller = "Install", action = "paymentsettings", id = UrlParameter.Optional }, new string[] { "WhiteBrandShrink.Controllers" });
                     }
                     else
                         LoadCustomRoutes(routes);

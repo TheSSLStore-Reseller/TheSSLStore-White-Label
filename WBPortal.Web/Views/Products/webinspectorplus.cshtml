@@ -1,0 +1,103 @@
+﻿@model WBSSLStore.Service.ViewModels.StaticPageViewModel
+@{
+      var productdetails = WBSSLStore.Web.Helpers.WBHelper.GetProductDetailRows();
+    string brand = Model != null && Model.Items != null && Model.Items.FirstOrDefault().Product != null && Model.Items.FirstOrDefault().Product.Brand != null ? Model.Items.FirstOrDefault().Product.Brand.BrandName : "";
+    string username = ViewBag.UserName;
+}
+@section headerTags{
+    @Html.Partial("_renderSEO", Model != null && Model.CMSPage != null ? Model.CMSPage : new WBSSLStore.Domain.CMSPage())
+}
+@Html.Partial("_banner", new Tuple<string, string>("", "SSL Brands"))
+<div class="content">
+  <div class="wrapper">
+    <div class="column3">
+      <div class="mobtopcol">
+        <div class="column3-2">
+          <div class="prodetailswrap marzerotop"> @Html.Partial("_ProdPricing", new Tuple<List<WBSSLStore.Domain.ProductPricing>, List<WBSSLStore.Domain.ProductDetail>>(Model.Items.ToList(), productdetails.ToList())) </div>
+          <div class="prodescrip marzerotop">
+            <div class="prodescriptxt">
+              <h2>Product Description</h2>
+                <p><strong>Web Inspector</strong> by Comodo&reg; at its core   is a powerful cloud-based malware and blacklist monitoring service (plus   much more) for websites. It ensures security at the highest order. If   there is a known malware strain discovered on a site or if a website is   found to be blacklisted on any major search engine for any reason, the   owner is <strong>immediately notified</strong> through an email. This   immediate notification helps the website owners reduce the risk of major   website catastrophes and keeps their customers security a priority.</p>
+                <p>Aside from the anti-malware and   blacklisting utility, Web Inspector also incorporates a full-fledged PCI   scan that's driven by Comodo's top-rated Hacker Guardian technology. This is to help site owner's maintain compliancy with the   Payment Card Industry's mandatory standards. Check out more of the   feature/benefits below and choose the best way to add another layer of   protection for your company and customers.</p>
+            </div>
+          </div>
+            <div id="cssmenu">
+                <ul class="accordion_example">
+                    <li class="brand-symantec acc_active">
+                        <div>
+                            <p>Overview</p>
+                            <div class="clear"></div>
+                        </div>
+                        <div>
+                            <p>Web Inspector is not your standard variety malware   service, it is a comprehensive system operating within the cloud that   ensures you website security of the highest order.</p>
+                            <p>Conceived by the think tank   over at Comodo Innovation Labs that includes many of the very brightest   computer and internet security minds out there Web Inspector provides a   superior service boasting a variety of features in one single package.</p>
+                            <p>With the risks associated with   transferring sensitive information online well-documented to customers   maintaining a high level of trust and untarnished reputation have become   all the more important. Web Inspector's extensive daily malware   scanning, thorough blacklist monitoring, and continuous monitoring of   possible oncoming threats do more than enough to maintain those two   vital components.</p>
+                            <p>Web Inspector also includes   complete PCI compliance scanning driven by Comodo's HackerGuardian   technology for e-commerce websites to maintain compliance with the   payment card industry's mandatory standards.</p>
+                            <p>With all considered Web   Inspector is truly an application developed with the security of your   website, business and customers in mind.</p>
+                            <div class="clear"></div>
+                        </div>
+                    </li>
+                    <li class="brand-symantec">
+                        <div>
+                            <p>Features &amp; Benefits</p>
+                            <div class="clear"></div>
+                        </div>
+                        <div>
+                            <ul class="featurelist">
+                                <li>Daily Malware Scanning</li>
+                                <li>Blacklist Monitoring</li>
+                                <li>Continuous Monitoring</li>
+                                <li>Immediate Notifications</li>
+                                <li>No Downloads, no complicated set up</li>
+                                <li>PCI Scanning</li>
+                                <li>Database Security</li>
+                                <li>Trust Seal</li>
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                    </li>
+                    <li class="brand-symantec">
+                        <div>
+                            <p>Product Specifications</p>
+                            <div class="clear"></div>
+                        </div>
+                        <div>
+                            <ul class="featurelist">
+                                <li>Automatic, daily malware scans keep your website and its sub-domains safe.</li>
+                                <li>Accessible web-based interface makes for easy use.</li>
+                                <li>Immediate notification guarantees proper problem mitigation.</li>
+                                <li>Site seal assures customers that your website is both safe and trustworthy.</li>
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        @Html.Partial("_rightpanel", username) </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+@section Jscripts{ 
+<script type="text/javascript">
+        $(document).ready(function () {
+            // Mobile Menu
+            $("#showmenu").click(function (e) {
+                e.preventDefault();
+                $("#menu").toggleClass("show");
+            });
+            $("#menu a").click(function (event) {
+                event.preventDefault();
+                if ($(this).next('ul').length) {
+                    $(this).next().toggle('fast');
+                    $(this).children('i:last-child').toggleClass('fa-caret-down fa-caret-left');
+                }
+            });
+            $(document).click(function (e) {
+                if (!$(e.target).is(".mobmemu, .mobmemu  *")) { $("#menu").toggleClass("hide"); $("#menu").removeClass("show"); }
+            });
+            $(".accordion_example").smk_Accordion();
+        });
+    </script> 
+} 

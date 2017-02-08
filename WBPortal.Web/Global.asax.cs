@@ -1,28 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Configuration;
-using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
-using Ninject;
-using WBSSLStore.Data.Infrastructure;
-using WBSSLStore.Data.Repository;
-using WBSSLStore.Service;
-using WBSSLStore.Web.Helpers.Base;
 using WBSSLStore.Web.Helpers.Caching;
 using WBSSLStore.Web.Helpers.IoC;
-using WBSSLStore.Logger;
 using WBSSLStore.Domain;
 using System.Web.Optimization;
+using WhiteBrandShrink.Migrations;
 
 namespace WBSSLStore.Web
 {
-    // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
-    // visit http://go.microsoft.com/?LinkId=9394801
-
-    public class MvcApplication : System.Web.HttpApplication
+ 
+    public class MvcApplication : HttpApplication
     {
 
         protected void Application_Start()
@@ -65,43 +54,12 @@ namespace WBSSLStore.Web
 
             if (SiteCacher.isSiteNotCreate())
             {
-                var eConfigset = WBSSLStore.Web.Helpers.WBHelper.GetSiteConfiguration();
-                if ((int)WBSSLStore.Domain.ConfigurationStage.GeneralSetup != (int)(WBSSLStore.Domain.ConfigurationStage)eConfigset)
+                var eConfigset =Helpers.WBHelper.GetSiteConfiguration(string.Empty);
+                if ((int)ConfigurationStage.GeneralSetup != (int)eConfigset)
                 {
-                    if (!string.IsNullOrEmpty(Request.Url.LocalPath) && Request.Url.LocalPath.Equals("/") && WhiteBrandShrink.ConfigurationHelper.IsConfigurationFileExist())
+                    if (!string.IsNullOrEmpty(Request.Url.LocalPath) && Request.Url.LocalPath.Equals("/") && ConfigurationHelper.IsConfigurationFileExist())
                         Response.Redirect("~/runsetup/install/installindex");
                 }
-            }
-        }
-
-        private void Redirect301(string slug, CurrentSiteSettings CurrentSiteSettings)
-        {
-
-            if (slug.Contains(@"/admin"))
-                return;
-
-            string Host = Request.Url.DnsSafeHost.ToLower();
-
-            //if (Host.IndexOf('.') > 0 && !(Host.Split('.').Length > 2))
-            //{
-            //    if (CurrentSiteSettings.IsRunWithWWW && !slug.Contains("www."))
-            //    {
-            //        Response.RedirectPermanent(slug.Replace(Host, "www." + Host));
-            //    }
-            //    else if (!CurrentSiteSettings.IsRunWithWWW && slug.Contains("www."))
-            //        Response.RedirectPermanent(slug.Replace("www.", ""), true);
-            //}
-            //else if (!CurrentSiteSettings.IsRunWithWWW && Host.Contains("www."))
-            //{
-            //    Response.RedirectPermanent(slug.Replace("www.", ""), true);
-            //}
-        }
-
-        private void SetCulture(CurrentSiteSettings CurrentSiteSettings)
-        {
-            if (CurrentSiteSettings.CurrentSite != null)
-            {
-                WBSSLStore.Web.Helpers.Localization.CultureSwitch.SwitchCulture(CurrentSiteSettings.CurrentSite, CurrentSiteSettings.CurrentLangCode, CurrentSiteSettings.CurrentCultureKey);
             }
         }
 

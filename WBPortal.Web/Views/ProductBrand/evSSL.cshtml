@@ -1,0 +1,35 @@
+﻿@model WBSSLStore.Service.ViewModels.StaticPageViewModel
+@{
+    
+    var productdetails = WBSSLStore.Web.Helpers.WBHelper.GetProductDetailRows();
+}
+@section headerTags{
+    @Html.Partial("_renderSEO", Model != null && Model.CMSPage != null ? Model.CMSPage : new WBSSLStore.Domain.CMSPage())
+}
+@section sitecss{
+}
+@section Jscripts{
+    @System.Web.Optimization.Scripts.Render("~/bundales/wb/scripts")
+}
+@Html.Partial("_banner", new Tuple<string, string>("", "Extended Validated SSL"))
+
+<div class="content">
+    <div class="wrapper">
+        <div class="column3">
+            <div class="mobtopcol">
+                <div class="column3-2">
+                    <div class="cmnpagewrap brand">
+                        <h2>@WBSSLStore.Resources.GeneralMessage.Message.EVSSL_Caption</h2>
+                        <p>EV SSL certificates are the gold standard in the industry. Wherever you see the EV identification mark, you know that it signifies stringent validation checks as well as visual security indications. EV certificates include the green address bar in your website's URL with the validated Organisations name imbedded. This green bar allows the user to click on it and check out your credentials and your security status. A massive boost in trust is achieved and your reputation is strengthened in the mind of your users. An "s" will also follow your "http" prefix. "s" is for SECURE, and that's exactly the message you will bring across. This high visibility SSL option is a maximum ROI solution that can never be replicated by any website duplication attempt.</p>
+                       
+                    </div>
+                    @Html.Partial("_ProductByBrand", new Tuple<List<WBSSLStore.Domain.ProductPricing>, List<WBSSLStore.Domain.ProductDetail>>(Model.Items.ToList(), productdetails.ToList()))
+                </div>
+                @Html.Partial("_rightpanel", (Model != null && !string.IsNullOrEmpty(Model.CurrentUserName) ? Model.CurrentUserName : ""))
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+
+

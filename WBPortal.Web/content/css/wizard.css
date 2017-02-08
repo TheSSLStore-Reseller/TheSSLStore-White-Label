@@ -131,3 +131,4 @@ body{font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#666;}
 .frmins {position:relative;}
 
 .dvupload {position:absolute; right:0; bottom:205px; width:460px; height:100px;}
+.dvwidth100  { width:100% !important;}

@@ -1,24 +1,26 @@
-﻿@using WBSSLStore.Web.Util;
-@using WBSSLStore.Data.Infrastructure;
-@using WBSSLStore.Domain
+﻿@using WBSSLStore.Domain
 @using WBSSLStore.Web.Helpers.PagedList;
+@using WBSSLStore.Data.Infrastructure;
 @model IPagedList<UserTransaction>
 @{
-    ViewBag.Title = "TransactionWise";
-    string CurrentLangCode = WBSSLStore.Web.Helpers.WBHelper.CurrentLangCode;
+    ViewBag.Title = "CustomerWise";
+    string CurrentLangCode = "";
+    using (WBSSLStore.Web.Util.WBSiteSettings setting = new WBSSLStore.Web.Util.WBSiteSettings(WBSSLStore.Web.Helpers.Caching.SiteCacher.CurrentSite))
+    {
+
+        CurrentLangCode = setting.CurrentCultureKey;
+    }
 }
-<link rel="stylesheet" href="@Url.Content("~/content/themes/base/jquery-ui.min.css")" type="text/css" />
-<script src="@Url.Content("~/Content/Scripts/Jquery.UI/jquery-ui.min.js")"  type="text/javascript"></script>
-<script src="@Url.Content("~/content/Scripts/jQuery.glob.min.js")" type="text/javascript"></script>
 
-<script src="@Url.Content("~/content/Admin/js/common.min.js")" language="javascript" type="text/javascript" ></script>
-
+@System.Web.Optimization.Scripts.Render("/bundales/wb/validationjs?v=" + ViewBag.version)
+@System.Web.Optimization.Scripts.Render("/bundales/jquery-glob?v=" + ViewBag.version)
+@System.Web.Optimization.Styles.Render("/bundales/jquery-ui-css?v=" + ViewBag.version)
+@System.Web.Optimization.Scripts.Render("/bundales/jquery-ui?v=" + ViewBag.version)
 
 @if (CurrentLangCode != "en")
-{ 
-    <script src="@Url.Content("~/content/Scripts/jquery.glob.all.min.js")" type="text/javascript"></script>
+{
     <script src="@Url.Content("~/content/Scripts/i18n/jquery.ui.datepicker-" + CurrentLangCode + ".js")" type="text/javascript"></script>
-    
+    <script src="@Url.Content("~/content/Scripts/jquery.glob.all.min.js")" type="text/javascript"></script>
 }
 <script type="text/javascript">
 

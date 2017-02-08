@@ -1,6 +1,25 @@
-﻿@model WBSSLStore.Domain.CMSPage
+﻿@using WBSSLStore.Domain;
+@model CMSPage
+@{ 
+    CMSPage cmsPage = new CMSPage();
 
-<title>@(Model != null ? Model.Title : "SSL Certificate Provider") </title>
-<meta name="DESCRIPTION" content="@(Model != null ? Model.Description : "SSL certificates from the branded SSL certificate brands on your trusted SSL certificate provider")" />
-<meta name="KEYWORDS" content="@(Model != null ? Model.Keywords : "")" />
+    if (Model != null && Model.ID > 0)
+    {
+        cmsPage = Model;
+    }
+    else
+    {
+        cmsPage = WBSSLStore.Web.Helpers.WBHelper.GetMetaData();
+    }
+
+    if (cmsPage == null)
+    {
+        cmsPage = new CMSPage();
+    }
+}
+
+<title>@( !string.IsNullOrEmpty(cmsPage.Title) ? cmsPage.Title : "SSL Certificate Provider") </title>
+<meta name="DESCRIPTION" content="@(!string.IsNullOrEmpty(cmsPage.Description) ? cmsPage.Description : "SSL certificates from the branded SSL certificate brands on your trusted SSL certificate provider")" />
+<meta name="KEYWORDS" content="@(!string.IsNullOrEmpty(cmsPage.Keywords) ? cmsPage.Keywords : "")" />
+
 @Html.Raw(Model != null ? Model.HeaderSection : "")

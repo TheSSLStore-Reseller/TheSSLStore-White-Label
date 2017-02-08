@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -8,12 +7,9 @@ using WBSSLStore.Domain;
 using WBSSLStore.Service;
 using WBSSLStore.Web.Helpers;
 using WBSSLStore.Web.Helpers.Base;
-using WBSSLStore.Data.Repository;
-using WBSSLStore.Web.Helpers.PagedList;
 using System.Web.Script.Serialization;
 using System.Web.Security;
 using System.Security.Principal;
-using WBSSLStore.Web.Helpers.Caching;
 using System.Configuration;
 
 
@@ -233,20 +229,23 @@ namespace WBSSLStore.Web.Controllers
         public ActionResult resetadpassword(User user, FormCollection collection)
         {
             Site Site = GetSite(user.SiteID);
-            bool ReturnCode = false;
+
             string msg = string.Empty;
             if (user.ID > 0)
             {
                 User objUser = _repository.FindByID(user.ID);
-                objUser.PasswordSalt = WBSSLStore.Web.Helpers.WBHelper.CreateSalt();
-                objUser.PasswordHash = WBSSLStore.Web.Helpers.WBHelper.CreatePasswordHash(collection["txtPassword"], objUser.PasswordSalt);
+                objUser.PasswordSalt = WBHelper.CreateSalt();
+                objUser.PasswordHash = WBHelper.CreatePasswordHash(collection["txtPassword"], objUser.PasswordSalt);
                 objUser.ConfirmPassword = objUser.PasswordHash;
                 _repository.Update(objUser);
                 _unitOfWork.Commit();
-                ReturnCode = true;
+               
 
                 msg = "<div class='normsg'>Password changed successfully. <a href='" + Request.Url.Scheme + "://" + Site.Alias + "/logon" + "'>Click here</a> to login.</div>";
             }
+            else
+                msg = "<div class='normsg'>Error during Password change process. Please try again.</div>";
+
             return Json(new { d = msg }, JsonRequestBehavior.AllowGet);
         }
         #endregion

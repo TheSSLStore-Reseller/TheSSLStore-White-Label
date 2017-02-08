@@ -201,6 +201,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Helpers\Authentication\CustomMembership.cs" />
     <Compile Include="Helpers\Authentication\CustomRoleProvider.cs" />
     <Compile Include="Helpers\Authentication\CustomUser.cs" />
@@ -247,10 +248,14 @@
   <ItemGroup>
     <Content Include="App_Data\Configuration\defalutProc1.txt" />
     <Content Include="App_Data\Configuration\defalutProc.txt" />
+    <Content Include="App_Data\Configuration\Emailconfiguration.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="App_Data\Configuration\pageconfiguration.xml">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="App_Data\Configuration\coutrywb.xml" />
+    <Content Include="App_Data\Configuration\ProductsDetail.xml" />
     <Content Include="App_Readme\Elmah.txt" />
     <Content Include="Areas\Checkout\content\css\checkout.css" />
     <Content Include="Areas\Checkout\content\css\checkout.min.css" />
@@ -992,6 +997,7 @@
     <Content Include="content\Images\best-price-guarantee1.png" />
     <Content Include="content\Images\brand-blue-minus.png" />
     <Content Include="content\Images\brand-blue-plus.png" />
+    <Content Include="content\Images\brand-Certum-logo.png" />
     <Content Include="content\Images\brand-comodo-logo.png" />
     <Content Include="content\Images\brand-geotrust-logo.png" />
     <Content Include="content\Images\brand-green-minus.png" />
@@ -1116,6 +1122,8 @@
     <Content Include="content\Images\successmsg-icon.png" />
     <Content Include="content\Images\symantec-site-seal.png" />
     <Content Include="content\Images\symentec-vertical-logo.png" />
+    <Content Include="content\Images\tab-certum-r.png" />
+    <Content Include="content\Images\tab-certum.png" />
     <Content Include="content\Images\tab-comodo-r.png" />
     <Content Include="content\Images\tab-comodo.png" />
     <Content Include="content\Images\tab-geotrust-r.png" />
@@ -1475,7 +1483,6 @@
     <Content Include="Areas\Admin\Views\Shared\_ProductPricing.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Reports.cshtml" />
     <Content Include="Areas\Admin\Views\SiteSettings\apicredential.cshtml" />
-    <Content Include="Areas\Admin\Views\SiteSettings\banner.cshtml" />
     <Content Include="Areas\Admin\Views\SiteSettings\CropImage.cshtml" />
     <Content Include="Areas\Admin\Views\SiteSettings\googleanalytics.cshtml" />
     <Content Include="Areas\Admin\Views\SiteSettings\Index.cshtml" />
@@ -1606,7 +1613,6 @@
     <Content Include="Views\Shared\_Pager.cshtml" />
     <Content Include="Views\Shared\_PriceControl.cshtml" />
     <Content Include="Views\Shared\_ProdPricing.cshtml" />
-    <Content Include="Views\Shared\_ProductMenu.cshtml" />
     <Content Include="Views\Shared\_renderSEO.cshtml" />
     <Content Include="Views\Shared\_testimonials.cshtml" />
     <Content Include="Views\Shared\_UserMenu.cshtml" />
@@ -1719,7 +1725,7 @@
     <Content Include="Views\StaticPage\Disclaimer.cshtml" />
     <Content Include="Views\StaticPage\privacypolicy.cshtml" />
     <Content Include="Views\StaticPage\refundpolicy.cshtml" />
-    <Content Include="Views\StaticPage\support.cshtml" />
+    <Content Include="Views\StaticPage\comparessl.cshtml" />
     <Content Include="Views\StaticPage\becamereseller.cshtml" />
     <Content Include="Views\StaticPage\sslsolutions.cshtml" />
     <Content Include="Views\StaticPage\faq.cshtml" />
@@ -1731,6 +1737,23 @@
     <Content Include="Views\FreeTools\csrgenerator.cshtml" />
     <Content Include="Views\FreeTools\sslconvertor.cshtml" />
     <Content Include="Views\FreeTools\whynopadlock.cshtml" />
+    <Content Include="Views\Shared\_ProductByBrand.cshtml" />
+    <Content Include="Views\StaticPage\ssltools.cshtml" />
+    <Content Include="Views\StaticPage\Resources.cshtml" />
+    <Content Include="Views\ProductBrand\evSSL.cshtml" />
+    <Content Include="Views\Products\GeoTrustBasicAntiMalwareScan.cshtml" />
+    <Content Include="Views\Products\securesitepromdwc.cshtml" />
+    <Content Include="Views\Products\securesitepro_sha1.cshtml" />
+    <Content Include="Views\Products\securesitemdwc.cshtml" />
+    <Content Include="Views\Products\ThawteWebserver_multi_domain_wildcard.cshtml" />
+    <Content Include="Views\Products\pacenterprise.cshtml" />
+    <Content Include="Views\Products\webinspectorpremium.cshtml" />
+    <Content Include="Views\Products\webinspectorenterprise.cshtml" />
+    <Content Include="Views\Products\pacbasic.cshtml" />
+    <Content Include="Views\Products\pacpro.cshtml" />
+    <Content Include="Views\Products\webinspectorplus.cshtml" />
+    <Content Include="Views\Products\webinspectorstarter.cshtml" />
+    <None Include="Views\Products\GeoTrustQuickTrueBizMDWC.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

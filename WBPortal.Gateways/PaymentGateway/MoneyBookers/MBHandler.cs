@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Web;
 using System.Net;
 using System.IO;
-using System.Configuration;
 using System.Security.Cryptography;
 
 namespace WBSSLStore.Gateways.PaymentGateway.MoneyBookers

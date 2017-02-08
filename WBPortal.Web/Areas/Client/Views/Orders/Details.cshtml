@@ -5,6 +5,12 @@
     ViewBag.version = WBSSLStore.Web.Helpers.Caching.SiteCacher.ResourceVersion();
     string username = ViewBag.UserName;
 }
+
+@section headerTags{
+
+    @Html.Partial("_renderSEO", new WBSSLStore.Domain.CMSPage())
+}
+
 @section sitecss{
 }
 @section Jscripts{

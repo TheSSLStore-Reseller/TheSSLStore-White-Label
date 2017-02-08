@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Caching;
@@ -8,9 +7,6 @@ using System.Web.Mvc;
 using WBSSLStore.Domain;
 using WBSSLStore.Service;
 using WBSSLStore.Data.Repository;
-using WBSSLStore.Logger;
-using WhiteBrandShrink;
-using System.Reflection;
 
 namespace WBSSLStore.Web.Helpers.Caching
 {
@@ -25,7 +21,6 @@ namespace WBSSLStore.Web.Helpers.Caching
         public static bool isSiteNotCreate()
         {
             return (HttpContext.Current.Cache[SiteKey + DnsHost] == null);
-        
         }
 
         private static string DnsHost
@@ -50,7 +45,6 @@ namespace WBSSLStore.Web.Helpers.Caching
         {
             HttpContext.Current.Cache.Remove(SiteKey + DnsHost);
             
-
             if (id > 0)
             {
                 HttpContext.Current.Cache.Remove(SiteKey + id);            
@@ -61,11 +55,7 @@ namespace WBSSLStore.Web.Helpers.Caching
             HttpContext.Current.Cache.Remove(SiteAdmin + DnsHost);
             HttpContext.Current.Cache.Remove(SITESTMP + DnsHost);
 
-
-
             HttpContext.Current.Cache.Remove("Countries");
-
-
         }
 
         public static Site GetCached()
@@ -194,7 +184,7 @@ namespace WBSSLStore.Web.Helpers.Caching
             {
                 var siteservice = DependencyResolver.Current.GetService<ISiteService>();
 
-                site = siteservice.GetSite(id);//: (siteservice.GetSite(Convert.ToInt32(!string.IsNullOrEmpty(System.Web.Security.Membership.ApplicationName) ? System.Web.Security.Membership.ApplicationName : "0")));
+                site = siteservice.GetSite(id);
 
 
                 if (site == null)

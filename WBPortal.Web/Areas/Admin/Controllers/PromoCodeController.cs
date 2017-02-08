@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using WBSSLStore.Web.Helpers.Base;
 using WBSSLStore.Data.Infrastructure;
@@ -89,7 +88,7 @@ namespace WBSSLStore.Web.Areas.Admin.Controllers
             string SelectedVal = string.Empty;
             if (_viewModel.ID > 0)
                 SelectedVal = _viewModel.ProductID + "|" + _viewModel.NoOfMonths;
-            IEnumerable<SelectListItem> lst = from price in pricing select new SelectListItem { Selected = (SelectedVal == price.ProductID + "|" + price.NumberOfMonths), Text = price.Product.ProductName + ":" + Convert.ToInt16(price.NumberOfMonths / 12) + " Years -- " + Convert.ToDecimal(price.SalesPrice / Convert.ToInt32((price.NumberOfMonths >= 12 ? price.NumberOfMonths : 12)  / 12)).ToString("C") + " per year", Value = price.ProductID + "|" + price.NumberOfMonths };
+            IEnumerable<SelectListItem> lst = from price in pricing select new SelectListItem { Selected = (SelectedVal == price.ProductID + "|" + price.NumberOfMonths), Text = price.Product.ProductName + ":" + Convert.ToInt16(price.NumberOfMonths / 12) + " Years -- " + Convert.ToDecimal(price.SalesPrice / Convert.ToInt32((price.NumberOfMonths >= 12 ? price.NumberOfMonths : 12) / 12)).ToString("C") + " per year", Value = price.ProductID + "|" + price.NumberOfMonths };
             ViewBag.ProductList = lst;
             return View(_viewModel);
         }
@@ -141,16 +140,19 @@ namespace WBSSLStore.Web.Areas.Admin.Controllers
                     {
 
 
-                        ViewBag.Message = "<div class='errormsg'>"+ WBSSLStore.Resources.ErrorMessage.Message.PromocodeAlreadyExist +"</div>";
+                        ViewBag.Message = "<div class='errormsg'>" + WBSSLStore.Resources.ErrorMessage.Message.PromocodeAlreadyExist + "</div>";
                         return View(model);
                     }
                 }
                 else
                     return View(model);
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex)
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             {
 
+                ViewBag.Message = "<div class='errormsg'>" + ex.Message + "</div>";
                 return View(model);
             }
         }

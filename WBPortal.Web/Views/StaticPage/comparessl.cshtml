@@ -1,0 +1,57 @@
+﻿@model WBSSLStore.Service.ViewModels.StaticPageViewModel
+@{
+    ViewBag.version = WBSSLStore.Web.Helpers.Caching.SiteCacher.ResourceVersion();
+}
+@section headerTags{
+    @Html.Partial("_renderSEO", Model != null && Model.CMSPage != null ? Model.CMSPage : new WBSSLStore.Domain.CMSPage())
+}
+@section sitecss{
+
+}
+@section Jscripts{
+}
+
+@Html.Partial("_banner", new Tuple<string, string>("", "Compare SSL"))
+
+
+<div class="content">
+    <div class="wrapper">
+        <div class="column3">
+            <div class="mobtopcol">
+                <div class="column3-2">
+                    <div class="aboutwrap marzerotop">
+                        <div class="aboutcontext">
+                            <h2>Compare SSL</h2>
+                            <p>Not all SSL certificates are the same by comparison. Read on for information on SSL certificate encryption, dedicated SSL certificates, shared SSL certificates, wildcard SSL certificates, free SSL certificates, and SSL certificate comparisons of them all.</p>
+                            <p>When it comes to Secure Sockets Layer (SSL) protection on your business websites, it is important to consider what kind of SSL certificate you get. An SSL certificate is a protective application. It serves two main purposes:</p>
+                            <ul class="contentlist">
+                                <li>Identify your business: An SSL certificate lets Internet users know that you really are who you say you are. Before you can get an SSL certificate, a trusted third party receives information about you and verifies.</li>
+                                <li>Encrypt sensitive information: The other purpose of an SSL certificate is to protect personal information from the unscrupulous. The idea is to turn payment information into a code that cannot be read by intruders. Only those with the proper keys can decode the secure sockets layer information. This protects you and your customers.</li>
+                            </ul>
+                            <p>There are different types of SSL certificates, and they have different pricing structures. The main types of SSL certificates are dedicated, shared, wildcard and free. Most of these SSL certificates – excepting the free SSL certificates – cost anywhere from $30 to $1,000 a year.</p>
+                            <p></p><h3>Dedicated SSL certificates</h3>
+                            <p>Dedicated SSL certificates are those that are assigned specifically to your unique domain name. When you get a dedicated SSL certificate, you have to have your own unique domain. You don't share the SSL certificate with another domain name, and these do not usually provide secure sockets layer protection for subdomains. These are the most expensive types of SSL certificate.</p>
+                            <p></p> <h3>Shared SSL certificates</h3>
+                            <p>Unlike the dedicated SSL certificates, in which you have your own domain name and your own unique SSL certificate, shared SSL certificates are those that you can share with others. You can have your site added to someone else's SSL certificate. However, that means that the name on the SSL certificate (when someone inspects the certificate on your site) won't match yours; it will match the name of whoever owns the SSL certificate. Additionally, if you want to switch servers or Web hosts, you probably won't be able to take your SSL protection with you. Many ecommerce Web hosts offer shared SSL certificates as part of their hosting packages. It makes things easy and all-inclusive.</p>
+                            <p></p>  <h3>Wildcard SSL certificates</h3>
+                            <p>If you have subdomains that you want to be protected with SSL certificates, then you need a wildcard SSL certificate to make sure all of your subdomains are properly protected. It allows you to protect different aspects of your Web portal with one SSL certificate. However, you will need to specify which subdomains will be used on the wildcard SSL certificate.</p>
+                            <p></p> <h3>Free SSL certificates</h3>
+                            <p>The three SSL certificates described so far all cost money. A shared SSL certificate doesn't usually cost a whole lot, but it does cost something. There are some companies and communities that offer free SSL certificates. However, these do not always have the same level of encryption or service that is offered by paid certificates. You will need to carefully check the SSL certificate to ensure that it is offered by a reputable organization. SSL security</p>
+                            <p>Another thing to keep in mind when comparing SSL certificates is the level of security offered. Industry standard is 128 bit encryption. However, 256 encryption is available (for an increased fee), and some companies offer cheaper or free SSL certificates that are only 56 bit encryption. The higher the encryption number, the better the security. You need to decide the level of security you want, keeping in mind that you will get the highest – and most expensive – security with a dedicated SSL certificate that has 256 bit encryption.</p>
+                            <p>It is important that you carefully consider your options before making a decision. Consider the needs of your ecommerce website, and the number of secure transactions that you participate in. Depending on your needs, one type of SSL certificate may be better for you than another.</p>
+
+
+                        </div>
+                    </div>
+
+                </div>
+                @Html.Partial("_rightpanel", (Model != null && !string.IsNullOrEmpty(Model.CurrentUserName) ? Model.CurrentUserName : ""))
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+
+
+
+

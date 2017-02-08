@@ -20,9 +20,8 @@ namespace WBSSLStore.Domain
         Symantec = 3, 
         Thawte = 4,
         Comodo = 5,
-        TrustKeeper = 6,
-        TrustWave = 7,
-        Certum = 9 
+        Certum = 6
+      
 
 
     }

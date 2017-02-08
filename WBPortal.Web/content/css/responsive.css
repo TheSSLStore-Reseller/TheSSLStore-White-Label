@@ -62,7 +62,7 @@
 	
 	.footer-top, .footer-bot{padding:20px 0;}
 	.r-tabs .r-tabs-nav .r-tabs-tab{ width:48%;}
-	
+    .resp-tabs-list li {width:50px;}
 	.smk_accordion .accordion_in .acc_content ul{width:100%; margin:0px;}
 	.guarantee img{ max-width:70% !important;}
 	

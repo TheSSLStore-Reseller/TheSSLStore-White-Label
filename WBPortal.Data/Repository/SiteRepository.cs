@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using WBSSLStore.Data.Infrastructure;
 using WBSSLStore.Domain;
 using System.Data.SqlClient;
@@ -21,11 +20,7 @@ namespace WBSSLStore.Data.Repository
         public Site GetSite(string alias)
         {
 
-            //var siteQuery = (from s in DbContext.Sites
-            //                 where s.Alias.Replace("www.", "") == alias.ToLower().Replace("www.", "") || s.CName == alias.ToLower() && s.isActive == true
-            //                 select s).EagerLoad(c => c.SupportedLanguages, c => c.Settings, c => c.Pages);
-
-            var siteQuery = (from s in DbContext.Sites
+              var siteQuery = (from s in DbContext.Sites
                              where s.isActive == true
                              select s).EagerLoad(c => c.SupportedLanguages, c => c.Settings, c => c.Pages);
 

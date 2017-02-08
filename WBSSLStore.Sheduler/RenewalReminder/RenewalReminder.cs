@@ -24,13 +24,13 @@ namespace WBSSLStore.Scheduler.RenewalReminder
             logger = new Logger.Logger();
         }
 
-        //public static void Main(string[] args)
-        //{
-        //    var objData = new WBSSLStore.Scheduler.RenewalReminder.RenewalReminder(new Data.Infrastructure.DatabaseFactory());
-        //    //objData.SendMailToCustomer();
-        //    //objData.SendMailToReseller();
-        //    objData.SendMailToRsellerCustomer();
-        //}
+        public static void Main(string[] args)
+        {
+            var objData = new WBSSLStore.Scheduler.RenewalReminder.RenewalReminder(new Data.Infrastructure.DatabaseFactory());
+            //objData.SendMailToCustomer();
+            //objData.SendMailToReseller();
+            objData.SendMailToRsellerCustomer();
+        }
 
         public void SendMailToCustomer()
         {

@@ -13,11 +13,8 @@ using System.IO;
 using WBSSLStore.Web.Helpers.Caching;
 using System.Reflection;
 using System.ComponentModel;
-using System.Collections;
 using WBSSLStore.Web.Util;
-using System.Linq.Expressions;
 using System.Resources;
-using System.Net;
 
 namespace WBSSLStore.Web.Helpers
 {
@@ -50,25 +47,24 @@ namespace WBSSLStore.Web.Helpers
         }
         public static int CurrentLangID()
         {
-            return WBSiteSettings.CurrentLangID(SiteCacher.CurrentSite);
+
+
+            Site site = SiteCacher.CurrentSite;
+            if (site != null && site.Settings != null && site.SupportedLanguages != null)
+            {
+
+                var lang = site.SupportedLanguages.Where(o => o.LangCode == CurrentLangCode && o.RecordStatus == RecordStatus.ACTIVE).SingleOrDefault();
+                if (lang != null)
+                {
+                    return lang.ID;
+                }
+            }
+
+
+            return 0;
 
         }
-        //public static string CurrentLayoutFile
-        //{
-        //    get
-        //    {
-        //        string _cureentLayout = "layout1";
-        //        Site site = SiteCacher.CurrentSite;
-        //        Domain.SiteSettings S = site.Settings.Where(o => o.Key == WBSSLStore.Domain.SettingConstants.CURRENT_LAYOUT_KEY && o.SiteID == site.ID).FirstOrDefault();
-        //        if (S != null)
-        //        {
-        //            _cureentLayout = S.Value;
-        //        }
-        //        site = null;
-        //        return "~/Views/Shared/" + _cureentLayout + "/Layout.cshtml";
-        //    }
-
-        //}
+       
         public static string CurrentColourCSS
         {
             get
@@ -76,12 +72,12 @@ namespace WBSSLStore.Web.Helpers
                 string _cureentLayout = "layout1";
                 string _cureentCOLOR = "color1";
                 Site site = SiteCacher.CurrentSite;
-                Domain.SiteSettings S = site.Settings.Where(o => o.Key == WBSSLStore.Domain.SettingConstants.CURRENT_LAYOUT_KEY && o.SiteID == site.ID).FirstOrDefault();
+                SiteSettings S = site.Settings.Where(o => o.Key == SettingConstants.CURRENT_LAYOUT_KEY && o.SiteID == site.ID).FirstOrDefault();
                 if (S != null)
                 {
                     _cureentLayout = S.Value;
                 }
-                S = site.Settings.Where(o => o.Key == WBSSLStore.Domain.SettingConstants.CURRENT_COLORCODE_KEY && o.SiteID == site.ID).FirstOrDefault();
+                S = site.Settings.Where(o => o.Key == SettingConstants.CURRENT_COLORCODE_KEY && o.SiteID == site.ID).FirstOrDefault();
                 if (S != null)
                 {
                     _cureentCOLOR = S.Value;
@@ -103,7 +99,7 @@ namespace WBSSLStore.Web.Helpers
                 {
                     if (site.Settings != null)
                     {
-                        _SiteSupportEmail = site.Settings.Where(o => o.Key == WBSSLStore.Domain.SettingConstants.CURRENT_SITESUPPORT_EMAI_KEY && o.SiteID == site.ID).FirstOrDefault().Value;
+                        _SiteSupportEmail = site.Settings.Where(o => o.Key == SettingConstants.CURRENT_SITESUPPORT_EMAI_KEY && o.SiteID == site.ID).FirstOrDefault().Value;
                     }
                 }
                 catch { }
@@ -117,14 +113,14 @@ namespace WBSSLStore.Web.Helpers
         {
             get
             {
-                string _CurrentLangCode = WBSSLStore.Domain.SettingConstants.DEFAULT_LANGUAGE_CODE;
+                string _CurrentLangCode = SettingConstants.DEFAULT_LANGUAGE_CODE;
 
                 Site site = SiteCacher.CurrentSite;
                 try
                 {
                     if (site.Settings != null)
                     {
-                        _CurrentLangCode = site.Settings.Where(o => o.Key == WBSSLStore.Domain.SettingConstants.CURRENT_SITELANGUAGE_KEY && o.SiteID == site.ID).FirstOrDefault().Value;
+                        _CurrentLangCode = site.Settings.Where(o => o.Key == SettingConstants.CURRENT_SITELANGUAGE_KEY && o.SiteID == site.ID).FirstOrDefault().Value;
                     }
                 }
                 catch { }
@@ -134,11 +130,12 @@ namespace WBSSLStore.Web.Helpers
             }
 
         }
-        public static CMSPage GetMetaData(int SiteID)
+        public static CMSPage GetMetaData()
         {
             string slug = HttpContext.Current.Request.Url.AbsolutePath;
             var service = DependencyResolver.Current.GetService<IRepository<CMSPage>>();
-            int langID = WBHelper.CurrentLangID();            
+            int langID = WBHelper.CurrentLangID();
+            int SiteID = SiteCacher.CurrentSite.ID;
             return service.Find(c => c.Pages.SiteID == SiteID && c.LangID.Equals(langID) && c.Pages.slug == slug).FirstOrDefault(); //GetPageMetadata(SiteID, WBHelper.CurrentLangID(), "/" + slug);
         }
         public static string CurrentSiteImagePath
@@ -148,12 +145,12 @@ namespace WBSSLStore.Web.Helpers
                 string _cureentLayout = "layout1";
                 string _cureentCOLOR = "color1";
                 Site site = SiteCacher.CurrentSite;
-                Domain.SiteSettings S = site.Settings.Where(o => o.Key == WBSSLStore.Domain.SettingConstants.CURRENT_LAYOUT_KEY && o.SiteID == site.ID).FirstOrDefault();
+                Domain.SiteSettings S = site.Settings.Where(o => o.Key == SettingConstants.CURRENT_LAYOUT_KEY && o.SiteID == site.ID).FirstOrDefault();
                 if (S != null)
                 {
                     _cureentLayout = S.Value;
                 }
-                S = site.Settings.Where(o => o.Key == WBSSLStore.Domain.SettingConstants.CURRENT_COLORCODE_KEY && o.SiteID == site.ID).FirstOrDefault();
+                S = site.Settings.Where(o => o.Key == SettingConstants.CURRENT_COLORCODE_KEY && o.SiteID == site.ID).FirstOrDefault();
                 if (S != null)
                 {
                     _cureentCOLOR = S.Value;
@@ -172,7 +169,7 @@ namespace WBSSLStore.Web.Helpers
                     Site site = SiteCacher.CurrentSite;
                     if (site.Settings != null)
                     {
-                        return VirtualPathUtility.ToAbsolute("~/upload/" + SiteCacher.CurrentSite.ID + "/" + site.Settings.Where(o => o.Key == WBSSLStore.Domain.SettingConstants.CURRENT_SITELOGO_KEY && o.SiteID == site.ID).FirstOrDefault().Value);
+                        return VirtualPathUtility.ToAbsolute("~/upload/" + SiteCacher.CurrentSite.ID + "/" + site.Settings.Where(o => o.Key == SettingConstants.CURRENT_SITELOGO_KEY && o.SiteID == site.ID).FirstOrDefault().Value);
                     }
                 }
                 catch { }
@@ -190,8 +187,10 @@ namespace WBSSLStore.Web.Helpers
         }
         public static string CreatePasswordHash(string pwd, string salt)
         {
-            string saltAndPwd = String.Concat(pwd, salt);
-            string hashedPwd = FormsAuthentication.HashPasswordForStoringInConfigFile(saltAndPwd, "sha1");
+            string saltAndPwd = string.Concat(pwd, salt);
+
+            string hashedPwd =  FormsAuthentication.HashPasswordForStoringInConfigFile(saltAndPwd, "sha1");
+
             return hashedPwd;
         }
         public static string GetTemplateText(string strFilename)
@@ -372,7 +371,7 @@ namespace WBSSLStore.Web.Helpers
             Site site = SiteCacher.GetCached();
 
             StringBuilder strMenu = new StringBuilder();
-            List<Pages> lstPage = site.Pages.Where(pg => pg.PageStatusID == (int)PageStatus.Show && WBSSLStore.Web.Util.WBSiteSettings.AllowedBrand(site).Contains(pg.BrandID.ToString())).OrderBy(pg => pg.ParentID).ThenBy(pg => pg.BrandID).ThenBy(pg => pg.ID).ToList();
+            List<Pages> lstPage = site.Pages.ToList();
             if (lstPage != null && lstPage.Count > 0)
             {
                 string str = "xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"  xsi:schemaLocation=\"http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd\"";
@@ -390,79 +389,6 @@ namespace WBSSLStore.Web.Helpers
             return strMenu.ToString();
         }
 
-        public static string GenerateSideMenuString()
-        {
-            Site site = SiteCacher.GetCached();
-
-            StringBuilder strMenu = new StringBuilder();
-
-            List<Pages> lstPage = site.Pages.Where(pg => pg.PageStatusID != (int)PageStatus.Hide && pg.BrandID > 0 && pg.BrandID < 99 && WBSSLStore.Web.Util.WBSiteSettings.AllowedBrand(site).Contains(pg.BrandID.ToString())).OrderBy(pg => pg.ParentID).ThenBy(pg => pg.BrandID).ThenBy(pg => pg.ID).ToList();
-            //if (lstPage != null && lstPage.Count > 0)
-            //{
-            //    strMenu.Append(" <ul id='menu1' class='productmenu'>");
-            //    List<Pages> objParent = lstPage.Where(pg => pg.ParentID == 0).ToList();
-            //    int Count = 0;
-            //    foreach (Pages objPage in objParent)
-            //    {
-            //        if (Count == 0)
-            //        {
-            //            strMenu.Append("<li class=\"notopborder topshape\"><a href=\"" + ApllicationFullPath + objPage.slug + "\">" + GetValueFromResourceFile(objPage.Caption) + "</a>" + GenerateMenuStringChildv(lstPage.Where(pg => pg.ParentID == objPage.ID).ToList(), lstPage) + "</li>");
-            //        }
-            //        else if (Count == (objParent.Count - 1))
-            //            strMenu.Append("<li class=\"btmshape\"><a href=\"" + ApllicationFullPath + objPage.slug + "\">" + GetValueFromResourceFile(objPage.Caption) + "</a>" + GenerateMenuStringChildv(lstPage.Where(pg => pg.ParentID == objPage.ID).ToList(), lstPage) + "</li>");
-            //        else
-            //        {
-            //            strMenu.Append("<li><a href=\"" + ApllicationFullPath + objPage.slug + "\">" + GetValueFromResourceFile(objPage.Caption) + "</a>" + GenerateMenuStringChildv(lstPage.Where(pg => pg.ParentID == objPage.ID).ToList(), lstPage) + "</li>");
-            //        }
-            //        Count++;
-            //    }
-            //    strMenu.Append("</ul>");
-            //}
-
-            var productservice = DependencyResolver.Current.GetService<WBSSLStore.Service.IProductService>();
-            var allproducts = productservice.GetAllProductAvailablity(site.ID).Select(x => x.Product).Where(x => x.RecordStatusID.Equals((int)RecordStatus.ACTIVE)).ToList();
-            if (lstPage != null && lstPage.Count > 0)
-            {
-                strMenu.Append(" <ul id='menu1' class='productmenu'>");
-                List<Pages> objParent = lstPage.Where(x => x.ParentID == 0).Distinct().OrderBy(x => x.DisplayOrder).ToList();
-                List<Pages> lstPagesparent = (from p in lstPage
-                                              where p.ParentID == 0
-                                              group p by p.BrandID into v
-                                              select new Pages
-                                              {
-                                                  BrandID = v.Key,
-                                                  Caption = v.FirstOrDefault().Caption,
-                                                  URLTarget = v.FirstOrDefault().URLTarget,
-                                                  slug = v.FirstOrDefault().slug,
-                                                  SiteID = v.FirstOrDefault().SiteID,
-                                                  ParentID = v.FirstOrDefault().ParentID
-                                              }).OrderBy(x => x.DisplayOrder).ToList();
-
-
-
-                int Count = 0;
-                foreach (Pages objPage in lstPagesparent)
-                {
-                    if (Count == 0)
-                    {
-                        strMenu.Append("<li class=\"notopborder topshape\"><a href=\"" + (objPage.slug.ToLower().StartsWith("http") ? objPage.slug : ApllicationFullPath + objPage.slug) + "\">" + GetValueFromResourceFile(objPage.Caption) + "</a>" + GenerateMenuStringChildvd(allproducts.Where(x => x.BrandID == objPage.BrandID).ToList()) + "</li>");
-                    }
-                    else if (Count == (objParent.Count - 1))
-                        strMenu.Append("<li class=\"btmshape\"><a href=\"" + (objPage.slug.ToLower().StartsWith("http") ? objPage.slug : ApllicationFullPath + objPage.slug) + "\">" + GetValueFromResourceFile(objPage.Caption) + "</a>" + GenerateMenuStringChildvd(allproducts.Where(x => x.BrandID == objPage.BrandID).ToList()) + "</li>");
-                    else
-                    {
-                        strMenu.Append("<li><a href=\"" + (objPage.slug.ToLower().StartsWith("http") ? objPage.slug : ApllicationFullPath + objPage.slug) + "\">" + GetValueFromResourceFile(objPage.Caption) + "</a>" + GenerateMenuStringChildvd(allproducts.Where(x => x.BrandID == objPage.BrandID).ToList()) + "</li>");
-                    }
-                    Count++;
-                }
-                strMenu.Append("</ul>");
-            }
-
-
-            site = null;
-            return strMenu.ToString();
-        }
-
         private static string GenerateMenuStringChildvd(List<Product> obProductRow)
         {
             if (obProductRow != null && obProductRow.Count > 0)
@@ -470,13 +396,9 @@ namespace WBSSLStore.Web.Helpers
                 StringBuilder inner = new StringBuilder("<ul>");
                 foreach (Product pgr in obProductRow)
                 {
-                    //if (!string.IsNullOrEmpty(pgr.DetailPageslug))
-                    //{
                     inner.Append("<li><a href='" + ApllicationFullPath + (!string.IsNullOrEmpty(pgr.DetailPageslug) ? pgr.DetailPageslug : "#") + "' target=\"_self\">" + GetValueFromResourceFile(pgr.ProductName) + "</a>");
-
-                    //inner.Append(GenerateMenuStringChildv(lstAllPages.Where(pg => pg.ParentID == pgr.ID).ToList(), lstAllPages));
                     inner.Append("</li>");
-                    //}
+                   
                 }
                 inner.Append("</ul>");
                 return inner.ToString();
@@ -513,7 +435,9 @@ namespace WBSSLStore.Web.Helpers
                 if (string.IsNullOrEmpty(resourceValue))
                     resourceValue = key1;
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex)
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             {
                 resourceValue = key1;
             }
@@ -527,10 +451,10 @@ namespace WBSSLStore.Web.Helpers
 
             StringBuilder strMenu = new StringBuilder();
 
-            List<Pages> lstPage = site.Pages.Where(pg => (pg.StartDate == null ? DateTime.Now.Date : pg.StartDate.Value) <= DateTime.Now.Date && (pg.EndDate == null ? DateTime.Now.Date : pg.EndDate.Value) >= DateTime.Now.Date && pg.PageStatusID == (int)PageStatus.Show && WBSSLStore.Web.Util.WBSiteSettings.AllowedBrand(site).Contains(pg.BrandID.ToString())).OrderBy(pg => pg.ParentID).ThenBy(pg => pg.DisplayOrder).ThenBy(pg => pg.BrandID).ThenBy(pg => pg.ID).ToList();
+            List<Pages> lstPage = site.Pages.ToList();
             if (lstPage != null && lstPage.Count > 0)
             {
-                strMenu.Append("<div class=\"menu\"><ul id=\"nav\">");
+                strMenu.Append("<div><ul class=\"contentlist\">");
                 List<Pages> objParent = lstPage.Where(pg => pg.ParentID == 0).ToList();
                 int Count = 0;
                 foreach (Pages objPage in objParent)
@@ -542,7 +466,7 @@ namespace WBSSLStore.Web.Helpers
 
                     if (Count == 0)
                     {
-                        strMenu.Append("<li class=\"noleftborder\"><a href=\"" + (objPage.slug.ToLower().StartsWith("http") ? objPage.slug : ApllicationFullPath + objPage.slug) + "\" target=\"" + objPage.URLTarget.ToString() + "\" >" + GetValueFromResourceFile(objPage.Caption) + "</a>" + GenerateMenuStringChild(lstPage.Where(pg => pg.ParentID == objPage.ID).ToList(), lstPage) + "</li>");
+                        strMenu.Append("<li><a href=\"" + (objPage.slug.ToLower().StartsWith("http") ? objPage.slug : ApllicationFullPath + objPage.slug) + "\" target=\"" + objPage.URLTarget.ToString() + "\" >" + GetValueFromResourceFile(objPage.Caption) + "</a>" + GenerateMenuStringChild(lstPage.Where(pg => pg.ParentID == objPage.ID).ToList(), lstPage) + "</li>");
                     }
 
                     else
@@ -556,7 +480,7 @@ namespace WBSSLStore.Web.Helpers
 
                 bool IsAuth = (HttpContext.Current != null && HttpContext.Current.User.Identity.IsAuthenticated);
 
-                strMenu.Append("<li class=\"norightborder\"><a href=\"" + (IsAuth ? "/staticpage/Logout" : "/logon") + "\">" + GetValueFromResourceFile((IsAuth ? "Logout" : "Login")) + "</a></li>");
+                strMenu.Append("<li><a href=\"" + (IsAuth ? "/staticpage/Logout" : "/logon") + "\">" + GetValueFromResourceFile((IsAuth ? "Logout" : "Login")) + "</a></li>");
 
                 strMenu.Append("</ul></div>");
             }
@@ -767,7 +691,7 @@ namespace WBSSLStore.Web.Helpers
             return (result == 0 ? defaultvalue : result);
         }
 
-        public static bool CheckBrandShow(List<WBSSLStore.Domain.ProductPricing> _ProductPricing, ProductBrands brandEnum)
+        public static bool CheckBrandShow(List<ProductPricing> _ProductPricing, ProductBrands brandEnum)
         {
             bool Result = false;
             Site site = SiteCacher.GetCached();
@@ -780,7 +704,7 @@ namespace WBSSLStore.Web.Helpers
             return Result;
 
         }
-        public static bool ShowStandardSSL(List<WBSSLStore.Domain.ProductPricing> _ProductPricing)
+        public static bool ShowStandardSSL(List<ProductPricing> _ProductPricing)
         {
             bool Result = false;
             Site site = SiteCacher.GetCached();
@@ -795,7 +719,7 @@ namespace WBSSLStore.Web.Helpers
             site = null;
             return Result;
         }
-        public static bool ShowHighAssurance(List<WBSSLStore.Domain.ProductPricing> _ProductPricing)
+        public static bool ShowHighAssurance(List<ProductPricing> _ProductPricing)
         {
             bool Result = false;
             Site site = SiteCacher.GetCached();
@@ -810,7 +734,7 @@ namespace WBSSLStore.Web.Helpers
             site = null;
             return Result;
         }
-        public static bool ShowWildCardSSL(List<WBSSLStore.Domain.ProductPricing> _ProductPricing)
+        public static bool ShowWildCardSSL(List<ProductPricing> _ProductPricing)
         {
             bool Result = false;
             Site site = SiteCacher.GetCached();
@@ -825,7 +749,7 @@ namespace WBSSLStore.Web.Helpers
             site = null;
             return Result;
         }
-        public static bool ShowSAN(List<WBSSLStore.Domain.ProductPricing> _ProductPricing)
+        public static bool ShowSAN(List<ProductPricing> _ProductPricing)
         {
             bool Result = false;
             Site site = SiteCacher.GetCached();
@@ -840,7 +764,7 @@ namespace WBSSLStore.Web.Helpers
             site = null;
             return Result;
         }
-        public static bool ShowSGC(List<WBSSLStore.Domain.ProductPricing> _ProductPricing)
+        public static bool ShowSGC(List<ProductPricing> _ProductPricing)
         {
             bool Result = false;
             Site site = SiteCacher.GetCached();
@@ -855,7 +779,7 @@ namespace WBSSLStore.Web.Helpers
             site = null;
             return Result;
         }
-        public static bool ShowEV(List<WBSSLStore.Domain.ProductPricing> _ProductPricing)
+        public static bool ShowEV(List<ProductPricing> _ProductPricing)
         {
             bool Result = false;
             Site site = SiteCacher.GetCached();
@@ -870,7 +794,7 @@ namespace WBSSLStore.Web.Helpers
             site = null;
             return Result;
         }
-        public static bool ShowCodeSigning(List<WBSSLStore.Domain.ProductPricing> _ProductPricing)
+        public static bool ShowCodeSigning(List<ProductPricing> _ProductPricing)
         {
             bool Result = false;
             Site site = SiteCacher.GetCached();
@@ -885,7 +809,7 @@ namespace WBSSLStore.Web.Helpers
             site = null;
             return Result;
         }
-        public static bool ShowTrustSeal(List<WBSSLStore.Domain.ProductPricing> _ProductPricing)
+        public static bool ShowTrustSeal(List<ProductPricing> _ProductPricing)
         {
             bool Result = false;
             Site site = SiteCacher.GetCached();
@@ -900,7 +824,7 @@ namespace WBSSLStore.Web.Helpers
             site = null;
             return Result;
         }
-        public static bool ShowOther(List<WBSSLStore.Domain.ProductPricing> _ProductPricing)
+        public static bool ShowOther(List<ProductPricing> _ProductPricing)
         {
             bool Result = false;
             Site site = SiteCacher.GetCached();
@@ -915,7 +839,7 @@ namespace WBSSLStore.Web.Helpers
             site = null;
             return Result;
         }
-        public static bool ShowMalware(List<WBSSLStore.Domain.ProductPricing> _ProductPricing)
+        public static bool ShowMalware(List<ProductPricing> _ProductPricing)
         {
             bool Result = false;
             Site site = SiteCacher.GetCached();
@@ -938,7 +862,7 @@ namespace WBSSLStore.Web.Helpers
             {
                 try
                 {
-                    return Convert.ToBoolean(site.Settings.Where(o => o.Key == WBSSLStore.Domain.SettingConstants.CURRENT_IS_SITE_RUN_WITH_WWW && o.SiteID == site.ID).FirstOrDefault().Value);
+                    return Convert.ToBoolean(site.Settings.Where(o => o.Key == SettingConstants.CURRENT_IS_SITE_RUN_WITH_WWW && o.SiteID == site.ID).FirstOrDefault().Value);
                 }
                 catch { }
             }
@@ -953,7 +877,7 @@ namespace WBSSLStore.Web.Helpers
             {
                 if (Site.Settings != null)
                 {
-                    return Site.Settings.Where(o => o.Key == WBSSLStore.Domain.SettingConstants.CURRENT_SITEINVOICEPREFIX_KEY && o.SiteID == Site.ID).FirstOrDefault().Value;
+                    return Site.Settings.Where(o => o.Key == SettingConstants.CURRENT_SITEINVOICEPREFIX_KEY && o.SiteID == Site.ID).FirstOrDefault().Value;
                 }
             }
             catch { }
@@ -964,12 +888,12 @@ namespace WBSSLStore.Web.Helpers
         {
 
 
-            if (Site.Settings != null && Site.Settings.Where(o => o.Key == WBSSLStore.Domain.SettingConstants.CURRENT_SITEPAGESIZE_KEY && o.SiteID == Site.ID).FirstOrDefault() != null)
+            if (Site.Settings != null && Site.Settings.Where(o => o.Key == SettingConstants.CURRENT_SITEPAGESIZE_KEY && o.SiteID == Site.ID).FirstOrDefault() != null)
             {
-                return Convert.ToInt32(Site.Settings.Where(o => o.Key == WBSSLStore.Domain.SettingConstants.CURRENT_SITEPAGESIZE_KEY && o.SiteID == Site.ID).FirstOrDefault().Value);
+                return Convert.ToInt32(Site.Settings.Where(o => o.Key == SettingConstants.CURRENT_SITEPAGESIZE_KEY && o.SiteID == Site.ID).FirstOrDefault().Value);
             }
 
-            return WBSSLStore.Domain.SettingConstants.DEFAULT_PAGE_SIZE;
+            return SettingConstants.DEFAULT_PAGE_SIZE;
 
         }
         public static bool USESSL(Site Site)
@@ -978,7 +902,7 @@ namespace WBSSLStore.Web.Helpers
             {
                 if (Site.Settings != null)
                 {
-                    return Convert.ToBoolean(Site.Settings.Where(o => o.Key == WBSSLStore.Domain.SettingConstants.CURRENT_USESSL_KEY && o.SiteID == Site.ID).FirstOrDefault().Value);
+                    return Convert.ToBoolean(Site.Settings.Where(o => o.Key == SettingConstants.CURRENT_USESSL_KEY && o.SiteID == Site.ID).FirstOrDefault().Value);
                 }
             }
             catch { }
@@ -991,7 +915,7 @@ namespace WBSSLStore.Web.Helpers
 
             if (Site.Settings != null)
             {
-                return Site.Settings.Where(o => o.Key == WBSSLStore.Domain.SettingConstants.CURRENT_SITEADMIN_EMAIL_KEY && o.SiteID == Site.ID).FirstOrDefault().Value;
+                return Site.Settings.Where(o => o.Key == SettingConstants.CURRENT_SITEADMIN_EMAIL_KEY && o.SiteID == Site.ID).FirstOrDefault().Value;
             }
             return string.Empty;
 
@@ -1002,65 +926,37 @@ namespace WBSSLStore.Web.Helpers
 
             try
             {
-                return site.Settings.Where(o => o.Key == WBSSLStore.Domain.SettingConstants.CURRENT_SITE_THANKYOUPAGE && o.SiteID == site.ID).FirstOrDefault().Value;
+                return site.Settings.Where(o => o.Key == SettingConstants.CURRENT_SITE_THANKYOUPAGE && o.SiteID == site.ID).FirstOrDefault().Value;
             }
             catch
             { }
             return string.Empty;
 
         }
-        public static string GetProductCodeByCertificateType(CertificateType CertificateTypeID)
-        {
-            string ProductCodes = string.Empty;
-            switch (CertificateTypeID)
-            {
-                case CertificateType.CodeSigningCertificates:
-                    ProductCodes = "thawtecsc,8,verisigncsc";
-                    break;
-                case CertificateType.EVCertificates:
-                    ProductCodes = "SecureSiteProEV,SecureSiteEV,337,truebizidmd,SSLWebServerEV,truebusinessidev,410,338,TW21,TW10";
-                    break;
-                case CertificateType.HighAssuranceCertificates:
-                    ProductCodes = "SSLWebServer,SSLWebServerEV,SSLWebServerWildcard,truebusinessidev,sgcsupercerts,truebizid,SecureSiteProEV,SecureSiteEV,SecureSite,SecureSitePro,337,24,34,7,TW21,TW18,TW4,TW1,TW7";
-                    break;
-                case CertificateType.SANCertificates:
-                    ProductCodes = "SecureSiteEV,SecureSitePro,SecureSite,SecureSiteProEV,truebizidmd,335,410,361";
-                    break;
-                case CertificateType.SGCCertificates:
-                    ProductCodes = "338,317,323,SecureSitePro,sgcsupercerts,SecureSiteProEV";
-                    break;
-                case CertificateType.StandardSSLCertificates:
-                    ProductCodes = "301,343,287,freessl,quicksslpremium,rapidssl";
-                    break;
-                case CertificateType.WildcardSSLCertificates:
-                    ProductCodes = "35,289,323,truebusinessidwildcard,SSLWebServerWildcard,rapidsslwildcard,489,TW7";
-                    break;
-                case CertificateType.AntiMalwareScan:
-                    ProductCodes = "tkpcidss,malwarescan";
-                    break;
-            }
-            return ProductCodes;
-        }
+   
 
-        public static string GetProductDetailValue(string pProductCode, string SettingValue)
-        {
-            string path = HttpContext.Current.Server.MapPath("/content/Templates/ProductsDetail.xml");
-            System.Xml.Linq.XDocument obj = System.Xml.Linq.XDocument.Load(path);
-            var _data = from p in obj.Descendants("Product").Where(x => x.Element("ProductCode").Value.Equals(pProductCode,StringComparison.OrdinalIgnoreCase)) select new { strVal = p.Element(SettingValue).Value };
-            if (_data != null && _data.FirstOrDefault() != null && _data.Count() > 0)
-            {
-                return Convert.ToString(_data.FirstOrDefault().strVal);
-            }
-            return string.Empty;
-        }
+        //public static string GetProductDetailValue(string pProductCode, string SettingValue)
+        //{
+        //    string path = HttpContext.Current.Server.MapPath("/content/Templates/ProductsDetail.xml");
+        //    System.Xml.Linq.XDocument obj = System.Xml.Linq.XDocument.Load(path);
+        //    var _data = from p in obj.Descendants("Product").Where(x => x.Element("ProductCode").Value.Equals(pProductCode,StringComparison.OrdinalIgnoreCase)) select new { strVal = p.Element(SettingValue).Value };
+        //    if (_data != null && _data.FirstOrDefault() != null && _data.Count() > 0)
+        //    {
+        //        return Convert.ToString(_data.FirstOrDefault().strVal);
+        //    }
+        //    return string.Empty;
+        //}
 
 
-        public static ConfigurationStage GetSiteConfiguration(string Connection = "")
+        public static ConfigurationStage GetSiteConfiguration(string Connection )
         {
             try
             {
-                using (WBSSLStore.Data.WBSSLStoreDb db = !string.IsNullOrEmpty(Connection) ? new WBSSLStore.Data.WBSSLStoreDb(Connection) : new WBSSLStore.Data.WBSSLStoreDb())
+                using (Data.WBSSLStoreDb db = !string.IsNullOrEmpty(Connection) ? new Data.WBSSLStoreDb(Connection) : new Data.WBSSLStoreDb())
                 {
+                    if(string.IsNullOrEmpty( db.Database.Connection.ConnectionString))
+                        return ConfigurationStage.NoCreated;
+
                     var pSites = db.Sites.Where(x => x.isActive).ToList().FirstOrDefault();
                     if (pSites != null)
                     {
@@ -1072,7 +968,7 @@ namespace WBSSLStore.Web.Helpers
                     }
                 }
             }
-            catch { }
+            catch (Exception e) {  }
             return ConfigurationStage.NoCreated;
         }
 

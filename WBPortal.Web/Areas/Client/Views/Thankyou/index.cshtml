@@ -10,11 +10,11 @@
         OrderID = Model.First().OrderID;
     }
     string Username = Convert.ToString(ViewBag.UserName);
-    WBSSLStore.Domain.CMSPage page = WBSSLStore.Web.Helpers.WBHelper.GetMetaData(setting.SiteID);
 }
 
-@section GoogleAnalytics{
-    @Html.Raw(page != null ? page.HeaderSection : string.Empty)
+@section headerTags{
+
+    @Html.Partial("_renderSEO", new WBSSLStore.Domain.CMSPage())
 }
 
 @section sitecss{
@@ -30,17 +30,17 @@
             <div class="column3-0">
                 <div class="controlpnldata">
                     <h2>
-                        @WBSSLStore.Resources.GeneralMessage.Message.Your_Order_Detail       
+                        @WBSSLStore.Resources.GeneralMessage.Message.Your_Order_Detail
                     </h2>
                     <p><strong>@WBSSLStore.Resources.GeneralMessage.Message.Thank_you_Place_Order_Caption @(string.IsNullOrEmpty(@setting.CurrentSite.Alias) ? setting.CurrentSite.CName : setting.CurrentSite.Alias)</strong></p>
                     <div class="halfrawdata">
                         <p>
                             <label>Your Invoice # :</label><span>
                                 <a href="@Url.Action("invoice", "orders", new { id = OrderID })">
-                                    @(!string.IsNullOrEmpty(setting.InvoicePrefix) ? setting.InvoicePrefix : "SSL-"  + OrderID)
+                                    @(!string.IsNullOrEmpty(setting.InvoicePrefix) ? setting.InvoicePrefix : "SSL-" + OrderID)
                                 </a>
                             </span>
-                        </p>                  
+                        </p>
                         <p>
                             <label class="mobhide">&nbsp;</label><span>
                                 <a class="generatecertbtn" href="@Url.Action("generatenow", new { id = Model.First().ID })" target="_blank">Generate Cert Now</a>
@@ -80,23 +80,20 @@
                             <div class="odrtblraw">
                                 <p class="wd100"><span class="tabshow">@WBSSLStore.Resources.GeneralMessage.Message.OrderDate_Caption</span>@o.Order.OrderDate.ToShortDateString()</p>
                                 <p class="wd65per"><span class="tabshow">@WBSSLStore.Resources.GeneralMessage.Message.Product_Caption</span>@o.ProductName<strong>@o.NumberOfMonths @WBSSLStore.Resources.GeneralMessage.Message.Months_Caption</strong></p>
-                                <p class="wd150"><span class="tabshow">@WBSSLStore.Resources.GeneralMessage.Message.InvoiceNo_Caption.</span>
-                                    <a class="invoiceno" href="@Url.Action("invoice", "orders", new { id = OrderID })">@(!string.IsNullOrEmpty(setting.InvoicePrefix) ? setting.InvoicePrefix : "SSL-" + o.OrderID)</a>                                
-                                    <a class="generatecertbtn" href="@Url.Action("generatenow", new { id = o.ID })" target="_blank">Generate Cert</a>                                
+                                <p class="wd150">
+                                    <span class="tabshow">@WBSSLStore.Resources.GeneralMessage.Message.InvoiceNo_Caption.</span>
+                                    <a class="invoiceno" href="@Url.Action("invoice", "orders", new { id = OrderID })">@(!string.IsNullOrEmpty(setting.InvoicePrefix) ? setting.InvoicePrefix : "SSL-" + o.OrderID)</a>
+                                    <a class="generatecertbtn" href="@Url.Action("generatenow", new { id = o.ID })" target="_blank">Generate Cert</a>
                                 </p>
-                                <p class="wd100 txtcenter viewodr"><a href="@Url.Action("details", "Orders", new { id = o.ID })"><img alt=" view" src="@Url.Content("~/content/images/icon-view.png")"></a></p>
-                            </div>                           
+                                <p class="wd100 txtcenter viewodr"><a href="@Url.Action("details", "orders", new { id = o.ID })"><img alt=" view" src="@Url.Content("~/content/images/icon-view.png")"></a></p>
+                            </div>
                         }
                     </div>
                 </div>
             </div>
             @Html.Partial("_rightpanel", Username)
-            <div class="clear"></div> 
+            <div class="clear"></div>
         </div>
     </div>
 </div>
 @{setting = null;}
-
-@section FooterSection{
-    @Html.Raw(page != null ? page.FooterSection : string.Empty)
-}

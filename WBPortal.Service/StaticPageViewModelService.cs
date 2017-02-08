@@ -72,6 +72,21 @@ namespace WBSSLStore.Service
                 if (contrat == null)
                     contrat = _Contract.Find(C => C.isAutoCalculation == false && C.isForReseller == true && C.SiteID == SiteID && C.RecordStatusID == (int)RecordStatus.ACTIVE).OrderBy(C => C.ID).FirstOrDefault();
 
+                if (contrat == null)
+                {
+                    contrat = new Contract();
+                    contrat.ContractLevel = 0;
+                    contrat.ContractName = "Reseller Default Contract";
+                    contrat.isAutoCalculation = false;
+                    contrat.isForReseller = true;
+                    contrat.RecordStatusID = (int)RecordStatus.ACTIVE;
+                    contrat.SiteID = SiteID;
+
+                    _Contract.Add(contrat);
+                    _unitOfWork.Commit();
+
+                }
+
                 ResellerContract rc = new ResellerContract();
                 rc.AuditDetails = user.AuditDetails;
                 rc.ContractID = contrat.ID;

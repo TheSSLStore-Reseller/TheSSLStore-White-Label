@@ -1,7 +1,10 @@
 ﻿@model WBSSLStore.Gateways.RestAPIModels.Response.SSLConvertorResponse
 @{
-    ViewBag.Title = "SSL Converter";
+    
     ViewBag.version = WBSSLStore.Web.Helpers.Caching.SiteCacher.ResourceVersion();
+}
+@section headerTags{
+    @Html.Partial("_renderSEO", new WBSSLStore.Domain.CMSPage())
 }
 @Html.Partial("_banner", new Tuple<string, string>("", "SSL Converter"))
 <div class="content">
@@ -25,120 +28,54 @@
                         @using( Html.BeginForm("sslconvertor", "freetools", FormMethod.Post, new { area = "", id = "convertform", enctype = "multipart/form-data" }))
                         {
                         @Html.AntiForgeryToken()
-                        <div class="convernow">
-                            <div class="convertnowbox">
-                                <label>Current type:</label>
-                                <p id="pgroup_name_0"><input type="radio" class="radmar" name="group_name" value="PEM" id="group_name_0"><span>PEM</span></p>
-                                <p id="pgroup_name_1"><input type="radio" class="radmar" name="group_name" value="DER" id="group_name_1"><span>DER</span></p>
-                                <p id="pgroup_name_2"><input type="radio" class="radmar" name="group_name" value="PFX" id="group_name_2"><span>PFX</span></p>
-                                <p id="pgroup_name_3"><input type="radio" class="radmar" name="group_name" value="P7B" id="group_name_3"><span>P7B</span></p>
+                            <div class="convernow">
+                                <div class="convertnowbox">
+                                    <label>Current type:</label>
+                                    <p id="pgroup_name_0"><input type="radio" class="radmar" name="group_name" value="PEM" id="group_name_0"><span>PEM</span></p>
+                                    <p id="pgroup_name_1"><input type="radio" class="radmar" name="group_name" value="DER" id="group_name_1"><span>DER</span></p>
+                                    <p id="pgroup_name_2"><input type="radio" class="radmar" name="group_name" value="PFX" id="group_name_2"><span>PFX</span></p>
+                                    <p id="pgroup_name_3"><input type="radio" class="radmar" name="group_name" value="P7B" id="group_name_3"><span>P7B</span></p>
 
-                                <p></p>
-                            </div>
-                            <div class="convertnowbox">
-                                <label>Change for:</label>
+                                    <p></p>
+                                </div>
+                                <div class="convertnowbox">
+                                    <label>Change for:</label>
 
-                                <p id="pchn_group_name_0"><input type="radio" class="radmar" name="chn_group_name" disabled="disabled" value="PEM" id="chn_group_name_0"><span>PEM</span></p>
-                                <p id="pchn_group_name_1"><input type="radio" class="radmar" name="chn_group_name" disabled="disabled" value="DER" id="chn_group_name_1"><span>DER</span></p>
-                                <p id="pchn_group_name_2"><input type="radio" class="radmar" name="chn_group_name" disabled="disabled" value="PFX" id="chn_group_name_2"><span>PFX</span></p>
-                                <p id="pchn_group_name_3"><input type="radio" class="radmar" name="chn_group_name" disabled="disabled" value="P7B" id="chn_group_name_3"><span>P7B</span></p>
+                                    <p id="pchn_group_name_0"><input type="radio" class="radmar" name="chn_group_name" disabled="disabled" value="PEM" id="chn_group_name_0"><span>PEM</span></p>
+                                    <p id="pchn_group_name_1"><input type="radio" class="radmar" name="chn_group_name" disabled="disabled" value="DER" id="chn_group_name_1"><span>DER</span></p>
+                                    <p id="pchn_group_name_2"><input type="radio" class="radmar" name="chn_group_name" disabled="disabled" value="PFX" id="chn_group_name_2"><span>PFX</span></p>
+                                    <p id="pchn_group_name_3"><input type="radio" class="radmar" name="chn_group_name" disabled="disabled" value="P7B" id="chn_group_name_3"><span>P7B</span></p>
 
-                            </div>
-                            <div id="PEM_Form">
-                                <div class="convertnowbox">
-                                    <label><em>*</em>Certificate:</label>
-                                    <p><input type="file" class="inputsign" name="pemfile" id="pemfile"></p>
                                 </div>
-                            </div>
 
-                            <div id="DER_Form">
-                                <div class="convertnowbox">
-                                    <label><em>*</em>Certificate:</label>
-                                    <p><input type="file" class="inputsign" name="derfile" id="derfile"></p>
+                                <div id="">
+                                    <div class="convertnowbox convertnowboxVR  cPEM_Form cDER_Form cPFX_Form cPEMPFX_Form cPEMP7B_Form cP7BPEM_Form cP7BPFX_Form" id="vcertificate">
+                                        <label><em>*</em>Certificate:</label>
+                                        <p><input type="file" class="inputsign" name="inCertValid" id="inCertValid"></p>
+                                    </div>
+                                    <div class="convertnowbox convertnowboxVR cPFX_Form cP7BPFX_Form" id="vprivatekey">
+                                        <label><em>*</em>Private Key:</label>
+                                        <p><input type="file" class="inputsign" name="inprvKeyValid" id="inprvKeyValid"></p>
+                                    </div>
+                                    <div class="convertnowbox convertnowboxVR cPFX_Form cPEMP7B_Form cP7BPFX_Form" id="vrootca">
+                                        <label>Root CA (option):</label>
+                                        <p><input type="file" class="inputsign" name="chain1file" id="chain1file"></p>
+                                    </div>
+                                    <div class="convertnowbox convertnowboxVR cPFX_Form cPEMP7B_Form cP7BPFX_Form" id="vinterrootca">
+                                        <label>Intermediate(s) CA (option):</label>
+                                        <p><input type="file" class="inputsign" name="chain2file" id="chain2file"></p>
+                                    </div>
+                                    <div class="convertnowbox convertnowboxVR cPFX_Form cPEMPFX_Form cP7BPFX_Form" id="vkeypass">
+                                        <label class="setkey"><em>*</em>Set key password:</label>
+                                        <p><input type="password" class="chkinput chkinputbxmini" name="pfxkeypass" id="pfxkeypass"></p>
+                                    </div>
                                 </div>
+                                <div class="convertnowbox bdrbtmnone">
+                                    <label>&nbsp;</label>
+                                    <p><input type="submit" class="greenbtn chrbtn" name="btnconvert" id="btnconvert" value="Convert"></p>
+                                </div>
+                                <div class="clear"></div>
                             </div>
-
-                            <div id="PFX_Form">
-                                <div class="convertnowbox">
-                                    <label><em>*</em>Certificate:</label>
-                                    <p><input type="file" class="inputsign" name="pfxfile" id="pfxfile"></p>
-                                </div>
-                                <div class="convertnowbox">
-                                    <label><em>*</em>Private Key:</label>
-                                    <p><input type="file" class="inputsign" name="pfxkey" id="pfxkey"></p>
-                                </div>
-                                <div class="convertnowbox">
-                                    <label>Root CA (option)</label>
-                                    <p><input type="file" class="inputsign" name="chain1file" id="chain1file"></p>
-                                </div>
-                                <div class="convertnowbox">
-                                    <label>Intermediate(s) CA (option)</label>
-                                    <p><input type="file" class="inputsign" name="chain2file" id="chain2file"></p>
-                                </div>
-                                <div class="convertnowbox">
-                                    <label class="setkey"><em>*</em>Set key password:</label>
-                                    <p><input type="password" class="chkinput chkinputbxmini" name="pfxkeypass" id="pfxkeypass"></p>
-                                </div>
-                            </div>
-
-                            <div id="PEMPFX_Form">
-                                <div class="convertnowbox">
-                                    <label><em>*</em>Certificate:</label>
-                                    <p><input type="file" class="inputsign" name="pempfxfile" id="pempfxfile"></p>
-                                </div>
-                                <div class="convertnowbox">
-                                    <label class="setkey"><em>*</em>Set key password:</label>
-                                    <p><input type="password" class="chkinput chkinputbxmini" name="pemkeypass" id="pemkeypass"></p>
-                                </div>
-                            </div>
-                            <div id="PEMP7B_Form">
-                                <div class="convertnowbox">
-                                    <label><em>*</em>Certificate:</label>
-                                    <p><input type="file" class="inputsign" name="pemp7bfile" id="pemp7bfile"></p>
-                                </div>
-                                <div class="convertnowbox">
-                                    <label>Root CA (option)</label>
-                                    <p><input type="file" class="inputsign" name="pemp7bchain1file" id="pemp7bchain1file"></p>
-                                </div>
-                                <div class="convertnowbox">
-                                    <label>Intermediate(s) CA (option)</label>
-                                    <p><input type="file" class="inputsign" name="pemp7bchain2file" id="pemp7bchain2file"></p>
-                                </div>
-                            </div>
-                            <div id="P7BPEM_Form">
-                                <div class="convertnowbox">
-                                    <label><em>*</em>Certificate:</label>
-                                    <p><input type="file" class="inputsign" name="p7bpemfile" id="p7bpemfile"></p>
-                                </div>
-                            </div>
-                            <div id="P7BPFX_Form">
-                                <div class="convertnowbox">
-                                    <label><em>*</em>Certificate:</label>
-                                    <p><input type="file" class="inputsign" name="p7bpfxfile" id="p7bpfxfile"></p>
-                                </div>
-                                <div class="convertnowbox">
-                                    <label><em>*</em>Private Key:</label>
-                                    <p><input type="file" class="inputsign" name="p7bpfxkey" id="p7bpfxkey"></p>
-                                </div>
-                                <div class="convertnowbox">
-                                    <label>Root CA (option)</label>
-                                    <p><input type="file" class="inputsign" name="p7bpfxchain1file" id="p7bpfxchain1file"></p>
-                                </div>
-                                <div class="convertnowbox">
-                                    <label>Intermediate(s) CA (option)</label>
-                                    <p><input type="file" class="inputsign" name="p7bpfxchain2file" id="p7bpfxchain2file"></p>
-                                </div>
-                                <div class="convertnowbox">
-                                    <label class="setkey"><em>*</em>Set key password:</label>
-                                    <p><input type="password" class="chkinput chkinputbxmini" name="p7bpfxkeypass" id="p7bpfxkeypass"></p>
-                                </div>
-                            </div>
-                            <div class="convertnowbox bdrbtmnone">
-                                <label>&nbsp;</label>
-                                <p><input type="submit" class="greenbtn chrbtn" name="btnconvert" id="btnconvert" value="Convert"></p>
-                            </div>	
-                            <div class="clear"></div>
-                        </div>
                         }
 
                         @if (Model != null)
@@ -197,65 +134,13 @@
 @System.Web.Optimization.Scripts.Render("/bundales/wb/validationjs?v=" + ViewBag.version)
     <script type="text/javascript">
         $(document).ready(function () {
+            $(".convertnowboxVR").hide("fast");
             $("#convertform").validate({
                 debug: false,
                 rules: {
                     group_name: "required",
                     chn_group_name: "required",
-                    derfile:
-                    {
-                        required:
-                        {
-                            depends: function (element) {
-                                var status = false;
-                                if (jQuery("#group_name_0").is(":checked") && jQuery("#chn_group_name_1").is(":checked")) {
-                                    var status = true;
-                                }
-                                return status;
-                            }
-                        }
-                    },
-                    pfxfile:
-                    {
-                        required:
-                        {
-                            depends: function (element) {
-                                var status = false;
-                                if (jQuery("#group_name_0").is(":checked") && jQuery("#chn_group_name_2").is(":checked")) {
-                                    var status = true;
-                                }
-                                return status;
-                            }
-                        }
-                    },
-                    pfxkey:
-                    {
-                        required:
-                        {
-                            depends: function (element) {
-                                var status = false;
-                                if (jQuery("#group_name_0").is(":checked") && jQuery("#chn_group_name_2").is(":checked")) {
-                                    var status = true;
-                                }
-                                return status;
-                            }
-                        }
-                    },
-                    pfxkeypass:
-                    {
-                        required:
-                        {
-                            depends: function (element) {
-                                var status = false;
-                                if (jQuery("#group_name_0").is(":checked") && jQuery("#chn_group_name_2").is(":checked")) {
-                                    var status = true;
-                                }
-                                return status;
-                            }
-                        }
-                    },
-                    pemfile:
-                    {
+                    inCertValid: {
                         required:
                         {
                             depends: function (element) {
@@ -263,69 +148,55 @@
                                 if (jQuery("#group_name_1").is(":checked") && jQuery("#chn_group_name_0").is(":checked")) {
                                     var status = true;
                                 }
+                                else if (jQuery("#group_name_0").is(":checked") && jQuery("#chn_group_name_1").is(":checked"))
+                                { var status = true; }
+                                else if (jQuery("#group_name_0").is(":checked") && jQuery("#chn_group_name_2").is(":checked"))
+                                { var status = true; }
+                                else if (jQuery("#group_name_0").is(":checked") && jQuery("#chn_group_name_2").is(":checked"))
+                                { var status = true; }
+                                else if (jQuery("#group_name_1").is(":checked") && jQuery("#chn_group_name_0").is(":checked"))
+                                { var status = true; }
+                                else if (jQuery("#group_name_2").is(":checked") && jQuery("#chn_group_name_0").is(":checked"))
+                                { var status = true; }
+                                else if (jQuery("#group_name_0").is(":checked") && jQuery("#chn_group_name_3").is(":checked"))
+                                { var status = true; }
+                                else if (jQuery("#group_name_3").is(":checked") && jQuery("#chn_group_name_0").is(":checked"))
+                                { var status = true; }
+                                else if (jQuery("#group_name_3").is(":checked") && jQuery("#chn_group_name_2").is(":checked"))
+                                { var status = true; }
+                                else if (jQuery("#group_name_3").is(":checked") && jQuery("#chn_group_name_2").is(":checked"))
+                                { var status = true; }
+
                                 return status;
                             }
                         }
                     },
-                    pempfxfile:
-                    {
+                    inprvKeyValid: {
                         required:
                         {
                             depends: function (element) {
                                 var status = false;
-                                if (jQuery("#group_name_2").is(":checked") && jQuery("#chn_group_name_0").is(":checked")) {
+                                if (jQuery("#group_name_0").is(":checked") && jQuery("#chn_group_name_2").is(":checked")) {
+                                    var status = true;
+                                } else if (jQuery("#group_name_3").is(":checked") && jQuery("#chn_group_name_2").is(":checked")) {
                                     var status = true;
                                 }
                                 return status;
                             }
                         }
                     },
-                    pemp7bfile:
-                    {
-                        required:
-                        {
-                            depends: function (element) {
-                                var status = false;
-                                if (jQuery("#group_name_0").is(":checked") && jQuery("#chn_group_name_3").is(":checked")) {
-                                    var status = true;
-                                }
-                                return status;
-                            }
-                        }
+                    chain1file: {
+                        required: false
                     },
-                    p7bpemfile:
-                    {
-                        required:
-                        {
-                            depends: function (element) {
-                                var status = false;
-                                if (jQuery("#group_name_3").is(":checked") && jQuery("#chn_group_name_0").is(":checked")) {
-                                    var status = true;
-                                }
-                                return status;
-                            }
-                        }
+                    chain2file: {
+                        required: false
                     },
-                    p7bpfxfile:
-                    {
+                    pfxkeypass: {
                         required:
                         {
                             depends: function (element) {
                                 var status = false;
-                                if (jQuery("#group_name_3").is(":checked") && jQuery("#chn_group_name_2").is(":checked")) {
-                                    var status = true;
-                                }
-                                return status;
-                            }
-                        }
-                    },
-                    p7bpfxkey:
-                    {
-                        required:
-                        {
-                            depends: function (element) {
-                                var status = false;
-                                if (jQuery("#group_name_3").is(":checked") && jQuery("#chn_group_name_2").is(":checked")) {
+                                if (jQuery("#group_name_0").is(":checked") && jQuery("#chn_group_name_2").is(":checked")) {
                                     var status = true;
                                 }
                                 return status;
@@ -336,104 +207,56 @@
                 messages: {
                     group_name: "Please select current format.",
                     chn_group_name: "Please select change format.",
-                    derfile: "Please select certificate file.",
-                    pfxfile: "Please select certificate file.",
-                    pfxkey: "Please select private key file.",
+                    inCertValid: "Please select certificate file.",
+                    inprvKeyValid: "Please select private key file.",
                     pfxkeypass: "Please enter key password.",
-                    pemfile: "Please select certificate file.",
-                    pempfxfile: "Please select certificate file.",
-                    pemkeypass: "Please enter key password.",
-                    pemp7bfile: "Please select certificate file.",
-                    p7bpemfile: "Please select certificate file.",
-                    p7bpfxfile: "Please select certificate file.",
-                    p7bpfxkey: "Please select private key file."
-
                 },
 
             });
         });
         function changeOnClick() {
-            jQuery('p#convert_error').html('');
+            $("label.error").remove();
+            $("p .error").removeClass('error');
+            $("#pfxkeypass").val('');
             var current = jQuery('input[name="group_name"]:checked').val();
             var changeTo = jQuery('input[name="chn_group_name"]:checked').val();
             if (current == 'PEM' && changeTo == 'DER') {
-                $("#DER_Form").show("fast");
-                $("#PEM_Form").hide();
-                $("#PFX_Form").hide();
-                $("#PEMPFX_Form").hide();
-                $("#PEMP7B_Form").hide();
-                $("#P7BPEM_Form").hide();
-                $("#P7BPFX_Form").hide();
+                $(".convertnowboxVR").hide("fast");
+                $(".cDER_Form").show("fast");
             }
             else if (current == 'PEM' && changeTo == 'PFX') {
-                $("#PFX_Form").show("fast");
-                $("#PEM_Form").hide();
-                $("#DER_Form").hide();
-                $("#PEMPFX_Form").hide();
-                $("#PEMP7B_Form").hide();
-                $("#P7BPEM_Form").hide();
-                $("#P7BPFX_Form").hide();
+                $(".convertnowboxVR").hide("fast");
+                $(".cPFX_Form").show("fast");
             }
             else if (current == 'PEM' && changeTo == 'P7B') {
-                $("#PEMP7B_Form").show("fast");
-                $("#PFX_Form").hide();
-                $("#PEM_Form").hide();
-                $("#DER_Form").hide();
-                $("#PEMPFX_Form").hide();
-                $("#P7BPEM_Form").hide();
-                $("#P7BPFX_Form").hide();
+                $(".convertnowboxVR").hide("fast");
+                $(".cPEMP7B_Form").show("fast");
             }
             else if (current == 'DER' && changeTo == 'PEM') {
-                $("#PEM_Form").show("fast");
-                $("#DER_Form").hide();
-                $("#PFX_Form").hide();
-                $("#PEMPFX_Form").hide();
-                $("#PEMP7B_Form").hide();
-                $("#P7BPEM_Form").hide();
-                $("#P7BPFX_Form").hide();
+                $(".convertnowboxVR").hide("fast");
+                $(".cPEM_Form").show("fast");
             }
             else if (current == 'PFX' && changeTo == 'PEM') {
-                $("#PEMPFX_Form").show("fast");
-                $("#PEM_Form").hide();
-                $("#DER_Form").hide();
-                $("#PFX_Form").hide();
-                $("#PEMP7B_Form").hide();
-                $("#P7BPEM_Form").hide();
-                $("#P7BPFX_Form").hide();
+                $(".convertnowboxVR").hide("fast");
+                $(".cPEMPFX_Form").show("fast");
             }
             else if (current == 'P7B' && changeTo == 'PEM') {
-                $("#P7BPEM_Form").show("fast");
-                $("#PEMPFX_Form").hide();
-                $("#PEM_Form").hide();
-                $("#DER_Form").hide();
-                $("#PFX_Form").hide();
-                $("#PEMP7B_Form").hide();
-                $("#P7BPFX_Form").hide();
+                $(".convertnowboxVR").hide("fast");
+                $(".cP7BPEM_Form").show("fast");
             }
             else if (current == 'P7B' && changeTo == 'PFX') {
-                $("#P7BPFX_Form").show("fast");
-                $("#PEMPFX_Form").hide();
-                $("#PEM_Form").hide();
-                $("#DER_Form").hide();
-                $("#PFX_Form").hide();
-                $("#PEMP7B_Form").hide();
-                $("#P7BPEM_Form").hide();
-
+                $(".convertnowboxVR").hide("fast");
+                $(".cP7BPFX_Form").show("fast");
             }
         }
         $(document).ready(function () {
 
             jQuery('input[name="group_name"]').click(function () {
+                $(".convertnowboxVR").hide("fast");
+                $("label.error").remove();
+                $("p .error").removeClass('error');
 
-                jQuery('p#convert_error').html('');
                 var radio_value = $(this).val();
-                $("#PEM_Form").hide();
-                $("#DER_Form").hide();
-                $("#PFX_Form").hide();
-                $("#PEMPFX_Form").hide();
-                $("#PEMP7B_Form").hide();
-                $("#P7BPEM_Form").hide();
-                $("#P7BPFX_Form").hide();
 
                 jQuery('#chn_group_name_0').attr('checked', false);
                 jQuery('#chn_group_name_1').attr('checked', false);
@@ -445,12 +268,10 @@
                     jQuery('#chn_group_name_1').attr('disabled', false);
                     jQuery('#chn_group_name_2').attr('disabled', false);
                     jQuery('#chn_group_name_3').attr('disabled', false);
-
                     jQuery('#pchn_group_name_0').hide();
                     jQuery('#pchn_group_name_1').show();
                     jQuery('#pchn_group_name_2').show();
                     jQuery('#pchn_group_name_3').show();
-
                     jQuery('#chn_group_name_1').click();
                     changeOnClick();
                 }
@@ -497,24 +318,13 @@
 
                     jQuery('#chn_group_name_0').click();
                     changeOnClick();
-
                 }
             });
-
             jQuery('input[name="chn_group_name"]').click(function () {
                 changeOnClick();
             });
-
-            $("#PEM_Form").hide();
-            $("#DER_Form").hide();
-            $("#PFX_Form").hide();
-            $("#PEMPFX_Form").hide();
-            $("#PEMP7B_Form").hide();
-            $("#P7BPEM_Form").hide();
-            $("#P7BPFX_Form").hide();
-
         });
-    </script>
+</script>
 }
 
 

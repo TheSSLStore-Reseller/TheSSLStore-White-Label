@@ -1,6 +1,6 @@
 ﻿@model WBSSLStore.Service.ViewModels.StaticPageViewModel
 @{
-    ViewBag.Title = "SecureSiteProwithEV"; var productdetails = WBSSLStore.Web.Helpers.WBHelper.GetProductDetailRows();
+     var productdetails = WBSSLStore.Web.Helpers.WBHelper.GetProductDetailRows();
     string brand = Model != null && Model.Items != null && Model.Items.FirstOrDefault().Product != null && Model.Items.FirstOrDefault().Product.Brand != null ? Model.Items.FirstOrDefault().Product.Brand.BrandName : "";
     string username = ViewBag.UserName;
 }
@@ -14,7 +14,7 @@
             <div class="mobtopcol">
                 <div class="column3-2">
                     <div class="prodetailswrap marzerotop">
-                        @*@Html.Partial("_ProdPricing", new Tuple<List<WBSSLStore.Domain.ProductPricing>, List<WBSSLStore.Domain.ProductDetail>>(Model.Items.ToList(), productdetails.ToList()))*@
+                        
                         @Html.Partial("_ProdPricing", new Tuple<List<WBSSLStore.Domain.ProductPricing>, List<WBSSLStore.Domain.ProductDetail>>(Model.Items.ToList(), productdetails.ToList()))
                     </div>
                     <div class="prodescrip marzerotop">

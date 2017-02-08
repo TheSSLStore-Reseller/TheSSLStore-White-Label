@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using WBSSLStore.Domain;
-using System.Xml.Linq;
 using WBSSLStore.Web.Helpers.Base;
 using WBSSLStore.Data.Infrastructure;
-using WBSSLStore.Service;
 using WBSSLStore.Web.Helpers;
 
 namespace WBSSLStore.Web.Areas.Admin.Controllers
@@ -19,12 +16,22 @@ namespace WBSSLStore.Web.Areas.Admin.Controllers
 
         public ActionResult Index(FormCollection collection)
         {
+            string urlrec = "";
+            foreach (var r in System.Web.Routing.RouteTable.Routes)
+            {
+                if (r is System.Web.Routing.Route)
+                {
+                    urlrec += "," + ((System.Web.Routing.Route)r).Url;
+                }
+            }
+
+
+
             if (collection["txtSearchPage"] != null)
-                return View(Site.Pages.Where(pg => WBSSLStore.Web.Util.WBSiteSettings.AllowedBrand(Site).Contains(pg.BrandID.ToString()) && pg.Caption.ToLower().Contains(collection["txtSearchPage"].ToLower()))
+                return View(Site.Pages.Where(pg => pg.Caption.ToLower().Contains(collection["txtSearchPage"].ToLower()))
                                       .OrderBy(pg => pg.ParentID).ThenBy(pg => pg.DisplayOrder).ToList());
             else
-                return View(Site.Pages.Where(pg => WBSSLStore.Web.Util.WBSiteSettings.AllowedBrand(Site).Contains(pg.BrandID.ToString()))
-                                      .OrderBy(pg => pg.DisplayOrder).ToList());
+                return View(Site.Pages.OrderByDescending(pg => pg.DisplayOrder).ToList());
         }
 
         public ActionResult AddPage()
@@ -58,7 +65,7 @@ namespace WBSSLStore.Web.Areas.Admin.Controllers
             var pagerepo = DependencyResolver.Current.GetService<IRepository<Pages>>();
 
             Pages p = pagerepo.FindByID(ID);
-            if (p != null && p.SiteID.Equals(Site.ID))
+            if (p != null && p.SiteID.Equals(Site.ID) && p.BrandID.Equals(-1))
             {
                 CMSPage cpage = _repository.Find(cp => cp.PageID == p.ID).FirstOrDefault();
                 if (cpage != null)
@@ -77,9 +84,10 @@ namespace WBSSLStore.Web.Areas.Admin.Controllers
 
         public ActionResult EditPage(int ID)
         {
+
             var pagerepo = DependencyResolver.Current.GetService<IRepository<Pages>>();
             Pages p = pagerepo.Find(pg => pg.ID == ID && pg.SiteID == Site.ID).FirstOrDefault();
-            if (p != null && p.SiteID.Equals(Site.ID))
+            if (p != null && p.SiteID.Equals(Site.ID) && p.BrandID.Equals(-1))
             {
                 BindPages(p.ParentID);
                 return View("Pages", p);
@@ -163,13 +171,9 @@ namespace WBSSLStore.Web.Areas.Admin.Controllers
 
         public ActionResult PageContent()
         {
-            string CurrentLangCode = string.Empty;
+            string CurrentLangCode = WBSSLStore.Web.Helpers.WBHelper.CurrentLangCode; ;
             int PageID = Convert.ToInt16(Request.QueryString[SettingConstants.QS_PAGEID]);
-            using (CurrentSiteSettings CurrentSiteSettings = new CurrentSiteSettings(Site))
-            {
-
-                CurrentLangCode = CurrentSiteSettings.CurrentLangCode;
-            }
+      
             CMSPage objCMSPage = _repository.Find(pg => pg.Language.LangCode.Equals(CurrentLangCode, StringComparison.OrdinalIgnoreCase) && pg.PageID == PageID && pg.Pages.SiteID == Site.ID).FirstOrDefault();
             if (objCMSPage == null)
             {
@@ -292,7 +296,7 @@ namespace WBSSLStore.Web.Areas.Admin.Controllers
                 if (model.ID == 0)
                 {
                     model.DisplayOrder = model.ID;
-                    model.BrandID = 99;
+                    model.BrandID = -1;
                     pagerepo.Add(model);
                     _unitOfWork.Commit();
 
@@ -325,7 +329,7 @@ namespace WBSSLStore.Web.Areas.Admin.Controllers
 
         private void BindPages(int id = 0)
         {
-            List<Pages> lstPages = Site.Pages.Where(pg => WBSSLStore.Web.Util.WBSiteSettings.AllowedBrand(Site).Contains(pg.BrandID.ToString())).OrderBy(pg => pg.DisplayOrder).ToList();
+            List<Pages> lstPages = Site.Pages.Where(pg => pg.BrandID.Equals(-1)).OrderBy(pg => pg.DisplayOrder).ToList();
             List<SelectListItem> lstSelectList = new List<SelectListItem>();
             foreach (Pages page in lstPages)
                 lstSelectList.Add(new SelectListItem { Text = page.Caption, Value = page.ID + "|" + page.slug, Selected = page.ID == id });

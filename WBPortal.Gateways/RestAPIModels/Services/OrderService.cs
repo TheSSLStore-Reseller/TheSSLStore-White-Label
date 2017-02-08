@@ -6,7 +6,7 @@ using WBSSLStore.Gateways.RestAPIModels.Response;
 using WBSSLStore.Gateways.RestAPIModels.Request;
 using WBSSLStore.Gateways.RestAPIModels.Helpers;
 using System.Web.Script.Serialization;
-using System.Collections;
+
 
 
 namespace WBSSLStore.Gateways.RestAPIModels.Services
@@ -93,7 +93,7 @@ namespace WBSSLStore.Gateways.RestAPIModels.Services
             sbRequest.Replace("[STARTDATE]",  (UnixTicks(orderdetails.StartDate.Value)).ToString().Remove(UnixTicks(orderdetails.StartDate.Value).ToString().IndexOf('.')).ToString());
             sbRequest.Replace("[ENDDATE]", (UnixTicks(orderdetails.EndDate.Value)).ToString().Remove(UnixTicks(orderdetails.EndDate.Value).ToString().IndexOf('.')).ToString());
             sbRequest.Replace("[SUBUSERID]", orderdetails.SubUserID);
-            sbRequest.Replace("[PRDCODE]", ApiHelper.GetApiProductCode (orderdetails.ProductCode));
+            sbRequest.Replace("[PRDCODE]", orderdetails.ProductCode);// ApiHelper.GetApiProductCode (orderdetails.ProductCode));
 
             string strResponse = ApiHelper.GetResponseFromAPI(sbRequest.ToString(), "order/query/");
 
@@ -130,7 +130,7 @@ namespace WBSSLStore.Gateways.RestAPIModels.Services
             sbRequest.Replace("[USERAGENT]", orderdetails.AuthRequest.UserAgent);
             sbRequest.Replace("[PREFERLINK]", orderdetails.PreferVendorLink ? "true" : "false");
             sbRequest.Replace("[CUSTORDID]", orderdetails.CustomOrderID);
-            sbRequest.Replace("[PRODCODE]", ApiHelper.GetApiProductCode ( orderdetails.ProductCode));
+            sbRequest.Replace("[PRODCODE]", orderdetails.ProductCode);// ApiHelper.GetApiProductCode ( orderdetails.ProductCode));
             sbRequest.Replace("[EXTRAPRODCODE]", orderdetails.ExtraProductCode);
             sbRequest.Replace("[VALIDPERIOD]",orderdetails.ValidityPeriod.ToString());
             sbRequest.Replace("[SERVERCOUNT]",orderdetails.ServerCount.Equals(0) ? "1" : orderdetails.ServerCount.ToString());
@@ -243,7 +243,7 @@ namespace WBSSLStore.Gateways.RestAPIModels.Services
                             var apiData =  allPrice[i] ;
                             ALLProduct product = new ALLProduct();
 
-                            product.ProductCode = ApiHelper.GetInternalProductCode(apiData.ProductCode);
+                            product.ProductCode = apiData.ProductCode;
                             product.ProductName = apiData.ProductName;
 
                             product.Brand = apiData.VendorName;

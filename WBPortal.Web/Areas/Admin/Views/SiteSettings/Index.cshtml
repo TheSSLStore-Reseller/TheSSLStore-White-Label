@@ -17,11 +17,11 @@
     s = Model.Where(ss => ss.Key.ToLower() == WBSSLStore.Domain.SettingConstants.CURRENT_SITETWITTER_KEY).FirstOrDefault();
     ViewBag.Twitter = s != null && s.Value != null ? Convert.ToString(s.Value).ToLower() : string.Empty;
 
-    s = Model.Where(ss => ss.Key.ToLower() == WBSSLStore.Domain.SettingConstants.CURRENT_NEEDBANNER_KEY).FirstOrDefault();
-    ViewBag.Banner = s != null && s.Value != null ? Convert.ToString(s.Value) : string.Empty;
+    //s = Model.Where(ss => ss.Key.ToLower() == WBSSLStore.Domain.SettingConstants.CURRENT_NEEDBANNER_KEY).FirstOrDefault();
+    //ViewBag.Banner = s != null && s.Value != null ? Convert.ToString(s.Value) : string.Empty;
 
-    s = Model.Where(ss => ss.Key.ToLower() == WBSSLStore.Domain.SettingConstants.CURRENT_BANNERFILE_KEY).FirstOrDefault();
-    ViewBag.BannerFile = s != null && s.Value != null ? Convert.ToString(s.Value) : string.Empty;
+    //s = Model.Where(ss => ss.Key.ToLower() == WBSSLStore.Domain.SettingConstants.CURRENT_BANNERFILE_KEY).FirstOrDefault();
+    //ViewBag.BannerFile = s != null && s.Value != null ? Convert.ToString(s.Value) : string.Empty;
 
     s = Model.Where(ss => ss.Key.ToLower() == WBSSLStore.Domain.SettingConstants.CURRENT_SITELANGUAGE_KEY).FirstOrDefault();
     ViewBag.Language = s != null && s.Value != null ? Convert.ToString(s.Value).ToLower() : string.Empty;
@@ -113,8 +113,8 @@
     s = Model.Where(ss => ss.Key.ToLower() == WBSSLStore.Domain.SettingConstants.CUSTOM_EMAILID_RESELLER_CUSTOMERS_RENEWALS_NOTIFICATION).FirstOrDefault();
     ViewBag.CustomEmailResellerCustomerRenewalNotification = s != null && s.Value != null ? Convert.ToString(s.Value) : string.Empty;
 
-    s = Model.Where(ss => ss.Key.ToLower() == WBSSLStore.Domain.SettingConstants.CURRENT_SITE_SHOWBANNER_HOME_PAGE_ONLY).FirstOrDefault();
-    ViewBag.ShowbannerOnlyHomepage = s != null && s.Value != null ? Convert.ToString(s.Value) : string.Empty;
+    //s = Model.Where(ss => ss.Key.ToLower() == WBSSLStore.Domain.SettingConstants.CURRENT_SITE_SHOWBANNER_HOME_PAGE_ONLY).FirstOrDefault();
+    //ViewBag.ShowbannerOnlyHomepage = s != null && s.Value != null ? Convert.ToString(s.Value) : string.Empty;
 }
 
 
@@ -152,11 +152,7 @@
 
             // Drop lists for link/image/media/template dialogs
             template_external_list_url: "lists/template_list.js",
-            //external_link_list_url: "lists/link_list.js",
-            //external_image_list_url: "lists/image_list.js",
-            //media_external_list_url: "lists/media_list.js",
-
-            // Replace values for the template plugin
+          
             template_replace_values: {
                 username: "Some User",
                 staffid: "991234"
@@ -203,15 +199,7 @@
 
         //jQuery.noConflict();
         isReloadOnClose = true;
-        if (document.getElementById("rbtNeedBannerYes").checked) {
-            document.getElementById("dvBanner").style.display = "table-cell";
-            //$('#dvBanner').show('slow');
-        }
-        else if (document.getElementById('rbtNeedBannerNo').checked) {
-            document.getElementById("dvBanner").style.display = "none";
-            //$('#dvBanner').hide('slow');
-        }
-
+       
         var flag = $("#txtCommonName").attr('title');
         if (flag != '' && flag == 'true') {
             $("#txtCommonName").attr('disabled', 'disabled');
@@ -235,9 +223,7 @@
                 fupLogo: {
                     accept: "gif|jpeg|png|jpg|bmp"
                 },
-                fupBanner: {
-                    accept: "gif|jpeg|png|jpg|bmp"
-                },
+               
                 txtAdminEmail: {
                     required: true,
                     email: true
@@ -333,12 +319,12 @@
                     if (file.Type == 'logo')
                         callpcropimagesitesettingsadmin('logo');
                     else
-                        callpcropimagesitesettingsadmin('banner');
+                        callpcropimagesitesettingsadmin('logo');
                 }
                 else {
                     window.location.href = window.location.href;
                 }
-                //return $('<tr><td>' + file.name + '<\/td><\/tr>');
+                
             },
             fileInputFilter: function (index) {
 
@@ -417,7 +403,7 @@
                     <table width="840" border="0" align="center" cellpadding="1" cellspacing="1">
                         <tr>
                             <td width="407" align="left" valign="middle" class="head1">
-                                @*General Setting*@ @WBSSLStore.Resources.GeneralMessage.Message.GeneralSetting_Header
+                                @WBSSLStore.Resources.GeneralMessage.Message.GeneralSetting_Header
                             </td>
                         </tr>
                     </table>
@@ -1112,135 +1098,11 @@
                                                 &nbsp;
                                             </td>
                                         </tr>
+                                       
                                         <tr>
                                             <td height="30" align="left" valign="middle">
                                                 <h1>
-                                                    @*Banner Selection*@ @WBSSLStore.Resources.GeneralMessage.Message.Banner_Selection
-                                                </h1>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td align="left" valign="top">
-                                                <table width="840" border="0" align="center" cellpadding="1" cellspacing="1" class="bdrline">
-                                                    <tr>
-                                                        <td align="left" valign="top" bgcolor="#f7f7f7">
-                                                            <table width="803" border="0" align="center" cellpadding="1" cellspacing="1">
-                                                                <tr>
-                                                                    <td width="820" align="left" valign="top">
-                                                                        <table width="100%" border="0" cellspacing="1" cellpadding="1">
-                                                                            <tr>
-                                                                                <td align="left" valign="top">
-                                                                                    <table width="799" border="0" align="left" cellpadding="1" cellspacing="1">
-                                                                                        <tr>
-                                                                                            <td width="133" align="right" valign="middle" class="bold">
-                                                                                                @*Show Banner*@ @WBSSLStore.Resources.GeneralMessage.Message.Show_Banner :
-                                                                                            </td>
-                                                                                            <td width="659" align="left" valign="middle">
-                                                                                                <table width="100%" border="0" align="left" cellpadding="1" cellspacing="1">
-                                                                                                    <tr>
-                                                                                                        <td width="1%" align="left" valign="middle" class="bold">
-                                                                                                            <label>
-                                                                                                                <input type="radio" name="rbtNeedBanner" onclick="$('#dvBanner').hide('slow');" id="rbtNeedBannerNo" value="False" @(string.IsNullOrEmpty(ViewBag.Banner) || ViewBag.Banner == "false" ? "checked='checked'" : string.Empty) />
-                                                                                                            </label>
-                                                                                                        </td>
-                                                                                                        <td width="3%" align="left" valign="middle" class="bold">
-                                                                                                            @*No*@ @WBSSLStore.Resources.GeneralMessage.Message.No_CAption
-                                                                                                        </td>
-                                                                                                        <td width="3%" align="left" valign="middle" class="bold">
-                                                                                                            <input type="radio" name="rbtNeedBanner" onclick="$('#dvBanner').show('slow');" id="rbtNeedBannerYes" value="True" @(!string.IsNullOrEmpty(ViewBag.Banner) && ViewBag.Banner == "true" ? "checked='checked'" : string.Empty) />
-                                                                                                        </td>
-                                                                                                        <td width="93%" align="left" valign="middle" class="bold">
-                                                                                                            @*Yes*@ @WBSSLStore.Resources.GeneralMessage.Message.Yes_CAption
-                                                                                                            <div style="float: right;">
-                                                                                                                <a href="@Url.Action("banner", "sitesettings")" class="commonlink" style="text-decoration:underline;">@WBSSLStore.Resources.GeneralMessage.Message.AdvanceBanner_Caption</a>
-                                                                                                            </div>
-                                                                                                        </td>
-                                                                                                    </tr>
-                                                                                                </table>
-                                                                                            </td>
-                                                                                        </tr>
-                                                                                        <tr>
-                                                                                            <td align="right" valign="middle" class="bold">
-                                                                                                &nbsp;
-                                                                                            </td>
-                                                                                            <td align="left" valign="middle">
-                                                                                                <div id="dvBanner" @(!string.IsNullOrEmpty(ViewBag.Banner) && ViewBag.Banner == "yes" ? "style='display:none;'" : string.Empty)>
-                                                                                                    <table class="bdrwhite" width="99%" border="0" align="left" cellpadding="1" cellspacing="1">
-                                                                                                        <tr>
-                                                                                                            <td align="right" valign="middle" class="bold">
-                                                                                                                &nbsp;
-                                                                                                            </td>
-                                                                                                            <td align="left" valign="middle">
-                                                                                                                &nbsp;
-                                                                                                            </td>
-                                                                                                            <td align="left" valign="middle">
-                                                                                                                &nbsp;
-                                                                                                            </td>
-                                                                                                        </tr>
-                                                                                                        <tr>
-                                                                                                            <td width="7%" align="right" valign="middle" class="bold">
-                                                                                                                &nbsp;
-                                                                                                            </td>
-                                                                                                            <td width="43%" align="left" valign="middle">
-                                                                                                                <label>
-                                                                                                                    <input name="fupBanner" type="file" class="inputbox" id="fupBanner" /><br />
-                                                                                                                    <table id="files1"></table>
-                                                                                                                </label>
-                                                                                                            </td>
-                                                                                                            <td align="left" width="50%" valign="middle"></td>
-                                                                                                        </tr>
-                                                                                                        <tr>
-                                                                                                            <td align="left" colspan="3">
-                                                                                                                @if (!string.IsNullOrEmpty(ViewBag.BannerFile))
-                                                                                                                {
-                                                                                                                    <img id="imgBanner" src="/upload/@ViewBag.SiteID/@ViewBag.BannerFile?uid=@(Guid.NewGuid().ToString())" align="absmiddle" alt="gallery thumbnail" width="520px" height="@Convert.ToInt32(@System.Web.Configuration.WebConfigurationManager.AppSettings["BannerHeight"])" />
-                                                                                                                }
-                                                                                                            </td>
-                                                                                                        </tr>
-                                                                                                    </table>
-                                                                                                </div>
-                                                                                            </td>
-                                                                                        </tr>
-                                                                                    </table>
-                                                                                </td>
-                                                                            </tr>
-                                                                        </table>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td align="left" valign="top">
-                                                                        <table width="799" border="0" align="left" cellpadding="1" cellspacing="1">
-                                                                            <tr>
-                                                                                <td  align="right" valign="middle" class="bold">
-                                                                                    @WBSSLStore.Resources.GeneralMessage.Message.ShowBaner_on_HomePage_only_caption:
-                                                                                    
-                                                                                </td>
-                                                                                <td width="650" align="left" valign="middle">
-                                                                                    <input type="checkbox" value="true" name="chkShowbannerOnlyHomepage" id="chkShowbannerOnlyHomepage" @(!string.IsNullOrEmpty(ViewBag.ShowbannerOnlyHomepage) && Convert.ToBoolean(ViewBag.ShowbannerOnlyHomepage) ? "checked=\"checked\"" : "") />
-                                                                                    <span style="font-weight: normal; font-size: small; font-style: italic; clear: both;">
-                                                                                        (@WBSSLStore.Resources.GeneralMessage.Message.ShowBaner_on_HomePage_only_Note)
-                                                                                    </span>
-                                                                                </td>
-                                                                            </tr>
-
-                                                                        </table>
-                                                                    </td>
-                                                                </tr>
-                                                            </table>
-                                                        </td>
-                                                    </tr>
-                                                </table>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td align="left" valign="top">
-                                                &nbsp;
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td height="30" align="left" valign="middle">
-                                                <h1>
-                                                    @*Manage Language &amp; Time Zone*@ @WBSSLStore.Resources.GeneralMessage.Message.Manage_Language_Time_Zone
+                                                    @WBSSLStore.Resources.GeneralMessage.Message.Manage_Language_Time_Zone
                                                 </h1>
                                             </td>
                                         </tr>
@@ -1260,27 +1122,7 @@
                                                                                             <td width="100%" align="right" valign="middle" colspan="8">
                                                                                                 &nbsp;
                                                                                             </td>
-                                                                                            <!--<td width="10%" align="left" valign="middle">
-                                                                                                &nbsp;
-                                                                                            </td>
-                                                                                            <td width="10%" align="left" valign="middle">
-                                                                                                &nbsp;
-                                                                                            </td>
-                                                                                            <td width="9%" align="left" valign="middle">
-                                                                                                &nbsp;
-                                                                                            </td>
-                                                                                            <td width="21%" align="left" valign="middle">
-                                                                                                &nbsp;
-                                                                                            </td>
-                                                                                            <td width="12%" align="left" valign="middle">
-                                                                                                &nbsp;
-                                                                                            </td>
-                                                                                            <td width="12%" align="left" valign="middle">
-                                                                                                &nbsp;
-                                                                                            </td>
-                                                                                            <td width="16%" align="left" valign="middle">
-                                                                                                &nbsp;
-                                                                                            </td>-->
+                                                                                          
                                                                                         </tr>
                                                                                         <tr>
                                                                                             <td width="12%" align="right" valign="middle" class="bold">
@@ -1457,14 +1299,7 @@
                                                                                             <td width="25" align="left" valign="middle" class="bold">
                                                                                                 &nbsp;
                                                                                             </td>
-                                                                                            @*<td width="12%" align="left" valign="middle">
-                                                                                                    &nbsp;
-                                                                                                </td>*@ @*<td width="12%" align="left" valign="middle">
-                                                                                                    &nbsp;
-                                                                                                </td>
-                                                                                                <td width="16%" align="left" valign="middle">
-                                                                                                    &nbsp;
-                                                                                                </td>*@
+                                                                                         
                                                                                             </tr>
                                                                                             <tr>
                                                                                                 <td align="right" valign="middle" class="bold">

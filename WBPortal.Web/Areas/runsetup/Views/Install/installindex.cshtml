@@ -1,5 +1,5 @@
 ﻿@using WhiteBrandShrink.Models;
-@model WhiteBrandShrink.Models.InstallModel
+@model InstallModel
 @{
     Layout = "~/Areas/runsetup/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "Configuration Database";
@@ -9,111 +9,116 @@
     @Scripts.Render("~/bundales/unobtrusive-ajaxjs")
     @Scripts.Render("~/bundales/validate-unobtrusive")
 
-    <script type="text/javascript">
-        $(document).ready(function () {
+<script type="text/javascript">
+    $(document).ready(function () {
 
-            $('#installation-form').submit(function () {
-                if ($('#installation-form').valid()) {
-                    window.setTimeout(function () {
-                        //$(".throbber.show()");
-                    }, 1000);
+        $('#installation-form').submit(function () {
+            if ($('#installation-form').valid()) {
+                window.setTimeout(function () {
+                    //$(".throbber.show()");
+                }, 1000);
 
-                    $('input[type=submit]', this).attr('disabled', 'disabled');
-                }
-            });
+                $('input[type=submit]', this).attr('disabled', 'disabled');
+            }
         });
+    });
 
-        $(document).ready(function () {
-            $("#provider_sqlserver").prop("checked", true);
-            $("#sqlconnectioninfo_values").prop("checked", true);
-            $("#sqlauthenticationtype_sql").prop("checked", true);
+    $(document).ready(function () {
+        $("#provider_sqlserver").prop("checked", true);
+        $("#sqlconnectioninfo_raw").prop("checked", true);
+        $("#sqlauthenticationtype_sql").prop("checked", true);
 
-            $('input[name=DataProvider]', '#installation-form').click(toggleProvider);
-            $('input[name=SqlConnectionInfo]', '#installation-form').click(toggleSqlConnectionInfo);
-            $('input[name=SqlAuthenticationType]', '#installation-form').click(toggleSqlAuthenticationType);
-
-
-            //$("#UseCustomCollation").click(toggleCollation);
-
-            toggleProvider();
-            toggleSqlConnectionInfo();
-            toggleSqlAuthenticationType();
-            //toggleCollation();
+        $('input[name=DataProvider]', '#installation-form').click(toggleProvider);
+        $('input[name=SqlConnectionInfo]', '#installation-form').click(toggleSqlConnectionInfo);
+        $('input[name=SqlAuthenticationType]', '#installation-form').click(toggleSqlAuthenticationType);
 
 
-        });
+        //$("#UseCustomCollation").click(toggleCollation);
+
+        toggleProvider();
+        toggleSqlConnectionInfo();
+        toggleSqlAuthenticationType();
+        //toggleCollation();
+        $("#hdnSqlAuthenticationType").val(-99);
+
+    });
 
 
-        function toggleProvider() {
-            var selectedProvider = $('input[name=DataProvider]:checked', '#installation-form').attr("id");
-            if (selectedProvider == 'provider_sqlce') {
-                $('#sqlConnectionInfo').hide();
-            }
-            else if (selectedProvider == 'provider_sqlserver') {
-                $('#sqlConnectionInfo').show();
-            }
+    function toggleProvider() {
+        var selectedProvider = $('input[name=DataProvider]:checked', '#installation-form').attr("id");
+        if (selectedProvider == 'provider_sqlce') {
+            $('#sqlConnectionInfo').hide();
         }
+        else if (selectedProvider == 'provider_sqlserver') {
+            $('#sqlConnectionInfo').show();
+        }
+    }
 
-        function toggleSqlConnectionInfo() {
-            var selectedProvider = $('input[name=SqlConnectionInfo]:checked', '#installation-form').attr("data-info");
-            if (selectedProvider == "@((SQLServerInfo.SQLCONNECTIONVALUES).ToString())") {
-                $('#dvSQLConnValue').show('slow');
-                $('#dvSQLConnString #txtDatabaseConnectionString').val('');
-                $('#dvSQLConnString').hide('slow');
-            }
-            else if (selectedProvider == "@((SQLServerInfo.SQLCONNECTIONSTRING).ToString())") {
-                $('#dvSQLConnValue').hide('slow');
-                $('#dvSQLConnString').show('slow');
-                $('#dvSQLConnValue #txtserver,#txtdatabase').val('');
-            }
-        }
+    function toggleSqlConnectionInfo() {
+        var selectedProvider = $('input[name=SqlConnectionInfo]:checked', '#installation-form').attr("data-info");
+        var selctpro = (selectedProvider == "@((SQLServerInfo.SQLCONNECTIONSTRING).ToString())") ? -99 : selectedProvider;
+        
+        $("#hdnSqlAuthenticationType").val(selctpro);
 
-        function toggleSqlAuthenticationType() {
-            var selectedProvider = $('input[name=SqlAuthenticationType]:checked', '#installation-form').val();
-            $("#hdnSqlAuthenticationType").val(selectedProvider)
-            if (selectedProvider == "@((SQLAuthentication.SQL_SERVER_AUTHENTICATION).ToString())") {
-                $('#pnlSqlServerDetail').show();
-                $('#pnlSqlServerPassword').show();
-            }
-            else if (selectedProvider == "@((SQLAuthentication.INTEGRATED_WINDOWS_AUTHENTICATION).ToString())") {
-                $("#pnlSqlServerDetail #txtUsername,#txtpassword").val('');
-                $('#pnlSqlServerDetail').hide();
-                $('#pnlSqlServerPassword').hide();
-            }
+        if (selectedProvider == "@((SQLServerInfo.SQLCONNECTIONVALUES).ToString())") {
+            $('#dvSQLConnValue').show('slow');
+            $('#dvSQLConnString #txtDatabaseConnectionString').val('');
+            $('#dvSQLConnString').hide('slow');
+            $('#hdnSqlConnectionInfo').val("@((SQLServerInfo.SQLCONNECTIONVALUES).ToString())");
         }
+        else if (selectedProvider == "@((SQLServerInfo.SQLCONNECTIONSTRING).ToString())") {
+            $('#dvSQLConnValue').hide('slow');
+            $('#dvSQLConnString').show('slow');
+            $('#dvSQLConnValue #txtserver,#txtdatabase').val('');
+            $('#hdnSqlConnectionInfo').val("@((SQLServerInfo.SQLCONNECTIONSTRING).ToString())");
+        }
+    }
 
-        function StartProcess(data) {
-            ShowLoader();
+    function toggleSqlAuthenticationType() {
+        var selectedProvider = $('input[name=SqlAuthenticationType]:checked', '#installation-form').val();
+        $("#hdnSqlAuthenticationType").val(selectedProvider);
+        if (selectedProvider == "@((SQLAuthentication.SQL_SERVER_AUTHENTICATION).ToString())") {
+            $('#pnlSqlServerDetail').show();
+            $('#pnlSqlServerPassword').show();
         }
-        function onSuccess(data) {
-            HideLoader();
-            if (data != null && data != '' && data.isSuccess.toString() == 'false' && data.msg.toString() != '') {
-                $("#geneMsg").html('');
-                $("#geneMsg").addClass('errormsg');
-                $("#geneMsg").html(data.msg);
-            }
-            else if (data != null && data != '' && data.isSuccess.toString().toLowerCase() == 'true' && data.url.toString() != '')
-            {
-                window.location.href = data.url.toString();
-            }
-            $('#installation-form input[type=submit]').removeAttr('disabled');
+        else if (selectedProvider == "@((SQLAuthentication.INTEGRATED_WINDOWS_AUTHENTICATION).ToString())") {
+            $("#pnlSqlServerDetail #txtUsername,#txtpassword").val('');
+            $('#pnlSqlServerDetail').hide();
+            $('#pnlSqlServerPassword').hide();
         }
-        function OnFail(data) {
+    }
+
+    function StartProcess(data) {
+        ShowLoader();
+    }
+    function onSuccess(data) {
+        HideLoader();
+        if (data != null && data != '' && data.isSuccess.toString() == 'false' && data.msg.toString() != '') {
+            $("#geneMsg").html('');
             $("#geneMsg").addClass('errormsg');
-            $("#geneMsg").html((data != null && data != '' && data.status == 500) ? data.statusText : 'General system error. Please try again');
-            HideLoader();
-            $('#installation-form input[type=submit]').removeAttr('disabled');
+            $("#geneMsg").html(data.msg);
         }
+        else if (data != null && data != '' && data.isSuccess.toString().toLowerCase() == 'true' && data.url.toString() != '') {
+            window.location.href = data.url.toString();
+        }
+        $('#installation-form input[type=submit]').removeAttr('disabled');
+    }
+    function OnFail(data) {
+        $("#geneMsg").addClass('errormsg');
+        $("#geneMsg").html((data != null && data != '' && data.status == 500) ? data.statusText : 'General system error. Please try again');
+        HideLoader();
+        $('#installation-form input[type=submit]').removeAttr('disabled');
+    }
 
-        function ShowLoader() {
-            $("#dvLoader").addClass('loader');
-            $("#dvLoader").show();
-        }
-        function HideLoader() {
-            $("#dvLoader").removeClass('loader');
-            $("#dvLoader").hide();
-        }
-    </script>
+    function ShowLoader() {
+        $("#dvLoader").addClass('loader');
+        $("#dvLoader").show();
+    }
+    function HideLoader() {
+        $("#dvLoader").removeClass('loader');
+        $("#dvLoader").hide();
+    }
+</script>
 }
 
 
@@ -121,119 +126,123 @@
 <div>
     @using (Ajax.BeginForm("indexpost", "install", "", new AjaxOptions { OnBegin = "StartProcess", OnSuccess = "onSuccess", OnFailure = "OnFail" }, new { id = "installation-form" }))
     {
-        @Html.AntiForgeryToken()
-        <div id="dvLoader" class="" style="display:none;">
-            <span class="throbber-header">
-                Installing Site's settings...
-            </span>
-        </div>
-        <div id="geneMsg">
-            @if (Model != null && !string.IsNullOrEmpty(Model.Errormessage))
-            {
-                @Html.Raw(Model.Errormessage);
-            }
-        </div>
-        @Html.HiddenFor(x => x.DataProvider, new { id = "hdnDataProvider" })
-        @Html.HiddenFor(x => x.SqlAuthenticationType, new { id = "hdnSqlAuthenticationType" })
-        @Html.HiddenFor(x => x.SqlConnectionInfo, new { id = "hdnSqlConnectionInfo" })
-        <div class="formbox">
-            <h2>Database Settings</h2>
-            <div class="formdtl">
-                <div class="fullraw padnone">
-                    <div class="formraw checkraw">
-                        <label>Create database if it doesn't exist:</label>
-                        @Html.CheckBoxFor(x => x.SqlServerCreateDatabase)
-                    </div>
+    @Html.AntiForgeryToken()
+    <div id="dvLoader" class="" style="display:none;">
+        <span class="throbber-header">
+            Installing Site's settings...
+        </span>
+    </div>
+    <div id="geneMsg">
+        @if (Model != null && !string.IsNullOrEmpty(Model.Errormessage))
+        {
+        @Html.Raw(Model.Errormessage);
+        }
+    </div>
+    @Html.HiddenFor(x => x.DataProvider, new { id = "hdnDataProvider" })
+    @Html.HiddenFor(x => x.SqlAuthenticationType, new { id = "hdnSqlAuthenticationType" })
+    @Html.HiddenFor(x => x.SqlConnectionInfo, new { id = "hdnSqlConnectionInfo" })
+    <div class="formbox">
+        <h2>Database Settings</h2>
+        <div class="formdtl">
+            <div class="fullraw padnone" style="display:none;">
+                <div class="formraw checkraw">
+                    <label>Create database if it doesn't exist:</label>
+                    @Html.CheckBoxFor(x => x.SqlServerCreateDatabase)
                 </div>
-                <div class="fullraw padnone">
-                    <div class="formraw radios">
-                        <p>
-                            @Html.RadioButton("SqlConnectionInfo", SQLServerInfo.SQLCONNECTIONVALUES.ToString(), (Model.SqlConnectionInfo == (SQLServerInfo.SQLCONNECTIONVALUES).ToString()), new { id = "sqlconnectioninfo_values", data_info = "" + (SQLServerInfo.SQLCONNECTIONVALUES.ToString()) + "" })
-                            <label for="sqlconnectioninfo_values">Enter SQL connection values</label>
-                        </p>
-                        <p>
-                            @Html.RadioButton("SqlConnectionInfo", SQLServerInfo.SQLCONNECTIONSTRING, (Model.SqlConnectionInfo == (SQLServerInfo.SQLCONNECTIONSTRING).ToString()), new { id = "sqlconnectioninfo_raw", data_info = "" + (SQLServerInfo.SQLCONNECTIONSTRING.ToString()) + "" })
-                            <label for="sqlconnectioninfo_raw">Enter raw connecting string (advanced)</label>
-                        </p>
-                    </div>
-                </div>
-                <div class="fullraw padnone radioboxdtl stringdtl" id="dvSQLConnString">
-                    <div class="formraw">
-                        <label>Connection string<span>*</span></label>
-                        @Html.TextBoxFor(x => x.DatabaseConnectionString, new { @class = "textbox", id = "txtDatabaseConnectionString" })
-                        @Html.ValidationMessageFor(x => x.DatabaseConnectionString)
-                    </div>
-                    <p class="example">
-                        Example:<br>
-                        Data Source=sqlServerName;Initial Catalog=dbName;Persist Security Info=True;User ID=userName;Password=password<br>
-                        Find more info <a target="_blank" href="http://www.connectionstrings.com/">here</a>
+            </div>
+            <div class="fullraw padnone" style="display:none;">
+                <div class="formraw radios">
+                   
+                    <p>
+                        @Html.RadioButton("SqlConnectionInfo", SQLServerInfo.SQLCONNECTIONSTRING, (Model.SqlConnectionInfo == (SQLServerInfo.SQLCONNECTIONSTRING).ToString()), new { id = "sqlconnectioninfo_raw", data_info = "" + (SQLServerInfo.SQLCONNECTIONSTRING.ToString()) + "" })
+                        <label for="sqlconnectioninfo_raw">Enter raw connecting string (advanced)</label>
+                    </p>
+
+                    <p style="display:none;">
+                        @Html.RadioButton("SqlConnectionInfo", SQLServerInfo.SQLCONNECTIONVALUES.ToString(), (Model.SqlConnectionInfo == (SQLServerInfo.SQLCONNECTIONVALUES).ToString()), new { id = "sqlconnectioninfo_values", data_info = "" + (SQLServerInfo.SQLCONNECTIONVALUES.ToString()) + "" })
+                        <label for="sqlconnectioninfo_values">Enter SQL connection values</label>
                     </p>
                 </div>
-                <div class="fullraw padnone radioboxdtl sqldtl">
-                    <div id="dvSQLConnValue" class="innrfullraw">
-                        <div class="formraw">
-                            <label>Server<span>*</span></label>
-                            @Html.TextBoxFor(x => x.SqlServerName, new { @class = "textbox", id = "txtserver" })
-                            @Html.ValidationMessageFor(x => x.SqlServerName)
-                        </div>
-                        <div class="formraw">
-                            <label>Database<span>*</span></label>
-                            @Html.TextBoxFor(x => x.SqlDatabaseName, new { @class = "textbox", id = "txtdatabase" })
-                            @Html.ValidationMessageFor(x => x.SqlDatabaseName)
-                        </div>
-                        <div class="fullraw padnone">
-                            <div class="formraw radios">
-                                <p>
-                                    @Html.RadioButton("SqlAuthenticationType", SQLAuthentication.SQL_SERVER_AUTHENTICATION.ToString(), (Model.SqlAuthenticationType.Equals(SQLAuthentication.SQL_SERVER_AUTHENTICATION.ToString(), StringComparison.OrdinalIgnoreCase)), new { id = "sqlauthenticationtype_sql" })
-                                    <label for="sqlauthenticationtype_sql">Use SQL server account</label>
-                                </p>
-                                <p>
-                                    @Html.RadioButton("SqlAuthenticationType", SQLAuthentication.INTEGRATED_WINDOWS_AUTHENTICATION.ToString(), (Model.SqlAuthenticationType.Equals(SQLAuthentication.INTEGRATED_WINDOWS_AUTHENTICATION.ToString(), StringComparison.OrdinalIgnoreCase)), new { id = "sqlauthenticationtype_windows" })
-                                    <label for="sqlauthenticationtype_windows">Use integrated windows authentication</label>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="windowauthentication" id="pnlSqlServerDetail">
-                            <div class="formraw">
-                                <label>Username<span>*</span></label>
-                                @Html.TextBoxFor(x => x.SqlServerUsername, new { @id = "txtUsername" })
-                                @Html.ValidationMessageFor(x => x.SqlServerUsername)
-                            </div>
-                            <div class="formraw">
-                                <label>Password<span>*</span></label>
-                                @Html.PasswordFor(x => x.SqlServerPassword, new { @id = "txtpassword" })
-                                @Html.ValidationMessageFor(x => x.SqlServerPassword)
-                            </div>
-                        </div>
-                    </div>
-                    <div class="formraw multichk">
-                        <label>Advanced Options</label>
-                        <p>
-                            @Html.CheckBoxFor(x => x.UseTCPPort, new { id = "chkTCPport" })
-                            <label for="chkTCPport">TCP Port</label> <span class="chk1 hideinput">
-                                @Html.TextBoxFor(x => x.TCPPORT)
-                                @Html.ValidationMessageFor(x => x.TCPPORT)
-                            </span>
-                        </p>
-                        <p>
-                            @Html.CheckBoxFor(x => x.UseConnectionTimeout, new { id = "chkConnTimeOut" })
-                            <label for="chkConnTimeOut">Connection Timeout</label><span class="chk2 hideinput">
-                                @Html.TextBoxFor(x => x.ConnectionTimeout, new { id = "timeout" })
-                                @Html.ValidationMessageFor(x => x.ConnectionTimeout)
-                            </span>
-                        </p>
-                        <p>
-                            <input type="checkbox" id="check3" name="check3" value="chk3"><label for="check3">Encrypt using SSL</label>
-                        </p>
-                    </div>
-
-                </div>
-
-                <div class="clear"></div>
             </div>
+            <div class="fullraw padnone radioboxdtl stringdtl" id="dvSQLConnString">
+                <div class="formraw dvwidth100">
+                    <label>Connection string<span>*</span></label>
+                    @Html.TextBoxFor(x => x.DatabaseConnectionString, new { @class = "textbox", id = "txtDatabaseConnectionString",lenght="300" })
+                    @Html.ValidationMessageFor(x => x.DatabaseConnectionString)
+                </div>
+                <p class="example">
+                    Example:<br>
+                    Data Source=sqlServerName;Initial Catalog=dbName;Persist Security Info=True;User ID=userName;Password=password<br>
+                    Find more info <a target="_blank" href="http://www.connectionstrings.com/">here</a>
+                </p>
+            </div>
+            <div class="fullraw padnone radioboxdtl sqldtl">
+                <div id="dvSQLConnValue" class="innrfullraw">
+                    <div class="formraw">
+                        <label>Server<span>*</span></label>
+                        @Html.TextBoxFor(x => x.SqlServerName, new { @class = "textbox", id = "txtserver" })
+                        @Html.ValidationMessageFor(x => x.SqlServerName)
+                    </div>
+                    <div class="formraw">
+                        <label>Database<span>*</span></label>
+                        @Html.TextBoxFor(x => x.SqlDatabaseName, new { @class = "textbox", id = "txtdatabase" })
+                        @Html.ValidationMessageFor(x => x.SqlDatabaseName)
+                    </div>
+                    <div class="fullraw padnone">
+                        <div class="formraw radios">
+                            <p>
+                                @Html.RadioButton("SqlAuthenticationType", SQLAuthentication.SQL_SERVER_AUTHENTICATION.ToString(), (Model.SqlAuthenticationType.Equals(SQLAuthentication.SQL_SERVER_AUTHENTICATION.ToString(), StringComparison.OrdinalIgnoreCase)), new { id = "sqlauthenticationtype_sql" })
+                                <label for="sqlauthenticationtype_sql">Use SQL server account</label>
+                            </p>
+                            <p>
+                                @Html.RadioButton("SqlAuthenticationType", SQLAuthentication.INTEGRATED_WINDOWS_AUTHENTICATION.ToString(), (Model.SqlAuthenticationType.Equals(SQLAuthentication.INTEGRATED_WINDOWS_AUTHENTICATION.ToString(), StringComparison.OrdinalIgnoreCase)), new { id = "sqlauthenticationtype_windows" })
+                                <label for="sqlauthenticationtype_windows">Use integrated windows authentication</label>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="windowauthentication" id="pnlSqlServerDetail">
+                        <div class="formraw">
+                            <label>Username<span>*</span></label>
+                            @Html.TextBoxFor(x => x.SqlServerUsername, new { @id = "txtUsername" })
+                            @Html.ValidationMessageFor(x => x.SqlServerUsername)
+                        </div>
+                        <div class="formraw">
+                            <label>Password<span>*</span></label>
+                            @Html.PasswordFor(x => x.SqlServerPassword, new { @id = "txtpassword" })
+                            @Html.ValidationMessageFor(x => x.SqlServerPassword)
+                        </div>
+                    </div>
+                </div>
+                @if (1 == 2)
+                {
+                <div class="formraw multichk hideinput">
+                    <label>Advanced Options</label>
+                    <p>
+                        @Html.CheckBoxFor(x => x.UseTCPPort, new { id = "chkTCPport" })
+                        <label for="chkTCPport">TCP Port</label> <span class="chk1 hideinput">
+                            @Html.TextBoxFor(x => x.TCPPORT)
+                            @Html.ValidationMessageFor(x => x.TCPPORT)
+                        </span>
+                    </p>
+                    <p>
+                        @Html.CheckBoxFor(x => x.UseConnectionTimeout, new { id = "chkConnTimeOut" })
+                        <label for="chkConnTimeOut">Connection Timeout</label><span class="chk2 hideinput">
+                            @Html.TextBoxFor(x => x.ConnectionTimeout, new { id = "timeout" })
+                            @Html.ValidationMessageFor(x => x.ConnectionTimeout)
+                        </span>
+                    </p>
+                    <p>
+                        <input type="checkbox" id="check3" name="check3" value="chk3"><label for="check3">Encrypt using SSL</label>
+                    </p>
+                </div>
+                }
+            </div>
+
+            <div class="clear"></div>
         </div>
-        <div class="fullrawbtn">
-            <input type="submit" id="next" name="next" value="Next">
-        </div>
+    </div>
+    <div class="fullrawbtn">
+        <input type="submit" id="next" name="next" value="Next">
+    </div>
     }
 </div>

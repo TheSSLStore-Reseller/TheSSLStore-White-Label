@@ -80,7 +80,9 @@ namespace WBSSLStore.Web.Controllers
             ViewBag.CartTotal = _viewModel.CartDetails.Sum(p => p.Price);
             ViewBag.TotalDiscount = _viewModel.CartDetails.Sum(p => p.PromoDiscount);
             //return View("Index", _viewModel);
+#pragma warning disable CS0219 // The variable 'url' is assigned but its value is never used
             string url = "/shoppingcart";
+#pragma warning restore CS0219 // The variable 'url' is assigned but its value is never used
             return RedirectToRoute("shoppingcart_us");
             //return Redirect(WBHelper.ApllicationFullPath + url);
 
@@ -193,7 +195,9 @@ namespace WBSSLStore.Web.Controllers
         public ActionResult Edit(int id, int? ppid)
         {
             ShoppingCartDetail sd = null;
+#pragma warning disable CS0219 // The variable 'sp' is assigned but its value is never used
             ShoppingCart sp = null;
+#pragma warning restore CS0219 // The variable 'sp' is assigned but its value is never used
             if (id > 0)
                 sd = _repository.Find(x => x.ID == id).EagerLoad(x => x.Product, x => x.ShoppingCart, x => x.ProductPricing).FirstOrDefault();
             else

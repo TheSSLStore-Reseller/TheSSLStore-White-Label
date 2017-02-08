@@ -1,0 +1,476 @@
+<?xmlversion = "1.0"?>
+<root>
+  <EmailContent>
+    <EmailTemplate>
+      <EmailSubject>New Customer Signup</EmailSubject>
+      <EmailContent MailMerge="[FULLNAME];[CLIENTID];[LOGINLINK];[SITEALIAS]" IsActive="1" EmailTypeId="0" LangID="1" SiteID="1">
+        <![CDATA[<p>Dear [FULLNAME],</p>
+<p>Welcome to [SITEALIAS], your new trusted SSL partner!</p>
+<p>Please keep this email for your records.<br />Your [SITEALIAS] Client ID is [CLIENTID]</p>
+<p>Click below link to login:<br />--------------------------<br />[LOGINLINK]<br />--------------------------</p>
+<p>Thank you for choosing [SITEALIAS]. We appreciate your business.</p>
+<p>If you have any more questions regarding your account, please feel free to reach us via Live Chat or email support.</p>
+<p>&nbsp;</p>
+<p>Thanks,<br /><br />Sales Team<br />[SITEALIAS]<br /><br /></p>]]>
+      </EmailContent>      
+    </EmailTemplate>
+
+    <EmailTemplate>
+      <EmailSubject>New Order Confirmation</EmailSubject>
+      <EmailContent MailMerge="[PAYMENTMODE];[SITEALIAS];[DOWNLOADINVOICE];[PRODUCTINFO];[FULLNAME];[EMAILADDRESS];[COMPANYNAME];[ADDRESS];[CITYNAME];[CUSTOMER STATENAME];[CUSTOMER ZIPCODE];[CUSTOMER COUNTRY];[CUSTOMER PHONE];[CUSTOMER PHONE2];[CUSTOMER MOBILE];[CUSTOMER FAX];[DOMAINNAME];[PAYMENT DETAIL];[IPADDRESS];[TIME];[SITEALIAS]" IsActive="1" EmailTypeId="2" LangID="1" SiteID="1">
+        <![CDATA[<p>Thank you for choosing [SITEALIAS]. We appreciate your business.</p>
+<p>PLEASE NOTE THAT THIS CHARGE WILL SHOW AS [SITEALIAS] IN YOUR&nbsp;[PAYMENTMODE] STATEMENT.</p>
+<p>[DOWNLOADINVOICE]</p>
+<p>Products Information:</p>
+<p>[PRODUCTINFO]</p>
+<p><br />Customer Information:<br />Customer Name: [FULLNAME]<br />E-mail: [EMAILADDRESS]<br />Company: [COMPANYNAME]<br />Address: [ADDRESS]<br />City: [CITYNAME]<br />State/Province: [CUSTOMER STATENAME]<br />Zip/Postal Code: [CUSTOMER ZIPCODE]<br />Country: [CUSTOMER COUNTRY]<br />Phone: [CUSTOMER PHONE]<br />Mobile: [CUSTOMER MOBILE]<br />Fax: [CUSTOMER FAX]</p>
+<p>Domain: [DOMAINNAME]</p>
+<p>[PAYMENT DETAIL]</p>
+<p>Additional Information:<br />Customer IP Address: [IPADDRESS]<br />Time: [TIME]</p>
+<p>Sincerely,<br /><br />Sales Team<br />[SITEALIAS]<br /><br /></p>]]>
+      </EmailContent>
+    </EmailTemplate>
+
+    <EmailTemplate>
+      <EmailSubject>Reseller New Order</EmailSubject>
+      <EmailContent MailMerge="[PAYMENTMODE];[SITEALIAS];[DOWNLOADINVOICE];[PRODUCTINFO];[FULLNAME];[EMAILADDRESS];[COMPANYNAME];[ADDRESS];[CITYNAME];[CUSTOMER STATENAME];[CUSTOMER ZIPCODE];[CUSTOMER COUNTRY];[CUSTOMER PHONE];[CUSTOMER PHONE2];[CUSTOMER MOBILE];[CUSTOMER FAX];[DOMAINNAME];[PAYMENT DETAIL];[IPADDRESS];[TIME];[SITEALIAS]" IsActive="1" EmailTypeId="12" LangID="1" SiteID="1">
+        <![CDATA[<p>Thank you for choosing [SITEALIAS]. We appreciate your business.</p>
+<p>PLEASE NOTE THAT THIS CHARGE WILL SHOW AS&nbsp;<strong>[SITEALIAS]</strong> IN YOUR&nbsp;[PAYMENTMODE] STATEMENT.</p>
+<p>[DOWNLOADINVOICE]</p>
+<p><strong>Products Information:</strong><br />[PRODUCTINFO]</p>
+<p><strong>Customer Information:</strong><br />Customer Name: [FULLNAME]<br />E-mail: [EMAILADDRESS]<br />Company: [COMPANYNAME]<br />Address: [ADDRESS]<br />City: [CITYNAME]<br />State/Province: [CUSTOMER STATENAME]<br />Zip/Postal Code: [CUSTOMER ZIPCODE]<br />Country: [CUSTOMER COUNTRY]<br />Phone: [CUSTOMER PHONE]<br />Mobile: [CUSTOMER MOBILE]<br />Fax: [CUSTOMER FAX]</p>
+<p>Domain: [DOMAINNAME]<br /><br />[PAYMENT DETAIL]<br />Additional Information:<br />Customer IP Address: [IPADDRESS]<br />Time: [TIME]</p>
+<p>Sincerely,<br /><br />Sales Team<br /><strong>[SITEALIAS]</strong><br /><br /></p>]]>
+      </EmailContent>
+    </EmailTemplate>
+
+    <EmailTemplate>
+      <EmailSubject>New SSL Order [SITEALIAS] ORDERID:[INVOICEID]</EmailSubject>
+      <EmailContent MailMerge="[SITEALIAS];[INVOICEID];[FULLNAME];[EMAILADDRESS];[COMPANYNAME];[ADDRESS];[CITYNAME];[STATENAME];[ZIPCODE];[COUNTRY];[PHONE];[MOBILE];[FAX];[PRODUCTINFO];[PAYMENT DETAIL];[IPADDRESS];[TIME]" IsActive="1" EmailTypeId="28" LangID="1" SiteID="1">
+        <![CDATA[<p>&nbsp;</p>
+<p><strong>Customer Information:</strong><br />Customer Name: [FULLNAME]<br />E-mail: [EMAILADDRESS]<br />Company: [COMPANYNAME]<br />Address: [ADDRESS]<br />City: [CITYNAME] State/Province: [STATENAME]<br />Zip/Postal Code: [ZIPCODE]<br />Country: [COUNTRY]<br />Phone: [PHONE]<br />Mobile: [MOBILE]<br />Fax: [FAX]</p>
+<p>&nbsp;</p>
+<p><strong>Products Information:</strong><br />[PRODUCTINFO]</p>
+<p><br />[PAYMENT DETAIL]</p>
+<p>Additional Information:<br />Customer IP Address: [IPADDRESS]<br />Time: [TIME]</p>
+<p>Sincerely,<br /><br />Sales Team<br /><strong>[SITEALIAS]</strong></p>]]>
+      </EmailContent>
+    </EmailTemplate>
+
+    <EmailTemplate>
+      <EmailSubject>New Reseller Sign UP</EmailSubject>
+      <EmailContent MailMerge="[SITEALIAS];[FULLNAME]" IsActive="1" EmailTypeId="9" LangID="1" SiteID="1">
+        <![CDATA[<p>Dear [FULLNAME],</p>
+<p>Welcome to [SITEALIAS], your new Trusted SSL Partner!</p>
+<p>Your request has been received. As soon as it&rsquo;s verified by our team, you will be notified via email and your credit will be available in your control panel.</p>
+<p>If you have any questions regarding your account with us, please feel free to reach us via Live Chat or email support.</p>
+<p>Sincerely,<br /><br />Support Team<br />[SITEALIAS]<br /><br /></p>]]>
+      </EmailContent>
+    </EmailTemplate>
+
+    <EmailTemplate>
+      <EmailSubject>Forgot Password</EmailSubject>
+      <EmailContent MailMerge="[SITEALIAS];[RESETLINK];[FULLNAME]" IsActive="1" EmailTypeId="34" LangID="1" SiteID="1">
+        <![CDATA[<p>Dear [FULLNAME]</p>
+<p>&nbsp;</p>
+<p>You have requested a new password on [SITEALIAS].</p>
+<p>Please follow this link to reset your password:<br /><a href='[RESETLINK]'>[RESETLINK]</a></p>
+<p>If you did not send this request, you can safely ignore this email.</p>
+<p>Sincerely,<br /><br />Support Team<br />[SITEALIAS]</p>]]>
+      </EmailContent>
+    </EmailTemplate>
+
+    <EmailTemplate>
+      <EmailSubject>Your account password changed</EmailSubject>
+      <EmailContent MailMerge="[FULLNAME];[SITEALIAS];[DATE];[SUPPORTMAIL]" IsActive="1" EmailTypeId="1" LangID="1" SiteID="1">
+        <![CDATA[<p>Dear [FULLNAME],</p>
+<p>This email is confirming that you created a new password for your&nbsp;[SITEALIAS] account on [DATE].</p>
+<p>If you did NOT make this change, please contact us immediately at [SUPPORTMAIL]. Thank you.</p>
+<p>Sincerely,<br /><br />Support Team<br />[SITEALIAS]<br /><br /></p>]]>
+      </EmailContent>
+    </EmailTemplate>
+
+    <EmailTemplate>
+      <EmailSubject>Your order has been refunded</EmailSubject>
+      <EmailContent MailMerge="[SITEALIAS];[ACTION];[ORDERNUMBER];[FULLNAME]" IsActive="1" EmailTypeId="3" LangID="1" SiteID="1">
+        <![CDATA[<p>Hello [FULLNAME],</p>
+<p>We have cancelled your order and&nbsp;[ACTION] in your account as per your request.</p>
+<p>Order Number # [ORDERNUMBER]</p>
+<p>If you have any questions, please feel free to contact us via Email to suppport at:</p>
+<p>Mail to <a href="mailto:[SUPPORTMAIL]"> [SUPPORTMAIL] </a></p>
+<p>Please tell others about your positive experience with our company.</p>
+<p>Thank you for choosing [SITEALIAS]!</p>
+<p>Sincerely,<br /><br />Support Team<br />[SITEALIAS]</p>]]>
+      </EmailContent>
+    </EmailTemplate>
+
+    <EmailTemplate>
+      <EmailSubject>New Support Incident</EmailSubject>
+      <EmailContent MailMerge="[SITEALIAS];[FULLNAME];[INCIDENTID];[SUPPORTINCIDENTSUBJECT];[STATUS]" IsActive="1" EmailTypeId="4" LangID="1" SiteID="1">
+        <![CDATA[<p>Hello [FULLNAME],</p>
+<p>Thank you for contacting us. We have received your support request and a member of our staff will review and reply accordingly.</p>
+<p>Listed below are your details of this Support Incident.</p>
+<p>Incident ID: [INCIDENTID]<br />Subject: [SUPPORTINCIDENTSUBJECT]<br />Status: [STATUS]</p>
+<p>Sincerely,<br /><br />Support Team<br />[SITEALIAS]<br /><br /></p>]]>
+      </EmailContent>
+    </EmailTemplate>
+
+    <EmailTemplate>
+      <EmailSubject>Your Reseller account has been activated</EmailSubject>
+      <EmailContent MailMerge="[SITEALIAS];[FULLNAME];[CLIENTID];[LOGINLINK]" IsActive="1" EmailTypeId="10" LangID="1" SiteID="1">
+        <![CDATA[<p>Dear [FULLNAME],</p>
+<p>Congratulations! You are now ready to process your SSL orders and manage them easily. First you have to fund your account with a minimum of $100 USD or more depending on your needs. Don&rsquo;t worry, this credit is your money and will be used to process your orders. Every time you purchase a certificate it will be deducted from your credit balance.</p>
+<p>In the event your credit is exhausted, you will have to replenish your account. You must have a credit balance in order to make purchases.</p>
+<p><strong>Reseller prices are based on the volume of purchase.</strong> The higher the purchase level, the cheaper the price. Detailed pricing can be found in our website. To qualify for a lower pricing level, you either have to purchase the actual amount or deposit the amount that level requires.</p>
+<p><strong>For example:</strong> If you would like to qualify for the $1000 or SILVER level, simply deposit $1000 and you can start taking advantage of that price level immediately. Alternatively, you can keep buying your certificates at the lowest level until you have accumulated the next level&rsquo;s needed amount of purchases. Once your account reaches the next threshold, it automatically lowers your prices.</p>
+<p><strong>If you are switching to [SITEALIAS] from another SSL provider, simply show us the receipts of the purchases you have made and we will grant that level to you. Let&rsquo;s say you had been a direct reseller of GeoTrust, VeriSign or another Partner and bought $10,000 in the past. With the proof of purchase you immediately qualify for $10,000 pricing level. Please contact us immediately.</strong></p>
+<p>Please keep this email for your records. Your account information is as follows:</p>
+<p>--------------------------<br /><strong>Your TheSSLStore.com Reseller IDs: [CLIENTID]</strong><br /><strong>Login at: [LOGINLINK]</strong><br />--------------------------</p>
+<p>If you have any questions please do not hesitate to contact us via Live Chat<br />Once again, welcome to <strong>[SITEALIAS]</strong>.</p>
+<p>Sincerely,<br /><strong>[SITEALIAS]</strong>&nbsp;Team<br /><br /></p>]]>
+      </EmailContent>
+    </EmailTemplate>
+
+    <EmailTemplate>
+      <EmailSubject>Your account password changed</EmailSubject>
+      <EmailContent MailMerge="[SITEALIAS];[FULLNAME];[SUPPORTMAIL];[DATE]" IsActive="1" EmailTypeId="11" LangID="1" SiteID="1">
+        <![CDATA[<p>Dear [FULLNAME],</p>
+<p>&nbsp;</p>
+<p>This email is confirming that you created a new password for your&nbsp;[SITEALIAS] account on [DATE].</p>
+<p>If you did NOT make this change, please contact us immediately at [SUPPORTMAIL]. Thank you.</p>
+<p>&nbsp;</p>
+<p>Sincerely,<br /><br />Support Team<br />[SITEALIAS]<br /><br /></p>]]>
+      </EmailContent>
+    </EmailTemplate>
+
+    <EmailTemplate>
+      <EmailSubject>Your order has been cancelled</EmailSubject>
+      <EmailContent MailMerge="[SITEALIAS];[FULLNAME];[ORDERNUMBER]" IsActive="1" EmailTypeId="13" LangID="1" SiteID="1">
+        <![CDATA[<p><span style="font-family: verdana,geneva;"><span class="mediumtext">Hello [FULLNAME],<br /><br />Your order has been cancelled. You will receive credit or refund as per your request.<br />
+        <br />Order Number # [ORDERNUMBER]<br /><br />If you have any questions, please feel free to contact us via live chat<br class="mediumtext" /><br />We hope you will tell others about your positive experience with our company. <br />
+        <br />Thank you for choosing [SITEALIAS]! </span></span></p> <p><span style="font-family: verdana,geneva;"><span class="mediumtext">Sincerely,<br />[SITEALIAS]<br /></span></span></p>]]>
+      </EmailContent>
+    </EmailTemplate>
+
+    <EmailTemplate>
+      <EmailSubject>Your order has been refunded</EmailSubject>
+      <EmailContent MailMerge="[SITEALIAS];[FULLNAME];[ORDERNUMBER];[ACTION];[SUPPORTMAIL]" IsActive="1" EmailTypeId="14" LangID="1" SiteID="1">
+        <![CDATA[<p>Hello [FULLNAME],</p>
+<p>We have cancelled your order and&nbsp;[ACTION] in your account as per your request.</p>
+<p>Order Number # [ORDERNUMBER]</p>
+<p>If you have any questions, please feel free to contact us via support email at:</p>
+<p>Mail to <a href="mailto:[SUPPORTMAIL]"> [SUPPORTMAIL] </a></p>
+<p>Please tell others about your positive experience with our company.</p>
+<p>Thank you for choosing [SITEALIAS]!</p>
+<p>Sincerely,<br /><br />Support Team<br /><strong>[SITEALIAS]</strong></p>]]>
+      </EmailContent>
+    </EmailTemplate>
+
+    <EmailTemplate>
+      <EmailSubject>New Support Incident</EmailSubject>
+      <EmailContent MailMerge="[FULLNAME];[INCIDENTID];[SUPPORTINCIDENTSUBJECT];[STATUS];[SITEALIAS]" IsActive="1" EmailTypeId="15" LangID="1" SiteID="1">
+        <![CDATA[<p>Hello [FULLNAME],</p>
+<p>Thank you for contacting us. We have received your support request and a member of our staff will review and reply accordingly.</p>
+<p>Listed below are your details of this Support Incident.</p>
+<p>Incident ID: [INCIDENTID]<br />Subject: [SUPPORTINCIDENTSUBJECT]<br />Status: [STATUS]</p>
+<p>Sincerely,<br /><br />Support Team<br />[SITEALIAS]</p>]]>
+      </EmailContent>
+    </EmailTemplate>
+
+    <EmailTemplate>
+      <EmailSubject>Customer Sign Up</EmailSubject>
+      <EmailContent MailMerge="[FULLNAME];[COMPANYNAME];[ADDRESS];[CITYNAME];[STATENAME];[ZIPCODE];[COUNTRY];[EMAIL];[PHONE];[SITEALIAS]" IsActive="1" EmailTypeId="25" LangID="1" SiteID="1">
+        <![CDATA[<p>&nbsp;</p>
+<p>The following Customer has signed up at [SITEALIAS].</p>
+<p>Customer Name: [FULLNAME]<br />Company: [COMPANYNAME]<br />Address: [ADDRESS]<br />City: [CITYNAME]<br />State: [STATENAME]<br />Zip: [ZIPCODE]<br />Country: [COUNTRY]<br />Email: [EMAIL]<br />Telephone: [PHONE]</p>]]>
+      </EmailContent>
+    </EmailTemplate>
+
+    <EmailTemplate>
+      <EmailSubject>Reseller Sign Up</EmailSubject>
+      <EmailContent MailMerge="[FULLNAME];[COMPANYNAME];[ADDRESS];[CITYNAME];[STATENAME];[ZIPCODE];[COUNTRY];[EMAIL];[PHONE];[HEARABOUTUS]" IsActive="1" EmailTypeId="26" LangID="1" SiteID="1">
+        <![CDATA[<p>&nbsp;</p>
+<p>The following Reseller has signed up at your website. It is important that you login into Admin section and activate reseller account.</p>
+<p><br />Customer Name: [FULLNAME]<br />Company: [COMPANYNAME]<br />Address: [ADDRESS]<br />City: [CITYNAME]<br />State: [STATENAME]<br />Zip: [ZIPCODE]<br />Country: [COUNTRY]<br />Email: [EMAIL]<br />Telephone: [PHONE]<br />Hear about us: [HEARABOUTUS]<br /><br /></p>]]>
+      </EmailContent>
+    </EmailTemplate>
+
+    <EmailTemplate>
+      <EmailSubject>Your account password changed</EmailSubject>
+      <EmailContent MailMerge="[FULLNAME];[COMPANYNAME];[ADDRESS];[CITYNAME];[STATENAME];[ZIPCODE];[COUNTRY];[EMAIL];[PHONE];[HEARABOUTUS]" IsActive="1" EmailTypeId="26" LangID="1" SiteID="1">
+        <![CDATA[<p><span style="font-family: verdana,geneva;">Dear Admin,</span></p> <p><span style="font-family: verdana,geneva;">This email confirms that you created a new password for your thesslstore.com.</span></p> <p><span style="font-family: verdana,geneva;">Thank you.</span></p> <p><span style="font-family: verdana,geneva;">Sincerely,<br />Support Team<br />[SITEALIAS]<br /></span>
+        </p>]]>
+      </EmailContent>
+    </EmailTemplate>
+
+    <EmailTemplate>
+      <EmailSubject>[INCIDENTID]: Order Cancellation Request</EmailSubject>
+      <EmailContent MailMerge="[SITEALIAS];[INCIDENTID];[ORDERID];[FULLNAME];[ACCOUNTTYPE]" IsActive="1" EmailTypeId="29" LangID="1" SiteID="1">
+        <![CDATA[<p><span style="font-family: verdana,geneva;"><br />Incident ID:[INCIDENTID]</span></p> <p><span style="font-family: verdana,geneva;">Order Information:<br />Transaction ID:[ORDERID]<br />Customer Name: [FULLNAME]<br />Account Type: [ACCOUNTTYPE]<br /></span></p>]]>
+      </EmailContent>
+    </EmailTemplate>
+
+    <EmailTemplate>
+      <EmailSubject>[INCIDENTID]: New Support Incident</EmailSubject>
+      <EmailContent MailMerge="[SITEALIAS];[INCIDENTID];[FULLNAME];[ACCOUNTTYPE];[SUPPORTINCIDENTSUBJECT];[STATUS]" IsActive="1" EmailTypeId="31" LangID="1" SiteID="1">
+        <![CDATA[<p>Hello [FULLNAME],</p>
+<p>Thank you for contacting us. We have received your support request and a member of our staff will review and reply accordingly.</p>
+<p>Listed below are your details of this Support Incident.</p>
+<p><strong>Incident ID:</strong> [INCIDENTID]<br /><strong>Subject:</strong> [SUPPORTINCIDENTSUBJECT]<br /><strong>Status:</strong> [STATUS]</p>
+<p>Sincerely,<br /><br />Support Team<br />[SITEALIAS]<br /><br /></p> ]]>
+      </EmailContent>
+    </EmailTemplate>
+
+    <EmailTemplate>
+      <EmailSubject>Fund Added SuccessFully</EmailSubject>
+      <EmailContent MailMerge="[SITEALIAS];[RECIEPTDETAIL];[FULLNAME];[ACCOUNTTYPE];[AMOUNT]" IsActive="1" EmailTypeId="32" LangID="1" SiteID="1">
+        <![CDATA[<p>Funds Added to the following User Account on [SITEALIAS]:</p>
+<p>User Name: [FULLNAME]<br />Receipt Details: [RECIEPTDETAIL]<br />Amount: [AMOUNT]<br />Account Type: [ACCOUNTTYPE]</p>
+<p><br />Thank You,<br /><br />Sales Team<br />[SITEALIAS]</p> ]]>
+      </EmailContent>
+    </EmailTemplate>
+
+    <EmailTemplate>
+      <EmailSubject>Fraud Order Notification</EmailSubject>
+      <EmailContent MailMerge="[SITEALIAS];[TRANSACTIONID]" IsActive="1" EmailTypeId="33" LangID="1" SiteID="1">
+        <![CDATA[<p>Hello Support,</p>
+<p>Transaction&nbsp;[TRANSACTIONID] has been marked for fraud detection.</p>
+<p>To view this transaction, click on the<strong> Fraud Detection Suite</strong> in the Merchant Interface main menu. In the Transaction Filters section, click on the number to the right of any of the filters listed above, then click on transaction ID [TRANSACTIONID].</p>
+<p><br />You can also perform a search for the transaction using the transaction ID listed above.</p>
+<p><br />Please Approve/Reject Pending Order in the &ldquo;Admin&rdquo; section of [SITEALIAS].</p>
+<p>&nbsp;</p>
+<p>Thanks, <br /><br />Support Team<br />[SITEALIAS]<br /><br /></p> ]]>
+      </EmailContent>
+    </EmailTemplate>
+
+    <EmailTemplate>
+      <EmailSubject>Support ticket has been updated</EmailSubject>
+      <EmailContent MailMerge="[SITEALIAS];[INCIDENTID];[ORDERNUMBER];[FULLNAME]" IsActive="1" EmailTypeId="30" LangID="1" SiteID="1">
+        <![CDATA[<p>&nbsp;</p>
+<p>Your Support request at&nbsp;[SITEALIAS] has been updated.</p>
+<p>Customer Name :&nbsp; [FULLNAME]<br /><strong>Incident ID:</strong> [INCIDENTID]<br /><strong>Order ID:</strong> [ORDERNUMBER]</p>
+<p>&nbsp;</p>
+<p>Thanks,<br />Support Team<br />[SITEALIAS]<br /><br /></p> ]]>
+      </EmailContent>
+    </EmailTemplate>
+
+    <EmailTemplate>
+      <EmailSubject>Expiration Notice. Renew now to continue securing your website.</EmailSubject>
+      <EmailContent MailMerge="[FULLNAME];[PRODUCTNAME];[DATEOFEXPIRE];[RENEWALPRICE];[DOMAINNAME];[COMPANYNAME];[FIRSTNAME];[LASTNAME];[EMAIL];[ADDRESS1];[ADDRESS2];[CITY];[STATE];[ZIP];[COUNTRY];[PHONE];[DAYS];[SITEURL];[ADDTOCARTURL];[SITEALIAS];[LOGINURL];[CONTECTNUMBER];" IsActive="1" EmailTypeId="5" LangID="1" SiteID="1">
+        <![CDATA[<p class="MsoNormal"><span style="color: black;">Dear [FULLNAME],</span></p>
+<p class="MsoNormal"><span style="color: black;">Your SSL certificate for<strong> [DOMAINNAME]</strong> will expire on <strong>[DATEOFEXPIRE]</strong>.<span>&nbsp; </span>You must renew your&nbsp;<strong>[PRODUCTNAME] </strong>SSL certificate by <strong>[DATEOFEXPIRE]</strong> in order to continue securing your website.</span></p>
+<p class="MsoNormal"><span style="color: black;">Please follow this link to renew your certificate [ADDTOCARTURL]. If you don&rsquo;t remember your password, click on forgot password and enter your email address. The system will send you a link to reset your password.</span></p>
+<p class="MsoNormal"><span style="color: black;">Again, thank you for being a loyal customer.<span>&nbsp; </span>If you need assistance or have a question, you can reach us through our website via live chat, or call us at: [CONTECTNUMBER].</span></p>
+<p class="MsoNormal">You can unsubscribe to renewals for this certificate in your account, through My Orders &raquo;&raquo;&raquo; Order Details. Please note that the renewals reduce both pricing and the chance of a lapse in SSL coverage. [LOGINURL]</p>
+<p><strong>Note: If you have already ordered your SSL certificate from [SITEURL], then please ignore this message.</strong></p>
+<p class="MsoNormal"><span style="color: black;">Best Regards,</span></p>
+<div style="padding: 0in 0in 1pt; border: medium medium 3pt none none dotted -moz-use-text-color -moz-use-text-color windowtext;">
+<p class="MsoNormal" style="padding: 0in;"><span style="color: black;">[SITEALIAS]</span></p>
+</div>]]>
+      </EmailContent>
+    </EmailTemplate>
+
+    <EmailTemplate>
+      <EmailSubject>Expiration Notice. Renew now to continue securing your website.</EmailSubject>
+      <EmailContent MailMerge="[FULLNAME];[PRODUCTNAME];[DATEOFEXPIRE];[RENEWALPRICE];[DOMAINNAME];[COMPANYNAME];[FIRSTNAME];[LASTNAME];[EMAIL];[ADDRESS1];[ADDRESS2];[CITY];[STATE];[ZIP];[COUNTRY];[PHONE];[DAYS];[SITEURL];[ADDTOCARTURL];[SITEALIAS];[LOGINURL];[CONTECTNUMBER];" IsActive="1" EmailTypeId="6" LangID="1" SiteID="1">
+        <![CDATA[<p class="MsoNormal"><span style="color: black;">Dear [FULLNAME],</span></p>
+<p class="MsoNormal"><span style="color: black;">Your SSL certificate for<strong> [DOMAINNAME]</strong> will expire on <strong>[DATEOFEXPIRE]</strong>.<span>&nbsp; </span>You must renew your&nbsp;<strong>[PRODUCTNAME] </strong>SSL certificate by <strong>[DATEOFEXPIRE]</strong> in order to continue securing your website.</span></p>
+<p class="MsoNormal"><span style="color: black;">Please follow this link to renew your certificate [ADDTOCARTURL]. If you don&rsquo;t remember your password, click on forgot password and enter your email address. The system will send you a link to reset your password.</span></p>
+<p class="MsoNormal"><span style="color: black;">Again, thank you for being a loyal customer.<span>&nbsp; </span>If you need assistance or have a question, you can reach us through our website via live chat, or call us at: [CONTECTNUMBER].</span></p>
+<p class="MsoNormal">You can unsubscribe to renewals for this certificate in your account, through My Orders &raquo;&raquo;&raquo; Order Details. Please note that the renewals reduce both pricing and the chance of a lapse in SSL coverage. [LOGINURL]</p>
+<p><strong>Note: If you have already ordered your SSL certificate from [SITEURL], then please ignore this message.</strong></p>
+<p class="MsoNormal"><span style="color: black;">Best Regards,</span></p>
+<div style="padding: 0in 0in 1pt; border: medium medium 3pt none none dotted -moz-use-text-color -moz-use-text-color windowtext;">
+<p class="MsoNormal" style="padding: 0in;"><span style="color: black;">[SITEALIAS]</span></p>
+</div>]]>
+      </EmailContent>
+    </EmailTemplate>
+
+    <EmailTemplate>
+      <EmailSubject>Expiration Notice. Renew now to continue securing your website.</EmailSubject>
+      <EmailContent MailMerge="[FULLNAME];[PRODUCTNAME];[DATEOFEXPIRE];[RENEWALPRICE];[DOMAINNAME];[COMPANYNAME];[FIRSTNAME];[LASTNAME];[EMAIL];[ADDRESS1];[ADDRESS2];[CITY];[STATE];[ZIP];[COUNTRY];[PHONE];[DAYS];[SITEURL];[ADDTOCARTURL];[SITEALIAS];[LOGINURL];[CONTECTNUMBER];" IsActive="1" EmailTypeId="7" LangID="1" SiteID="1">
+        <![CDATA[<p class="MsoNormal"><span style="color: black;">Dear [FULLNAME],</span></p>
+<p class="MsoNormal"><span style="color: black;">Your SSL certificate for<strong> [DOMAINNAME]</strong> will expire on <strong>[DATEOFEXPIRE]</strong>.<span>&nbsp; </span>You must renew your&nbsp;<strong>[PRODUCTNAME] </strong>SSL certificate by <strong>[DATEOFEXPIRE]</strong> in order to continue securing your website.</span></p>
+<p class="MsoNormal"><span style="color: black;">Please follow this link to renew your certificate [ADDTOCARTURL]. If you don&rsquo;t remember your password, click on forgot password and enter your email address. The system will send you a link to reset your password.</span></p>
+<p class="MsoNormal"><span style="color: black;">Again, thank you for being a loyal customer.<span>&nbsp; </span>If you need assistance or have a question, you can reach us through our website via live chat, or call us at: [CONTECTNUMBER].</span></p>
+<p class="MsoNormal">You can unsubscribe to renewals for this certificate in your account, through My Orders &raquo;&raquo;&raquo; Order Details. Please note that the renewals reduce both pricing and the chance of a lapse in SSL coverage. [LOGINURL]</p>
+<p><strong>Note: If you have already ordered your SSL certificate from [SITEURL], then please ignore this message.</strong></p>
+<p class="MsoNormal"><span style="color: black;">Best Regards,</span></p>
+<div style="padding: 0in 0in 1pt; border: medium medium 3pt none none dotted -moz-use-text-color -moz-use-text-color windowtext;">
+<p class="MsoNormal" style="padding: 0in;"><span style="color: black;">[SITEALIAS]</span></p>
+</div>]]>
+      </EmailContent>
+    </EmailTemplate>
+
+    <EmailTemplate>
+      <EmailSubject>Expiration Notice. Renew now to continue securing your website.</EmailSubject>
+      <EmailContent MailMerge="[FULLNAME];[PRODUCTNAME];[DATEOFEXPIRE];[RENEWALPRICE];[DOMAINNAME];[COMPANYNAME];[FIRSTNAME];[LASTNAME];[EMAIL];[ADDRESS1];[ADDRESS2];[CITY];[STATE];[ZIP];[COUNTRY];[PHONE];[DAYS];[SITEURL];[ADDTOCARTURL];[SITEALIAS];[LOGINURL];[CONTECTNUMBER];" IsActive="1" EmailTypeId="8" LangID="1" SiteID="1">
+        <![CDATA[<p class="MsoNormal"><span style="color: black;">Dear [FULLNAME],</span></p>
+<p class="MsoNormal"><span style="color: black;">Your SSL certificate for<strong> [DOMAINNAME]</strong> will expire on <strong>[DATEOFEXPIRE]</strong>.<span>&nbsp; </span>You must renew your&nbsp;<strong>[PRODUCTNAME] </strong>SSL certificate by <strong>[DATEOFEXPIRE]</strong> in order to continue securing your website.</span></p>
+<p class="MsoNormal"><span style="color: black;">Please follow this link to renew your certificate [ADDTOCARTURL]. If you don&rsquo;t remember your password, click on forgot password and enter your email address. The system will send you a link to reset your password.</span></p>
+<p class="MsoNormal"><span style="color: black;">Again, thank you for being a loyal customer.<span>&nbsp; </span>If you need assistance or have a question, you can reach us through our website via live chat, or call us at: [CONTECTNUMBER].</span></p>
+<p class="MsoNormal">You can unsubscribe to renewals for this certificate in your account, through My Orders &raquo;&raquo;&raquo; Order Details. Please note that the renewals reduce both pricing and the chance of a lapse in SSL coverage. [LOGINURL]</p>
+<p><strong>Note: If you have already ordered your SSL certificate from [SITEURL], then please ignore this message.</strong></p>
+<p class="MsoNormal"><span style="color: black;">Best Regards,</span></p>
+<div style="padding: 0in 0in 1pt; border: medium medium 3pt none none dotted -moz-use-text-color -moz-use-text-color windowtext;">
+<p class="MsoNormal" style="padding: 0in;"><span style="color: black;">[SITEALIAS]</span></p>
+</div>]]>
+      </EmailContent>
+    </EmailTemplate>
+
+    <EmailTemplate>
+      <EmailSubject>Action Required! List of expiring certificates within the next 30 days.</EmailSubject>
+      <EmailContent MailMerge="[FULLNAME];[EXPIRELIST];[COMPANYNAME];[FIRSTNAME];[LASTNAME];[EMAIL];[ADDRESS1];[ADDRESS2];[CITY];[STATE];[ZIP];[COUNTRY];[PHONE];[DAYS];[SUPPORTURL];[SITEURL];[LOGINURL];[SITEALIAS];" IsActive="1" EmailTypeId="17" LangID="1" SiteID="1">
+        <![CDATA[<div class="MsoNormal"><span style="color: black;">Dear [FULLNAME], </span></div>
+<div class="MsoNormal">&nbsp;</div>
+<div class="MsoNormal"><span style="color: black;">Following certificates will expire within the next 30 days. Please take a moment to view and renew these certificates before they expire.</span></div>
+<div class="MsoNormal">&nbsp;</div>
+<div class="MsoNormal">&nbsp;</div>
+<div class="MsoNormal"><strong><br /></strong></div>
+<div class="MsoNormal"><strong>&nbsp;</strong>[EXPIRELIST]</div>
+<div>
+<div class="MsoNormal">&nbsp;</div>
+</div>
+<div class="MsoNormal">Expiring certificate list is available in your Partner Control panel under &ldquo;Account Summary&rdquo;.</div>
+<p class="MsoNormal">Please note that the renewals reduce both pricing and the chance of a lapse in SSL coverage. [LOGINURL]</p>
+<div><strong><br /></strong></div>
+<div class="MsoNormal"><span style="color: black;">Again, thank you for your business.</span></div>
+<div class="MsoNormal">[SITEALIAS]</div>]]>
+      </EmailContent>
+    </EmailTemplate>
+
+    <EmailTemplate>
+      <EmailSubject>Action Required! List of expiring certificates within the next 15 days.</EmailSubject>
+      <EmailContent MailMerge="[FULLNAME];[EXPIRELIST];[COMPANYNAME];[FIRSTNAME];[LASTNAME];[EMAIL];[ADDRESS1];[ADDRESS2];[CITY];[STATE];[ZIP];[COUNTRY];[PHONE];[DAYS];[SUPPORTURL];[SITEURL];[LOGINURL];[SITEALIAS];" IsActive="1" EmailTypeId="18" LangID="1" SiteID="1">
+        <![CDATA[<div class="MsoNormal"><span style="color: black;">Dear [FULLNAME], </span></div>
+<div class="MsoNormal">&nbsp;</div>
+<div class="MsoNormal"><span style="color: black;">Following certificates will expire within the next 15 days. Please take a moment to view and renew these certificates before they expire.</span></div>
+<div class="MsoNormal">&nbsp;</div>
+<div class="MsoNormal">&nbsp;</div>
+<div class="MsoNormal"><strong><br /></strong></div>
+<div class="MsoNormal"><strong>&nbsp;</strong>[EXPIRELIST]</div>
+<div>
+<div class="MsoNormal">&nbsp;</div>
+</div>
+<div class="MsoNormal">Expiring certificate list is available in your Partner Control panel under &ldquo;Account Summary&rdquo;.</div>
+<p class="MsoNormal">Please note that the renewals reduce both pricing and the chance of a lapse in SSL coverage. [LOGINURL]</p>
+<div><strong><br /></strong></div>
+<div class="MsoNormal"><span style="color: black;">Again, thank you for your business.</span></div>
+<div class="MsoNormal">[SITEALIAS]</div>]]>
+      </EmailContent>
+    </EmailTemplate>
+
+
+    <EmailTemplate>
+      <EmailSubject>Action Required! List of expiring certificates within the next 7 days.</EmailSubject>
+      <EmailContent MailMerge="[FULLNAME];[EXPIRELIST];[COMPANYNAME];[FIRSTNAME];[LASTNAME];[EMAIL];[ADDRESS1];[ADDRESS2];[CITY];[STATE];[ZIP];[COUNTRY];[PHONE];[DAYS];[SUPPORTURL];[SITEURL];[LOGINURL];[SITEALIAS];" IsActive="1" EmailTypeId="19" LangID="1" SiteID="1">
+        <![CDATA[<div class="MsoNormal"><span style="color: black;">Dear [FULLNAME], </span></div>
+<div class="MsoNormal">&nbsp;</div>
+<div class="MsoNormal"><span style="color: black;">Following certificates will expire within the next 7 days. Please take a moment to view and renew these certificates before they expire.</span></div>
+<div class="MsoNormal">&nbsp;</div>
+<div class="MsoNormal">&nbsp;</div>
+<div class="MsoNormal"><strong><br /></strong></div>
+<div class="MsoNormal"><strong>&nbsp;</strong>[EXPIRELIST]</div>
+<div>
+<div class="MsoNormal">&nbsp;</div>
+</div>
+<div class="MsoNormal">Expiring certificate list is available in your Partner Control panel under &ldquo;Account Summary&rdquo;.</div>
+<p class="MsoNormal">Please note that the renewals reduce both pricing and the chance of a lapse in SSL coverage. [LOGINURL]</p>
+<div><strong><br /></strong></div>
+<div class="MsoNormal"><span style="color: black;">Again, thank you for your business.</span></div>
+<div class="MsoNormal">[SITEALIAS]</div>]]>
+      </EmailContent>
+    </EmailTemplate>
+
+    <EmailTemplate>
+      <EmailSubject>Action Required! List of expiring certificates within the next 3 days.</EmailSubject>
+      <EmailContent MailMerge="[FULLNAME];[EXPIRELIST];[COMPANYNAME];[FIRSTNAME];[LASTNAME];[EMAIL];[ADDRESS1];[ADDRESS2];[CITY];[STATE];[ZIP];[COUNTRY];[PHONE];[DAYS];[SUPPORTURL];[SITEURL];[LOGINURL];[SITEALIAS];" IsActive="1" EmailTypeId="20" LangID="1" SiteID="1">
+        <![CDATA[<div class="MsoNormal"><span style="color: black;">Dear [FULLNAME], </span></div>
+<div class="MsoNormal">&nbsp;</div>
+<div class="MsoNormal"><span style="color: black;">Following certificates will expire within the next 3 days. Please take a moment to view and renew these certificates before they expire.</span></div>
+<div class="MsoNormal">&nbsp;</div>
+<div class="MsoNormal">&nbsp;</div>
+<div class="MsoNormal"><strong><br /></strong></div>
+<div class="MsoNormal"><strong>&nbsp;</strong>[EXPIRELIST]</div>
+<div>
+<div class="MsoNormal">&nbsp;</div>
+</div>
+<div class="MsoNormal">Expiring certificate list is available in your Partner Control panel under &ldquo;Account Summary&rdquo;.</div>
+<p class="MsoNormal">Please note that the renewals reduce both pricing and the chance of a lapse in SSL coverage. [LOGINURL]</p>
+<div><strong><br /></strong></div>
+<div class="MsoNormal"><span style="color: black;">Again, thank you for your business.</span></div>
+<div class="MsoNormal">[SITEALIAS]</div>]]>
+      </EmailContent>
+    </EmailTemplate>
+
+    <EmailTemplate>
+      <EmailSubject>Your Security certificate for [DOMAINNAME] will expire in 30 days</EmailSubject>
+      <EmailContent MailMerge="[CUSTOMERFULLNAME];[PRODUCTNAME];[DATEOFEXPIRE];[RENEWALPRICE];[DOMAINNAME];[CUSTOMERFIRSTNAME];[CUSTOMERLASTNAME];[CUSTOMEREMAIL];[CUSTOMERPHONE];[RESELLERCOMPANYNAME];[RESELLERFIRSTNAME];[RESELLERLASTNAME];[RESELLEREMAIL];[RESELLERADDRESS1];[RESELLERADDRESS2];[RESELLERCITY];[RESELLERSTATE];[RESELLERZIP];[RESELLERCOUNTRY];[RESELLERPHONE];[DAYS];[SUPPORTURL];[SITEURL];[ADDTOCARTURL];[LOGINURL];" IsActive="1" EmailTypeId="21" LangID="1" SiteID="1">
+        <![CDATA[<p class="MsoNormal"><span style="color: black;">Dear [CUSTOMERFULLNAME],</span></p>
+<p class="MsoNormal"><span style="color: black;">Your SSL certificate for [DOMAINNAME] will expire on [DATEOFEXPIRE].<span>&nbsp; </span>You must renew your [PRODUCTNAME] SSL certificate by [DATEOFEXPIRE] in order to continue securing your website.</span></p>
+<p class="MsoNormal"><span style="color: black;">Please contact [RESELLERCOMPANYNAME] at your earliest convenience to renew your certificate..</span></p>
+<p class="MsoNormal"><span style="color: black;">Again, thank you for being a loyal customer.<span>&nbsp; </span>If you need assistance or have a question, please call us at: [RESELLERPHONE].</span></p>
+<p><strong>Note: If&nbsp;you&nbsp;have&nbsp;already&nbsp;ordered&nbsp;your&nbsp;SSL&nbsp;certificate,then&nbsp;please&nbsp;ignore&nbsp;this&nbsp;message.</strong></p>
+<p class="MsoNormal"><span style="color: black;">Best Regards,</span></p>
+<div style="padding: 0in 0in 1pt; border: medium medium 3pt none none dotted -moz-use-text-color -moz-use-text-color windowtext;">
+<p class="MsoNormal" style="padding: 0in;"><strong><span style="color: black;">[RESELLERCOMPANYNAME]</span></strong></p>
+<p class="MsoNormal" style="padding: 0in;"><strong>[RESELLEREMAIL]</strong></p>
+<p class="MsoNormal" style="padding: 0in;"><strong>[RESELLERPHONE]</strong></p>
+</div>]]>
+      </EmailContent>
+    </EmailTemplate>
+
+    <EmailTemplate>
+      <EmailSubject>Your Security certificate for [DOMAINNAME] will expire in 15 days.</EmailSubject>
+      <EmailContent MailMerge="[CUSTOMERFULLNAME];[PRODUCTNAME];[DATEOFEXPIRE];[RENEWALPRICE];[DOMAINNAME];[CUSTOMERFIRSTNAME];[CUSTOMERLASTNAME];[CUSTOMEREMAIL];[CUSTOMERPHONE];[RESELLERCOMPANYNAME];[RESELLERFIRSTNAME];[RESELLERLASTNAME];[RESELLEREMAIL];[RESELLERADDRESS1];[RESELLERADDRESS2];[RESELLERCITY];[RESELLERSTATE];[RESELLERZIP];[RESELLERCOUNTRY];[RESELLERPHONE];[DAYS];[SUPPORTURL];[SITEURL];[ADDTOCARTURL];[LOGINURL];" IsActive="1" EmailTypeId="22" LangID="1" SiteID="1">
+        <![CDATA[<p class="MsoNormal"><span style="color: black;">Dear [CUSTOMERFULLNAME],</span></p>
+<p class="MsoNormal"><span style="color: black;">Your SSL certificate for [DOMAINNAME] will expire on [DATEOFEXPIRE].<span>&nbsp; </span>You must renew your [PRODUCTNAME] SSL certificate by [DATEOFEXPIRE] in order to continue securing your website.</span></p>
+<p class="MsoNormal"><span style="color: black;">Please contact [RESELLERCOMPANYNAME] at your earliest convenience to renew your certificate..</span></p>
+<p class="MsoNormal"><span style="color: black;">Again, thank you for being a loyal customer.<span>&nbsp; </span>If you need assistance or have a question, please call us at: [RESELLERPHONE].</span></p>
+<p><strong>Note: If&nbsp;you&nbsp;have&nbsp;already&nbsp;ordered&nbsp;your&nbsp;SSL&nbsp;certificate,then&nbsp;please&nbsp;ignore&nbsp;this&nbsp;message.</strong></p>
+<p class="MsoNormal"><span style="color: black;">Best Regards,</span></p>
+<div style="padding: 0in 0in 1pt; border: medium medium 3pt none none dotted -moz-use-text-color -moz-use-text-color windowtext;">
+<p class="MsoNormal" style="padding: 0in;"><strong><span style="color: black;">[RESELLERCOMPANYNAME]</span></strong></p>
+<p class="MsoNormal" style="padding: 0in;"><strong>[RESELLEREMAIL]</strong></p>
+<p class="MsoNormal" style="padding: 0in;"><strong>[RESELLERPHONE]</strong></p>
+</div>]]>
+      </EmailContent>
+    </EmailTemplate>
+
+    <EmailTemplate>
+      <EmailSubject>Action required - Your Security certificate for [DOMAINNAME] will expire in 7 days</EmailSubject>
+      <EmailContent MailMerge="[CUSTOMERFULLNAME];[PRODUCTNAME];[DATEOFEXPIRE];[RENEWALPRICE];[DOMAINNAME];[CUSTOMERFIRSTNAME];[CUSTOMERLASTNAME];[CUSTOMEREMAIL];[CUSTOMERPHONE];[RESELLERCOMPANYNAME];[RESELLERFIRSTNAME];[RESELLERLASTNAME];[RESELLEREMAIL];[RESELLERADDRESS1];[RESELLERADDRESS2];[RESELLERCITY];[RESELLERSTATE];[RESELLERZIP];[RESELLERCOUNTRY];[RESELLERPHONE];[DAYS];[SUPPORTURL];[SITEURL];[ADDTOCARTURL];[LOGINURL];" IsActive="1" EmailTypeId="23" LangID="1" SiteID="1">
+        <![CDATA[<p class="MsoNormal"><span style="color: black;">Dear [CUSTOMERFULLNAME],</span></p>
+<p class="MsoNormal"><span style="color: black;">Your SSL certificate for <strong>[DOMAINNAME]</strong> will expire on <strong>[DATEOFEXPIRE]</strong>.<span>&nbsp; </span>You must renew your&nbsp;<strong>[PRODUCTNAME]</strong> SSL certificate by [DATEOFEXPIRE] in order to continue securing your website and <strong>avoid down time</strong>.</span></p>
+<p class="MsoNormal"><span style="color: black;">Please contact [Reseller Company Name] at your earliest convenience to renew your certificate.</span></p>
+<p class="MsoNormal"><span style="color: black;">Again, thank you for being a loyal customer.<span>&nbsp; </span>If you need assistance or have a question, please call us at: [RESELLERPHONE]. </span></p>
+<p><strong>Note: If&nbsp;you&nbsp;have&nbsp;already&nbsp;ordered&nbsp;your&nbsp;SSL&nbsp;certificate,then&nbsp;please&nbsp;ignore&nbsp;this&nbsp;message.</strong></p>
+<p class="MsoNormal"><span style="color: black;">Best Regards,</span></p>
+<div style="padding: 0in 0in 1pt; border: medium medium 3pt none none dotted -moz-use-text-color -moz-use-text-color windowtext;">
+<p class="MsoNormal" style="padding: 0in;"><strong><span style="color: black;">[RESELLERCOMPANYNAME]</span></strong></p>
+<p class="MsoNormal" style="padding: 0in;"><strong>[RESELLEREMAIL]</strong></p>
+<p class="MsoNormal" style="padding: 0in;"><strong>[RESELLERPHONE]</strong></p>
+</div>]]>
+      </EmailContent>
+    </EmailTemplate>
+
+    <EmailTemplate>
+      <EmailSubject>Action required - Your Security certificate for [DOMAINNAME] will expire in 3 days</EmailSubject>
+      <EmailContent MailMerge="[CUSTOMERFULLNAME];[PRODUCTNAME];[DATEOFEXPIRE];[RENEWALPRICE];[DOMAINNAME];[CUSTOMERFIRSTNAME];[CUSTOMERLASTNAME];[CUSTOMEREMAIL];[CUSTOMERPHONE];[RESELLERCOMPANYNAME];[RESELLERFIRSTNAME];[RESELLERLASTNAME];[RESELLEREMAIL];[RESELLERADDRESS1];[RESELLERADDRESS2];[RESELLERCITY];[RESELLERSTATE];[RESELLERZIP];[RESELLERCOUNTRY];[RESELLERPHONE];[DAYS];[SUPPORTURL];[SITEURL];[ADDTOCARTURL];[LOGINURL];" IsActive="1" EmailTypeId="24" LangID="1" SiteID="1">
+        <![CDATA[<p class="MsoNormal"><span style="color: black;">Dear [CUSTOMERFULLNAME],</span></p>
+<p class="MsoNormal"><span style="color: black;">Your SSL certificate for <strong>[DOMAINNAME]</strong> will expire on <strong>[DATEOFEXPIRE]</strong>.<span>&nbsp; </span>You must renew your&nbsp;<strong>[PRODUCTNAME]</strong> SSL certificate by [DATEOFEXPIRE] in order to continue securing your website and <strong>avoid down time</strong>.</span></p>
+<p class="MsoNormal"><span style="color: black;">Please contact [Reseller Company Name] at your earliest convenience to renew your certificate.</span></p>
+<p class="MsoNormal"><span style="color: black;">Again, thank you for being a loyal customer.<span>&nbsp; </span>If you need assistance or have a question, please call us at: [RESELLERPHONE]. </span></p>
+<p><strong>Note: If&nbsp;you&nbsp;have&nbsp;already&nbsp;ordered&nbsp;your&nbsp;SSL&nbsp;certificate,then&nbsp;please&nbsp;ignore&nbsp;this&nbsp;message.</strong></p>
+<p class="MsoNormal"><span style="color: black;">Best Regards,</span></p>
+<div style="padding: 0in 0in 1pt; border: medium medium 3pt none none dotted -moz-use-text-color -moz-use-text-color windowtext;">
+<p class="MsoNormal" style="padding: 0in;"><strong><span style="color: black;">[RESELLERCOMPANYNAME]</span></strong></p>
+<p class="MsoNormal" style="padding: 0in;"><strong>[RESELLEREMAIL]</strong></p>
+<p class="MsoNormal" style="padding: 0in;"><strong>[RESELLERPHONE]</strong></p>
+</div>]]>
+      </EmailContent>
+    </EmailTemplate>
+  </EmailContent>
+</root>
+
+

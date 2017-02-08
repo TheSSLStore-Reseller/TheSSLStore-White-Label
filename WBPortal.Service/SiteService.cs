@@ -37,7 +37,7 @@ namespace WBSSLStore.Service
         }
         public Site GetSite(int id)
         {
-            return _siteRepository.Find(s => s.ID == id && s.isActive == true).EagerLoad(s => s.Settings, s => s.SupportedLanguages,s=>s.Pages).FirstOrDefault();  
+            return _siteRepository.Find(s => s.ID == id && s.isActive == true).Include(s => s.Settings).Include(s => s.SupportedLanguages).Include(s => s.Pages).FirstOrDefault();//.EagerLoad(s => s.Settings, s => s.SupportedLanguages,s=>s.Pages).FirstOrDefault();  
         }
         public int GetCurrentContractID(int UserID, int SiteID)
         {

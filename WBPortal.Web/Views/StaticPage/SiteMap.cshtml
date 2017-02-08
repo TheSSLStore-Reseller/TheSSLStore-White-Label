@@ -1,5 +1,5 @@
 ﻿@{
-    bool IsXml = ViewBag.ISXML ?? false;//!string.IsNullOrEmpty(Request.QueryString["format"]) ? Request.QueryString["format"].ToLower().Equals("xml") : false;
+    bool IsXml = ViewBag.ISXML ?? false;
 
 
     ViewBag.Title = "SiteMap";
@@ -11,13 +11,7 @@
         Response.ContentType = "application/xml";
         Layout = null;
     }
-    else
-    {
-        sb.Append(WBSSLStore.Web.Helpers.WBHelper.GenerateMenuString().Replace("class=\"menu\"", ""));
-        sb.Replace("class=\"noleftborder\"", "");
-        sb.Replace("class=\"norightborder\"", "");
-        sb.Replace("<ul id=\"nav\">", "<ul class=\"contentlist\" >");
-    }
+   
 }
 
 @section sitecss{
@@ -26,7 +20,7 @@
 @section Jscripts{
 }
 
-@Html.Partial("_banner", new Tuple<string, string>("", "Disclaimer"))
+@Html.Partial("_banner", new Tuple<string, string>("", "Site Map"))
 <div class="content">
     <div class="wrapper">
         <div class="column3">
@@ -37,10 +31,360 @@
 
                             @if (!IsXml)
                             {
-                                <h1>
+                                <h2>
                                     Site Map
-                                </h1>
-                                @Html.Raw(sb.ToString())
+                                </h2>
+                                <div>
+                                    <ul class="contentlist">
+                                        <li>
+                                            <a href="/" target="_self">Home</a>
+                                        </li>
+                                        <li>
+                                            <a href="/aboutUs" target="_self">About US</a>
+
+                                        </li>
+
+                                        <li>
+                                            <a href="/ssl/brands" target="_self">SSL Certificate Brands</a>
+                                            <ul class="contentlist">
+                                                <li>
+                                                    <a href="/brands/symantec" target="_self">Symantec SSL</a>
+                                                    <ul class="contentlist">
+                                                        <li>
+                                                            <a href="/symantec/secure-site-pro-with-ev" target="_self">Symantec Secure Site Pro with EV Certificate</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/symantec/secure-with-EV" target="_self">Symantec Secure Site with EV Certificate</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/symantec/secure-site-pro-ssl" target="_self">Symantec Secure Site Pro Certificate</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/symantec/secure-site" target="_self">Symantec Secure Site Certificate</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/symantec/code-signing" target="_self">Symantec Code Signing Certificate</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/symantec/safe-site" target="_self">Symantec Safe Site Certificate</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/symantec/secure-site-pro-sha-1-private" target="_self">Symantec Secure Site Pro SHA-1 Private Certificate</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/symantec/secure-site-multi-domain-wildcard" target="_self">Symantec Secure Site Multi-domain Wildcard Certificate</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/symantec/secure-site-pro-multi-domain-wildcard" target="_self">Symantec Secure Site Pro Multi-domain Wildcard Certificate</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a href="/brands/geotrust" target="_self">Geotrust SSL</a>
+                                                    <ul class="contentlist">
+                                                        <li>
+                                                            <a href="/geotrust/quickssl-premium" target="_self">Geotrust Quickssl Premium Certificate</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/geotrust/quickssl-premium-san" target="_self">Geotrust Quickssl Premium San Certificate</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/geotrust/true-businessid" target="_self">Geotrust True BusinessId Certificate</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/geotrust/true-businessid-ev-multi-domain" target="_self">Geotrust True-Businessid EV Multi-domain Certificate</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/geotrust/true-businessid-wildcard" target="_self">Geotrust True-Businessid Wildcard Certificate</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/geotrust/true-businessid-ev" target="_self">Geotrust True-Businessid EV Certificate</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/geotrust/true-businessid-multi-domain" target="_self">Geotrust True-Businessid Multi-domain Certificate</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/geotrust/web-site-anti-malware-scan" target="_self">Geotrust Web Site Anti Malware-scan Certificate</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/geotrust/quickssl-premium-wildcard" target="_self">Geotrust Quickssl Premium Wildcard Certificate</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/geotrust/true-businessid-with-multi-domain-wildcard" target="_self">Geotrust True-Businessid EV Multi-domain Wildcard Certificate</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+
+
+                                                <li>
+                                                    <a href="/brands/thawte" target="_self">Thawte SSL</a>
+                                                    <ul class="contentlist">
+                                                        <li>
+                                                            <a href="/thawte/web-server-ev" target="_self">Thawte SSL Web Server EV Certificates</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/thawte/ssl123" target="_self">Thawte SSL 123 Web Server</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/thawte/ssl123-wildcard" target="_self">Thawte SSL 123 Web Server Wildcard</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/thawte/web-server" target="_self">Thawte SSL Web Server Certificates</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/thawte/wildcard-ssl" target="_self">Thawte SSL Web Server Wildcard Certificates</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/thawte/code-signing" target="_self">Thawte Code Signing Certificate </a>
+                                                        </li>
+
+
+                                                        <li>
+                                                            <a href="/thawte/ssl-webserver-multi-domain-wildcard" target="_self">Thawte SSL Web Server Multi-Domain Wildcard Certificates</a>
+                                                        </li>
+
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a href="/brands/rapidssl" target="_self">Rapid SSL</a>
+                                                    <ul class="contentlist">
+                                                        <li>
+                                                            <a href="/rapidssl/rapidssl-certificate" target="_self">RapidSSL Certificates</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/rapidssl/rapidssl-wildcard-certificate" target="_self">RapidSSL Wildcard Certificates</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/rapidssl/free-ssl-certificates" target="_self">FreeSSL</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a href="/brands/comodo" target="_self">Comodo SSL</a>
+                                                    <ul class="contentlist">
+
+                                                        <li>
+                                                            <a href="/comodo/codesigning" target="_self">Comodo Code Signing Certificate</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/comodo/domainvalidateduccssl" target="_self">Comodo Domain Validated UCC SSL Certificate</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/comodo/elitessl" target="_self">Comodo Elite SSL Certificate</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/comodo/essentialssl" target="_self">Comodo Essential SSL Certificate</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/comodo/essentialsslwildcard" target="_self">Comodo Essential Wildcard SSL Certificate</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/comodo/evmultidomainssl" target="_self">Comodo EV Multi-Domain SSL Certificate</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/comodo/evssl" target="_self">Comodo EV SSL Certificate</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/comodo/hackerguardian-pci-scan" target="_self">Comodo HackerGuardian PCI Scan Control Center</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/comodo/hackerproof-trustmark" target="_self">Comodo HackerProof Trust Mark including Daily Vulnerability Scan</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/comodo/instantssl" target="_self">Comodo InstantSSL Certificate</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/comodo/premiumssl" target="_self">Comodo Premium SSL Certificate</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/comodo/instantsslpro" target="_self">Comodo InstantSSL Pro Certificate</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/comodo/multidomainssl" target="_self">Comodo Multi-Domain SSL Certificate</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/comodo/multidomainwildcardssl" target="_self">Comodo Multi-Domain Wildcard SSL Certificate</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/comodo/pciscanning-enterprise-edition" target="_self">Comodo PCI Scanning Enterprise Edition</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/comodo/positivesslmultidomain" target="_self">PositiveSSL Multi-Domain Certificate</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/comodo/positivesslmultidomainwildcard" target="_self">PositiveSSL Multi-Domain Wildcard Certificate</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/comodo/positivessl" target="_self">Comodo PositiveSSL Certificate</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/comodo/positivesslwildcard" target="_self">Comodo PositiveSSL Wildcard Certificate</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/comodo/premiumsslwildcard" target="_self">Comodo PremiumSSL Wildcard Certificate</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/comodo/ssl" target="_self">Comodo SSL Certificate</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/comodo/ucwildcard" target="_self">Comodo Unified Communications Wildcard Certificate</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/comodo/unifiedcommunications" target="_self">Comodo Unified Communications Certificate</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/comodo/wildcardssl" target="_self">Comodo Wildcard SSL Certificate</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/comodo/web-inspector-starter" target="_self">Comodo Web Inspector Starter</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/comodo/web-inspector-plus" target="_self">Comodo Web Inspector Plus</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/comodo/web-inspector-premium" target="_self">Comodo Web Inspector Premium</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/comodo/web-inspector-enterprise" target="_self">Comodo Web Inspector  Enterprise</a>
+                                                        </li>
+
+                                                        <li>
+                                                            <a href="/comodo/personal-authentication-certificate-basic" target="_self">Comodo Personal Authentication Basic Certificate</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/comodo/personal-authentication-certificate-pro" target="_self">Comodo Personal Authentication Pro Certificate</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/comodo/personal-authentication-certificate-enterprise" target="_self">Comodo Personal Authentication Enterprise Certificate</a>
+                                                        </li>
+
+
+
+
+
+
+
+                                                    </ul>
+                                                </li>
+
+                                                <li>
+                                                    <a href="/brands/certum" target="_self">Certum SSL</a>
+                                                    <ul class="contentlist">
+
+                                                        <li>
+                                                            <a href="/certum/commercial-ssl" target="_self">Certum Commercial SSL Certificate</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/certum/commercial-ssl-wildcard-certificate" target="_self">Certum Commercial Wildcard SSL Certificate</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/certum/trusted-ssl-certificate" target="_self">Certum Trusted SSL Certificate</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/certum/trusted-ssl-wildcard-certificate" target="_self">Certum Trusted Wildcard SSL Certificate</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/certum/basic-id-certificate" target="_self">Certum Basic Id Certificate</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/certum/enterprise-id-certificate" target="_self">Certum Enterprise Id Certificate</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/certum/professional-id-certificate" target="_self">Certum Professional Id Certificate</a>
+                                                        </li>
+
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        
+                                        <li>
+                                            <a href="/ssl-solutions" target="_self">SSL Solutions</a>
+                                            <ul class="contentlist">
+                                                <li>
+                                                    <a href="/ssl/domain-validated" target="_self">Domain Validated SSL</a>
+                                                </li>
+                                                <li>
+                                                    <a href="/ssl/organisation-validated" target="_self">Organisation Validated SSL</a>
+                                                </li>
+                                                <li>
+                                                    <a href="/ssl/extended-validated" target="_self">Extended Validation SSL</a>
+                                                </li>
+                                                <li>
+                                                    <a href="/ssl/wlidcard" target="_self">Wildcard SSL</a>
+                                                </li>
+                                                <li>
+                                                    <a href="/ssl/ucc-san" target="_self">Multi-Domain SSL</a>
+                                                </li>
+                                                <li>
+                                                    <a href="/ssl/code-signing" target="_self">Code Signing</a>
+                                                </li>
+                                                <li>
+                                                    <a href="/ssl/anti-malware" target="_self">Anti-malware</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="/becamereseller" target="_self">Resellers Signup</a>
+                                        </li>
+                                       
+                                        <li>
+                                            <a href="/support" target="_self">Support</a>
+                                            <ul class="contentlist">
+                                                <li>
+                                                    <a href="/faq" target="_self">Faqs</a></li>
+<li>
+                                                    <a href="/ssl-tools" target="_self">SSL Tools</a>
+                                                    <ul class="contentlist">
+                                                        <li>
+                                                            <a href="/freetools/csrgenerator" target="_self">CSR Generator</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/freetools/CheckCSR" target="_self">CSR Decoder</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/freetools/CertificateDecoder" target="_self">Certificate Decoder</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/freetools/CheckSSLCertificate" target="_self">Check SSL Certificate</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/freetools/certkeymatcher" target="_self">Certificate Key Matcher</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/freetools/sslconvertor" target="_self">SSL Converter</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/freetools/whynopadlock" target="_self">Why No PadLock</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="/ssl-comparison" target="_self">SSL Comparison</a>
+                                        </li>
+                                        <li>
+                                            <a href="/contactus" target="_self">Contact US</a>
+                                        </li>
+                                        <li>
+                                            <a href="/testimonials" target="_self">Testimonials</a>
+                                        </li>
+                                        <li>
+                                            <a href="refundpolicy" target="_self">Refund Policy</a>
+                                        </li>
+                                        <li>
+                                            <a href="disclaimer" target="_self">Disclaimer</a>
+                                        </li>
+                                        <li>
+                                            <a href="privacypolicy" target="_self">Privacy Policy</a>
+                                        </li>
+                                      
+                                        <li>
+                                            <a href="/logon">Login</a>
+                                        </li>
+                                    </ul>
+                                </div>
                             }
                             else
                             {

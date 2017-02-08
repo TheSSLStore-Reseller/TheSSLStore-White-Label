@@ -1,8 +1,6 @@
-﻿@using WBSSLStore.Domain;
-@using WBSSLStore.Web.Helpers.PopupForm
-@model WBSSLStore.Service.ViewModels.StaticPageViewModel
+﻿@model WBSSLStore.Service.ViewModels.StaticPageViewModel
 @{
-    ViewBag.Title = "Code Signing SSL";
+    
     ViewBag.version = WBSSLStore.Web.Helpers.Caching.SiteCacher.ResourceVersion(); var productdetails = WBSSLStore.Web.Helpers.WBHelper.GetProductDetailRows();
 }
 @section headerTags{
@@ -35,5 +33,5 @@
 </div>
 
 @section PopupScript{
-    @Html.MakePopupForm("Edit", new[] { "id", "ppid" }, controller: "ShoppingCart", title: @WBSSLStore.Resources.GeneralMessage.Message.Add_To_Cart_Caption, successFunction: "EditSuccess", height: 450, width: 700, refreshOnSuccess: false, okText: @WBSSLStore.Resources.GeneralMessage.Message.SAVE_btn)
+   
 }

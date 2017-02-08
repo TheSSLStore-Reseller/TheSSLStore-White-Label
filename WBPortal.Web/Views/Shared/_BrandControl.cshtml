@@ -1,5 +1,4 @@
-﻿@using WBSSLStore.Web.Helpers.PopupForm
-@using WBSSLStore.Domain;
+﻿@using WBSSLStore.Domain;
 @model Tuple<List<ProductPricing>, List<ProductDetail>>
 @{
 
@@ -47,9 +46,7 @@
                         <a href="@item.Product.DetailPageslug" class="buybtn generalBtnGRN" title="@WBSSLStore.Resources.GeneralMessage.Message.Add_to_Cart_btn">
                             @WBSSLStore.Resources.GeneralMessage.Message.Add_to_Cart_btn
                         </a>
-                        @*<a href="javascript:;" class="buybtn generalBtnGRN" title="@WBSSLStore.Resources.GeneralMessage.Message.Add_to_Cart_btn" onclick="callpfeditshoppingcart(0,@(WBSSLStore.Web.Helpers.WBHelper.GetMAXProductPricingID(Model.Where(e => e.Product.InternalProductCode.ToLower().Equals(item.Product.InternalProductCode, StringComparison.OrdinalIgnoreCase)).ToList())));">
-                                @WBSSLStore.Resources.GeneralMessage.Message.Add_to_Cart_btn
-                            </a>*@
+                      
                     </p>
                 </div>
             }

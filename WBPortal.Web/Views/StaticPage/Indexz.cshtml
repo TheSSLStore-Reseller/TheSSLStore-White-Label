@@ -3,8 +3,7 @@
 @model WBSSLStore.Service.ViewModels.StaticPageViewModel
 @{
     ViewBag.version = WBSSLStore.Web.Helpers.Caching.SiteCacher.ResourceVersion();
-    //WBSSLStore.Web.Util.WBSiteSettings setting = new WBSSLStore.Web.Util.WBSiteSettings(WBSSLStore.Web.Helpers.Caching.SiteCacher.CurrentSite);
-    var productdetails = WBSSLStore.Web.Helpers.WBHelper.GetProductDetailRows();
+      var productdetails = WBSSLStore.Web.Helpers.WBHelper.GetProductDetailRows();
     string UserName = Convert.ToString(ViewBag.UserName);
 }
 @section headerTags{

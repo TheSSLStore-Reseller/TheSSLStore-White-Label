@@ -48,7 +48,7 @@ namespace WBSSLStore.Data.Repository
                                      ContractName = g.Key.ContractName,
                                      RegisterDate = g.Key.DateCreated,
                                      RecordStatusID = g.Key.RecordStatusID,
-                                     TotalPurchase = g.Sum(od => (od.Price == null ? 0 : od.Price))
+                                     TotalPurchase = g.Sum(od => (od.Price ))
                                  }).Where(tp => tp.TotalPurchase >= dMinPrice && tp.TotalPurchase <= dMaxPrice);
             return resellerQuery;
 
@@ -124,12 +124,7 @@ namespace WBSSLStore.Data.Repository
             return searchorder.Distinct();
         }
 
-        ////Example of Query to call complex stored procedure. Please also remember that order must be correct and return type should
-        ////be exactly the Entity Fields. 
-        //public IEnumerable<Site> GetAvailableSites()
-        //{
-        //    return DbContext.Sites.SqlQuery("sp_custom", new object[] { "parameters", 1, DateTimeWithZone.Now });
-        //}
+     
     }
 
     public interface IWBRepository : IRepository<User>

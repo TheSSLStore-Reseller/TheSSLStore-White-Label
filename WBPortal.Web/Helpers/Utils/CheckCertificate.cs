@@ -36,7 +36,9 @@ namespace WBSSLStore.Web.Helpers
             try
             {
                 DomainName = DomainName.StartsWith("*.") ? DomainName.Replace("*.", "www.") : DomainName;
+#pragma warning disable CS0618 // 'ServicePointManager.CertificatePolicy' is obsolete: 'CertificatePolicy is obsoleted for this type, please use ServerCertificateValidationCallback instead. http://go.microsoft.com/fwlink/?linkid=14202'
                 System.Net.ServicePointManager.CertificatePolicy = new AllAcceptCertificationPolicy();
+#pragma warning restore CS0618 // 'ServicePointManager.CertificatePolicy' is obsolete: 'CertificatePolicy is obsoleted for this type, please use ServerCertificateValidationCallback instead. http://go.microsoft.com/fwlink/?linkid=14202'
 
                 
 

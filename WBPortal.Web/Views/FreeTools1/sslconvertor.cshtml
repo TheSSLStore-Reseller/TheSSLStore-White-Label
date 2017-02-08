@@ -1,6 +1,6 @@
 ﻿@model WBSSLStore.Gateways.RestAPIModels.Response.SSLConvertorResponse
-@{
-    ViewBag.Title = "SSL Converter";
+@section headerTags{
+    @Html.Partial("_renderSEO", new WBSSLStore.Domain.CMSPage())
 }
 @Html.Partial("_banner", new Tuple<string, string>("", "SSL TOOLS"))
 <div class="content">

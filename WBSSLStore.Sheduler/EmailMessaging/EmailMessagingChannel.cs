@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Text;
 using System.Net.Mail;
 using System.Net;
 using WBSSLStore.Domain;
 using WBSSLStore.Data.Infrastructure;
 using System.Net.Mime;
-using System.Collections.Generic;
 using System.Data;
-using System.Data.Entity;
 using System.Linq;
 using WBSSLStore.Data;
 using System.Security.Cryptography.X509Certificates;

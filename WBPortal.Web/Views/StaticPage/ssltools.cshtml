@@ -1,0 +1,97 @@
+﻿@model WBSSLStore.Service.ViewModels.StaticPageViewModel
+@{
+    ViewBag.version = WBSSLStore.Web.Helpers.Caching.SiteCacher.ResourceVersion();
+}
+@section headerTags{
+    @Html.Partial("_renderSEO", Model != null && Model.CMSPage != null ? Model.CMSPage : new WBSSLStore.Domain.CMSPage())
+}
+@section sitecss{
+
+}
+@section Jscripts{
+}
+
+@Html.Partial("_banner", new Tuple<string, string>("", "SSL Tools"))
+<div class="content">
+    <div class="wrapper">
+        <div class="column3">
+            <div class="mobtopcol">
+                <div class="column3-2">
+                    <div class="cmnpagewrap">
+                        <div class="disclamerdtl">
+                            <h2>SSL Tools</h2>
+                            <div class="ssltoolwarp">
+                                <span class="leftimg"><img alt="Check CSR key" src="/content/images/ssltools-csrkey.png"></span>
+                                <div class="rightcnt btnrt">
+                                    <p class="cmnpara"><span>Check CSR key</span> This tool allows you to check CSRs and view the information contained in them. Simply enter your CSR and the CSR Decoder will do the rest. </p>
+                                    <a class="orangebtn" href="@Url.Action("CheckCSR", "freetools", new {area="" })">SSL Checker</a>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="ssltoolwarp">
+                                <span class="rightimg"><img alt="Check SSL Certificate" src="/content/images/ssltools-sslcert.png"></span>
+                                <div class="rightcnt">
+                                    <p class="cmnpara"><span>Check SSL Certificate</span> SSL Checker - allows you to verify what type of certificate is installed, the Common name, validity, server type, certificate chaining, and more. </p>
+                                    <a class="orangebtn" href="@Url.Action("CheckSSLCertificate", "freetools", new { area = "" })">Check SSL Certificate</a>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="ssltoolwarp">
+                                <span class="leftimg"><img alt="CSR Decoder" src="/content/images/ssltools-csrdecor.png"></span>
+                                <div class="rightcnt btnrt">
+                                    <p class="cmnpara"><span>CSR Decoder</span> CSR Decoder - will allow you to decode your Certificate Signing Request that you generate off your server. The CSR decoder will allow you to ensure that all the information within your Certificate Signing Request is accurate and matches your URL.</p>
+                                    <a class="orangebtn" href="@Url.Action("CheckCSR", "freetools", new { area = "" })">CSR Decoder</a>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="ssltoolwarp">
+                                <span class="rightimg"><img alt="Certificate Decoder" src="/content/images/ssltools-certdecoder.png"></span>
+                                <div class="rightcnt">
+                                    <p class="cmnpara"><span>Certificate Decoder</span> Certificate Decoder - allows you to automatically decode your SSL Certificate. With the Decoder, you are able to decode your PFX, DER, or PEM encoded SSL Certificate and confirm all the information is accurate. </p>
+                                    <a class="orangebtn" href="@Url.Action("CertificateDecoder", "freetools", new { area = "" })">Certificate Decoder</a>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="ssltoolwarp">
+                                <span class="leftimg"><img alt="CSR Generator" src="/content/images/ssltools-csrgenerator.png"></span>
+                                <div class="rightcnt btnrt">
+                                    <p class="cmnpara"><span>CSR Generator</span> Generate CSR - will easily allow you to generate your Certificate Signing Request and Private Key which is needed to complete your CSR Form.</p>
+                                    <a class="orangebtn" href="@Url.Action("csrgenerator", "freetools", new { area = "" })">CSR Generator</a>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="ssltoolwarp">
+                                <span class="rightimg"><img alt="Certificate Key Matcher" src="/content/images/ssltools-keymatcher.png"></span>
+                                <div class="rightcnt">
+                                    <p class="cmnpara"><span>Certificate Key Matcher</span> Certificate Key Matcher - will allow you to easily confirm that your CSR file or Private Key actually matches your SSL certificate</p>
+                                    <a class="orangebtn" href="@Url.Action("certkeymatcher", "freetools", new { area = "" })">Certificate Key Matcher</a>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="ssltoolwarp">
+                                <span class="leftimg"><img alt="SSL Converter" src="/content/images/ssltools-sslconverter.png"></span>
+                                <div class="rightcnt btnrt">
+                                    <p class="cmnpara"><span>SSL Converter</span> SSL Converter - will allow you to simply convert the format of your SSL certificate to ensure that your server will accept it. Certificate Authorities (CA) will sometimes issue the certificate in a format that your server won’t accept, in this case, the SSL Converter will be extremely handy.</p>
+                                    <a class="orangebtn" href="@Url.Action("sslconvertor", "freetools", new { area = "" })">SSL Convertor</a>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="ssltoolwarp">
+                                <span class="rightimg"><img alt="Why No Pad Lock?" src="/content/images/ssltools-padlock.png"></span>
+                                <div class="rightcnt">
+                                    <p class="cmnpara"><span>Why No Pad Lock?</span> Why No PadLock? - this SSL Tool will allow you to quickly check your URL to ensure there is no insecure links found on your site. Insecure links on your URL will cause your security lock to display incorrectly or not display at all. </p>
+                                    <a class="orangebtn" href="@Url.Action("whynopadlock", "freetools", new { area = "" })">Why No Pad Lock?</a>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                @Html.Partial("_rightpanel", (Model != null && !string.IsNullOrEmpty(Model.CurrentUserName) ? Model.CurrentUserName : ""))
+            </div>
+           
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>

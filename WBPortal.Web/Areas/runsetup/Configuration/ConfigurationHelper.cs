@@ -1,11 +1,12 @@
 ﻿using System;
-using System.Data.Entity;
-using System.Data.Entity.Migrations;
 using System.IO;
 using System.Xml;
 using System.Xml.Serialization;
+using WBSSLStore.Data;
+using System.Linq;
+using WBSSLStore.Domain;
 
-namespace WhiteBrandShrink
+namespace WhiteBrandShrink.Migrations
 {
 
     public class ConfigurationHelper : IDisposable
@@ -20,7 +21,7 @@ namespace WhiteBrandShrink
 
         public static bool IsConfigurationFileExist()
         {
-            return System.IO.File.Exists(Configurationpath);
+            return File.Exists(Configurationpath);
         }
 
         public ConfigurationHelper()
@@ -60,24 +61,52 @@ namespace WhiteBrandShrink
             using (FileStream stream = File.Create(Configurationpath))
             {
                 serializer.Serialize(stream, dbsettings);
-            }         
+            }
         }
 
         public static bool migration(string connectionstringname, string connectionstring)
         {
-            try
+
+            using (WBSSLStoreDb context = new WBSSLStoreDb(connectionstring))
             {
-                Database.SetInitializer<WBSSLStore.Data.WBSSLStoreDb>(null);
-                var migrationconfig = new Migrations.Configuration(new System.Data.Entity.Infrastructure.DbConnectionInfo(connectionstring, "System.Data.SqlClient"));
-                var dbmigrate = new DbMigrator(migrationconfig);
-                dbmigrate.Configuration.TargetDatabase = new System.Data.Entity.Infrastructure.DbConnectionInfo(connectionstring, "System.Data.SqlClient");
-                dbmigrate.Update();
-                return true;
+
+                try
+                {
+                    if (context.Database.Exists() && context.Database.CompatibleWithModel(true))
+                    {
+                        Site obj = context.Sites.Where(x => x.isActive).ToList().FirstOrDefault();
+                        if(obj == null)
+                        {
+                            //context.Database.Delete();
+                            //context.Database.Create();
+                            DefaultDataSeed seed=  new DefaultDataSeed();
+                            seed.MySeed(context);
+                            seed = null;
+                        }
+                        return true;
+                    }
+                    else
+                    {
+                        context.Database.Delete();
+                        context.Database.Create();
+                        DefaultDataSeed seed = new DefaultDataSeed();
+                        seed.MySeed(context);
+                        seed = null;
+                        return true;
+
+                    }
+                }
+                catch
+                {
+                    context.Database.Delete();
+                    context.Database.Create();
+                    DefaultDataSeed seed = new DefaultDataSeed();
+                    seed.MySeed(context);
+                    seed = null;
+                    return true;
+                }
             }
-            catch
-            {
-                throw;
-            }
+
         }
         void IDisposable.Dispose()
         {
@@ -85,13 +114,6 @@ namespace WhiteBrandShrink
         }
     }
 
-    //[Serializable()]
-    //public class Configuration
-    //{
-    //    [XmlElement(ElementName = "DataBaseSettings")]
-    //    public DataBaseSettings DataBaseSetting { get; set; }
-
-    //}
 
     [Serializable()]
     public class DataBaseSettings

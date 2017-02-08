@@ -1,442 +1,439 @@
 <?xmlversion = "1.0"?>
 <root>
-
   <Page>
     <ProductPage>
-      <InternalProductCode data-url="/geotrust/quickssl-premium">
-        quicksslpremium
-      </InternalProductCode>
+      <InternalProductCode data-url="/geotrust/quickssl-premium">quicksslpremium</InternalProductCode>
       <Title>GeoTrust QuickSSL | GeoTrust QuickSSL Premium Certificates</Title>
-      <Keywords>
-        GeoTrust QuickSSL, GeoTrust QuickSSL Premium, QuickSSL Premium SSL Certificates, GeoTrust QuickSSL Premium Certificates
-      </Keywords>
-      <Description>
-        GeoTrust QuickSSL Premium Certificates:  A Quick SSL encyrption solution by GeoTrust. QuickSSL Premium SSL provides ssl encryption quickly and easy
-      </Description>
+      <Keywords>GeoTrust QuickSSL, GeoTrust QuickSSL Premium, QuickSSL Premium SSL Certificates, GeoTrust QuickSSL Premium Certificates</Keywords>
+      <Description>GeoTrust QuickSSL Premium Certificates:  A fastest SSL premium certificate solution offered by GeoTrust, best for providing quick and easy SSL Encryption</Description>
     </ProductPage>
     <ProductPage>
-      <InternalProductCode data-url="/geotrust/quickssl-premium-san">
-        quicksslpremiummd
-      </InternalProductCode>
-      <Title>GeoTrust Multi Domain SSL | True BusinessID Multi Domain SSL </Title>
-      <Keywords>
-        GeoTrust Multi Domain SSL, True BusinessID Multi Domain SSL, GeoTrust True BusinessID Multi Domain SSL
-      </Keywords>
-      <Description>
-        GeoTrust Multi Domain SSL: GeoTrust True BusinessID Multi Domain SSL to secure upto 25 domains on single server ssl certificate.
-      </Description>
+      <InternalProductCode data-url="/geotrust/quickssl-premium-san">quicksslpremiummd</InternalProductCode>
+      <Title>GeoTrust Multi Domain SSL | True BusinessID Multi Domain SSL</Title>
+      <Keywords>GeoTrust Multi Domain SSL, True BusinessID Multi Domain SSL, GeoTrust True BusinessID Multi Domain SSL</Keywords>
+      <Description>GeoTrust Multi Domain SSL: Secure upto 25 domains using one of the best SSL Certificate GeoTrust True BusinessID Multi Domain SSL.</Description>
     </ProductPage>
     <ProductPage>
-      <InternalProductCode data-url="/geotrust/true-businessid">
-        truebizid
-      </InternalProductCode>
-      <Title>True BusinessID |GeoTrust True BusinessID SSL | True BusinessID Certifcate </Title>
-      <Keywords>
-        True BusinessID, GeoTrust True BusinessID, True BusinessID SSL, True BusinessID Certificate
-      </Keywords>
-      <Description>
-        True BusinessID: GeoTrust True BusinessID SSL a comperhensive security for e-enterprise. True BusinessID Certificate for end-to-end Internet security coverage.
-      </Description>
+      <InternalProductCode data-url="/geotrust/true-businessid">truebizid</InternalProductCode>
+      <Title>True BusinessID |GeoTrust True BusinessID SSL | True BusinessID Certifcate</Title>
+      <Keywords>True BusinessID, GeoTrust True BusinessID, True BusinessID SSL, True BusinessID Certificate</Keywords>
+      <Description>GeoTrust True BusinessID SSL:  A true comprehensive security solution for e-enterprise offering complete end-to-end Internet security coverage.</Description>
     </ProductPage>
     <ProductPage>
-      <InternalProductCode data-url="/geotrust/true-businessid-ev-multi-domain">
-        truebusinessidevmd
-      </InternalProductCode>
-      <Title>GeoTrust EV Multi Domain SSL | EV Multi Domain SSL | True BusinessID EV Multi Domain </Title>
-      <Keywords>
-        GeoTrust EV Mutli Domain SSL, EV Multi Domain SSL, True BusinessID EV Multi Domain SSL, GeoTrust EV Multi Domain Certificate
-      </Keywords>
-      <Description>
-        GeoTrust EV Mutli Domain SSL: True BusinessID EV Multi Domain SSL by GeoTrust to secure and improve customer confidence.
-      </Description>
+      <InternalProductCode data-url="/geotrust/true-businessid-ev-multi-domain">truebusinessidevmd</InternalProductCode>
+      <Title>GeoTrust EV Multi Domain SSL | EV Multi Domain SSL | True BusinessID EV Multi Domain</Title>
+      <Keywords>GeoTrust EV Mutli Domain SSL, EV Multi Domain SSL, True BusinessID EV Multi Domain SSL, GeoTrust EV Multi Domain Certificate</Keywords>
+      <Description>GeoTrust True BusinessID EV Multi Domain SSL secure multi domain names with Green address bar and 256 bit strong encryption strength.</Description>
     </ProductPage>
     <ProductPage>
-      <InternalProductCode data-url="/geotrust/true-businessid-wildcard">
-        truebusinessidwildcard
-      </InternalProductCode>
-      <Title>True BusinessID WildCard | GeoTrust True BusinessID WildCard </Title>
-      <Keywords>
-        True BusinessID WildCard, GeoTrust WildCard, GeoTrust True BusinessID Wildcard, GeoTrust WildCard Certificates
-      </Keywords>
-      <Description>
-        True BusinessID WildCard: GeoTrust True BusinessID WildCard to secure multiple website with single server GeoTrust WildCard SSL Certificates.
-      </Description>
+      <InternalProductCode data-url="/geotrust/true-businessid-wildcard">truebusinessidwildcard</InternalProductCode>
+      <Title>True BusinessID WildCard | GeoTrust True BusinessID WildCard</Title>
+      <Keywords>True BusinessID WildCard, GeoTrust WildCard, GeoTrust True BusinessID Wildcard, GeoTrust WildCard Certificates</Keywords>
+      <Description>With GeoTrust True BusinessID WildCard secure unlimited sub-domains under single Domain name, while getting the advantage of full business validation.</Description>
     </ProductPage>
     <ProductPage>
-      <InternalProductCode data-url="/geotrust/true-businessid-ev">
-        truebusinessidev
-      </InternalProductCode>
+      <InternalProductCode data-url="/geotrust/true-businessid-ev">truebusinessidev</InternalProductCode>
       <Title>True BusinessID EV | GeoTrust True BusinessID EV</Title>
       <Keywords>True BusinessID EV | GeoTrust True BusinessID EV</Keywords>
-      <Description></Description>
+      <Description>Cost-effective and one of the most affordable EV certificate GeoTrust True BusinessID EV compatible by more than 99% of browsers and mobile device browsers.</Description>
     </ProductPage>
     <ProductPage>
-      <InternalProductCode data-url="/geotrust/true-businessid-multi-domain">
-        truebizidmd
-      </InternalProductCode>
+      <InternalProductCode data-url="/geotrust/true-businessid-multi-domain">truebizidmd</InternalProductCode>
       <Title>True BusinessID Multi Domain | GeoTrust True BusinessID Multi Domain</Title>
       <Keywords>True BusinessID Multi Domain | GeoTrust True BusinessID Multi Domain</Keywords>
-      <Description></Description>
+      <Description>A perfect solution for small-to-medium business. With full business validation GeoTrust True BusinessID Multi Domain secure up to 100 domain names.</Description>
     </ProductPage>
     <ProductPage>
-      <InternalProductCode data-url="/geotrust/web-site-anti-malware-scan">
-        malwarescan
-      </InternalProductCode>
+      <InternalProductCode data-url="/geotrust/web-site-anti-malware-scan">malwarescan</InternalProductCode>
       <Title>GeoTrust Web Site Anti-Malware Scan</Title>
       <Keywords>GeoTrust Web Site Anti-Malware Scan</Keywords>
-      <Description></Description>
+      <Description>With low-cost security option, GeoTrust Web Site Anti-Malware Scan implement easy cloud service that can detect and identify old or new malware strains.</Description>
     </ProductPage>
     <ProductPage>
-      <InternalProductCode data-url="/geotrust/quickssl-premium-wildcard">
-        quicksslpremiumwildcard
-      </InternalProductCode>
+      <InternalProductCode data-url="/geotrust/quickssl-premium-wildcard">quicksslpremiumwildcard</InternalProductCode>
       <Title>GeoTrust QuickSSL Premium Wildcard Certificate</Title>
       <Keywords>GeoTrust QuickSSL Premium Wildcard Certificate</Keywords>
-      <Description></Description>
+      <Description>With quick and cost-effective solution GeoTrust QuickSSL Premium Wildcard, secure single main domain and unlimited sub-domains.</Description>
     </ProductPage>
     <ProductPage>
-      <InternalProductCode data-url="/rapidssl/free-ssl-certificates">
-        freessl
-      </InternalProductCode>
+      <InternalProductCode data-url="/rapidssl/free-ssl-certificates">freessl</InternalProductCode>
       <Title>Free SSL Certificate</Title>
       <Keywords>Free SSL Certificate</Keywords>
-      <Description></Description>
+      <Description>Get the benefit of standard SSL Certificate at free of cost using 30 day trial version provided by RapidSSL and decide later whether to purchase or not.</Description>
     </ProductPage>
     <ProductPage>
-      <InternalProductCode data-url="/rapidssl/rapidssl-certificate">
-        rapidssl
-      </InternalProductCode>
+      <InternalProductCode data-url="/rapidssl/rapidssl-certificate">rapidssl</InternalProductCode>
       <Title>RapidSSL Certificate</Title>
       <Keywords>RapidSSL Certificate</Keywords>
-      <Description></Description>
+      <Description>Budget is small or your website is at entry-level currently. Get the low-cost popular certificate with standard validation option provided by RapidSSL.</Description>
     </ProductPage>
     <ProductPage>
-      <InternalProductCode data-url="/rapidssl/rapidssl-wildcard-certificate">
-        rapidsslwildcard
-      </InternalProductCode>
+      <InternalProductCode data-url="/rapidssl/rapidssl-wildcard-certificate">rapidsslwildcard</InternalProductCode>
       <Title>RapidSSL Wildcard Certificate</Title>
       <Keywords>RapidSSL Wildcard Certificate</Keywords>
-      <Description></Description>
+      <Description>RapidSSL Wildcard Certificate an ideal solution for entry-level websites, which needs to protect multiple sub-domains with one main domain.</Description>
     </ProductPage>
     <ProductPage>
-      <InternalProductCode data-url="/symantec/code-signing">
-        verisigncsc
-      </InternalProductCode>
+      <InternalProductCode data-url="/symantec/code-signing">verisigncsc</InternalProductCode>
       <Title>Symantec Code Signing</Title>
       <Keywords>Symantec Code Signing</Keywords>
-      <Description></Description>
+      <Description>Get the full business validated Symantec Code Signing Certificate, which helps you to shrink and wrap any digital code or content you wish to distribute over web.</Description>
     </ProductPage>
     <ProductPage>
-      <InternalProductCode data-url="/symantec/code-signing-individual">
-        verisigncscind
-      </InternalProductCode>
+      <InternalProductCode data-url="/symantec/code-signing-individual">verisigncscind</InternalProductCode>
       <Title>Symantec Code Signing Individual</Title>
       <Keywords>Symantec Code Signing Individual</Keywords>
-      <Description></Description>
+      <Description>Get Symantec Individual Code Signing certificates, if you want to distribute and secure your content, code or software over internet as an individual.</Description>
     </ProductPage>
     <ProductPage>
-      <InternalProductCode data-url="/symantec/wildcard-ssl">
-        securesitewildcard
-      </InternalProductCode>
+      <InternalProductCode data-url="/symantec/wildcard-ssl">securesitewildcard</InternalProductCode>
       <Title>Symantec Secure Site Wildcard</Title>
       <Keywords>Symantec Secure Site Wildcard</Keywords>
-      <Description></Description>
+      <Description>Get the benefit of two supported encryption algorithm RSA and DSA, with the most secured, trusted and feature rich certificate Symantec Secure Site Wildcard.</Description>
     </ProductPage>
     <ProductPage>
-      <InternalProductCode data-url="/symantec/secure-site-ssl">
-        securesite
-      </InternalProductCode>
+      <InternalProductCode data-url="/symantec/secure-site-ssl">securesite</InternalProductCode>
       <Title>Symantec Secure Site SSL</Title>
       <Keywords>Symantec Secure Site SSL</Keywords>
-      <Description></Description>
+      <Description>Get the benefit of customer portal to manage your new and existing orders while staying protected using Symantec Secure Site SSL certificate.</Description>
     </ProductPage>
     <ProductPage>
-      <InternalProductCode data-url="/symantec/secure-site-pro-ssl">
-        securesitepro
-      </InternalProductCode>
+      <InternalProductCode data-url="/symantec/secure-site-pro-ssl">securesitepro</InternalProductCode>
       <Title>Symantec Secure Site Pro</Title>
       <Keywords>Symantec Secure Site Pro</Keywords>
-      <Description></Description>
+      <Description>Secure multiple domains on Single IP Address, using Symantec Secure Site Pro with free rich features such as Vulnerability Assessment and Daily Malware Scan.</Description>
     </ProductPage>
     <ProductPage>
-      <InternalProductCode data-url="/symantec/secure-site-pro-with-ev">
-        securesiteproev
-      </InternalProductCode>
-      <Title>Symantec Secure Site Pro with EV </Title>
-      <Keywords>Symantec Secure Site Pro with EV </Keywords>
-      <Description></Description>
+      <InternalProductCode data-url="/symantec/secure-site-pro-with-ev">securesiteproev</InternalProductCode>
+      <Title>Symantec Secure Site Pro with EV</Title>
+      <Keywords>Symantec Secure Site Pro with EV</Keywords>
+      <Description>Secure your website with 3 encryption algorithms RSA, DSA and ECC using most premium SSL certificate Symantec Secure Site Pro with EV.</Description>
     </ProductPage>
     <ProductPage>
-      <InternalProductCode data-url="/symantec/secure-site-with-ev">
-        securesiteev
-      </InternalProductCode>
-      <Title>Symantec Secure Site with EV </Title>
-      <Keywords>Symantec Secure Site with EV </Keywords>
-      <Description></Description>
+      <InternalProductCode data-url="/symantec/secure-site-with-ev">securesiteev</InternalProductCode>
+      <Title>Symantec Secure Site with EV</Title>
+      <Keywords>Symantec Secure Site with EV</Keywords>
+      <Description>Assure your customers they are safe with green address bar and Symantec Name offered by Norton checkmark with the help of Symantec Secure Site with EV certificate.</Description>
     </ProductPage>
     <ProductPage>
-      <InternalProductCode data-url="/symantec/safe-site">
-        trustsealorg
-      </InternalProductCode>
+      <InternalProductCode data-url="/symantec/safe-site">trustsealorg</InternalProductCode>
       <Title>Symantec Safe Site</Title>
       <Keywords>Symantec Safe Site</Keywords>
-      <Description></Description>
+      <Description>With the help of Symantec Safe Site get the benefit of excellent seal in search and other benefits like daily malware scanning.</Description>
     </ProductPage>
     <ProductPage>
-      <InternalProductCode data-url="/symantec/secure-site-pro-wildcard">
-        securesiteprowildcard
-      </InternalProductCode>
+      <InternalProductCode data-url="/symantec/secure-site-pro-wildcard">securesiteprowildcard</InternalProductCode>
       <Title>Symantec Secure Site Pro Wildcard</Title>
       <Keywords>Symantec Secure Site Pro Wildcard</Keywords>
-      <Description></Description>
+      <Description>Secure your domain and unlimited number of sub-domains using Symantec Secure Site Pro Wildcard, supported with free rich features like Norton Secured Seal.</Description>
     </ProductPage>
     <ProductPage>
-      <InternalProductCode data-url="/thawte/code-signing">
-        thawtecsc
-      </InternalProductCode>
+      <InternalProductCode data-url="/thawte/code-signing">thawtecsc</InternalProductCode>
       <Title>Thawte Code Signing Certificate</Title>
       <Keywords>Thawte Code Signing Certificate</Keywords>
-      <Description></Description>
+      <Description>Use Thawte Code Signing Certificate to sign active content such as ActiveX, Macros, J2ME to minimize security alerts while doing electronic distribution over the Internet.</Description>
     </ProductPage>
     <ProductPage>
-      <InternalProductCode data-url="/thawte/code-signing-individual">
-        thawtecscind
-      </InternalProductCode>
+      <InternalProductCode data-url="/thawte/code-signing-individual">thawtecscind</InternalProductCode>
       <Title>Thawte Code Signing  Individual Certificate</Title>
       <Keywords>Thawte Code Signing  Individual Certificate</Keywords>
-      <Description></Description>
+      <Description>Boost downloads of software and improve your sales by verifying the source of your software using Thawte Code Signing Individual Certificate.</Description>
     </ProductPage>
     <ProductPage>
-      <InternalProductCode data-url="/thawte/web-server">
-        sslwebserver
-      </InternalProductCode>
+      <InternalProductCode data-url="/thawte/web-server">sslwebserver</InternalProductCode>
       <Title>Thawte SSL Web Server Certificates</Title>
       <Keywords>Thawte SSL Web Server Certificates</Keywords>
-      <Description></Description>
+      <Description>Thawte SSL Web Server Certificates one of the best option for medium sized ecommerce websites to make it more reputable and gain trust of customers.</Description>
     </ProductPage>
     <ProductPage>
-      <InternalProductCode data-url="/thawte/ssl123">
-        ssl123
-      </InternalProductCode>
+      <InternalProductCode data-url="/thawte/ssl123">ssl123</InternalProductCode>
       <Title>Thawte SSL123 Certificates</Title>
       <Keywords>Thawte SSL123 Certificates</Keywords>
-      <Description></Description>
+      <Description>Low-cost, entry level Thawte SSL123 Certificates supported with Free SAN is the best option for your small business website.</Description>
     </ProductPage>
     <ProductPage>
-      <InternalProductCode data-url="/thawte/web-server-ev">
-        sslwebserverev
-      </InternalProductCode>
-      <Title>Thawte SSLWebserver EV </Title>
-      <Keywords>Thawte SSLWebserver EV </Keywords>
-      <Description></Description>
+      <InternalProductCode data-url="/thawte/web-server-ev">sslwebserverev</InternalProductCode>
+      <Title>Thawte SSLWebserver EV</Title>
+      <Keywords>Thawte SSLWebserver EV</Keywords>
+      <Description>Get the benefit of green address bar using Thawte SSLWebserver EV, and gain trust of visitors who are not familiar with your company.</Description>
     </ProductPage>
     <ProductPage>
-      <InternalProductCode data-url="/thawte/wildcard-ssl">
-        sslwebserverwildcard
-      </InternalProductCode>
+      <InternalProductCode data-url="/thawte/wildcard-ssl">sslwebserverwildcard</InternalProductCode>
       <Title>Thawte Wildcard SSL Certificate</Title>
       <Keywords>Thawte Wildcard SSL Certificate</Keywords>
-      <Description></Description>
+      <Description>Thawte Wildcard SSL Certificate, one of the premier certificate offering excellent option for medium to larger-sized business, who cares for their customers.</Description>
     </ProductPage>
     <ProductPage>
-      <InternalProductCode data-url="/thawte/ssl123-wildcard">
-        ssl123wildcard
-      </InternalProductCode>
+      <InternalProductCode data-url="/thawte/ssl123-wildcard">ssl123wildcard</InternalProductCode>
       <Title>Thawte SSL123 Wildcard Certificates</Title>
       <Keywords>Thawte SSL123 Wildcard Certificates</Keywords>
-      <Description></Description>
+      <Description>Secure unlimited sub-domains with one single standard entry level Thawte SSL123 Wildcard Certificate, by just getting it within few minutes of purchasing.</Description>
     </ProductPage>
     <ProductPage>
-      <InternalProductCode data-url="/comodo/codesigning">
-        8
-      </InternalProductCode>
+      <InternalProductCode data-url="/comodo/codesigning">comodocsc</InternalProductCode>
       <Title>Comodo Code Signing Certificate</Title>
       <Keywords>Comodo Code Signing Certificate</Keywords>
-      <Description></Description>
+      <Description>These code signing certificates helps to ensure that any code or content you’re looking to distribute over the internet is safe from modification, re-hosting, and impersonation by malicious third parties.</Description>
     </ProductPage>
     <ProductPage>
-      <InternalProductCode data-url="/comodo/domainvalidateduccssl">
-        comododvucc
-      </InternalProductCode>
+      <InternalProductCode data-url="/comodo/domainvalidateduccssl">comododvucc</InternalProductCode>
       <Title>Domain Validated UCC SSL</Title>
       <Keywords>Domain Validated UCC SSL</Keywords>
-      <Description></Description>
+      <Description>With this standard validated SSL certificate The Comodo Domain Validated (DV) UCC, quickly secure your multiple domains. It's one of the product specially designed for Microsoft Exchange 2010 and Office Communications Server 2007.</Description>
     </ProductPage>
     <ProductPage>
-      <InternalProductCode data-url="/comodo/elitessl">
-        elitessl
-      </InternalProductCode>
+      <InternalProductCode data-url="/comodo/elitessl">elitessl</InternalProductCode>
       <Title>Comodo Elite SSL</Title>
       <Keywords>Comodo Elite SSL</Keywords>
-      <Description></Description>
+      <Description>The Comodo Elite SSL certificate is the best choice for medium ecommerce websites and other business who are looking for budget-friendly way to gain the trust of their customers.</Description>
     </ProductPage>
     <ProductPage>
-      <InternalProductCode data-url="/comodo/essentialssl">
-        301
-      </InternalProductCode>
+      <InternalProductCode data-url="/comodo/essentialssl">essentialssl</InternalProductCode>
       <Title>Comodo Essential SSL Certificate</Title>
       <Keywords>Comodo Essential SSL Certificate</Keywords>
-      <Description></Description>
+      <Description>If you are looking for certificate to be used for internal testing domains or light ecommerce websites, you are at right place. Essential SSL Certificate is best to go with.</Description>
     </ProductPage>
     <ProductPage>
-      <InternalProductCode data-url="/comodo/essentialsslwildcard">
-        343
-      </InternalProductCode>
+      <InternalProductCode data-url="/comodo/essentialsslwildcard">essentialwildcard</InternalProductCode>
       <Title>Comodo EssentialSSL Wildcard Certificate</Title>
       <Keywords>Comodo EssentialSSL Wildcard Certificate</Keywords>
-      <Description></Description>
+      <Description>This certificate will secure an unlimited number of subdomains which makes management and provisioning very easy. EssentialSSL Wildcard certificate will provide you with unlimited server licensing, along with a static site seal.</Description>
     </ProductPage>
     <ProductPage>
-      <InternalProductCode data-url="/comodo/evmultidomainssl">
-        410
-      </InternalProductCode>
+      <InternalProductCode data-url="/comodo/evmultidomainssl">comodoevmdc</InternalProductCode>
       <Title>Comodo EV Multi-Domain SSL Certificate</Title>
       <Keywords>Comodo EV Multi-Domain SSL Certificate</Keywords>
-      <Description></Description>
+      <Description>Flexibility is crucial when it comes to managing multiple sites, which is where this Extended Validation (EV) certificate comes in. By offering features such as 256-bit encryption, the green  address bar, SAN support (up to 250 additional domains), and the Comodo Secured Seal, all visitors will be aware of and appreciate the level of protection offered.</Description>
     </ProductPage>
     <ProductPage>
-      <InternalProductCode data-url="/comodo/evssl">
-        337
-      </InternalProductCode>
+      <InternalProductCode data-url="/comodo/evssl">comodoevssl</InternalProductCode>
       <Title>Comodo EV SSL Certificate</Title>
       <Keywords>Comodo EV SSL Certificate</Keywords>
-      <Description></Description>
+      <Description>In addition to the green address bar, Comodo EV SSL Certificate features a HackerGuardian Vulnerability Scan, a free site seal free PCI scanning, free daily website scanning, a post-install health check, and the "point-to-verify" Comodo trustmark, which means it comes with tremendous value for your money.</Description>
     </ProductPage>
     <ProductPage>
-      <InternalProductCode data-url="/comodo/hackerguardian-pci-scan">
-        346
-      </InternalProductCode>
+      <InternalProductCode data-url="/comodo/hackerguardian-pci-scan">hgpcicontrolscan</InternalProductCode>
       <Title>Comodo HackerGuardian PCI Scan Control Center</Title>
       <Keywords>Comodo HackerGuardian PCI Scan Control Center</Keywords>
-      <Description></Description>
+      <Description>Comodo HackerGuardian PCI Scan Control Center is one of the certificate, which helps you to meet the industry standards set by the Payment Card Industry (PCI). Easily view and manage detailed vulnerability reports to make certain that your solution is up to date with the latest rules and regulations.</Description>
     </ProductPage>
     <ProductPage>
-      <InternalProductCode data-url="/comodo/hackerproof-trustmark">
-        357
-      </InternalProductCode>
+      <InternalProductCode data-url="/comodo/hackerproof-trustmark">hackerprooftm</InternalProductCode>
       <Title>Comodo HackerProof Trust Mark including Daily Vulnerability Scan</Title>
       <Keywords>Comodo HackerProof Trust Mark including Daily Vulnerability Scan</Keywords>
-      <Description></Description>
+      <Description>Place a Trust Mark on your site of a reputable brand that will not only build trust, but also boost confidence among the visitors of your site. With this certificate, visitors will be aware of your dedication towards safety.</Description>
     </ProductPage>
     <ProductPage>
-      <InternalProductCode data-url="/comodo/instantssl">
-        24
-      </InternalProductCode>
+      <InternalProductCode data-url="/comodo/instantssl">instantssl</InternalProductCode>
       <Title>Comodo InstantSSL Certificate</Title>
       <Keywords>Comodo InstantSSL Certificate</Keywords>
-      <Description></Description>
+      <Description>This security product is ideal for light ecommerce sites interested in boosting their trust quickly and affordably. This certificate will not only encrypt information sent from browsers to your server, but will also increase the trust visitors have in your website.</Description>
     </ProductPage>
     <ProductPage>
-      <InternalProductCode data-url="/comodo/premiumssl">
-        7
-      </InternalProductCode>
+      <InternalProductCode data-url="/comodo/premiumssl">comodopremiumssl</InternalProductCode>
       <Title>Comodo Premium SSL Certificate</Title>
       <Keywords>Comodo Premium SSL Certificate</Keywords>
-      <Description></Description>
+      <Description>Provides full assurance to your customers beyond encryption by adding trust to your business. This Organization Validated (OV) certificate offers 256-bit encryption along with the recognized Comodo Site Seal. Your customers will know that their information is safe and sound.</Description>
     </ProductPage>
     <ProductPage>
-      <InternalProductCode data-url="/comodo/instantsslpro">
-        34
-      </InternalProductCode>
+      <InternalProductCode data-url="/comodo/instantsslpro">instantsslpro</InternalProductCode>
       <Title>Comodo InstantSSL Pro Certificate</Title>
       <Keywords>Comodo InstantSSL Pro Certificate</Keywords>
-      <Description></Description>
+      <Description>This certificate will enable many trust indicators on your website, along with providing strong 256-bit encryption. Once installed, your site will reap the benefits of the padlock icon in the URL bar, "https" in front of the address, and the dynamic Comodo Secure Site Seal.</Description>
     </ProductPage>
     <ProductPage>
-      <InternalProductCode data-url="/comodo/multidomainssl">
-        335
-      </InternalProductCode>
+      <InternalProductCode data-url="/comodo/multidomainssl">comodomdc</InternalProductCode>
       <Title>Comodo Multi-Domain SSL Certificate</Title>
       <Keywords>Comodo Multi-Domain SSL Certificate</Keywords>
-      <Description></Description>
+      <Description>With Comodo Multi-Domain SSL Certificate you can cover up to 100 domains with just one certificate. In addition to SAN support, this certificate offers a dynamic site seal and unlimited server licensing. This multi-domain certificate is an excellent option for small to medium sized companies that want to make managing and provisioning their domains as simple as possible.</Description>
     </ProductPage>
     <ProductPage>
-      <InternalProductCode data-url="/comodo/multidomainwildcardssl">
-        comodomdcwildcard
-      </InternalProductCode>
+      <InternalProductCode data-url="/comodo/multidomainwildcardssl">comodomdcwildcard</InternalProductCode>
       <Title>Comodo Multi-Domain Wildcard SSL Certificate</Title>
       <Keywords>Comodo Multi-Domain Wildcard SSL Certificate</Keywords>
-      <Description></Description>
+      <Description>Comodo Multi-Domain Wildcard SSL Certificate, is the option to go with if you are looking to secure an unlimited number of sub-domains under multiple domains. This business validated certificate is an excellent choice for companies that have a lot of domain names on the same server.</Description>
     </ProductPage>
     <ProductPage>
-      <InternalProductCode data-url="/comodo/pciscanning-enterprise-edition">
-        comodopciscan
-      </InternalProductCode>
+      <InternalProductCode data-url="/comodo/pciscanning-enterprise-edition">comodopciscan</InternalProductCode>
       <Title>Comodo PCI Scanning Enterprise Edition</Title>
       <Keywords>Comodo PCI Scanning Enterprise Edition</Keywords>
-      <Description></Description>
+      <Description>Comodo PCI Scanning Enterprise Edition is the best choice if you’ve web host or payment gateways and you want PCI Compliance scanning on multiple servers. Additionally get features likes 'Ready-to-submit' PCI compliance reports to send to your acquiring bank, unlimited scans for up to 20 external or internal IP addresses and many more.</Description>
     </ProductPage>
     <ProductPage>
-      <InternalProductCode data-url="/comodo/positivesslmultidomain">
-        positivemdcssl
-      </InternalProductCode>
+      <InternalProductCode data-url="/comodo/positivesslmultidomain">positivemdcssl</InternalProductCode>
       <Title>PositiveSSL Multi-Domain Certificate</Title>
       <Keywords>PositiveSSL Multi-Domain Certificate</Keywords>
-      <Description></Description>
+      <Description>If you need a quick way to secure multiple domains on a single SSL certificate, then the Comodo Positive Multi-Domain SSL is the cert for you. This certificate can secure up to 250 total domains and is typically issued in mere minutes, once domain ownership is verified. As an entry-level Domain Validated (DV) option, the Comodo Positive Multi-Domain SSL is an excellent option for start-up ecommerce sites and other small businesses looking for a little boost with regards to encryption and sales.</Description>
     </ProductPage>
     <ProductPage>
-      <InternalProductCode data-url="/comodo/positivesslmultidomainwildcard">
-        positivemdcwildcard
-      </InternalProductCode>
+      <InternalProductCode data-url="/comodo/positivesslmultidomainwildcard">positivemdcwildcard</InternalProductCode>
       <Title>PositiveSSL Multi-Domain Wildcard Certificate</Title>
       <Keywords>PositiveSSL Multi-Domain Wildcard Certificate</Keywords>
-      <Description></Description>
+      <Description>Secure your one main domain with multiple sub-domains using this PositiveSSL Multi-Domain Wildcard Certificate. It's one of the best and economical certificate which can be an ideal solution for your e-commerce websites, payment pages, mail servers and much more.</Description>
     </ProductPage>
     <ProductPage>
-      <InternalProductCode data-url="/comodo/positivessl">
-        287
-      </InternalProductCode>
+      <InternalProductCode data-url="/comodo/positivessl">positivessl</InternalProductCode>
       <Title>Comodo PositiveSSL Certificate</Title>
       <Keywords>Comodo PositiveSSL Certificate</Keywords>
-      <Description></Description>
+      <Description>For a fast website security solution, the Comodo Positive SSL certificate is the answer for you. This domain validated certificate offers industry standard encryption at an unbelievable price. Plus, this certificate comes backed by the Comodo brand, one of the most trusted names in internet security. As a basic SSL certificate, the Comodo Positive SSL is an excellent solution for internal domains and other domain names where you need fast and simple security without having to worry about injecting much trust into the site.</Description>
     </ProductPage>
     <ProductPage>
-      <InternalProductCode data-url="/comodo/positivesslwildcard">
-        289
-      </InternalProductCode>
+      <InternalProductCode data-url="/comodo/positivesslwildcard">positivesslwildcard</InternalProductCode>
       <Title>Comodo PositiveSSL Wildcard Certificate</Title>
       <Keywords>Comodo PositiveSSL Wildcard Certificate</Keywords>
-      <Description></Description>
+      <Description>Looking for a way to quickly and easily get the valued https displayed on a main domain and all of your subdomains? Then the Comodo Positive SSL Wildcard is the certificate for you. Speed and reliability are two adjectives that come to mind when describing this certificate. That’s because this wildcard certificate is a basic, Domain Validated (DV) certificate and can be issued in mere minutes. Also, with 99.3% browser recognition and solid mobile compatibility, the Comodo Positive SSL Wildcard can be relied on by most light ecommerce websites.</Description>
     </ProductPage>
     <ProductPage>
-      <InternalProductCode data-url="/comodo/premiumsslwildcard">
-        35
-      </InternalProductCode>
+      <InternalProductCode data-url="/comodo/premiumsslwildcard">comodopremiumwildcard</InternalProductCode>
       <Title>Comodo PremiumSSL Wildcard Certificate</Title>
       <Keywords>Comodo PremiumSSL Wildcard Certificate</Keywords>
-      <Description></Description>
+      <Description>Comodo PremiumSSL Wildcard Certificate offers the dynamic Comodo site seal and unlimited server licensing. You will also be able to secure one main domain and multiple subdomains. This wildcard certificate is an excellent option for medium-sized companies and ecommerce sites that wish to bolster the trust their users will have with them.</Description>
     </ProductPage>
     <ProductPage>
-      <InternalProductCode data-url="/comodo/ssl">
-        488
-      </InternalProductCode>
+      <InternalProductCode data-url="/comodo/ssl">comodossl</InternalProductCode>
       <Title>Comodo SSL Certificate</Title>
       <Keywords>Comodo SSL Certificate</Keywords>
-      <Description></Description>
+      <Description>Comodo SSL Certificate a domain validated certificate can be issued in minutes. On top of encryption, this certificate will show your customers that your site has been vetted by a leading internet security specialist, so they’ll know it’s safe to do business with you. This certificate comes with dynamic site seal and unlimited server licensing.</Description>
     </ProductPage>
     <ProductPage>
-      <InternalProductCode data-url="/comodo/ucwildcard">
-        comodouccwildcard
-      </InternalProductCode>
+      <InternalProductCode data-url="/comodo/ucwildcard">comodouccwildcard</InternalProductCode>
       <Title>Comodo Unified Communications Wildcard Certificate</Title>
       <Keywords>Comodo Unified Communications Wildcard Certificate</Keywords>
-      <Description></Description>
+      <Description>Comodo Unified Communications Wildcard Certificate is a perfect blend of Unified Communication certificate and a Wildcard Certificate. Secure your Microsoft Exchange and Office Communications infrastructures with an ease.</Description>
     </ProductPage>
     <ProductPage>
-      <InternalProductCode data-url="/comodo/unifiedcommunications">
-        361
-      </InternalProductCode>
+      <InternalProductCode data-url="/comodo/unifiedcommunications">comodoucc</InternalProductCode>
       <Title>Comodo Unified Communications Certificate</Title>
       <Keywords>Comodo Unified Communications Certificate</Keywords>
-      <Description></Description>
+      <Description>A single SSL certificate Comodo Unified Communications can provide secured communications on many different domains, both internal and external, which will reduce the complexity of your server security administration, along with reducing cost.</Description>
     </ProductPage>
     <ProductPage>
-      <InternalProductCode data-url="/comodo/wildcardssl">
-        489
-      </InternalProductCode>
+      <InternalProductCode data-url="/comodo/wildcardssl">comodowildcard</InternalProductCode>
       <Title>Comodo Wildcard SSL Certificate</Title>
       <Keywords>Comodo Wildcard SSL Certificate</Keywords>
-      <Description></Description>
+      <Description>Are you looking to secure one main domain, along with all of your subdomains? If so, then the Comodo Wildcard SSL certificate is an excellent option. With just one certificate, you can cover your one main domain with unlimited subdomains. As its Domain Validated (DV) certificate, this certificate can be issued in few minutes. One of the easiest and most economical Wildcard options, this certificate is perfect for small to medium sized businesses and lower-traffic ecommerce sites.</Description>
+    </ProductPage>
+    <ProductPage>
+      <InternalProductCode data-url="/comodo/web-inspector-starter">webinsbasic</InternalProductCode>
+      <Title>Web Inspector Starter</Title>
+      <Keywords>Web Inspector Starter</Keywords>
+      <Description>Protect your website with daily monitoring for blacklists, on-site malware, and PCI compliance scanning. You’ll be informed of any issues possible for your website and get the added trust benefit of the Comodo Web Inspector Seal, so your customers will see your investment in their security.</Description>
+    </ProductPage>
+    <ProductPage>
+      <InternalProductCode data-url="/comodo/web-inspector-plus">webinsplus</InternalProductCode>
+      <Title>Web Inspector Plus</Title>
+      <Keywords>Web Inspector Plus</Keywords>
+      <Description>Protect your website with daily monitoring for blacklists, on-site malware, and PCI compliance scanning. You’ll be informed of any issues possible for your website and get the added trust benefit of the Comodo Web Inspector Seal, so your customers will see your investment in their security.</Description>
+    </ProductPage>
+    <ProductPage>
+      <InternalProductCode data-url="/comodo/web-inspector-premium">webinspremium</InternalProductCode>
+      <Title>Web Inspector Premium</Title>
+      <Keywords>Web Inspector Premium</Keywords>
+      <Description>Protect your website with daily monitoring for blacklists, on-site malware, and PCI compliance scanning. You’ll be informed of any issues possible for your website and get the added trust benefit of the Comodo Web Inspector Seal, so your customers will see your investment in their security.</Description>
+    </ProductPage>
+    <ProductPage>
+      <InternalProductCode data-url="/comodo/web-inspector-enterprise">webinsnterprise</InternalProductCode>
+      <Title>Web Inspector Enterprise</Title>
+      <Keywords>Web Inspector Enterprise</Keywords>
+      <Description>Protect your website with daily monitoring for blacklists, on-site malware, and PCI compliance scanning. You’ll be informed of any issues possible for your website and get the added trust benefit of the Comodo Web Inspector Seal, so your customers will see your investment in their security.</Description>
+    </ProductPage>
+    <ProductPage>
+      <InternalProductCode data-url="/certum/commercial-ssl">ucommercialssl</InternalProductCode>
+      <Title>Certum Commercial SSL</Title>
+      <Keywords>Certum Commercial SSL</Keywords>
+      <Description>Provides a quick and simple solution to protect customer’s information from falling into the wrong hands with this Domain Validated certificate. By securing the connection in 256-bit encryption, your customer can rest assured that all transmitted and received information is secured, and you can showcase this security to your clients by having the CERTUM seal present on your site.</Description>
+    </ProductPage>
+    <ProductPage>
+      <InternalProductCode data-url="/certum/commercial-ssl-wildcard-certificate">ucommercialwildcard</InternalProductCode>
+      <Title>CERTUM Commercial SSL WildCard Certificate</Title>
+      <Keywords>CERTUM Commercial SSL WildCard Certificate</Keywords>
+      <Description>CERTUM Commercial SSL WildCard Certificate offers a simple and quick solution that will not only encrypt your primarily domain, but all the subdomains associated with this domain on this Domain Validated (DV) certificate. Customers will shop at ease knowing that your site is 256-bit encrypted, especially when they see the CERTUM seal present on the domain.</Description>
+    </ProductPage>
+    <ProductPage>
+      <InternalProductCode data-url="/certum/trusted-ssl-certificate">utrustedssl</InternalProductCode>
+      <Title>CERTUM Trusted SSL Certificate</Title>
+      <Keywords>CERTUM Trusted SSL Certificate</Keywords>
+      <Description>This Organization Validated (OV) certificate will let your customers know that your company is safe to do business with. Your customers will feel at ease knowing that your business's website is protected with 256-bit encryption, especially once they see the CERTUM seal on your site.</Description>
+    </ProductPage>
+    <ProductPage>
+      <InternalProductCode data-url="/certum/trusted-ssl-wildcard-certificate">utrustedwildcard</InternalProductCode>
+      <Title>CERTUM Trusted SSL Wildcard Certificate</Title>
+      <Keywords>CERTUM Trusted SSL Wildcard Certificate</Keywords>
+      <Description>With the Certum Trusted SSL Wildcard certificate, you can get a premium and economical security product without breaking your budget. That's because with just one certificate, you can cover your main domain and all of your accompanying subdomains. Additionally, because this is an Organization Validated (OV) cert, it includes a dynamic site seal that will display your validated company information, instantly assuring your online customers that you are who you say you are. This certificate will also activate "https" next to your URL and display the trusted padlock icon. The Certum Trusted SSL Wildcard certificate is perfect for any company looking to secure all of their subdomains and boost the trust of their website.</Description>
+    </ProductPage>
+    <ProductPage>
+      <InternalProductCode data-url="/certum/basic-id-certificate">ubasicid</InternalProductCode>
+      <Title>CERTUM Basic ID Certificate</Title>
+      <Keywords>CERTUM Basic ID Certificate</Keywords>
+      <Description>CERTUM Basic ID Certificate provides a quick solution to encrypt all electronic communication on the web; such as, both emails and files. By using a public key, the certificate ensures that all information, both transmitted and received, is authentic, means nobody has intercepted, read or forged documents within the communication.</Description>
+    </ProductPage>
+    <ProductPage>
+      <InternalProductCode data-url="/certum/enterprise-id-certificate">uenterpriseid</InternalProductCode>
+      <Title>CERTUM Enterprise ID Certificate</Title>
+      <Keywords>CERTUM Enterprise ID Certificate</Keywords>
+      <Description>Provides safety and security for signing the most important and sensitive documents a company, corporation or enterprise could utilize. Enterprise ID provides the highest level of security available for CERTUM for any other type of PCC ID certificates.</Description>
+    </ProductPage>
+    <ProductPage>
+      <InternalProductCode data-url="/certum/professional-id-certificate">uprofessionalid</InternalProductCode>
+      <Title>CERTUM Professional ID Certificate</Title>
+      <Keywords>CERTUM Professional ID Certificate</Keywords>
+      <Description>CERTUM Professional ID Certificate offers a premium solution to verify the authenticity of all user’s identities and ensuring that their email address and company details are matched inside the certificate.</Description>
+    </ProductPage>
+    <ProductPage>
+      <InternalProductCode data-url="/comodo/personal-authentication-basic-certificate">pacbasic</InternalProductCode>
+      <Title>Comodo Personal Authentication Basic Certificate</Title>
+      <Keywords>Comodo Personal Authentication Basic Certificate</Keywords>
+      <Description>Comodo Personal Authentication Certificates (CPAC Basics) are easy and affordable solutions used to secure business communications. These certificates allow you to encrypt and digitally sign email communications, offer two-factor authentication of users and employees, secure important company documents sent across the network, and will authenticate to ensure they have clearance to access online servers.</Description>
+    </ProductPage>
+    <ProductPage>
+      <InternalProductCode data-url="/comodo/personal-authentication-pro-certificate">pacpro</InternalProductCode>
+      <Title>Comodo Personal Authentication Pro Certificate</Title>
+      <Keywords>Comodo Personal Authentication Pro Certificate</Keywords>
+      <Description>Comodo Personal Authentication Certificates (CPAC Pro) are easy and affordable solutions used to secure business communications. These certificates allow you to encrypt and digitally sign email communications, offer two-factor authentication of users and employees, secure important company documents sent across the network, and will authenticate to ensure they have clearance to access online servers</Description>
+    </ProductPage>
+    <ProductPage>
+      <InternalProductCode data-url="/comodo/personal-authentication-enterprise-certificate">pacenterprise</InternalProductCode>
+      <Title>Comodo Personal Authentication Enterprise Certificate</Title>
+      <Keywords>Comodo Personal Authentication Enterprise Certificate</Keywords>
+      <Description>Comodo Personal Authentication Certificates (CPAC Enterprise) are easy and affordable solutions used to secure business communications. These certificates allow you to encrypt and digitally sign email communications, offer two-factor authentication of users and employees, secure important company documents sent across the network, and will authenticate to ensure they have clearance to access online servers</Description>
+    </ProductPage>
+    <ProductPage>
+      <InternalProductCode data-url="/symantec/secure-site-multi-domain-wildcard">securesitemdwc</InternalProductCode>
+      <Title>Symantec Secure Site Multi-Domain Wildcard</Title>
+      <Keywords>Symantec Secure Site Multi-Domain Wildcard</Keywords>
+      <Description>The Symantec Secure Site Multi-Domain Wildcard is one of the most versatile, feature-rich Organization Validated (OV) certificates in the entire SSL industry. It comes bundled with a Wildcard SAN, giving you the flexibility to secure an unlimited number of Sub-Domains that accompany your main domain. Best of all, this Certificate offers the highest possible encryption strength, daily malware scanning and a NetSure Warranty of $1,500,000.</Description>
+    </ProductPage>
+    <ProductPage>
+      <InternalProductCode data-url="/symantec/secure-site-pro-multi-domain-wildcard">securesitepromdwc</InternalProductCode>
+      <Title>Symantec® Secure Site Pro Multi-Domain Wildcard</Title>
+      <Keywords>Symantec® Secure Site Pro Multi-Domain Wildcard</Keywords>
+      <Description>Symantec™ Secure Site Pro Multi-Domain Wildcard is a comprehensive and trusted SSL solution goes well beyond standard encryption, allowing you to secure your entire portfolio of domains and Sub-Domains on a single certificate. This SSL certificate comes packaged with daily malware scanning and a vulnerability assessment. It’s a feature-rich Organization Validated (OV) certificate, which is an ideal solution for any business looking to throw its name in with the leaders in their industry.</Description>
+    </ProductPage>
+    <ProductPage>
+      <InternalProductCode data-url="/geotrust/true-businessid-with-multi-domain-wildcard">truebizidmdwc</InternalProductCode>
+      <Title>GeoTrust True BusinessID with Multi-Domain Wildcard</Title>
+      <Keywords>GeoTrust True BusinessID with Multi-Domain Wildcard</Keywords>
+      <Description>If you need to secure multiple domains or Sub-Domains, the GeoTrust True BusinessID with Multi-Domain Wildcard SSL certificate is the ideal choice. This certificate comes standard with two Wildcard SANS, and customers have the ability to purchase additional Wildcard SANs as per their needs. Best of all, this certificate offers full business validation, so your customers will be aware that you went the extra mile to authenticate yourself.</Description>
+    </ProductPage>
+    <ProductPage>
+      <InternalProductCode data-url="/thawte/ssl-webserver-multi-domain-wildcard">sslwebservermdwc</InternalProductCode>
+      <Title>Thawte SSL Webserver Multi-Domain Wildcard</Title>
+      <Keywords>Thawte SSL Webserver Multi-Domain Wildcard</Keywords>
+      <Description>The Thawte SSL WebServer Multi-Domain Wildcard SSL certificate is one of the most versatile SSL certificates available on the market today. It’s an excellent certificate for businesses looking to go beyond just encryption for their entire portfolio of domains and Sub-Domains. It’s perfect for medium to larger-sized companies, or any business that places the highest stock in their customers' trust and assurance.</Description>
+    </ProductPage>
+    <ProductPage>
+      <InternalProductCode data-url="/symantec/secure-site-pro-sha-1-private">securesitepro_SHA1</InternalProductCode>
+      <Title>Symantec® Secure Site Pro SHA-1 Private</Title>
+      <Keywords>Symantec® Secure Site Pro SHA-1 Private</Keywords>
+      <Description>Now you can secure legacy machines and systems that are not compatible with the industry-mandated SHA-2 hashing algorithm, thanks to the Symantec™ Secure Site Pro SHA-1 Private. It provides up to 256-bit encryption strength and comes with a 2048-bit RSA signature key. The Secure Site Pro SHA-1 Private comes with either SHA-1 full chain or SHA-mixed chain and is perfect for use with private networks, network appliances and a wide range of other enterprise-level functions.</Description>
+    </ProductPage>
+    <ProductPage>
+      <InternalProductCode data-url="/geotrust/basic-web-site-anti-malware-scan">malwarebasic</InternalProductCode>
+      <Title>Basic Web Site Anti-Malware Scan</Title>
+      <Keywords>Basic Web Site Anti-Malware Scan</Keywords>
+      <Description>Because malware is usually hidden in your code, users are not able to see it. With this product, your site will have the tools to withstand the toughest hackers with a daily scan. If anything is detected, you will be notified and directed to a list of infected pages and the code causing the problem. Your system administrator will now have the opportunity to delete all instances of the code before it becomes a problem for your customers.</Description>
     </ProductPage>
   </Page>
 </root>
+
+

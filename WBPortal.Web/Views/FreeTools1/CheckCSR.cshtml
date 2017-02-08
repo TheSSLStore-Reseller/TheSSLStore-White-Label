@@ -1,7 +1,6 @@
 ﻿@model WBSSLStore.Gateways.RestAPIModels.Response.CSRDecodeResponse
-@{
-   
-    ViewBag.Title = "CheckCSR";
+@section headerTags{
+    @Html.Partial("_renderSEO", new WBSSLStore.Domain.CMSPage())
 }
 
 @Html.Partial("_banner", new Tuple<string, string>("", "SSL TOOLS"))

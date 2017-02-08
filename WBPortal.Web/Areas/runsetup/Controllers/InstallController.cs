@@ -2,22 +2,22 @@
 using System.Data.SqlClient;
 using System.Web.Mvc;
 using WhiteBrandShrink.Models;
-using WhiteBrandShrink.Helper;
 using System.Security.Principal;
 using System.Threading;
-using System.Web.Hosting;
 using System.Data;
 using WBSSLStore.Domain;
 using WBSSLStore.Data;
 using System.Linq;
-using WhiteBrandShrink;
 using System.Web.Security;
 using System.Text;
 using System.Configuration;
-using System.Reflection;
 using WBSSLStore.Web.Helpers;
 using System.Collections.Generic;
 using WBSSLStore.Service.ViewModels;
+using WhiteBrandShrink.Migrations;
+using System.Web.Hosting;
+using WhiteBrandShrink.Helper;
+using WBSSLStore.Logger;
 
 namespace WhiteBrandSite.Areas.runsetup.Controllers
 {
@@ -80,6 +80,7 @@ namespace WhiteBrandSite.Areas.runsetup.Controllers
         [HttpGet]
         public ActionResult installindex()
         {
+
             using (HelpConfig)
             {
                 var re = GotoNextStep(null);
@@ -96,7 +97,7 @@ namespace WhiteBrandSite.Areas.runsetup.Controllers
                 DisableSqlCompact = false,// _config.UseFastInstallationService,
                 SqlAuthenticationType = SQLAuthentication.SQL_SERVER_AUTHENTICATION.ToString(),
                 SqlConnectionInfo = SQLServerInfo.SQLCONNECTIONVALUES.ToString(),
-                SqlServerCreateDatabase = false,
+                SqlServerCreateDatabase = true,
 
                 Collation = "SQL_Latin1_General_CP1_CI_AS",
             };
@@ -124,7 +125,7 @@ namespace WhiteBrandSite.Areas.runsetup.Controllers
 
             if (model.DataProvider.Equals("sqlserver", StringComparison.InvariantCultureIgnoreCase))
             {
-                if (model.SqlConnectionInfo.Equals("sqlconnectioninfo_raw", StringComparison.InvariantCultureIgnoreCase))
+                if (model.SqlConnectionInfo.Equals(SQLServerInfo.SQLCONNECTIONSTRING.ToString(), StringComparison.InvariantCultureIgnoreCase))
                 {
                     //raw connection string
                     if (string.IsNullOrEmpty(model.DatabaseConnectionString))
@@ -209,18 +210,18 @@ namespace WhiteBrandSite.Areas.runsetup.Controllers
 
                         //create connection string Start.
                         var config = System.Web.Configuration.WebConfigurationManager.OpenWebConfiguration("~");
-                        var connectionsec = (System.Configuration.ConnectionStringsSection)config.GetSection("connectionStrings");
+                        var connectionsec = (ConnectionStringsSection)config.GetSection("connectionStrings");
                         if (connectionsec.ConnectionStrings[connectionStringName] == null)
-                            connectionsec.ConnectionStrings.Add(new System.Configuration.ConnectionStringSettings(connectionStringName, connectionString));
+                            connectionsec.ConnectionStrings.Add(new ConnectionStringSettings(connectionStringName, connectionString));
                         else
                             connectionsec.ConnectionStrings[connectionStringName].ConnectionString = connectionString;
                         connectionsec.ConnectionStrings[connectionStringName].ProviderName = "System.Data.SqlClient";
-                        config.Save(System.Configuration.ConfigurationSaveMode.Modified);
+                        config.Save(ConfigurationSaveMode.Modified);
 
 
-                        System.Configuration.ConfigurationManager.RefreshSection(config.ConnectionStrings.SectionInformation.SectionName);
+                        ConfigurationManager.RefreshSection(config.ConnectionStrings.SectionInformation.SectionName);
                         var settings = ConfigurationManager.ConnectionStrings[connectionStringName];
-                        var fi = typeof(ConfigurationElement).GetField("_bReadOnly", BindingFlags.Instance | BindingFlags.NonPublic );
+                        var fi = typeof(ConfigurationElement).GetField("_bReadOnly", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
                         if (settings == null)
                         {
                             ConnectionStringSettings obj1 = new ConnectionStringSettings();
@@ -232,30 +233,6 @@ namespace WhiteBrandSite.Areas.runsetup.Controllers
                         fi.SetValue(settings, false);
                         settings.ConnectionString = connectionString;
 
-                        //create connection string End.
-                        //Check DB version:
-                        //DataTable data = null;// System.Data.Sql.SqlDataSourceEnumerator.Instance.GetDataSources();
-                        ////var m = Microsoft.SqlServer.Management.Smo.SmoApplication.EnumAvailableSqlServers("KAUSHAL-PATEL1");
-                        ////http://sqlblogcasts.com/blogs/jonsayce/archive/2008/02/10/programatically-listing-sql-servers.aspx
-                        //if (data != null && data.Rows.Count > 0)
-                        //{
-                        //    if (!string.IsNullOrEmpty(data.Rows[0]["Version"].ToString()))
-                        //    {
-                        //        //data.Rows[0]["Version"].ToString()
-                        //    }
-                        //    //errormsg = string.Format("The SQL SERVER version is 2012 or later require. Currentversion is :");
-                        //    //if (!string.IsNullOrEmpty(errormsg))
-                        //    //    return Json(new { isSuccess = false, msg = errormsg }, JsonRequestBehavior.AllowGet);
-                        //}
-
-                        //SqlConnection sqlConnection = new SqlConnection(connectionString);
-                        //Microsoft.SqlServer.Management.Smo.Server server = new Microsoft.SqlServer.Management.Smo.Server(new Microsoft.SqlServer.Management.Common.ServerConnection(sqlConnection));
-                        //if (!(server.VersionMajor > 12))
-                        //{
-                        //    errormsg = string.Format("The SQL SERVER version is 2012 or later require.");
-                        //    if (!string.IsNullOrEmpty(errormsg))
-                        //        return Json(new { isSuccess = false, msg = errormsg }, JsonRequestBehavior.AllowGet);
-                        //}
 
                         if (model.SqlServerCreateDatabase)
                         {
@@ -263,7 +240,7 @@ namespace WhiteBrandSite.Areas.runsetup.Controllers
                             {
                                 //create database
                                 var errorCreatingDatabase = CreateDatabase(connectionString, "SQL_Latin1_General_CP1_CI_AS");
-                                if (!String.IsNullOrEmpty(errorCreatingDatabase))
+                                if (!string.IsNullOrEmpty(errorCreatingDatabase))
                                     throw new Exception(errorCreatingDatabase);
 
                                 //Database cannot be created sometimes. Weird! Seems to be Entity Framework issue
@@ -281,7 +258,7 @@ namespace WhiteBrandSite.Areas.runsetup.Controllers
                     else
                     {
                         //SQL CE
-                        string databaseFileName = "WBShrink.sdf";
+                        string databaseFileName = "WBPortal.sdf";
                         string databasePath = @"|DataDirectory|\" + databaseFileName;
                         connectionString = "Data Source=" + databasePath + ";Persist Security Info=False";
 
@@ -308,6 +285,7 @@ namespace WhiteBrandSite.Areas.runsetup.Controllers
                 }
                 catch (Exception exception)
                 {
+                    Logger.Log_Exception(exception);
                     //clear provider settings if something got wrong
                     SaveDBSettings(model, false);
                     return Json(new { isSuccess = false, msg = string.Format("Setup failed: {0}", exception.Message) }, JsonRequestBehavior.AllowGet);
@@ -321,9 +299,12 @@ namespace WhiteBrandSite.Areas.runsetup.Controllers
         [HttpGet]
         public ActionResult paymentsettings()
         {
+         
             var re = GotoNextStep((int)ConfigurationStage.PaymentSetting);
             if (re != null)
                 return re;
+
+           
 
             return View();
         }
@@ -380,7 +361,7 @@ namespace WhiteBrandSite.Areas.runsetup.Controllers
                             pg.IsTestMode = model.paymentmodel.EnableTestMode;
                             pg.KeyFilePath = string.Empty;
                             pg.LiveURL = "https://secure.authorize.net/gateway/transact.dll";
-                            pg.TestURL = "https://secure.authorize.net/gateway/transact.dll";
+                            pg.TestURL = "https://test.authorize.net/gateway/transact.dll";
                             pg.SiteID = 1;
                             pg.Name = PGInstances.AuthorizeNet.ToString();
                             pg.LoginID = model.paymentmodel.AuthorizeNetloginID;
@@ -397,7 +378,9 @@ namespace WhiteBrandSite.Areas.runsetup.Controllers
 
                             db.SaveChanges();
                         }
+
                         catch (Exception ex)
+
                         {
                             return Json(new { isSuccess = false, msg = "Opps! Error in Payment settings saved. Please try again!" }, JsonRequestBehavior.AllowGet);
                         }
@@ -428,7 +411,9 @@ namespace WhiteBrandSite.Areas.runsetup.Controllers
                             db.SaveChanges();
                             UpdateConfigStage(db, ConfigurationStage.PaymentSetting);
                         }
+
                         catch (Exception ex)
+
                         {
                             return Json(new { isSuccess = false, msg = "Opps! Error in SMTP settings saved. Please try again!" }, JsonRequestBehavior.AllowGet);
                         }
@@ -488,9 +473,9 @@ namespace WhiteBrandSite.Areas.runsetup.Controllers
                             objUser.CompanyName = model.CompanyName;
                             objUser.AlternativeEmail = string.Empty;
                             objUser.Email = model.Email;
-                            objUser.PasswordSalt = WBSSLStore.Web.Helpers.WBHelper.CreateSalt();
-                            objUser.PasswordHash = WBSSLStore.Web.Helpers.WBHelper.CreatePasswordHash(model.Password, objUser.PasswordSalt);
-                            objUser.ConfirmPassword = WBSSLStore.Web.Helpers.WBHelper.CreatePasswordHash(model.ConfirmPassword, objUser.PasswordSalt);
+                            objUser.PasswordSalt = WBHelper.CreateSalt();
+                            objUser.PasswordHash = WBHelper.CreatePasswordHash(model.Password, objUser.PasswordSalt);
+                            objUser.ConfirmPassword = WBHelper.CreatePasswordHash(model.ConfirmPassword, objUser.PasswordSalt);
                             objUser.RecordStatus = RecordStatus.ACTIVE;
                             objUser.RecordStatusID = (int)RecordStatus.ACTIVE;
                             objUser.UserTypeID = (int)UserType.ADMIN;
@@ -536,6 +521,7 @@ namespace WhiteBrandSite.Areas.runsetup.Controllers
                     }
                     return Json(new { isSuccess = true, url = Url.Action("generalsettings", "install", new { area = "runsetup" }), msg = "" }, JsonRequestBehavior.AllowGet);
                 }
+
                 catch (Exception ex)
                 {
                     return Json(new { isSuccess = false, msg = "Opps! Error in admin user saved. Please try again!" }, JsonRequestBehavior.AllowGet);
@@ -597,18 +583,23 @@ namespace WhiteBrandSite.Areas.runsetup.Controllers
                         SaveSettingsRow(item, db, SettingConstants.CURRENT_SITESUPPORT_EMAI_KEY, model.SupportEmail, siteid);
 
                         item = db.Settings.Where(ss => ss.Key.ToLower() == SettingConstants.DEFAULT_CURRANCY_CODE).FirstOrDefault();
-                        SaveSettingsRow(item, db, SettingConstants.DEFAULT_CURRANCY_CODE, model.BillingCurrency, siteid);
-
-
+                        SaveSettingsRow(item, db, SettingConstants.DEFAULT_CURRANCY_CODE, model.BillingCurrency, siteid);                        
+                        
                         if (site != null)
                         {
                             site.Alias = model.DomainName;
                             db.SaveChanges();
                         }
-
+                        if (!string.IsNullOrEmpty(model.SupportEmail))
+                        {
+                            SqlParameter[] pParam = new SqlParameter[2];
+                            pParam[0] = new SqlParameter("@fromEmail", model.SupportEmail);
+                            pParam[1] = new SqlParameter("@SiteID", siteid);
+                            db.Database.ExecuteSqlCommand("UPDATE dbo.EmailTemplates SET [From] = @fromEmail WHERE SiteID = 0 and isactive = 1", pParam);
+                        }
 
                         List<PageUrl> productslugs = GeneralHelper.GetProductDetailSlugs();
-
+                        int res = db.Database.ExecuteSqlCommand("INSERT INTO dbo.SiteLanguages (SiteID,[LangID]) SELECT @SiteID,ID FROM dbo.Languages WHERE   RecordStatusID = 1", new SqlParameter("@SiteID", siteid));
 
                         CMSPage objCmsPage = null;
                         int cnt = 0;
@@ -621,7 +612,7 @@ namespace WhiteBrandSite.Areas.runsetup.Controllers
                             objCmsPage = new CMSPage();
                             objCmsPage.Pages = new Pages();
                             objCmsPage.Pages.BrandID = 99;
-                            objCmsPage.Pages.Caption = objItem.SlugUrl;
+                            objCmsPage.Pages.Caption = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(objItem.Title);
                             objCmsPage.Pages.DisplayOrder = cnt + 1;
                             objCmsPage.Pages.EndDate = DateTime.Now.AddYears(10);
                             objCmsPage.Pages.PageStatus = PageStatus.HideInNavigation;
@@ -690,9 +681,12 @@ namespace WhiteBrandSite.Areas.runsetup.Controllers
                     }
                     return Json(new { isSuccess = true, url = Url.Action("Index", "home", new { area = "admin" }) }, JsonRequestBehavior.AllowGet);
                 }
+
                 catch (Exception ex)
                 {
+                    new Logger().LogException(ex);
                     return Json(new { isSuccess = false, msg = "Error on Save data. Please Try again" }, JsonRequestBehavior.AllowGet);
+                    
                 }
 
             }
@@ -700,22 +694,7 @@ namespace WhiteBrandSite.Areas.runsetup.Controllers
         }
         #endregion
 
-        //private static List<PageUrl> GetProductDetailSlugs()
-        //{
 
-
-        //    System.Xml.Linq.XDocument xdoc = System.Xml.Linq.XDocument.Load(AppDomain.CurrentDomain.GetData("DataDirectory").ToString() + "\\Configuration\\pageconfiguration.xml");
-        //    return (from lv1 in xdoc.Descendants("ProductPage")
-        //            select new PageUrl
-        //             {
-        //                 Description = lv1.Descendants("Description").FirstOrDefault() != null ? lv1.Descendants("Description").FirstOrDefault().Value.Replace("\n", "").Replace("\r", "").Trim() : "",
-        //                 Keywords = lv1.Descendants("Keywords").FirstOrDefault() != null ? lv1.Descendants("Keywords").FirstOrDefault().Value.Replace("\n", "").Replace("\r", "").Trim() : "",
-        //                 SlugUrl = lv1.Descendants("InternalProductCode").Select(x => x.Attribute("data-url").Value.Replace("\n", "").Replace("\r", "").Trim()).FirstOrDefault(),
-        //                 ProductCode = lv1.Descendants("InternalProductCode").FirstOrDefault() != null ? lv1.Descendants("InternalProductCode").FirstOrDefault().Value.Replace("\n", "").Replace("\r", "").Trim() : "",
-        //                 Title = lv1.Descendants("Title").FirstOrDefault() != null ? lv1.Descendants("Title").FirstOrDefault().Value.Replace("\n", "").Replace("\r", "").Trim() : ""
-        //             }).ToList();
-
-        //}
 
         #region Custom Method
         private ActionResult GotoNextStep(int? currentstage)
@@ -766,7 +745,7 @@ namespace WhiteBrandSite.Areas.runsetup.Controllers
                             return RedirectToAction("paymentsettings");
                     }
                     else
-                        path = "paymentsettings";
+                        path = "installindex";
                     //return RedirectToAction("paymentsettings");
                 }
             }
@@ -774,6 +753,24 @@ namespace WhiteBrandSite.Areas.runsetup.Controllers
         }
         public Contract GetClientContract(int SiteID)
         {
+
+            Contract resellerContract = db.Contracts.Where(cn => cn.SiteID == SiteID && cn.isAutoCalculation == false && cn.isForReseller == true && cn.ContractLevel == null && cn.RecordStatusID != (int)RecordStatus.DELETED).OrderBy(cn => cn.ID).FirstOrDefault();
+
+            if (resellerContract == null)
+            {
+                resellerContract = new Contract();
+                resellerContract.ContractLevel = null;
+                resellerContract.ContractName = "Reseller Default Contract";
+                resellerContract.isAutoCalculation = false;
+                resellerContract.isForReseller = true;
+                resellerContract.RecordStatusID = (int)RecordStatus.ACTIVE;
+                resellerContract.SiteID = SiteID;
+
+                db.Contracts.Add(resellerContract);
+                db.SaveChanges();
+
+            }
+
             Contract objContract = db.Contracts.Where(cn => cn.SiteID == SiteID && cn.isAutoCalculation == false && cn.isForReseller == false && cn.ContractLevel == null).FirstOrDefault();
             if (objContract != null)
                 return objContract;
@@ -790,8 +787,10 @@ namespace WhiteBrandSite.Areas.runsetup.Controllers
                 db.SaveChanges();
                 return objContract;
             }
+
+           
         }
-        private WBSSLStore.Domain.User GetDefaultAdminUser(WBSSLStoreDb db)
+        private User GetDefaultAdminUser(WBSSLStoreDb db)
         {
             User objUser = db.Users.Where(x => x.RecordStatusID.Equals((int)RecordStatus.ACTIVE) && x.UserTypeID.Equals((int)UserType.ADMIN)).FirstOrDefault();
             return objUser;
@@ -820,46 +819,7 @@ namespace WhiteBrandSite.Areas.runsetup.Controllers
             }
             return true;
         }
-        //private void InsertDefaultData()
-        //{
-
-        //    using (db)
-        //    {
-        //        Site obj = GetCurrentSite(db);
-        //        if (obj == null)
-        //        {
-        //            obj = new Site();
-        //            obj.Alias = "";
-        //            obj.CName = HttpContext.Request.Url.Host;
-        //            obj.DateCreated = DateTime.Now;
-        //            obj.DateModified = DateTime.Now;
-        //            obj.isActive = true;
-        //            obj.APIisInTest = true;
-        //            obj.APIPartnerCode = "xxx";
-        //            obj.APIPassword = "xxx";
-        //            obj.APIUsername = "xxx";
-        //            obj.APIAuthToken = "xxx";
-        //            db.Sites.Add(obj);
-        //            db.SaveChanges();
-        //        }
-
-        //        Audit objAudit = new Audit();
-        //        objAudit.ByUserID = 0;
-        //        objAudit.DateCreated = DateTime.Now;
-        //        objAudit.DateModified = DateTime.Now;
-        //        objAudit.HttpHeaderDump = "SYSTEM";
-        //        objAudit.IP = Request.UserHostAddress;
-        //        db.Audits.Add(objAudit);
-        //        db.SaveChanges();
-
-        //        User objUser = GetDefaultAdminUser(db);
-        //        if (objUser == null)
-        //            CreateDefaultUser(db, obj.ID, objUser);
-
-        //        //WBSSLStore.Web.Helpers.Caching.SiteCacher.GetSite(obj.ID);
-        //    }
-
-        //}
+        
         private void SaveSettingsRow(SiteSettings item, WBSSLStoreDb db, string Key, string Value, int siteid)
         {
 
@@ -912,9 +872,9 @@ namespace WhiteBrandSite.Areas.runsetup.Controllers
                 u.Email = "admin@admin.com";
                 u.CompanyName = "System";
                 u.AlternativeEmail = "admin@admin.com";
-                u.PasswordSalt = WBSSLStore.Web.Helpers.WBHelper.CreateSalt();
-                u.PasswordHash = WBSSLStore.Web.Helpers.WBHelper.CreatePasswordHash("system20167", u.PasswordSalt);
-                u.ConfirmPassword = WBSSLStore.Web.Helpers.WBHelper.CreatePasswordHash("system20167", u.PasswordSalt);
+                u.PasswordSalt = WBHelper.CreateSalt();
+                u.PasswordHash =WBHelper.CreatePasswordHash("system20167", u.PasswordSalt);
+                u.ConfirmPassword = WBHelper.CreatePasswordHash("system20167", u.PasswordSalt);
                 u.RecordStatus = RecordStatus.ACTIVE;
                 u.RecordStatusID = (int)RecordStatus.ACTIVE;
                 u.UserTypeID = (int)UserType.ADMIN;
@@ -1059,9 +1019,7 @@ namespace WhiteBrandSite.Areas.runsetup.Controllers
                                 cmd.ExecuteNonQuery();
                             }
 
-                            //cmd.CommandText = "DefalutProcedures";
-                            //cmd.CommandType = CommandType.StoredProcedure;
-                            //cmd.ExecuteNonQuery();
+                          
                             connection.Close();
                         }
                     }
@@ -1082,13 +1040,6 @@ namespace WhiteBrandSite.Areas.runsetup.Controllers
         public static string readSPs(int num)
         {
 
-            //string path = AppDomain.CurrentDomain.GetData("DataDirectory").ToString() + "\\Configuration\\defalutProc.txt";
-            //if (!System.IO.File.Exists(path))
-            //    return "";
-            //else
-            //{
-            //    return System.IO.File.ReadAllText(path);
-            //}
 
             string Query = string.Empty;
 
@@ -1434,16 +1385,7 @@ namespace WhiteBrandSite.Areas.runsetup.Controllers
                 model.Month_36.isRecommended = false;
                 model.Month_36.Product = model.product;
             }
-            if (model.Month_48 != null)
-            {
-                model.Month_48.isRecommended = false;
-                model.Month_48.Product = model.product;
-            }
-            if (model.Month_60 != null)
-            {
-                model.Month_60.isRecommended = false;
-                model.Month_60.Product = model.product;
-            }
+          
             if (isRecommended == 12)
                 model.Month_12.isRecommended = true;
 
@@ -1452,12 +1394,6 @@ namespace WhiteBrandSite.Areas.runsetup.Controllers
 
             if (isRecommended == 36)
                 model.Month_36.isRecommended = true;
-
-            if (isRecommended == 48)
-                model.Month_48.isRecommended = true;
-
-            if (isRecommended == 60)
-                model.Month_60.isRecommended = true;
 
             ProductPricing pp = null;
             if (model.Month_12 != null && (model.Month_12.SalesPrice > 0 || model.Month_12.ID > 0 || model.product.InternalProductCode.Equals("freessl", StringComparison.OrdinalIgnoreCase)))
@@ -1484,16 +1420,11 @@ namespace WhiteBrandSite.Areas.runsetup.Controllers
             {
                 if (model.Month_24.ID > 0 && model.Month_24.SalesPrice > 0)
                 {
-                    //pp = model.Month_12;
-                    //db.SaveChanges();
                     AddUpdatePricing(model.Month_24, pp, 2);
                 }
                 else if (model.Month_24.ID > 0 && model.Month_24.SalesPrice <= 0)
                 {
-                    //pp = db.ProductPricings.Where(x => x.ID == model.Month_12.ID).FirstOrDefault();
-                    //db.ProductPricings.Remove(pp);
-                    //db.SaveChanges();
-                    AddUpdatePricing(model.Month_24, pp, 3);
+                     AddUpdatePricing(model.Month_24, pp, 3);
                 }
                 else
                 {
@@ -1513,26 +1444,7 @@ namespace WhiteBrandSite.Areas.runsetup.Controllers
                     AddUpdatePricing(model.Month_36, pp, 1);
             }
 
-            if (model.Month_48 != null && (model.Month_48.SalesPrice > 0 || model.Month_48.ID > 0))
-            {
-                if (model.Month_48.ID > 0 && model.Month_48.SalesPrice > 0)
-                    AddUpdatePricing(model.Month_48, pp, 2);
-                else if (model.Month_48.ID > 0 && model.Month_48.SalesPrice <= 0)
-                    AddUpdatePricing(model.Month_48, pp, 3);
-                else
-                    AddUpdatePricing(model.Month_48, pp, 1);
-            }
-
-            if (model.Month_60 != null && (model.Month_60.SalesPrice > 0 || model.Month_60.ID > 0))
-            {
-                if (model.Month_60.ID > 0 && model.Month_60.SalesPrice > 0)
-                    AddUpdatePricing(model.Month_60, pp, 2);
-                else if (model.Month_60.ID > 0 && model.Month_60.SalesPrice <= 0)
-                    AddUpdatePricing(model.Month_60, pp, 3);
-                else
-                    AddUpdatePricing(model.Month_60, pp, 1);
-            }
-
+          
             return true;
         }
 
@@ -1562,13 +1474,8 @@ namespace WhiteBrandSite.Areas.runsetup.Controllers
                     model.Month_12 = new ProductPricing() { NumberOfMonths = (int)SettingConstants.NumberOfMonths.Month12, RecordStatusID = (int)RecordStatus.ACTIVE, SiteID = site.ID, ContractID = ContractID };
                     model.Month_24 = new ProductPricing() { NumberOfMonths = (int)SettingConstants.NumberOfMonths.Month24, RecordStatusID = (int)RecordStatus.ACTIVE, SiteID = site.ID, ContractID = ContractID };
                     model.Month_36 = new ProductPricing() { NumberOfMonths = (int)SettingConstants.NumberOfMonths.Month36, RecordStatusID = (int)RecordStatus.ACTIVE, SiteID = site.ID, ContractID = ContractID };
-                    model.Month_48 = new ProductPricing() { NumberOfMonths = (int)SettingConstants.NumberOfMonths.Month48, RecordStatusID = (int)RecordStatus.ACTIVE, SiteID = site.ID, ContractID = ContractID };
-                    model.Month_60 = new ProductPricing() { NumberOfMonths = (int)SettingConstants.NumberOfMonths.Month60, RecordStatusID = (int)RecordStatus.ACTIVE, SiteID = site.ID, ContractID = ContractID };
+                  
                 }
-
-               
-                    
-
 
                 if (apiProduct.ProductCode.Equals("freessl") && (apiProduct.Pricings.Where(pr => pr.NumberOfMonth == 1).FirstOrDefault() != null))
                 {
@@ -1582,8 +1489,8 @@ namespace WhiteBrandSite.Areas.runsetup.Controllers
                     else
                         model.Month_12.SalesPrice = 0;
                     model.Month_12.SiteID = site.ID;
-                    if (apiPrice.NumberOfMonth == 1)                 
-                         model.Month_12.NumberOfMonths = 1;
+                    if (apiPrice.NumberOfMonth == 1)
+                        model.Month_12.NumberOfMonths = 1;
                 }
 
                 if (apiProduct.Pricings.Where(pr => pr.NumberOfMonth == 12).FirstOrDefault() != null)
@@ -1598,7 +1505,7 @@ namespace WhiteBrandSite.Areas.runsetup.Controllers
                     else
                         model.Month_12.SalesPrice = 0;
                     model.Month_12.SiteID = site.ID;
-                   
+
                 }
 
                 if (apiProduct.Pricings.Where(pr => pr.NumberOfMonth == 24).FirstOrDefault() != null)
@@ -1629,33 +1536,7 @@ namespace WhiteBrandSite.Areas.runsetup.Controllers
                     model.Month_36.SiteID = site.ID;
                 }
 
-                if (model.Month_48 != null && apiProduct.Pricings.Where(pr => pr.NumberOfMonth == 48).FirstOrDefault() != null)
-                {
-                    var apiPrice = apiProduct.Pricings.Where(pr => pr.NumberOfMonth == 48).FirstOrDefault();
-                    model.Month_48.AdditionalSanPrice = apiPrice.AdditionalSanPrice + ((apiPrice.AdditionalSanPrice * Margin) / 100);
-                    model.Month_48.ContractID = ContractID;
-                    model.Month_48.RecordStatusID = (int)RecordStatus.ACTIVE;
-                    model.Month_48.RetailPrice = apiPrice.SRP;
-                    if (apiPrice.Price > 0)
-                        model.Month_48.SalesPrice = apiPrice.Price + ((apiPrice.Price * Margin) / 100);
-                    else
-                        model.Month_48.SalesPrice = 0;
-                    model.Month_48.SiteID = site.ID;
-                }
-
-                if (apiProduct.Pricings.Where(pr => pr.NumberOfMonth == 60).FirstOrDefault() != null)
-                {
-                    var apiPrice = apiProduct.Pricings.Where(pr => pr.NumberOfMonth == 60).FirstOrDefault();
-                    model.Month_60.AdditionalSanPrice = apiPrice.AdditionalSanPrice + ((apiPrice.AdditionalSanPrice * Margin) / 100);
-                    model.Month_60.ContractID = ContractID;
-                    model.Month_60.RecordStatusID = (int)RecordStatus.ACTIVE;
-                    model.Month_60.RetailPrice = apiPrice.SRP;
-                    if (apiPrice.Price > 0)
-                        model.Month_60.SalesPrice = apiPrice.Price + ((apiPrice.Price * Margin) / 100);
-                    else
-                        model.Month_60.SalesPrice = 0;
-                    model.Month_60.SiteID = site.ID;
-                }
+               
                 int isRecommended = 12;
                 if (model.Month_36 != null && model.Month_36.SalesPrice > 0)
                     isRecommended = 36;
@@ -1663,10 +1544,11 @@ namespace WhiteBrandSite.Areas.runsetup.Controllers
                     isRecommended = 24;
 
                 AddEditProductPricing(model, isRecommended, site, false);
-                //_logger.Log(model.product.ProductName + ": Imported Successfully.", Logger.LogType.INFO);
-                return model.product.ProductName + ": Successfully imported<br/>";
+               return model.product.ProductName + ": Successfully imported<br/>";
             }
+
             catch (Exception ex)
+
             {
 
                 return model.product.ProductName + ": Error while import<br/>";
@@ -1684,24 +1566,23 @@ namespace WhiteBrandSite.Areas.runsetup.Controllers
             Contract resellerContract = db.Contracts.Where(cn => cn.SiteID == site.ID && cn.isAutoCalculation == false && cn.isForReseller == true && cn.ContractLevel == null && cn.RecordStatusID != (int)RecordStatus.DELETED).OrderBy(cn => cn.ID).FirstOrDefault();
 
             if (resellerContract != null)
-                resellerProductPricing = db.ProductPricings.Where(pp => pp.ContractID == resellerContract.ID && pp.SiteID == site.ID).FirstOrDefault();
+                resellerProductPricing = db.ProductPricings.Where(pp => pp.ContractID == resellerContract.ID && pp.SiteID == site.ID).FirstOrDefault();            
 
             foreach (WBSSLStore.Gateways.RestAPIModels.Response.ALLProduct apiProduct in ProductList)
             {
                 try
                 {
+
                     ProductPricingModel model = new ProductPricingModel();
                     var Brands = db.Brands.Where(x => x.isActive).ToList();
                     var sl = productslugs.Where(x => x.ProductCode.Equals(apiProduct.ProductCode, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
-                    //var productavailablity = db.Products.Where(x => x.RecordStatusID == (int)RecordStatus.ACTIVE && x.InternalProductCode.Equals(apiProduct.ProductCode, StringComparison.OrdinalIgnoreCase)).FirstOrDefault();
+                   
 
                     var productavailablity = (from pa in db.ProductAvailablities join p in db.Products on pa.ProductID equals p.ID where pa.SiteID.Equals(site.ID) && p.RecordStatusID == (int)RecordStatus.ACTIVE && p.InternalProductCode.Equals(apiProduct.ProductCode, StringComparison.OrdinalIgnoreCase) select pa).FirstOrDefault();
-
-                    //var productavailablity = db.ProductAvailablities.Where(pro => pro.Product.InternalProductCode.Equals(apiProduct.ProductCode, StringComparison.OrdinalIgnoreCase) && pro.SiteID == site.ID && pro.Product.RecordStatusID != (int)RecordStatus.DELETED).FirstOrDefault();
+                                      
 
                     if (productavailablity == null)
                     {
-
                         //Create Product Row           
                         Product objProduct = new Product();
                         apiProduct.Brand = apiProduct.Brand.ToLower() == "verisign" ? "symantec" : apiProduct.Brand;
@@ -1728,10 +1609,16 @@ namespace WhiteBrandSite.Areas.runsetup.Controllers
                         objAvailablity.isActive = true;
                         objAvailablity.Product = objProduct;
                         objAvailablity.SiteID = site.ID;
-                        model.productAvailablity = objAvailablity;
+                        if(objAvailablity.ID.Equals(0) && objProduct.ID.Equals(0))
+                        {
+                            db.Products.Add(objProduct);
+                            db.ProductAvailablities.Add(objAvailablity);
+                        }
 
-                        db.Products.Add(objProduct);
+                        model.productAvailablity = objAvailablity;
                         model.product = objProduct;
+
+
                         SuccessProduct.Append(SetMarginalPrice(model, apiProduct, site, Margin, ClientContract.ID, false));
 
                         //Add reseller pricing for default reseller contract
@@ -1761,7 +1648,9 @@ namespace WhiteBrandSite.Areas.runsetup.Controllers
                         }
                     }
                 }
+
                 catch (Exception ex)
+
                 {
                 }
             }

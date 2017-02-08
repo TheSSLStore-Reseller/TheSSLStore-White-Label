@@ -1,10 +1,9 @@
 ﻿@using WBSSLStore.Domain;
-@using WBSSLStore.Web.Helpers.PopupForm
+
 @model WBSSLStore.Service.ViewModels.StaticPageViewModel
 @{
-    ViewBag.Title = "Comodo";
+    
     ViewBag.version = WBSSLStore.Web.Helpers.Caching.SiteCacher.ResourceVersion();
-    string UserName = Convert.ToString(ViewBag.UserName);
     var productdetails = WBSSLStore.Web.Helpers.WBHelper.GetProductDetailRows();
 }
 @section headerTags{
@@ -14,7 +13,7 @@
     @System.Web.Optimization.Styles.Render("/bundales/tabcss?v=" + ViewBag.version)
 }
 @section Jscripts{
-    @System.Web.Optimization.Scripts.Render("/bundales/wb/scripts?v=" + ViewBag.version)
+    
 }
 @Html.Partial("_banner", new Tuple<string, string>("", "Comodo"))
 <div class="content">
@@ -36,7 +35,3 @@
         </div>
     </div>
 </div>
-
-@section PopupScript{
-    @Html.MakePopupForm("Edit", new[] { "id", "ppid" }, controller: "ShoppingCart", title: @WBSSLStore.Resources.GeneralMessage.Message.Add_To_Cart_Caption, successFunction: "EditSuccess", height: 450, width: 700, refreshOnSuccess: false, okText: @WBSSLStore.Resources.GeneralMessage.Message.SAVE_btn)
-}

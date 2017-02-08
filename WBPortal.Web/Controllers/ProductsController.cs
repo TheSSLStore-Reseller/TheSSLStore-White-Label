@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Security;
 using WBSSLStore.Data.Infrastructure;
 using WBSSLStore.Domain;
@@ -152,8 +148,30 @@ namespace WhiteBrandSite.Controllers
         [Route("symantec/secure-site-pro-wildcard", Name = "product_securesiteprowildcard")]
         public ActionResult SymantecSecureSiteProWildcard()
         {
+            //secure-site-pro-multi-domain-wildcard
             SetPricing("/symantec/secure-site-pro-wildcard"); _viewModel.CMSPage = _service.GetPageMetadata(Site.ID, WBHelper.CurrentLangID(), "/symantec/secure-site-pro-wildcard"); return View(_viewModel);
         }
+
+        [Route("symantec/secure-site-pro-multi-domain-wildcard", Name = "product_securesitepromdwc")]
+        public ActionResult securesitepromdwc()
+        {
+            //secure-site-pro-multi-domain-wildcard
+            SetPricing("/symantec/secure-site-pro-multi-domain-wildcard"); _viewModel.CMSPage = _service.GetPageMetadata(Site.ID, WBHelper.CurrentLangID(), "/symantec/secure-site-pro-multi-domain-wildcard"); return View(_viewModel);
+        }
+
+        [Route("symantec/secure-site-pro-sha-1-private", Name = "product_securesiteprosha1")]
+        public ActionResult securesitepro_sha1()
+        {
+            //secure-site-pro-multi-domain-wildcard
+            SetPricing("/symantec/secure-site-pro-sha-1-private"); _viewModel.CMSPage = _service.GetPageMetadata(Site.ID, WBHelper.CurrentLangID(), "/symantec/secure-site-pro-sha-1-private"); return View(_viewModel);
+        }
+
+         [Route("symantec/secure-site-multi-domain-wildcard", Name = "product_securemdwc")]
+        public ActionResult securesitemdwc()
+        {
+            SetPricing("/symantec/secure-site-multi-domain-wildcard"); _viewModel.CMSPage = _service.GetPageMetadata(Site.ID, WBHelper.CurrentLangID(), "/symantec/secure-site-multi-domain-wildcard"); return View(_viewModel);
+        }
+        
         #endregion
 
         #region GeoTrust Products
@@ -206,10 +224,23 @@ namespace WhiteBrandSite.Controllers
         {
             SetPricing("/geotrust/web-site-anti-malware-scan"); _viewModel.CMSPage = _service.GetPageMetadata(Site.ID, WBHelper.CurrentLangID(), "/geotrust/web-site-anti-malware-scan"); return View(_viewModel);
         }
+
+        [Route("geotrust/basic-web-site-anti-malware-scan", Name = "malwarebasic")]
+        public ActionResult GeoTrustBasicAntiMalwareScan()
+        {
+            SetPricing("/geotrust/basic-web-site-anti-malware-scan"); _viewModel.CMSPage = _service.GetPageMetadata(Site.ID, WBHelper.CurrentLangID(), "/geotrust/basic-web-site-anti-malware-scan"); return View(_viewModel);
+        }
+
         [Route("geotrust/quickssl-premium-wildcard", Name = "product_quicksslpremiumwildcard")]
         public ActionResult GeoTrustQuickSSLPremiumWildcard()
         {
             SetPricing("/geotrust/quickssl-premium-wildcard"); _viewModel.CMSPage = _service.GetPageMetadata(Site.ID, WBHelper.CurrentLangID(), "/geotrust/quickssl-premium-wildcard"); return View(_viewModel);
+        }
+
+        [Route("geotrust/true-businessid-with-multi-domain-wildcard", Name = "product_truebizmdwc")]
+        public ActionResult GeoTrustQuickTrueBizMDWC() 
+        {
+            SetPricing("/geotrust/true-businessid-with-multi-domain-wildcard"); _viewModel.CMSPage = _service.GetPageMetadata(Site.ID, WBHelper.CurrentLangID(), "/geotrust/true-businessid-with-multi-domain-wildcard"); return View(_viewModel);
         }
         #endregion
 
@@ -256,6 +287,13 @@ namespace WhiteBrandSite.Controllers
         {
             SetPricing("/thawte/ssl123-wildcard"); _viewModel.CMSPage = _service.GetPageMetadata(Site.ID, WBHelper.CurrentLangID(), "/thawte/ssl123-wildcard"); return View(_viewModel);
         }
+
+        [Route("thawte/ssl-webserver-multi-domain-wildcard", Name = "product_sslwbmdwc")]
+        public ActionResult ThawteWebserver_multi_domain_wildcard()
+        {
+            SetPricing("/thawte/ssl-webserver-multi-domain-wildcard"); _viewModel.CMSPage = _service.GetPageMetadata(Site.ID, WBHelper.CurrentLangID(), "/thawte/ssl-webserver-multi-domain-wildcard"); return View(_viewModel);
+        }
+
         #endregion
 
         #region Comodo Products
@@ -332,35 +370,55 @@ namespace WhiteBrandSite.Controllers
         [Route("comodo/wildcardssl", Name = "product_wildcardssl")]
         public ActionResult ComodoWildcardSSL() { SetPricing("/comodo/wildcardssl"); _viewModel.CMSPage = _service.GetPageMetadata(Site.ID, WBHelper.CurrentLangID(), "/comodo/wildcardssl"); return View(_viewModel); }
 
-        [Route("Certum/BasicID", Name = "product_CertumBasicID")]
-        public ActionResult CertumBasicID() { SetPricing("/"); _viewModel.CMSPage = _service.GetPageMetadata(Site.ID, WBHelper.CurrentLangID(), ""); return View(_viewModel); }
-
-        [Route("Certum/CommercialSSL", Name = "product_CertumCommercialSSL")]
-        public ActionResult CertumCommercialSSL() { SetPricing("/"); _viewModel.CMSPage = _service.GetPageMetadata(Site.ID, WBHelper.CurrentLangID(), ""); return View(_viewModel); }
-
-        [Route("Certum/CommercialSSLWildCard", Name = "product_CertumCommercialSSLWildCard")]
-        public ActionResult CertumCommercialSSLWildCard() { SetPricing("/"); _viewModel.CMSPage = _service.GetPageMetadata(Site.ID, WBHelper.CurrentLangID(), ""); return View(_viewModel); }
-
-        [Route("Certum/EnterpriseID", Name = "product_CertumEnterpriseID")]
-        public ActionResult CertumEnterpriseID() { SetPricing("/"); _viewModel.CMSPage = _service.GetPageMetadata(Site.ID, WBHelper.CurrentLangID(), ""); return View(_viewModel); }
-
-        [Route("Certum/ProfessionalID", Name = "product_CertumProfessionalID")]
-        public ActionResult CertumProfessionalID() { SetPricing("/"); _viewModel.CMSPage = _service.GetPageMetadata(Site.ID, WBHelper.CurrentLangID(), ""); return View(_viewModel); }
-
-        [Route("Certum/TrustedSSL", Name = "product_CertumTrustedSSL")]
-        public ActionResult CertumTrustedSSL() { SetPricing("/"); _viewModel.CMSPage = _service.GetPageMetadata(Site.ID, WBHelper.CurrentLangID(), ""); return View(_viewModel); }
-
-        [Route("Certum/TrustedSSLWildcard", Name = "product_CertumTrustedSSLWildcard")]
-        public ActionResult CertumTrustedSSLWildcard() { SetPricing("/"); _viewModel.CMSPage = _service.GetPageMetadata(Site.ID, WBHelper.CurrentLangID(), ""); return View(_viewModel); }
+        [Route("comodo/web-inspector-starter", Name = "product_webinspectorstarter")]
+        public ActionResult webinspectorstarter() { SetPricing("/comodo/web-inspector-starter"); _viewModel.CMSPage = _service.GetPageMetadata(Site.ID, WBHelper.CurrentLangID(), "/comodo/web-inspector-starter"); return View(_viewModel); }
 
 
+        [Route("comodo/web-inspector-plus", Name = "product_webinspectorplus")]
+        public ActionResult webinspectorplus() { SetPricing("/comodo/web-inspector-plus"); _viewModel.CMSPage = _service.GetPageMetadata(Site.ID, WBHelper.CurrentLangID(), "/comodo/web-inspector-plus"); return View(_viewModel); }
 
 
+        [Route("comodo/web-inspector-premium", Name = "product_webinspectorpremium")]
+        public ActionResult webinspectorpremium() { SetPricing("/comodo/web-inspector-premium"); _viewModel.CMSPage = _service.GetPageMetadata(Site.ID, WBHelper.CurrentLangID(), "/comodo/web-inspector-premium"); return View(_viewModel); }
+
+        [Route("comodo/web-inspector-enterprise", Name = "product_webinspectorenterprise")]
+        public ActionResult webinspectorenterprise() { SetPricing("/comodo/web-inspector-enterprise"); _viewModel.CMSPage = _service.GetPageMetadata(Site.ID, WBHelper.CurrentLangID(), "/comodo/web-inspector-enterprise"); return View(_viewModel); }
+
+        [Route("comodo/personal-authentication-basic-certificate", Name = "product_pacbasic")]
+        public ActionResult pacbasic() { SetPricing("/comodo/personal-authentication-basic-certificate"); _viewModel.CMSPage = _service.GetPageMetadata(Site.ID, WBHelper.CurrentLangID(), "/comodo/personal-authentication-basic-certificate"); return View(_viewModel); }
 
 
+        [Route("comodo/personal-authentication-pro-certificate", Name = "product_pacpro")]
+        public ActionResult pacpro() { SetPricing("/comodo/personal-authentication-pro-certificate"); _viewModel.CMSPage = _service.GetPageMetadata(Site.ID, WBHelper.CurrentLangID(), "/comodo/personal-authentication-pro-certificate"); return View(_viewModel); }
 
 
+        [Route("comodo/personal-authentication-enterprise-certificate", Name = "product_pacenterprise")]
+        public ActionResult pacenterprise() { SetPricing("/comodo/personal-authentication-enterprise-certificate"); _viewModel.CMSPage = _service.GetPageMetadata(Site.ID, WBHelper.CurrentLangID(), "/comodo/personal-authentication-enterprise-certificate"); return View(_viewModel); }
 
+       
+        #endregion
+
+        #region "Certum"
+        [Route("certum/basic-id-certificate", Name = "product_CertumBasicID")]
+        public ActionResult CertumBasicID() { SetPricing("/certum/basic-id-certificate"); _viewModel.CMSPage = _service.GetPageMetadata(Site.ID, WBHelper.CurrentLangID(), "/certum/basic-id-certificate"); return View(_viewModel); }
+
+        [Route("certum/commercial-ssl", Name = "product_CertumCommercialSSL")]
+        public ActionResult CertumCommercialSSL() { SetPricing("/certum/commercial-ssl"); _viewModel.CMSPage = _service.GetPageMetadata(Site.ID, WBHelper.CurrentLangID(), "/certum/commercial-ssl"); return View(_viewModel); }
+
+        [Route("certum/commercial-ssl-wildcard-certificate", Name = "product_CertumCommercialSSLWildCard")]
+        public ActionResult CertumCommercialSSLWildCard() { SetPricing("/certum/commercial-ssl-wildcard-certificate"); _viewModel.CMSPage = _service.GetPageMetadata(Site.ID, WBHelper.CurrentLangID(), "/certum/commercial-ssl-wildcard-certificate"); return View(_viewModel); }
+
+        [Route("certum/enterprise-id-certificate", Name = "product_CertumEnterpriseID")]
+        public ActionResult CertumEnterpriseID() { SetPricing("/certum/enterprise-id-certificate"); _viewModel.CMSPage = _service.GetPageMetadata(Site.ID, WBHelper.CurrentLangID(), "/certum/enterprise-id-certificate"); return View(_viewModel); }
+
+        [Route("certum/professional-id-certificate", Name = "product_CertumProfessionalID")]
+        public ActionResult CertumProfessionalID() { SetPricing("/certum/enterprise-id-certificate"); _viewModel.CMSPage = _service.GetPageMetadata(Site.ID, WBHelper.CurrentLangID(), "/certum/enterprise-id-certificate"); return View(_viewModel); }
+
+        [Route("certum/trusted-ssl-certificate", Name = "product_CertumTrustedSSL")]
+        public ActionResult CertumTrustedSSL() { SetPricing("/certum/trusted-ssl-certificate"); _viewModel.CMSPage = _service.GetPageMetadata(Site.ID, WBHelper.CurrentLangID(), "/certum/trusted-ssl-certificate"); return View(_viewModel); }
+
+        [Route("certum/trusted-ssl-wildcard-certificate", Name = "product_CertumTrustedSSLWildcard")]
+        public ActionResult CertumTrustedSSLWildcard() { SetPricing("/certum/trusted-ssl-wildcard-certificate"); _viewModel.CMSPage = _service.GetPageMetadata(Site.ID, WBHelper.CurrentLangID(), "/certum/trusted-ssl-wildcard-certificate"); return View(_viewModel); }
 
         #endregion
     }

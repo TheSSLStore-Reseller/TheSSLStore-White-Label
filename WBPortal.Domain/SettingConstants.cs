@@ -176,9 +176,8 @@ namespace WBSSLStore.Domain
     public class CurrentSiteSettings : Disposable
     {
 
-        private string _currentcolor = "color1";
-        private string _currentlayout = "layout1";
-        private ICollection<WBSSLStore.Domain.SiteSettings> CurrentSettings;
+      
+        private ICollection<SiteSettings> CurrentSettings;
 
 
         private Site _Site;
@@ -238,7 +237,7 @@ namespace WBSSLStore.Domain
                 {
                     try
                     {
-                        return Convert.ToBoolean(CurrentSettings.Where(o => o.Key == WBSSLStore.Domain.SettingConstants.CURRENT_SITE_RUNWITH_HTTPS && o.SiteID == SiteID).FirstOrDefault().Value);
+                        return Convert.ToBoolean(CurrentSettings.Where(o => o.Key == SettingConstants.CURRENT_SITE_RUNWITH_HTTPS && o.SiteID == SiteID).FirstOrDefault().Value);
                     }
                     catch { }
                 }
@@ -256,7 +255,7 @@ namespace WBSSLStore.Domain
                 {
                     try
                     {
-                        return Convert.ToBoolean(CurrentSettings.Where(o => o.Key == WBSSLStore.Domain.SettingConstants.CURRENT_IS_SITE_RUN_WITH_WWW && o.SiteID == SiteID).FirstOrDefault().Value);
+                        return Convert.ToBoolean(CurrentSettings.Where(o => o.Key == SettingConstants.CURRENT_IS_SITE_RUN_WITH_WWW && o.SiteID == SiteID).FirstOrDefault().Value);
                     }
                     catch { }
                 }
@@ -267,17 +266,12 @@ namespace WBSSLStore.Domain
 
 
        
-        public static int CurrentLangID(Site site)
+        public  int CurrentLangID()
         {
-
+            Site site = _Site;
             if (site != null && site.Settings != null && site.SupportedLanguages != null)
             {
-                string CurrentLangCode = WBSSLStore.Domain.SettingConstants.DEFAULT_LANGUAGE_CODE;
-                SiteSettings s = site.Settings.Where(o => o.Key == WBSSLStore.Domain.SettingConstants.CURRENT_SITELANGUAGE_KEY && o.SiteID == site.ID).FirstOrDefault();
-                if (s != null)
-                {
-                    CurrentLangCode = s.Value;
-                }
+             
                 var lang = site.SupportedLanguages.Where(o => o.LangCode == CurrentLangCode && o.RecordStatus == RecordStatus.ACTIVE).SingleOrDefault();
                 if (lang != null)
                 {
@@ -296,11 +290,11 @@ namespace WBSSLStore.Domain
                 {
                     if (CurrentSettings != null)
                     {
-                        return CurrentSettings.Where(o => o.Key == WBSSLStore.Domain.SettingConstants.CURRENT_SITELANGUAGE_KEY && o.SiteID == SiteID).FirstOrDefault().Value;
+                        return CurrentSettings.Where(o => o.Key == SettingConstants.CURRENT_SITELANGUAGE_KEY && o.SiteID == SiteID).FirstOrDefault().Value;
                     }
                 }
                 catch { }
-                return WBSSLStore.Domain.SettingConstants.DEFAULT_LANGUAGE_CODE;
+                return SettingConstants.DEFAULT_LANGUAGE_CODE;
             }
 
         }
@@ -312,11 +306,11 @@ namespace WBSSLStore.Domain
                 {
                     if (CurrentSettings != null)
                     {
-                        return CurrentSettings.Where(o => o.Key == WBSSLStore.Domain.SettingConstants.CURRENT_SITECULTURE_KEY && o.SiteID == SiteID).FirstOrDefault().Value;
+                        return CurrentSettings.Where(o => o.Key == SettingConstants.CURRENT_SITECULTURE_KEY && o.SiteID == SiteID).FirstOrDefault().Value;
                     }
                 }
                 catch { }
-                return WBSSLStore.Domain.SettingConstants.DEFAULT_CULTURE_KEY;
+                return SettingConstants.DEFAULT_CULTURE_KEY;
             }
 
         }
@@ -328,11 +322,11 @@ namespace WBSSLStore.Domain
                 {
                     if (CurrentSettings != null)
                     {
-                        return CurrentSettings.Where(o => o.Key == WBSSLStore.Domain.SettingConstants.CURRENT_SITECURRANCY_KEY && o.SiteID == SiteID).FirstOrDefault().Value;
+                        return CurrentSettings.Where(o => o.Key == SettingConstants.CURRENT_SITECURRANCY_KEY && o.SiteID == SiteID).FirstOrDefault().Value;
                     }
                 }
                 catch { }
-                return WBSSLStore.Domain.SettingConstants.DEFAULT_CURRANCY_CODE;
+                return SettingConstants.DEFAULT_CURRANCY_CODE;
             }
 
         }
@@ -345,7 +339,7 @@ namespace WBSSLStore.Domain
                 {
                     if (CurrentSettings != null)
                     {
-                        DateTimeWithZone.CurrentTimeZone = Convert.ToInt32(CurrentSettings.Where(o => o.Key == WBSSLStore.Domain.SettingConstants.CURRENT_SITETIMEZONE_KEY && o.SiteID == SiteID).FirstOrDefault().Value);
+                        DateTimeWithZone.CurrentTimeZone = Convert.ToInt32(CurrentSettings.Where(o => o.Key == SettingConstants.CURRENT_SITETIMEZONE_KEY && o.SiteID == SiteID).FirstOrDefault().Value);
                         return DateTimeWithZone.CurrentTimeZone;
                     }
                 }
@@ -362,7 +356,7 @@ namespace WBSSLStore.Domain
             {
                 if (CurrentSettings != null)
                 {
-                    Domain.SiteSettings S = CurrentSettings.Where(o => o.Key == WBSSLStore.Domain.SettingConstants.CURRENT_SITEPNONE_KEY && o.SiteID == SiteID).FirstOrDefault();
+                    Domain.SiteSettings S = CurrentSettings.Where(o => o.Key == SettingConstants.CURRENT_SITEPNONE_KEY && o.SiteID == SiteID).FirstOrDefault();
                     if (S != null)
                     {
                         return S.Value;
@@ -380,7 +374,7 @@ namespace WBSSLStore.Domain
             {
                 if (CurrentSettings != null)
                 {
-                    Domain.SiteSettings S = CurrentSettings.Where(o => o.Key == WBSSLStore.Domain.SettingConstants.CURRENT_SITE_JQUERYUITHEME && o.SiteID == SiteID).FirstOrDefault();
+                    Domain.SiteSettings S = CurrentSettings.Where(o => o.Key == SettingConstants.CURRENT_SITE_JQUERYUITHEME && o.SiteID == SiteID).FirstOrDefault();
                     if (S != null)
                     {
                         return S.Value;
@@ -400,7 +394,7 @@ namespace WBSSLStore.Domain
                 {
                     if (CurrentSettings != null)
                     {
-                        return CurrentSettings.Where(o => o.Key == WBSSLStore.Domain.SettingConstants.CURRENT_SITEINVOICEPREFIX_KEY && o.SiteID == SiteID).FirstOrDefault().Value;
+                        return CurrentSettings.Where(o => o.Key == SettingConstants.CURRENT_SITEINVOICEPREFIX_KEY && o.SiteID == SiteID).FirstOrDefault().Value;
                     }
                 }
                 catch { }
@@ -416,7 +410,7 @@ namespace WBSSLStore.Domain
                 {
                     if (CurrentSettings != null)
                     {
-                        return CurrentSettings.Where(o => o.Key == WBSSLStore.Domain.SettingConstants.CURRENT_SITEBILLING_EMAIL_KEY && o.SiteID == SiteID).FirstOrDefault().Value;
+                        return CurrentSettings.Where(o => o.Key == SettingConstants.CURRENT_SITEBILLING_EMAIL_KEY && o.SiteID == SiteID).FirstOrDefault().Value;
                     }
                 }
                 catch { }
@@ -430,7 +424,7 @@ namespace WBSSLStore.Domain
             {
                 if (CurrentSettings != null)
                 {
-                    return CurrentSettings.Where(o => o.Key == WBSSLStore.Domain.SettingConstants.CURRENT_SITEADMIN_EMAIL_KEY && o.SiteID == SiteID).FirstOrDefault().Value;
+                    return CurrentSettings.Where(o => o.Key == SettingConstants.CURRENT_SITEADMIN_EMAIL_KEY && o.SiteID == SiteID).FirstOrDefault().Value;
                 }
                 return string.Empty;
             }
@@ -444,7 +438,7 @@ namespace WBSSLStore.Domain
                 {
                     if (CurrentSettings != null)
                     {
-                        return CurrentSettings.Where(o => o.Key == WBSSLStore.Domain.SettingConstants.CURRENT_SITESUPPORT_EMAI_KEY && o.SiteID == SiteID).FirstOrDefault().Value;
+                        return CurrentSettings.Where(o => o.Key == SettingConstants.CURRENT_SITESUPPORT_EMAI_KEY && o.SiteID == SiteID).FirstOrDefault().Value;
                     }
                 }
                 catch { }
@@ -460,7 +454,7 @@ namespace WBSSLStore.Domain
                 {
                     if (CurrentSettings != null)
                     {
-                        return CurrentSettings.Where(o => o.Key == WBSSLStore.Domain.SettingConstants.CURRENT_SITEFACEBOOK_KEY && o.SiteID == SiteID).FirstOrDefault().Value;
+                        return CurrentSettings.Where(o => o.Key == SettingConstants.CURRENT_SITEFACEBOOK_KEY && o.SiteID == SiteID).FirstOrDefault().Value;
                     }
                 }
                 catch { }
@@ -477,7 +471,7 @@ namespace WBSSLStore.Domain
                 {
                     if (CurrentSettings != null)
                     {
-                        return CurrentSettings.Where(o => o.Key == WBSSLStore.Domain.SettingConstants.CURRENT_SITELINKEDIN_KEY && o.SiteID == SiteID).FirstOrDefault().Value;
+                        return CurrentSettings.Where(o => o.Key == SettingConstants.CURRENT_SITELINKEDIN_KEY && o.SiteID == SiteID).FirstOrDefault().Value;
                     }
                 }
                 catch { }
@@ -495,7 +489,7 @@ namespace WBSSLStore.Domain
                 {
                     if (CurrentSettings != null)
                     {
-                        return CurrentSettings.Where(o => o.Key == WBSSLStore.Domain.SettingConstants.CURRENT_SITE_PAYMENTNOTE && o.SiteID == SiteID).FirstOrDefault().Value;
+                        return CurrentSettings.Where(o => o.Key == SettingConstants.CURRENT_SITE_PAYMENTNOTE && o.SiteID == SiteID).FirstOrDefault().Value;
                     }
                 }
                 catch { }
@@ -511,7 +505,7 @@ namespace WBSSLStore.Domain
                 {
                     if (CurrentSettings != null)
                     {
-                        return CurrentSettings.Where(o => o.Key == WBSSLStore.Domain.SettingConstants.CURRENT_SITETWITTER_KEY && o.SiteID == SiteID).FirstOrDefault().Value;
+                        return CurrentSettings.Where(o => o.Key == SettingConstants.CURRENT_SITETWITTER_KEY && o.SiteID == SiteID).FirstOrDefault().Value;
                     }
                 }
                 catch { }
@@ -530,7 +524,7 @@ namespace WBSSLStore.Domain
                 {
                     if (CurrentSettings != null)
                     {
-                        return CurrentSettings.Where(o => o.Key == WBSSLStore.Domain.SettingConstants.CURRENT_SITENEWSLETTER_KEY && o.SiteID == SiteID).FirstOrDefault().Value;
+                        return CurrentSettings.Where(o => o.Key == SettingConstants.CURRENT_SITENEWSLETTER_KEY && o.SiteID == SiteID).FirstOrDefault().Value;
                     }
                 }
                 catch { }
@@ -544,7 +538,7 @@ namespace WBSSLStore.Domain
             {
                 try
                 {
-                    return CurrentSettings.Where(o => o.Key == WBSSLStore.Domain.SettingConstants.CURRENT_SITEGOOGLEPLUS_KEY && o.SiteID == SiteID).FirstOrDefault().Value;
+                    return CurrentSettings.Where(o => o.Key == SettingConstants.CURRENT_SITEGOOGLEPLUS_KEY && o.SiteID == SiteID).FirstOrDefault().Value;
                 }
                 catch
                 { }
@@ -559,7 +553,7 @@ namespace WBSSLStore.Domain
             {
                 try
                 {
-                    return CurrentSettings.Where(o => o.Key == WBSSLStore.Domain.SettingConstants.CURRENT_SITE_SIGNATURE && o.SiteID == SiteID).FirstOrDefault().Value;
+                    return CurrentSettings.Where(o => o.Key == SettingConstants.CURRENT_SITE_SIGNATURE && o.SiteID == SiteID).FirstOrDefault().Value;
                 }
                 catch
                 { }
@@ -575,7 +569,7 @@ namespace WBSSLStore.Domain
                 {
                     if (CurrentSettings != null)
                     {
-                        return CurrentSettings.Where(o => o.Key == WBSSLStore.Domain.SettingConstants.CURRENT_SITELIVECHATE_KEY && o.SiteID == SiteID).FirstOrDefault().Value;
+                        return CurrentSettings.Where(o => o.Key == SettingConstants.CURRENT_SITELIVECHATE_KEY && o.SiteID == SiteID).FirstOrDefault().Value;
                     }
                 }
                 catch { }
@@ -591,7 +585,7 @@ namespace WBSSLStore.Domain
                 {
                     if (CurrentSettings != null)
                     {
-                        return CurrentSettings.Where(o => o.Key == WBSSLStore.Domain.SettingConstants.CURRENT_SITEBLOG_URL && o.SiteID == SiteID).FirstOrDefault().Value;
+                        return CurrentSettings.Where(o => o.Key == SettingConstants.CURRENT_SITEBLOG_URL && o.SiteID == SiteID).FirstOrDefault().Value;
                     }
                 }
                 catch { }
@@ -607,7 +601,7 @@ namespace WBSSLStore.Domain
                 {
                     try
                     {
-                        return Convert.ToBoolean(CurrentSettings.Where(o => o.Key == WBSSLStore.Domain.SettingConstants.CURRENT_NEEDBANNER_KEY && o.SiteID == SiteID).FirstOrDefault().Value);
+                        return Convert.ToBoolean(CurrentSettings.Where(o => o.Key == SettingConstants.CURRENT_NEEDBANNER_KEY && o.SiteID == SiteID).FirstOrDefault().Value);
                     }
                     catch { }
                 }
@@ -622,7 +616,7 @@ namespace WBSSLStore.Domain
                 {
                     try
                     {
-                        return Convert.ToBoolean(CurrentSettings.Where(o => o.Key == WBSSLStore.Domain.SettingConstants.CURRENT_ANIMATED_BANNER_KEY && o.SiteID == SiteID).FirstOrDefault().Value);
+                        return Convert.ToBoolean(CurrentSettings.Where(o => o.Key == SettingConstants.CURRENT_ANIMATED_BANNER_KEY && o.SiteID == SiteID).FirstOrDefault().Value);
                     }
                     catch { }
                 }
@@ -637,7 +631,7 @@ namespace WBSSLStore.Domain
                 {
                     try
                     {
-                        return CurrentSettings.Where(o => o.Key == WBSSLStore.Domain.SettingConstants.CURRENT_BANNER_HTML_KEY && o.SiteID == SiteID).FirstOrDefault().Value;
+                        return CurrentSettings.Where(o => o.Key == SettingConstants.CURRENT_BANNER_HTML_KEY && o.SiteID == SiteID).FirstOrDefault().Value;
                     }
                     catch { }
                 }
@@ -652,7 +646,7 @@ namespace WBSSLStore.Domain
                 {
                     if (CurrentSettings != null)
                     {
-                        return Convert.ToBoolean(CurrentSettings.Where(o => o.Key == WBSSLStore.Domain.SettingConstants.CURRENT_SITEAPPROVERESELLER_KEY && o.SiteID == SiteID).FirstOrDefault().Value);
+                        return Convert.ToBoolean(CurrentSettings.Where(o => o.Key == SettingConstants.CURRENT_SITEAPPROVERESELLER_KEY && o.SiteID == SiteID).FirstOrDefault().Value);
                     }
                 }
                 catch { }
@@ -670,7 +664,7 @@ namespace WBSSLStore.Domain
                 {
                     if (CurrentSettings != null)
                     {
-                        return Convert.ToBoolean(CurrentSettings.Where(u => u.Key == WBSSLStore.Domain.SettingConstants.CURRENT_SITEUNDERMAINTANACE && u.SiteID == SiteID).FirstOrDefault().Value);
+                        return Convert.ToBoolean(CurrentSettings.Where(u => u.Key == SettingConstants.CURRENT_SITEUNDERMAINTANACE && u.SiteID == SiteID).FirstOrDefault().Value);
                     }
 
                 }
@@ -687,7 +681,7 @@ namespace WBSSLStore.Domain
                 {
                     if (CurrentSettings != null)
                     {
-                        return "~/upload/sitelogo/" + CurrentSettings.Where(o => o.Key == WBSSLStore.Domain.SettingConstants.CURRENT_SITELOGO_KEY && o.SiteID == SiteID).FirstOrDefault().Value;
+                        return "~/upload/sitelogo/" + CurrentSettings.Where(o => o.Key == SettingConstants.CURRENT_SITELOGO_KEY && o.SiteID == SiteID).FirstOrDefault().Value;
                     }
                 }
                 catch { }
@@ -703,7 +697,7 @@ namespace WBSSLStore.Domain
                 {
                     if (CurrentSettings != null)
                     {
-                        return "~/upload/bannerimages/"+ CurrentSettings.Where(o => o.Key == WBSSLStore.Domain.SettingConstants.CURRENT_BANNERFILE_KEY && o.SiteID == SiteID).FirstOrDefault().Value;
+                        return "~/upload/bannerimages/"+ CurrentSettings.Where(o => o.Key == SettingConstants.CURRENT_BANNERFILE_KEY && o.SiteID == SiteID).FirstOrDefault().Value;
                     }
                 }
                 catch
@@ -721,7 +715,7 @@ namespace WBSSLStore.Domain
                 {
                     if (CurrentSettings != null)
                     {
-                        return "/upload/cartlogo/" + CurrentSettings.Where(o => o.Key == WBSSLStore.Domain.SettingConstants.CURRENT_SITEMYCART_KEY && o.SiteID == SiteID).FirstOrDefault().Value;
+                        return "/upload/cartlogo/" + CurrentSettings.Where(o => o.Key == SettingConstants.CURRENT_SITEMYCART_KEY && o.SiteID == SiteID).FirstOrDefault().Value;
                     }
                 }
                 catch
@@ -739,7 +733,7 @@ namespace WBSSLStore.Domain
                 {
                     if (CurrentSettings != null)
                     {
-                        return Convert.ToBoolean(CurrentSettings.Where(o => o.Key == WBSSLStore.Domain.SettingConstants.CURRENT_USESSL_KEY && o.SiteID == SiteID).FirstOrDefault().Value);
+                        return Convert.ToBoolean(CurrentSettings.Where(o => o.Key == SettingConstants.CURRENT_USESSL_KEY && o.SiteID == SiteID).FirstOrDefault().Value);
                     }
                 }
                 catch { }
@@ -755,7 +749,7 @@ namespace WBSSLStore.Domain
                 {
                     if (CurrentSettings != null)
                     {
-                        return Convert.ToBoolean(CurrentSettings.Where(o => o.Key == WBSSLStore.Domain.SettingConstants.CURRENT_VAT_APPLICABLE_KEY && o.SiteID == SiteID).FirstOrDefault().Value);
+                        return Convert.ToBoolean(CurrentSettings.Where(o => o.Key == SettingConstants.CURRENT_VAT_APPLICABLE_KEY && o.SiteID == SiteID).FirstOrDefault().Value);
                     }
                 }
                 catch { }
@@ -771,7 +765,7 @@ namespace WBSSLStore.Domain
                 {
                     if (CurrentSettings != null)
                     {
-                        return Convert.ToInt32(CurrentSettings.Where(o => o.Key == WBSSLStore.Domain.SettingConstants.CURRENT_VAT_COUNTRY_KEY && o.SiteID == SiteID).FirstOrDefault().Value);
+                        return Convert.ToInt32(CurrentSettings.Where(o => o.Key == SettingConstants.CURRENT_VAT_COUNTRY_KEY && o.SiteID == SiteID).FirstOrDefault().Value);
                     }
                 }
                 catch { }
@@ -787,7 +781,7 @@ namespace WBSSLStore.Domain
                 {
                     if (CurrentSettings != null)
                     {
-                        return Convert.ToInt32(CurrentSettings.Where(o => o.Key == WBSSLStore.Domain.SettingConstants.CURRENT_VAT_NUMBER_KEY && o.SiteID == SiteID).FirstOrDefault().Value);
+                        return Convert.ToInt32(CurrentSettings.Where(o => o.Key == SettingConstants.CURRENT_VAT_NUMBER_KEY && o.SiteID == SiteID).FirstOrDefault().Value);
                     }
                 }
                 catch { }
@@ -802,7 +796,7 @@ namespace WBSSLStore.Domain
                 {
                     if (CurrentSettings != null)
                     {
-                        return CurrentSettings.Where(o => o.Key == WBSSLStore.Domain.SettingConstants.GOOGLE_ANALYTIC_VALUE && o.SiteID == SiteID).FirstOrDefault().Value;
+                        return CurrentSettings.Where(o => o.Key == SettingConstants.GOOGLE_ANALYTIC_VALUE && o.SiteID == SiteID).FirstOrDefault().Value;
                     }
                 }
                 catch { }
@@ -816,11 +810,11 @@ namespace WBSSLStore.Domain
             {
                 if (site.Settings != null)
                 {
-                    return (site.Settings.Where(o => o.Key == WBSSLStore.Domain.SettingConstants.CURRENT_ALLOWEDBRAND_KEY && o.SiteID == site.ID).FirstOrDefault().Value.Split(',').ToList());
+                    return (site.Settings.Where(o => o.Key == SettingConstants.CURRENT_ALLOWEDBRAND_KEY && o.SiteID == site.ID).FirstOrDefault().Value.Split(',').ToList());
                 }
             }
             catch { }
-            return "0,1,2,3,4,99".Split(',').ToList();
+            return "0,1,2,3,4,99,-1".Split(',').ToList();
 
 
         }
@@ -832,7 +826,7 @@ namespace WBSSLStore.Domain
                 {
                     if (CurrentSettings != null)
                     {
-                        return (CurrentSettings.Where(o => o.Key == WBSSLStore.Domain.SettingConstants.CURRENT_ALLOWEDBRAND_KEY && o.SiteID == SiteID).FirstOrDefault().Value.Split(',').ToList());
+                        return (CurrentSettings.Where(o => o.Key == SettingConstants.CURRENT_ALLOWEDBRAND_KEY && o.SiteID == SiteID).FirstOrDefault().Value.Split(',').ToList());
                     }
                 }
                 catch { }
@@ -848,7 +842,7 @@ namespace WBSSLStore.Domain
                 {
                     if (CurrentSettings != null)
                     {
-                        return Convert.ToBoolean(CurrentSettings.Where(o => o.Key == WBSSLStore.Domain.SettingConstants.CURRENT_REFUND30DAYS_KEY && o.SiteID == SiteID).FirstOrDefault().Value);
+                        return Convert.ToBoolean(CurrentSettings.Where(o => o.Key == SettingConstants.CURRENT_REFUND30DAYS_KEY && o.SiteID == SiteID).FirstOrDefault().Value);
                     }
                 }
                 catch { }
@@ -864,7 +858,7 @@ namespace WBSSLStore.Domain
                 {
                     if (CurrentSettings != null)
                     {
-                        return Convert.ToBoolean(CurrentSettings.Where(o => o.Key == WBSSLStore.Domain.SettingConstants.CURRENT_ShowPayMentAcceptSection && o.SiteID == SiteID).FirstOrDefault().Value);
+                        return Convert.ToBoolean(CurrentSettings.Where(o => o.Key == SettingConstants.CURRENT_ShowPayMentAcceptSection && o.SiteID == SiteID).FirstOrDefault().Value);
                     }
                 }
                 catch { }
@@ -880,7 +874,7 @@ namespace WBSSLStore.Domain
                 {
                     if (CurrentSettings != null)
                     {
-                        return Convert.ToBoolean(CurrentSettings.Where(o => o.Key == WBSSLStore.Domain.SettingConstants.CURRENT_ShowFreeToolsSection && o.SiteID == SiteID).FirstOrDefault().Value);
+                        return Convert.ToBoolean(CurrentSettings.Where(o => o.Key == SettingConstants.CURRENT_ShowFreeToolsSection && o.SiteID == SiteID).FirstOrDefault().Value);
                     }
                 }
                 catch { }
@@ -914,19 +908,15 @@ namespace WBSSLStore.Domain
             {
                 case ProductBrands.RapidSSL:
                 case ProductBrands.GeoTrust:
+                case ProductBrands.Comodo:
+                case ProductBrands.Thawte:
+                case ProductBrands.Certum:
                     strNoOfServer = "Unlimited";
                     break;
                 case ProductBrands.Symantec:
-                case ProductBrands.Thawte:
                     strNoOfServer = NumberOfServer.ToString();
                     break;
-                case ProductBrands.TrustWave:
-                    strNoOfServer = "1";
-                    break;
-                case ProductBrands.Comodo:
-                    if (p.isWildcard)
-                        strNoOfServer = "100";
-                    break;
+              
             }
             return strNoOfServer;
         }
@@ -935,11 +925,11 @@ namespace WBSSLStore.Domain
         {
             get
             {
-                if (CurrentSettings != null && CurrentSettings.Where(o => o.Key == WBSSLStore.Domain.SettingConstants.CURRENT_SITEPAGESIZE_KEY && o.SiteID == SiteID).FirstOrDefault() != null)
+                if (CurrentSettings != null && CurrentSettings.Where(o => o.Key == SettingConstants.CURRENT_SITEPAGESIZE_KEY && o.SiteID == SiteID).FirstOrDefault() != null)
                 {
-                    return Convert.ToInt32(CurrentSettings.Where(o => o.Key == WBSSLStore.Domain.SettingConstants.CURRENT_SITEPAGESIZE_KEY && o.SiteID == SiteID).FirstOrDefault().Value);
+                    return Convert.ToInt32(CurrentSettings.Where(o => o.Key == SettingConstants.CURRENT_SITEPAGESIZE_KEY && o.SiteID == SiteID).FirstOrDefault().Value);
                 }
-                return WBSSLStore.Domain.SettingConstants.DEFAULT_PAGE_SIZE;
+                return SettingConstants.DEFAULT_PAGE_SIZE;
             }
         }
 
@@ -947,9 +937,9 @@ namespace WBSSLStore.Domain
         {
             get
             {
-                if (CurrentSettings != null && CurrentSettings.Where(o => o.Key == WBSSLStore.Domain.SettingConstants.CURRENT_PUNCHLINE_KEY && o.SiteID == SiteID).FirstOrDefault() != null)
+                if (CurrentSettings != null && CurrentSettings.Where(o => o.Key == SettingConstants.CURRENT_PUNCHLINE_KEY && o.SiteID == SiteID).FirstOrDefault() != null)
                 {
-                    return CurrentSettings.Where(o => o.Key == WBSSLStore.Domain.SettingConstants.CURRENT_PUNCHLINE_KEY && o.SiteID == SiteID).FirstOrDefault().Value;
+                    return CurrentSettings.Where(o => o.Key == SettingConstants.CURRENT_PUNCHLINE_KEY && o.SiteID == SiteID).FirstOrDefault().Value;
                 }
                 return string.Empty;
             }
@@ -962,7 +952,7 @@ namespace WBSSLStore.Domain
                 {
                     if (CurrentSettings != null)
                     {
-                        return Convert.ToBoolean(CurrentSettings.Where(o => o.Key == WBSSLStore.Domain.SettingConstants.CURRENT_TESTIMONIAL_APPLICABLE_KEY && o.SiteID == SiteID).FirstOrDefault().Value);
+                        return Convert.ToBoolean(CurrentSettings.Where(o => o.Key == SettingConstants.CURRENT_TESTIMONIAL_APPLICABLE_KEY && o.SiteID == SiteID).FirstOrDefault().Value);
                     }
                 }
                 catch { }
@@ -980,7 +970,7 @@ namespace WBSSLStore.Domain
                 {
                     if (CurrentSettings != null)
                     {
-                        return Convert.ToBoolean(CurrentSettings.Where(o => o.Key == WBSSLStore.Domain.SettingConstants.CURRENT_SITE_SHOWBANNER_HOME_PAGE_ONLY && o.SiteID == SiteID).FirstOrDefault().Value);
+                        return Convert.ToBoolean(CurrentSettings.Where(o => o.Key == SettingConstants.CURRENT_SITE_SHOWBANNER_HOME_PAGE_ONLY && o.SiteID == SiteID).FirstOrDefault().Value);
                     }
                 }
                 catch { }

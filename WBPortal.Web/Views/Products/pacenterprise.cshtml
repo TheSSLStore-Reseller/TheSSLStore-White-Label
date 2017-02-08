@@ -1,0 +1,146 @@
+﻿@model WBSSLStore.Service.ViewModels.StaticPageViewModel
+@{
+      var productdetails = WBSSLStore.Web.Helpers.WBHelper.GetProductDetailRows();
+    string brand = Model != null && Model.Items != null && Model.Items.FirstOrDefault().Product != null && Model.Items.FirstOrDefault().Product.Brand != null ? Model.Items.FirstOrDefault().Product.Brand.BrandName : "";
+    string username = ViewBag.UserName;
+}
+@section headerTags{
+    @Html.Partial("_renderSEO", Model != null && Model.CMSPage != null ? Model.CMSPage : new WBSSLStore.Domain.CMSPage())
+}
+@Html.Partial("_banner", new Tuple<string, string>("", "SSL Brands"))
+<div class="content">
+  <div class="wrapper">
+    <div class="column3">
+      <div class="mobtopcol">
+        <div class="column3-2">
+          <div class="prodetailswrap marzerotop"> @Html.Partial("_ProdPricing", new Tuple<List<WBSSLStore.Domain.ProductPricing>, List<WBSSLStore.Domain.ProductDetail>>(Model.Items.ToList(), productdetails.ToList())) </div>
+          <div class="prodescrip marzerotop">
+            <div class="prodescriptxt">
+              <h2>Product Description</h2>
+              <p>Comodo Personal Authentication Certificates (CPACs) are <strong>easy</strong> and <strong>affordable</strong> solutions used to secure business communications. These certificates   allow you to encrypt and digitally sign email communications, offer   two-factor authentication of users and employees, secure important   company documents sent across the network, and will authenticate to   ensure they have clearance to access online servers. CPACs are <strong>fully trusted by all major email clients</strong> and internet browsers and rolling them out to employees or customers is a breeze.</p>
+            </div>
+          </div>
+            <div id="cssmenu">
+                <ul class="accordion_example">
+                    <li class="brand-symantec acc_active">
+                        <div>
+                            <p>Basic, Pro or Enterprise?</p>
+                            <div class="clear"></div>
+                        </div>
+                        <div>
+                            <p>Comodo Personal Authentication Certificates are   available in a range of assurance levels. This range of formats, are   each designed to suit a particular business or individual use-case. The   level of identity assurance asserted by each CPAC type depends on the   level of validation involved in order to get issued (similar to DV, OV,   EV SSL certificate level of validation). This ranges varies from the   basic verification of email address ownership to personal identity   verification, all the way to full business identity verification.</p>
+                            <p>Conceived by the think tank   over at Comodo Innovation Labs that includes many of the very brightest   computer and internet security minds out there Web Inspector provides a   superior service boasting a variety of features in one single package.</p>
+                            <p>With the risks associated with   transferring sensitive information online well-documented to customers   maintaining a high level of trust and untarnished reputation have become   all the more important. Web Inspector's extensive daily malware   scanning, thorough blacklist monitoring, and continuous monitoring of   possible oncoming threats do more than enough to maintain those two   vital components.</p>
+                            <p>Web Inspector also includes   complete PCI compliance scanning driven by Comodo's HackerGuardian   technology for e-commerce websites to maintain compliance with the   payment card industry's mandatory standards.</p>
+                            <p>With all considered Web Inspector is truly an application developed with the security of your website, business and customers in mind.</p>
+                            <div class="clear"></div>
+                        </div>
+                    </li>
+                    <li class="brand-symantec">
+                        <div>
+                            <p>Secure Email</p>
+                            <div class="clear"></div>
+                        </div>
+                        <div>
+                            <p>For businesses looking to   follow the best web security practices, email encryption is a must.   Encrypting and digitally signing your emails will help your company   avoid accidental data exposure, breaches of privacy, and other security   missteps that could lead to serious implications. Luckily, CPAC   solutions add the highest level of encryption and security to your email   communication.</p>
+                            <p>CPAC provides true end-to-end   encryption between the sender and the recipient. This ensures that once   the email leaves your network, it can never be intercepted and decrypted   by https proxies, man-in-the-middle attackers, packet-sniffers, or any   other hackers.</p>
+                            <p>Each certificate uses highly   secure PKI (Private Key Infrastructure) to prove a user's identity to a   remote server or computer, which is much quicker and far more   cost-effective than using physical tokens.</p>
+                            <p>Setting up CPACs is extremely   easy! And after the initial installation is complete, all of your   servers will require that each user present their certificate in order   to be accessed – in addition to username and password. This will help   ensure that you have all of the checks and balances in place to keep   unwanted users off your servers!</p>
+                        </div>
+                    </li>
+                    <li class="brand-symantec">
+                        <div>
+                            <p>Document Signing</p>
+                            <div class="clear"></div>
+                        </div>
+                        <div>
+                            <p>CPACs let you to easily sign important company documents. This allows you to identify yourself as the document signer and prove that the document has not been tampered with in any way since it was signed. These certificates will also help you migrate from ink to paper based workflows on items like document sign-offs, contracts, offer sheets, archiving and internal request forms. CPACs can also be used in tandem with or as a complete replacement for the visible signature feature in Microsoft&reg; Office products.</p>
+                        </div>
+                    </li>
+                    <li class="brand-symantec">
+                        <div>
+                            <p>Two-Factor Authentication</p>
+                            <div class="clear"></div>
+                        </div>
+                        <div>
+                            <p>If your business supports remote access to servers that contain vital customer or corporate data, relying on passwords as the sole gatekeepers is simply not enough with the stakes being so high. You'll want a stronger guarantee that the person accessing an online account or network resource is a legitimate employee, not a hacker that has managed to steal a username and password – which is much easier than you think!</p>
+                            <p>CPACs mitigate this risk by setting up two-factor authentication or both employees and customers. Two-factor authentication is the industry standard utilized by banks all over the world.</p>
+                        </div>
+                    </li>
+                    <li class="brand-symantec">
+                        <div>
+                            <p>Mobile &amp; Browser Compatibility</p>
+                            <div class="clear"></div>
+                        </div>
+                        <div>
+                            <p>Comodo Personal Authentication Certificates are trusted by all major mail clients, browsers and mobile devices, such as:</p>
+                            <h3>Server and Client OS Compatibility</h3>
+                            <p><strong>Client OS:</strong> Mac OS X, Snow Leopard, Windows 7, Vista, Xp, 2000, Linux Client OS.</p>
+                            <p><strong>Server OS:</strong> Windows Server 2008, 2003, 2000, Linux, UNIX, Solaris, Novell, etc.</p>
+                            <p><strong>Web Server:</strong> Microsoft IIS 7, IIS6, Apache, Tomcat, IBM HTTP, Weblogic, Cobalt.</p>
+                            <p><strong>E-Mail Servers:</strong> Netscape   Communicator 4.51+,Microsoft Outlook 99+,Microsoft Entourage   (OS/X),Mozilla Thunderbird 1.0+,Qualcomm Eudora 6.2+,Lotus Notes (6+), etc.</p>
+                        </div>
+                    </li>
+                    <li class="brand-symantec">
+                        <div>
+                            <p>Features &amp; Benefits</p>
+                            <div class="clear"></div>
+                        </div>
+                        <div>
+                            <ul class="featurelist">
+                                <li>Secure your email communications with strong 256-bit encryption &amp; digital signatures</li>
+                                <li>Fast and easy to roll out to employees and/or customers</li>
+                                <li>Binds user and device identities with strong PKI authentication</li>
+                                <li>Simple &amp; fast validation process</li>
+                                <li>Digital signatures bind users' identities to message content to add authenticity and security to emails</li>
+                                <li>Compatible with Exchange servers and mail gateway appliances</li>
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                    </li>
+                    <li class="brand-symantec">
+                        <div>
+                            <p>Product Specifications</p>
+                            <div class="clear"></div>
+                        </div>
+                        <div>
+                            <ul class="featurelist">
+                                <li>Minimum encryption key length: RSA/DSA 2048 bit</li>
+                                <li>Digital signatures identify you as the sender and prove that the message genuinely came from you and not an impersonator </li>
+                                <li>Supports major business software including Microsoft ® Office suite, Open Office Suite, VBA Macros, and more </li>
+                                <li>Two-factor authentication of users who log-in to company servers and websites</li>
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+        @Html.Partial("_rightpanel", username) </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+@section Jscripts{ 
+<script type="text/javascript">
+        $(document).ready(function () {
+            // Mobile Menu
+            $("#showmenu").click(function (e) {
+                e.preventDefault();
+                $("#menu").toggleClass("show");
+            });
+            $("#menu a").click(function (event) {
+                event.preventDefault();
+                if ($(this).next('ul').length) {
+                    $(this).next().toggle('fast');
+                    $(this).children('i:last-child').toggleClass('fa-caret-down fa-caret-left');
+                }
+            });
+            $(document).click(function (e) {
+                if (!$(e.target).is(".mobmemu, .mobmemu  *")) { $("#menu").toggleClass("hide"); $("#menu").removeClass("show"); }
+            });
+            $(".accordion_example").smk_Accordion();
+        });
+    </script> 
+} 

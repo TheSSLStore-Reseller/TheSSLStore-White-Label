@@ -1,23 +1,18 @@
+using System;
+using System.Data.Entity.Migrations;
+using System.Linq;
+using WBSSLStore.Data;
+using WBSSLStore.Domain;
+
 namespace WhiteBrandShrink.Migrations
 {
-    using System;
-    using System.Data.Entity;
-    using System.Data.Entity.Migrations;
-    using System.Linq;
-    using System.Xml.Linq;
-    using WBSSLStore.Data;
-    using WBSSLStore.Domain;
-    internal sealed class Configuration : DbMigrationsConfiguration<WBSSLStoreDb>
-    {
-        public Configuration(System.Data.Entity.Infrastructure.DbConnectionInfo pTargetDatabase)
-        {
-            AutomaticMigrationsEnabled = true;
-            TargetDatabase = pTargetDatabase;
-        }
 
-        protected override void Seed(WBSSLStoreDb context)
+    public class DefaultDataSeed 
+    {
+      
+        public void MySeed(WBSSLStoreDb db)
         {
-            using (WBSSLStoreDb db = new WBSSLStoreDb())
+            // using (WBSSLStoreDb db = new WBSSLStoreDb())
             {
                 System.Xml.Linq.XDocument xdoc = System.Xml.Linq.XDocument.Load(AppDomain.CurrentDomain.GetData("DataDirectory").ToString() + "\\Configuration\\coutrywb.xml");
                 if (!db.Countries.Any(x => x.ID > 0))
@@ -138,6 +133,32 @@ namespace WhiteBrandShrink.Migrations
                         db.Users.Add(u);
                         db.SaveChanges();
                     }
+
+                   
+                   
+                    if (!db.EmailTemplateses.Any(x => x.ID > 0))
+                    {
+
+                        System.Xml.Linq.XDocument xdocEmail = System.Xml.Linq.XDocument.Load(AppDomain.CurrentDomain.GetData("DataDirectory").ToString() + "\\Configuration\\Emailconfiguration.xml");
+                        var lstEmailTemp = (from lv1 in xdocEmail.Descendants("EmailTemplate")
+                                    select new EmailTemplates
+                                    {
+                                        BCC = "",
+                                        CC = "",
+                                        EmailContent = (lv1.Descendants("EmailContent").FirstOrDefault() != null ? lv1.Descendants("EmailContent").FirstOrDefault().Value.Trim() : ""),
+                                        EmailSubject = (lv1.Descendants("EmailSubject").FirstOrDefault() != null ? lv1.Descendants("EmailSubject").FirstOrDefault().Value.Trim() : ""),
+                                        EmailTypeId = Convert.ToInt32((lv1.Descendants("EmailContent").Select(x => x.Attribute("EmailTypeId").Value.Replace("\n", "").Replace("\r", "").Trim()).FirstOrDefault())),
+                                        From = "support@domain.com",
+                                        isActive = true,
+                                        LangID = Convert.ToInt32((lv1.Descendants("EmailContent").Select(x => x.Attribute("LangID").Value.Replace("\n", "").Replace("\r", "").Trim()).FirstOrDefault())),
+                                        MailMerge = (lv1.Descendants("EmailContent").Select(x => x.Attribute("MailMerge").Value.Replace("\n", "").Replace("\r", "").Trim()).FirstOrDefault()),
+                                        ReplyTo = "",
+                                        SiteID = obj.ID
+                                    }).ToArray();
+
+                        db.EmailTemplateses.AddOrUpdate(lstEmailTemp); 
+                        db.SaveChanges();
+                    }
                     WebServerType objWbServer = new WebServerType();
                     objWbServer.BrandID = 1;
                     objWbServer.isActive = true;
@@ -145,45 +166,7 @@ namespace WhiteBrandShrink.Migrations
                     db.WebServerTypes.Add(objWbServer);
                     db.SaveChanges();
 
-                    //WBSSLStore.Web.Helpers.Caching.SiteCacher.GetSite(obj.ID);
-
-                    //xdoc = System.Xml.Linq.XDocument.Load(AppDomain.CurrentDomain.GetData("DataDirectory").ToString() + "\\Configuration\\ProductsDetail.xml");
-                    //if (!db.ProductDetail.Any(x => x.ID > 0))
-                    //{
-                    //    var _productdetails = (from lv1 in xdoc.Descendants("Product")
-                    //                           select new ProductDetail
-                    //                           {
-                    //                               productcode = lv1.Descendants("productcode").FirstOrDefault().Value.Replace(" ", ""),
-                    //                               CertName = lv1.Descendants("CertName").FirstOrDefault().Value.Replace(" ", ""),
-                    //                               URL = lv1.Descendants("URL").FirstOrDefault().Value.Replace(" ", ""),
-                    //                               MobileFriendly = Convert.ToBoolean(lv1.Descendants("MobileFriendly").FirstOrDefault().Value.Replace(" ", "")),
-                    //                               InstantDelivery = Convert.ToBoolean(lv1.Descendants("InstantDelivery").FirstOrDefault().Value.Replace(" ", "")),
-                    //                               DocSigning = Convert.ToBoolean(lv1.Descendants("DocSigning").FirstOrDefault().Value.Replace(" ", "")),
-                    //                               ScanProduct = Convert.ToBoolean(lv1.Descendants("ScanProduct").FirstOrDefault().Value.Replace(" ", "")),
-                    //                               BusinessValid = Convert.ToBoolean(lv1.Descendants("BusinessValid").FirstOrDefault().Value.Replace(" ", "")),
-                    //                               SanSupport = Convert.ToBoolean(lv1.Descendants("SanSupport").FirstOrDefault().Value.Replace(" ", "")),
-                    //                               WildcardSupport = Convert.ToBoolean(lv1.Descendants("WildcardSupport").FirstOrDefault().Value.Replace(" ", "")),
-                    //                               GreenBar = Convert.ToBoolean(lv1.Descendants("GreenBar").FirstOrDefault().Value.Replace(" ", "")),
-                    //                               IssuanceTime = lv1.Descendants("IssuanceTime").FirstOrDefault().Value.Replace(" ", ""),
-                    //                               Warranty = lv1.Descendants("Warranty").FirstOrDefault().Value.Replace(" ", ""),
-                    //                               SiteSeal = lv1.Descendants("SiteSeal").FirstOrDefault().Value.Replace(" ", ""),
-                    //                               StarRating = lv1.Descendants("StarRating").FirstOrDefault().Value.Replace(" ", ""),
-                    //                               SealInSearch = Convert.ToBoolean(lv1.Descendants("SealInSearch").FirstOrDefault().Value.Replace(" ", "")),
-                    //                               VulnerabilityAssessment = Convert.ToBoolean(lv1.Descendants("VulnerabilityAssessment").FirstOrDefault().Value.Replace(" ", "")),
-                    //                               ValidationType = lv1.Descendants("ValidationType").FirstOrDefault().Value.Replace(" ", ""),
-                    //                               ServerLicense = lv1.Descendants("ServerLicense").FirstOrDefault().Value.Replace(" ", ""),
-                    //                               ShortDesc = lv1.Descendants("ShortDesc").FirstOrDefault().Value.Replace(" ", ""),
-                    //                               LongDesc = lv1.Descendants("LongDesc").FirstOrDefault().Value.Replace(" ", ""),
-                    //                               ProductDatasheetUrl = lv1.Descendants("ProductDatasheetUrl").FirstOrDefault().Value.Replace(" ", ""),
-                    //                               VideoUrl = lv1.Descendants("VideoUrl").FirstOrDefault().Value.Replace(" ", ""),
-                    //                               SimilarProducts = lv1.Descendants("SimilarProducts").FirstOrDefault().Value.Replace(" ", ""),
-                    //                               SealType = lv1.Descendants("SealType").FirstOrDefault().Value.Replace(" ", "")
-
-                    //                           }).ToArray();
-
-                    //    db.ProductDetail.AddOrUpdate(_productdetails);
-                    //    db.SaveChanges();
-                    //}
+                   
                 }
 
             }

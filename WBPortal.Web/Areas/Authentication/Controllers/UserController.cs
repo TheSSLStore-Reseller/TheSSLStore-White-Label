@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WBSSLStore.Web.Helpers.Base;
 using WBSSLStore.Data.Infrastructure;
 using WBSSLStore.Domain;
-using WBSSLStore.Service.ViewModels;
 using WBSSLStore.Service;
-using WBSSLStore.Web.Util;
 using WBSSLStore.Web.Helpers;
 using WBSSLStore.Web.Helpers.Caching;
 using System.Web.Security;
@@ -26,13 +23,13 @@ namespace WBSSLStore.Web.Areas.Authentication.Controllers
             {
                 if (User.Identity.IsAuthenticated && _user == null)
                 {
-                    SSLStoreUser user1 = ((SSLStoreUser)System.Web.Security.Membership.GetUser());
+                    SSLStoreUser user1 = ((SSLStoreUser)Membership.GetUser());
 
                     if (user1 != null && user1.Details != null)
                         _user = user1.Details;
                     else if (User.Identity.IsAuthenticated && !string.IsNullOrEmpty(User.Identity.Name))
                     {
-                        user1 = ((SSLStoreUser)System.Web.Security.Membership.GetUser(User.Identity.Name));
+                        user1 = ((SSLStoreUser)Membership.GetUser(User.Identity.Name));
 
                         if (user1 != null && user1.Details != null)
                             _user = user1.Details;
@@ -60,7 +57,7 @@ namespace WBSSLStore.Web.Areas.Authentication.Controllers
                 {
                     if (Site.Settings != null)
                     {
-                        return Convert.ToBoolean(Site.Settings.Where(o => o.Key == WBSSLStore.Domain.SettingConstants.CURRENT_SITEAPPROVERESELLER_KEY && o.SiteID == Site.ID).FirstOrDefault().Value);
+                        return Convert.ToBoolean(Site.Settings.Where(o => o.Key == SettingConstants.CURRENT_SITEAPPROVERESELLER_KEY && o.SiteID == Site.ID).FirstOrDefault().Value);
                     }
                 }
                 catch { }
@@ -90,7 +87,7 @@ namespace WBSSLStore.Web.Areas.Authentication.Controllers
 
         [HttpPost]
         //[Route("authentication/user/logon")]
-        public ActionResult Logon(WBSSLStore.Domain.User model, string returnUrl)
+        public ActionResult Logon(User model, string returnUrl)
         {
             Site Site = GetSite(model.SiteID);
             string AuthToken = "";
@@ -102,21 +99,21 @@ namespace WBSSLStore.Web.Areas.Authentication.Controllers
 
             if (ModelState.IsValidField("Email") && ModelState.IsValidField("PasswordHash"))
             {
-                System.Web.Security.Membership.ApplicationName = model.SiteID.ToString();
+                Membership.ApplicationName = model.SiteID.ToString();
                 if (Membership.ValidateUser(model.Email.Trim(), model.PasswordHash))
                 {
 
-                    AuthToken = HttpUtility.UrlEncode(WBSSLStore.CryptorEngine.Encrypt("true" + SettingConstants.Seprate + model.Email + SettingConstants.Seprate + "NA" + SettingConstants.Seprate + AllowedUserType, true));
+                    AuthToken = HttpUtility.UrlEncode(CryptorEngine.Encrypt("true" + SettingConstants.Seprate + model.Email + SettingConstants.Seprate + "NA" + SettingConstants.Seprate + AllowedUserType, true));
                 }
                 else
                 {
-                    AuthToken = HttpUtility.UrlEncode(WBSSLStore.CryptorEngine.Encrypt("false" + SettingConstants.Seprate + "NA" + SettingConstants.Seprate + "-1" + SettingConstants.Seprate + AllowedUserType, true));
+                    AuthToken = HttpUtility.UrlEncode(CryptorEngine.Encrypt("false" + SettingConstants.Seprate + "NA" + SettingConstants.Seprate + "-1" + SettingConstants.Seprate + AllowedUserType, true));
 
                 }
             }
             else
             {
-                AuthToken = HttpUtility.UrlEncode(WBSSLStore.CryptorEngine.Encrypt("false" + SettingConstants.Seprate + "NA" + SettingConstants.Seprate + "-2" + SettingConstants.Seprate + AllowedUserType, true));
+                AuthToken = HttpUtility.UrlEncode(CryptorEngine.Encrypt("false" + SettingConstants.Seprate + "NA" + SettingConstants.Seprate + "-2" + SettingConstants.Seprate + AllowedUserType, true));
             }
 
             // If we got this far, something failed, redisplay form
@@ -125,7 +122,7 @@ namespace WBSSLStore.Web.Areas.Authentication.Controllers
             if (!AllowedUserType.Equals("100"))
             {
                 return RedirectToAction("logonresult", "staticpage", new { area = "", authtoken = AuthToken });
-                //url = "http://" + (string.IsNullOrEmpty(Site.Alias) ? Site.CName : Site.Alias) + "/staticpage/logonresult?authtoken=" + AuthToken;
+                
             }
             else
                 url = "http://" + (string.IsNullOrEmpty(Site.Alias) ? Site.CName : Site.Alias) + "/home/undermaintenanceresult?authtoken=" + AuthToken;
@@ -147,7 +144,7 @@ namespace WBSSLStore.Web.Areas.Authentication.Controllers
             {
                 if (!string.IsNullOrEmpty(user) && !string.IsNullOrEmpty(pwd))
                 {
-                    System.Web.Security.Membership.ApplicationName = model["SiteID"];
+                    Membership.ApplicationName = model["SiteID"];
                     if (Membership.ValidateUser(user, pwd))
                     {
                         FormsAuthentication.SetAuthCookie(user, false);
@@ -157,14 +154,14 @@ namespace WBSSLStore.Web.Areas.Authentication.Controllers
                         int CartID = 0;
                         if (U != null && U.ID > 0)
                         {
-                            int contractID = Helpers.WBHelper.GetCurrentContractID(U.ID, Site.ID);
+                            int contractID = WBHelper.GetCurrentContractID(U.ID, Site.ID);
                             var repo = DependencyResolver.Current.GetService<ICheckoutService>();
                             CartID = Convert.ToInt32(model["co_has_sid"]);
                             CartID = repo.UpdateShoppingCart(U, CartID, Site.ID, contractID, string.Empty);
-                            //url = "/checkout/payment/index/" + CartID;
+                      
                         }
                         //End Here
-                        //return RedirectToRoute("payment_us", new { id = CartID, area = "Checkout" });
+                      
                         return RedirectToAction("index", "payment", new { id = CartID, area = "Checkout" });
                     }
                     else
@@ -195,8 +192,7 @@ namespace WBSSLStore.Web.Areas.Authentication.Controllers
             {
                 url = (USESSL ? "https" : "http") + "://" + (string.IsNullOrEmpty(Site.Alias) ? Site.CName : Site.Alias) + "/shoppingcart/checkoutresult?errorcode=-1&sid=" + model["co_has_sid"];
                 return Redirect(url);
-                //return RedirectToRoute("CheckOutResult_err", new { sid = model["co_has_sid"], errorcode = -2 });
-                //return RedirectToAction("index", "payment", new { id = model["co_has_sid"], eid = user, area = "Checkout" });
+              
             }
 
 
@@ -210,8 +206,8 @@ namespace WBSSLStore.Web.Areas.Authentication.Controllers
             if (ModelState.IsValid)
             {
                 user.RecordStatusID = NeedApproveReseller ? (int)RecordStatus.INACTIVE : (int)RecordStatus.ACTIVE;
-                user.PasswordSalt = WBSSLStore.Web.Helpers.WBHelper.CreateSalt();
-                user.PasswordHash = WBSSLStore.Web.Helpers.WBHelper.CreatePasswordHash(user.PasswordHash, user.PasswordSalt);
+                user.PasswordSalt = WBHelper.CreateSalt();
+                user.PasswordHash = WBHelper.CreatePasswordHash(user.PasswordHash, user.PasswordSalt);
 
                 int result = _service.SaveReseller(user, Site.ID, WBHelper.CurrentLangID(), SiteCacher.SiteSMTPDetail().ID, WBHelper.SiteAdminEmail(Site));
                 if (result.Equals(1))
@@ -219,25 +215,25 @@ namespace WBSSLStore.Web.Areas.Authentication.Controllers
 
                     if (!NeedApproveReseller)
                     {
-                        AuthToken = HttpUtility.UrlEncode(WBSSLStore.CryptorEngine.Encrypt("true" + SettingConstants.Seprate + user.Email + SettingConstants.Seprate + "NA" + SettingConstants.Seprate + "true", true));
+                        AuthToken = HttpUtility.UrlEncode(CryptorEngine.Encrypt("true" + SettingConstants.Seprate + user.Email + SettingConstants.Seprate + "NA" + SettingConstants.Seprate + "true", true));
 
                     }
                     else
                     {
-                        AuthToken = HttpUtility.UrlEncode(WBSSLStore.CryptorEngine.Encrypt("true" + SettingConstants.Seprate + user.Email + SettingConstants.Seprate + "NA" + SettingConstants.Seprate + "false", false));
+                        AuthToken = HttpUtility.UrlEncode(CryptorEngine.Encrypt("true" + SettingConstants.Seprate + user.Email + SettingConstants.Seprate + "NA" + SettingConstants.Seprate + "false", false));
 
                     }
                 }
                 else if (result.Equals(-1))
                 {
-                    AuthToken = HttpUtility.UrlEncode(WBSSLStore.CryptorEngine.Encrypt("false" + SettingConstants.Seprate + "NA" + SettingConstants.Seprate + "-1" + SettingConstants.Seprate + "false", true));
+                    AuthToken = HttpUtility.UrlEncode(CryptorEngine.Encrypt("false" + SettingConstants.Seprate + "NA" + SettingConstants.Seprate + "-1" + SettingConstants.Seprate + "false", true));
 
                 }
                 else
-                    AuthToken = HttpUtility.UrlEncode(WBSSLStore.CryptorEngine.Encrypt("false" + SettingConstants.Seprate + "NA" + SettingConstants.Seprate + "-2" + SettingConstants.Seprate + "false", true));
+                    AuthToken = HttpUtility.UrlEncode(CryptorEngine.Encrypt("false" + SettingConstants.Seprate + "NA" + SettingConstants.Seprate + "-2" + SettingConstants.Seprate + "false", true));
             }
             else
-                AuthToken = HttpUtility.UrlEncode(WBSSLStore.CryptorEngine.Encrypt("false" + SettingConstants.Seprate + "NA" + SettingConstants.Seprate + "-3" + SettingConstants.Seprate + "false", true));
+                AuthToken = HttpUtility.UrlEncode(CryptorEngine.Encrypt("false" + SettingConstants.Seprate + "NA" + SettingConstants.Seprate + "-3" + SettingConstants.Seprate + "false", true));
 
             // If we got this far, something failed, redisplay form
             string url = "http://" + (string.IsNullOrEmpty(Site.Alias) ? Site.CName : Site.Alias) + "/staticpage/resellersignupresult?authtoken=" + AuthToken;
@@ -251,7 +247,7 @@ namespace WBSSLStore.Web.Areas.Authentication.Controllers
             string ResultToken = string.Empty;
             if (!string.IsNullOrEmpty(AuthToken))
             {
-                ResultToken = WBSSLStore.CryptorEngine.Decrypt(HttpUtility.UrlDecode(AuthToken), true);
+                ResultToken = CryptorEngine.Decrypt(HttpUtility.UrlDecode(AuthToken), true);
                 ResultToken = ResultToken.Replace("\0", string.Empty);
             }
             if (!string.IsNullOrEmpty(ResultToken))
@@ -270,7 +266,7 @@ namespace WBSSLStore.Web.Areas.Authentication.Controllers
                         if (user != null && UserName.Equals(user.Email, StringComparison.OrdinalIgnoreCase))
                         {
                             FormsAuthentication.SetAuthCookie(user.Email, false);
-                            System.Web.Security.Membership.ApplicationName = user.SiteID.ToString();
+                            Membership.ApplicationName = user.SiteID.ToString();
                             Request.RequestContext.HttpContext.User = new GenericPrincipal(new GenericIdentity(user.Email, "Forms"), null);
                         }
 
@@ -301,14 +297,14 @@ namespace WBSSLStore.Web.Areas.Authentication.Controllers
             if (user.ID > 0)
             {
                 User objUser = _repository.FindByID(user.ID);
-                objUser.PasswordSalt = WBSSLStore.Web.Helpers.WBHelper.CreateSalt();
-                objUser.PasswordHash = WBSSLStore.Web.Helpers.WBHelper.CreatePasswordHash(collection["txtPassword"], objUser.PasswordSalt);
+                objUser.PasswordSalt = WBHelper.CreateSalt();
+                objUser.PasswordHash = WBHelper.CreatePasswordHash(collection["txtPassword"], objUser.PasswordSalt);
                 objUser.ConfirmPassword = objUser.PasswordHash;
                 _repository.Update(objUser);
                 _unitOfWork.Commit();
                 ReturnCode = true;
             }
-            string url = (USESSL ? "https" : "http") + "://" + (string.IsNullOrEmpty(Site.Alias) ? Site.CName : Site.Alias) + "/staticpage/passwordresetresult?authcode=" + HttpUtility.UrlEncode(WBSSLStore.CryptorEngine.Encrypt(ReturnCode.ToString() + SettingConstants.Seprate + user.ID, true));
+            string url = (USESSL ? "https" : "http") + "://" + (string.IsNullOrEmpty(Site.Alias) ? Site.CName : Site.Alias) + "/staticpage/passwordresetresult?authcode=" + HttpUtility.UrlEncode(CryptorEngine.Encrypt(ReturnCode.ToString() + SettingConstants.Seprate + user.ID, true));
 
             return Redirect301(url, (string.IsNullOrEmpty(Site.Alias) ? Site.CName : Site.Alias));
         }

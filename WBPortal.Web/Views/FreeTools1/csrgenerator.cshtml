@@ -1,7 +1,8 @@
 ﻿@model WBSSLStore.Gateways.RestAPIModels.Response.CSRGenerateResponse
-@{
-    ViewBag.Title = "SSLComparison";
+@section headerTags{
+    @Html.Partial("_renderSEO",null)
 }
+
 @Html.Partial("_banner", new Tuple<string, string>("", "SSL TOOLS"))
 <!--Contetnt Start-->
 <div class="content">

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -15,10 +14,6 @@ using WBSSLStore.Web.Helpers.Base;
 using WBSSLStore.Web.Helpers.Caching;
 using WBSSLStore.Web.Util;
 using System.Security.Principal;
-using System.IO;
-using System.Collections.Generic;
-
-
 
 
 namespace WBSSLStore.Web.Controllers
@@ -46,17 +41,16 @@ namespace WBSSLStore.Web.Controllers
         int ContractID = 0;
         [Route()]
         public ActionResult index(string slug = "")
-        { 
+        {
             var currentsite = SiteCacher.CurrentSite;
 
             if (Convert.ToBoolean(Request.QueryString["init"]))
                 SiteCacher.ClearCache(Site.ID);
 
-            using (CurrentSiteSettings settings = new CurrentSiteSettings(currentsite))
-            {
-                _viewModel.CMSPage = _service.GetPageMetadata(Site.ID, WBHelper.CurrentLangID(), "/index");
-                ReplaceMetaTag();
-            }
+
+            _viewModel.CMSPage = _service.GetPageMetadata(Site.ID, WBHelper.CurrentLangID(), "/index");
+            ReplaceMetaTag();
+
 
             int UserID = 0;
 
@@ -78,66 +72,23 @@ namespace WBSSLStore.Web.Controllers
             }
 
             if (ContractID.Equals(0))
-                ContractID = WBSSLStore.Web.Helpers.WBHelper.GetCurrentContractID(UserID, Site.ID);
+                ContractID = WBHelper.GetCurrentContractID(UserID, Site.ID);
 
             _viewModel.Items = _service.GetAllProductPricing(currentsite.ID, ContractID);
             return View(_viewModel);
         }
 
-        //[Route("{slug?}")] 
-        public ActionResult indexz()
-        {
-            var currentsite = SiteCacher.CurrentSite;
-            using (CurrentSiteSettings settings = new CurrentSiteSettings(currentsite))
-            {
-                _viewModel.CMSPage = _service.GetPageMetadata(Site.ID, WBHelper.CurrentLangID(), "/");
-                ReplaceMetaTag();
-            }
 
-            int UserID = 0;
-
-            if (User.Identity.IsAuthenticated)
-            {
-                _viewModel.CurrentUserName = loginuser.Details.FirstName + " " + loginuser.Details.LastName;
-                if (loginuser != null && loginuser.Details != null)
-                {
-                    UserID = loginuser.Details.ID;
-                }
-                else if (User.Identity.IsAuthenticated && !string.IsNullOrEmpty(User.Identity.Name))
-                {
-                    if (loginuser != null && loginuser.Details != null)
-                    {
-
-                        UserID = loginuser.Details.ID;
-                    }
-                }
-            }
-
-            if (ContractID.Equals(0))
-                ContractID = WBSSLStore.Web.Helpers.WBHelper.GetCurrentContractID(UserID, Site.ID);
-
-            _viewModel.Items = _service.GetAllProductPricing(currentsite.ID, ContractID);
-            return View(_viewModel);
-        }
 
         [Route("{slug?}")]
         public ActionResult StaticRender(string slug, int? pid)
         {
-
-            //if (WhiteBrandShrink.ConfigurationHelper.IsConfigurationFileExist())
-            //{
-            //    return RedirectToAction("index", "Install", new { area = "SiteInstallation" });
-            //    //return RedirectToRoute("Siteinstallation_us");
-            //}
 
             if (Convert.ToBoolean(Request.QueryString["init"]))
                 SiteCacher.ClearCache(Site.ID);
 
             if (slug.Equals("shoppingcart"))
                 return RedirectToRoute("shoppingcart_us", new { area = "" });
-
-
-            
 
             if (slug.EndsWith("/"))
                 slug = slug + "index"; //landing page
@@ -147,6 +98,7 @@ namespace WBSSLStore.Web.Controllers
             {
 
                 ViewBag.UserName = User.Identity.IsAuthenticated ? loginuser.Details.FirstName + " " + loginuser.Details.LastName : "";
+                _viewModel.CurrentUserName = ViewBag.UserName;
 
                 return FilterPage(slug, settings, pid);
             }
@@ -358,7 +310,22 @@ namespace WBSSLStore.Web.Controllers
             return Json(bStatus);
         }
 
+        [HttpGet]
+        [Route("forgotpassword", Name = "logon_fgpassword")]
+        public ActionResult Forgotpassword()
+        {
+            _viewModel.CMSPage = _service.GetPageMetadata(Site.ID, WBHelper.CurrentLangID(), Request.Url.AbsolutePath);
+            ReplaceMetaTag();
+            if (User.Identity.IsAuthenticated)
+            {
+                _viewModel.CurrentUserName = loginuser.Details.FirstName + " " + loginuser.Details.LastName;
+            }
+
+            return View(_viewModel);
+        }
+
         [HttpPost]
+        [Route("forgotpassword", Name = "post_fgpassword")]
         public ActionResult Forgotpassword(FormCollection collection)
         {
             string EmailAddress = Convert.ToString(Request.Form["txtEmailAddress"]);
@@ -389,6 +356,16 @@ namespace WBSSLStore.Web.Controllers
         public ActionResult contactuspost(FormCollection collection)
         {
 
+
+           
+
+           
+
+
+
+
+
+
             string CompanyName = string.Empty; string Name = string.Empty; string Phone = string.Empty; string Email = string.Empty; string Comment = string.Empty;
             string Subject = string.Empty;
             try
@@ -398,8 +375,6 @@ namespace WBSSLStore.Web.Controllers
                 Phone = Convert.ToString(collection["txtPhone"]);
                 Email = Convert.ToString(collection["txtEmail"]);
                 Comment = Convert.ToString(collection["txtComment"]);
-
-
 
                 var subject = Site.Settings.Where(ss => ss.SiteID == Site.ID && ss.Key == SettingConstants.CURRENT_SITE_SUBJECTFEIELD).FirstOrDefault();
                 var ToEmail = Site.Settings.Where(ss => ss.SiteID == Site.ID && ss.Key.ToLower() == SettingConstants.CURRENT_SITE_TOEMAIL.ToLower()).FirstOrDefault();
@@ -414,20 +389,11 @@ namespace WBSSLStore.Web.Controllers
             }
             catch (Exception ex)
             {
+                Logger.Logger.Log_Exception(ex);
                 return Json(new { issuccess = "false" }, JsonRequestBehavior.AllowGet);
             }
 
             return Json(new { issuccess = "true" }, JsonRequestBehavior.AllowGet);
-
-
-            //ViewBag.ShowMessage = true;
-            //if (string.IsNullOrEmpty(thankyou.Value))
-            //    return View("thankyou");
-            //else
-            //{
-            //    Response.Redirect(thankyou.Value);
-            //    return View();
-            //}
         }
 
         [Route("PasswordReset", Name = "PasswordReset_us")]
@@ -553,13 +519,13 @@ namespace WBSSLStore.Web.Controllers
             //if (ContractID.Equals(0))
             //    ContractID = WBSSLStore.Web.Helpers.WBHelper.GetCurrentContractID(UserID, Site.ID);
 
-            
+
             return View(_viewModel);
         }
         #endregion
 
         #region Static Pages
-        
+
         [Route("aboutus", Name = "aboutus_us")]
         public ActionResult aboutus()
         {
@@ -572,7 +538,7 @@ namespace WBSSLStore.Web.Controllers
 
             return View(_viewModel);
         }
-        
+
         [Route("privacypolicy", Name = "privacypolicy_us")]
         public ActionResult privacypolicy()
         {
@@ -585,7 +551,7 @@ namespace WBSSLStore.Web.Controllers
 
             return View(_viewModel);
         }
-        
+
         [Route("refundpolicy", Name = "refundpolicy_us")]
         public ActionResult refundpolicy()
         {
@@ -598,7 +564,7 @@ namespace WBSSLStore.Web.Controllers
 
             return View(_viewModel);
         }
-        
+
         [Route("disclaimer", Name = "Disclaimer_us")]
         public ActionResult Disclaimer()
         {
@@ -611,19 +577,7 @@ namespace WBSSLStore.Web.Controllers
 
             return View(_viewModel);
         }
-        
-        [Route("support", Name = "support_us")]
-        public ActionResult support()
-        {
-            _viewModel.CMSPage = _service.GetPageMetadata(Site.ID, WBHelper.CurrentLangID(), Request.Url.AbsolutePath);
-            ReplaceMetaTag();
-            if (User.Identity.IsAuthenticated)
-            {
-                _viewModel.CurrentUserName = loginuser.Details.FirstName + " " + loginuser.Details.LastName;
-            }
 
-            return View(_viewModel);
-        }
 
         [Route("becamereseller", Name = "becamereseller_us")]
         public ActionResult becamereseller()
@@ -643,8 +597,8 @@ namespace WBSSLStore.Web.Controllers
             ViewBag.Country = CountryList.ToArray();
             ViewBag.MetaData = new CMSPage();
             User user = new Domain.User();
-            user.SiteID =  Site.ID;;
-            
+            user.SiteID = Site.ID; ;
+
             ViewBag.UserName = (User.Identity.IsAuthenticated) ? loginuser.Details.FirstName + " " + loginuser.Details.LastName : "";
             return View("resellersignup", user);
         }
@@ -652,7 +606,7 @@ namespace WBSSLStore.Web.Controllers
 
         [Route("faq", Name = "faq_us")]
         public ActionResult faq()
-        { 
+        {
             _viewModel.CMSPage = _service.GetPageMetadata(Site.ID, WBHelper.CurrentLangID(), Request.Url.AbsolutePath);
             ReplaceMetaTag();
             if (User.Identity.IsAuthenticated)
@@ -660,6 +614,44 @@ namespace WBSSLStore.Web.Controllers
                 _viewModel.CurrentUserName = loginuser.Details.FirstName + " " + loginuser.Details.LastName;
             }
 
+            return View(_viewModel);
+        }
+
+        [Route("support", Name = "support_us")]
+        [HttpGet]
+        public ActionResult Resources()
+        {
+            _viewModel.CMSPage = _service.GetPageMetadata(Site.ID, WBHelper.CurrentLangID(), Request.Url.AbsolutePath);
+            ReplaceMetaTag();
+            if (User.Identity.IsAuthenticated)
+            {
+                _viewModel.CurrentUserName = loginuser.Details.FirstName + " " + loginuser.Details.LastName;
+            }
+            return View(_viewModel);
+        }
+
+        [Route("ssl-comparison", Name = "SSLcomparison_us")]
+        [HttpGet]
+        public ActionResult comparessl()
+        {
+            _viewModel.CMSPage = _service.GetPageMetadata(Site.ID, WBHelper.CurrentLangID(), Request.Url.AbsolutePath);
+            ReplaceMetaTag();
+            if (User.Identity.IsAuthenticated)
+            {
+                _viewModel.CurrentUserName = loginuser.Details.FirstName + " " + loginuser.Details.LastName;
+            }
+            return View(_viewModel);
+        }
+        [Route("ssl-tools", Name = "ssltools_us")]
+        [HttpGet]
+        public ActionResult ssltools()
+        {
+            _viewModel.CMSPage = _service.GetPageMetadata(Site.ID, WBHelper.CurrentLangID(), Request.Url.AbsolutePath);
+            ReplaceMetaTag();
+            if (User.Identity.IsAuthenticated)
+            {
+                _viewModel.CurrentUserName = loginuser.Details.FirstName + " " + loginuser.Details.LastName;
+            }
             return View(_viewModel);
         }
 
@@ -765,7 +757,9 @@ namespace WBSSLStore.Web.Controllers
                 }
 
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex)
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             { }
         }
         private ActionResult PageRendering(string slug, CurrentSiteSettings settings, int? pid)
@@ -781,7 +775,7 @@ namespace WBSSLStore.Web.Controllers
                 return RedirectToRoute("pagenotfound");
             }
 
-          
+
             //Get MetaData
             GetMetaDataAndContext(slug, settings);
 
@@ -821,8 +815,7 @@ namespace WBSSLStore.Web.Controllers
                 {
                     _viewModel.CMSPageContent = new CMSPageContent();
                     _viewModel.CMSPageContent.PageContent = "<h1>Set Content of your Page.</h1>";
-                    var a = Site.ID;
-                    var b = WBHelper.CurrentLangID();
+
 
                 }
 
@@ -834,7 +827,7 @@ namespace WBSSLStore.Web.Controllers
                 _viewModel.CMSPageContent.PageContent = "<h1>Set Content of your Page.</h1>";
             }
         }
-        
+
         private void ReplaceMetaTag()
         {
             if (_viewModel.CMSPage != null)

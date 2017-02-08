@@ -1,9 +1,7 @@
-﻿@using WBSSLStore.Domain;
-@using WBSSLStore.Web.Helpers.PopupForm
+﻿
 @model WBSSLStore.Service.ViewModels.StaticPageViewModel
 @{
-    ViewBag.Title = "";
-    ViewBag.version = WBSSLStore.Web.Helpers.Caching.SiteCacher.ResourceVersion();
+     ViewBag.version = WBSSLStore.Web.Helpers.Caching.SiteCacher.ResourceVersion();
     var productdetails = WBSSLStore.Web.Helpers.WBHelper.GetProductDetailRows();
 
 }
@@ -11,10 +9,10 @@
     @Html.Partial("_renderSEO", Model != null && Model.CMSPage != null ? Model.CMSPage : new WBSSLStore.Domain.CMSPage())
 }
 @section sitecss{
-    @System.Web.Optimization.Styles.Render("/bundales/tabcss?v=" + ViewBag.version)
+    
 }
 @section Jscripts{
-    @System.Web.Optimization.Scripts.Render("/bundales/wb/scripts?v=" + ViewBag.version)
+    
 }
 @Html.Partial("_banner", new Tuple<string, string>("", "Domain Validated SSL"))
 <div class="content">
@@ -36,6 +34,3 @@
     </div>
 </div>
 
-@section PopupScript{
-    @Html.MakePopupForm("Edit", new[] { "id", "ppid" }, controller: "ShoppingCart", title: @WBSSLStore.Resources.GeneralMessage.Message.Add_To_Cart_Caption, successFunction: "EditSuccess", height: 450, width: 700, refreshOnSuccess: false, okText: @WBSSLStore.Resources.GeneralMessage.Message.SAVE_btn)
-}

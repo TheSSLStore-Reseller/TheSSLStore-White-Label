@@ -1,0 +1,365 @@
+﻿@model WBSSLStore.Service.ViewModels.StaticPageViewModel
+@{
+    ViewBag.version = WBSSLStore.Web.Helpers.Caching.SiteCacher.ResourceVersion();
+}
+@section headerTags{
+    @Html.Partial("_renderSEO", Model != null && Model.CMSPage != null ? Model.CMSPage : new WBSSLStore.Domain.CMSPage())
+}
+@section sitecss{
+
+}
+@section Jscripts{
+    @System.Web.Optimization.Scripts.Render("/bundales/wb/scripts?v=" + ViewBag.version)
+    <script type="text/javascript">
+    $(function () {
+        $(".accordion_example").smk_Accordion();
+    });
+    </script>
+
+}
+
+
+
+
+@Html.Partial("_banner", new Tuple<string, string>("", "Support"))
+
+
+<div class="content">
+    <div class="wrapper">
+        <div class="column3">
+            <div class="mobtopcol">
+                <div class="column3-2">
+                    <h3>Sales and Order Processing</h3>
+                    <div id="cssmenu">
+                        <ul class="accordion_example resource">
+
+                            <li class="accordian-green">
+                                <div>
+                                    <p>What is SSL?</p>
+                                    <div class="clear"></div>
+                                </div>
+                                <div>
+                                    <p>Secure Socket Layer (SSL) technology establishes a secure connection between your website and that of your user. Any files or information that is transmitted between these two points is encrypted. Customers want assurance that their credit card details, private information and transaction histories are kept private at all times. Having an SSL certificate gives you and your customers that assurance. </p>
+                                    <p>SSL certificates are a must to prevent malware from affecting your website. But more importantly, customer transactions must be kept completely hidden from hackers who want to steal their info. SSL should always be used for the following:</p>
+                                    <ul>
+                                        <li>Credit card transaction on the web</li>
+                                        <li>Web logins, any online form, or any  protected area on the website</li>
+                                        <li>Webmail &amp; applications (Outlook Web  Access, MS Exchange, etc.)</li>
+                                        <li>Virtualization &amp; workflow applications</li>
+                                        <li>Between e-mail clients and email servers</li>
+                                        <li>File transferring over "https" &amp; "ftp"</li>
+                                        <li>Hosting control panels login</li>
+                                        <li>All intranets</li>
+                                        <li>Network Logins, SSL VPN, VPN Access  Servers, etc.</li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="accordian-green">
+                                <div>
+                                    <p>What level of security should I be purchasing?</p>
+                                    <div class="clear"></div>
+                                </div>
+                                <div>
+                                    <p>Deciding which solution to procure is now easy. Below is an explanation of the 3 levels of SSL security as well as what are the recommended environments they are to be used on. </p>
+                                    <h4>LEVEL 1 DOMAIN VALIDATION</h4>
+                                    <p>This is the most basic of SSL certification. Anyone who owns a domain name will be able to procure these types of SSL certificates. The CA will send a domain ownership confirmation e-mail to the person listed as the domain owner on the WHOIS public records, and once accepted, the order will be released. No company information is checked or displayed on the certificate, making level 1 domain validated SSL certificates easier for criminals to procure.</p>
+                                    <h4>LEVEL 2 ORGANISATION VALIDATION</h4>
+                                    <p>This MID range SSL is a step up from the DV option and is perfect for public facing domains that are vulnerable to duplication attacks. The CA will carry out additional vetting of the organisation and individual applying for the certificate. This includes verifying the Company existence, address, telephone number, domain ownership and contact person before issuing the SSL. The vetting company name is displayed in a Trusted Site seal which can be added to your website to show all your visitors that the website is not only secure, but also managed by a legitimate Organisation who has been vetted by a trusted 3<sup>rd</sup> party</p>
+                                    <h4>Level 3 Extended Validation </h4>
+                                    <p>Companies who take credit card information, have a login page or deal in the financial sector need to show their potential customers that they have gone through extra measures to ensure their safety online. Websites in this category, who do not have EV SSL, are extremely prone to phishing attacks and have a higher level of customer abandonment rates than their competitors who do.   The CA will run a much more rigorous authentication process then Level 2 OV certificates and one can expect a longer turn around time, normally 5-7 working days. EV SSL is a high visibility SSL that turns the address/URL bar green shows visitors at first glance that the website is secure and safe.</p>
+                                    <h4>WHEN TO USE DV:</h4>
+                                    <p>Situations where trust and credibility are less important. E.g. internal environments like, exchange or internal applications</p>
+                                    <ul>
+                                        <li>Easy to obtain</li>
+                                        <li>Fast issuance</li>
+                                        <li>Use only for web-based applications what are not at risk for phishing or fraud</li>
+                                        <li>Don't use for public facing sites or sites that jhandle sensitive data, like logins or credit card check out pages.</li>
+                                    </ul>
+                                    <h4>WHEN TO USE OV:</h4>
+                                    <p>Public Facing websites dealing with less sensitive transactions</p>
+                                    <ul>
+                                        <li>Stricter verification process than Level 1 DV certs</li>
+                                        <li>Company information is displayed to website visitors via a Trusted Site Seal</li>
+                                        <li>Provides a high level of TRUST about the company who owns the website</li>
+                                        <li>Does not offer the highest level trust like Level 3 EV SSL (Green address bar)</li>
+                                    </ul>
+                                    <h4>WHEN TO USE EV:</h4>
+                                    <p>Any site with a login page, a credit card checkout page or any site looking to secure sensitive data</p>
+                                    <ul>
+                                        <li>Use EV SSL for the highest visible display</li>
+                                        <li>Green Address bar</li>
+                                        <li>Increase ROI and traction</li>
+                                        <li>Reduce abandonment rates</li>
+                                        <li>Show your visitors that you have gone through extra measures to ensure their safety online. This gives you credibility and installs higher levels of Trust.</li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="accordian-green">
+                                <div>
+                                    <p>SSL enrolment and verification</p>
+                                    <div class="clear"></div>
+                                </div>
+                                <div>
+                                    <h3>Level 1 – DV (Domain Validated SSL)</h3>
+                                    <p>We’ve created this short guide to help you appreciate why our established authentication and verification procedures are a key part of building trust online, as well as a way to help you navigate the enrolment process for Domain Validated (DV) certificates</p>
+                                    <h4>What you need to complete the enrolment.</h4>
+                                    <ol>
+                                        <li><a href="#">2048 bit CSR file</a></li>
+                                        <li>Corporate contact - Name / telephone number and e-mail address (Must be a full time employee of the Organisation)</li>
+                                        <li>Technical Contact Name / telephone number and e-mail address (this is generally the person who will be installing the certificate)</li>
+                                    </ol>
+                                    <h4>DV - Level 1 Verification requirements</h4>
+                                    <strong>1 STEP TO ISSUANCE</strong>
+                                    <p><strong>Domain Authentication only.</strong> This is done by sending an e-mail to the listed registrant contact on the WHOIS registry for the domain. Alternatively, you can also set a pre-approved e-mail account which you will be asked to select during the order enrolment.</p>
+
+                                    <h3>Level 2 - OV (Organisation Validated SSL)</h3>
+                                    <p>We've created this short guide to help you appreciate why our established authentication and verification procedures are a key part of building trust online, as well as a way to help you navigate the enrolment process for Organisation Validated (OV) certificates</p>
+                                    <p><strong>What you need to complete the enrolment. </strong></p>
+                                    <p>If the information below does not match EXACTLY to what’s listed on your Articles of Incorporation (aka Certificate of Corporation, Corporate Charter, Articles of Organization, Articles of Association, etc.) it may DELAY the issuance of your certificate. The issuing CA checks official records maintained with pre-authorized third-party databases (i.e. Government Agencies).</p>
+                                    <p>A Dun &amp; Bradstreet number (D-U-N-S® Number) is NOT required; however, it will help us expedite your request. Also, please note the useful hints to the right of the fields.</p>
+                                    <ol>
+                                        <li>2048 bit CSR file </li>
+                                        <li>
+                                            Organizational Information Legal Name – as per registration docs or DUNS records
+                                            <ul>
+                                                <li>Main Phone Number – a contactable 3rd party listed number </li>
+                                                <li>Physical Address as per registration  </li>
+                                                <li>City and Province</li>
+                                                <li>postal code </li>
+                                            </ul>
+                                        </li>
+                                        <li>Corporate contact - Name / telephone number and e-mail address (Must be a full time employee of the Organisation) </li>
+                                        <li>Technical Contact Name / telephone number and e-mail address (this is generally the person who will be installing the certificate) </li>
+                                    </ol>
+                                    <h4>OV - Level 2 Authentication requirements</h4>
+                                    <p><strong>3 STEPS TO ISSUANCE</strong></p>
+                                    <ol>
+                                        <li>
+                                            <strong>Organisation Requirements</strong><br>
+                                            Vendor CA must verify the name, registration, and good-standing status of the Organisation listed in the CSR, with the appropriate Government Registration Agency in its country, state or (in some cases) city of jurisdiction.
+                                        </li>
+                                        <li>
+                                            <strong>Domain Authentication</strong><br>
+                                            Vendor CA ensures the certificate domain name is registered to the enrolling Organisation's legal name in a publicly viewable WHOIS search. If the domain name is not registered to the enrolling Organisation’s legal name, alternative methods include: 1) establishing a ‘legal link’, 2) obtaining evidence of the right to use the domain name, or 3) additional documentation
+                                        </li>
+                                        <li>
+                                            <strong>Verification Call</strong><br>
+                                            Before each certificate can be issued, a verification telephone call, using an independently obtained ‘third-party’ public telephone listing for the Organisation within the country listed on the CSR, must be completed with the Organisational or Technical Contact (if employed by the Organisation). If Vendor CA is unable to reach either Contact directly, either a voicemail is left on the contact’s personal voicemail or e-mail is sent with instructions on how to contact Vendor CA to complete the final verification
+                                        </li>
+                                    </ol>
+                                    <h3>Level 2 – Code Signing</h3>
+                                    <p><strong>What you need to complete the enrolment. </strong></p>
+                                    <p>We’ve created this short guide to help you appreciate why our established authentication and verification procedures are a key part of building trust online, as well as a way to help you navigate the enrolment process for Code Signing (CS) certificates.</p>
+                                    <p><strong>2 STEPS TO ISSUANCE</strong></p>
+                                    <ol>
+                                        <li>
+                                            <strong>Organisational Authentication</strong><br>
+                                            Vendor CA must verify the name, registration, and good-standing status of the Organisation listed in the CSR, with the appropriate Government Registration Agency in its country, state or (in some cases) city of jurisdiction.
+                                        </li>
+                                        <li>
+                                            <strong>Verification Call</strong><br>
+                                            Before each certificate can be issued, a verification telephone call, using an independently obtained ‘third-party’ public telephone listing for the Organisation within the country listed on the CSR, must be completed with the Organisational Contact
+                                        </li>
+                                    </ol>
+                                    <h3>Level 3 - EV (Extended Validated SSL)</h3>
+                                    <p>we've created this short guide to help you appreciate why our established authentication and verification procedures are a key part of building trust online, as well as a way to help you navigate the enrolment process for Organisation Validated (OV) certificates </p>
+                                    <p><strong>What you need to complete the enrolment. </strong></p>
+                                    <p>If the information below does not match EXACTLY to what’s listed on your Articles of Incorporation (aka Certificate of Corporation, Corporate Charter, Articles of Organization, Articles of Association, etc.) it may DELAY the issuance of your certificate. The issuing CA checks official records maintained with pre-authorized third-party databases (i.e. Government Agencies).</p>
+                                    <p>A Dun &amp; Bradstreet number (D-U-N-S® Number) is NOT required; however, it will help us expedite your request. Also, please note the useful hints to the right of the fields.</p>
+                                    <ol>
+                                        <li>2048 bit CSR file </li>
+                                        <li>
+                                            Organizational Information Legal Name – as per registration docs or DUNS records
+                                            <ul>
+                                                <li>Main Phone Number – a contactable 3rd party listed number </li>
+                                                <li>Physical Address as per registration</li>
+                                                <li>City and Province</li>
+                                                <li>postal code</li>
+                                            </ul>
+                                        </li>
+                                        <li>Corporate contact - Name / telephone number and e-mail address (Must be a full time employee of the Organisation)</li>
+                                        <li>Technical Contact Name / telephone number and e-mail address (this is generally the person who will be installing the certificate) </li>
+                                    </ol>
+                                    <p><strong>8 STEPS TO ISSUANCE </strong></p>
+                                    <ol>
+                                        <li>
+                                            <strong>Organisational Authentication</strong><br>
+                                            Your Organisation must be registered with the appropriate Government Registration Agency in its country or state.Domain Authentication
+                                        </li>
+                                        <li>
+                                            <strong>Operational Existence</strong><br>
+                                            Symantec must verify that the enrolling Organisation has the ability to engage in business. Operational Existence is satisfied if the Organisation has been registered and in existence for over3 years. Alternative documentation may be requested for organisations registered for less than 3 years
+                                        </li>
+                                        <li>
+                                            <strong>Address Verification</strong><br>
+                                            Symantec verifies the physical business address listed on a certificate enrolment. This must be a physical address, and not a P.O. Box, Lock Box, or care of address.
+                                        </li>
+                                        <li>
+                                            <strong>Telephone Verification</strong><br>
+                                            An independently obtained ‘third-party’ public telephone listing is used to find a telephone number for the Organisation at the verified address
+                                        </li>
+                                        <li>
+                                            <strong>Domain Authentication</strong><br>
+                                            Symantec ensures the certificate domain name is registered to the enrolling Organisation’s legal name in a publicly viewable WHOIS search
+                                        </li>
+                                        <li>
+                                            <strong>Confirmation of Employment</strong><br>
+                                            The Organisational Contact must be verified to work for the Organisation requesting the certificate AND be authorised to obtain an EV Certificate on the behalf of the Organisation. Note: contractors or temporary staff are not allowed to obtain EV certificates
+                                        </li>
+                                        <li>
+                                            <strong>Verification Call</strong><br>
+                                            Before each certificate can be issued, a verification telephone call, using an independently obtained ‘third-party’ public telephone listing for the Organisation within the country listed on the CSR, must be completed with the Organisational Contact. If Symantec is unable to reach the Contact directly, either a voicemail is left on the contact’s personal voicemail or an e-mail is sent with instructions on how to contact Symantec to complete the final verification
+                                        </li>
+                                        <li>
+                                            <strong>Acknowledgement of Agreement</strong><br>
+                                            Complete the Extended Validation Subscriber Agreement (Organisational Contract) online. In rare instances, a signed form may be required and instructions will be provided. Note: Only when the Organisational Contact is not able to open the link (ie: lack of web access) or requests a written form, we send an email with the AA form requesting to print, sign and OR return via fax or email.
+                                        </li>
+                                    </ol>
+                                </div>
+                            </li>
+                            <li class="accordian-green">
+                                <div>
+                                    <p>What is an EV SSL and why do I need one?</p>
+                                    <div class="clear"></div>
+                                </div>
+                                <div>
+                                    <p>Extended Validation (EV) certificates are premium options that come with lots of security indicators. These options provide you with a decent ROI because they give users more peace of mind when buying from you online. For large, sensitive transactions, EV certificates offer robust encryption and protection. </p>
+                                    <p>A number of high profile indicators are added to your website when you install an EV certificate:</p>
+                                    <ul>
+                                        <li>The green address bar in your URL is interactive. Clients can check out your detailed validation and also see the status of your online security. </li>
+                                        <li>Verified Company name appears in the address bar showing visitors that the website is owned and managed by a company who has been validated by a trusted 3rd party</li>
+                                        <li>"https" appears in front of your domain name. This is an added measure of SECURITY which most users recognise and appreciate. </li>
+                                        <li>A Security Site Seal is a virtual badge on your website. It acts as an announcement that your website is validated and secure from malware.</li>
+                                    </ul>
+                                    <p>The reason why an EV SSL certificate is so essential to your business is because it gives your users peace of mind. Sensitive transactions are kept safe from phishing scams and spyware. EV certificates offer you the highest form of website security on the market. They enable you to generate trust from your clients and build your reputation on sound online business practices. </p>
+                                </div>
+                            </li>
+                            <li class="accordian-green">
+                                <div>
+                                    <p>Why is Symantec the #1 most trusted SSL in the world?</p>
+                                    <div class="clear"></div>
+                                </div>
+                                <div>
+                                    <p>For many years Symantec has been dedicated to providing extremely robust security for all types of websites. From the beginning, they have taken extra steps to ensure the eradication and prevention of malware and spyware. For this reason, Symantec is now the best known website security provider in the world. They currently boast the following impressive credentials:</p>
+                                    <ul>
+                                        <li>They secure 95% of all Fortune 500 company websites </li>
+                                        <li>They are trusted to secure 96 of the world’s largest banks</li>
+                                        <li>One million web servers are currently secured by Symantec—more than any other provider</li>
+                                        <li>When choosing EV certificates, 75% of companies choose Symantec; recognising them as the leader in extended validation</li>
+                                        <li>More than 90 000 domains in 145 countries recognise the VeriSign &amp; Norton security site seals—both of which are affiliated with Symantec</li>
+                                    </ul>
+                                    <p>So what has made Symantec such a trusted name in website security? If you think it’s nothing more than clever marketing, you’d be mistaken. Take a look at how extra measures are taken to ensure your company’s online security:</p>
+                                    <ul>
+                                        <li>Symantec displays the ever-popular Norton security site seal. This seal is so well recognised that many users will not transact without having its associate assurance. </li>
+                                        <li>Very thorough anti-malware scans are conducted by Symantec to expose vulnerabilities in your website and highlight risks that need tending to. </li>
+                                        <li>The ‘seal-in-search’ allows your users to safely operate within your website without having to worry about their privacy.</li>
+                                        <li>Symantec offers you the chance to build trust and gain customer loyalty. If you are in a competitive business environment, then this option is your best chance at building a solid reputation. </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <h3 class="resh3">Technical  Assistance</h3>
+                    <div id="cssmenua">
+                        <ul class="accordion_example resource">
+                            <li class="accordian-green">
+                                <div>
+                                    <p>What is a CSR file and How to I generate one?</p>
+                                    <div class="clear"></div>
+                                </div>
+                                <div>
+                                    <p>A CSR or Certificate Signing Request is the encrypted text that must be generated from the server that which the certificate is going to be used on. It contains the information that will be included in your certificate such as your organization name, common name (domain name), locality, and country. A private key is also created at the same time you create the CSR. You can learn more about your CSR at: </p>
+                                    <p>How do I create a CSR file? - Most people contact their hosting company or System Administrator to generate the CSR. If you are aware of your server details; you can check the following links to learn how to generate your CSR for your particular serve </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <h3 class="resh3">Procurement and Payment options</h3>
+                    <div id="cssmenub">
+                        <ul class="accordion_example resource">
+                            <li class="accordian-green">
+                                <div>
+                                    <p>What procurement options do you offer</p>
+                                    <div class="clear"></div>
+                                </div>
+                                <div>
+                                    <p>You will enjoy various options when purchasing from TrustTheSite. These include:</p>
+                                    <ul>
+
+                                        <li>If you are purchasing on behalf of your own clients, you may list yourself as a reseller <a href="@Url.RouteUrl("becamereseller_us")">HERE</a>. From there you will be able to manage all your certificates in one place.</li>
+                                        <li>Your customers can also buy via a buy link at an agreed price. Our referer links are fully endorsed by TrustTheSite. <a href="@Url.RouteUrl("Contact_us")">Call us now</a> to set this up for you.</li>
+                                        <li>Too busy to handle your own procurement? TrustTheSite is happy to handle it for you! Simply choose our outsourcing option and we will facilitate procurement and verification on your behalf. (A small additional fee will be added to your invoice) <a href="@Url.RouteUrl("Contact_us")">Call us now</a> to set this up for you.</li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="accordian-green">
+                                <div>
+                                    <p>What payment options do you offer</p>
+                                    <div class="clear"></div>
+                                </div>
+                                <div>
+                                    <p>For customers buying directly from us, please feel free to use any of the following payment methods:</p>
+                                    <ul>
+                                        <li>Electronic Funds Transfer (EFT)</li>
+                                        <li>PayPal</li>
+                                        <li>Credit Card</li>
+                                        <li>Purchase Order – Net 30 days</li>
+                                    </ul>
+                                    <p class="mrgbotnone">You can view our banking details <a href="@Url.RouteUrl("Contact_us")">HERE</a>. Or simply <a href="@Url.RouteUrl("Contact_us")">contact one of our consultants</a> to finalise your purchase.</p>
+                                </div>
+                            </li>
+                            <li class="accordian-green">
+                                <div>
+                                    <p>What are your pricing options</p>
+                                    <div class="clear"></div>
+                                </div>
+                                <div>
+                                    <p>TrustTheSite offers you three different pricing options—some of which may save you a lot in the long run.</p>
+                                    <ul>
+                                        <li>Retail pricing: This is for customers who want to buy individual certificates directly from us. Order off our website at the price displayed.</li>
+                                        <li>Reseller pricing: Companies who wish to become resellers may purchase bulk certificates from us at a significant discount. You will need to sign up as a reseller before doing so.</li>
+                                        <li>Managed pricing: A third option let’s you sell certificates to your clients, but leaves the management of those orders up to us. In other words, we handle procurement and verification on your behalf for a 5% fee of all your sales. <a href="@Url.RouteUrl("Contact_us")">LEARN MORE</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="accordian-green">
+                                <div>
+                                    <p>How do I become a reseller</p>
+                                    <div class="clear"></div>
+                                </div>
+                                <div>
+                                    <p>Collectively, our resellers have enjoyed a whopping $10 million in total revenue! That’s because in our dealings with you as a reseller, we are 100% dedicated to ensuring YOUR success and growth in the SSL industry. Resellers who are affiliated with us—and the top five SSL brands we provide—enjoy a strong sense of credibility which their competitors lack.</p>
+                                    <p>Everything you could possibly need to make a success of selling SSL certificates has been provided by TrustTheSite. This includes:</p>
+                                    <ul>
+                                        <li>The most competitive pricing in the industry</li>
+                                        <li>A fine-tuned robust SSL management portal</li>
+                                        <li>All the necessary SSL tools needed to effectively manage your clients expectations</li>
+                                        <li>No joining fee</li>
+                                        <li>A world class account manager with 10 years channel business experience.</li>
+                                    </ul>
+                                    <p>Flexible contract options and sales assistance means your customers enjoy the very best SSL procurement experience. Yes, that’s right; we’ll actually do the sale for you and manage the issuance process on your behalf. Contact us now and find out what other benefits we offer to SSL resellers. </p>
+                                    <p><a href="@Url.RouteUrl("becamereseller_us")">Read more about Resellers</a></p>
+                                </div>
+                            </li>
+                            <li class="accordian-green">
+                                <div>
+                                    <p>Where can i view reseller pricing</p>
+                                    <div class="clear"></div>
+                                </div>
+                                <div>
+                                    <p>Once you create a reseller account with us, you will have online access to our discounted prices. If you are not yet sure about partnering with TrustTheSite, we’re happy to share our success stories and answer any other questions you may have. Our consultant are available to take your calls and clear up any uncertainties on your mind.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="ac-c2c-event ac-c2c-button"></div>
+                    <div class="clear"></div>
+                </div>
+
+                @Html.Partial("_rightpanel", (Model != null && !string.IsNullOrEmpty(Model.CurrentUserName) ? Model.CurrentUserName : ""))
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>

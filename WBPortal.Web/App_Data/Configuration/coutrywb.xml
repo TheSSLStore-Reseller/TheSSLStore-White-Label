@@ -1141,17 +1141,10 @@
       <BrandName>Comodo</BrandName>
       <ID>5</ID>
     </Brand>
-    <Brand>
-      <BrandName>TrustKeeper</BrandName>
-      <ID>6</ID>
-    </Brand>
-    <Brand>
-      <BrandName>TrustWave</BrandName>
-      <ID>7</ID>
-    </Brand>
+   
     <Brand>
       <BrandName>Certum</BrandName>
-      <ID>9</ID>
+      <ID>6</ID>
     </Brand>
   </BrandTable>
   <LangTable>

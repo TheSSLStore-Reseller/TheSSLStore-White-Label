@@ -1,6 +1,7 @@
 ﻿@model WBSSLStore.Gateways.RestAPIModels.Response.CSRGenerateResponse
-@{
-    ViewBag.Title = "Generate CSR";
+
+@section headerTags{
+    @Html.Partial("_renderSEO", new WBSSLStore.Domain.CMSPage())
 }
 @Html.Partial("_banner", new Tuple<string, string>("", "Generate CSR"))
 <div class="content">
@@ -374,7 +375,10 @@
                                     <h4>Your CSR for fastestssl.com</h4>
                                     <div class="graybarboxdtl">
                                         <p><strong>Please save this information in a safe place!</strong></p>
-                                        <pre>@Html.TextArea("txtcsr", Model.CSR)</pre>
+                                        <pre>
+                                             <textarea cols="80" rows="25">@Model.CSR</textarea>
+                                            
+                                        </pre>
                                     </div>
                                 </div>
                                 <div class="graybarbox mrgbotnone">
@@ -382,7 +386,10 @@
                                     <div class="graybarboxdtl">
                                         <p><strong>Save this as a .TXT file and keep it secure - your SSL certificate WILL NOT WORK without this.</strong></p>
                                         
-                                        <pre>@Html.TextArea("txtPrivateKey", Model.PrivateKey)</pre>
+                                        <pre>
+
+                                            <textarea cols="80" rows="25">@Model.PrivateKey</textarea>
+</pre>
                                     </div>
                                 </div>
                         <!--Show Result End-->

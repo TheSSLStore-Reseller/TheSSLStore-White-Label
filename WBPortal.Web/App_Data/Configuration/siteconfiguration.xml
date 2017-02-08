@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <SetupConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <DataBaseSettings>
-    <IsExists>false</IsExists>
+    <IsExists>true</IsExists>
     <IsWindowsAuthentication>false</IsWindowsAuthentication>
     <IsCustomRawConnection>false</IsCustomRawConnection>
-    <ConnectionString><![CDATA[]]></ConnectionString>
+    <ConnectionString><![CDATA[SERVER=192.168.100.8;user=SA;password=Intruder@#91;Database=WBPortal1]]></ConnectionString>
     <ServerName />
     <DatabaseName />
     <UserName />
@@ -13,10 +13,10 @@
     <ConnectionTimeout>300</ConnectionTimeout>
     <UseSSL>false</UseSSL>
     <ID>0</ID>
-    <IsFinishDBSetup>false</IsFinishDBSetup>
-    <IsFinishPaymentSetup>false</IsFinishPaymentSetup>
-    <IsFinishSMTPSetup>false</IsFinishSMTPSetup>
-    <IsFinishAdminSetup>false</IsFinishAdminSetup>
-    <IsFinishGeneralSetup>false</IsFinishGeneralSetup>
+    <IsFinishDBSetup>true</IsFinishDBSetup>
+    <IsFinishPaymentSetup>true</IsFinishPaymentSetup>
+    <IsFinishSMTPSetup>true</IsFinishSMTPSetup>
+    <IsFinishAdminSetup>true</IsFinishAdminSetup>
+    <IsFinishGeneralSetup>true</IsFinishGeneralSetup>
   </DataBaseSettings>
 </SetupConfig>

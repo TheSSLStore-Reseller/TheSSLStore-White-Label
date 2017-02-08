@@ -15,7 +15,7 @@
                                alert(visible);
                            }
                            else
-                           //alert('Unable to change visibility.');
+                               //alert('Unable to change visibility.');
                                alert(invisible);
                        });
     }
@@ -77,78 +77,94 @@
                                             </td>
                                         </tr>
                                         @if (Model != null && Model.Count() > 0)
-                                        {
-                                            int i = 0;
-                                            foreach (var item in ParentModel)
-                                            {
-                                           
-                                            <tr id="tr-@item.ID">
-                                                <td align="left" valign="top">
-                                                    <div class="storebarbg">
-                                                        <table width="820" border="0" align="left" cellpadding="1" cellspacing="1">
-                                                            <tr>
-                                                                <td style="width: 1%" align="left" valign="middle">
-                                                                    <img src="@(WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath + "/icon-ssl_certificates.png")" alt="home" width="16" height="15">
-                                                                </td>
-                                                                <td align="left" valign="middle" class="bold" style="width: 56%">
-                                                                    @WBSSLStore.Web.Helpers.WBHelper.GetValueFromResourceFile(item.Caption)
-                                                                </td>
-                                                                <td align="left" valign="middle" style="width: 15%;">
-                                                                    <table width="100%" border="0" cellspacing="1" cellpadding="1">
-                                                                        <tr>
-                                                                            <td align="left" valign="middle">
-                                                                                <label>
-                                                                                    @Html.DropDownList("ddlPageStatus", Enum.GetValues(typeof(WBSSLStore.Domain.PageStatus)).Cast<WBSSLStore.Domain.PageStatus>().Select(x => new SelectListItem { Text = x.GetEnumDescription(), Value = ((int)x).ToString(), Selected = (((int)x) == @item.PageStatusID) }), new { @class = "listmenuauto", @onchange = "ChangeVisibility('" + @item.ID + "',this);" })
-                                                                                </label>
-                                                                            </td>
-                                                                        </tr>
-                                                                    </table>
-                                                                </td>
-                                                                <td align="center" style="width: 3%;">
-                                                                    @if (!(@item.Caption.ToLower().Equals("home")))
+                                                    {
+                                                        int i = 0;
+                                                        
+                                                        foreach (var item in ParentModel)
+                                                        {
+
+                                                <tr id="tr-@item.ID">
+                                                    <td align="left" valign="top">
+                                                        <div class="storebarbg">
+                                                            <table width="820" border="0" align="left" cellpadding="1" cellspacing="1">
+                                                                <tr>
+                                                                    <td style="width: 1%" align="left" valign="middle">
+                                                                        <img src="@(WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath + "/icon-ssl_certificates.png")" alt="home" width="16" height="15">
+                                                                    </td>
+                                                                    <td align="left" valign="middle" class="bold" style="width: 56%">
+                                                                        @WBSSLStore.Web.Helpers.WBHelper.GetValueFromResourceFile(item.Caption)
+                                                                    </td>
+                                                                    <td align="left" valign="middle" style="width: 15%;">
+                                                                        @if (!(@item.BrandID.Equals(99)))
+                                                                        {
+                                                                            <table width="100%" border="0" cellspacing="1" cellpadding="1">
+                                                                                <tr>
+                                                                                    <td align="left" valign="middle">
+                                                                                        <label>
+                                                                                            @Html.DropDownList("ddlPageStatus", Enum.GetValues(typeof(WBSSLStore.Domain.PageStatus)).Cast<WBSSLStore.Domain.PageStatus>().Select(x => new SelectListItem { Text = x.GetEnumDescription(), Value = ((int)x).ToString(), Selected = (((int)x) == @item.PageStatusID) }), new { @class = "listmenuauto", @onchange = "ChangeVisibility('" + @item.ID + "',this);" })
+                                                                                        </label>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </table>
+                                                                        }
+                                                                    </td>
+                                                                    <td align="center" style="width: 3%;">
+                                                                        @if (!(@item.BrandID.Equals(99)))
+                                                                        {
+                                                                            <a href="@Url.Action("editpage", "Content", new { id = item.ID })">
+                                                                                <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/edit-page.png" alt="edit page" title="edit page" />
+                                                                            </a>
+                                                                        }
+                                                                    </td>
+                                                                    <td align="center" style="width: 3%;">
+                                                                        @if (!(@item.BrandID.Equals(99)))
+                                                                        {
+                                                                            <a href="@Url.Action("PageContent", "Content", new { pid = item.ID })">
+                                                                                <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/edit-content.png" alt="edit content" title="edit content" />
+                                                                            </a>
+                                                                        }
+                                                                    </td>
+                                                                    <td align="center" style="width: 3%;">
+                                                                        <a href="@Url.Action("editmeta", "Content", new { pid = item.ID })">
+                                                                            <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/edit-meta-tag.png" alt="edit meta tag" title="edit meta tag" />
+                                                                        </a>
+                                                                    </td>
+                                                                    <td align="center" style="width: 3%;">
+                                                                        @if (!(@item.BrandID.Equals(99)))
+                                                                        {
+                                                                            <a href="@Url.Action("removepage", "Content", new { id = item.ID })" onclick="return confirm('Are you sure you want to delete this page and  its child page with content permanently ?');">
+                                                                                <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/delete-page.png" alt="delete page" title="delete page" />
+                                                                            </a>
+                                                                        }
+                                                                    </td>
+                                                                    @if (!(@item.BrandID.Equals(99)))
                                                                     {
-                                                                        <a href="@Url.Action("editpage", "Content", new { id = item.ID })">
-                                                                            <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/edit-page.png" alt="edit page" title="edit page" /></a>
+                                                                        <td align="center" style="width: 3%;">
+                                                                            @* @if (i != 0)
+                                                                                {*@ <a id="upank-@item.ID" name="@(i == 0 ? "first" : "-")" href="javascript:;" onclick="MovePage(@item.ID,'up');" style="@(i != 0 ? string.Empty : "display:none;")">
+                                                                                <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/arrow-up.png" alt="move up" title="move up" />
+                                                                            </a>
+                                                                            @*}*@
+                                                                        </td>
+                                                                        <td align="center" style="width: 3%;">
+                                                                            @if (i != (ParentModel.Count() - 1))
+                                                                            {
+                                                                                <a id="dwnank-@item.ID" href="javascript:;" name="@(i == (ParentModel.Count() - 1) ? "last" : "-")" onclick="MovePage(@item.ID,'down');" style="@(i < (ParentModel.Count() - 1) ? string.Empty : "display:none;")">
+                                                                                    <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/arrow-down.png" alt="move down" title="move down" />
+                                                                                </a>
+                                                                            }
+                                                                        </td>
                                                                     }
-                                                                </td>
-                                                                <td align="center" style="width: 3%;">
-                                                                    <a href="@Url.Action("PageContent", "Content", new { pid = item.ID })">
-                                                                        <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/edit-content.png" alt="edit content" title="edit content" /></a>
-                                                                </td>
-                                                                <td align="center" style="width: 3%;">
-                                                                    <a href="@Url.Action("editmeta", "Content", new { pid = item.ID })">
-                                                                        <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/edit-meta-tag.png" alt="edit meta tag" title="edit meta tag" /></a>
-                                                                </td>
-                                                                <td align="center" style="width: 3%;">
-                                                                    @if (!(@item.Caption.ToLower().Equals("home")))
-                                                                    {
-                                                                        <a href="@Url.Action("removepage", "Content", new { id = item.ID })" onclick="return confirm('Are you sure you want to delete this page and  its child page with content permanently ?');">
-                                                                            <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/delete-page.png" alt="delete page" title="delete page" /></a>
-                                                                    }
-                                                                </td>
-                                                                <td align="center" style="width: 3%;">
-                                                                    @* @if (i != 0)
-                                                                    {*@ <a id="upank-@item.ID" name="@(i == 0 ? "first" : "-")" href="javascript:;" onclick="MovePage(@item.ID,'up');" style="@(i != 0 ? string.Empty : "display:none;")">
-                                                                        <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/arrow-up.png" alt="move up" title="move up" /></a>
-                                                                    @*}*@
-                                                                </td>
-                                                                <td align="center" style="width: 3%;">
-                                                                    @if (i != (ParentModel.Count() - 1))
-                                                                    {
-                                                                        <a id="dwnank-@item.ID" href="javascript:;" name="@(i == (ParentModel.Count() - 1) ? "last" : "-")" onclick="MovePage(@item.ID,'down');" style="@(i < (ParentModel.Count() - 1) ? string.Empty : "display:none;")">
-                                                                            <img src="@WBSSLStore.Web.Util.WBSiteSettings.AdminImagePath/arrow-down.png" alt="move down" title="move down" /></a>
-                                                                    }
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-                                                        <div class="clear">
+                                                                </tr>
+                                                            </table>
+                                                            <div class="clear">
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            @Html.Partial("_PageList", Model.ToList(), new ViewDataDictionary { new KeyValuePair<string, object>("PID", item.ID), new KeyValuePair<string, object>("SEPT", "&nbsp;&nbsp;&nbsp;&nbsp;") })
-                                                                                          
-                                                                    i = i + 1;
+                                                    </td>
+                                                </tr>
+                                                @Html.Partial("_PageList", Model.ToList(), new ViewDataDictionary { new KeyValuePair<string, object>("PID", item.ID), new KeyValuePair<string, object>("SEPT", "&nbsp;&nbsp;&nbsp;&nbsp;") })
+
+                                                i = i + 1;
                                             }
                                         }
                                         else
@@ -163,8 +179,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td height="8" align="left" valign="top">
-                                </td>
+                                <td height="8" align="left" valign="top"></td>
                             </tr>
                         </table>
                     </td>

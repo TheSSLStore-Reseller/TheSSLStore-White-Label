@@ -77,7 +77,7 @@ namespace WhiteBrandShrink.Models
                 {
                     return (string.IsNullOrEmpty(_data.SqlServerName) || string.IsNullOrEmpty(_data.SqlDatabaseName)) ? new ValidationResult("Enter your <strong>" + (string.IsNullOrEmpty(_data.SqlServerName) ? "server name" : (string.IsNullOrEmpty(_data.SqlDatabaseName) ? "database name" : "")) + "</strong>.", new[] { string.IsNullOrEmpty(_data.SqlServerName) ? "SqlServerName" : "SqlDatabaseName" }) : ValidationResult.Success;
                 }
-                else if (_data.SqlAuthenticationType.Equals(SQLAuthentication.SQL_SERVER_AUTHENTICATION.ToString(), StringComparison.OrdinalIgnoreCase))
+                else if (!_data.SqlAuthenticationType.Equals("-99") && _data.SqlAuthenticationType.Equals(SQLAuthentication.SQL_SERVER_AUTHENTICATION.ToString(), StringComparison.OrdinalIgnoreCase))
                 {
                     return (string.IsNullOrEmpty(_data.SqlServerUsername) || string.IsNullOrEmpty(_data.SqlServerPassword)) ? new ValidationResult("Enter your <strong>" + (string.IsNullOrEmpty(_data.SqlServerUsername) ? "user name" : (string.IsNullOrEmpty(_data.SqlServerPassword) ? " password " : "")) + "</strong>.", new[] { string.IsNullOrEmpty(_data.SqlServerUsername) ? "SqlServerUsername" : "SqlServerPassword" }) : ValidationResult.Success;
                 }

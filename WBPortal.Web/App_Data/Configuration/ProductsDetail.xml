@@ -1,8 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Root>
+<Root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Product>
-    <ProductName>RapidSSL Certificate</ProductName>
+    <ProductID>5</ProductID>
     <ProductCode>rapidssl</ProductCode>
+    <ProductName>RapidSSL Certificate</ProductName>
     <MobileFriendly>false</MobileFriendly>
     <InstantDelivery>true</InstantDelivery>
     <DocSigning>false</DocSigning>
@@ -12,23 +13,19 @@
     <WildcardSupport>false</WildcardSupport>
     <GreenBar>false</GreenBar>
     <IssuanceTime>Minutes</IssuanceTime>
-    <Warranty>$10,000</Warranty>
+    <Warranty>10000</Warranty>
     <SiteSeal>rapidsslsiteseal.png</SiteSeal>
     <StarRating>dv_4.0</StarRating>
     <SealInSearch>false</SealInSearch>
     <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType>Domain</ValidationType>
+    <ValidationType>DV</ValidationType>
     <ServerLicense>Unlimited</ServerLicense>
-    <SealType>Static</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
+    <ProductCode>Static</ProductCode>
   </Product>
   <Product>
-    <ProductName>RapidSSL Wildcard Certificate</ProductName>
+    <ProductID>6</ProductID>
     <ProductCode>rapidsslwildcard</ProductCode>
+    <ProductName>RapidSSL Wildcard</ProductName>
     <MobileFriendly>true</MobileFriendly>
     <InstantDelivery>true</InstantDelivery>
     <DocSigning>false</DocSigning>
@@ -38,179 +35,19 @@
     <WildcardSupport>true</WildcardSupport>
     <GreenBar>false</GreenBar>
     <IssuanceTime>Minutes</IssuanceTime>
-    <Warranty>$5,000 </Warranty>
+    <Warranty>10000</Warranty>
     <SiteSeal>rapidsslsiteseal.png</SiteSeal>
     <StarRating>wc_4.5</StarRating>
     <SealInSearch>false</SealInSearch>
     <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType>Domain</ValidationType>
+    <ValidationType>DV</ValidationType>
     <ServerLicense>Unlimited</ServerLicense>
-    <SealType>Static</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
+    <ProductCode>Static</ProductCode>
   </Product>
   <Product>
-    <ProductName>Symantec™ Secure Site</ProductName>
-    <ProductCode>SecureSite</ProductCode>
-    <MobileFriendly>true</MobileFriendly>
-    <InstantDelivery>false</InstantDelivery>
-    <DocSigning>false</DocSigning>
-    <ScanProduct>true</ScanProduct>
-    <BusinessValid>true</BusinessValid>
-    <SanSupport>true</SanSupport>
-    <WildcardSupport>false</WildcardSupport>
-    <GreenBar>false</GreenBar>
-    <IssuanceTime>1 week</IssuanceTime>
-    <Warranty>$1,500,000</Warranty>
-    <SiteSeal>nortonsiteseal.png</SiteSeal>
-    <StarRating>mdu_5_0</StarRating>
-    <SealInSearch>true</SealInSearch>
-    <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType>Organisation</ValidationType>
-    <ServerLicense>Limited</ServerLicense>
-    <SealType>Dynamic</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
-  </Product>
-  <Product>
-    <ProductName>Symantec™ Secure Site with EV</ProductName>
-    <ProductCode>SecureSiteEV</ProductCode>
-    <MobileFriendly>true</MobileFriendly>
-    <InstantDelivery>false</InstantDelivery>
-    <DocSigning>false</DocSigning>
-    <ScanProduct>true</ScanProduct>
-    <BusinessValid>true</BusinessValid>
-    <SanSupport>true</SanSupport>
-    <WildcardSupport>false</WildcardSupport>
-    <GreenBar>true</GreenBar>
-    <IssuanceTime>1-10 days</IssuanceTime>
-    <Warranty>$1,750,000</Warranty>
-    <SiteSeal>nortonsiteseal.png</SiteSeal>
-    <StarRating>ev_5.0</StarRating>
-    <SealInSearch>true</SealInSearch>
-    <VulnerabilityAssessment>true</VulnerabilityAssessment>
-    <ValidationType>Extended</ValidationType>
-    <ServerLicense>Limited</ServerLicense>
-    <SealType>Dynamic</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
-  </Product>
-  <Product>
-    <ProductName>Symantec™ Secure Site Pro</ProductName>
-    <ProductCode>SecureSitePro</ProductCode>
-    <MobileFriendly>true</MobileFriendly>
-    <InstantDelivery>false</InstantDelivery>
-    <DocSigning>false</DocSigning>
-    <ScanProduct>true</ScanProduct>
-    <BusinessValid>true</BusinessValid>
-    <SanSupport>true</SanSupport>
-    <WildcardSupport>false</WildcardSupport>
-    <GreenBar>false</GreenBar>
-    <IssuanceTime>1-10 days</IssuanceTime>
-    <Warranty>$1,500,000</Warranty>
-    <SiteSeal>nortonsiteseal.png</SiteSeal>
-    <StarRating>mdu_5_0</StarRating>
-    <SealInSearch>true</SealInSearch>
-    <VulnerabilityAssessment>true</VulnerabilityAssessment>
-    <ValidationType>Organisation</ValidationType>
-    <ServerLicense>Limited</ServerLicense>
-    <SealType>Dynamic</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
-  </Product>
-  <Product>
-    <ProductName>Symantec™ Secure Site Pro with EV</ProductName>
-    <ProductCode>SecureSiteProEV</ProductCode>
-    <MobileFriendly>true</MobileFriendly>
-    <InstantDelivery>false</InstantDelivery>
-    <DocSigning>false</DocSigning>
-    <ScanProduct>true</ScanProduct>
-    <BusinessValid>true</BusinessValid>
-    <SanSupport>true</SanSupport>
-    <WildcardSupport>false</WildcardSupport>
-    <GreenBar>true</GreenBar>
-    <IssuanceTime>1-10 days</IssuanceTime>
-    <Warranty>$1,750,000</Warranty>
-    <SiteSeal>nortonsiteseal.png</SiteSeal>
-    <StarRating>ev_5.0</StarRating>
-    <SealInSearch>true</SealInSearch>
-    <VulnerabilityAssessment>true</VulnerabilityAssessment>
-    <ValidationType>Extended</ValidationType>
-    <ServerLicense>Limited</ServerLicense>
-    <SealType>Dynamic</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
-  </Product>
-  <Product>
-    <ProductName>Symantec Code Signing</ProductName>
-    <ProductCode>verisigncsc</ProductCode>
-    <MobileFriendly>false</MobileFriendly>
-    <InstantDelivery>false</InstantDelivery>
-    <DocSigning>false</DocSigning>
-    <ScanProduct>false</ScanProduct>
-    <BusinessValid>true</BusinessValid>
-    <SanSupport>false</SanSupport>
-    <WildcardSupport>false</WildcardSupport>
-    <GreenBar>false</GreenBar>
-    <IssuanceTime>1 week</IssuanceTime>
-    <Warranty>$125,000</Warranty>
-    <SiteSeal>nositeseal.png</SiteSeal>
-    <StarRating>cs_5.0</StarRating>
-    <SealInSearch>false</SealInSearch>
-    <VulnerabilityAssessment>true</VulnerabilityAssessment>
-    <ValidationType>Organisation</ValidationType>
-    <ServerLicense>N/A</ServerLicense>
-    <SealType>N/A</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
-  </Product>
-  <Product>
-    <ProductName>Symantec™ Safe Site</ProductName>
-    <ProductCode>TrustSealOrg</ProductCode>
-    <MobileFriendly>false</MobileFriendly>
-    <InstantDelivery>false</InstantDelivery>
-    <DocSigning>false</DocSigning>
-    <ScanProduct>true</ScanProduct>
-    <BusinessValid>true</BusinessValid>
-    <SanSupport>false</SanSupport>
-    <WildcardSupport>false</WildcardSupport>
-    <GreenBar>false</GreenBar>
-    <IssuanceTime>1 week</IssuanceTime>
-    <Warranty>NA</Warranty>
-    <SiteSeal>nortonsiteseal.png</SiteSeal>
-    <StarRating>ov_5.0</StarRating>
-    <SealInSearch>true</SealInSearch>
-    <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType>Organisation</ValidationType>
-    <ServerLicense>N/A</ServerLicense>
-    <SealType>Dynamic</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
-  </Product>
-  <Product>
-    <ProductName>GeoTrust QuickSSL Premium Certificate</ProductName>
+    <ProductID>7</ProductID>
     <ProductCode>quicksslpremium</ProductCode>
+    <ProductName>QuickSSL Premium</ProductName>
     <MobileFriendly>true</MobileFriendly>
     <InstantDelivery>true</InstantDelivery>
     <DocSigning>false</DocSigning>
@@ -220,23 +57,19 @@
     <WildcardSupport>false</WildcardSupport>
     <GreenBar>false</GreenBar>
     <IssuanceTime>Minutes</IssuanceTime>
-    <Warranty>$500,000</Warranty>
+    <Warranty>500000</Warranty>
     <SiteSeal>geotrustsiteseal.png</SiteSeal>
     <StarRating>dv_4.5</StarRating>
     <SealInSearch>false</SealInSearch>
     <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType>Domain</ValidationType>
+    <ValidationType>DV</ValidationType>
     <ServerLicense>Unlimited</ServerLicense>
-    <SealType>Dynamic</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
+    <ProductCode>Dynamic</ProductCode>
   </Product>
   <Product>
-    <ProductName>GeoTrust True BusinessID Certificate</ProductName>
+    <ProductID>8</ProductID>
     <ProductCode>truebizid</ProductCode>
+    <ProductName>True BusinessID Certificate</ProductName>
     <MobileFriendly>true</MobileFriendly>
     <InstantDelivery>false</InstantDelivery>
     <DocSigning>false</DocSigning>
@@ -245,50 +78,20 @@
     <SanSupport>false</SanSupport>
     <WildcardSupport>false</WildcardSupport>
     <GreenBar>false</GreenBar>
-    <IssuanceTime>1-2 days</IssuanceTime>
-    <Warranty>$1,250,000</Warranty>
+    <IssuanceTime>1-3 Days</IssuanceTime>
+    <Warranty>1250000</Warranty>
     <SiteSeal>geotrustsiteseal.png</SiteSeal>
     <StarRating>ov_4.0</StarRating>
     <SealInSearch>false</SealInSearch>
     <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType>Organisation</ValidationType>
+    <ValidationType>OV</ValidationType>
     <ServerLicense>Unlimited</ServerLicense>
-    <SealType>Dynamic</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
+    <ProductCode>Dynamic</ProductCode>
   </Product>
   <Product>
-    <ProductName>GeoTrust True BusinessID with EV Certificate</ProductName>
-    <ProductCode>truebusinessidev</ProductCode>
-    <MobileFriendly>true</MobileFriendly>
-    <InstantDelivery>false</InstantDelivery>
-    <DocSigning>false</DocSigning>
-    <ScanProduct>false</ScanProduct>
-    <BusinessValid>true</BusinessValid>
-    <SanSupport>false</SanSupport>
-    <WildcardSupport>false</WildcardSupport>
-    <GreenBar>true</GreenBar>
-    <IssuanceTime>1-10 days</IssuanceTime>
-    <Warranty>$1,500,000</Warranty>
-    <SiteSeal>geotrustsiteseal.png</SiteSeal>
-    <StarRating>ev_4.0</StarRating>
-    <SealInSearch>false</SealInSearch>
-    <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType>Extended</ValidationType>
-    <ServerLicense>Unlimited</ServerLicense>
-    <SealType>Dynamic</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
-  </Product>
-  <Product>
-    <ProductName>GeoTrust True BusinessID Wildcard Certificate</ProductName>
+    <ProductID>9</ProductID>
     <ProductCode>truebusinessidwildcard</ProductCode>
+    <ProductName>True BusinessID Wildcard</ProductName>
     <MobileFriendly>true</MobileFriendly>
     <InstantDelivery>false</InstantDelivery>
     <DocSigning>false</DocSigning>
@@ -297,676 +100,22 @@
     <SanSupport>false</SanSupport>
     <WildcardSupport>true</WildcardSupport>
     <GreenBar>false</GreenBar>
-    <IssuanceTime>1-2 days</IssuanceTime>
-    <Warranty>$1,250,000</Warranty>
+    <IssuanceTime>1-3 Days</IssuanceTime>
+    <Warranty>1250000</Warranty>
     <SiteSeal>geotrustsiteseal.png</SiteSeal>
     <StarRating>wc_4.0</StarRating>
     <SealInSearch>false</SealInSearch>
     <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType>Organisation</ValidationType>
+    <ValidationType>OV</ValidationType>
     <ServerLicense>Unlimited</ServerLicense>
-    <SealType>Dynamic</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
+    <ProductCode>Dynamic</ProductCode>
   </Product>
   <Product>
-    <ProductName>GeoTrust True BusinessID with Multi-Domain</ProductName>
-    <ProductCode>truebizidmd</ProductCode>
-    <MobileFriendly>true</MobileFriendly>
-    <InstantDelivery>false</InstantDelivery>
-    <DocSigning>false</DocSigning>
-    <ScanProduct>false</ScanProduct>
-    <BusinessValid>true</BusinessValid>
-    <SanSupport>true</SanSupport>
-    <WildcardSupport>false</WildcardSupport>
-    <GreenBar>false</GreenBar>
-    <IssuanceTime>1-2 days</IssuanceTime>
-    <Warranty>$1,250,000</Warranty>
-    <SiteSeal>geotrustsiteseal.png</SiteSeal>
-    <StarRating>mdu_4.0</StarRating>
-    <SealInSearch>false</SealInSearch>
-    <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType>Organisation</ValidationType>
-    <ServerLicense>Unlimited</ServerLicense>
-    <SealType>Dynamic</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
-  </Product>
-  <Product>
-    <ProductName>GeoTrust True BusinessID w/ EV Multi-Domain</ProductName>
-    <ProductCode>truebusinessidevmd</ProductCode>
-    <MobileFriendly>true</MobileFriendly>
-    <InstantDelivery>false</InstantDelivery>
-    <DocSigning>false</DocSigning>
-    <ScanProduct>false</ScanProduct>
-    <BusinessValid>true</BusinessValid>
-    <SanSupport>true</SanSupport>
-    <WildcardSupport>false</WildcardSupport>
-    <GreenBar>true</GreenBar>
-    <IssuanceTime>1-10 days</IssuanceTime>
-    <Warranty>$1,500,000</Warranty>
-    <SiteSeal>geotrustsiteseal.png</SiteSeal>
-    <StarRating>mdu_4.5</StarRating>
-    <SealInSearch>false</SealInSearch>
-    <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType>Extended</ValidationType>
-    <ServerLicense>Unlimited</ServerLicense>
-    <SealType>Dynamic</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
-  </Product>
-  <Product>
-    <ProductName>Thawte SGC SuperCerts</ProductName>
-    <ProductCode>sgcsupercerts</ProductCode>
-    <MobileFriendly>true</MobileFriendly>
-    <InstantDelivery>false</InstantDelivery>
-    <DocSigning>false</DocSigning>
-    <ScanProduct>false</ScanProduct>
-    <BusinessValid>true</BusinessValid>
-    <SanSupport>true</SanSupport>
-    <WildcardSupport>false</WildcardSupport>
-    <GreenBar>false</GreenBar>
-    <IssuanceTime>1-2 days</IssuanceTime>
-    <Warranty>$1,250,000</Warranty>
-    <SiteSeal>thawtesiteseal.png</SiteSeal>
-    <StarRating>ov_4.5</StarRating>
-    <SealInSearch>false</SealInSearch>
-    <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType>Organisation</ValidationType>
-    <ServerLicense>Unlimited</ServerLicense>
-    <SealType>Dynamic</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
-  </Product>
-  <Product>
-    <ProductName>Thawte SSL Web Server Certificate</ProductName>
-    <ProductCode>SSLWebServer</ProductCode>
-    <MobileFriendly>true</MobileFriendly>
-    <InstantDelivery>false</InstantDelivery>
-    <DocSigning>false</DocSigning>
-    <ScanProduct>false</ScanProduct>
-    <BusinessValid>true</BusinessValid>
-    <SanSupport>true</SanSupport>
-    <WildcardSupport>false</WildcardSupport>
-    <GreenBar>false</GreenBar>
-    <IssuanceTime>1-2 days</IssuanceTime>
-    <Warranty>$1,250,000</Warranty>
-    <SiteSeal>thawtesiteseal.png</SiteSeal>
-    <StarRating>ov_4.0</StarRating>
-    <SealInSearch>false</SealInSearch>
-    <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType>Organisation</ValidationType>
-    <ServerLicense>Unlimited</ServerLicense>
-    <SealType>Dynamic</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
-  </Product>
-  <Product>
-    <ProductName>Thawte SSL123 Certificate</ProductName>
+    <ProductID>17</ProductID>
     <ProductCode>ssl123</ProductCode>
+    <ProductName>SSL 123 Certificate</ProductName>
     <MobileFriendly>true</MobileFriendly>
     <InstantDelivery>false</InstantDelivery>
-    <DocSigning>false</DocSigning>
-    <ScanProduct>false</ScanProduct>
-    <BusinessValid>false</BusinessValid>
-    <SanSupport>false</SanSupport>
-    <WildcardSupport>false</WildcardSupport>
-    <GreenBar>false</GreenBar>
-    <IssuanceTime>Less than 1 day</IssuanceTime>
-    <Warranty>$500,000</Warranty>
-    <SiteSeal>thawtesiteseal.png</SiteSeal>
-    <StarRating>dv_4.0</StarRating>
-    <SealInSearch>false</SealInSearch>
-    <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType>Domain</ValidationType>
-    <ServerLicense>Unlimited</ServerLicense>
-    <SealType>Dynamic</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
-  </Product>
-  <Product>
-    <ProductName>Thawte SSLWebserver EV</ProductName>
-    <ProductCode>SSLWebServerEV</ProductCode>
-    <MobileFriendly>true</MobileFriendly>
-    <InstantDelivery>false</InstantDelivery>
-    <DocSigning>false</DocSigning>
-    <ScanProduct>false</ScanProduct>
-    <BusinessValid>true</BusinessValid>
-    <SanSupport>true</SanSupport>
-    <WildcardSupport>false</WildcardSupport>
-    <GreenBar>true</GreenBar>
-    <IssuanceTime>1-10 days</IssuanceTime>
-    <Warranty>$1,500,000</Warranty>
-    <SiteSeal>thawtesiteseal.png</SiteSeal>
-    <StarRating>ev_4.5</StarRating>
-    <SealInSearch>false</SealInSearch>
-    <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType>Extended</ValidationType>
-    <ServerLicense>Unlimited</ServerLicense>
-    <SealType>Dynamic</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
-  </Product>
-  <Product>
-    <ProductName>Thawte Wildcard SSL Certificate</ProductName>
-    <ProductCode>SSLWebServerWildcard</ProductCode>
-    <MobileFriendly>true</MobileFriendly>
-    <InstantDelivery>false</InstantDelivery>
-    <DocSigning>false</DocSigning>
-    <ScanProduct>false</ScanProduct>
-    <BusinessValid>true</BusinessValid>
-    <SanSupport>false</SanSupport>
-    <WildcardSupport>true</WildcardSupport>
-    <GreenBar>false</GreenBar>
-    <IssuanceTime>1-2 days</IssuanceTime>
-    <Warranty>$1,250,000</Warranty>
-    <SiteSeal>thawtesiteseal.png</SiteSeal>
-    <StarRating>wc_4.0</StarRating>
-    <SealInSearch>false</SealInSearch>
-    <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType>Organisation</ValidationType>
-    <ServerLicense>Unlimited</ServerLicense>
-    <SealType>Dynamic</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
-  </Product>
-  <Product>
-    <ProductName>Comodo PremiumSSL Wildcard Certificate</ProductName>
-    <ProductCode>35</ProductCode>
-    <MobileFriendly>true</MobileFriendly>
-    <InstantDelivery>false</InstantDelivery>
-    <DocSigning>false</DocSigning>
-    <ScanProduct>false</ScanProduct>
-    <BusinessValid>true</BusinessValid>
-    <SanSupport>false</SanSupport>
-    <WildcardSupport>true</WildcardSupport>
-    <GreenBar>false</GreenBar>
-    <IssuanceTime>1 week</IssuanceTime>
-    <Warranty>$250,000 </Warranty>
-    <SiteSeal>comodositeseal.png</SiteSeal>
-    <StarRating>wc_3.5</StarRating>
-    <SealInSearch>false</SealInSearch>
-    <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType>Organisation</ValidationType>
-    <ServerLicense>Unlimited</ServerLicense>
-    <SealType>Dynamic</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
-  </Product>
-  <Product>
-    <ProductName>Comodo Essential SSL Certificate</ProductName>
-    <ProductCode>301</ProductCode>
-    <MobileFriendly>true</MobileFriendly>
-    <InstantDelivery>true</InstantDelivery>
-    <DocSigning>false</DocSigning>
-    <ScanProduct>false</ScanProduct>
-    <BusinessValid>false</BusinessValid>
-    <SanSupport>false</SanSupport>
-    <WildcardSupport>false</WildcardSupport>
-    <GreenBar>false</GreenBar>
-    <IssuanceTime>Immediate</IssuanceTime>
-    <Warranty>$10,000 </Warranty>
-    <SiteSeal>comodositeseal.png</SiteSeal>
-    <StarRating>dv_3.5</StarRating>
-    <SealInSearch>false</SealInSearch>
-    <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType>Domain</ValidationType>
-    <ServerLicense>Unlimited</ServerLicense>
-    <SealType>Static</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
-  </Product>
-  <Product>
-    <ProductName>Comodo EV SSL Certificate</ProductName>
-    <ProductCode>337</ProductCode>
-    <MobileFriendly>true</MobileFriendly>
-    <InstantDelivery>false</InstantDelivery>
-    <DocSigning>false</DocSigning>
-    <ScanProduct>false</ScanProduct>
-    <BusinessValid>true</BusinessValid>
-    <SanSupport>false</SanSupport>
-    <WildcardSupport>false</WildcardSupport>
-    <GreenBar>true</GreenBar>
-    <IssuanceTime>1 week</IssuanceTime>
-    <Warranty>$1,750,000</Warranty>
-    <SiteSeal>comodositeseal.png</SiteSeal>
-    <StarRating>ev_4.0</StarRating>
-    <SealInSearch>false</SealInSearch>
-    <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType>Extended</ValidationType>
-    <ServerLicense>Unlimited</ServerLicense>
-    <SealType>Dynamic</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
-  </Product>
-  <Product>
-    <ProductName>Comodo Multi-Domain SSL Certificate</ProductName>
-    <ProductCode>335</ProductCode>
-    <MobileFriendly>true</MobileFriendly>
-    <InstantDelivery>false</InstantDelivery>
-    <DocSigning>false</DocSigning>
-    <ScanProduct>false</ScanProduct>
-    <BusinessValid>true</BusinessValid>
-    <SanSupport>true</SanSupport>
-    <WildcardSupport>false</WildcardSupport>
-    <GreenBar>false</GreenBar>
-    <IssuanceTime>1 week</IssuanceTime>
-    <Warranty>N/A</Warranty>
-    <SiteSeal>comodositeseal.png</SiteSeal>
-    <StarRating>mdu_4.0</StarRating>
-    <SealInSearch>false</SealInSearch>
-    <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType>Organisation</ValidationType>
-    <ServerLicense>Unlimited</ServerLicense>
-    <SealType>Dynamic</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
-  </Product>
-  <Product>
-    <ProductName>Comodo EssentialSSL Wildcard Certificate</ProductName>
-    <ProductCode>343</ProductCode>
-    <MobileFriendly>true</MobileFriendly>
-    <InstantDelivery>true</InstantDelivery>
-    <DocSigning>false</DocSigning>
-    <ScanProduct>false</ScanProduct>
-    <BusinessValid>false</BusinessValid>
-    <SanSupport>false</SanSupport>
-    <WildcardSupport>true</WildcardSupport>
-    <GreenBar>false</GreenBar>
-    <IssuanceTime>Immediate</IssuanceTime>
-    <Warranty>$10,000 </Warranty>
-    <SiteSeal>comodositeseal.png</SiteSeal>
-    <StarRating>wc_4.0</StarRating>
-    <SealInSearch>false</SealInSearch>
-    <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType>Domain</ValidationType>
-    <ServerLicense>Unlimited</ServerLicense>
-    <SealType>Static</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
-  </Product>
-  <Product>
-    <ProductName>Comodo InstantSSL Certificate</ProductName>
-    <ProductCode>24</ProductCode>
-    <MobileFriendly>true</MobileFriendly>
-    <InstantDelivery>false</InstantDelivery>
-    <DocSigning>false</DocSigning>
-    <ScanProduct>false</ScanProduct>
-    <BusinessValid>true</BusinessValid>
-    <SanSupport>false</SanSupport>
-    <WildcardSupport>false</WildcardSupport>
-    <GreenBar>false</GreenBar>
-    <IssuanceTime>1 week</IssuanceTime>
-    <Warranty>$10,000 </Warranty>
-    <SiteSeal>comodositeseal.png</SiteSeal>
-    <StarRating>ov_3.5</StarRating>
-    <SealInSearch>false</SealInSearch>
-    <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType>Organisation</ValidationType>
-    <ServerLicense>Unlimited</ServerLicense>
-    <SealType>Dynamic</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
-  </Product>
-  <Product>
-    <ProductName>Comodo InstantSSL Pro Certificate</ProductName>
-    <ProductCode>34</ProductCode>
-    <MobileFriendly>true</MobileFriendly>
-    <InstantDelivery>true</InstantDelivery>
-    <DocSigning>false</DocSigning>
-    <ScanProduct>false</ScanProduct>
-    <BusinessValid>true</BusinessValid>
-    <SanSupport>false</SanSupport>
-    <WildcardSupport>false</WildcardSupport>
-    <GreenBar>false</GreenBar>
-    <IssuanceTime>1 week</IssuanceTime>
-    <Warranty>$100,000 </Warranty>
-    <SiteSeal>comodositeseal.png</SiteSeal>
-    <StarRating>ov_4.0</StarRating>
-    <SealInSearch>false</SealInSearch>
-    <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType>Organisation</ValidationType>
-    <ServerLicense>Unlimited</ServerLicense>
-    <SealType>Dynamic</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
-  </Product>
-  <Product>
-    <ProductName>Comodo EV Multi-Domain SSL Certificate</ProductName>
-    <ProductCode>410</ProductCode>
-    <MobileFriendly>true</MobileFriendly>
-    <InstantDelivery>false</InstantDelivery>
-    <DocSigning>false</DocSigning>
-    <ScanProduct>false</ScanProduct>
-    <BusinessValid>true</BusinessValid>
-    <SanSupport>true</SanSupport>
-    <WildcardSupport>false</WildcardSupport>
-    <GreenBar>true</GreenBar>
-    <IssuanceTime>1 week</IssuanceTime>
-    <Warranty>$1,750,000</Warranty>
-    <SiteSeal>comodositeseal.png</SiteSeal>
-    <StarRating>mdu_4.0</StarRating>
-    <SealInSearch>false</SealInSearch>
-    <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType>Extended</ValidationType>
-    <ServerLicense>Unlimited</ServerLicense>
-    <SealType>Dynamic</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
-  </Product>
-  <Product>
-    <ProductName>Comodo Unified Communications Certificate</ProductName>
-    <ProductCode>361</ProductCode>
-    <MobileFriendly>true</MobileFriendly>
-    <InstantDelivery>false</InstantDelivery>
-    <DocSigning>false</DocSigning>
-    <ScanProduct>false</ScanProduct>
-    <BusinessValid>true</BusinessValid>
-    <SanSupport>true</SanSupport>
-    <WildcardSupport>false</WildcardSupport>
-    <GreenBar>false</GreenBar>
-    <IssuanceTime>1 week</IssuanceTime>
-    <Warranty>N/A</Warranty>
-    <SiteSeal>comodositeseal.png</SiteSeal>
-    <StarRating>mdu_5_0</StarRating>
-    <SealInSearch>false</SealInSearch>
-    <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType>Organisation</ValidationType>
-    <ServerLicense>Unlimited</ServerLicense>
-    <SealType>Dynamic</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
-  </Product>
-  <Product>
-    <ProductName>Comodo Code Signing Certificate</ProductName>
-    <ProductCode>8</ProductCode>
-    <MobileFriendly>false</MobileFriendly>
-    <InstantDelivery>false</InstantDelivery>
-    <DocSigning>false</DocSigning>
-    <ScanProduct>false</ScanProduct>
-    <BusinessValid>true</BusinessValid>
-    <SanSupport>false</SanSupport>
-    <WildcardSupport>false</WildcardSupport>
-    <GreenBar>false</GreenBar>
-    <IssuanceTime>1-2 Days</IssuanceTime>
-    <Warranty>N/A</Warranty>
-    <SiteSeal>nositeseal.png</SiteSeal>
-    <StarRating>cs_3.5</StarRating>
-    <SealInSearch>false</SealInSearch>
-    <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType>Organisation</ValidationType>
-    <ServerLicense>Unlimited</ServerLicense>
-    <SealType>N/A</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
-  </Product>
-  <Product>
-    <ProductName>Comodo EV SGC SSL Certificate</ProductName>
-    <ProductCode>338</ProductCode>
-    <MobileFriendly>true</MobileFriendly>
-    <InstantDelivery>false</InstantDelivery>
-    <DocSigning>false</DocSigning>
-    <ScanProduct>false</ScanProduct>
-    <BusinessValid>true</BusinessValid>
-    <SanSupport>false</SanSupport>
-    <WildcardSupport>false</WildcardSupport>
-    <GreenBar>true</GreenBar>
-    <IssuanceTime>1 week</IssuanceTime>
-    <Warranty>$1,750,000</Warranty>
-    <SiteSeal>comodositeseal.png</SiteSeal>
-    <StarRating>ev_4.5</StarRating>
-    <SealInSearch>false</SealInSearch>
-    <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType>Extended</ValidationType>
-    <ServerLicense>Unlimited</ServerLicense>
-    <SealType>Dynamic</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
-  </Product>
-  <Product>
-    <ProductName>Comodo SGC SSL Certificate</ProductName>
-    <ProductCode>317</ProductCode>
-    <MobileFriendly>true</MobileFriendly>
-    <InstantDelivery>false</InstantDelivery>
-    <DocSigning>false</DocSigning>
-    <ScanProduct>false</ScanProduct>
-    <BusinessValid>true</BusinessValid>
-    <SanSupport>false</SanSupport>
-    <WildcardSupport>false</WildcardSupport>
-    <GreenBar>false</GreenBar>
-    <IssuanceTime>1 week</IssuanceTime>
-    <Warranty>$250,000 </Warranty>
-    <SiteSeal>comodositeseal.png</SiteSeal>
-    <StarRating>ov_4.0</StarRating>
-    <SealInSearch>false</SealInSearch>
-    <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType>Organisation</ValidationType>
-    <ServerLicense>Unlimited</ServerLicense>
-    <SealType>Dynamic</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
-  </Product>
-  <Product>
-    <ProductName>Comodo SGC SSL Wildcard</ProductName>
-    <ProductCode>323</ProductCode>
-    <MobileFriendly>true</MobileFriendly>
-    <InstantDelivery>false</InstantDelivery>
-    <DocSigning>false</DocSigning>
-    <ScanProduct>false</ScanProduct>
-    <BusinessValid>true</BusinessValid>
-    <SanSupport>false</SanSupport>
-    <WildcardSupport>true</WildcardSupport>
-    <GreenBar>false</GreenBar>
-    <IssuanceTime>1 week</IssuanceTime>
-    <Warranty>$250,000 </Warranty>
-    <SiteSeal>comodositeseal.png</SiteSeal>
-    <StarRating>wc_4.5</StarRating>
-    <SealInSearch>false</SealInSearch>
-    <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType>Organisation</ValidationType>
-    <ServerLicense>Unlimited</ServerLicense>
-    <SealType>Dynamic</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
-  </Product>
-  <Product>
-    <ProductName>TrustKeeper PCI Compliance</ProductName>
-    <ProductCode>TKPCIDSS</ProductCode>
-    <MobileFriendly>true</MobileFriendly>
-    <InstantDelivery>true</InstantDelivery>
-    <DocSigning>false</DocSigning>
-    <ScanProduct>true</ScanProduct>
-    <BusinessValid>true</BusinessValid>
-    <SanSupport>false</SanSupport>
-    <WildcardSupport>false</WildcardSupport>
-    <GreenBar>false</GreenBar>
-    <IssuanceTime>NA</IssuanceTime>
-    <Warranty>NA</Warranty>
-    <SiteSeal>nositeseal.png</SiteSeal>
-    <StarRating>am_4.0</StarRating>
-    <SealInSearch>false</SealInSearch>
-    <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType></ValidationType>
-    <ServerLicense>Unlimited</ServerLicense>
-    <SealType>Dynamic</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
-  </Product>
-  <Product>
-    <ProductName>Trustwave Premium SSL</ProductName>
-    <ProductCode>TW1</ProductCode>
-    <MobileFriendly>true</MobileFriendly>
-    <InstantDelivery>true</InstantDelivery>
-    <DocSigning>false</DocSigning>
-    <ScanProduct>false</ScanProduct>
-    <BusinessValid>true</BusinessValid>
-    <SanSupport>false</SanSupport>
-    <WildcardSupport>false</WildcardSupport>
-    <GreenBar>false</GreenBar>
-    <IssuanceTime>NA</IssuanceTime>
-    <Warranty>$100,000 </Warranty>
-    <SiteSeal>trustwavesiteseal.png</SiteSeal>
-    <StarRating>ov_4.0</StarRating>
-    <SealInSearch>false</SealInSearch>
-    <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType></ValidationType>
-    <ServerLicense>Unlimited</ServerLicense>
-    <SealType>Dynamic</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
-  </Product>
-  <Product>
-    <ProductName>Trustwave Enterprise SSL</ProductName>
-    <ProductCode>TW4</ProductCode>
-    <MobileFriendly>true</MobileFriendly>
-    <InstantDelivery>true</InstantDelivery>
-    <DocSigning>false</DocSigning>
-    <ScanProduct>false</ScanProduct>
-    <BusinessValid>true</BusinessValid>
-    <SanSupport>false</SanSupport>
-    <WildcardSupport>false</WildcardSupport>
-    <GreenBar>false</GreenBar>
-    <IssuanceTime>NA</IssuanceTime>
-    <Warranty>$250,000 </Warranty>
-    <SiteSeal>trustwavesiteseal.png</SiteSeal>
-    <StarRating>ov_4.5</StarRating>
-    <SealInSearch>false</SealInSearch>
-    <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType></ValidationType>
-    <ServerLicense>Unlimited</ServerLicense>
-    <SealType>Dynamic</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
-  </Product>
-  <Product>
-    <ProductName>TrustWave Premium Wildcard SSL</ProductName>
-    <ProductCode>TW7</ProductCode>
-    <MobileFriendly>true</MobileFriendly>
-    <InstantDelivery>false</InstantDelivery>
-    <DocSigning>false</DocSigning>
-    <ScanProduct>false</ScanProduct>
-    <BusinessValid>true</BusinessValid>
-    <SanSupport>false</SanSupport>
-    <WildcardSupport>true</WildcardSupport>
-    <GreenBar>false</GreenBar>
-    <IssuanceTime>N/A</IssuanceTime>
-    <Warranty>$100,000 </Warranty>
-    <SiteSeal>trustwavesiteseal.png</SiteSeal>
-    <StarRating>wc_3.5</StarRating>
-    <SealInSearch>false</SealInSearch>
-    <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType></ValidationType>
-    <ServerLicense>Unlimited</ServerLicense>
-    <SealType>Dynamic</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
-  </Product>
-  <Product>
-    <ProductName>Trustwave Premium EV SSL</ProductName>
-    <ProductCode>TW10</ProductCode>
-    <MobileFriendly>true</MobileFriendly>
-    <InstantDelivery>false</InstantDelivery>
-    <DocSigning>false</DocSigning>
-    <ScanProduct>false</ScanProduct>
-    <BusinessValid>true</BusinessValid>
-    <SanSupport>false</SanSupport>
-    <WildcardSupport>false</WildcardSupport>
-    <GreenBar>true</GreenBar>
-    <IssuanceTime>N/A</IssuanceTime>
-    <Warranty>$250,000 </Warranty>
-    <SiteSeal>trustwavesiteseal.png</SiteSeal>
-    <StarRating>ev_4.0</StarRating>
-    <SealInSearch>false</SealInSearch>
-    <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType></ValidationType>
-    <ServerLicense>Unlimited</ServerLicense>
-    <SealType>Dynamic</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
-  </Product>
-  <Product>
-    <ProductName>Trustwave Domain Validated SSL</ProductName>
-    <ProductCode>TW30</ProductCode>
-    <MobileFriendly>true</MobileFriendly>
-    <InstantDelivery>true</InstantDelivery>
     <DocSigning>false</DocSigning>
     <ScanProduct>false</ScanProduct>
     <BusinessValid>false</BusinessValid>
@@ -974,595 +123,173 @@
     <WildcardSupport>false</WildcardSupport>
     <GreenBar>false</GreenBar>
     <IssuanceTime>Minutes</IssuanceTime>
-    <Warranty>NA</Warranty>
-    <SiteSeal>nositeseal.png</SiteSeal>
+    <Warranty>500000</Warranty>
+    <SiteSeal>thawtesiteseal.png</SiteSeal>
     <StarRating>dv_4.0</StarRating>
     <SealInSearch>false</SealInSearch>
     <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType></ValidationType>
+    <ValidationType>DV</ValidationType>
     <ServerLicense>Unlimited</ServerLicense>
-    <SealType>Dynamic</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
+    <ProductCode>Dynamic</ProductCode>
   </Product>
   <Product>
-    <ProductName>Trustwave Secure Email Digital ID</ProductName>
-    <ProductCode>TW14</ProductCode>
+    <ProductID>18</ProductID>
+    <ProductCode>truebusinessidev</ProductCode>
+    <ProductName>True BusinessID with EV</ProductName>
     <MobileFriendly>true</MobileFriendly>
-    <InstantDelivery>true</InstantDelivery>
+    <InstantDelivery>false</InstantDelivery>
     <DocSigning>false</DocSigning>
     <ScanProduct>false</ScanProduct>
-    <BusinessValid>false</BusinessValid>
-    <SanSupport>false</SanSupport>
-    <WildcardSupport>false</WildcardSupport>
-    <GreenBar>false</GreenBar>
-    <IssuanceTime>N/A</IssuanceTime>
-    <Warranty>NA</Warranty>
-    <SiteSeal>nositeseal.png</SiteSeal>
-    <StarRating>ov_4.0</StarRating>
-    <SealInSearch>false</SealInSearch>
-    <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType></ValidationType>
-    <ServerLicense>Unlimited</ServerLicense>
-    <SealType>Dynamic</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
-  </Product>
-  <Product>
-    <ProductName>TrustKeeper SSL Plus</ProductName>
-    <ProductCode>TW18</ProductCode>
-    <MobileFriendly>true</MobileFriendly>
-    <InstantDelivery>false</InstantDelivery>
-    <DocSigning>false</DocSigning>
-    <ScanProduct>true</ScanProduct>
-    <BusinessValid>true</BusinessValid>
-    <SanSupport>false</SanSupport>
-    <WildcardSupport>false</WildcardSupport>
-    <GreenBar>false</GreenBar>
-    <IssuanceTime>N/A</IssuanceTime>
-    <Warranty>$250,000 </Warranty>
-    <SiteSeal>trustwavesiteseal.png</SiteSeal>
-    <StarRating>ov_3.5</StarRating>
-    <SealInSearch>false</SealInSearch>
-    <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType></ValidationType>
-    <ServerLicense>Unlimited</ServerLicense>
-    <SealType>Dynamic</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
-  </Product>
-  <Product>
-    <ProductName>TrustKeeper Plus EV SSL</ProductName>
-    <ProductCode>TW21</ProductCode>
-    <MobileFriendly>true</MobileFriendly>
-    <InstantDelivery>false</InstantDelivery>
-    <DocSigning>false</DocSigning>
-    <ScanProduct>true</ScanProduct>
     <BusinessValid>true</BusinessValid>
     <SanSupport>false</SanSupport>
     <WildcardSupport>false</WildcardSupport>
     <GreenBar>true</GreenBar>
-    <IssuanceTime>N/A</IssuanceTime>
-    <Warranty>$250,000 </Warranty>
-    <SiteSeal>nositeseal.png</SiteSeal>
-    <StarRating>ev_4.0</StarRating>
-    <SealInSearch>false</SealInSearch>
-    <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType></ValidationType>
-    <ServerLicense>Unlimited</ServerLicense>
-    <SealType>Dynamic</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
-  </Product>
-  <Product>
-    <ProductName>Comodo InstantSSL Premium Certificate</ProductName>
-    <ProductCode>7</ProductCode>
-    <MobileFriendly>true</MobileFriendly>
-    <InstantDelivery>false</InstantDelivery>
-    <DocSigning>false</DocSigning>
-    <ScanProduct>false</ScanProduct>
-    <BusinessValid>true</BusinessValid>
-    <SanSupport>false</SanSupport>
-    <WildcardSupport>false</WildcardSupport>
-    <GreenBar>false</GreenBar>
-    <IssuanceTime>1 week</IssuanceTime>
-    <Warranty>$250,000</Warranty>
-    <SiteSeal>comodositeseal.png</SiteSeal>
-    <StarRating>ov_4.0</StarRating>
-    <SealInSearch>false</SealInSearch>
-    <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType>Organisation</ValidationType>
-    <ServerLicense>Unlimited</ServerLicense>
-    <SealType>Dynamic</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
-  </Product>
-  <Product>
-    <ProductName>Free SSL Certificate</ProductName>
-    <ProductCode>freessl</ProductCode>
-    <MobileFriendly>false</MobileFriendly>
-    <InstantDelivery>true</InstantDelivery>
-    <DocSigning>false</DocSigning>
-    <ScanProduct>false</ScanProduct>
-    <BusinessValid>false</BusinessValid>
-    <SanSupport>false</SanSupport>
-    <WildcardSupport>false</WildcardSupport>
-    <GreenBar>false</GreenBar>
-    <IssuanceTime>Minutes</IssuanceTime>
-    <Warranty>NA</Warranty>
-    <SiteSeal>rapidsslsiteseal.png</SiteSeal>
-    <StarRating>dv_4.0</StarRating>
-    <SealInSearch>false</SealInSearch>
-    <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType>Domain</ValidationType>
-    <ServerLicense>Unlimited</ServerLicense>
-    <SealType>Static</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
-  </Product>
-  <Product>
-    <ProductName>GeoTrust True BusinessID with EV Certificate CU</ProductName>
-    <ProductCode>truebusinessidev_CU</ProductCode>
-    <MobileFriendly>true</MobileFriendly>
-    <InstantDelivery>false</InstantDelivery>
-    <DocSigning>false</DocSigning>
-    <ScanProduct>false</ScanProduct>
-    <BusinessValid>false</BusinessValid>
-    <SanSupport>false</SanSupport>
-    <WildcardSupport>false</WildcardSupport>
-    <GreenBar>false</GreenBar>
-    <IssuanceTime>1-10 days</IssuanceTime>
-    <Warranty>$1,500,000</Warranty>
+    <IssuanceTime>1-5 Days</IssuanceTime>
+    <Warranty>1500000</Warranty>
     <SiteSeal>geotrustsiteseal.png</SiteSeal>
     <StarRating>ev_4.0</StarRating>
     <SealInSearch>false</SealInSearch>
     <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType>Extended</ValidationType>
+    <ValidationType>EV</ValidationType>
     <ServerLicense>Unlimited</ServerLicense>
-    <SealType>Dynamic</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
+    <ProductCode>Dynamic</ProductCode>
   </Product>
   <Product>
-    <ProductName>Comodo PositiveSSL Certificate</ProductName>
-    <ProductCode>287</ProductCode>
-    <MobileFriendly>false</MobileFriendly>
-    <InstantDelivery>true</InstantDelivery>
-    <DocSigning>false</DocSigning>
-    <ScanProduct>false</ScanProduct>
-    <BusinessValid>false</BusinessValid>
-    <SanSupport>false</SanSupport>
-    <WildcardSupport>false</WildcardSupport>
-    <GreenBar>false</GreenBar>
-    <IssuanceTime>Minutes</IssuanceTime>
-    <Warranty>$10,000 </Warranty>
-    <SiteSeal>positivesiteseal.png</SiteSeal>
-    <StarRating>dv_3.5</StarRating>
-    <SealInSearch>false</SealInSearch>
-    <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType>Domain</ValidationType>
-    <ServerLicense>Unlimited</ServerLicense>
-    <SealType>Static</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
-  </Product>
-  <Product>
-    <ProductName>Comodo PositiveSSL Wildcard Certificate</ProductName>
-    <ProductCode>289</ProductCode>
-    <MobileFriendly>true</MobileFriendly>
-    <InstantDelivery>true</InstantDelivery>
-    <DocSigning>false</DocSigning>
-    <ScanProduct>false</ScanProduct>
-    <BusinessValid>false</BusinessValid>
-    <SanSupport>false</SanSupport>
-    <WildcardSupport>true</WildcardSupport>
-    <GreenBar>false</GreenBar>
-    <IssuanceTime>Minutes</IssuanceTime>
-    <Warranty>$10,000 </Warranty>
-    <SiteSeal>positivesiteseal.png</SiteSeal>
-    <StarRating>wc_3.5</StarRating>
-    <SealInSearch>false</SealInSearch>
-    <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType>Domain</ValidationType>
-    <ServerLicense>Unlimited</ServerLicense>
-    <SealType>Static</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
-  </Product>
-  <Product>
-    <ProductName>RapidSSL Certificate CU</ProductName>
-    <ProductCode>rapidssl_CU</ProductCode>
-    <MobileFriendly>false</MobileFriendly>
-    <InstantDelivery>true</InstantDelivery>
-    <DocSigning>false</DocSigning>
-    <ScanProduct>false</ScanProduct>
-    <BusinessValid>false</BusinessValid>
-    <SanSupport>false</SanSupport>
-    <WildcardSupport>false</WildcardSupport>
-    <GreenBar>false</GreenBar>
-    <IssuanceTime>Minutes</IssuanceTime>
-    <Warranty>$10,000</Warranty>
-    <SiteSeal>rapidsslsiteseal.png</SiteSeal>
-    <StarRating>dv_4.0</StarRating>
-    <SealInSearch>false</SealInSearch>
-    <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType>Domain</ValidationType>
-    <ServerLicense>Unlimited</ServerLicense>
-    <SealType>Static</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
-  </Product>
-  <Product>
-    <ProductName>GeoTrust Web Site Anti-Malware Scan</ProductName>
-    <ProductCode>malwarescan</ProductCode>
+    <ProductID>20</ProductID>
+    <ProductCode>SecureSite</ProductCode>
+    <ProductName>Secure Site Certificate</ProductName>
     <MobileFriendly>true</MobileFriendly>
     <InstantDelivery>false</InstantDelivery>
     <DocSigning>false</DocSigning>
     <ScanProduct>true</ScanProduct>
-    <BusinessValid>false</BusinessValid>
-    <SanSupport>false</SanSupport>
-    <WildcardSupport>false</WildcardSupport>
-    <GreenBar>false</GreenBar>
-    <IssuanceTime>Minutes</IssuanceTime>
-    <Warranty> NA</Warranty>
-    <SiteSeal>geotrustsiteseal-two.png</SiteSeal>
-    <StarRating>am_4.0</StarRating>
-    <SealInSearch>false</SealInSearch>
-    <VulnerabilityAssessment>true</VulnerabilityAssessment>
-    <ValidationType>Domain</ValidationType>
-    <ServerLicense>Unlimited</ServerLicense>
-    <SealType>Dynamic</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
-  </Product>
-  <Product>
-    <ProductName>Comodo SSL Certificate</ProductName>
-    <ProductCode>488</ProductCode>
-    <MobileFriendly>true</MobileFriendly>
-    <InstantDelivery>false</InstantDelivery>
-    <DocSigning>false</DocSigning>
-    <ScanProduct>false</ScanProduct>
-    <BusinessValid>false</BusinessValid>
-    <SanSupport>false</SanSupport>
-    <WildcardSupport>false</WildcardSupport>
-    <GreenBar>false</GreenBar>
-    <IssuanceTime>Minutes</IssuanceTime>
-    <Warranty>$250,000 </Warranty>
-    <SiteSeal>comodositeseal.png</SiteSeal>
-    <StarRating>dv_3.5</StarRating>
-    <SealInSearch>false</SealInSearch>
-    <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType>Domain</ValidationType>
-    <ServerLicense>Unlimited</ServerLicense>
-    <SealType>Dynamic</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
-  </Product>
-  <Product>
-    <ProductName>Comodo Wildcard SSL Certificate</ProductName>
-    <ProductCode>489</ProductCode>
-    <MobileFriendly>true</MobileFriendly>
-    <InstantDelivery>false</InstantDelivery>
-    <DocSigning>false</DocSigning>
-    <ScanProduct>false</ScanProduct>
-    <BusinessValid>false</BusinessValid>
-    <SanSupport>false</SanSupport>
-    <WildcardSupport>true</WildcardSupport>
-    <GreenBar>false</GreenBar>
-    <IssuanceTime>Minutes</IssuanceTime>
-    <Warranty>$250,000 </Warranty>
-    <SiteSeal>comodositeseal.png</SiteSeal>
-    <StarRating>wc_3.5</StarRating>
-    <SealInSearch>false</SealInSearch>
-    <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType>Domain</ValidationType>
-    <ServerLicense>Unlimited</ServerLicense>
-    <SealType>Dynamic</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
-  </Product>
-  <Product>
-    <ProductName>Comodo Intranet SSL</ProductName>
-    <ProductCode>44</ProductCode>
-    <MobileFriendly>false</MobileFriendly>
-    <InstantDelivery>true</InstantDelivery>
-    <DocSigning>false</DocSigning>
-    <ScanProduct>false</ScanProduct>
     <BusinessValid>true</BusinessValid>
-    <SanSupport>false</SanSupport>
+    <SanSupport>true</SanSupport>
     <WildcardSupport>false</WildcardSupport>
     <GreenBar>false</GreenBar>
-    <IssuanceTime>Minutes</IssuanceTime>
-    <Warranty>N/A</Warranty>
-    <SiteSeal>nositeseal.png</SiteSeal>
-    <StarRating>ov_3.5</StarRating>
-    <SealInSearch>false</SealInSearch>
-    <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType>Organisation</ValidationType>
-    <ServerLicense>Unlimited</ServerLicense>
-    <SealType>Dynamic</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
-  </Product>
-  <Product>
-    <ProductName>COMODO HackerGuardian PCI Scan Control Center</ProductName>
-    <ProductCode>346</ProductCode>
-    <MobileFriendly>false</MobileFriendly>
-    <InstantDelivery>false</InstantDelivery>
-    <DocSigning>false</DocSigning>
-    <ScanProduct>true</ScanProduct>
-    <BusinessValid>true</BusinessValid>
-    <SanSupport>false</SanSupport>
-    <WildcardSupport>false</WildcardSupport>
-    <GreenBar>false</GreenBar>
-    <IssuanceTime>1 week</IssuanceTime>
-    <Warranty>N/A</Warranty>
-    <SiteSeal>nositeseal.png</SiteSeal>
-    <StarRating>am_3.5</StarRating>
-    <SealInSearch>false</SealInSearch>
-    <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType>Organisation</ValidationType>
-    <ServerLicense>Unlimited</ServerLicense>
-    <SealType>N/A</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
-  </Product>
-  <Product>
-    <ProductName>Comodo HackerProof Trust Mark including Daily Vulnerability Scan</ProductName>
-    <ProductCode>357</ProductCode>
-    <MobileFriendly>false</MobileFriendly>
-    <InstantDelivery>false</InstantDelivery>
-    <DocSigning>false</DocSigning>
-    <ScanProduct>false</ScanProduct>
-    <BusinessValid>true</BusinessValid>
-    <SanSupport>false</SanSupport>
-    <WildcardSupport>false</WildcardSupport>
-    <GreenBar>false</GreenBar>
-    <IssuanceTime>N/A</IssuanceTime>
-    <Warranty>N/A</Warranty>
-    <SiteSeal>comodositeseal.png</SiteSeal>
-    <StarRating>am_5.0</StarRating>
-    <SealInSearch>false</SealInSearch>
-    <VulnerabilityAssessment>true</VulnerabilityAssessment>
-    <ValidationType>Organisation</ValidationType>
-    <ServerLicense>Unlimited</ServerLicense>
-    <SealType>Static</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
-  </Product>
-  <Product>
-    <ProductName>Thawte Code Signing Certificate</ProductName>
-    <ProductCode>thawteCSC</ProductCode>
-    <MobileFriendly>false</MobileFriendly>
-    <InstantDelivery>false</InstantDelivery>
-    <DocSigning>false</DocSigning>
-    <ScanProduct>false</ScanProduct>
-    <BusinessValid>true</BusinessValid>
-    <SanSupport>false</SanSupport>
-    <WildcardSupport>false</WildcardSupport>
-    <GreenBar>false</GreenBar>
-    <IssuanceTime>1 week</IssuanceTime>
-    <Warranty>$50,000</Warranty>
-    <SiteSeal>nositeseal.png</SiteSeal>
-    <StarRating>cs_4.0</StarRating>
-    <SealInSearch>false</SealInSearch>
-    <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType>Organisation</ValidationType>
-    <ServerLicense>N/A</ServerLicense>
-    <SealType>N/A</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
-  </Product>
-  <Product>
-    <ProductName>Symantec Secure Site Wildcard Certificate</ProductName>
-    <ProductCode>securesitewildcard</ProductCode>
-    <MobileFriendly>true</MobileFriendly>
-    <InstantDelivery>false</InstantDelivery>
-    <DocSigning>true</DocSigning>
-    <ScanProduct>true</ScanProduct>
-    <BusinessValid>true</BusinessValid>
-    <SanSupport>false</SanSupport>
-    <WildcardSupport>true</WildcardSupport>
-    <GreenBar>false</GreenBar>
-    <IssuanceTime>1-10 days</IssuanceTime>
-    <Warranty>$500,000</Warranty>
+    <IssuanceTime>1-3 Days</IssuanceTime>
+    <Warranty>1500000</Warranty>
     <SiteSeal>nortonsiteseal.png</SiteSeal>
-    <StarRating>wc_5.0</StarRating>
+    <StarRating>mdu_5_0</StarRating>
     <SealInSearch>true</SealInSearch>
     <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType>Organisation</ValidationType>
+    <ValidationType>OV</ValidationType>
     <ServerLicense>Limited</ServerLicense>
-    <SealType>Dynamic</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
+    <ProductCode>Dynamic</ProductCode>
   </Product>
   <Product>
-    <ProductName>Comodo Elite SSL</ProductName>
-    <ProductCode>elitessl</ProductCode>
+    <ProductID>22</ProductID>
+    <ProductCode>SecureSiteProEV</ProductCode>
+    <ProductName>Secure Site Pro with EV</ProductName>
     <MobileFriendly>true</MobileFriendly>
-    <InstantDelivery>false</InstantDelivery>
-    <DocSigning>false</DocSigning>
-    <ScanProduct>false</ScanProduct>
-    <BusinessValid>true</BusinessValid>
-    <SanSupport>false</SanSupport>
-    <WildcardSupport>false</WildcardSupport>
-    <GreenBar>false</GreenBar>
-    <IssuanceTime>1-2 days</IssuanceTime>
-    <Warranty>$500,000</Warranty>
-    <SiteSeal>comodositeseal.png</SiteSeal>
-    <StarRating>ov_4.0</StarRating>
-    <SealInSearch>false</SealInSearch>
-    <VulnerabilityAssessment>true</VulnerabilityAssessment>
-    <ValidationType>Organisation</ValidationType>
-    <ServerLicense>Unlimited</ServerLicense>
-    <SealType>Dynamic</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
-  </Product>
-  <Product>
-    <ProductName>Comodo Domain Validated UCC SSL</ProductName>
-    <ProductCode>comododvucc</ProductCode>
-    <MobileFriendly>false</MobileFriendly>
-    <InstantDelivery>true</InstantDelivery>
-    <DocSigning>false</DocSigning>
-    <ScanProduct>false</ScanProduct>
-    <BusinessValid>false</BusinessValid>
-    <SanSupport>true</SanSupport>
-    <WildcardSupport>false</WildcardSupport>
-    <GreenBar>false</GreenBar>
-    <IssuanceTime>Minutes</IssuanceTime>
-    <Warranty>$50,000</Warranty>
-    <SiteSeal>comodositeseal.png</SiteSeal>
-    <StarRating>dv_4.0</StarRating>
-    <SealInSearch>false</SealInSearch>
-    <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType>Domain</ValidationType>
-    <ServerLicense>Unlimited</ServerLicense>
-    <SealType>Static</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
-  </Product>
-  <Product>
-    <ProductName>Comodo Positive Multi-Domain SSL Certificate</ProductName>
-    <ProductCode>positivemdcssl</ProductCode>
-    <MobileFriendly>false</MobileFriendly>
-    <InstantDelivery>true</InstantDelivery>
-    <DocSigning>false</DocSigning>
-    <ScanProduct>false</ScanProduct>
-    <BusinessValid>false</BusinessValid>
-    <SanSupport>true</SanSupport>
-    <WildcardSupport>false</WildcardSupport>
-    <GreenBar>false</GreenBar>
-    <IssuanceTime>Minutes</IssuanceTime>
-    <Warranty>$10,000</Warranty>
-    <SiteSeal>positivesiteseal.png</SiteSeal>
-    <StarRating>mdu_3.5</StarRating>
-    <SealInSearch>false</SealInSearch>
-    <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType>Domain</ValidationType>
-    <ServerLicense>Unlimited</ServerLicense>
-    <SealType>Static</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
-  </Product>
-  <Product>
-    <ProductName>GeoTrust QuickSSL Premium SAN</ProductName>
-    <ProductCode>quicksslpremiummd</ProductCode>
-    <MobileFriendly>true</MobileFriendly>
-    <InstantDelivery>true</InstantDelivery>
-    <DocSigning>false</DocSigning>
-    <ScanProduct>false</ScanProduct>
-    <BusinessValid>false</BusinessValid>
-    <SanSupport>true</SanSupport>
-    <WildcardSupport>false</WildcardSupport>
-    <GreenBar>false</GreenBar>
-    <IssuanceTime>Minutes</IssuanceTime>
-    <Warranty>$500,000</Warranty>
-    <SiteSeal>geotrustsiteseal.png</SiteSeal>
-    <StarRating>mdu_5.0</StarRating>
-    <SealInSearch>false</SealInSearch>
-    <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType>Domain</ValidationType>
-    <ServerLicense>Unlimited</ServerLicense>
-    <SealType>Dynamic</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
-  </Product>
-  <Product>
-    <ProductName>Comodo PCI Scanning Enterprise Edition</ProductName>
-    <ProductCode>comodopciscan</ProductCode>
-    <MobileFriendly>false</MobileFriendly>
     <InstantDelivery>false</InstantDelivery>
     <DocSigning>false</DocSigning>
     <ScanProduct>true</ScanProduct>
     <BusinessValid>true</BusinessValid>
-    <SanSupport>false</SanSupport>
+    <SanSupport>true</SanSupport>
     <WildcardSupport>false</WildcardSupport>
-    <GreenBar>false</GreenBar>
-    <IssuanceTime>N/A</IssuanceTime>
-    <Warranty>N/A</Warranty>
-    <SiteSeal>comodositeseal.png</SiteSeal>
-    <StarRating>am_5.0</StarRating>
-    <SealInSearch>false</SealInSearch>
-    <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType>Organisation</ValidationType>
-    <ServerLicense>Unlimited</ServerLicense>
-    <SealType>Dynamic</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
+    <GreenBar>true</GreenBar>
+    <IssuanceTime>1-5 Days</IssuanceTime>
+    <Warranty>1750000</Warranty>
+    <SiteSeal>nortonsiteseal.png</SiteSeal>
+    <StarRating>ev_5.0</StarRating>
+    <SealInSearch>true</SealInSearch>
+    <VulnerabilityAssessment>true</VulnerabilityAssessment>
+    <ValidationType>EV</ValidationType>
+    <ServerLicense>Limited</ServerLicense>
+    <ProductCode>Dynamic</ProductCode>
   </Product>
   <Product>
-    <ProductName>Thawte Code Signing individual</ProductName>
-    <ProductCode>thawteCSCIND</ProductCode>
+    <ProductID>23</ProductID>
+    <ProductCode>SecureSiteEV</ProductCode>
+    <ProductName>Secure Site with EV</ProductName>
+    <MobileFriendly>true</MobileFriendly>
+    <InstantDelivery>false</InstantDelivery>
+    <DocSigning>false</DocSigning>
+    <ScanProduct>true</ScanProduct>
+    <BusinessValid>true</BusinessValid>
+    <SanSupport>true</SanSupport>
+    <WildcardSupport>false</WildcardSupport>
+    <GreenBar>true</GreenBar>
+    <IssuanceTime>1-5 Days</IssuanceTime>
+    <Warranty>1750000</Warranty>
+    <SiteSeal>nortonsiteseal.png</SiteSeal>
+    <StarRating>ev_5.0</StarRating>
+    <SealInSearch>true</SealInSearch>
+    <VulnerabilityAssessment>true</VulnerabilityAssessment>
+    <ValidationType>EV</ValidationType>
+    <ServerLicense>Limited</ServerLicense>
+    <ProductCode>Dynamic</ProductCode>
+  </Product>
+  <Product>
+    <ProductID>24</ProductID>
+    <ProductCode>instantssl</ProductCode>
+    <ProductName>SSL Web Server Certificate</ProductName>
+    <MobileFriendly>true</MobileFriendly>
+    <InstantDelivery>false</InstantDelivery>
+    <DocSigning>false</DocSigning>
+    <ScanProduct>false</ScanProduct>
+    <BusinessValid>true</BusinessValid>
+    <SanSupport>true</SanSupport>
+    <WildcardSupport>false</WildcardSupport>
+    <GreenBar>false</GreenBar>
+    <IssuanceTime>1-3 Days</IssuanceTime>
+    <Warranty>1250000</Warranty>
+    <SiteSeal>thawtesiteseal.png</SiteSeal>
+    <StarRating>ov_4.0</StarRating>
+    <SealInSearch>false</SealInSearch>
+    <VulnerabilityAssessment>false</VulnerabilityAssessment>
+    <ValidationType>OV</ValidationType>
+    <ServerLicense>Unlimited</ServerLicense>
+    <ProductCode>Dynamic</ProductCode>
+  </Product>
+  <Product>
+    <ProductID>25</ProductID>
+    <ProductCode>SecureSitePro</ProductCode>
+    <ProductName>Secure Site Pro</ProductName>
+    <MobileFriendly>true</MobileFriendly>
+    <InstantDelivery>false</InstantDelivery>
+    <DocSigning>false</DocSigning>
+    <ScanProduct>true</ScanProduct>
+    <BusinessValid>true</BusinessValid>
+    <SanSupport>true</SanSupport>
+    <WildcardSupport>false</WildcardSupport>
+    <GreenBar>false</GreenBar>
+    <IssuanceTime>1-3 Days</IssuanceTime>
+    <Warranty>1500000</Warranty>
+    <SiteSeal>nortonsiteseal.png</SiteSeal>
+    <StarRating>mdu_5_0</StarRating>
+    <SealInSearch>true</SealInSearch>
+    <VulnerabilityAssessment>true</VulnerabilityAssessment>
+    <ValidationType>OV</ValidationType>
+    <ServerLicense>Limited</ServerLicense>
+    <ProductCode>Dynamic</ProductCode>
+  </Product>
+  <Product>
+    <ProductID>26</ProductID>
+    <ProductCode>truebizidmd</ProductCode>
+    <ProductName>True BusinessID Multi-Domain</ProductName>
+    <MobileFriendly>true</MobileFriendly>
+    <InstantDelivery>false</InstantDelivery>
+    <DocSigning>false</DocSigning>
+    <ScanProduct>false</ScanProduct>
+    <BusinessValid>true</BusinessValid>
+    <SanSupport>true</SanSupport>
+    <WildcardSupport>false</WildcardSupport>
+    <GreenBar>false</GreenBar>
+    <IssuanceTime>1-3 Days</IssuanceTime>
+    <Warranty>1250000</Warranty>
+    <SiteSeal>geotrustsiteseal.png</SiteSeal>
+    <StarRating>mdu_4.0</StarRating>
+    <SealInSearch>false</SealInSearch>
+    <VulnerabilityAssessment>false</VulnerabilityAssessment>
+    <ValidationType>OV</ValidationType>
+    <ServerLicense>Unlimited</ServerLicense>
+    <ProductCode>Dynamic</ProductCode>
+  </Product>
+  <Product>
+    <ProductID>27</ProductID>
+    <ProductCode>thawteCSC</ProductCode>
+    <ProductName>Code Signing Certificate</ProductName>
     <MobileFriendly>false</MobileFriendly>
     <InstantDelivery>false</InstantDelivery>
     <DocSigning>false</DocSigning>
@@ -1571,388 +298,64 @@
     <SanSupport>false</SanSupport>
     <WildcardSupport>false</WildcardSupport>
     <GreenBar>false</GreenBar>
-    <IssuanceTime>1 week</IssuanceTime>
-    <Warranty>$50,000</Warranty>
-    <SiteSeal>nositeseal.png</SiteSeal>
+    <IssuanceTime>1-3 Days</IssuanceTime>
+    <Warranty>50000</Warranty>
+    <SiteSeal>imgnositeseal.png</SiteSeal>
     <StarRating>cs_4.0</StarRating>
     <SealInSearch>false</SealInSearch>
     <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType>Organisation</ValidationType>
+    <ValidationType>OV</ValidationType>
     <ServerLicense>N/A</ServerLicense>
-    <SealType>N/A</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
+    <ProductCode>N/A</ProductCode>
   </Product>
   <Product>
-    <ProductName>Web Inspector Starter</ProductName>
-    <ProductCode>webinsbasic</ProductCode>
-    <MobileFriendly>true</MobileFriendly>
-    <InstantDelivery>true</InstantDelivery>
-    <DocSigning>false</DocSigning>
-    <ScanProduct>true</ScanProduct>
-    <BusinessValid>false</BusinessValid>
-    <SanSupport>false</SanSupport>
-    <WildcardSupport>false</WildcardSupport>
-    <GreenBar>false</GreenBar>
-    <IssuanceTime>N/A</IssuanceTime>
-    <Warranty>N/A</Warranty>
-    <SiteSeal></SiteSeal>
-    <StarRating></StarRating>
-    <SealInSearch>false</SealInSearch>
-    <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType>Organisation</ValidationType>
-    <ServerLicense>Unlimited</ServerLicense>
-    <SealType>Dynamic</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
-  </Product>
-  <Product>
-    <ProductName>Web Inspector Plus</ProductName>
-    <ProductCode>webinsplus</ProductCode>
-    <MobileFriendly>true</MobileFriendly>
-    <InstantDelivery>true</InstantDelivery>
-    <DocSigning>false</DocSigning>
-    <ScanProduct>true</ScanProduct>
-    <BusinessValid>false</BusinessValid>
-    <SanSupport>false</SanSupport>
-    <WildcardSupport>false</WildcardSupport>
-    <GreenBar>false</GreenBar>
-    <IssuanceTime>N/A</IssuanceTime>
-    <Warranty>N/A</Warranty>
-    <SiteSeal></SiteSeal>
-    <StarRating></StarRating>
-    <SealInSearch>false</SealInSearch>
-    <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType>Organisation</ValidationType>
-    <ServerLicense>Unlimited</ServerLicense>
-    <SealType>Dynamic</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
-  </Product>
-  <Product>
-    <ProductName>Web Inspector Premium</ProductName>
-    <ProductCode>webinspremium</ProductCode>
-    <MobileFriendly>true</MobileFriendly>
-    <InstantDelivery>true</InstantDelivery>
-    <DocSigning>false</DocSigning>
-    <ScanProduct>true</ScanProduct>
-    <BusinessValid>false</BusinessValid>
-    <SanSupport>false</SanSupport>
-    <WildcardSupport>false</WildcardSupport>
-    <GreenBar>false</GreenBar>
-    <IssuanceTime>N/A</IssuanceTime>
-    <Warranty>N/A</Warranty>
-    <SiteSeal></SiteSeal>
-    <StarRating></StarRating>
-    <SealInSearch>false</SealInSearch>
-    <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType>Organisation</ValidationType>
-    <ServerLicense>Unlimited</ServerLicense>
-    <SealType>Dynamic</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
-  </Product>
-  <Product>
-    <ProductName>Web Inspector Enterprise</ProductName>
-    <ProductCode>webinsnterprise</ProductCode>
-    <MobileFriendly>true</MobileFriendly>
-    <InstantDelivery>true</InstantDelivery>
-    <DocSigning>false</DocSigning>
-    <ScanProduct>true</ScanProduct>
-    <BusinessValid>false</BusinessValid>
-    <SanSupport>false</SanSupport>
-    <WildcardSupport>false</WildcardSupport>
-    <GreenBar>false</GreenBar>
-    <IssuanceTime>N/A</IssuanceTime>
-    <Warranty>N/A</Warranty>
-    <SiteSeal></SiteSeal>
-    <StarRating></StarRating>
-    <SealInSearch>false</SealInSearch>
-    <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType>Organisation</ValidationType>
-    <ServerLicense>Unlimited</ServerLicense>
-    <SealType>Dynamic</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
-  </Product>
-  <Product>
-    <ProductName>CERTUM Commercial SSL WildCard Certificate</ProductName>
-    <ProductCode>ucommercialwildcard</ProductCode>
-    <MobileFriendly>false</MobileFriendly>
-    <InstantDelivery>true</InstantDelivery>
-    <DocSigning>false</DocSigning>
-    <ScanProduct>false</ScanProduct>
-    <BusinessValid>false</BusinessValid>
-    <SanSupport>false</SanSupport>
-    <WildcardSupport>true</WildcardSupport>
-    <GreenBar>false</GreenBar>
-    <IssuanceTime>Minutes</IssuanceTime>
-    <Warranty>$10,000</Warranty>
-    <SiteSeal>certumsiteseal.png</SiteSeal>
-    <StarRating>wc_3.5</StarRating>
-    <SealInSearch>false</SealInSearch>
-    <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType>Domain</ValidationType>
-    <ServerLicense>Unlimited</ServerLicense>
-    <SealType>Dynamic</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
-  </Product>
-  <Product>
-    <ProductName>CERTUM Commercial SSL Certificate</ProductName>
-    <ProductCode>ucommercialssl</ProductCode>
-    <MobileFriendly>false</MobileFriendly>
-    <InstantDelivery>true</InstantDelivery>
-    <DocSigning>false</DocSigning>
-    <ScanProduct>false</ScanProduct>
-    <BusinessValid>false</BusinessValid>
-    <SanSupport>false</SanSupport>
-    <WildcardSupport>false</WildcardSupport>
-    <GreenBar>false</GreenBar>
-    <IssuanceTime>Minutes</IssuanceTime>
-    <Warranty>$10,000</Warranty>
-    <SiteSeal>certumsiteseal.png</SiteSeal>
-    <StarRating>dv_3.0</StarRating>
-    <SealInSearch>false</SealInSearch>
-    <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType>Domain</ValidationType>
-    <ServerLicense>Unlimited</ServerLicense>
-    <SealType>Dynamic</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
-  </Product>
-  <Product>
-    <ProductName>CERTUM Trusted SSL Wildcard Certificate</ProductName>
-    <ProductCode>utrustedwildcard</ProductCode>
-    <MobileFriendly>false</MobileFriendly>
-    <InstantDelivery>false</InstantDelivery>
-    <DocSigning>false</DocSigning>
-    <ScanProduct>false</ScanProduct>
-    <BusinessValid>true</BusinessValid>
-    <SanSupport>false</SanSupport>
-    <WildcardSupport>true</WildcardSupport>
-    <GreenBar>false</GreenBar>
-    <IssuanceTime>1 day</IssuanceTime>
-    <Warranty>$250,000</Warranty>
-    <SiteSeal>certumsiteseal.png</SiteSeal>
-    <StarRating>wc_3.5</StarRating>
-    <SealInSearch>false</SealInSearch>
-    <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType>Organisation</ValidationType>
-    <ServerLicense>Unlimited</ServerLicense>
-    <SealType>Dynamic</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
-  </Product>
-  <Product>
-    <ProductName>CERTUM Trusted SSL Certificate</ProductName>
-    <ProductCode>utrustedssl</ProductCode>
-    <MobileFriendly>false</MobileFriendly>
-    <InstantDelivery>false</InstantDelivery>
-    <DocSigning>false</DocSigning>
-    <ScanProduct>false</ScanProduct>
-    <BusinessValid>true</BusinessValid>
-    <SanSupport>false</SanSupport>
-    <WildcardSupport>false</WildcardSupport>
-    <GreenBar>false</GreenBar>
-    <IssuanceTime>1 day</IssuanceTime>
-    <Warranty>$250,000</Warranty>
-    <SiteSeal>certumsiteseal.png</SiteSeal>
-    <StarRating>dv_3.0</StarRating>
-    <SealInSearch>false</SealInSearch>
-    <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType>Organisation</ValidationType>
-    <ServerLicense>Unlimited</ServerLicense>
-    <SealType>Dynamic</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
-  </Product>
-  <Product>
-    <ProductName>CERTUM Basic ID Certificate</ProductName>
-    <ProductCode>ubasicid</ProductCode>
-    <MobileFriendly>false</MobileFriendly>
-    <InstantDelivery>false</InstantDelivery>
-    <DocSigning>false</DocSigning>
-    <ScanProduct>false</ScanProduct>
-    <BusinessValid>false</BusinessValid>
-    <SanSupport>false</SanSupport>
-    <WildcardSupport>false</WildcardSupport>
-    <GreenBar>false</GreenBar>
-    <IssuanceTime>Minutes</IssuanceTime>
-    <Warranty>$100</Warranty>
-    <SiteSeal>nositeseal.png</SiteSeal>
-    <StarRating>dv_3.0</StarRating>
-    <SealInSearch>false</SealInSearch>
-    <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType>Domain</ValidationType>
-    <ServerLicense>N/A</ServerLicense>
-    <SealType>N/A</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
-  </Product>
-  <Product>
-    <ProductName>CERTUM Professional ID Certificate</ProductName>
-    <ProductCode>uprofessionalid</ProductCode>
-    <MobileFriendly>false</MobileFriendly>
-    <InstantDelivery>false</InstantDelivery>
-    <DocSigning>false</DocSigning>
-    <ScanProduct>false</ScanProduct>
-    <BusinessValid>true</BusinessValid>
-    <SanSupport>false</SanSupport>
-    <WildcardSupport>false</WildcardSupport>
-    <GreenBar>false</GreenBar>
-    <IssuanceTime>1-2 days</IssuanceTime>
-    <Warranty>$4000</Warranty>
-    <SiteSeal>nositeseal.png</SiteSeal>
-    <StarRating>dv_3.0</StarRating>
-    <SealInSearch>false</SealInSearch>
-    <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType>Organisation</ValidationType>
-    <ServerLicense>Unlimited</ServerLicense>
-    <SealType>Dynamic</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
-  </Product>
-  <Product>
-    <ProductName>CERTUM Enterprise ID Certificate</ProductName>
-    <ProductCode>uenterpriseid</ProductCode>
-    <MobileFriendly>false</MobileFriendly>
-    <InstantDelivery>false</InstantDelivery>
-    <DocSigning>false</DocSigning>
-    <ScanProduct>false</ScanProduct>
-    <BusinessValid>true</BusinessValid>
-    <SanSupport>false</SanSupport>
-    <WildcardSupport>false</WildcardSupport>
-    <GreenBar>false</GreenBar>
-    <IssuanceTime>1-2 days</IssuanceTime>
-    <Warranty>$25,000</Warranty>
-    <SiteSeal>nositeseal.png</SiteSeal>
-    <StarRating>dv_3.0</StarRating>
-    <SealInSearch>false</SealInSearch>
-    <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType>Organisation</ValidationType>
-    <ServerLicense>Unlimited</ServerLicense>
-    <SealType>Dynamic</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
-  </Product>
-  <Product>
-    <ProductName>Comodo Multi-Domain Wildcard SSL</ProductName>
-    <ProductCode>comodomdcwildcard</ProductCode>
+    <ProductID>28</ProductID>
+    <ProductCode>SSLWebServerEV</ProductCode>
+    <ProductName>SSL Web Server with EV</ProductName>
     <MobileFriendly>true</MobileFriendly>
     <InstantDelivery>false</InstantDelivery>
     <DocSigning>false</DocSigning>
     <ScanProduct>false</ScanProduct>
     <BusinessValid>true</BusinessValid>
     <SanSupport>true</SanSupport>
-    <WildcardSupport>true</WildcardSupport>
-    <GreenBar>false</GreenBar>
-    <IssuanceTime>1 week</IssuanceTime>
-    <Warranty>N/A</Warranty>
-    <SiteSeal>comodositeseal.png</SiteSeal>
-    <StarRating>mdu_4.5</StarRating>
-    <SealInSearch>false</SealInSearch>
-    <VulnerabilityAssessment>true</VulnerabilityAssessment>
-    <ValidationType>Organisation</ValidationType>
-    <ServerLicense>Unlimited</ServerLicense>
-    <SealType>Dynamic</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
-  </Product>
-  <Product>
-    <ProductName>Comodo Positive Multi-Domain Wildcard SSL</ProductName>
-    <ProductCode>positivemdcwildcard</ProductCode>
-    <MobileFriendly>false</MobileFriendly>
-    <InstantDelivery>true</InstantDelivery>
-    <DocSigning>false</DocSigning>
-    <ScanProduct>false</ScanProduct>
-    <BusinessValid>false</BusinessValid>
-    <SanSupport>true</SanSupport>
-    <WildcardSupport>true</WildcardSupport>
-    <GreenBar>false</GreenBar>
-    <IssuanceTime>Minutes</IssuanceTime>
-    <Warranty>$10,000</Warranty>
-    <SiteSeal>positivesiteseal.png</SiteSeal>
-    <StarRating>mdu_3.5</StarRating>
+    <WildcardSupport>false</WildcardSupport>
+    <GreenBar>true</GreenBar>
+    <IssuanceTime>1-5 Days</IssuanceTime>
+    <Warranty>1500000</Warranty>
+    <SiteSeal>thawtesiteseal.png</SiteSeal>
+    <StarRating>ev_4.5</StarRating>
     <SealInSearch>false</SealInSearch>
     <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType>Domain</ValidationType>
+    <ValidationType>EV</ValidationType>
     <ServerLicense>Unlimited</ServerLicense>
-    <SealType>Static</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
+    <ProductCode>Dynamic</ProductCode>
   </Product>
   <Product>
-    <ProductName>Unified Communications Wildcard Certificate</ProductName>
-    <ProductCode>comodouccwildcard</ProductCode>
+    <ProductID>29</ProductID>
+    <ProductCode>SSLWebServerWildcard</ProductCode>
+    <ProductName>Wildcard SSL Certificate</ProductName>
     <MobileFriendly>true</MobileFriendly>
     <InstantDelivery>false</InstantDelivery>
     <DocSigning>false</DocSigning>
     <ScanProduct>false</ScanProduct>
     <BusinessValid>true</BusinessValid>
-    <SanSupport>true</SanSupport>
+    <SanSupport>false</SanSupport>
     <WildcardSupport>true</WildcardSupport>
     <GreenBar>false</GreenBar>
-    <IssuanceTime>1 week</IssuanceTime>
-    <Warranty>N/A</Warranty>
-    <SiteSeal>comodositeseal.png</SiteSeal>
-    <StarRating>mdu_4_5</StarRating>
+    <IssuanceTime>1-3 Days</IssuanceTime>
+    <Warranty>1250000</Warranty>
+    <SiteSeal>thawtesiteseal.png</SiteSeal>
+    <StarRating>wc_4.0</StarRating>
     <SealInSearch>false</SealInSearch>
     <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType>Organisation</ValidationType>
+    <ValidationType>OV</ValidationType>
     <ServerLicense>Unlimited</ServerLicense>
-    <SealType>Dynamic</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
+    <ProductCode>Dynamic</ProductCode>
   </Product>
   <Product>
-    <ProductName>Symantec Code Signing Individual</ProductName>
-    <ProductCode>verisigncscIND</ProductCode>
+    <ProductID>30</ProductID>
+    <ProductCode>verisigncsc</ProductCode>
+    <ProductName>Code Signing Certificate</ProductName>
     <MobileFriendly>false</MobileFriendly>
     <InstantDelivery>false</InstantDelivery>
     <DocSigning>false</DocSigning>
@@ -1961,154 +364,351 @@
     <SanSupport>false</SanSupport>
     <WildcardSupport>false</WildcardSupport>
     <GreenBar>false</GreenBar>
-    <IssuanceTime>1 week</IssuanceTime>
-    <Warranty>$125,000</Warranty>
+    <IssuanceTime>1-3 Days</IssuanceTime>
+    <Warranty>1500000</Warranty>
     <SiteSeal>imgnositeseal.png</SiteSeal>
     <StarRating>cs_5.0</StarRating>
     <SealInSearch>false</SealInSearch>
     <VulnerabilityAssessment>true</VulnerabilityAssessment>
-    <ValidationType>Organisation</ValidationType>
+    <ValidationType>OV</ValidationType>
     <ServerLicense>N/A</ServerLicense>
-    <SealType>N/A</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
+    <ProductCode>N/A</ProductCode>
   </Product>
   <Product>
-    <ProductName>Comodo Personal Authentication Basic Certificate</ProductName>
-    <ProductCode>pacbasic</ProductCode>
-    <MobileFriendly>true</MobileFriendly>
-    <InstantDelivery>true</InstantDelivery>
+    <ProductID>31</ProductID>
+    <ProductCode>TrustSealOrg</ProductCode>
+    <ProductName>Symantec Safe Site</ProductName>
+    <MobileFriendly>false</MobileFriendly>
+    <InstantDelivery>false</InstantDelivery>
     <DocSigning>false</DocSigning>
     <ScanProduct>true</ScanProduct>
-    <BusinessValid>false</BusinessValid>
+    <BusinessValid>true</BusinessValid>
     <SanSupport>false</SanSupport>
     <WildcardSupport>false</WildcardSupport>
     <GreenBar>false</GreenBar>
-    <IssuanceTime>N/A</IssuanceTime>
+    <IssuanceTime>1-3 Days</IssuanceTime>
     <Warranty>N/A</Warranty>
-    <SiteSeal></SiteSeal>
-    <StarRating>dv_3.0</StarRating>
-    <SealInSearch>false</SealInSearch>
+    <SiteSeal>nortonsiteseal.png</SiteSeal>
+    <StarRating>ov_5.0</StarRating>
+    <SealInSearch>true</SealInSearch>
     <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType>CPAC</ValidationType>
-    <ServerLicense>Unlimited</ServerLicense>
-    <SealType>N/A</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
+    <ValidationType>OV</ValidationType>
+    <ServerLicense>N/A</ServerLicense>
+    <ProductCode>Dynamic</ProductCode>
   </Product>
   <Product>
-    <ProductName>Comodo Personal Authentication Pro Certificate</ProductName>
-    <ProductCode>PACPro</ProductCode>
-    <MobileFriendly>true</MobileFriendly>
-    <InstantDelivery>true</InstantDelivery>
-    <DocSigning>false</DocSigning>
-    <ScanProduct>true</ScanProduct>
-    <BusinessValid>false</BusinessValid>
-    <SanSupport>false</SanSupport>
-    <WildcardSupport>false</WildcardSupport>
-    <GreenBar>false</GreenBar>
-    <IssuanceTime>N/A</IssuanceTime>
-    <Warranty>N/A</Warranty>
-    <SiteSeal></SiteSeal>
-    <StarRating>dv_3.0</StarRating>
-    <SealInSearch>false</SealInSearch>
-    <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType>CPAC</ValidationType>
-    <ServerLicense>Unlimited</ServerLicense>
-    <SealType>N/A</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
-  </Product>
-  <Product>
-    <ProductName>Comodo Personal Authentication Enterprise Certificate</ProductName>
-    <ProductCode>PACEnterprise</ProductCode>
-    <MobileFriendly>true</MobileFriendly>
-    <InstantDelivery>true</InstantDelivery>
-    <DocSigning>false</DocSigning>
-    <ScanProduct>true</ScanProduct>
-    <BusinessValid>false</BusinessValid>
-    <SanSupport>false</SanSupport>
-    <WildcardSupport>false</WildcardSupport>
-    <GreenBar>false</GreenBar>
-    <IssuanceTime>N/A</IssuanceTime>
-    <Warranty>N/A</Warranty>
-    <SiteSeal></SiteSeal>
-    <StarRating>dv_3.0</StarRating>
-    <SealInSearch>false</SealInSearch>
-    <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType>CPAC</ValidationType>
-    <ServerLicense>Unlimited</ServerLicense>
-    <SealType>N/A</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
-  </Product>
-  <Product>
-    <ProductName>GeoTrust® QuickSSL® Premium Wildcard</ProductName>
-    <ProductCode>quicksslpremiumwildcard</ProductCode>
+    <ProductID>32</ProductID>
+    <ProductCode>truebusinessidevmd</ProductCode>
+    <ProductName>True BusinessID Multi-Domain EV</ProductName>
     <MobileFriendly>true</MobileFriendly>
     <InstantDelivery>false</InstantDelivery>
     <DocSigning>false</DocSigning>
     <ScanProduct>false</ScanProduct>
     <BusinessValid>true</BusinessValid>
+    <SanSupport>true</SanSupport>
+    <WildcardSupport>false</WildcardSupport>
+    <GreenBar>true</GreenBar>
+    <IssuanceTime>1-5 Days</IssuanceTime>
+    <Warranty>1500000</Warranty>
+    <SiteSeal>geotrustsiteseal.png</SiteSeal>
+    <StarRating>mdu_4.5</StarRating>
+    <SealInSearch>false</SealInSearch>
+    <VulnerabilityAssessment>false</VulnerabilityAssessment>
+    <ValidationType>EV</ValidationType>
+    <ServerLicense>Unlimited</ServerLicense>
+    <ProductCode>Dynamic</ProductCode>
+  </Product>
+  <Product>
+    <ProductID>33</ProductID>
+    <ProductCode>essentialssl</ProductCode>
+    <ProductName>Essential SSL Certificate</ProductName>
+    <MobileFriendly>true</MobileFriendly>
+    <InstantDelivery>true</InstantDelivery>
+    <DocSigning>false</DocSigning>
+    <ScanProduct>false</ScanProduct>
+    <BusinessValid>false</BusinessValid>
+    <SanSupport>false</SanSupport>
+    <WildcardSupport>false</WildcardSupport>
+    <GreenBar>false</GreenBar>
+    <IssuanceTime>Immediate</IssuanceTime>
+    <Warranty>10000</Warranty>
+    <SiteSeal>comodositeseal.png</SiteSeal>
+    <StarRating>dv_3.5</StarRating>
+    <SealInSearch>false</SealInSearch>
+    <VulnerabilityAssessment>false</VulnerabilityAssessment>
+    <ValidationType>DV</ValidationType>
+    <ServerLicense>Unlimited</ServerLicense>
+    <ProductCode>Static</ProductCode>
+  </Product>
+  <Product>
+    <ProductID>35</ProductID>
+    <ProductCode>comodoevssl</ProductCode>
+    <ProductName>EV SSL Certificate</ProductName>
+    <MobileFriendly>true</MobileFriendly>
+    <InstantDelivery>false</InstantDelivery>
+    <DocSigning>false</DocSigning>
+    <ScanProduct>false</ScanProduct>
+    <BusinessValid>true</BusinessValid>
+    <SanSupport>false</SanSupport>
+    <WildcardSupport>false</WildcardSupport>
+    <GreenBar>true</GreenBar>
+    <IssuanceTime>1-5 Days</IssuanceTime>
+    <Warranty>1750000</Warranty>
+    <SiteSeal>comodositeseal.png</SiteSeal>
+    <StarRating>ev_4.0</StarRating>
+    <SealInSearch>false</SealInSearch>
+    <VulnerabilityAssessment>false</VulnerabilityAssessment>
+    <ValidationType>EV</ValidationType>
+    <ServerLicense>Unlimited</ServerLicense>
+    <ProductCode>Dynamic</ProductCode>
+  </Product>
+  <Product>
+    <ProductID>36</ProductID>
+    <ProductCode>comodomdc</ProductCode>
+    <ProductName>Multi-Domain SSL</ProductName>
+    <MobileFriendly>true</MobileFriendly>
+    <InstantDelivery>false</InstantDelivery>
+    <DocSigning>false</DocSigning>
+    <ScanProduct>false</ScanProduct>
+    <BusinessValid>true</BusinessValid>
+    <SanSupport>true</SanSupport>
+    <WildcardSupport>false</WildcardSupport>
+    <GreenBar>false</GreenBar>
+    <IssuanceTime>1-3 Days</IssuanceTime>
+    <Warranty>250000</Warranty>
+    <SiteSeal>comodositeseal.png</SiteSeal>
+    <StarRating>mdu_4.0</StarRating>
+    <SealInSearch>false</SealInSearch>
+    <VulnerabilityAssessment>false</VulnerabilityAssessment>
+    <ValidationType>OV</ValidationType>
+    <ServerLicense>Unlimited</ServerLicense>
+    <ProductCode>Static</ProductCode>
+  </Product>
+  <Product>
+    <ProductID>37</ProductID>
+    <ProductCode>essentialwildcard</ProductCode>
+    <ProductName>Essential SSL Wildcard</ProductName>
+    <MobileFriendly>true</MobileFriendly>
+    <InstantDelivery>true</InstantDelivery>
+    <DocSigning>false</DocSigning>
+    <ScanProduct>false</ScanProduct>
+    <BusinessValid>false</BusinessValid>
+    <SanSupport>false</SanSupport>
+    <WildcardSupport>true</WildcardSupport>
+    <GreenBar>false</GreenBar>
+    <IssuanceTime>Immediate</IssuanceTime>
+    <Warranty>10000</Warranty>
+    <SiteSeal>comodositeseal.png</SiteSeal>
+    <StarRating>wc_4.0</StarRating>
+    <SealInSearch>false</SealInSearch>
+    <VulnerabilityAssessment>false</VulnerabilityAssessment>
+    <ValidationType>DV</ValidationType>
+    <ServerLicense>Unlimited</ServerLicense>
+    <ProductCode>Static</ProductCode>
+  </Product>
+  <Product>
+    <ProductID>38</ProductID>
+    <ProductCode>instantssl</ProductCode>
+    <ProductName>Instant SSL Certificate</ProductName>
+    <MobileFriendly>true</MobileFriendly>
+    <InstantDelivery>false</InstantDelivery>
+    <DocSigning>false</DocSigning>
+    <ScanProduct>false</ScanProduct>
+    <BusinessValid>true</BusinessValid>
+    <SanSupport>false</SanSupport>
+    <WildcardSupport>false</WildcardSupport>
+    <GreenBar>false</GreenBar>
+    <IssuanceTime>1-3 Days</IssuanceTime>
+    <Warranty>50000</Warranty>
+    <SiteSeal>comodositeseal.png</SiteSeal>
+    <StarRating>ov_3.5</StarRating>
+    <SealInSearch>false</SealInSearch>
+    <VulnerabilityAssessment>false</VulnerabilityAssessment>
+    <ValidationType>OV</ValidationType>
+    <ServerLicense>Unlimited</ServerLicense>
+    <ProductCode>Dynamic</ProductCode>
+  </Product>
+  <Product>
+    <ProductID>39</ProductID>
+    <ProductCode>instantsslpro</ProductCode>
+    <ProductName>InstantSSL Pro Certificate</ProductName>
+    <MobileFriendly>true</MobileFriendly>
+    <InstantDelivery>true</InstantDelivery>
+    <DocSigning>false</DocSigning>
+    <ScanProduct>false</ScanProduct>
+    <BusinessValid>true</BusinessValid>
+    <SanSupport>false</SanSupport>
+    <WildcardSupport>false</WildcardSupport>
+    <GreenBar>false</GreenBar>
+    <IssuanceTime>1-3 Days</IssuanceTime>
+    <Warranty>100000</Warranty>
+    <SiteSeal>comodositeseal.png</SiteSeal>
+    <StarRating>ov_4.0</StarRating>
+    <SealInSearch>false</SealInSearch>
+    <VulnerabilityAssessment>false</VulnerabilityAssessment>
+    <ValidationType>OV</ValidationType>
+    <ServerLicense>Unlimited</ServerLicense>
+    <ProductCode>Dynamic</ProductCode>
+  </Product>
+  <Product>
+    <ProductID>40</ProductID>
+    <ProductCode>instantsslpro</ProductCode>
+    <ProductName>Instant Premium SSL</ProductName>
+    <MobileFriendly>true</MobileFriendly>
+    <InstantDelivery>false</InstantDelivery>
+    <DocSigning>false</DocSigning>
+    <ScanProduct>false</ScanProduct>
+    <BusinessValid>true</BusinessValid>
+    <SanSupport>false</SanSupport>
+    <WildcardSupport>false</WildcardSupport>
+    <GreenBar>false</GreenBar>
+    <IssuanceTime>1-3 Days</IssuanceTime>
+    <Warranty>250000</Warranty>
+    <SiteSeal>comodositeseal.png</SiteSeal>
+    <StarRating>ov_4.0</StarRating>
+    <SealInSearch>false</SealInSearch>
+    <VulnerabilityAssessment>false</VulnerabilityAssessment>
+    <ValidationType>OV</ValidationType>
+    <ServerLicense>Unlimited</ServerLicense>
+    <ProductCode>Dynamic</ProductCode>
+  </Product>
+  <Product>
+    <ProductID>42</ProductID>
+    <ProductCode>comodoevmdc</ProductCode>
+    <ProductName>EV Multi-Domain SSL</ProductName>
+    <MobileFriendly>true</MobileFriendly>
+    <InstantDelivery>false</InstantDelivery>
+    <DocSigning>false</DocSigning>
+    <ScanProduct>false</ScanProduct>
+    <BusinessValid>true</BusinessValid>
+    <SanSupport>true</SanSupport>
+    <WildcardSupport>false</WildcardSupport>
+    <GreenBar>true</GreenBar>
+    <IssuanceTime>1-5 Days</IssuanceTime>
+    <Warranty>1750000</Warranty>
+    <SiteSeal>comodositeseal.png</SiteSeal>
+    <StarRating>mdu_4.0</StarRating>
+    <SealInSearch>false</SealInSearch>
+    <VulnerabilityAssessment>false</VulnerabilityAssessment>
+    <ValidationType>EV</ValidationType>
+    <ServerLicense>Unlimited</ServerLicense>
+    <ProductCode>Static</ProductCode>
+  </Product>
+  <Product>
+    <ProductID>43</ProductID>
+    <ProductCode>comodoucc</ProductCode>
+    <ProductName>Unified Communications</ProductName>
+    <MobileFriendly>true</MobileFriendly>
+    <InstantDelivery>false</InstantDelivery>
+    <DocSigning>false</DocSigning>
+    <ScanProduct>false</ScanProduct>
+    <BusinessValid>true</BusinessValid>
+    <SanSupport>true</SanSupport>
+    <WildcardSupport>false</WildcardSupport>
+    <GreenBar>false</GreenBar>
+    <IssuanceTime>1-3 Days</IssuanceTime>
+    <Warranty>250000</Warranty>
+    <SiteSeal>comodositeseal.png</SiteSeal>
+    <StarRating>mdu_5_0</StarRating>
+    <SealInSearch>false</SealInSearch>
+    <VulnerabilityAssessment>false</VulnerabilityAssessment>
+    <ValidationType>OV</ValidationType>
+    <ServerLicense>Unlimited</ServerLicense>
+    <ProductCode>Static</ProductCode>
+  </Product>
+  <Product>
+    <ProductID>44</ProductID>
+    <ProductCode>comodopremiumwildcard</ProductCode>
+    <ProductName>PremiumSSL Wildcard</ProductName>
+    <MobileFriendly>true</MobileFriendly>
+    <InstantDelivery>false</InstantDelivery>
+    <DocSigning>false</DocSigning>
+    <ScanProduct>false</ScanProduct>
+    <BusinessValid>true</BusinessValid>
+    <SanSupport>false</SanSupport>
+    <WildcardSupport>true</WildcardSupport>
+    <GreenBar>false</GreenBar>
+    <IssuanceTime>1-3 Days</IssuanceTime>
+    <Warranty>250000</Warranty>
+    <SiteSeal>comodositeseal.png</SiteSeal>
+    <StarRating>wc_3.5</StarRating>
+    <SealInSearch>false</SealInSearch>
+    <VulnerabilityAssessment>false</VulnerabilityAssessment>
+    <ValidationType>OV</ValidationType>
+    <ServerLicense>Unlimited</ServerLicense>
+    <ProductCode>Static</ProductCode>
+  </Product>
+  <Product>
+    <ProductID>45</ProductID>
+    <ProductCode>positivessl</ProductCode>
+    <ProductName>PositiveSSL Certificate</ProductName>
+    <MobileFriendly>false</MobileFriendly>
+    <InstantDelivery>true</InstantDelivery>
+    <DocSigning>false</DocSigning>
+    <ScanProduct>false</ScanProduct>
+    <BusinessValid>false</BusinessValid>
+    <SanSupport>false</SanSupport>
+    <WildcardSupport>false</WildcardSupport>
+    <GreenBar>false</GreenBar>
+    <IssuanceTime>Minutes</IssuanceTime>
+    <Warranty>10000</Warranty>
+    <SiteSeal>positivesiteseal.png</SiteSeal>
+    <StarRating>dv_3.5</StarRating>
+    <SealInSearch>false</SealInSearch>
+    <VulnerabilityAssessment>false</VulnerabilityAssessment>
+    <ValidationType>DV</ValidationType>
+    <ServerLicense>Unlimited</ServerLicense>
+    <ProductCode>Static</ProductCode>
+  </Product>
+  <Product>
+    <ProductID>46</ProductID>
+    <ProductCode>positivesslwildcard</ProductCode>
+    <ProductName>PositiveSSL Wildcard</ProductName>
+    <MobileFriendly>true</MobileFriendly>
+    <InstantDelivery>true</InstantDelivery>
+    <DocSigning>false</DocSigning>
+    <ScanProduct>false</ScanProduct>
+    <BusinessValid>false</BusinessValid>
     <SanSupport>false</SanSupport>
     <WildcardSupport>true</WildcardSupport>
     <GreenBar>false</GreenBar>
     <IssuanceTime>Minutes</IssuanceTime>
-    <Warranty>$500,000</Warranty>
-    <SiteSeal>geotrustsiteseal.png</SiteSeal>
-    <StarRating>dv_4.5</StarRating>
+    <Warranty>10000</Warranty>
+    <SiteSeal>positivesiteseal.png</SiteSeal>
+    <StarRating>wc_3.5</StarRating>
     <SealInSearch>false</SealInSearch>
     <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType>Domain</ValidationType>
+    <ValidationType>DV</ValidationType>
     <ServerLicense>Unlimited</ServerLicense>
-    <SealType>Dynamic</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
+    <ProductCode>Static</ProductCode>
   </Product>
+
   <Product>
-    <ProductName>Thawte® SSL123 Wildcard</ProductName>
-    <ProductCode>ssl123wildcard</ProductCode>
-    <MobileFriendly>true</MobileFriendly>
-    <InstantDelivery>false</InstantDelivery>
+    <ProductID>64</ProductID>
+    <ProductCode>freessl</ProductCode>
+    <ProductName>Free SSL Certificate</ProductName>
+    <MobileFriendly>false</MobileFriendly>
+    <InstantDelivery>true</InstantDelivery>
     <DocSigning>false</DocSigning>
     <ScanProduct>false</ScanProduct>
-    <BusinessValid>true</BusinessValid>
+    <BusinessValid>false</BusinessValid>
     <SanSupport>false</SanSupport>
-    <WildcardSupport>true</WildcardSupport>
+    <WildcardSupport>false</WildcardSupport>
     <GreenBar>false</GreenBar>
-    <IssuanceTime>Less than 1 day</IssuanceTime>
-    <Warranty>$500,000</Warranty>
-    <SiteSeal>thawtesiteseal.png</SiteSeal>
+    <IssuanceTime>Minutes</IssuanceTime>
+    <Warranty>N/A</Warranty>
+    <SiteSeal>rapidsslsiteseal.png</SiteSeal>
     <StarRating>dv_4.0</StarRating>
     <SealInSearch>false</SealInSearch>
     <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType>Domain</ValidationType>
+    <ValidationType>DV</ValidationType>
     <ServerLicense>Unlimited</ServerLicense>
-    <SealType>Dynamic</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
+    <ProductCode>Static</ProductCode>
   </Product>
   <Product>
-    <ProductName>Symantec™ Secure Site Pro Wildcard</ProductName>
-    <ProductCode>SecureSiteProwildcard</ProductCode>
+    <ProductID>72</ProductID>
+    <ProductCode>securesitewildcard</ProductCode>
+    <ProductName>Symantec Wildcard SSL</ProductName>
     <MobileFriendly>true</MobileFriendly>
     <InstantDelivery>false</InstantDelivery>
     <DocSigning>true</DocSigning>
@@ -2117,21 +717,939 @@
     <SanSupport>false</SanSupport>
     <WildcardSupport>true</WildcardSupport>
     <GreenBar>false</GreenBar>
-    <IssuanceTime>1-10 days</IssuanceTime>
-    <Warranty>$1,500,000</Warranty>
+    <IssuanceTime>1-3 Days</IssuanceTime>
+    <Warranty>1500000</Warranty>
     <SiteSeal>nortonsiteseal.png</SiteSeal>
     <StarRating>wc_5.0</StarRating>
     <SealInSearch>true</SealInSearch>
     <VulnerabilityAssessment>false</VulnerabilityAssessment>
-    <ValidationType>Organisation</ValidationType>
+    <ValidationType>OV</ValidationType>
     <ServerLicense>Limited</ServerLicense>
-    <SealType>Dynamic</SealType>
-    <ShortDesc></ShortDesc>
-    <LongDesc></LongDesc>
-    <ProductDatasheetUrl></ProductDatasheetUrl>
-    <VideoUrl></VideoUrl>
-    <SimilarProducts></SimilarProducts><URL></URL>
+    <ProductCode>Dynamic</ProductCode>
+  </Product>
+  <Product>
+    <ProductID>73</ProductID>
+    <ProductCode>malwarebasic</ProductCode>
+    <ProductName>BasicAnti-Malware Scan</ProductName>
+    <MobileFriendly>true</MobileFriendly>
+    <InstantDelivery>false</InstantDelivery>
+    <DocSigning>false</DocSigning>
+    <ScanProduct>true</ScanProduct>
+    <BusinessValid>false</BusinessValid>
+    <SanSupport>false</SanSupport>
+    <WildcardSupport>false</WildcardSupport>
+    <GreenBar>false</GreenBar>
+    <IssuanceTime>Minutes</IssuanceTime>
+    <Warranty>N/A</Warranty>
+    <SiteSeal>geotrustsiteseal-two.png</SiteSeal>
+    <StarRating>am_3.0</StarRating>
+    <SealInSearch>false</SealInSearch>
+    <VulnerabilityAssessment>true</VulnerabilityAssessment>
+    <ValidationType>DV</ValidationType>
+    <ServerLicense>Unlimited</ServerLicense>
+    <ProductCode>Dynamic</ProductCode>
+  </Product>
+  <Product>
+    <ProductID>74</ProductID>
+    <ProductCode>malwarescan</ProductCode>
+    <ProductName>Anti-Malware Scan</ProductName>
+    <MobileFriendly>true</MobileFriendly>
+    <InstantDelivery>false</InstantDelivery>
+    <DocSigning>false</DocSigning>
+    <ScanProduct>true</ScanProduct>
+    <BusinessValid>false</BusinessValid>
+    <SanSupport>false</SanSupport>
+    <WildcardSupport>false</WildcardSupport>
+    <GreenBar>false</GreenBar>
+    <IssuanceTime>Minutes</IssuanceTime>
+    <Warranty>N/A</Warranty>
+    <SiteSeal>geotrustsiteseal-two.png</SiteSeal>
+    <StarRating>am_4.0</StarRating>
+    <SealInSearch>false</SealInSearch>
+    <VulnerabilityAssessment>false</VulnerabilityAssessment>
+    <ValidationType>DV</ValidationType>
+    <ServerLicense>Unlimited</ServerLicense>
+    <ProductCode>Dynamic</ProductCode>
+  </Product>
+  <Product>
+    <ProductID>75</ProductID>
+    <ProductCode>comodossl</ProductCode>
+    <ProductName>Comodo SSL Certificate</ProductName>
+    <MobileFriendly>true</MobileFriendly>
+    <InstantDelivery>false</InstantDelivery>
+    <DocSigning>false</DocSigning>
+    <ScanProduct>false</ScanProduct>
+    <BusinessValid>false</BusinessValid>
+    <SanSupport>false</SanSupport>
+    <WildcardSupport>false</WildcardSupport>
+    <GreenBar>false</GreenBar>
+    <IssuanceTime>Minutes</IssuanceTime>
+    <Warranty>250000</Warranty>
+    <SiteSeal>comodositeseal.png</SiteSeal>
+    <StarRating>dv_3.5</StarRating>
+    <SealInSearch>false</SealInSearch>
+    <VulnerabilityAssessment>false</VulnerabilityAssessment>
+    <ValidationType>DV</ValidationType>
+    <ServerLicense>Unlimited</ServerLicense>
+    <ProductCode>Dynamic</ProductCode>
+  </Product>
+  <Product>
+    <ProductID>76</ProductID>
+    <ProductCode>comodowildcard</ProductCode>
+    <ProductName>SSL Wildcard Certificate</ProductName>
+    <MobileFriendly>true</MobileFriendly>
+    <InstantDelivery>false</InstantDelivery>
+    <DocSigning>false</DocSigning>
+    <ScanProduct>false</ScanProduct>
+    <BusinessValid>false</BusinessValid>
+    <SanSupport>false</SanSupport>
+    <WildcardSupport>true</WildcardSupport>
+    <GreenBar>false</GreenBar>
+    <IssuanceTime>Minutes</IssuanceTime>
+    <Warranty>250000</Warranty>
+    <SiteSeal>comodositeseal.png</SiteSeal>
+    <StarRating>wc_3.5</StarRating>
+    <SealInSearch>false</SealInSearch>
+    <VulnerabilityAssessment>false</VulnerabilityAssessment>
+    <ValidationType>DV</ValidationType>
+    <ServerLicense>Unlimited</ServerLicense>
+    <ProductCode>Static</ProductCode>
+  </Product>
+  <Product>
+    <ProductID>77</ProductID>
+    <ProductCode>hgpcicontrolscan</ProductCode>
+    <ProductName>HackerGuardian PCI Scan</ProductName>
+    <MobileFriendly>false</MobileFriendly>
+    <InstantDelivery>false</InstantDelivery>
+    <DocSigning>false</DocSigning>
+    <ScanProduct>true</ScanProduct>
+    <BusinessValid>true</BusinessValid>
+    <SanSupport>false</SanSupport>
+    <WildcardSupport>false</WildcardSupport>
+    <GreenBar>false</GreenBar>
+    <IssuanceTime>1-3 Days</IssuanceTime>
+    <Warranty>N/A</Warranty>
+    <SiteSeal>imgnositeseal.png</SiteSeal>
+    <StarRating>am_3.5</StarRating>
+    <SealInSearch>false</SealInSearch>
+    <VulnerabilityAssessment>false</VulnerabilityAssessment>
+    <ValidationType>OV</ValidationType>
+    <ServerLicense>Unlimited</ServerLicense>
+    <ProductCode>N/A</ProductCode>
+  </Product>
+  <Product>
+    <ProductID>78</ProductID>
+    <ProductCode>hackerprooftm</ProductCode>
+    <ProductName>HackerProof TrustMark w/ Scan</ProductName>
+    <MobileFriendly>false</MobileFriendly>
+    <InstantDelivery>false</InstantDelivery>
+    <DocSigning>false</DocSigning>
+    <ScanProduct>false</ScanProduct>
+    <BusinessValid>true</BusinessValid>
+    <SanSupport>false</SanSupport>
+    <WildcardSupport>false</WildcardSupport>
+    <GreenBar>false</GreenBar>
+    <IssuanceTime>1-3 Days</IssuanceTime>
+    <Warranty>N/A</Warranty>
+    <SiteSeal>comodositeseal-hack.png</SiteSeal>
+    <StarRating>am_5.0</StarRating>
+    <SealInSearch>false</SealInSearch>
+    <VulnerabilityAssessment>true</VulnerabilityAssessment>
+    <ValidationType>OV</ValidationType>
+    <ServerLicense>Unlimited</ServerLicense>
+    <ProductCode>N/A</ProductCode>
+  </Product>
+  <Product>
+    <ProductID>82</ProductID>
+    <ProductCode>thawteCSCIND</ProductCode>
+    <ProductName>Individual Code Signing</ProductName>
+    <MobileFriendly>false</MobileFriendly>
+    <InstantDelivery>false</InstantDelivery>
+    <DocSigning>false</DocSigning>
+    <ScanProduct>false</ScanProduct>
+    <BusinessValid>true</BusinessValid>
+    <SanSupport>false</SanSupport>
+    <WildcardSupport>false</WildcardSupport>
+    <GreenBar>false</GreenBar>
+    <IssuanceTime>1-3 Days</IssuanceTime>
+    <Warranty>50000</Warranty>
+    <SiteSeal>imgnositeseal.png</SiteSeal>
+    <StarRating>cs_4.0</StarRating>
+    <SealInSearch>false</SealInSearch>
+    <VulnerabilityAssessment>false</VulnerabilityAssessment>
+    <ValidationType>OV</ValidationType>
+    <ServerLicense>N/A</ServerLicense>
+    <ProductCode>N/A</ProductCode>
+  </Product>
+  <Product>
+    <ProductID>83</ProductID>
+    <ProductCode>verisigncscIND</ProductCode>
+    <ProductName>Individual Code Signing</ProductName>
+    <MobileFriendly>false</MobileFriendly>
+    <InstantDelivery>false</InstantDelivery>
+    <DocSigning>false</DocSigning>
+    <ScanProduct>false</ScanProduct>
+    <BusinessValid>true</BusinessValid>
+    <SanSupport>false</SanSupport>
+    <WildcardSupport>false</WildcardSupport>
+    <GreenBar>false</GreenBar>
+    <IssuanceTime>1-3 Days</IssuanceTime>
+    <Warranty>1500000</Warranty>
+    <SiteSeal>imgnositeseal.png</SiteSeal>
+    <StarRating>cs_5.0</StarRating>
+    <SealInSearch>false</SealInSearch>
+    <VulnerabilityAssessment>true</VulnerabilityAssessment>
+    <ValidationType>OV</ValidationType>
+    <ServerLicense>N/A</ServerLicense>
+    <ProductCode>N/A</ProductCode>
+  </Product>
+  <Product>
+    <ProductID>85</ProductID>
+    <ProductCode>elitessl</ProductCode>
+    <ProductName>Elite SSL Certificate</ProductName>
+    <MobileFriendly>true</MobileFriendly>
+    <InstantDelivery>false</InstantDelivery>
+    <DocSigning>false</DocSigning>
+    <ScanProduct>false</ScanProduct>
+    <BusinessValid>true</BusinessValid>
+    <SanSupport>false</SanSupport>
+    <WildcardSupport>false</WildcardSupport>
+    <GreenBar>false</GreenBar>
+    <IssuanceTime>1-3 Days</IssuanceTime>
+    <Warranty>500000</Warranty>
+    <SiteSeal>comodositeseal.png</SiteSeal>
+    <StarRating>ov_4.0</StarRating>
+    <SealInSearch>false</SealInSearch>
+    <VulnerabilityAssessment>true</VulnerabilityAssessment>
+    <ValidationType>OV</ValidationType>
+    <ServerLicense>Unlimited</ServerLicense>
+    <ProductCode>Dynamic</ProductCode>
+  </Product>
+  <Product>
+    <ProductID>86</ProductID>
+    <ProductCode>comododvucc</ProductCode>
+    <ProductName>Domain Validated UCC SSL</ProductName>
+    <MobileFriendly>false</MobileFriendly>
+    <InstantDelivery>true</InstantDelivery>
+    <DocSigning>false</DocSigning>
+    <ScanProduct>false</ScanProduct>
+    <BusinessValid>false</BusinessValid>
+    <SanSupport>true</SanSupport>
+    <WildcardSupport>false</WildcardSupport>
+    <GreenBar>false</GreenBar>
+    <IssuanceTime>Minutes</IssuanceTime>
+    <Warranty>25000</Warranty>
+    <SiteSeal>comodositeseal.png</SiteSeal>
+    <StarRating>dv_4.0</StarRating>
+    <SealInSearch>false</SealInSearch>
+    <VulnerabilityAssessment>false</VulnerabilityAssessment>
+    <ValidationType>DV</ValidationType>
+    <ServerLicense>Unlimited</ServerLicense>
+    <ProductCode>Static</ProductCode>
+  </Product>
+  <Product>
+    <ProductID>87</ProductID>
+    <ProductCode>positivemdcssl</ProductCode>
+    <ProductName>Positive Multi-Domain SSL</ProductName>
+    <MobileFriendly>false</MobileFriendly>
+    <InstantDelivery>true</InstantDelivery>
+    <DocSigning>false</DocSigning>
+    <ScanProduct>false</ScanProduct>
+    <BusinessValid>false</BusinessValid>
+    <SanSupport>true</SanSupport>
+    <WildcardSupport>false</WildcardSupport>
+    <GreenBar>false</GreenBar>
+    <IssuanceTime>Minutes</IssuanceTime>
+    <Warranty>10000</Warranty>
+    <SiteSeal>positivesiteseal.png</SiteSeal>
+    <StarRating>mdu_3.5</StarRating>
+    <SealInSearch>false</SealInSearch>
+    <VulnerabilityAssessment>false</VulnerabilityAssessment>
+    <ValidationType>DV</ValidationType>
+    <ServerLicense>Unlimited</ServerLicense>
+    <ProductCode>Static</ProductCode>
+  </Product>
+  <Product>
+    <ProductID>88</ProductID>
+    <ProductCode>comodopciscan</ProductCode>
+    <ProductName>PCI Scanning Enterprise</ProductName>
+    <MobileFriendly>false</MobileFriendly>
+    <InstantDelivery>false</InstantDelivery>
+    <DocSigning>false</DocSigning>
+    <ScanProduct>true</ScanProduct>
+    <BusinessValid>true</BusinessValid>
+    <SanSupport>false</SanSupport>
+    <WildcardSupport>false</WildcardSupport>
+    <GreenBar>false</GreenBar>
+    <IssuanceTime>1-3 Days</IssuanceTime>
+    <Warranty>N/A</Warranty>
+    <SiteSeal>imgnositeseal.png</SiteSeal>
+    <StarRating>am_5.0</StarRating>
+    <SealInSearch>false</SealInSearch>
+    <VulnerabilityAssessment>false</VulnerabilityAssessment>
+    <ValidationType>OV</ValidationType>
+    <ServerLicense>Unlimited</ServerLicense>
+    <ProductCode>N/A</ProductCode>
+  </Product>
+  <Product>
+    <ProductID>89</ProductID>
+    <ProductCode>quicksslpremiummd</ProductCode>
+    <ProductName>QuickSSL Premium SAN</ProductName>
+    <MobileFriendly>true</MobileFriendly>
+    <InstantDelivery>true</InstantDelivery>
+    <DocSigning>false</DocSigning>
+    <ScanProduct>false</ScanProduct>
+    <BusinessValid>false</BusinessValid>
+    <SanSupport>true</SanSupport>
+    <WildcardSupport>false</WildcardSupport>
+    <GreenBar>false</GreenBar>
+    <IssuanceTime>Minutes</IssuanceTime>
+    <Warranty>500000</Warranty>
+    <SiteSeal>geotrustsiteseal.png</SiteSeal>
+    <StarRating>mdu_5.0</StarRating>
+    <SealInSearch>false</SealInSearch>
+    <VulnerabilityAssessment>false</VulnerabilityAssessment>
+    <ValidationType>DV</ValidationType>
+    <ServerLicense>Unlimited</ServerLicense>
+    <ProductCode>Dynamic</ProductCode>
+  </Product>
+  <Product>
+    <ProductID>91</ProductID>
+    <ProductCode>webinsplus</ProductCode>
+    <ProductName>Web Inspector Plus</ProductName>
+    <MobileFriendly>true</MobileFriendly>
+    <InstantDelivery>true</InstantDelivery>
+    <DocSigning>false</DocSigning>
+    <ScanProduct>true</ScanProduct>
+    <BusinessValid>false</BusinessValid>
+    <SanSupport>false</SanSupport>
+    <WildcardSupport>false</WildcardSupport>
+    <GreenBar>false</GreenBar>
+    <IssuanceTime>1-3 Days</IssuanceTime>
+    <Warranty>N/A</Warranty>
+    <SiteSeal></SiteSeal>
+    <StarRating></StarRating>
+    <SealInSearch>false</SealInSearch>
+    <VulnerabilityAssessment>false</VulnerabilityAssessment>
+    <ValidationType>OV</ValidationType>
+    <ServerLicense>Unlimited</ServerLicense>
+    <ProductCode>Dynamic</ProductCode>
+  </Product>
+  <Product>
+    <ProductID>92</ProductID>
+    <ProductCode>webinspremium</ProductCode>
+    <ProductName>Web Inspector Premium</ProductName>
+    <MobileFriendly>true</MobileFriendly>
+    <InstantDelivery>true</InstantDelivery>
+    <DocSigning>false</DocSigning>
+    <ScanProduct>true</ScanProduct>
+    <BusinessValid>false</BusinessValid>
+    <SanSupport>false</SanSupport>
+    <WildcardSupport>false</WildcardSupport>
+    <GreenBar>false</GreenBar>
+    <IssuanceTime>1-3 Days</IssuanceTime>
+    <Warranty>N/A</Warranty>
+    <SiteSeal></SiteSeal>
+    <StarRating></StarRating>
+    <SealInSearch>false</SealInSearch>
+    <VulnerabilityAssessment>false</VulnerabilityAssessment>
+    <ValidationType>OV</ValidationType>
+    <ServerLicense>Unlimited</ServerLicense>
+    <ProductCode>Dynamic</ProductCode>
+  </Product>
+  <Product>
+    <ProductID>93</ProductID>
+    <ProductCode>webinsnterprise</ProductCode>
+    <ProductName>Web Inspector Enterprise</ProductName>
+    <MobileFriendly>true</MobileFriendly>
+    <InstantDelivery>true</InstantDelivery>
+    <DocSigning>false</DocSigning>
+    <ScanProduct>true</ScanProduct>
+    <BusinessValid>false</BusinessValid>
+    <SanSupport>false</SanSupport>
+    <WildcardSupport>false</WildcardSupport>
+    <GreenBar>false</GreenBar>
+    <IssuanceTime>1-3 Days</IssuanceTime>
+    <Warranty>N/A</Warranty>
+    <SiteSeal></SiteSeal>
+    <StarRating></StarRating>
+    <SealInSearch>false</SealInSearch>
+    <VulnerabilityAssessment>false</VulnerabilityAssessment>
+    <ValidationType>OV</ValidationType>
+    <ServerLicense>Unlimited</ServerLicense>
+    <ProductCode>Dynamic</ProductCode>
+  </Product>
+  <Product>
+    <ProductID>94</ProductID>
+    <ProductCode>webinsbasic</ProductCode>
+    <ProductName>Web Inspector Starter</ProductName>
+    <MobileFriendly>true</MobileFriendly>
+    <InstantDelivery>true</InstantDelivery>
+    <DocSigning>false</DocSigning>
+    <ScanProduct>true</ScanProduct>
+    <BusinessValid>false</BusinessValid>
+    <SanSupport>false</SanSupport>
+    <WildcardSupport>false</WildcardSupport>
+    <GreenBar>false</GreenBar>
+    <IssuanceTime>1-3 Days</IssuanceTime>
+    <Warranty>N/A</Warranty>
+    <SiteSeal></SiteSeal>
+    <StarRating></StarRating>
+    <SealInSearch>false</SealInSearch>
+    <VulnerabilityAssessment>false</VulnerabilityAssessment>
+    <ValidationType>OV</ValidationType>
+    <ServerLicense>Unlimited</ServerLicense>
+    <ProductCode>Dynamic</ProductCode>
+  </Product>
+  <Product>
+    <ProductID>97</ProductID>
+    <ProductCode>ucommercialwildcard</ProductCode>
+    <ProductName>Commercial SSL WildCard</ProductName>
+    <MobileFriendly>false</MobileFriendly>
+    <InstantDelivery>true</InstantDelivery>
+    <DocSigning>false</DocSigning>
+    <ScanProduct>false</ScanProduct>
+    <BusinessValid>false</BusinessValid>
+    <SanSupport>false</SanSupport>
+    <WildcardSupport>true</WildcardSupport>
+    <GreenBar>false</GreenBar>
+    <IssuanceTime>Minutes</IssuanceTime>
+    <Warranty>200000</Warranty>
+    <SiteSeal>certumsiteseal.png</SiteSeal>
+    <StarRating>wc_3.5</StarRating>
+    <SealInSearch>false</SealInSearch>
+    <VulnerabilityAssessment>false</VulnerabilityAssessment>
+    <ValidationType>DV</ValidationType>
+    <ServerLicense>Unlimited</ServerLicense>
+    <ProductCode>Dynamic</ProductCode>
+  </Product>
+  <Product>
+    <ProductID>98</ProductID>
+    <ProductCode>ucommercialssl</ProductCode>
+    <ProductName>Commercial SSL Certificate</ProductName>
+    <MobileFriendly>false</MobileFriendly>
+    <InstantDelivery>true</InstantDelivery>
+    <DocSigning>false</DocSigning>
+    <ScanProduct>false</ScanProduct>
+    <BusinessValid>false</BusinessValid>
+    <SanSupport>false</SanSupport>
+    <WildcardSupport>false</WildcardSupport>
+    <GreenBar>false</GreenBar>
+    <IssuanceTime>Minutes</IssuanceTime>
+    <Warranty>200000</Warranty>
+    <SiteSeal>certumsiteseal.png</SiteSeal>
+    <StarRating>dv_3.0</StarRating>
+    <SealInSearch>false</SealInSearch>
+    <VulnerabilityAssessment>false</VulnerabilityAssessment>
+    <ValidationType>DV</ValidationType>
+    <ServerLicense>Unlimited</ServerLicense>
+    <ProductCode>Dynamic</ProductCode>
+  </Product>
+  <Product>
+    <ProductID>99</ProductID>
+    <ProductCode>utrustedwildcard</ProductCode>
+    <ProductName>Trusted SSL Wildcard</ProductName>
+    <MobileFriendly>false</MobileFriendly>
+    <InstantDelivery>false</InstantDelivery>
+    <DocSigning>false</DocSigning>
+    <ScanProduct>false</ScanProduct>
+    <BusinessValid>true</BusinessValid>
+    <SanSupport>false</SanSupport>
+    <WildcardSupport>true</WildcardSupport>
+    <GreenBar>false</GreenBar>
+    <IssuanceTime>1-3 Days</IssuanceTime>
+    <Warranty>400000</Warranty>
+    <SiteSeal>certumsiteseal.png</SiteSeal>
+    <StarRating>wc_3.5</StarRating>
+    <SealInSearch>false</SealInSearch>
+    <VulnerabilityAssessment>false</VulnerabilityAssessment>
+    <ValidationType>OV</ValidationType>
+    <ServerLicense>Unlimited</ServerLicense>
+    <ProductCode>Dynamic</ProductCode>
+  </Product>
+  <Product>
+    <ProductID>100</ProductID>
+    <ProductCode>utrustedssl</ProductCode>
+    <ProductName>Trusted SSL Certificate</ProductName>
+    <MobileFriendly>false</MobileFriendly>
+    <InstantDelivery>false</InstantDelivery>
+    <DocSigning>false</DocSigning>
+    <ScanProduct>false</ScanProduct>
+    <BusinessValid>true</BusinessValid>
+    <SanSupport>false</SanSupport>
+    <WildcardSupport>false</WildcardSupport>
+    <GreenBar>false</GreenBar>
+    <IssuanceTime>1-3 Days</IssuanceTime>
+    <Warranty>400000</Warranty>
+    <SiteSeal>certumsiteseal.png</SiteSeal>
+    <StarRating>dv_3.0</StarRating>
+    <SealInSearch>false</SealInSearch>
+    <VulnerabilityAssessment>false</VulnerabilityAssessment>
+    <ValidationType>OV</ValidationType>
+    <ServerLicense>Unlimited</ServerLicense>
+    <ProductCode>Dynamic</ProductCode>
+  </Product>
+  <Product>
+    <ProductID>101</ProductID>
+    <ProductCode>ubasicid</ProductCode>
+    <ProductName>Basic ID Certificate</ProductName>
+    <MobileFriendly>false</MobileFriendly>
+    <InstantDelivery>false</InstantDelivery>
+    <DocSigning>false</DocSigning>
+    <ScanProduct>false</ScanProduct>
+    <BusinessValid>false</BusinessValid>
+    <SanSupport>false</SanSupport>
+    <WildcardSupport>false</WildcardSupport>
+    <GreenBar>false</GreenBar>
+    <IssuanceTime>Minutes</IssuanceTime>
+    <Warranty>100</Warranty>
+    <SiteSeal>imgnositeseal.png</SiteSeal>
+    <StarRating>dv_3.0</StarRating>
+    <SealInSearch>false</SealInSearch>
+    <VulnerabilityAssessment>false</VulnerabilityAssessment>
+    <ValidationType>DV</ValidationType>
+    <ServerLicense>N/A</ServerLicense>
+    <ProductCode>N/A</ProductCode>
+  </Product>
+  <Product>
+    <ProductID>102</ProductID>
+    <ProductCode>uprofessionalid</ProductCode>
+    <ProductName>Professional ID Certificate</ProductName>
+    <MobileFriendly>false</MobileFriendly>
+    <InstantDelivery>false</InstantDelivery>
+    <DocSigning>false</DocSigning>
+    <ScanProduct>false</ScanProduct>
+    <BusinessValid>true</BusinessValid>
+    <SanSupport>false</SanSupport>
+    <WildcardSupport>false</WildcardSupport>
+    <GreenBar>false</GreenBar>
+    <IssuanceTime>1-3 Days</IssuanceTime>
+    <Warranty>4000</Warranty>
+    <SiteSeal>imgnositeseal.png</SiteSeal>
+    <StarRating>dv_3.0</StarRating>
+    <SealInSearch>false</SealInSearch>
+    <VulnerabilityAssessment>false</VulnerabilityAssessment>
+    <ValidationType>OV</ValidationType>
+    <ServerLicense>Unlimited</ServerLicense>
+    <ProductCode>Dynamic</ProductCode>
+  </Product>
+  <Product>
+    <ProductID>103</ProductID>
+    <ProductCode>uenterpriseid</ProductCode>
+    <ProductName>Enterprise ID Certificate</ProductName>
+    <MobileFriendly>false</MobileFriendly>
+    <InstantDelivery>false</InstantDelivery>
+    <DocSigning>false</DocSigning>
+    <ScanProduct>false</ScanProduct>
+    <BusinessValid>true</BusinessValid>
+    <SanSupport>false</SanSupport>
+    <WildcardSupport>false</WildcardSupport>
+    <GreenBar>false</GreenBar>
+    <IssuanceTime>1-3 Days</IssuanceTime>
+    <Warranty>25000</Warranty>
+    <SiteSeal>imgnositeseal.png</SiteSeal>
+    <StarRating>dv_3.0</StarRating>
+    <SealInSearch>false</SealInSearch>
+    <VulnerabilityAssessment>false</VulnerabilityAssessment>
+    <ValidationType>OV</ValidationType>
+    <ServerLicense>Unlimited</ServerLicense>
+    <ProductCode>Dynamic</ProductCode>
+  </Product>
+  <Product>
+    <ProductID>104</ProductID>
+    <ProductCode>comodomdcwildcard</ProductCode>
+    <ProductName>Multi Domain Wildcard SSL</ProductName>
+    <MobileFriendly>true</MobileFriendly>
+    <InstantDelivery>false</InstantDelivery>
+    <DocSigning>false</DocSigning>
+    <ScanProduct>false</ScanProduct>
+    <BusinessValid>true</BusinessValid>
+    <SanSupport>true</SanSupport>
+    <WildcardSupport>true</WildcardSupport>
+    <GreenBar>false</GreenBar>
+    <IssuanceTime>1-3 Days</IssuanceTime>
+    <Warranty>250000</Warranty>
+    <SiteSeal>comodositeseal.png</SiteSeal>
+    <StarRating>mdu_4.5</StarRating>
+    <SealInSearch>false</SealInSearch>
+    <VulnerabilityAssessment>true</VulnerabilityAssessment>
+    <ValidationType>OV</ValidationType>
+    <ServerLicense>Unlimited</ServerLicense>
+    <ProductCode>Static</ProductCode>
+  </Product>
+  <Product>
+    <ProductID>105</ProductID>
+    <ProductCode>positivemdcwildcard</ProductCode>
+    <ProductName>Positive Multi-Domain Wildcard</ProductName>
+    <MobileFriendly>false</MobileFriendly>
+    <InstantDelivery>true</InstantDelivery>
+    <DocSigning>false</DocSigning>
+    <ScanProduct>false</ScanProduct>
+    <BusinessValid>false</BusinessValid>
+    <SanSupport>true</SanSupport>
+    <WildcardSupport>true</WildcardSupport>
+    <GreenBar>false</GreenBar>
+    <IssuanceTime>Minutes</IssuanceTime>
+    <Warranty>10000</Warranty>
+    <SiteSeal>positivesiteseal.png</SiteSeal>
+    <StarRating>mdu_3.5</StarRating>
+    <SealInSearch>false</SealInSearch>
+    <VulnerabilityAssessment>false</VulnerabilityAssessment>
+    <ValidationType>DV</ValidationType>
+    <ServerLicense>Unlimited</ServerLicense>
+    <ProductCode>Static</ProductCode>
+  </Product>
+  <Product>
+    <ProductID>106</ProductID>
+    <ProductCode>comodouccwildcard</ProductCode>
+    <ProductName>UC Wildcard Certificate</ProductName>
+    <MobileFriendly>true</MobileFriendly>
+    <InstantDelivery>false</InstantDelivery>
+    <DocSigning>false</DocSigning>
+    <ScanProduct>false</ScanProduct>
+    <BusinessValid>true</BusinessValid>
+    <SanSupport>true</SanSupport>
+    <WildcardSupport>true</WildcardSupport>
+    <GreenBar>false</GreenBar>
+    <IssuanceTime>1-3 Days</IssuanceTime>
+    <Warranty>250000</Warranty>
+    <SiteSeal>comodositeseal.png</SiteSeal>
+    <StarRating>mdu_4_5</StarRating>
+    <SealInSearch>false</SealInSearch>
+    <VulnerabilityAssessment>false</VulnerabilityAssessment>
+    <ValidationType>OV</ValidationType>
+    <ServerLicense>Unlimited</ServerLicense>
+    <ProductCode>Static</ProductCode>
+  </Product>
+  <Product>
+    <ProductID>109</ProductID>
+    <ProductCode>IS</ProductCode>
+    <ProductName>Installation Service</ProductName>
+    <MobileFriendly>false</MobileFriendly>
+    <InstantDelivery>true</InstantDelivery>
+    <DocSigning>false</DocSigning>
+    <ScanProduct>false</ScanProduct>
+    <BusinessValid>false</BusinessValid>
+    <SanSupport>false</SanSupport>
+    <WildcardSupport>false</WildcardSupport>
+    <GreenBar>false</GreenBar>
+    <IssuanceTime>Minutes</IssuanceTime>
+    <Warranty>N/A</Warranty>
+    <SiteSeal></SiteSeal>
+    <StarRating></StarRating>
+    <SealInSearch>false</SealInSearch>
+    <VulnerabilityAssessment>false</VulnerabilityAssessment>
+    <ValidationType></ValidationType>
+    <ServerLicense></ServerLicense>
+    <ProductCode></ProductCode>
+  </Product>
+  <Product>
+    <ProductID>110</ProductID>
+    <ProductCode>PACBasic</ProductCode>
+    <ProductName>CPAC Basic</ProductName>
+    <MobileFriendly>true</MobileFriendly>
+    <InstantDelivery>true</InstantDelivery>
+    <DocSigning>false</DocSigning>
+    <ScanProduct>true</ScanProduct>
+    <BusinessValid>false</BusinessValid>
+    <SanSupport>false</SanSupport>
+    <WildcardSupport>false</WildcardSupport>
+    <GreenBar>false</GreenBar>
+    <IssuanceTime>N/A</IssuanceTime>
+    <Warranty>N/A</Warranty>
+    <SiteSeal></SiteSeal>
+    <StarRating>dv_3.0</StarRating>
+    <SealInSearch>false</SealInSearch>
+    <VulnerabilityAssessment>false</VulnerabilityAssessment>
+    <ValidationType>CPAC</ValidationType>
+    <ServerLicense>Unlimited</ServerLicense>
+    <ProductCode>N/A</ProductCode>
+  </Product>
+  <Product>
+    <ProductID>111</ProductID>
+    <ProductCode>PACPro</ProductCode>
+    <ProductName>CPAC Pro</ProductName>
+    <MobileFriendly>true</MobileFriendly>
+    <InstantDelivery>true</InstantDelivery>
+    <DocSigning>false</DocSigning>
+    <ScanProduct>true</ScanProduct>
+    <BusinessValid>false</BusinessValid>
+    <SanSupport>false</SanSupport>
+    <WildcardSupport>false</WildcardSupport>
+    <GreenBar>false</GreenBar>
+    <IssuanceTime>N/A</IssuanceTime>
+    <Warranty>N/A</Warranty>
+    <SiteSeal></SiteSeal>
+    <StarRating>dv_3.0</StarRating>
+    <SealInSearch>false</SealInSearch>
+    <VulnerabilityAssessment>false</VulnerabilityAssessment>
+    <ValidationType>CPAC</ValidationType>
+    <ServerLicense>Unlimited</ServerLicense>
+    <ProductCode>N/A</ProductCode>
+  </Product>
+  <Product>
+    <ProductID>112</ProductID>
+    <ProductCode>PACEnterprise</ProductCode>
+    <ProductName>CPAC Enterprise</ProductName>
+    <MobileFriendly>true</MobileFriendly>
+    <InstantDelivery>true</InstantDelivery>
+    <DocSigning>false</DocSigning>
+    <ScanProduct>true</ScanProduct>
+    <BusinessValid>false</BusinessValid>
+    <SanSupport>false</SanSupport>
+    <WildcardSupport>false</WildcardSupport>
+    <GreenBar>false</GreenBar>
+    <IssuanceTime>N/A</IssuanceTime>
+    <Warranty>N/A</Warranty>
+    <SiteSeal></SiteSeal>
+    <StarRating>dv_3.0</StarRating>
+    <SealInSearch>false</SealInSearch>
+    <VulnerabilityAssessment>false</VulnerabilityAssessment>
+    <ValidationType>CPAC</ValidationType>
+    <ServerLicense>Unlimited</ServerLicense>
+    <ProductCode>N/A</ProductCode>
+  </Product>
+  <Product>
+    <ProductID>113</ProductID>
+    <ProductCode>quicksslpremiumwildcard</ProductCode>
+    <ProductName>QuickSSL Premium Wildcard</ProductName>
+    <MobileFriendly>true</MobileFriendly>
+    <InstantDelivery>false</InstantDelivery>
+    <DocSigning>false</DocSigning>
+    <ScanProduct>false</ScanProduct>
+    <BusinessValid>false</BusinessValid>
+    <SanSupport>false</SanSupport>
+    <WildcardSupport>true</WildcardSupport>
+    <GreenBar>false</GreenBar>
+    <IssuanceTime>Minutes</IssuanceTime>
+    <Warranty>500000</Warranty>
+    <SiteSeal>geotrustsiteseal.png</SiteSeal>
+    <StarRating>wc_4.0</StarRating>
+    <SealInSearch>false</SealInSearch>
+    <VulnerabilityAssessment>false</VulnerabilityAssessment>
+    <ValidationType>DV</ValidationType>
+    <ServerLicense>Unlimited</ServerLicense>
+    <ProductCode>Dynamic</ProductCode>
+  </Product>
+  <Product>
+    <ProductID>114</ProductID>
+    <ProductCode>ssl123wildcard</ProductCode>
+    <ProductName>SSL123 Wildcard</ProductName>
+    <MobileFriendly>true</MobileFriendly>
+    <InstantDelivery>false</InstantDelivery>
+    <DocSigning>false</DocSigning>
+    <ScanProduct>false</ScanProduct>
+    <BusinessValid>false</BusinessValid>
+    <SanSupport>false</SanSupport>
+    <WildcardSupport>true</WildcardSupport>
+    <GreenBar>false</GreenBar>
+    <IssuanceTime>Minutes</IssuanceTime>
+    <Warranty>500000</Warranty>
+    <SiteSeal>thawtesiteseal.png</SiteSeal>
+    <StarRating>wc_4.0</StarRating>
+    <SealInSearch>false</SealInSearch>
+    <VulnerabilityAssessment>false</VulnerabilityAssessment>
+    <ValidationType>DV</ValidationType>
+    <ServerLicense>Unlimited</ServerLicense>
+    <ProductCode>Dynamic</ProductCode>
+  </Product>
+  <Product>
+    <ProductID>115</ProductID>
+    <ProductCode>SecureSiteProwildcard</ProductCode>
+    <ProductName>Secure Site Pro Wildcard</ProductName>
+    <MobileFriendly>true</MobileFriendly>
+    <InstantDelivery>false</InstantDelivery>
+    <DocSigning>true</DocSigning>
+    <ScanProduct>true</ScanProduct>
+    <BusinessValid>true</BusinessValid>
+    <SanSupport>false</SanSupport>
+    <WildcardSupport>true</WildcardSupport>
+    <GreenBar>false</GreenBar>
+    <IssuanceTime>1-3 Days</IssuanceTime>
+    <Warranty>1500000</Warranty>
+    <SiteSeal>nortonsiteseal.png</SiteSeal>
+    <StarRating>wc_5.0</StarRating>
+    <SealInSearch>true</SealInSearch>
+    <VulnerabilityAssessment>false</VulnerabilityAssessment>
+    <ValidationType>OV</ValidationType>
+    <ServerLicense>Limited</ServerLicense>
+    <ProductCode>Dynamic</ProductCode>
+  </Product>
+  <Product>
+    <ProductID>119</ProductID>
+    <ProductCode>SecureSiteMDWC</ProductCode>
+    <ProductName>Secure Site Multi-Domain Wildcard</ProductName>
+    <MobileFriendly>true</MobileFriendly>
+    <InstantDelivery>false</InstantDelivery>
+    <DocSigning>false</DocSigning>
+    <ScanProduct>true</ScanProduct>
+    <BusinessValid>true</BusinessValid>
+    <SanSupport>true</SanSupport>
+    <WildcardSupport>true</WildcardSupport>
+    <GreenBar>false</GreenBar>
+    <IssuanceTime>1-3 Days</IssuanceTime>
+    <Warranty>1500000</Warranty>
+    <SiteSeal>nortonsiteseal.png</SiteSeal>
+    <StarRating>mdu_5_0</StarRating>
+    <SealInSearch>true</SealInSearch>
+    <VulnerabilityAssessment>false</VulnerabilityAssessment>
+    <ValidationType>OV</ValidationType>
+    <ServerLicense>Limited</ServerLicense>
+    <ProductCode>Dynamic</ProductCode>
+  </Product>
+  <Product>
+    <ProductID>120</ProductID>
+    <ProductCode>SecureSiteProMDWC</ProductCode>
+    <ProductName>Secure Site Pro Multi-Domain Wildcard</ProductName>
+    <MobileFriendly>true</MobileFriendly>
+    <InstantDelivery>false</InstantDelivery>
+    <DocSigning>false</DocSigning>
+    <ScanProduct>true</ScanProduct>
+    <BusinessValid>true</BusinessValid>
+    <SanSupport>true</SanSupport>
+    <WildcardSupport>true</WildcardSupport>
+    <GreenBar>false</GreenBar>
+    <IssuanceTime>1-3 Days</IssuanceTime>
+    <Warranty>1500000</Warranty>
+    <SiteSeal>nortonsiteseal.png</SiteSeal>
+    <StarRating>mdu_5_0</StarRating>
+    <SealInSearch>true</SealInSearch>
+    <VulnerabilityAssessment>true</VulnerabilityAssessment>
+    <ValidationType>OV</ValidationType>
+    <ServerLicense>Limited</ServerLicense>
+    <ProductCode>Dynamic</ProductCode>
+  </Product>
+  <Product>
+    <ProductID>121</ProductID>
+    <ProductCode>truebizidmdwc</ProductCode>
+    <ProductName>True BusinessID Multi-Domain Wildcard</ProductName>
+    <MobileFriendly>true</MobileFriendly>
+    <InstantDelivery>false</InstantDelivery>
+    <DocSigning>false</DocSigning>
+    <ScanProduct>false</ScanProduct>
+    <BusinessValid>true</BusinessValid>
+    <SanSupport>true</SanSupport>
+    <WildcardSupport>true</WildcardSupport>
+    <GreenBar>false</GreenBar>
+    <IssuanceTime>1-3 Days</IssuanceTime>
+    <Warranty>1250000</Warranty>
+    <SiteSeal>geotrustsiteseal.png</SiteSeal>
+    <StarRating>mdu_4_0</StarRating>
+    <SealInSearch>false</SealInSearch>
+    <VulnerabilityAssessment>false</VulnerabilityAssessment>
+    <ValidationType>OV</ValidationType>
+    <ServerLicense>Unlimited</ServerLicense>
+    <ProductCode>Dynamic</ProductCode>
+  </Product>
+  <Product>
+    <ProductID>122</ProductID>
+    <ProductCode>SSLWebServerMDWC</ProductCode>
+    <ProductName>SSL Web Server Multi-Domain Wildcard</ProductName>
+    <MobileFriendly>true</MobileFriendly>
+    <InstantDelivery>false</InstantDelivery>
+    <DocSigning>false</DocSigning>
+    <ScanProduct>false</ScanProduct>
+    <BusinessValid>true</BusinessValid>
+    <SanSupport>true</SanSupport>
+    <WildcardSupport>true</WildcardSupport>
+    <GreenBar>false</GreenBar>
+    <IssuanceTime>1-3 Days</IssuanceTime>
+    <Warranty>1250000</Warranty>
+    <SiteSeal>thawtesiteseal.png</SiteSeal>
+    <StarRating>mdu_4_0</StarRating>
+    <SealInSearch>false</SealInSearch>
+    <VulnerabilityAssessment>false</VulnerabilityAssessment>
+    <ValidationType>OV</ValidationType>
+    <ServerLicense>Unlimited</ServerLicense>
+    <ProductCode>Dynamic</ProductCode>
+  </Product>
+  <Product>
+    <ProductID>123</ProductID>
+    <ProductCode>SecureSitePro_SHA1</ProductCode>
+    <ProductName>Secure Site Pro SHA-1 Private</ProductName>
+    <MobileFriendly>true</MobileFriendly>
+    <InstantDelivery>false</InstantDelivery>
+    <DocSigning>false</DocSigning>
+    <ScanProduct>true</ScanProduct>
+    <BusinessValid>true</BusinessValid>
+    <SanSupport>true</SanSupport>
+    <WildcardSupport>false</WildcardSupport>
+    <GreenBar>false</GreenBar>
+    <IssuanceTime>1-3 Days</IssuanceTime>
+    <Warranty>1500000</Warranty>
+    <SiteSeal>nortonsiteseal.png</SiteSeal>
+    <StarRating>mdu_5_0</StarRating>
+    <SealInSearch>true</SealInSearch>
+    <VulnerabilityAssessment>true</VulnerabilityAssessment>
+    <ValidationType>OV</ValidationType>
+    <ServerLicense>Limited</ServerLicense>
+    <ProductCode>Dynamic</ProductCode>
+  </Product>
+  <Product>
+    <ProductID>124</ProductID>
+    <ProductCode>comodocsc</ProductCode>
+    <ProductName>Comodo Code Signing Certificate</ProductName>
+    <MobileFriendly>false</MobileFriendly>
+    <InstantDelivery>false</InstantDelivery>
+    <DocSigning>false</DocSigning>
+    <ScanProduct>false</ScanProduct>
+    <BusinessValid>true</BusinessValid>
+    <SanSupport>false</SanSupport>
+    <WildcardSupport>false</WildcardSupport>
+    <GreenBar>false</GreenBar>
+    <IssuanceTime>1-3 Days</IssuanceTime>
+    <Warranty>1500000</Warranty>
+    <SiteSeal>imgnositeseal.png</SiteSeal>
+    <StarRating>cs_5.0</StarRating>
+    <SealInSearch>false</SealInSearch>
+    <VulnerabilityAssessment>true</VulnerabilityAssessment>
+    <ValidationType>OV</ValidationType>
+    <ServerLicense>N/A</ServerLicense>
+    <ProductCode>N/A</ProductCode>
+  </Product>
+  <Product>
+    <ProductID>125</ProductID>
+    <ProductCode>comodopremiumssl</ProductCode>
+    <ProductName>Comodo Premium SSL Certificate</ProductName>
+    <MobileFriendly>true</MobileFriendly>
+    <InstantDelivery>true</InstantDelivery>
+    <DocSigning>false</DocSigning>
+    <ScanProduct>false</ScanProduct>
+    <BusinessValid>false</BusinessValid>
+    <SanSupport>false</SanSupport>
+    <WildcardSupport>false</WildcardSupport>
+    <GreenBar>false</GreenBar>
+    <IssuanceTime>Immediate</IssuanceTime>
+    <Warranty>10000</Warranty>
+    <SiteSeal>comodositeseal.png</SiteSeal>
+    <StarRating>dv_3.5</StarRating>
+    <SealInSearch>false</SealInSearch>
+    <VulnerabilityAssessment>false</VulnerabilityAssessment>
+    <ValidationType>DV</ValidationType>
+    <ServerLicense>Unlimited</ServerLicense>
+    <ProductCode>Static</ProductCode>
+  </Product>
+  <Product>
+    <ProductID>126</ProductID>
+    <ProductCode>sslwebserver</ProductCode>
+    <ProductName>Thawte SSL Web Server Certificates</ProductName>
+    <MobileFriendly>true</MobileFriendly>
+    <InstantDelivery>false</InstantDelivery>
+    <DocSigning>false</DocSigning>
+    <ScanProduct>false</ScanProduct>
+    <BusinessValid>false</BusinessValid>
+    <SanSupport>false</SanSupport>
+    <WildcardSupport>false</WildcardSupport>
+    <GreenBar>false</GreenBar>
+    <IssuanceTime>Minutes</IssuanceTime>
+    <Warranty>500000</Warranty>
+    <SiteSeal>thawtesiteseal.png</SiteSeal>
+    <StarRating>dv_4.0</StarRating>
+    <SealInSearch>false</SealInSearch>
+    <VulnerabilityAssessment>false</VulnerabilityAssessment>
+    <ValidationType>DV</ValidationType>
+    <ServerLicense>Unlimited</ServerLicense>
+    <ProductCode>Dynamic</ProductCode>
   </Product>
 </Root>
-
 

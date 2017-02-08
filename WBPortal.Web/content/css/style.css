@@ -193,3 +193,17 @@ hr { margin: 10px 0px; }
 .errormsg{border:1px solid #ca9195; margin:15px 0; background:url(/content/images/errormsg-icon.png) no-repeat #fed2d3 15px 10px; padding:10px 15px 10px 50px; color:#7a1c2a; line-height:20px; background-size:20px; font-size:15px; display:block;}
 .alert-info{border:1px solid #e7e07b; margin:15px 0; background:url(/content/images/infoicon.png) no-repeat #fffddf 15px 10px; padding:10px 15px 10px 50px; color:#a7a14f; line-height:20px; background-size:20px; font-size:15px;}
 .alert-warning{border:1px solid #d9df63;margin:15px 0; background:url(/content/images/warningmsg-icon.png) no-repeat #fefccb 15px 10px; padding:10px 15px 10px 50px; color:#737433; line-height:20px; background-size:20px; font-size:15px;}
+
+
+ul.contentlist {
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 12px;
+    margin: 0 0 15px 10px;
+    list-style: circle;
+}
+
+ul.contentlist li {
+    line-height: 18px;
+    padding: 0 0 0 20px;
+    
+}

@@ -2,4 +2,4 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/.vs/WBPortable_Store/v15
+/.vs/WBPortable_Store/v15/Server/sqlite3/db.lock

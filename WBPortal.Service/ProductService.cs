@@ -88,7 +88,7 @@ namespace WBSSLStore.Service
             if (id > 0)
             {
                 Product ObjProduct = _product.Find(pr => pr.ID == id).FirstOrDefault();
-                //Product Product = _productavailablity.Find(pa => pa.ProductID == id && pa.SiteID == SiteID).FirstOrDefault().Product;
+             
                 if (ObjProduct != null)
                 {
                     if (DeleteProduct)
@@ -133,35 +133,14 @@ namespace WBSSLStore.Service
                 model.Month_24.Product = model.product;
                 model.Month_24.isRecommended = false;
             }
-            if (model.Month_36 != null)
-            {
-                model.Month_36.isRecommended = false;
-                model.Month_36.Product = model.product;
-            }
-            if (model.Month_48 != null)
-            {
-                model.Month_48.isRecommended = false;
-                model.Month_48.Product = model.product;
-            }
-            if (model.Month_60 != null)
-            {
-                model.Month_60.isRecommended = false;
-                model.Month_60.Product = model.product;
-            }
+         
             if (isRecommended == 12)
                 model.Month_12.isRecommended = true;
 
             if (isRecommended == 24)
                 model.Month_24.isRecommended = true;
 
-            if (isRecommended == 36)
-                model.Month_36.isRecommended = true;
-
-            if (isRecommended == 48)
-                model.Month_48.isRecommended = true;
-
-            if (isRecommended == 60)
-                model.Month_60.isRecommended = true;
+            
 
             if (model.Month_12 != null && (model.Month_12.SalesPrice > 0 || model.Month_12.ID > 0 || model.product.InternalProductCode.Equals("freessl", StringComparison.OrdinalIgnoreCase)))
             {
@@ -186,37 +165,7 @@ namespace WBSSLStore.Service
                     _productPricing.Add(model.Month_24);
             }
 
-            if (model.Month_36 != null && (model.Month_36.SalesPrice > 0 || model.Month_36.ID > 0))
-            {
-                if (model.Month_36.ID > 0 && model.Month_36.SalesPrice > 0)
-                    _productPricing.Update(model.Month_36);
-                else if (model.Month_36.ID > 0 && model.Month_36.SalesPrice <= 0)
-                {
-                    _productPricing.Delete(_productPricing.FindByID(model.Month_36.ID));
-                }
-                else
-                    _productPricing.Add(model.Month_36);
-            }
-
-            if (model.Month_48 != null && (model.Month_48.SalesPrice > 0 || model.Month_48.ID > 0))
-            {
-                if (model.Month_48.ID > 0 && model.Month_48.SalesPrice > 0)
-                    _productPricing.Update(model.Month_48);
-                else if (model.Month_48.ID > 0 && model.Month_48.SalesPrice <= 0)
-                    _productPricing.Delete(_productPricing.FindByID(model.Month_48.ID));
-                else
-                    _productPricing.Add(model.Month_48);
-            }
-
-            if (model.Month_60 != null && (model.Month_60.SalesPrice > 0 || model.Month_60.ID > 0))
-            {
-                if (model.Month_60.ID > 0 && model.Month_60.SalesPrice > 0)
-                    _productPricing.Update(model.Month_60);
-                else if (model.Month_60.ID > 0 && model.Month_60.SalesPrice <= 0)
-                    _productPricing.Delete(_productPricing.FindByID(model.Month_60.ID));
-                else
-                    _productPricing.Add(model.Month_60);
-            }
+          
 
             if (!SaveOnlyPrice)
             {
@@ -283,8 +232,6 @@ namespace WBSSLStore.Service
                 try
                 {
                     ProductPricingModel model = new ProductPricingModel();                    
-                    //var _productsData = _product.Find(pro => pro.InternalProductCode.Equals(apiProduct.ProductCode, StringComparison.OrdinalIgnoreCase)  && pro.RecordStatusID != (int)RecordStatus.DELETED).EagerLoad(p => p.Brand).FirstOrDefault();
-                    
                     
                     var productavailablity = _productavailablity.Find(pro => pro.Product.InternalProductCode.Equals(apiProduct.ProductCode, StringComparison.OrdinalIgnoreCase) && pro.SiteID == site.ID && pro.Product.RecordStatusID != (int)RecordStatus.DELETED).EagerLoad(p => p.Product).FirstOrDefault(); 
                     var sl = ProductSlugs.Where(x => x.ProductCode.Equals(apiProduct.ProductCode, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
@@ -336,9 +283,7 @@ namespace WBSSLStore.Service
 
                         model.Month_12 = _productPricing.Find(pp => pp.SiteID == site.ID && pp.ProductID == productavailablity.ProductID && pp.ContractID == ClientContract.ID && (pp.NumberOfMonths < 12 ? 12 : pp.NumberOfMonths) == (int)SettingConstants.NumberOfMonths.Month12).FirstOrDefault();
                         model.Month_24 = _productPricing.Find(pp => pp.SiteID == site.ID && pp.ProductID == productavailablity.ProductID && pp.ContractID == ClientContract.ID && pp.NumberOfMonths == (int)SettingConstants.NumberOfMonths.Month24).FirstOrDefault();
-                        model.Month_36 = _productPricing.Find(pp => pp.SiteID == site.ID && pp.ProductID == productavailablity.ProductID && pp.ContractID == ClientContract.ID && pp.NumberOfMonths == (int)SettingConstants.NumberOfMonths.Month36).FirstOrDefault();
-
-
+                     
                         SuccessProduct.Append(SetMarginalPrice(model, apiProduct, site, Margin, ClientContract.ID, true));
 
                         //Add reseller pricing for default reseller contract
@@ -346,9 +291,6 @@ namespace WBSSLStore.Service
                         {
                             model.Month_12 = _productPricing.Find(pp => pp.SiteID == site.ID && pp.ContractID == resellerContract.ID && pp.ProductID == productavailablity.ProductID && pp.NumberOfMonths == (int)SettingConstants.NumberOfMonths.Month12).FirstOrDefault();
                             model.Month_24 = _productPricing.Find(pp => pp.SiteID == site.ID && pp.ContractID == resellerContract.ID && pp.ProductID == productavailablity.ProductID && pp.NumberOfMonths == (int)SettingConstants.NumberOfMonths.Month24).FirstOrDefault();
-                            model.Month_36 = _productPricing.Find(pp => pp.SiteID == site.ID && pp.ContractID == resellerContract.ID && pp.ProductID == productavailablity.ProductID && pp.NumberOfMonths == (int)SettingConstants.NumberOfMonths.Month36).FirstOrDefault();
-                            //model.Month_48 = _productPricing.Find(pp => pp.SiteID == site.ID && pp.ContractID == resellerContract.ID  && pp.NumberOfMonths == (int)SettingConstants.NumberOfMonths.Month48).FirstOrDefault();
-                            //model.Month_60 = _productPricing.Find(pp => pp.SiteID == site.ID && pp.ContractID == resellerContract.ID  && pp.NumberOfMonths == (int)SettingConstants.NumberOfMonths.Month60).FirstOrDefault();
                             SetMarginalPrice(model, apiProduct, site, Margin, resellerContract.ID, true);
                         }
                     }
@@ -451,9 +393,7 @@ namespace WBSSLStore.Service
                 {
                     model.Month_12 = new ProductPricing() { NumberOfMonths = (int)SettingConstants.NumberOfMonths.Month12, RecordStatusID = (int)RecordStatus.ACTIVE, SiteID = site.ID, ContractID = ContractID };
                     model.Month_24 = new ProductPricing() { NumberOfMonths = (int)SettingConstants.NumberOfMonths.Month24, RecordStatusID = (int)RecordStatus.ACTIVE, SiteID = site.ID, ContractID = ContractID };
-                    model.Month_36 = new ProductPricing() { NumberOfMonths = (int)SettingConstants.NumberOfMonths.Month36, RecordStatusID = (int)RecordStatus.ACTIVE, SiteID = site.ID, ContractID = ContractID };
-                    model.Month_48 = new ProductPricing() { NumberOfMonths = (int)SettingConstants.NumberOfMonths.Month48, RecordStatusID = (int)RecordStatus.ACTIVE, SiteID = site.ID, ContractID = ContractID };
-                    model.Month_60 = new ProductPricing() { NumberOfMonths = (int)SettingConstants.NumberOfMonths.Month60, RecordStatusID = (int)RecordStatus.ACTIVE, SiteID = site.ID, ContractID = ContractID };
+                   
                 }
                 if (apiProduct.Pricings.Where(pr => pr.NumberOfMonth == 12).FirstOrDefault() != null || apiProduct.Pricings.Where(pr => pr.NumberOfMonth == 1).FirstOrDefault() != null)
                 {
@@ -485,52 +425,10 @@ namespace WBSSLStore.Service
                     model.Month_24.SiteID = site.ID;
                 }
 
-                if (model.Month_36 != null && apiProduct.Pricings.Where(pr => pr.NumberOfMonth == 36).FirstOrDefault() != null)
-                {
-                    var apiPrice = apiProduct.Pricings.Where(pr => pr.NumberOfMonth == 36).FirstOrDefault();
-                    model.Month_36.AdditionalSanPrice = apiPrice.AdditionalSanPrice + ((apiPrice.AdditionalSanPrice * Margin) / 100);
-                    model.Month_36.ContractID = ContractID;
-                    model.Month_36.RecordStatusID = (int)RecordStatus.ACTIVE;
-                    model.Month_36.RetailPrice = apiPrice.SRP;
-                    if (apiPrice.Price > 0)
-                        model.Month_36.SalesPrice = apiPrice.Price + ((apiPrice.Price * Margin) / 100);
-                    else
-                        model.Month_36.SalesPrice = 0;
-                    model.Month_36.SiteID = site.ID;
-                }
-
-                if (model.Month_48 != null && apiProduct.Pricings.Where(pr => pr.NumberOfMonth == 48).FirstOrDefault() != null)
-                {
-                    var apiPrice = apiProduct.Pricings.Where(pr => pr.NumberOfMonth == 48).FirstOrDefault();
-                    model.Month_48.AdditionalSanPrice = apiPrice.AdditionalSanPrice + ((apiPrice.AdditionalSanPrice * Margin) / 100);
-                    model.Month_48.ContractID = ContractID;
-                    model.Month_48.RecordStatusID = (int)RecordStatus.ACTIVE;
-                    model.Month_48.RetailPrice = apiPrice.SRP;
-                    if (apiPrice.Price > 0)
-                        model.Month_48.SalesPrice = apiPrice.Price + ((apiPrice.Price * Margin) / 100);
-                    else
-                        model.Month_48.SalesPrice = 0;
-                    model.Month_48.SiteID = site.ID;
-                }
-
-                if (apiProduct.Pricings.Where(pr => pr.NumberOfMonth == 60).FirstOrDefault() != null)
-                {
-                    var apiPrice = apiProduct.Pricings.Where(pr => pr.NumberOfMonth == 60).FirstOrDefault();
-                    model.Month_60.AdditionalSanPrice = apiPrice.AdditionalSanPrice + ((apiPrice.AdditionalSanPrice * Margin) / 100);
-                    model.Month_60.ContractID = ContractID;
-                    model.Month_60.RecordStatusID = (int)RecordStatus.ACTIVE;
-                    model.Month_60.RetailPrice = apiPrice.SRP;
-                    if (apiPrice.Price > 0)
-                        model.Month_60.SalesPrice = apiPrice.Price + ((apiPrice.Price * Margin) / 100);
-                    else
-                        model.Month_60.SalesPrice = 0;
-                    model.Month_60.SiteID = site.ID;
-                }
-                int isRecommended = 12;
-                if (model.Month_36 != null && model.Month_36.SalesPrice > 0)
-                    isRecommended = 36;
-                else if (model.Month_24 != null && model.Month_24.SalesPrice > 0)
-                    isRecommended = 24;
+             
+                int isRecommended = 24;
+            
+               
 
                 AddEditProductPricing(model, isRecommended, site, false);
                 //_logger.Log(model.product.ProductName + ": Imported Successfully.", Logger.LogType.INFO);

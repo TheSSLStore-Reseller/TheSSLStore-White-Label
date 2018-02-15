@@ -11,9 +11,9 @@ namespace WBSSLStore.Service.ViewModels
     {
         public ProductPricing Month_12 {get;set;}
         public ProductPricing Month_24 { get; set; }
-        public ProductPricing Month_36 { get; set; }
-        public ProductPricing Month_48 { get; set; }
-        public ProductPricing Month_60 { get; set; }
+        //public ProductPricing Month_36 { get; set; }
+        //public ProductPricing Month_48 { get; set; }
+        //public ProductPricing Month_60 { get; set; }
         public Product product { get; set; }
         public ProductAvailablity productAvailablity { get; set; }
         public string Message { get; set; }

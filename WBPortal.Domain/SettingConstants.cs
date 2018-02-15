@@ -63,9 +63,7 @@ namespace WBSSLStore.Domain
         {
             Month12 = 12,
             Month24 = 24,
-            Month36 = 36,
-            Month48 = 48,
-            Month60 = 60
+           
 
         }
         #endregion

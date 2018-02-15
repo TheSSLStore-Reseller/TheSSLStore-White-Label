@@ -1380,21 +1380,14 @@ namespace WhiteBrandSite.Areas.runsetup.Controllers
                 model.Month_24.Product = model.product;
                 model.Month_24.isRecommended = false;
             }
-            if (model.Month_36 != null)
-            {
-                model.Month_36.isRecommended = false;
-                model.Month_36.Product = model.product;
-            }
-          
+           
             if (isRecommended == 12)
                 model.Month_12.isRecommended = true;
 
             if (isRecommended == 24)
                 model.Month_24.isRecommended = true;
 
-            if (isRecommended == 36)
-                model.Month_36.isRecommended = true;
-
+           
             ProductPricing pp = null;
             if (model.Month_12 != null && (model.Month_12.SalesPrice > 0 || model.Month_12.ID > 0 || model.product.InternalProductCode.Equals("freessl", StringComparison.OrdinalIgnoreCase)))
             {
@@ -1432,17 +1425,6 @@ namespace WhiteBrandSite.Areas.runsetup.Controllers
                 }
             }
 
-            if (model.Month_36 != null && (model.Month_36.SalesPrice > 0 || model.Month_36.ID > 0))
-            {
-                if (model.Month_36.ID > 0 && model.Month_36.SalesPrice > 0)
-                    AddUpdatePricing(model.Month_36, pp, 2);
-                else if (model.Month_36.ID > 0 && model.Month_36.SalesPrice <= 0)
-                {
-                    AddUpdatePricing(model.Month_36, pp, 3);
-                }
-                else
-                    AddUpdatePricing(model.Month_36, pp, 1);
-            }
 
           
             return true;
@@ -1473,7 +1455,7 @@ namespace WhiteBrandSite.Areas.runsetup.Controllers
                 {
                     model.Month_12 = new ProductPricing() { NumberOfMonths = (int)SettingConstants.NumberOfMonths.Month12, RecordStatusID = (int)RecordStatus.ACTIVE, SiteID = site.ID, ContractID = ContractID };
                     model.Month_24 = new ProductPricing() { NumberOfMonths = (int)SettingConstants.NumberOfMonths.Month24, RecordStatusID = (int)RecordStatus.ACTIVE, SiteID = site.ID, ContractID = ContractID };
-                    model.Month_36 = new ProductPricing() { NumberOfMonths = (int)SettingConstants.NumberOfMonths.Month36, RecordStatusID = (int)RecordStatus.ACTIVE, SiteID = site.ID, ContractID = ContractID };
+                    
                   
                 }
 
@@ -1521,27 +1503,10 @@ namespace WhiteBrandSite.Areas.runsetup.Controllers
                         model.Month_24.SalesPrice = 0;
                     model.Month_24.SiteID = site.ID;
                 }
-
-                if (model.Month_36 != null && apiProduct.Pricings.Where(pr => pr.NumberOfMonth == 36).FirstOrDefault() != null)
-                {
-                    var apiPrice = apiProduct.Pricings.Where(pr => pr.NumberOfMonth == 36).FirstOrDefault();
-                    model.Month_36.AdditionalSanPrice = apiPrice.AdditionalSanPrice + ((apiPrice.AdditionalSanPrice * Margin) / 100);
-                    model.Month_36.ContractID = ContractID;
-                    model.Month_36.RecordStatusID = (int)RecordStatus.ACTIVE;
-                    model.Month_36.RetailPrice = apiPrice.SRP;
-                    if (apiPrice.Price > 0)
-                        model.Month_36.SalesPrice = apiPrice.Price + ((apiPrice.Price * Margin) / 100);
-                    else
-                        model.Month_36.SalesPrice = 0;
-                    model.Month_36.SiteID = site.ID;
-                }
-
+                
                
-                int isRecommended = 12;
-                if (model.Month_36 != null && model.Month_36.SalesPrice > 0)
-                    isRecommended = 36;
-                else if (model.Month_24 != null && model.Month_24.SalesPrice > 0)
-                    isRecommended = 24;
+                int isRecommended = 24;
+                    
 
                 AddEditProductPricing(model, isRecommended, site, false);
                return model.product.ProductName + ": Successfully imported<br/>";
@@ -1634,7 +1599,7 @@ namespace WhiteBrandSite.Areas.runsetup.Controllers
                         int Clientcontraid = ClientContract.ID;
                         model.Month_12 = db.ProductPricings.Where(pp => pp.SiteID == site.ID && pp.ContractID == Clientcontraid && pp.ProductID == productavailablity.ID && (pp.NumberOfMonths < 12 ? 12 : pp.NumberOfMonths) == (int)SettingConstants.NumberOfMonths.Month12).FirstOrDefault();
                         model.Month_24 = db.ProductPricings.Where(pp => pp.SiteID == site.ID && pp.ContractID == ClientContract.ID && pp.ProductID == productavailablity.ID && pp.NumberOfMonths == (int)SettingConstants.NumberOfMonths.Month24).FirstOrDefault();
-                        model.Month_36 = db.ProductPricings.Where(pp => pp.SiteID == site.ID && pp.ContractID == ClientContract.ID && pp.ProductID == productavailablity.ID && pp.NumberOfMonths == (int)SettingConstants.NumberOfMonths.Month36).FirstOrDefault();
+                        
 
                         SuccessProduct.Append(SetMarginalPrice(model, apiProduct, site, Margin, ClientContract.ID, true));
 
@@ -1643,7 +1608,7 @@ namespace WhiteBrandSite.Areas.runsetup.Controllers
                         {
                             model.Month_12 = db.ProductPricings.Where(pp => pp.SiteID == site.ID && pp.ContractID == resellerContract.ID && pp.ProductID == productavailablity.ID && pp.NumberOfMonths == (int)SettingConstants.NumberOfMonths.Month12).FirstOrDefault();
                             model.Month_24 = db.ProductPricings.Where(pp => pp.SiteID == site.ID && pp.ContractID == resellerContract.ID && pp.ProductID == productavailablity.ID && pp.NumberOfMonths == (int)SettingConstants.NumberOfMonths.Month24).FirstOrDefault();
-                            model.Month_36 = db.ProductPricings.Where(pp => pp.SiteID == site.ID && pp.ContractID == resellerContract.ID && pp.ProductID == productavailablity.ID && pp.NumberOfMonths == (int)SettingConstants.NumberOfMonths.Month36).FirstOrDefault();
+
                             SetMarginalPrice(model, apiProduct, site, Margin, resellerContract.ID, true);
                         }
                     }

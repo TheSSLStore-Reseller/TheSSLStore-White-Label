@@ -3,8 +3,7 @@
     ViewBag.Title = "Edit";
     ViewBag.version = WBSSLStore.Web.Helpers.Caching.SiteCacher.ResourceVersion();
 }
-@*<script src="@Url.Content("~/content/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
-<script src="@Url.Content("~/content/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>*@
+
 @System.Web.Optimization.Scripts.Render("/bundales/wb/validationjs?v=" + ViewBag.version)
 @using (Html.BeginForm())
 {
@@ -113,90 +112,7 @@
                                     <input  type="radio" value="@Model.Month_24.NumberOfMonths" name="isRecommended" @(Model.Month_24.isRecommended ? "checked=\"checked\"" : string.Empty) />
                                 </td>
                             </tr>
-                            <tr>
-                                @Html.HiddenFor(model => model.Month_36.ID)
-                                @Html.HiddenFor(model => model.Month_36.isRecommended)
-                                @Html.HiddenFor(model => model.Month_36.RecordStatusID)
-                                @Html.HiddenFor(model => model.Month_36.ContractID)
-                                @Html.HiddenFor(model => model.Month_36.SiteID)
-                                @Html.HiddenFor(model => model.Month_36.ProductID)
-                                <td width="51" height="24" align="center" valign="middle" bgcolor="#FFFFFF">
-                                    @Html.TextBoxFor(model => model.Month_36.NumberOfMonths, new { @class = "inputboxmini", @readonly = "readonly" })
-                                    @Html.ValidationMessageFor(model => model.Month_36.NumberOfMonths)
-                                </td>
-                                <td width="72" height="24" align="center" valign="middle" bgcolor="#FFFFFF">
-                                    @Html.TextBoxFor(model => model.Month_36.RetailPrice, new { @class = "inputboxmini alignright" })
-                                    @Html.ValidationMessageFor(model => model.Month_36.RetailPrice)
-                                </td>
-                                <td width="86" height="24" align="center" valign="middle" bgcolor="#FFFFFF">
-                                    @Html.TextBoxFor(model => model.Month_36.SalesPrice, new { @class = "inputboxmini alignright" })
-                                    @Html.ValidationMessageFor(model => model.Month_36.SalesPrice)
-                                </td>
-                             
-                                <td width="64" height="24" align="center" valign="middle" bgcolor="#FFFFFF">
-                                    @Html.TextBoxFor(model => model.Month_36.AdditionalSanPrice, new { @class = "inputboxmini alignright" })
-                                    @Html.ValidationMessageFor(model => model.Month_36.AdditionalSanPrice)
-                                </td>
-                                <td width="64" height="24" align="center" valign="middle" bgcolor="#FFFFFF">
-                                    <input  type="radio" value="@Model.Month_36.NumberOfMonths" name="isRecommended" @(Model.Month_36.isRecommended ? "checked=\"checked\"" : string.Empty) />
-                                </td>
-                            </tr>
-                            <tr>
-                                @Html.HiddenFor(model => model.Month_48.ID)
-                                @Html.HiddenFor(model => model.Month_48.isRecommended)
-                                @Html.HiddenFor(model => model.Month_48.RecordStatusID)
-                                @Html.HiddenFor(model => model.Month_48.ContractID)
-                                @Html.HiddenFor(model => model.Month_48.SiteID)
-                                @Html.HiddenFor(model => model.Month_48.ProductID)
-                                <td width="51" height="24" align="center" valign="middle" bgcolor="#FFFFFF">
-                                    @Html.TextBoxFor(model => model.Month_48.NumberOfMonths, new { @class = "inputboxmini", @readonly = "readonly" })
-                                    @Html.ValidationMessageFor(model => model.Month_48.NumberOfMonths)
-                                </td>
-                                <td width="72" height="24" align="center" valign="middle" bgcolor="#FFFFFF">
-                                    @Html.TextBoxFor(model => model.Month_48.RetailPrice, new { @class = "inputboxmini alignright" })
-                                    @Html.ValidationMessageFor(model => model.Month_48.RetailPrice)
-                                </td>
-                                <td width="86" height="24" align="center" valign="middle" bgcolor="#FFFFFF">
-                                    @Html.TextBoxFor(model => model.Month_48.SalesPrice, new { @class = "inputboxmini alignright" })
-                                    @Html.ValidationMessageFor(model => model.Month_48.SalesPrice)
-                                </td>
-                         
-                                <td width="64" height="24" align="center" valign="middle" bgcolor="#FFFFFF">
-                                    @Html.TextBoxFor(model => model.Month_48.AdditionalSanPrice, new { @class = "inputboxmini alignright" })
-                                    @Html.ValidationMessageFor(model => model.Month_48.AdditionalSanPrice)
-                                </td>
-                                <td width="64" height="24" align="center" valign="middle" bgcolor="#FFFFFF">
-                                    <input  type="radio" value="@Model.Month_48.NumberOfMonths" name="isRecommended" @(Model.Month_48.isRecommended ? "checked=\"checked\"" : string.Empty) />
-                                </td>
-                            </tr>
-                            <tr>
-                                @Html.HiddenFor(model => model.Month_60.ID)
-                                @Html.HiddenFor(model => model.Month_60.isRecommended)
-                                @Html.HiddenFor(model => model.Month_60.RecordStatusID)
-                                @Html.HiddenFor(model => model.Month_60.ContractID)
-                                @Html.HiddenFor(model => model.Month_60.SiteID)
-                                @Html.HiddenFor(model => model.Month_60.ProductID)
-                                <td width="51" height="24" align="center" valign="middle" bgcolor="#FFFFFF">
-                                    @Html.TextBoxFor(model => model.Month_60.NumberOfMonths, new { @class = "inputboxmini", @readonly = "readonly" })
-                                    @Html.ValidationMessageFor(model => model.Month_60.NumberOfMonths)
-                                </td>
-                                <td width="72" height="24" align="center" valign="middle" bgcolor="#FFFFFF">
-                                    @Html.TextBoxFor(model => model.Month_60.RetailPrice, new { @class = "inputboxmini alignright" })
-                                    @Html.ValidationMessageFor(model => model.Month_60.RetailPrice)
-                                </td>
-                                <td width="86" height="24" align="center" valign="middle" bgcolor="#FFFFFF">
-                                    @Html.TextBoxFor(model => model.Month_60.SalesPrice, new { @class = "inputboxmini alignright" })
-                                    @Html.ValidationMessageFor(model => model.Month_60.SalesPrice)
-                                </td>
-                             
-                                <td width="64" height="24" align="center" valign="middle" bgcolor="#FFFFFF">
-                                    @Html.TextBoxFor(model => model.Month_60.AdditionalSanPrice, new { @class = "inputboxmini alignright" })
-                                    @Html.ValidationMessageFor(model => model.Month_60.AdditionalSanPrice)
-                                </td>
-                                <td width="64" height="24" align="center" valign="middle" bgcolor="#FFFFFF">
-                                    <input  type="radio" value="@Model.Month_60.NumberOfMonths" name="isRecommended" @(Model.Month_60.isRecommended ? "checked=\"checked\"" : string.Empty) />
-                                </td>
-                            </tr>
+                      
                         </table>
                     </td>
                 </tr>

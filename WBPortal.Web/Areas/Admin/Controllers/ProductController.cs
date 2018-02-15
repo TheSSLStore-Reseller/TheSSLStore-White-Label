@@ -57,9 +57,6 @@ namespace WBSSLStore.Web.Areas.Admin.Controllers
             Contract ClientContract = _service.GetClientContract(Site.ID);
             _viewModel.Month_12 = new Domain.ProductPricing() { NumberOfMonths = (int)SettingConstants.NumberOfMonths.Month12, RecordStatusID = (int)RecordStatus.ACTIVE, SiteID = Site.ID, ContractID = ClientContract.ID };
             _viewModel.Month_24 = new Domain.ProductPricing() { NumberOfMonths = (int)SettingConstants.NumberOfMonths.Month24, RecordStatusID = (int)RecordStatus.ACTIVE, SiteID = Site.ID, ContractID = ClientContract.ID };
-            _viewModel.Month_36 = new Domain.ProductPricing() { NumberOfMonths = (int)SettingConstants.NumberOfMonths.Month36, RecordStatusID = (int)RecordStatus.ACTIVE, SiteID = Site.ID, ContractID = ClientContract.ID };
-            _viewModel.Month_48 = new Domain.ProductPricing() { NumberOfMonths = (int)SettingConstants.NumberOfMonths.Month48, RecordStatusID = (int)RecordStatus.ACTIVE, SiteID = Site.ID, ContractID = ClientContract.ID };
-            _viewModel.Month_60 = new Domain.ProductPricing() { NumberOfMonths = (int)SettingConstants.NumberOfMonths.Month60, RecordStatusID = (int)RecordStatus.ACTIVE, SiteID = Site.ID, ContractID = ClientContract.ID };
             if (_viewModel.productAvailablity == null)
                 _viewModel.productAvailablity = new ProductAvailablity() { isActive = true, SiteID = Site.ID };
             _viewModel.product = new Product();
@@ -75,7 +72,7 @@ namespace WBSSLStore.Web.Areas.Admin.Controllers
         public ActionResult Add(ProductPricingModel model)
         {
             bool isPricingValid = true;
-            if (model.Month_12.SalesPrice <= 0 && model.Month_24.SalesPrice <= 0 && model.Month_36.SalesPrice <= 0 && model.Month_48.SalesPrice <= 0 && model.Month_60.SalesPrice <= 0)
+            if (model.Month_12.SalesPrice <= 0 && model.Month_24.SalesPrice <= 0 )
                 isPricingValid = false;
             if (!isPricingValid && model.product.InternalProductCode.Equals("freessl", StringComparison.OrdinalIgnoreCase))
             {
@@ -121,19 +118,14 @@ namespace WBSSLStore.Web.Areas.Admin.Controllers
                 List<Domain.ProductPricing> lstPricing = _service.GetProductPricing(Site.ID, Convert.ToInt16(id), ClientContract.ID).ToList();
                 _viewModel.Month_12 = lstPricing.Where(price => price.NumberOfMonths == (int)SettingConstants.NumberOfMonths.Month12).FirstOrDefault();
                 _viewModel.Month_24 = lstPricing.Where(price => price.NumberOfMonths == (int)SettingConstants.NumberOfMonths.Month24).FirstOrDefault();
-                _viewModel.Month_36 = lstPricing.Where(price => price.NumberOfMonths == (int)SettingConstants.NumberOfMonths.Month36).FirstOrDefault();
-                _viewModel.Month_48 = lstPricing.Where(price => price.NumberOfMonths == (int)SettingConstants.NumberOfMonths.Month48).FirstOrDefault();
-                _viewModel.Month_60 = lstPricing.Where(price => price.NumberOfMonths == (int)SettingConstants.NumberOfMonths.Month60).FirstOrDefault();
-
+               
                 if (_viewModel.Month_12 == null)
                     _viewModel.Month_12 = new Domain.ProductPricing() { NumberOfMonths = (int)SettingConstants.NumberOfMonths.Month12, RecordStatusID = (int)RecordStatus.ACTIVE, SiteID = Site.ID, ContractID = ClientContract.ID };
 
                 if (_viewModel.Month_24 == null)
                     _viewModel.Month_24 = new Domain.ProductPricing() { NumberOfMonths = (int)SettingConstants.NumberOfMonths.Month24, RecordStatusID = (int)RecordStatus.ACTIVE, SiteID = Site.ID, ContractID = ClientContract.ID };
 
-                if (_viewModel.Month_36 == null)
-                    _viewModel.Month_36 = new Domain.ProductPricing() { NumberOfMonths = (int)SettingConstants.NumberOfMonths.Month36, RecordStatusID = (int)RecordStatus.ACTIVE, SiteID = Site.ID, ContractID = ClientContract.ID };
-
+               
 
                 if (!(lstPricing != null && lstPricing.Count > 0))
                     _viewModel.product = _service.GetProduct(Convert.ToInt16(id));

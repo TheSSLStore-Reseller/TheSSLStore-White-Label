@@ -47,9 +47,6 @@ namespace WBSSLStore.Web.Areas.Admin.Controllers
             _viewModel.product = _service.GetProduct(id);
             _viewModel.Month_12 = lstPricing.Where(price => price.NumberOfMonths == (_viewModel.product.InternalProductCode.Equals("freessl", StringComparison.OrdinalIgnoreCase) ? 1 : (int)SettingConstants.NumberOfMonths.Month12)).FirstOrDefault();
             _viewModel.Month_24 = lstPricing.Where(price => price.NumberOfMonths == (int)SettingConstants.NumberOfMonths.Month24).FirstOrDefault();
-            _viewModel.Month_36 = lstPricing.Where(price => price.NumberOfMonths == (int)SettingConstants.NumberOfMonths.Month36).FirstOrDefault();
-            _viewModel.Month_48 = lstPricing.Where(price => price.NumberOfMonths == (int)SettingConstants.NumberOfMonths.Month48).FirstOrDefault();
-            _viewModel.Month_60 = lstPricing.Where(price => price.NumberOfMonths == (int)SettingConstants.NumberOfMonths.Month60).FirstOrDefault();
 
 
 
@@ -58,15 +55,6 @@ namespace WBSSLStore.Web.Areas.Admin.Controllers
 
             if (_viewModel.Month_24 == null)
                 _viewModel.Month_24 = new ProductPricing() { NumberOfMonths = (int)SettingConstants.NumberOfMonths.Month24, RecordStatusID = (int)RecordStatus.ACTIVE, SiteID = Site.ID, ContractID = CurrentContractID };
-
-            if (_viewModel.Month_36 == null)
-                _viewModel.Month_36 = new ProductPricing() { NumberOfMonths = (int)SettingConstants.NumberOfMonths.Month36, RecordStatusID = (int)RecordStatus.ACTIVE, SiteID = Site.ID, ContractID = CurrentContractID };
-
-            if (_viewModel.Month_48 == null)
-                _viewModel.Month_48 = new ProductPricing() { NumberOfMonths = (int)SettingConstants.NumberOfMonths.Month48, RecordStatusID = (int)RecordStatus.ACTIVE, SiteID = Site.ID, ContractID = CurrentContractID };
-
-            if (_viewModel.Month_60 == null)
-                _viewModel.Month_60 = new ProductPricing() { NumberOfMonths = (int)SettingConstants.NumberOfMonths.Month60, RecordStatusID = (int)RecordStatus.ACTIVE, SiteID = Site.ID, ContractID = CurrentContractID };
 
             //ViewBag.PartnerCode = Site.APIPartnerCode;
             //ViewBag.Password = Site.APIPassword;
@@ -86,7 +74,7 @@ namespace WBSSLStore.Web.Areas.Admin.Controllers
                 // TODO: Add update logic here
                 bool isPricingValid = true;
                 model.product = _service.GetProduct(id);
-                if (model.Month_12.SalesPrice <= 0 && model.Month_24.SalesPrice <= 0 && model.Month_36.SalesPrice <= 0 && model.Month_48.SalesPrice <= 0 && model.Month_60.SalesPrice <= 0 && !model.product.InternalProductCode.Equals("freessl", StringComparison.OrdinalIgnoreCase))
+                if (model.Month_12.SalesPrice <= 0 && model.Month_24.SalesPrice <= 0  && !model.product.InternalProductCode.Equals("freessl", StringComparison.OrdinalIgnoreCase))
                     isPricingValid = false;
                 if (ModelState.IsValid && isPricingValid)
                 {

@@ -123,15 +123,7 @@ $(document).ready(function () {
                                                     <td width="80" height="30" align="center" valign="middle" bgcolor="#eff8fd" class="lightbgblue">
                                                         @*2 Year*@ @WBSSLStore.Resources.GeneralMessage.Message.Year_Caption2
                                                     </td>
-                                                    <td width="80" height="30" align="center" valign="middle" bgcolor="#eff8fd" class="lightbgblue">
-                                                        @*3 Year*@ @WBSSLStore.Resources.GeneralMessage.Message.Year_Caption3
-                                                    </td>
-                                                    <td width="80" height="30" align="center" valign="middle" bgcolor="#eff8fd" class="lightbgblue">
-                                                        @*4 Year*@ @WBSSLStore.Resources.GeneralMessage.Message.Year_Caption4
-                                                    </td>
-                                                    <td width="80" height="30" align="center" valign="middle" bgcolor="#eff8fd" class="lightbgblue">
-                                                        @*5 Year*@ @WBSSLStore.Resources.GeneralMessage.Message.Year_Caption5
-                                                    </td>
+                                                   
                                                 </tr>
                                                 @foreach (var item in Model)
                                                 {
@@ -148,15 +140,7 @@ $(document).ready(function () {
                                                         <td align="right" valign="middle" bgcolor="#FFFFFF" class="bold">
                                                             @(item.Pricings.Where(pp => pp.NumberOfMonth < 36 && pp.NumberOfMonth > 23).FirstOrDefault() != null ? item.Pricings.Where(pp => pp.NumberOfMonth < 36 && pp.NumberOfMonth > 23).FirstOrDefault().Price.ToString("C") : "-")
                                                         </td>
-                                                        <td align="right" valign="middle" bgcolor="#FFFFFF" class="bold">
-                                                            @(item.Pricings.Where(pp => pp.NumberOfMonth < 48 && pp.NumberOfMonth > 35).FirstOrDefault() != null ? item.Pricings.Where(pp => pp.NumberOfMonth < 48 && pp.NumberOfMonth > 35).FirstOrDefault().Price.ToString("C") : "-")
-                                                        </td>
-                                                        <td align="right" valign="middle" bgcolor="#FFFFFF" class="bold">
-                                                            @(item.Pricings.Where(pp => pp.NumberOfMonth < 60 && pp.NumberOfMonth > 47).FirstOrDefault() != null ? item.Pricings.Where(pp => pp.NumberOfMonth < 60 && pp.NumberOfMonth > 47).FirstOrDefault().Price.ToString("C") : "-")
-                                                        </td>
-                                                        <td align="right" valign="middle" bgcolor="#FFFFFF" class="bold">
-                                                            @(item.Pricings.Where(pp => pp.NumberOfMonth >= 60).FirstOrDefault() != null ? item.Pricings.Where(pp => pp.NumberOfMonth >= 60).FirstOrDefault().Price.ToString("C") : "-")
-                                                        </td>
+                                                       
                                                     </tr>
                                                 }
                                             </table>

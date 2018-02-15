@@ -15,7 +15,7 @@
     <AssemblyName>WhiteBrandSite</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -1416,6 +1416,8 @@
     <Content Include="content\vscript\vuploadfile.js" />
     <Content Include="Global.asax" />
     <Content Include="Roles.xml" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\WBPortal_Folder_Published.pubxml" />
     <None Include="Scripts\jquery-2.1.3.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.3.js" />
     <Content Include="Scripts\jquery-2.1.3.min.js" />
@@ -1607,7 +1609,6 @@
     <Content Include="Views\Shared\JavascriptDisabled.cshtml" />
     <Content Include="Views\Shared\_banner.cshtml" />
     <Content Include="Views\Shared\_BrandControl.cshtml" />
-    <Content Include="Views\Shared\_CertificateControl.cshtml" />
     <Content Include="Views\Shared\_LogOnPartial.cshtml" />
     <Content Include="Views\Shared\_Navigation.cshtml" />
     <Content Include="Views\Shared\_Pager.cshtml" />
@@ -1640,7 +1641,6 @@
     <Content Include="Views\Shared\_headerTop.cshtml" />
     <Content Include="Views\Shared\_header.cshtml" />
     <Content Include="Views\Shared\_rightpanel.cshtml" />
-    <Content Include="Views\Products\SecureSiteProwithEV.cshtml" />
     <Content Include="Views\Products\DomainValidatedUCCSSL.cshtml" />
     <Content Include="Views\Products\ThawteSSLWebServer.cshtml" />
     <Content Include="Views\Products\GeotrustTrueBusinessID.cshtml" />
